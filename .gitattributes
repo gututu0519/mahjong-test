@@ -1,0 +1,2 @@
+# Preserve source bytes: the obfuscated loader depends on source text.
+* -text

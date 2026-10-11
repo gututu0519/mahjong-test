@@ -1,0 +1,8 @@
+*.har
+/diagnostics/
+*.log
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
