@@ -1,0 +1,1234 @@
+[
+  {
+    "path": "assets/resources/import/01/01a9464fd.256bc.json",
+    "source": "user-supplied resource response",
+    "entries": 13,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/01/01b13f10a.68c85.json",
+    "source": "user-supplied resource response",
+    "entries": 74,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/02/025c23820.b6a10.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/03/0389af64c.d56db.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/03/03e31befe.a27cb.json",
+    "source": "user-supplied resource response",
+    "entries": 22,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/04/045842b1c.674bf.json",
+    "source": "user-supplied resource response",
+    "entries": 41,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/04/04d4f25d4.ef9d8.json",
+    "source": "user-supplied resource response",
+    "entries": 5,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/05/050913b39.80549.json",
+    "source": "user-supplied resource response",
+    "entries": 24,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/05/055d39b42.1030e.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/04/044430e7a.ec7bf.json",
+    "source": "user-supplied resource response",
+    "entries": 10,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/06/0624e2bc8.47c73.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/06/06362d921.8817f.json",
+    "source": "user-supplied resource response",
+    "entries": 11,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/06/06a2efcb5.d39db.json",
+    "source": "user-supplied resource response",
+    "entries": 3,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/06/06bc49e1d.fb7ba.json",
+    "source": "user-supplied resource response",
+    "entries": 25,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/06/06da7624f.5a963.json",
+    "source": "user-supplied resource response, attachment 1",
+    "entries": 225,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/07/079a6bc91.94adf.json",
+    "source": "user-supplied resource response, inline JSON 1",
+    "entries": 21,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/07/07d9b8c9b.70ecc.json",
+    "source": "user-supplied resource response, attachment 2",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/08/084a9f56c.4e77b.json",
+    "source": "user-supplied resource response, attachment 3",
+    "entries": 135,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/08/084da259-1521-424e-928c-ebfdbff0fca9.0b90a.json",
+    "source": "user-supplied resource response, inline JSON 2",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/01/010d3718e.725d3.json",
+    "source": "user-supplied resource response, inline JSON 1",
+    "entries": 5,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/01/01bc04b54.14bf5.json",
+    "source": "user-supplied resource response, inline JSON 2",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/08/089ce0c4d.3f7a4.json",
+    "source": "user-supplied resource response, attachment 1",
+    "entries": 37,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/09/097819c5-4989-4a6e-8506-5da195db6fe7.74b2e.json",
+    "source": "user-supplied resource response, inline JSON 3",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/09/09c33ef08.3b610.json",
+    "source": "user-supplied resource response, inline JSON 4",
+    "entries": 3,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0a/0a568413-63db-4c8e-8a8a-cb2eb46f623f.c925c.json",
+    "source": "user-supplied resource response, inline JSON 5",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0a/0a8ca5deb.0d147.json",
+    "source": "user-supplied resource response, inline JSON 6",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0a/0acff6675.45e51.json",
+    "source": "user-supplied resource response, attachment 2",
+    "entries": 57,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0a/0afd8f9a2.5b09b.json",
+    "source": "user-supplied resource response, attachment 3",
+    "entries": 38,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0b/0b371e48f.8ad0c.json",
+    "source": "user-supplied resource response, inline JSON 7",
+    "entries": 3,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/01/010d582b-90db-4deb-8696-3cc42025eb2a.d93cc.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0b/0be21b298.12f93.json",
+    "source": "user-supplied resource response",
+    "entries": 19,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0c/0c339d10f.cca46.json",
+    "source": "user-supplied resource response",
+    "entries": 3,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0d/0d5767426.af6df.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0d/0d96f6ca4.2ec75.json",
+    "source": "user-supplied resource response",
+    "entries": 14,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0e/0e1a8a4ea.07582.json",
+    "source": "user-supplied resource response",
+    "entries": 3,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0e/0e954bedc.c1b43.json",
+    "source": "user-supplied resource response",
+    "entries": 10,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0f/0f46bcb6f.0b73a.json",
+    "source": "user-supplied resource response",
+    "entries": 6,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0f/0f4d1a5a1.3ac93.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0f/0f57d2738.c6122.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0a/0a984b0f0.cf8c1.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0e/0e0318920.66307.json",
+    "source": "user-supplied resource response",
+    "entries": 20,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0e/0e0c23b6b.7b619.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0f/0f7d4ff98.3ab8d.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0f/0fec9f54a.fe19f.json",
+    "source": "user-supplied resource response",
+    "entries": 10,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/27/278a754f-b92f-4a8a-8943-27a0a4e3382a.da4f9.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/36/36bc1d2c-06b5-48d9-9e55-bbeb36bb8cc1.f478f.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/39/39dc4df1-1912-41e8-994e-799d65856474.b912a.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/42/42da4d10-5bd2-4666-9434-7c75bf22c919.13ce7.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/44/444f06db-5f8d-47b0-845e-df9f18e5fec0.6ce99.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/4b/4bf3adf4-8708-4609-b6b9-b5faf4426876.39282.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/4d/4d407bf5-ce8c-435d-baa0-c4ed5be1ae61.5d524.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/53/535850d8-7c0d-4917-8fdb-bd82cdb89f5d.b1042.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/54/548e8d8c-33be-425c-b821-2bf4cf764299.a8679.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/70/707e06bc-e0fd-413c-8403-7ea54c9d9252.b3cd8.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/88/881500c8-2a75-47a9-a4e4-ecde1575d008.9cfc6.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/95/950ee69f-f1f9-418e-b245-edb208383dfa.e0488.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/ae/aef67769-4c48-42ea-b7cc-df63b14b6d8f.10790.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/b1/b1549ff4-4be9-4f4b-9ecc-cd62bd11e33b.df674.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/bf/bfe4d8a4-bfd7-4ed4-8eae-76c0ed8b9d21.fa4cc.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/04/0462b3e20.acf52.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/05/0500f0c79.7ead4.json",
+    "source": "user-supplied resource response",
+    "entries": 4,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/c2/c22668b7-0571-4692-a72a-540a87c8db1d.84970.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/c3/c3cadae0-4a5b-4517-aa2c-f6ecae5d3be9.677ea.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/c4/c4491cc4-755c-4093-8b52-a7ab91a9982d.e67da.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/d6/d6a23d8d-e499-44fb-b8e0-e17ac2c6daab.1f36a.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/df/dfce8cf6-ecd2-4f2b-a746-d86c5f78d472.bf4a5.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/e7/e7c62e81-45f0-4ed6-b4cf-ecd861de5fec.e39cb.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/f3/f3742893-7960-4de2-ab08-5a928a25a890.34f96.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/f5/f5f8cf44-da5f-4ac9-99c6-2d270de75063.57591.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/fd/fd4a8174-d599-4dc4-8479-206bc8b0453a.23c9e.json",
+    "source": "user-supplied resource response",
+    "entries": 1,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/09/095515cf7.a3056.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/09/09db2730f.9618f.json",
+    "source": "user-supplied resource response",
+    "entries": 6,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0b/0bf7ec4c2.a3754.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/import/0d/0dac88ca7.e5fed.json",
+    "source": "user-supplied resource response",
+    "entries": 2,
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/04/04e186f4-8361-4a68-87d3-e9ede41c67fe.e3bba.png",
+    "source": "user-supplied base64 image attachment 74444728-0197-43bd-8ded-25e44104786c",
+    "dimensions": [
+      327,
+      327
+    ],
+    "spriteFrames": "base_ingot_rotate",
+    "sha256": "c9536cf29d7edc4f20c614631d0396ed28b31d8bf23337b7b9c84dae2aa4c943",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/08/08f7516f-ea63-47fa-a78b-6008c7cbc2ab.6286f.jpg",
+    "source": "user-supplied base64 image attachment b10998d6-060b-4b7c-9f1c-bf3c0e592aea",
+    "dimensions": [
+      1678,
+      1678
+    ],
+    "spriteFrames": "info_vfx_d",
+    "sha256": "d3a17ffbfaf93186c7f95bdf4319f570ad9763bcf9606e90da492e58bf0b3e90",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/0b/0b4ae3cc-5d5a-4da1-92d8-8203ee193674.f2f1b.png",
+    "source": "user-supplied base64 image attachment fb68132d-bb75-44c7-9ad8-b357cc4005c2",
+    "dimensions": [
+      660,
+      660
+    ],
+    "spriteFrames": "win_frame_a",
+    "sha256": "8001af337babeca272d4473081ff2426ce233e7b2786e64f6fda99e2137802ad",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/0b/0bfa5ecc-6615-4894-baec-c871104b5b9d.bf3f9.jpg",
+    "source": "user-supplied base64 image attachment e484fb27-13a1-453d-8d8a-4a914fcff17f",
+    "dimensions": [
+      504,
+      440
+    ],
+    "spriteFrames": "infoboard_vfx_e_add_spawn",
+    "sha256": "bc8862d889d1111d038840e06b729fc2e8c3f7b3319bb7a1b14cb70ff0ee8ace",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/1a/1acee2fb-3272-4a2f-8f8d-7b9246e29c1c.cab5e.jpg",
+    "source": "user-supplied base64 image attachment ce509e6a-2044-4151-9c9b-4f2112afeb5e",
+    "dimensions": [
+      813,
+      813
+    ],
+    "spriteFrames": "scatter_vfx_c",
+    "sha256": "87f0a417f80d7260b77cbbb2e1ecc0b263fff113d2e7a5669b09fb77a750d4db",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/22/22480547-c484-4511-a172-585e6db7c80a.bf7c4.jpg",
+    "source": "user-supplied base64 image attachment f8a42e89-4975-45a5-8711-4b8fcc4dc6f5",
+    "dimensions": [
+      659,
+      251
+    ],
+    "spriteFrames": "scatter_glow",
+    "sha256": "d804af76ac40f0cedb020c7d6847d600cc33b1ffd1e9e3e6e8a352f94e5c3e7d",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/24/2402da67-b305-4699-92ab-eb42d8aee796.bb5ad.png",
+    "source": "user-supplied base64 image attachment bda911b6-1de2-4701-8dab-fc807726651a",
+    "dimensions": [
+      236,
+      789
+    ],
+    "spriteFrames": "win digits and punctuation",
+    "sha256": "0d6912eb8a18da39d5adc64c8ce5b54253854a1b7704815312c8f624c46265a7",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/28/28cb599e-6289-4433-a4ee-fc393dad8356.26ff7.png",
+    "source": "user-supplied base64 image attachment 51931569-5049-40bc-92c1-96e99075cfc1",
+    "dimensions": [
+      1029,
+      1029
+    ],
+    "spriteFrames": "fast_vfx_a",
+    "sha256": "bde7c214f871269c20cfcaa58efecb584d7db24858dd59e0578d4e35f3aa059a",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/2a/2ada7886-83e0-4d3c-b651-eae6ad6b5c7a.22e5d.jpg",
+    "source": "user-supplied base64 image attachment 54679305-0553-4b4d-a5b4-265e2925002a",
+    "dimensions": [
+      341,
+      218
+    ],
+    "spriteFrames": "win_glow and win_flare",
+    "sha256": "9d631f719a22d4c0f82ec735b2c3ac6dd9eb707154a09cb6f156b162fc687229",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/31/31b43671-96b0-4032-926f-482e51999927.1129a.png",
+    "source": "user-supplied image 4f97bf3d-a79c-4cde-953e-f8b95cb60671",
+    "dimensions": [
+      115,
+      126
+    ],
+    "spriteFrames": "turbo_lightning",
+    "sha256": "f4892dee97c5f839ab9908bd517ca1fb7e375215f2d8a3f7d753fa74cf3e4c52",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/32/3228836f-88db-4cbb-abc3-5087d9e2313a.2aa7c.png",
+    "source": "user-supplied image 0de24a83-11de-4167-bb90-5d5bdc8b4478",
+    "dimensions": [
+      611,
+      720
+    ],
+    "spriteFrames": "ui_footer,ui_top_bar,ui_bg",
+    "sha256": "47ddb6c5d704608a588651a320a6c921e675a6a5d6912068d69bce7bb021040d",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/38/3856b7c5-0c59-4514-9770-eb3e800f4e09.8051e.png",
+    "source": "user-supplied image efcf90eb-4890-470c-acae-a33ce6223aca",
+    "dimensions": [
+      1525,
+      478
+    ],
+    "spriteFrames": "symbols",
+    "sha256": "bddb9f20ba99eda661f4f34df087f6254ccc0085082ae4d93e9a0979fe2f47c1",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/38/3870b6f3-b1d3-4e64-9465-899f689e673e.b7aec.jpg",
+    "source": "user-supplied image d02d4f58-e79a-470d-a734-533fa03a2ee9; duplicate 96763f84-797b-4d27-84c7-23a801fb8a27",
+    "dimensions": [
+      275,
+      275
+    ],
+    "spriteFrames": "scatter_vfx_a",
+    "sha256": "09f1f38c75e9bcd14d996bc5096268a4f63b7e9f99ebe2f66fffbacba225bfeb",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/32/3230e4dd-ab97-49eb-ad3c-2dccb68d3476.1e7c7.png",
+    "source": "user-supplied image inline base64",
+    "dimensions": [
+      33,
+      36
+    ],
+    "spriteFrames": "way_coin",
+    "sha256": "d1c9024a41fae3ed1bf7d3206149745b4f9fb17f4f6e4f943b74725f74987f92",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/38/387b621f-bfb2-4c4d-9633-067948133fc8.00937.jpg",
+    "source": "user-supplied base64 image attachment 64a8aa85-dfd6-461f-b53c-658982bf57c2",
+    "dimensions": [
+      650,
+      650
+    ],
+    "spriteFrames": "win_vfx_b",
+    "sha256": "bfce2f88fe9463d4d149c772bb8a73d0def76f6f1f0169073c72aad31e3fa8a5",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/3d/3d039d70-4483-4e81-8c2a-723f3e86a819.f43b4.png",
+    "source": "user-supplied base64 image attachment 1242d80c-0b9f-4dc6-9430-9c3c9cddfad3",
+    "dimensions": [
+      1629,
+      253
+    ],
+    "spriteFrames": "infoboard",
+    "sha256": "4f1d39400c4346f36a29fbcad5e25fbfdc24733a26fd2dd239003014ea557f9f",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/3d/3dacc024-ac71-4e35-8791-59fd18aab208.df08b.png",
+    "source": "user-supplied base64 image attachment a6d73d23-b1f0-471b-a8ed-5ac0d01aa135",
+    "dimensions": [
+      633,
+      409
+    ],
+    "spriteFrames": "big_win_texture",
+    "sha256": "48532f1afc0185323e21d86a468b00585818094a0f5fac3cc7e583b8abc6a166",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/3f/3fc7fe26-f6e0-4b3f-9242-291d810dfbf8.c5aa5.jpg",
+    "source": "user-supplied base64 image attachment d498501f-10f9-42f5-93f7-1299ead0566e",
+    "dimensions": [
+      542,
+      807
+    ],
+    "spriteFrames": "ui_reel,ui_bg_a",
+    "sha256": "345d437b6997e57339d159202ae6977730d36b5174d749952ef1a73ba9bf6fb7",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/4f/4f399571-1d66-4ac6-b3a5-b77aa503b919.f9144.png",
+    "source": "user-supplied base64 image attachment a43e8a69-b363-4261-bd3c-414c5d61b865",
+    "dimensions": [
+      201,
+      603
+    ],
+    "spriteFrames": "total_win_texture",
+    "sha256": "8b7ca6b60b1edc8d92d770e9ef1c5c119b17d1db3e20a60b71a3f88ae2d27519",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/ff/ffc0c683-b7ee-4850-afe3-152b741f69a0.8a2ca.jpg",
+    "source": "user-supplied base64 image attachment 2f38f041-3c38-4be7-86a1-a03611b194a1",
+    "dimensions": [
+      932,
+      984
+    ],
+    "spriteFrames": "infoboard_lv02_vfx_d_add",
+    "sha256": "03e5765666a25925f45d1fdf9b29e81a4db670e6059aad613302389f56677712",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/fa/fae6ed51-e91b-458a-9cda-6a862c081d24.8cb52.jpg",
+    "source": "user-supplied base64 image attachment 9620ef18-182f-43e9-8681-e93a25e63734",
+    "dimensions": [
+      878,
+      878
+    ],
+    "spriteFrames": "scatter_vfx_b",
+    "sha256": "7303045c8ed70b2d8c2c51502af0978444685c7613724cbc22313f44f5d3c892",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/f3/f3db3462-ca16-4892-872b-09b04c92467f.2f73f.jpg",
+    "source": "user-supplied base64 image attachment 888d41c2-aea2-46b8-b516-a0bb3fe47904",
+    "dimensions": [
+      355,
+      825
+    ],
+    "spriteFrames": "bonus_glow_c,fast_glow_a,reel_glow",
+    "sha256": "ae9316dcd63f3d95fc4b03b491ca802230ba2d21d2f90fae5977c701edf6d900",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/f3/f3aabdc9-dfca-49d0-b522-8b49bc20e241.88deb.png",
+    "source": "user-supplied base64 image attachment 3ed78cd6-9d20-4fd6-a81f-b89b17b9f9f4",
+    "dimensions": [
+      940,
+      498
+    ],
+    "spriteFrames": "info_message",
+    "sha256": "1f14d8976a4e052dc3ae85bb8e95d2e96a5cd4dd0577ea9e435dab899f4996b7",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/ee/ee8b84e0-c1e6-4332-8678-f550523be4df.2eab3.png",
+    "source": "user-supplied base64 image attachment 81247962-2ee8-4668-8862-b48f3b1bfc10",
+    "dimensions": [
+      729,
+      1002
+    ],
+    "spriteFrames": "infoboard glow and borders",
+    "sha256": "57c20904570896dae1155bb657aa9b1d0089f7b14e4fac1bf33cd1b307dab9b7",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/45/45979e75-3d36-417c-900f-a148b6a0bb92.7f863.png",
+    "source": "user-supplied image b74ea3a7-1adf-4415-bcd8-6d7df6a0b364",
+    "dimensions": [
+      538,
+      62
+    ],
+    "spriteFrames": "number sprites",
+    "sha256": "7be74c17c862e64f8dc32019c1c97cd3beb768bd6a1e76d86225994d4b477f02",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/46/46443487-ffde-4bcb-a5f6-578350e5082d.fb81b.png",
+    "source": "user-supplied image fb67865f-9ecc-4082-9ce2-1bf5df094959",
+    "dimensions": [
+      312,
+      175
+    ],
+    "spriteFrames": "payout_window",
+    "sha256": "f3462d5cd9084106e00fda02dbc3333bcea3d927534a2be2dc298fe13c3db84b",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/46/46a7d910-12f7-4498-99d4-17cd107840ac.4e851.jpg",
+    "source": "user-supplied image b0baa226-1c18-459b-bb61-76df51da0b99",
+    "dimensions": [
+      432,
+      432
+    ],
+    "spriteFrames": "win_vfx_a_1x1",
+    "sha256": "8276a33c2d1d4ff0b5053303afce0871c362550251825259d2ebfd7464829c52",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/47/4770386b-217b-4222-b316-7e95c3fb8493.c4e33.jpg",
+    "source": "user-supplied image 7908d53a-35d8-4702-bbea-09474b1a8049",
+    "dimensions": [
+      1978,
+      1978
+    ],
+    "spriteFrames": "info_vfx_a",
+    "sha256": "d9b755132d7f6407366b1e91ef387fb68144657da34b65357753941ab605a0fe",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/4b/4bf2a7d6-c485-4e98-9e4c-26af54e1c3e5.d0521.jpg",
+    "source": "user-supplied image inline base64",
+    "dimensions": [
+      235,
+      132
+    ],
+    "spriteFrames": "multiplier_vfx_a_screen",
+    "sha256": "3cd1b5f00b92bef9d93b2725883f585f3b3d0d0ac2e17b10878b5e08b08c62df",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/e4/e4df9c4e-4e1c-475b-9c29-d36258ddced0.a12db.jpg",
+    "source": "user-supplied image afa1b6b4-0d65-4339-8045-f10bc739a4cc",
+    "dimensions": [
+      543,
+      219
+    ],
+    "spriteFrames": "spin glow and flare",
+    "sha256": "bd272f7ddf7f8560769ae190f76a8fee47ab3f03b66b6c9abe95fab7f2be46d0",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/e4/e488b814-e64e-43bf-878f-fc1831c23799.3e6ec.jpg",
+    "source": "user-supplied image e863bdb3-6dbf-4509-8f69-683dd9f2efe9",
+    "dimensions": [
+      542,
+      807
+    ],
+    "spriteFrames": "ui_reel_bonus,ui_bg_a_bonus",
+    "sha256": "3b81c62a868547fcb330ae38d3b1a309aa3a46b102f3d1d355885edf748ef8a2",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/e3/e3fc6927-a613-404b-a62a-11a07e0f0305.bd2d8.jpg",
+    "source": "user-supplied image 24f1d166-f855-4aa7-a054-2400ff46534f",
+    "dimensions": [
+      1244,
+      938
+    ],
+    "spriteFrames": "total win page and effects",
+    "sha256": "923a5f3179c484a9681f4e661a1a136b41dd4ecbe5b4685e35f789bf96ddfa7a",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/e1/e1e113aa-1b12-4080-ab95-7b1d116163c9.7cd9a.jpg",
+    "source": "user-supplied image 32ae562c-1461-4234-aff8-f3a6e26f77aa",
+    "dimensions": [
+      1837,
+      1837
+    ],
+    "spriteFrames": "fast_vfx_d",
+    "sha256": "74da6625a01ba3254b3df8e1670d2ecba82b190bd5ad2727cb4f77ab0c1d5acb",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/e8/e851e89b-faa2-4484-bea6-5c01dd9f06e2.b617d.png",
+    "source": "user-supplied image inline base64; original HAR size 1082 matches normal button",
+    "dimensions": [
+      40,
+      40
+    ],
+    "spriteFrames": "default_btn_normal",
+    "sha256": "5e3e931db260d0f43c2f5fd0ea791fbdc25923a8c14fcd6b0912581cd893f96d",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/4c/4c4c5512-b150-495e-9dfe-8f36c8af3e6a.66254.png",
+    "source": "user-supplied base64 image attachment 098ed793-9214-40ef-913a-7693aa62d390",
+    "dimensions": [
+      256,
+      754
+    ],
+    "spriteFrames": "multiplier labels",
+    "sha256": "4d4f40fc2135b026694f302177b0acfdcb3a2606221cf226f2084a68a928ab42",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/50/503f7462-bb14-4e80-9d50-57622be05c21.19bc2.png",
+    "source": "user-supplied base64 image attachment ff8b6ec8-dbf7-47c6-8009-add436127ca6",
+    "dimensions": [
+      864,
+      864
+    ],
+    "spriteFrames": "scatter_vfx_d",
+    "sha256": "c07de5455d80d3496f3698894699a58f1045fdf891c4cd5b34d707d1f4d4ee0a",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/55/5561488d-2fce-489d-bc31-2565bba85f91.42205.png",
+    "source": "user-supplied base64 image attachment ceef8c3e-950c-4169-b693-46c179b419ef",
+    "dimensions": [
+      1008,
+      984
+    ],
+    "spriteFrames": "big win coin effects",
+    "sha256": "ad25ec2bf4deb80955725d9a4359a518116d4d553bf742c5bc4b4bb91b4b9b3e",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/57/57643a29-57f0-40e9-bbce-a249ce661598.d5a01.jpg",
+    "source": "user-supplied base64 image attachment 186246a2-4241-487b-8c58-3d47a1d1ab9a",
+    "dimensions": [
+      1818,
+      1818
+    ],
+    "spriteFrames": "fast_vfx_b",
+    "sha256": "b6bb1c276a6ed153b4d1ebc7a7070e1083c4572f3e1442a273bdad28898c15d1",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/5f/5f176b27-f820-4647-b56f-a6c0121f9f2d.57ea8.png",
+    "source": "user-supplied base64 image attachment bcf0a935-8b68-44af-9605-9c724d1a7eba",
+    "dimensions": [
+      994,
+      994
+    ],
+    "spriteFrames": "base_gold_rotate_c",
+    "sha256": "75be29bf02a16785f9194e2ecea61edaca1cb664479526384c096d0902da2c7e",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/de/debc8150-8eb3-498c-9baa-422acdab3f78.c81b7.png",
+    "source": "user-supplied base64 image attachment a34b36ed-a744-4567-aa2e-dd165a43d5aa",
+    "dimensions": [
+      938,
+      62
+    ],
+    "spriteFrames": "payout digits yellow and grey",
+    "sha256": "af69faeee25fdb0d2d87ccc8dd6013140f315043efe3dbc60553413faa0abb48",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/dc/dc683168-defd-434b-ac6d-51b33e8d8020.dc762.jpg",
+    "source": "user-supplied base64 image attachment 17d72810-8926-4d3d-8501-bb6573223d36",
+    "dimensions": [
+      453,
+      728
+    ],
+    "spriteFrames": "infoboard_lv02_vfx_i_add",
+    "sha256": "936233870725b23b7fcebda1105fa7663ec07e66a98b14ac9ea6ec79f991f4a2",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/db/db491d11-d2e5-4b58-9b7c-5bf86f32e786.22477.png",
+    "source": "user-supplied base64 image attachment b6638d58-8afe-45ea-b401-735b80c67a40",
+    "dimensions": [
+      772,
+      401
+    ],
+    "spriteFrames": "bl_icon,bonus_loading",
+    "sha256": "fc703513af2798f81a5436c265222fdf109b8401b6b504502b28c36f82f5710b",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/d4/d4bc56c6-3738-45a3-b956-7ffda590e2e6.c08df.jpg",
+    "source": "user-supplied base64 image attachment 9725d412-23ac-44f1-985a-fb6d8b3e39fd",
+    "dimensions": [
+      1736,
+      1736
+    ],
+    "spriteFrames": "bonus_bg_particle",
+    "sha256": "1ad0e19b1879784457cd1234c75a656d8c09ee7753a18bf7197b4245bcaabb83",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/cc/cc17d7b7-ed38-4f89-8239-7dbe8bc14e5b.62d03.jpg",
+    "source": "user-supplied base64 image attachment 345c1957-c664-420f-99ee-f75f249c6466",
+    "dimensions": [
+      432,
+      936
+    ],
+    "spriteFrames": "bl_page",
+    "sha256": "c66d756b8b8c19a99ed9c9e5606f51e1153a93a2e365eb92e73412195d2b8243",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/60/600a4650-33d1-4df4-9bea-07a3aa3ff4eb.73a98.png",
+    "source": "user-supplied image 526522ff-85b7-4b69-9fe8-bee4288630cc",
+    "dimensions": [
+      1023,
+      618
+    ],
+    "spriteFrames": "bonus UI atlas",
+    "sha256": "d9f47667dcc128cc15bb8bcd04d1175bb178653d3371d9307b7b42aeb3a52c65",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/61/6144b73b-3eaf-49d1-abd9-61314f9b422a.ea8fc.jpg",
+    "source": "user-supplied image 558ff34b-b289-433d-9643-1e67ebde29ab",
+    "dimensions": [
+      610,
+      610
+    ],
+    "spriteFrames": "info_vfx_c",
+    "sha256": "9a495fb737376b8b0fe5eba7dfcf7bdeabd766464026ffbefae301d82b17b2af",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/6f/6f09dfb2-ed28-4d01-9c14-79188bbe1caa.dbfcb.jpg",
+    "source": "user-supplied image 9df07a98-0194-435a-8e40-7173a5e2ad37",
+    "dimensions": [
+      1000,
+      752
+    ],
+    "spriteFrames": "infoboard_lv02_vfx_g_add",
+    "sha256": "137dc3f11fa517da8979c0867f6c28da86fb96f6537840e6bdef9b6254dc4640",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/6a/6a4e363b-db7d-4d6f-b08e-70a0241e6751.0953b.jpg",
+    "source": "user-supplied image inline JPEG",
+    "dimensions": [
+      206,
+      206
+    ],
+    "spriteFrames": "spin_vfx_b",
+    "sha256": "8393f8af8e6eb5e777d5fb2991230481fa9447bb317f4bd5e66ab1e6e24726bc",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/71/71561142-4c83-4933-afca-cb7a17f67053.157b5.png",
+    "source": "user-supplied image inline PNG; original HAR size 1050 matches disabled button",
+    "dimensions": [
+      40,
+      40
+    ],
+    "spriteFrames": "default_btn_disabled",
+    "sha256": "44b670047e5d34fc09f3e8538e8945445bc1bb913d6f21d7ac4e06b18c2e172b",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/cb/cb72e539-e2b7-41ce-9cac-e8e7c5e041e9.6bbc2.jpg",
+    "source": "user-supplied image 7a5de159-a392-4000-a8d8-3edd363d0012",
+    "dimensions": [
+      314,
+      916
+    ],
+    "spriteFrames": "info glow and flare",
+    "sha256": "9df936dd945f5f14bb5278f21a58a6b06c4e5835e9e87348f06686240fa34ccf",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/c5/c515290e-3d74-492e-977a-a2c1da85cdf0.d6c1d.png",
+    "source": "user-supplied image e0b4a73b-8a47-48b1-9688-3f169108b4a3",
+    "dimensions": [
+      1414,
+      212
+    ],
+    "spriteFrames": "spin button atlas",
+    "sha256": "28c28a2380528e59272a7f642d8a8ae605ea0fcb2feaead3b261d32979426ae8",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/bd/bd5ca7f6-9609-41fb-aa97-c34aeae7af6a.3bd08.jpg",
+    "source": "user-supplied image 91e6d2d7-d603-41ce-9852-df80bef6c474",
+    "dimensions": [
+      441,
+      490
+    ],
+    "spriteFrames": "infoboard_vfx_f_add",
+    "sha256": "9821a8d57f194072006c80e178f589ee7effba2b5ee9e5b544d42eced52bd368",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/b9/b939f278-a162-4276-ad6a-4157e427fa4f.7e982.jpg",
+    "source": "user-supplied image 49cc269b-8d31-46d3-9b10-49176ca46cc9",
+    "dimensions": [
+      442,
+      380
+    ],
+    "spriteFrames": "multiplier_vfx_b_add",
+    "sha256": "5078c6e5e66a1b93fd7be0e15b59e41c9f2fd1f12c7c1d23ed9b050cbcddc030",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/bd/bd97efb1-a3e8-41a1-8780-b2b77effb881.4e719.jpg",
+    "source": "user-supplied image inline JPEG",
+    "dimensions": [
+      140,
+      140
+    ],
+    "spriteFrames": "ingot_shine",
+    "sha256": "ddfa3842638e2e912936d8ab740fad2c980c68114a5423793e7a666d66fc6faa",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/73/73f6ee1c-a3a4-46e6-9ae5-41668b62b80d.db9bf.png",
+    "source": "user-supplied base64 image attachment 887a584f-24e3-4726-8b28-36491e423b11",
+    "dimensions": [
+      596,
+      596
+    ],
+    "spriteFrames": "base_gold_rotate_a",
+    "sha256": "ce80a7aef638d78cac057c5f3b0d5a31150d276d13d17bd13256a4a58366bfff",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/79/797b35c6-e7b1-404f-9960-7d0e324684f3.a05f6.jpg",
+    "source": "user-supplied base64 image attachment cea0f519-dfde-4d9d-b89d-470d6204b5f4",
+    "dimensions": [
+      502,
+      614
+    ],
+    "spriteFrames": "infoboard_vfx_e_add_loop",
+    "sha256": "f3eb52cb34ae6c29cbf9f9482036e18db48d3f92584161394f11f0ab2059db5b",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/7d/7df4d959-59b9-4e1a-96f0-d6a24f853bba.44cb9.jpg",
+    "source": "user-supplied base64 image attachment 91e36bb6-919f-4a0f-9998-4b618e5808fc",
+    "dimensions": [
+      462,
+      498
+    ],
+    "spriteFrames": "infoboard_lv02_vfx_c_screen",
+    "sha256": "bd7bf61fbc0fe6bf195cdba861fd015d3e38593676c965f096f1ad3ca11189c9",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/8c/8c318874-4ec1-439c-8366-2939878ab7dd.14d23.png",
+    "source": "user-supplied base64 image attachment 502d9aee-c474-4e5b-84ba-4c190aa5181c",
+    "dimensions": [
+      742,
+      201
+    ],
+    "spriteFrames": "button",
+    "sha256": "9f6fc6a00dc567e1eccb8438ca11edfac30dfa82b3c1b5f20dba8921715a5575",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/92/92811603-41b8-499f-aead-ab42e92d4eda.fe93e.png",
+    "source": "user-supplied base64 image attachment 9182f7dd-28ca-49bd-b445-0d8423459001",
+    "dimensions": [
+      448,
+      448
+    ],
+    "spriteFrames": "win_coin",
+    "sha256": "c220d4b4370d85826bd9bde1c999a2dc9af2f3cc6c59abb9e1c3d1196fe051a9",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/92/92f92985-825e-4d4b-9fd1-5caaed3d606d.ef0f8.jpg",
+    "source": "user-supplied base64 image attachment f457720c-aa5d-4795-9a3d-0f75b3d602a4",
+    "dimensions": [
+      1466,
+      1502
+    ],
+    "spriteFrames": "big win glow atlas",
+    "sha256": "40be9fb228617daf8ab44119dc47e9b0e0cb23a1c3bdd3ef2fb93cb5d351a7af",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/97/97a9d9b6-3196-4b0d-9bee-c4b27369f58d.d34ce.jpg",
+    "source": "user-supplied base64 image attachment 512b6d19-a5a8-45d1-b410-135b53ba129c",
+    "dimensions": [
+      1606,
+      1606
+    ],
+    "spriteFrames": "fast_vfx_c",
+    "sha256": "1ca68fe44b47e1186032d19c1033f287d40ab8596caad61e6e4213b953070b33",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/9c/9c61a6fb-77be-4c94-893c-d9f92fb2f14d.4291b.jpg",
+    "source": "user-supplied base64 image attachment 90855718-b38b-4958-bf7b-4523e5a17f26",
+    "dimensions": [
+      508,
+      476
+    ],
+    "spriteFrames": "infoboard_lv02_vfx_f_add",
+    "sha256": "3b63d90d73b217b63762922fab34731aad672ca83a714286b33f6986f83da6c6",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/ac/ac726853-c4e5-49f5-87ac-b83b41c26b06.1a62f.jpg",
+    "source": "user-supplied base64 image 7bb635d6-4be2-4097-bfd6-5ff6a433d567",
+    "dimensions": [
+      864,
+      864
+    ],
+    "spriteFrames": "spin_vfx_a",
+    "sha256": "c5d088af4ec1ce984ceedbbc3da8c822d7dc0255c0448daf1233e56564209fa1",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/ab/ab4587b9-9f26-41ef-af89-e74562b815f3.8e1b9.png",
+    "source": "user-supplied base64 image cbfee835-4ccb-435a-bb29-830897f8ee25",
+    "dimensions": [
+      732,
+      347
+    ],
+    "spriteFrames": "bonus_loading_texture",
+    "sha256": "4352b1a9677dd4ae17f4ca2faa1d02402295927c4bf0ca90cd961aa6bfd60914",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/a9/a9f0710a-15a5-48b3-8ac6-a5a40a520b1f.e3f02.png",
+    "source": "user-supplied base64 image 590bc5f4-440d-4540-8ec1-f8d3d32d6786",
+    "dimensions": [
+      631,
+      254
+    ],
+    "spriteFrames": "feature_symbols",
+    "sha256": "ac5411a33083b501cc01c824c7abae34b4c5e55c7d0a70c8098a3f9ff62d3883",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/a6/a6aecf7f-749e-4eb4-8b11-b9171f857fc1.f55d1.jpg",
+    "source": "user-supplied base64 image 90577d86-6c0d-4690-9399-a39a581834f5",
+    "dimensions": [
+      1757,
+      1630
+    ],
+    "spriteFrames": "bw_vfx_f",
+    "sha256": "306ea2457ebb3f47a4f2fcb41308aa608730a65ac31b6d70062160395afa5915",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/a0/a07a61f2-3da5-40eb-bb33-a484c712c63b.987d7.png",
+    "source": "user-supplied base64 image fbfb0336-e9de-48d9-bcf7-33a4b4b4eafb",
+    "dimensions": [
+      566,
+      200
+    ],
+    "spriteFrames": "click_a, click_b, click_c",
+    "sha256": "ae6aa3f13ff09953292ba1fb8746ee7d68026cd7696165404616dc94c42312d3",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/b4/b43ff3c2-02bb-4874-81f7-f2dea6970f18.927ae.png",
+    "source": "user-supplied base64 image inline PNG in same user message",
+    "dimensions": [
+      40,
+      40
+    ],
+    "spriteFrames": "default_btn_pressed",
+    "sha256": "132fda6a4b38333dcb471f09be05aed43d01b83dcc7a09c168b5629cdee31865",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/44/444f06db-5f8d-47b0-845e-df9f18e5fec0.565a7.mp3",
+    "source": "user-supplied base64 audio attachment 5991a6a1-9ef9-4337-b178-526de4022e8c",
+    "audioClip": "bgm_fs",
+    "decodedDuration": 23.04,
+    "sha256": "185076b98dc0e86a8188198a26ebe51f1304add9e204566e122f942c182904a0",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/4b/4bf3adf4-8708-4609-b6b9-b5faf4426876.f9523.mp3",
+    "source": "user-supplied base64 audio attachment 0c123542-2a56-4625-922b-13574e555744",
+    "audioClip": "vox",
+    "decodedDuration": 56,
+    "sha256": "24142ae81078755c3d514aedc044b9a7ecff6b6c55e12e407fc4026ca0225f43",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/70/707e06bc-e0fd-413c-8403-7ea54c9d9252.36051.mp3",
+    "source": "user-supplied base64 audio attachment 42678171-f550-4e4d-8268-6bc1b3d2bc09",
+    "audioClip": "bgm_mg",
+    "decodedDuration": 48.97960416666667,
+    "sha256": "20e6d5f7f94367bfada361c23a09d01b28a0675f0cdb35fd0bfd4b01f16acf1b",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/ae/aef67769-4c48-42ea-b7cc-df63b14b6d8f.7dba1.mp3",
+    "source": "user-supplied base64 audio attachment 25367a0f-c547-4349-b0bc-6f29318c2cda",
+    "audioClip": "ui_audio",
+    "decodedDuration": 5,
+    "sha256": "beb5f324956223cff55841985cfbd4d22f7ddcac90b8ef467811f9332275e37d",
+    "config": "assets/resources/config.c410b.json"
+  },
+  {
+    "path": "assets/resources/native/4d/4d407bf5-ce8c-435d-baa0-c4ed5be1ae61.dcc04.mp3",
+    "source": "user-supplied MP3 file C:/Users/Administrator/Downloads/4d407bf5-ce8c-435d-baa0-c4ed5be1ae61.dcc04.mp3",
+    "audioClip": "general_audio",
+    "decodedDuration": 106,
+    "sha256": "6bd3c4efcc229303cfd67017c5806a0582861cd3aa55a6b98bc30da72613845c",
+    "config": "assets/resources/config.c410b.json"
+  }
+]

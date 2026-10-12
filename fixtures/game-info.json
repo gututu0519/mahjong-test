@@ -1,0 +1,31 @@
+{
+  "dt": {
+    "bl": 2000,
+    "cc": "AUD",
+    "cs": [0.01, 0.06, 0.3],
+    "fb": null,
+    "ls": {
+      "si": {
+        "aw": 0, "bl": 0, "cs": 0.01, "fb": null, "fs": null,
+        "ge": null, "lw": null, "mi": 0, "ml": 5, "mr": null,
+        "np": 0, "pf": 0,
+        "rl": [7,6,7,9,10,9,8,3,8,3,1,4,5,2,4,6,0,2,0,10,4,3,8,3,1,4,5,2,7,6,7,9,10,9,8],
+        "rs": null, "sc": 0,
+        "ss": {"1":9,"2":11,"3":17,"4":23,"5":25},
+        "st": 1, "tb": 0, "tw": 0, "wk": "0_C", "wm": 0,
+        "wp": null, "wt": "C", "blb": 0, "ctw": 0, "cwc": 0,
+        "gwt": 0, "lwa": 0, "nst": 1, "ocr": null,
+        "orl": [7,6,7,9,10,9,8,3,8,3,1,4,5,2,4,6,0,2,0,10,4,3,8,3,1,4,5,2,7,6,7,9,10,9,8],
+        "pmt": null, "sid": "0",
+        "ssb": {"1":9,"2":11,"3":17,"4":23,"5":25},
+        "tbb": 0, "wbn": null, "wfg": null, "wid": 0, "blab": 0,
+        "fstc": null, "pcwc": 0, "psid": "0", "ptbr": null,
+        "rwsp": null, "snww": null, "ssaw": 0, "hashr": null
+      }
+    },
+    "ml": [1,2,3,4,5,6,7,8,9,10],
+    "wt": {"bw":20,"mw":5,"mgw":35,"smgw":50},
+    "mxl": 20, "inwe": false, "iuwe": false, "maxwm": null
+  },
+  "err": null
+}

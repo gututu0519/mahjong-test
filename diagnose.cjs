@@ -59,6 +59,11 @@ fs.writeFileSync(path.join(out, 'inventory.json'), JSON.stringify(inventory, nul
   }
   try {
     await page.goto('http://localhost:8080', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    if (process.argv.includes('--continue')) {
+      const proceed = page.getByText('继续游戏', { exact: true });
+      if (await proceed.isVisible().catch(() => false)) await proceed.click();
+      else await proceed.waitFor({ timeout: 10000 }).then(() => proceed.click()).catch(() => {});
+    }
     await page.waitForTimeout(15000);
     events.push({ type: 'serviceworkers', registrations: await page.evaluate(async () => {
       if (!('serviceWorker' in navigator)) return [];
