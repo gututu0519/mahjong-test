@@ -1,5 +1,9 @@
 !function() {
     "use strict";
+    // Module files can be added or replaced while this server is running.
+    const isLocalModule = url => url.origin === self.location.origin &&
+        /^\/shared\/.+\.js$/.test(url.pathname);
+    self.addEventListener("install", event => event.waitUntil(self.skipWaiting()));
     function e(e, t, s, n) {
         return new (s || (s = Promise))((function(r, a) {
             function i(e) {
@@ -643,6 +647,9 @@
       , x = "Entry2"
       , k = ["Entry", "General"];
     var E;
+    // Always get validated module responses from the local server, never old Cache Storage.
+    f(({url}) => isLocalModule(url), ({request}) => fetch(new Request(request, {cache: "no-store"})));
+    f(({request}) => request.mode === "navigate", ({request}) => fetch(new Request(request, {cache: "no-store"})));
     f(( ({url: e}) => null != e ? R.test(e.pathname) : void 0), new m({
         cacheName: x,
         plugins: [v, b]
@@ -661,8 +668,15 @@
             return e(this, void 0, void 0, (function*() {
                 const e = (yield caches.keys()).filter((e => k.includes(e))).map((e => caches.delete(e).catch(( () => {}
                 ))));
-                yield Promise.all(e),
-                e.length
+                 yield Promise.all(e);
+                 for (const name of [x, C]) {
+                     const cache = yield caches.open(name);
+                     const requests = yield cache.keys();
+                     yield Promise.all(requests.filter(request =>
+                         isLocalModule(new URL(request.url))
+                     ).map(request => cache.delete(request)));
+                 }
+                 yield self.clients.claim();
             }
             ))
         }())
