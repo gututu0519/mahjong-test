@@ -1,0 +1,152 @@
+{
+  "source": "local response capture",
+  "session": "436fe77c6ccc4247aeebf66ee09f55d1",
+  "assets": [
+    {
+      "path": "b6fc0a6e92.a7bd5.json",
+      "requestId": 1426,
+      "bytes": 5812,
+      "sha256": "af3a9dfcfb717ee7ad0aa8a565343f6c38e07265da0d3fa499d2158813a3417a"
+    },
+    {
+      "path": "c17f0e0340.98d03.json",
+      "requestId": 1427,
+      "bytes": 2721,
+      "sha256": "26d7fbf2d8fbd92dd36678443de4fbe255916f444ec511b5fade1635892fa019"
+    },
+    {
+      "path": "shared/75d1870451/8a1775ba9c.314df.json",
+      "requestId": 1428,
+      "bytes": 8001,
+      "sha256": "94990382173757f5518f50b3f8eb238a79283bf4c97f287d6f33291b1e0cef6a"
+    },
+    {
+      "path": "562b137072.c5114.json",
+      "requestId": 1430,
+      "bytes": 191,
+      "sha256": "f077b80a1861bfb6a7b8c8a089907b321fe700304f906b5bbf1187cf16be3b3d"
+    },
+    {
+      "path": "b8a0157fa0.b8699.json",
+      "requestId": 1431,
+      "bytes": 5269,
+      "sha256": "81b7a84c58de1a25d057517ef2e7bfcbbe5d569c2dd13b06183d8e14381712b4"
+    },
+    {
+      "path": "shared/75d1870451/485dcc6a6c.ae1fc.css",
+      "requestId": 1432,
+      "bytes": 1168,
+      "sha256": "f5fda2fb70cf08f63ce0d0877c729f9328ea11b4ee7eb7c00de175397c6554bd"
+    },
+    {
+      "path": "shared/75d1870451/b5f9703d5f.45abd.png",
+      "requestId": 1433,
+      "bytes": 75642,
+      "sha256": "7b091bf9fd693096cbb1e0b4a7ab2ed13dc08c87907e026a31fdc7acd15f1848"
+    },
+    {
+      "path": "shared/75d1870451/9427bc364b.63aae.css",
+      "requestId": 1435,
+      "bytes": 317,
+      "sha256": "0c4e67ca05b568448c9ebd9e5cad35d6ce7c7ef22b3d9da3cade08bcefb30f88"
+    },
+    {
+      "path": "shared/75d1870451/477318f8aa.67560.png",
+      "requestId": 1436,
+      "bytes": 21415,
+      "sha256": "e94d4724a7f88c6ff6f43b48c299f0243002549b11fe2c5af6e51526f1cc5f9b"
+    },
+    {
+      "path": "52ab0c3291.9bd05.css",
+      "requestId": 1438,
+      "bytes": 1336,
+      "sha256": "0c8a4540a32508fd22db3fe2f0c395e873609fafb8dd21d554225e8a1918199b"
+    },
+    {
+      "path": "935841f11c.ab8e3.css",
+      "requestId": 1439,
+      "bytes": 242,
+      "sha256": "558c51b5a73dba170028be893bd2cf07399b1ad448e748a6d00c0e6370224537"
+    },
+    {
+      "path": "b2d9bce565.d2ba7.css",
+      "requestId": 1440,
+      "bytes": 244,
+      "sha256": "9521c4a5c4e9f1ab60dd94bea61275eebe05c21f19c94d49fbb31f37ad3ab3fe"
+    },
+    {
+      "path": "6c86ecfd87.046b0.css",
+      "requestId": 1441,
+      "bytes": 503,
+      "sha256": "0ca312af389c150bee6610786222bb4de54a200639fdb5dbe68fc15e4180394d"
+    },
+    {
+      "path": "7fb89fcb69.50973.css",
+      "requestId": 1442,
+      "bytes": 728,
+      "sha256": "e6cb726b370a76771e8d6b4d9b497b2639e89ff885a277ffe163a325f31a223e"
+    },
+    {
+      "path": "00116b8b72.fb640.png",
+      "requestId": 1443,
+      "bytes": 155479,
+      "sha256": "8b9772dba86f3734cdc52182b8a7389779873207e238b3f7bb87b463c2d8738c"
+    },
+    {
+      "path": "ff65331e5e.eb213.png",
+      "requestId": 1444,
+      "bytes": 32126,
+      "sha256": "50dc95cd8a0620fe1d5250ab7d65b80e68aae52557d8e389ce8e1f2b34aa5600"
+    },
+    {
+      "path": "9b40dd4c78.eb213.png",
+      "requestId": 1445,
+      "bytes": 32126,
+      "sha256": "50dc95cd8a0620fe1d5250ab7d65b80e68aae52557d8e389ce8e1f2b34aa5600"
+    },
+    {
+      "path": "913c2c40fb.ba84c.png",
+      "requestId": 1446,
+      "bytes": 413538,
+      "sha256": "5db3095b734792593824d1a71a7a8d51460a10463677dfcdb611e228277fd839"
+    },
+    {
+      "path": "93aa20c2e3.5fac2.png",
+      "requestId": 1447,
+      "bytes": 14286,
+      "sha256": "42e49b2ef55f72179fb64ad87f905d0337c852d2f1a45eb02f5f6a164bf7a985"
+    },
+    {
+      "path": "d57cf6a8c8.eba48.json",
+      "requestId": 1451,
+      "bytes": 1398,
+      "sha256": "996d7a5969fabf0c23f2870a01567f768f9c86c52f6efb8f97b3088ccd146ec8"
+    },
+    {
+      "path": "shared/75d1870451/de60536c5e.71bf0.json",
+      "requestId": 1452,
+      "bytes": 9244,
+      "sha256": "03062f1ce0bab95511c01bbfa2d8dcbf258f7135943ffffe3043188f37f6b3a8"
+    },
+    {
+      "path": "212e77f6b8.702c9.css",
+      "requestId": 1453,
+      "bytes": 361,
+      "sha256": "13cf0cc3aede941cdee09eaaa15bc5c27c8fe8a27c6200232757adbf26efedb6"
+    },
+    {
+      "path": "9108110f7a.fb079.png",
+      "requestId": 1454,
+      "bytes": 26976,
+      "sha256": "4dd5f27da44651114724f51b227909e09a6464d37bb8acb125889aafe5935f94"
+    }
+  ],
+  "apiFixtures": [
+    {
+      "endpoint": "/web-api/game-proxy/v2/GameRule/Get",
+      "requestId": 1449,
+      "path": "fixtures/game-rule.json",
+      "sha256": "18fd98a48b3df106a9546ed31e67781e87de7e0b7f6081de4a44ef372907fe7c"
+    }
+  ]
+}

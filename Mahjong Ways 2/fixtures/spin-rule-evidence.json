@@ -1,0 +1,440 @@
+{
+  "input_rows": 533,
+  "decoded_rows": 530,
+  "unreadable_rows": [
+    {
+      "capture": 1468
+    },
+    {
+      "capture": 2104
+    },
+    {
+      "capture": 4104
+    }
+  ],
+  "complete_paid_rounds": 282,
+  "states": {
+    "1->1": 200,
+    "1->4": 82,
+    "4->4": 81,
+    "4->1": 80,
+    "4->21": 2,
+    "21->22": 20,
+    "22->22": 30,
+    "22->21": 20,
+    "21->21": 12,
+    "21->1": 2,
+    "1->21": 1
+  },
+  "bet_settings": [
+    {
+      "btt": 2,
+      "cs": 0.3,
+      "ml": 2,
+      "responses": 530
+    }
+  ],
+  "checks": {
+    "board_winning_positions": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "board_ways": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "client_paytable": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "board_base_awards": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "board_total_award": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "base_stake": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "charged_only_on_paid_start": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "wallet_debit": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "wallet_award": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "step_net_profit": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "current_total_win": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "multiplier_schedule": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "remove_except_golden": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "golden_to_wild": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "golden_after": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "scatter_visible_only": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "parent_id_paid_start": {
+      "passed": 283,
+      "total": 283,
+      "failed_capture_rows": []
+    },
+    "initial_award": {
+      "passed": 283,
+      "total": 283,
+      "failed_capture_rows": []
+    },
+    "feature_state_counts": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "combo_count": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "parent_combo_count": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "captured_threshold_gwt": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "next_state_from_outcome": {
+      "passed": 530,
+      "total": 530,
+      "failed_capture_rows": []
+    },
+    "request_previous_or_reset": {
+      "passed": 529,
+      "total": 529,
+      "failed_capture_rows": []
+    },
+    "state_continuity": {
+      "passed": 529,
+      "total": 529,
+      "failed_capture_rows": []
+    },
+    "multiplier_index": {
+      "passed": 529,
+      "total": 529,
+      "failed_capture_rows": []
+    },
+    "round_award_accumulation": {
+      "passed": 247,
+      "total": 247,
+      "failed_capture_rows": []
+    },
+    "single_spin_award_accumulation": {
+      "passed": 247,
+      "total": 247,
+      "failed_capture_rows": []
+    },
+    "cascade_parent_continuity": {
+      "passed": 213,
+      "total": 213,
+      "failed_capture_rows": []
+    },
+    "cascade_reconstructed_board": {
+      "passed": 213,
+      "total": 213,
+      "failed_capture_rows": []
+    },
+    "new_golden_positions": {
+      "passed": 213,
+      "total": 213,
+      "failed_capture_rows": []
+    },
+    "golden_position_transform": {
+      "passed": 213,
+      "total": 213,
+      "failed_capture_rows": []
+    },
+    "free_remaining": {
+      "passed": 84,
+      "total": 84,
+      "failed_capture_rows": []
+    },
+    "free_total": {
+      "passed": 84,
+      "total": 84,
+      "failed_capture_rows": []
+    },
+    "free_award": {
+      "passed": 84,
+      "total": 84,
+      "failed_capture_rows": []
+    }
+  },
+  "paytable_coverage": [
+    {
+      "symbol": 2,
+      "columns": 3,
+      "rate": 10,
+      "observations": 5
+    },
+    {
+      "symbol": 2,
+      "columns": 4,
+      "rate": 25,
+      "observations": 3
+    },
+    {
+      "symbol": 2,
+      "columns": 5,
+      "rate": 50,
+      "observations": 1
+    },
+    {
+      "symbol": 3,
+      "columns": 3,
+      "rate": 8,
+      "observations": 7
+    },
+    {
+      "symbol": 3,
+      "columns": 4,
+      "rate": 20,
+      "observations": 4
+    },
+    {
+      "symbol": 3,
+      "columns": 5,
+      "rate": 40,
+      "observations": 2
+    },
+    {
+      "symbol": 4,
+      "columns": 3,
+      "rate": 6,
+      "observations": 4
+    },
+    {
+      "symbol": 4,
+      "columns": 4,
+      "rate": 15,
+      "observations": 3
+    },
+    {
+      "symbol": 4,
+      "columns": 5,
+      "rate": 30,
+      "observations": 0
+    },
+    {
+      "symbol": 5,
+      "columns": 3,
+      "rate": 5,
+      "observations": 15
+    },
+    {
+      "symbol": 5,
+      "columns": 4,
+      "rate": 10,
+      "observations": 18
+    },
+    {
+      "symbol": 5,
+      "columns": 5,
+      "rate": 15,
+      "observations": 3
+    },
+    {
+      "symbol": 6,
+      "columns": 3,
+      "rate": 3,
+      "observations": 24
+    },
+    {
+      "symbol": 6,
+      "columns": 4,
+      "rate": 5,
+      "observations": 24
+    },
+    {
+      "symbol": 6,
+      "columns": 5,
+      "rate": 12,
+      "observations": 3
+    },
+    {
+      "symbol": 7,
+      "columns": 3,
+      "rate": 3,
+      "observations": 25
+    },
+    {
+      "symbol": 7,
+      "columns": 4,
+      "rate": 5,
+      "observations": 10
+    },
+    {
+      "symbol": 7,
+      "columns": 5,
+      "rate": 12,
+      "observations": 5
+    },
+    {
+      "symbol": 8,
+      "columns": 3,
+      "rate": 2,
+      "observations": 12
+    },
+    {
+      "symbol": 8,
+      "columns": 4,
+      "rate": 4,
+      "observations": 11
+    },
+    {
+      "symbol": 8,
+      "columns": 5,
+      "rate": 10,
+      "observations": 7
+    },
+    {
+      "symbol": 9,
+      "columns": 3,
+      "rate": 1,
+      "observations": 27
+    },
+    {
+      "symbol": 9,
+      "columns": 4,
+      "rate": 3,
+      "observations": 7
+    },
+    {
+      "symbol": 9,
+      "columns": 5,
+      "rate": 6,
+      "observations": 19
+    },
+    {
+      "symbol": 10,
+      "columns": 3,
+      "rate": 1,
+      "observations": 10
+    },
+    {
+      "symbol": 10,
+      "columns": 4,
+      "rate": 3,
+      "observations": 24
+    },
+    {
+      "symbol": 10,
+      "columns": 5,
+      "rate": 6,
+      "observations": 16
+    }
+  ],
+  "observations": [
+    {
+      "capture": 1983,
+      "event": "request_id_reset"
+    },
+    {
+      "capture": 3572,
+      "event": "request_id_reset"
+    },
+    {
+      "capture": 3611,
+      "event": "free_steps_awarded",
+      "st": 4,
+      "nst": 21,
+      "sc": 3,
+      "fs": {
+        "aw": 0,
+        "s": 10,
+        "ts": 10,
+        "nosa": 10
+      }
+    },
+    {
+      "capture": 3787,
+      "event": "free_steps_awarded",
+      "st": 4,
+      "nst": 21,
+      "sc": 3,
+      "fs": {
+        "aw": 0,
+        "s": 10,
+        "ts": 10,
+        "nosa": 10
+      }
+    },
+    {
+      "capture": 4037,
+      "event": "free_steps_awarded",
+      "st": 1,
+      "nst": 21,
+      "sc": 4,
+      "fs": {
+        "aw": 0,
+        "s": 12,
+        "ts": 12,
+        "nosa": 12
+      }
+    },
+    {
+      "capture": 4089,
+      "event": "free_steps_awarded",
+      "st": 22,
+      "nst": 21,
+      "sc": 3,
+      "fs": {
+        "aw": 1772.4,
+        "s": 13,
+        "ts": 22,
+        "nosa": 10
+      }
+    }
+  ]
+}
