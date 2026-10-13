@@ -1,5 +1,7 @@
 *.har
-/diagnostics/
+diagnostics/
+.venv/
+captures/
 *.log
 node_modules/
 __pycache__/
