@@ -1,0 +1,56 @@
+# 独立服务目录
+
+每个子目录代表一个独立运行的服务，不代表共享服务里的一个路由。
+
+```text
+services/
+  mahjong-ways2/        麻将网页及其服务，8080
+    start.bat          只启动本服务
+    service.json       服务 ID、入口、端口、明确装载的游戏
+    config/            本服务自己的游戏配置
+    data/              本服务自己的 SQLite、钱包、会话及存档（不提交）
+    logs/              本服务自己的运行日志（不提交）
+  game-api/            独立 JSON API 演示服务，8082，同样一套目录
+```
+
+双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
+
+```powershell
+python -m server.run --service-dir services/mahjong-ways2
+python -m server.run --service-dir services/game-api
+```
+
+每条命令运行一个进程。Ctrl+C 只停止所在终端的服务；后台进程按对应 PID 停止。
+根目录 `start-server.bat`、原游戏启动脚本及 `python -m server.app` 只启动麻将服务。
+`GET /health` 返回 `service_id`，可确认当前访问的是哪个服务。
+
+## 隔离约定
+
+- 各自数据库：账号、令牌、余额、局面、去重记录及账本默认互不共享。
+- 各自配置：调整 A 的概率配置不会修改 B。修改后只重启对应服务；未结束回合的规则版本保护仍有效。
+- 各自进程和端口：一个进程停止不结束另一个；重复端口会启动失败，不会抢占已有服务。
+- 各自日志：日志归属 `logs/service.log`。目录不要设成指向另一服务的链接，也不要让不同服务复用同一目录。
+- 当前复用同一仓库的 Python 公共代码和解释器。运行隔离已经实现，**代码发布版本和 CPU／内存配额尚未隔离**。
+  修改公共代码后，下一次启动会加载新版本；正式独立部署时应为每个服务构建、固定依赖及发布版本，
+  再用独立虚拟环境或容器部署，不能把共用源码目录当成独立发布隔离。
+
+跨服务账户和钱包没有隐式同步；将来若需要统一账号或跨服务转账，应另外设计显式接口。
+这里的 `game-api` 是用于验证隔离和通用接入的独立服务，当前也只实现了麻将引擎，不是第二款游戏。
+
+## 增加服务
+
+新建 `services/<service-id>/`，提供唯一 ID、独立端口和 `service.json`，在 `config/` 中放该服务选择的游戏配置。
+JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不会自动加载全部游戏。
+复制模板时只复制启动脚本和配置，不复制 `data/`、`logs/`。启动脚本中的目录名必须改为新服务名。
+全新交互类型（如实时房间）新增独立入口；当前 JSON API 仅支持逐步回合契约。
+
+现有麻将存档已从 `server/data/games.sqlite3` 使用 SQLite 备份接口复制到
+`services/mahjong-ways2/data/games.sqlite3`。旧文件保留作迁移备份，不再是当前服务的数据库。
+重启不会自动重新导入旧库，避免覆盖新进度。
+
+公共实现仍放在 `server/` 作为代码库：
+`core/storage.py` 管理存储，`sessions.py` 管理身份，`queries.py` 管理查询和初始状态，
+`settlement.py` 管理单次原子结算，`service.py` 只组装这些组件。
+游戏规则和客户端协议继续分别归属于 `games/` 和 `adapters/`。
+
+双进程隔离测试：`python -m unittest server.tests.test_process_isolation -v`。

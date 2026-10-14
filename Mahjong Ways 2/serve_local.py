@@ -133,7 +133,8 @@ class GameRequestHandler(SimpleHTTPRequestHandler):
             return None
 
         content = content.replace(original, replacement, 1)
-        mock_script = (b'<script src="/local-auth-bootstrap.js"></script>'
+        mock_script = (b'<script src="/local-frame-clock.js"></script>'
+                       b'<script src="/local-auth-bootstrap.js"></script>'
                        if parse_qs(urlsplit(self.path).query).get('mock') == ['1'] else b'')
         # 先等待修复版 SW 接管，再运行原入口，避免启动时读到旧的阻塞模块。
         content = content.replace(

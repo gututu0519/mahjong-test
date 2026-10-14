@@ -1,0 +1,6 @@
+{
+  "id": "mahjong-ways2",
+  "entry": "mahjong_client",
+  "port": 8080,
+  "games": ["mahjong-ways2"]
+}

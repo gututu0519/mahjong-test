@@ -53,6 +53,10 @@
             }).then(async response => {
                 const data = await response.json();
                 if (!response.ok || data.err) throw new Error(data.err?.msg || 'Local GameInfo failed');
+                if (data.engineMode === 'generated') {
+                    badge.textContent = '本地独立引擎 · 虚拟余额';
+                    badge.dataset.engine = 'generated';
+                }
                 const common = { ...data.dt, wt: encodeThresholds(data.dt.wt) };
                 let spin = data.dt.ls.si;
                 if (data.localSpin) {

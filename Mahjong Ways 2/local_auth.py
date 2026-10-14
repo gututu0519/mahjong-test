@@ -50,7 +50,8 @@ def verify_operator_session(form):
     flags.update(dict.fromkeys('bb gc hn ts asc hwl ign ivs sbb'.split(), 1))
     flags['cbu'] = 0
     return 200, {'dt': {
-        'cc': 'AUD', 'cs': 'A$', 'ec': [],
+        # The local demo displays bare amounts, matching the reference UI.
+        'cc': 'AUD', 'cs': '', 'ec': [],
         'gm': [{'st': 1, 'gid': 74, 'mxe': 5000,
                 'rtp': {'df': {'max': 96.22, 'min': 96.22}},
                 'amsg': '', 'medt': 1736316176514, 'msdt': 1736316176514,

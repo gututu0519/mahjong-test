@@ -1,0 +1,6 @@
+{
+  "id": "game-api",
+  "entry": "json_api",
+  "port": 8082,
+  "games": ["mahjong-ways2"]
+}

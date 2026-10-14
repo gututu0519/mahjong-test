@@ -8,3 +8,6 @@ __pycache__/
 *.pyc
 .env
 .env.*
+server/data/
+services/*/data/
+services/*/logs/

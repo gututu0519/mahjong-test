@@ -1,0 +1,15 @@
+{
+  "name": "local-independent-v1",
+  "description": "Independent local weights; not the original game's probability model or certified RTP.",
+  "symbol_weights": {"1": 1, "2": 5, "3": 6, "4": 7, "5": 8, "6": 10, "7": 10, "8": 12, "9": 15, "10": 15},
+  "gold_probability": 0.08,
+  "coin_sizes_minor": [1, 6, 30],
+  "bet_levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "base_bet_factor": 20,
+  "normal_multipliers": [1, 2, 3, 5],
+  "free_multipliers": [2, 4, 6, 10],
+  "free_trigger": 3,
+  "free_base_spins": 10,
+  "free_extra_per_scatter": 2,
+  "win_thresholds": {"mw": 3, "bw": 5, "mgw": 15, "smgw": 35}
+}
