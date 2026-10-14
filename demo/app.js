@@ -24,8 +24,8 @@
       }
     });
     $('result-count').textContent = window.SpinLabI18n.language === 'en'
-      ? `${playable} playable · ${upcoming} coming soon`
-      : `${playable} 款可试玩 · ${upcoming} 个主题预告`;
+      ? `${playable} playable · ${preview} UI preview · ${upcoming} coming soon`
+      : `${playable} 款可试玩 · ${preview} 款界面预览 · ${upcoming} 个主题预告`;
     $('empty-results').hidden = playable + preview + upcoming > 0;
     document.querySelectorAll('[data-filter]').forEach(button => {
       const selected = button.dataset.filter === activeFilter;
@@ -80,9 +80,10 @@
 
   function updatePlayerCopy() {
     const buffalo = activeGame === 'buffalo-win';
-    setText('player-title', buffalo ? '美洲野牛' : '麻将胡了 2');
-    frame.title = window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
-    setText('player-mode', '虚拟积分试玩');
+    const olympus = activeGame === 'gates-of-olympus';
+    setText('player-title', olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
+    frame.title = olympus ? 'Gates of Olympus UI preview' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
+    setText('player-mode', olympus ? '界面预览 · 旋转暂未接入' : '虚拟积分试玩');
   }
 
   function showError(title, detail) {
@@ -137,7 +138,7 @@
       });
       if (version !== requestVersion || !dialog.open) return;
       const url = new URL(data.launch_url, location.origin);
-      const expectedOrigin = activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
+      const expectedOrigin = activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
       if (url.origin !== expectedOrigin || url.pathname !== '/' || url.searchParams.get('mock') !== '1' || !url.searchParams.get('ops')) throw new Error('无效的游戏链接');
       launchURL = url;
       $('reload-game').disabled = false;
@@ -152,7 +153,7 @@
     if (event.data?.type === 'demo:ready') {
       clearTimeout(readyTimer);
       overlay.hidden = true;
-      setText('player-status', '试玩已连接 · 独立虚拟积分');
+      setText('player-status', activeGame === 'gates-of-olympus' ? '界面预览 · 旋转暂未接入' : '试玩已连接 · 独立虚拟积分');
     } else if (event.data?.type === 'demo:error') {
       showError('游戏连接已中断', '试玩会话可能已过期，请返回大厅重新开启试玩。');
     }

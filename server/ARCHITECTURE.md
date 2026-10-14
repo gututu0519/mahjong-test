@@ -60,6 +60,7 @@ server/
 | 通用游戏 API | 已实现 | 8082 | `python -m server.run --service-dir services/game-api` | `services/game-api/data/games.sqlite3` |
 | 美洲野牛本地演示 | 已实现，中文 | 8083 | `python -m server.run --service-dir services/buffalo-win` | `services/buffalo-win/data/games.sqlite3`，独立钱包与会话 |
 | 请求采集工具 | 已有独立工具 | 8090 | `response-capture/start.bat` | 由工具自身管理 |
+| Gates of Olympus 前端预览 | 已实现，英文界面，旋转未接入 | 8085 | `python -m server.run --service-dir services/gates-of-olympus` | 内存预览会话，无钱包数据库 |
 | 管理与审计 | 规划，未实现 | 待定 | 待实现独立入口 | 通过受控应用接口访问数据 |
 | 房间／实时对战 | 按需要规划，未实现 | 待定 | 单独交互契约与入口 | 房间状态与结算职责分别设计 |
 

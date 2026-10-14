@@ -13,11 +13,15 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
     games = spec['games']
+    if spec['entry'] == 'olympus_preview':
+        if games != []:
+            raise ValueError('Frontend preview must not load game engines')
+        return spec, {}
     if not isinstance(games, list) or not games or len(set(games)) != len(games):
         raise ValueError('Explicit nonempty game selection required')
     if spec['entry'] == 'mahjong_client' and games != ['mahjong-ways2']:
@@ -39,7 +43,10 @@ def build_from_directory(directory, port=None):
     database = directory / 'data' / 'games.sqlite3'
     # The directory owns all runtime state; no shared/default database fallback.
     actual_port = spec['port'] if port is None else port
-    if spec['entry'] == 'mahjong_client':
+    if spec['entry'] == 'olympus_preview':
+        from server.services.olympus_preview import build_server
+        http = build_server(actual_port)
+    elif spec['entry'] == 'mahjong_client':
         from server.services.local_demo import build_server
         http = build_server(actual_port, database, configs['mahjong-ways2'])
     elif spec['entry'] == 'buffalo_client':

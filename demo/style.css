@@ -290,3 +290,5 @@ body:has(dialog[open]) { overflow:hidden; }
 .buffalo-cover strong span { color: #ffd37c; }
 #buffalo-note { max-width: 150px; font-size: 10px; line-height: 1.5; }
 @media(max-width:600px) { .catalog-toolbar { flex-wrap:wrap; gap:12px; } .filters { flex-wrap:wrap; } }
+
+.olympus-cover{background:radial-gradient(ellipse at 75% 20%,#dac98b88,transparent 45%),linear-gradient(135deg,#27204d,#645476 55%,#262549)}.olympus-cover strong{color:#ffedb3;text-shadow:0 3px 8px #201b38}.olympus-lightning{position:absolute;right:24px;top:0;font:210px Georgia,serif;color:#f7e9b866;text-shadow:0 0 25px #e7dcfa}

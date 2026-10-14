@@ -2,6 +2,8 @@
 (() => {
   'use strict';
   const english = {
+    '英文界面预览': 'English UI preview',
+    '两款 PG 游戏可试玩；Gates of Olympus 提供英文界面预览，旋转暂未接入。': 'Two PG games are playable. Gates of Olympus offers an English UI preview; spins are not connected.',
     '美洲野牛试玩': 'Buffalo Win demo',
     '扩展转轴 · 百搭 · 免费旋转': 'Extra reels · Wilds · Free spins',
     '中文试玩已开放': 'Chinese demo available',

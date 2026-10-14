@@ -83,6 +83,10 @@ python ".\Mahjong Ways 2\serve_local.py" --port 8081
 
 ## 抓取工具
 
+Gates of Olympus（PP）已提供英文前端预览：运行 `python -m server.run --service-dir services/gates-of-olympus`，
+访问 <http://127.0.0.1:8085/> 或在大厅选择对应预览卡片。支持查看原版界面、设置和规则，旋转与结算暂未接入。
+资源及本地适配说明见 [PP 前端预览](services/gates-of-olympus/README.md)。
+
 双击 `response-capture/start.bat`。首次启动会创建虚拟环境并安装依赖。
 访问 <http://127.0.0.1:8090>；详细说明见 [抓取工具文档](response-capture/README.md)。
 

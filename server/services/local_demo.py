@@ -28,6 +28,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
             return self._json(200, {'games': [
                 {'id': 'mahjong-ways2', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'buffalo-win', 'mode': 'playable', 'languages': ['zh', 'en']},
+                {'id': 'gates-of-olympus', 'mode': 'frontend-preview', 'languages': ['zh', 'en'], 'client_language': 'en'},
             ]})
         return super()._get()
 
@@ -46,11 +47,11 @@ class Handler(PlatformRoutes, GameRequestHandler):
         GameRequestHandler.do_GET(self)
 
     def launch_game(self, game_id, language='zh'):
-        if game_id == 'buffalo-win':
+        if game_id in ('buffalo-win', 'gates-of-olympus'):
             if language not in ('zh', 'en'):
                 raise ServiceError('LANGUAGE_INVALID', 'Supported languages: zh, en.')
-            origin = 'http://127.0.0.1:8083'
-            request = Request(origin + '/api/v1/games/buffalo-win/launch',
+            origin = 'http://127.0.0.1:' + ('8083' if game_id == 'buffalo-win' else '8085')
+            request = Request(origin + '/api/v1/games/' + game_id + '/launch',
                               data=json.dumps({'language': language}).encode(),
                               headers={'Content-Type': 'application/json'}, method='POST')
             try:
@@ -63,7 +64,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
                 result['launch_url'] = origin + result['launch_url']
                 return result
             except (URLError, OSError, ValueError, KeyError):
-                raise ServiceError('GAME_UNAVAILABLE', 'Buffalo Win service is unavailable.', 503)
+                raise ServiceError('GAME_UNAVAILABLE', game_id + ' service is unavailable.', 503)
         self.server.service.registry.get(game_id)
         if game_id != 'mahjong-ways2':
             raise ServiceError('NOT_FOUND', 'This game has no web client.', 404)
