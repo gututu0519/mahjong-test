@@ -1,0 +1,21 @@
+{
+  "session": "8a704656ec204d4899533712d6a8d7b1",
+  "capture_state": "completed",
+  "last_checked_row": 825,
+  "imported_assets": 36,
+  "automation_id": "buffalo-win",
+  "verified": [
+    "English loading screen and GET STARTED",
+    "English main canvas and FREE SPINS symbols",
+    "Captured English payout resources imported byte-for-byte",
+    "Generated service accepts English launch URLs",
+    "English game rules and common rules text are included in the captured payout localization files; all 34 imported English assets return HTTP 200 with original SHA-256",
+    "English lobby entry opened for user testing on explicit request; gameplay and feature verification remain pending",
+    "User confirmed local interaction works; English free_spin_game atlas captured and imported; latest capture game asset paths checked"
+  ],
+  "pending": [
+    "English free-spin feature assets and complete feature flow not verified"
+  ],
+  "next_step": "Run python \"Buffalo Win/import_capture.py\" 8a704656ec204d4899533712d6a8d7b1, inspect new captures and verify original local English UI. Do not stop external capture.",
+  "last_checked_at": "2026-10-14T15:52:30Z"
+}

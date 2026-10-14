@@ -1,0 +1,147 @@
+{
+  "source": "local response capture",
+  "session": "09637ea7151b461fbc04eee29b8678d5",
+  "assets": [
+    {
+      "path": "f32aae47dc.f0f88.json",
+      "source": "https://static.eajzzxhro.com/108/f32aae47dc.f0f88.json",
+      "sha256": "d188d8f1033081ece5b1f60869e45593d64d10f33d4022a8fc85814b294fe10a",
+      "bytes": 15551,
+      "requestId": 1481
+    },
+    {
+      "path": "89240957a6.15d79.json",
+      "source": "https://static.eajzzxhro.com/108/89240957a6.15d79.json",
+      "sha256": "6aa12c018bffa18be0935a812427654ad04e96e33319d30006bfa6ec48dde2b5",
+      "bytes": 3362,
+      "requestId": 1482
+    },
+    {
+      "path": "shared/2c6e37b73c/27e23b4850.314df.json",
+      "source": "https://static.eajzzxhro.com/shared/2c6e37b73c/27e23b4850.314df.json",
+      "sha256": "94990382173757f5518f50b3f8eb238a79283bf4c97f287d6f33291b1e0cef6a",
+      "bytes": 8001,
+      "requestId": 1483
+    },
+    {
+      "path": "978bbf6951.c84a7.json",
+      "source": "https://static.eajzzxhro.com/108/978bbf6951.c84a7.json",
+      "sha256": "39e669beb18a376dc9f434acc14074293e8a62d3f6fab893dcf5c036a5ad0d82",
+      "bytes": 170,
+      "requestId": 1485
+    },
+    {
+      "path": "c6c47eb601.a02ab.json",
+      "source": "https://static.eajzzxhro.com/108/c6c47eb601.a02ab.json",
+      "sha256": "de9cae37ae5b7d8fd37ab0ee760e479b4450e322196f67d9bc82a456f656193e",
+      "bytes": 3668,
+      "requestId": 1486
+    },
+    {
+      "path": "shared/2c6e37b73c/5516ec5801.91d99.css",
+      "source": "https://static.eajzzxhro.com/shared/2c6e37b73c/5516ec5801.91d99.css",
+      "sha256": "a1d777b049f2f8b5d783ec78bbf6b3898b7f93a93f599931cab54cc6d061829a",
+      "bytes": 2834,
+      "requestId": 1489
+    },
+    {
+      "path": "shared/2c6e37b73c/e52918679f.69a44.png",
+      "source": "https://static.eajzzxhro.com/shared/2c6e37b73c/e52918679f.69a44.png",
+      "sha256": "c58c0f0ad005449b40c9709edb9c9b95af5174e5ae0099bbd33787e673bc4473",
+      "bytes": 32454,
+      "requestId": 1490
+    },
+    {
+      "path": "d78a77080e.d8323.css",
+      "source": "https://static.eajzzxhro.com/108/d78a77080e.d8323.css",
+      "sha256": "2f4748e6be1193a105e77eaae5d0df69ebdd1743eba4aaecda334a84bcf72c36",
+      "bytes": 407,
+      "requestId": 1492
+    },
+    {
+      "path": "221c4476ef.4c483.css",
+      "source": "https://static.eajzzxhro.com/108/221c4476ef.4c483.css",
+      "sha256": "a846e276b194d8225683228a4ae48e7902450d5c01fdf2b29c519315cc513ec2",
+      "bytes": 421,
+      "requestId": 1493
+    },
+    {
+      "path": "d3f4aeb15f.993cc.css",
+      "source": "https://static.eajzzxhro.com/108/d3f4aeb15f.993cc.css",
+      "sha256": "ecbca377d3789fa090c068a720082984f478c796c2a60d9ee48317691fa2709e",
+      "bytes": 1291,
+      "requestId": 1494
+    },
+    {
+      "path": "7014dc0303.0e823.css",
+      "source": "https://static.eajzzxhro.com/108/7014dc0303.0e823.css",
+      "sha256": "efc1d1e6cf13c0729b62c70023594824eb647bd04dfb20e19412e13d4bcddaa5",
+      "bytes": 256,
+      "requestId": 1495
+    },
+    {
+      "path": "7e6b125efd.a6255.png",
+      "source": "https://static.eajzzxhro.com/108/7e6b125efd.a6255.png",
+      "sha256": "c0cca600fa5f5961cfaf19469bdcb76a5642686cc0d1bb76c28670aeb0dc2d48",
+      "bytes": 140704,
+      "requestId": 1496
+    },
+    {
+      "path": "5a3a7594c4.77cde.png",
+      "source": "https://static.eajzzxhro.com/108/5a3a7594c4.77cde.png",
+      "sha256": "8b4734d098048da683b9cfa5872ef4d62861c6419f7bbc6044cfc3d8e9a6d041",
+      "bytes": 44097,
+      "requestId": 1497
+    },
+    {
+      "path": "0adb5dc807.7476e.png",
+      "source": "https://static.eajzzxhro.com/108/0adb5dc807.7476e.png",
+      "sha256": "a14ca3a0e40d1c234394d670f0ad4d3ea05d39cde16f9d8e6e4b2ca670f028ba",
+      "bytes": 18978,
+      "requestId": 1498
+    },
+    {
+      "path": "7aa9fc33ac.7c5b0.png",
+      "source": "https://static.eajzzxhro.com/108/7aa9fc33ac.7c5b0.png",
+      "sha256": "5006649ead15601ea0550bc82f20d728f0794f71520bc2ce7120e4d229cbf1ca",
+      "bytes": 750407,
+      "requestId": 1499
+    },
+    {
+      "path": "7c82e81cb7.d6f76.json",
+      "source": "https://static.eajzzxhro.com/108/7c82e81cb7.d6f76.json",
+      "sha256": "5206751d9040b4a099c17f423377cdd62a36b7de0307f9eba90572a2ada77e1a",
+      "bytes": 1852,
+      "requestId": 1506
+    },
+    {
+      "path": "shared/2c6e37b73c/cf68ca2e28.ead92.json",
+      "source": "https://static.eajzzxhro.com/shared/2c6e37b73c/cf68ca2e28.ead92.json",
+      "sha256": "46617988a806b6314dd078254822f74ac1f35deba28a03dfa94dc0f43d3236fc",
+      "bytes": 8166,
+      "requestId": 1507
+    },
+    {
+      "path": "489cf720b4.da287.css",
+      "source": "https://static.eajzzxhro.com/108/489cf720b4.da287.css",
+      "sha256": "2b46b995dd0c071e2d37706d36142fe3e871c559409c000f7eab89bc20931d4d",
+      "bytes": 361,
+      "requestId": 1508
+    },
+    {
+      "path": "4178a2d600.202e2.png",
+      "source": "https://static.eajzzxhro.com/108/4178a2d600.202e2.png",
+      "sha256": "e2bcb16294b4b1c662214b4d8d1e18b1d54895f98f9ab73d1ea063ca4611088c",
+      "bytes": 32038,
+      "requestId": 1509
+    }
+  ],
+  "apiFixtures": [
+    {
+      "endpoint": "/web-api/game-proxy/v2/GameRule/Get",
+      "requestId": 1488,
+      "path": "fixtures/game-rule.json",
+      "sha256": "65f8179dff2e8730e01a1b12c488a4d009fc1a047d21eb036da6de1407b0bcb7"
+    }
+  ]
+}

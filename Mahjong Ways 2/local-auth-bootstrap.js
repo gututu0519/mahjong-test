@@ -5,7 +5,8 @@
     if (launch.searchParams.get('mock') !== '1') return;
     launch.searchParams.set('btt', '1');
     launch.searchParams.set('ot', 'local-demo');
-    launch.searchParams.set('ops', 'local-demo-session');
+    const sessionToken = launch.searchParams.get('ops') || 'local-demo-session';
+    launch.searchParams.set('ops', sessionToken);
     // Do not carry a real game's session or signed launch settings into a mock session.
     for (const key of ['t', 'tk', 'ao', '__hv', '__sv']) launch.searchParams.delete(key);
     history.replaceState(history.state, '', launch);
@@ -49,14 +50,10 @@
             const controller = new AbortController();
             window.fetch('/game-api/74/v4/GameInfo/Get', {
                 method: 'POST', signal: controller.signal,
-                body: new URLSearchParams({ atk: 'local-demo-session', btt: '1', pf: '1' }),
+                body: new URLSearchParams({ atk: sessionToken, btt: '1', pf: '1' }),
             }).then(async response => {
                 const data = await response.json();
                 if (!response.ok || data.err) throw new Error(data.err?.msg || 'Local GameInfo failed');
-                if (data.engineMode === 'generated') {
-                    badge.textContent = '本地独立引擎 · 虚拟余额';
-                    badge.dataset.engine = 'generated';
-                }
                 const common = { ...data.dt, wt: encodeThresholds(data.dt.wt) };
                 let spin = data.dt.ls.si;
                 if (data.localSpin) {
@@ -67,17 +64,14 @@
                     };
                 }
                 this.dataSource.overwriteGameInfo(common, spin);
+                if (window.parent !== window) window.parent.postMessage({ type: 'demo:ready' }, location.origin);
                 return this.dataSource.lastGameInfoRawData;
             }).then(data => { if (!controller.signal.aborted && callback) callback(undefined, data); }, error => {
+                if (window.parent !== window) window.parent.postMessage({ type: 'demo:error' }, location.origin);
                 if (!controller.signal.aborted && callback) callback(error);
             });
             return () => controller.abort();
         };
     }, 5);
-    const badge = document.createElement('div');
-    badge.textContent = '本地样本回放 · 模拟余额';
-    badge.setAttribute('role', 'note');
-    badge.style.cssText = 'position:fixed;left:8px;top:8px;z-index:10000;padding:4px 8px;border-radius:6px;background:#0009;color:white;font:12px sans-serif;pointer-events:none';
-    document.body.appendChild(badge);
     console.info('Local mock login enabled; the original client and rendering are unchanged.');
 })();

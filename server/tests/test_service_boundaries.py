@@ -60,6 +60,8 @@ assert not any(k.startswith('server.adapters.') for k in sys.modules)
                     for path in ('/', '/local-auth-bootstrap.js', '/fixtures/spin-rounds.json'):
                         self.assertEqual(request(path)[0], 404)
                     self.assertEqual(request('/game-api/74/v4/Spin', {})[0], 404)
+                    self.assertEqual(request('/api/v1/games/mahjong-ways2/launch', {})[0], 404)
+                    self.assertEqual(request('/demo/')[0], 404)
                     self.assertEqual(request('/api/v1/wallet', headers={
                         'Authorization': 'Bearer local-demo-session'})[0], 401)
                     status, session = request('/api/v1/sessions', {})

@@ -13,7 +13,7 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'json_api'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
@@ -22,6 +22,8 @@ def load_profile(directory):
         raise ValueError('Explicit nonempty game selection required')
     if spec['entry'] == 'mahjong_client' and games != ['mahjong-ways2']:
         raise ValueError('Mahjong client service only supports its own game')
+    if spec['entry'] == 'buffalo_client' and games != ['buffalo-win']:
+        raise ValueError('Buffalo client service only supports its own game')
     configs = {}
     for game_id in games:
         path = (directory / 'config' / (game_id + '.json')).resolve()
@@ -40,6 +42,9 @@ def build_from_directory(directory, port=None):
     if spec['entry'] == 'mahjong_client':
         from server.services.local_demo import build_server
         http = build_server(actual_port, database, configs['mahjong-ways2'])
+    elif spec['entry'] == 'buffalo_client':
+        from server.services.buffalo_demo import build_server
+        http = build_server(actual_port, database, configs['buffalo-win'])
     else:
         from server.services.game_api import build_server
         http = build_server(actual_port, database, spec['games'], configs)

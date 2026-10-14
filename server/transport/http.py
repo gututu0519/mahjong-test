@@ -21,7 +21,7 @@ class PlatformRoutes:
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(body)))
         self.send_header('Cache-Control', 'no-store')
-        self.send_header('X-Game-Engine', 'generated')
+        self.send_header('X-Game-Engine', getattr(self.server, 'engine_mode', 'generated'))
         self.end_headers()
         self.wfile.write(body)
 
@@ -91,6 +91,9 @@ class PlatformRoutes:
                 raise ServiceError('BAD_REQUEST', 'Expected a JSON object.')
             if path == '/api/v1/sessions':
                 self._json(201, service.create_session())
+            elif path.startswith('/api/v1/games/') and path.endswith('/launch'):
+                game_id = path.removeprefix('/api/v1/games/').removesuffix('/launch')
+                self._json(201, self.launch_game(game_id, payload.get('language', 'zh')))
             elif path.startswith('/api/v1/games/') and path.endswith('/spin'):
                 game_id = path.removeprefix('/api/v1/games/').removesuffix('/spin')
                 result = service.spin(self._token(), game_id, self.headers.get('Idempotency-Key'),
@@ -100,6 +103,9 @@ class PlatformRoutes:
                 raise ServiceError('NOT_FOUND', 'Unknown API endpoint.', 404)
             return
         self.compatibility_post(path, body)
+
+    def launch_game(self, game_id, language='zh'):
+        raise ServiceError('NOT_FOUND', 'This service does not host game clients.', 404)
 
     def compatibility_post(self, path, body):
         raise ServiceError("NOT_FOUND", "Unknown API endpoint.", 404)

@@ -11,6 +11,7 @@ services/
     data/              本服务自己的 SQLite、钱包、会话及存档（不提交）
     logs/              本服务自己的运行日志（不提交）
   game-api/            独立 JSON API 演示服务，8082，同样一套目录
+  buffalo-win/         美洲野牛网页及其服务，8083，同样一套目录
 ```
 
 双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
@@ -18,6 +19,7 @@ services/
 ```powershell
 python -m server.run --service-dir services/mahjong-ways2
 python -m server.run --service-dir services/game-api
+python -m server.run --service-dir services/buffalo-win
 ```
 
 每条命令运行一个进程。Ctrl+C 只停止所在终端的服务；后台进程按对应 PID 停止。
@@ -35,7 +37,8 @@ python -m server.run --service-dir services/game-api
   再用独立虚拟环境或容器部署，不能把共用源码目录当成独立发布隔离。
 
 跨服务账户和钱包没有隐式同步；将来若需要统一账号或跨服务转账，应另外设计显式接口。
-这里的 `game-api` 是用于验证隔离和通用接入的独立服务，当前也只实现了麻将引擎，不是第二款游戏。
+`game-api` 默认装载麻将引擎；可显式选择已注册游戏并提供本服务自己的配置。
+`buffalo-win` 是独立的第二款游戏服务，玩法覆盖和本地参数见 [美洲野牛服务说明](buffalo-win/README.md)。
 
 ## 增加服务
 

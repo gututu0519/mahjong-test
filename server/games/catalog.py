@@ -4,6 +4,12 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'buffalo-win': {
+        'factory': 'server.games.buffalo_win:BuffaloWin',
+        'category': 'slots',
+        'interaction': 'request_steps',
+        'features': ['expanding_reels', 'expanded_symbols', 'free_spins', 'persistent_free_multiplier'],
+    },
     'mahjong-ways2': {
         'factory': 'server.games.mahjong_ways2:MahjongWays2',
         'category': 'slots',

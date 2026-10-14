@@ -1,0 +1,52 @@
+{
+  "coin_sizes_minor": [
+    3,
+    10,
+    30,
+    90
+  ],
+  "bet_levels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "base_bet_factor": 10,
+  "symbol_weights": {
+    "0": 3,
+    "1": 4,
+    "2": 20,
+    "3": 4,
+    "4": 5,
+    "5": 7,
+    "6": 7,
+    "7": 10,
+    "8": 10,
+    "9": 10,
+    "10": 13,
+    "11": 13,
+    "12": 13
+  },
+  "stack_probability": 0.38,
+  "expanded_probability": 0.3,
+  "free_trigger": 3,
+  "free_spins": 10,
+  "free_retrigger": true,
+  "win_thresholds": {
+    "mw": 3,
+    "bw": 5,
+    "mgw": 15,
+    "smgw": 35
+  },
+  "provenance": {
+    "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
+    "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
+  },
+  "free_extra_spins": 2
+}

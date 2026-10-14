@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit, parse_qs
 from urllib.request import Request, urlopen
 
 from server.app import build_server
@@ -78,6 +78,71 @@ class HTTPTests(unittest.TestCase):
             self.assertEqual(next(v for n, w, v in reply_fields if n == 1), b'1')
             self.assertEqual(len([v for n, w, v in reply_fields if n == 103]), 35)
             self.assertEqual(len(self.server.service.history('local-demo-session')), 1)
+
+    def test_demo_launch_and_isolated_client_session(self):
+        for path in ('/demo', '/demo/', '/demo/style.css', '/demo/app.js', '/demo/i18n.js'):
+            self.assertEqual(self.request(path)[0], 200)
+        status, body, headers = self.post_json('/api/v1/games/mahjong-ways2/launch', {})
+        self.assertEqual(status, 201)
+        self.assertEqual(headers['Cache-Control'], 'no-store')
+        launch = json.loads(body)
+        self.assertEqual(launch['balance_minor'], 200000)
+        self.assertEqual(launch['currency'], 'DEMO')
+        query = parse_qs(urlsplit(launch['launch_url']).query)
+        self.assertEqual(query['l'], ['zh'])
+        token = query['ops'][0]
+        self.assertNotEqual(token, 'local-demo-session')
+        other = json.loads(self.post_json('/api/v1/games/mahjong-ways2/launch', {})[1])
+        other_token = parse_qs(urlsplit(other['launch_url']).query)['ops'][0]
+        self.assertNotEqual(token, other_token)
+        self.assertEqual(self.request(launch['launch_url'])[0], 200)
+
+        auth = urlencode({'otk': 'local-demo', 'os': token, 'gi': '74', 'btt': '1'}).encode()
+        status, body, _ = self.request('/web-api/auth/session/v2/verifyOperatorPlayerSession', auth)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body)['dt']['tk'], token)
+        self.assertEqual(json.loads(body)['dt']['bl'], 2000)
+        for endpoint in ('GameName', 'GameRule'):
+            self.assertEqual(self.request('/web-api/game-proxy/v2/' + endpoint + '/Get',
+                                          urlencode({'atk': token, 'gid': '74'}).encode())[0], 200)
+        self.assertEqual(self.request('/game-api/74/v4/GameInfo/Get',
+                                      urlencode({'atk': token, 'btt': 1, 'pf': 1}).encode())[0], 200)
+        raw = (text_field(1, token) + field(2, 0, 1) + field(3, 0, 1)
+               + text_field(5, '0') + text_field(12, '0_C')
+               + double_field(21, 0.01) + field(22, 0, 5))
+        self.assertEqual(self.request('/game-api/74/v4/Spin', pack(raw, 42))[0], 200)
+        self.assertEqual(len(self.server.service.history(token)), 1)
+        for untouched in (other_token, 'local-demo-session'):
+            self.assertEqual(self.server.service.history(untouched), [])
+            self.assertEqual(self.server.service.wallet(untouched)['balance_minor'], 200000)
+
+    def test_demo_rejects_invalid_launch_and_expired_session(self):
+        self.assertEqual(self.post_json('/api/v1/games/missing/launch', {})[0], 404)
+        self.assertEqual(self.post_json('/api/v1/games/mahjong-ways2/launch', {},
+                                       {'Origin': 'https://other.example'})[0], 403)
+        launch = json.loads(self.post_json('/api/v1/games/mahjong-ways2/launch', {})[1])
+        token = parse_qs(urlsplit(launch['launch_url']).query)['ops'][0]
+        with self.server.service.connection(True) as db:
+            db.execute('UPDATE sessions SET expires_at=0 WHERE token_hash=?',
+                       (self.server.service.sessions._token_hash(token),))
+        for invalid in (token, 'not-a-session'):
+            auth = urlencode({'otk': 'local-demo', 'os': invalid, 'gi': '74', 'btt': '1'}).encode()
+            self.assertEqual(self.request('/web-api/auth/session/v2/verifyOperatorPlayerSession', auth)[0], 401)
+            form = urlencode({'atk': invalid, 'gid': '74'}).encode()
+            self.assertEqual(self.request('/web-api/game-proxy/v2/GameRule/Get', form)[0], 401)
+
+    def test_demo_launch_language(self):
+        for language in ('zh', 'en'):
+            status, body, _ = self.post_json('/api/v1/games/mahjong-ways2/launch', {'language': language})
+            self.assertEqual(status, 201)
+            launch = json.loads(body)
+            self.assertEqual(launch['language'], language)
+            self.assertEqual(parse_qs(urlsplit(launch['launch_url']).query)['l'], [language])
+            self.assertEqual(self.request(launch['launch_url'])[0], 200)
+        for language in ('fr', 'EN', '', None, ['en'], {'l': 'en'}):
+            status, body, _ = self.post_json('/api/v1/games/mahjong-ways2/launch', {'language': language})
+            self.assertEqual(status, 400)
+            self.assertEqual(json.loads(body)['err']['cd'], 'LANGUAGE_INVALID')
 
 
 if __name__ == '__main__':

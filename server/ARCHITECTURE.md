@@ -9,11 +9,11 @@
 
 | 维度 | 当前值 | 后续扩展方式 |
 | --- | --- | --- |
-| 游戏身份 | `mahjong-ways2` | 每款游戏独立包、唯一 ID、引擎与规则版本 |
+| 游戏身份 | `mahjong-ways2`、`buffalo-win` | 每款游戏独立包、唯一 ID、引擎与规则版本 |
 | 玩法类别 | `slots`，连消型转轴游戏 | 新增类别元数据；不按“麻将”名字归入真人麻将对战 |
 | 交互模型 | `request_steps`，请求逐步推进 | 房间对战、持续实时游戏另设契约与服务，不强套 Spin |
 | 玩法能力 | cascades、gold_to_wild、free_spins、free_retrigger | 仅登记已实现能力，具体边界写进该游戏玩法清单 |
-| 协议 | 通用 JSON、PG 麻将二进制适配 | 按协议族建目录，再按游戏建立映射 |
+| 协议 | 通用 JSON、PG 麻将二进制适配、Buffalo v2 JSON 适配 | 按协议族建目录，再按游戏建立映射 |
 
 ## 代码归属
 
@@ -26,14 +26,17 @@ server/
       engine.py                 该游戏的规则与状态机
       config.json               该游戏的默认概率配置
       README.md                 玩法覆盖、证据与尚缺内容
+    buffalo_win/                美洲野牛引擎、默认配置及玩法清单
   adapters/
     pg/
       protocol.py               封包及二进制编码工具
       mahjong_ways2.py           麻将事件到客户端字段的映射
       mahjong_ways2_schema.json  麻将协议字段描述
+      buffalo_win.py            美洲野牛事件到 v2 JSON 字段的映射
   transport/http.py             通用 JSON 路由、认证入口与错误响应
   services/
     local_demo.py               麻将资源、兼容协议、通用 API 的组合入口
+    buffalo_demo.py             美洲野牛资源、兼容协议、通用 API 的组合入口
     game_api.py                 独立通用 API 入口
   tests/                        规则、结算、协议与服务隔离测试
   data/                         本机数据库与日志，不提交版本库
@@ -55,11 +58,12 @@ server/
 | --- | --- | --- | --- | --- |
 | 麻将本地演示 | 已实现 | 8080 | `python -m server.run --service-dir services/mahjong-ways2`，原 `python -m server.app` 仍可用 | `services/mahjong-ways2/data/games.sqlite3`，保留现有存档 |
 | 通用游戏 API | 已实现 | 8082 | `python -m server.run --service-dir services/game-api` | `services/game-api/data/games.sqlite3` |
+| 美洲野牛本地演示 | 已实现，中文 | 8083 | `python -m server.run --service-dir services/buffalo-win` | `services/buffalo-win/data/games.sqlite3`，独立钱包与会话 |
 | 请求采集工具 | 已有独立工具 | 8090 | `response-capture/start.bat` | 由工具自身管理 |
 | 管理与审计 | 规划，未实现 | 待定 | 待实现独立入口 | 通过受控应用接口访问数据 |
 | 房间／实时对战 | 按需要规划，未实现 | 待定 | 单独交互契约与入口 | 房间状态与结算职责分别设计 |
 
-两种游戏服务均只监听本机。独立 API 没有麻将网页、固定演示令牌及兼容登录，使用会话接口创建游客。
+以上游戏服务均只监听本机。独立 API 没有游戏网页、固定演示令牌及兼容登录，使用会话接口创建游客。
 各入口都有独立端口和数据库参数，可并行启动；默认数据库隔离，**默认不跨服务共享钱包和会话**。
 每个服务目录独占数据库、配置和日志，详见独立服务说明。同一个数据库内的游戏共享玩家钱包。后续真正跨机器部署时，需要明确唯一结算写入方、远程结算协议、
 去重和故障恢复，再拆分计算服务；当前目录拆分不等于已经实现分布式钱包。
