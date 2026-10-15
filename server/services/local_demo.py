@@ -31,6 +31,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
                 {'id': 'gates-of-olympus', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'big-bass-bonanza', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'sweet-bonanza-pop', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
+                {'id': 'super-ace', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
             ]})
         return super()._get()
 
@@ -45,6 +46,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
                       '/demo/olympus-cover.webp': ('olympus-cover.webp', 'image/webp'),
                       '/demo/big-bass-cover.webp': ('big-bass-cover.webp', 'image/webp'),
                       '/demo/sweet-pop-cover.webp': ('sweet-pop-cover.webp', 'image/webp'),
+                      '/demo/super-ace-cover.png': ('super-ace-cover.png', 'image/png'),
                       '/demo/buffalo-cover.jpg': ('buffalo-cover.jpg', 'image/jpeg')}
         if path in demo_files:
             name, content_type = demo_files[path]
@@ -53,10 +55,10 @@ class Handler(PlatformRoutes, GameRequestHandler):
         GameRequestHandler.do_GET(self)
 
     def launch_game(self, game_id, language='zh'):
-        if game_id in ('buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza'):
+        if game_id in ('buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza', 'super-ace'):
             if language not in ('zh', 'en'):
                 raise ServiceError('LANGUAGE_INVALID', 'Supported languages: zh, en.')
-            origin = 'http://127.0.0.1:' + {'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087'}[game_id]
+            origin = 'http://127.0.0.1:' + {'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087', 'super-ace': '8088'}[game_id]
             request = Request(origin + '/api/v1/games/' + game_id + '/launch',
                               data=json.dumps({'language': language}).encode(),
                               headers={'Content-Type': 'application/json'}, method='POST')

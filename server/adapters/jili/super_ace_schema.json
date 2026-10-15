@@ -1,0 +1,495 @@
+{
+  "Block": {
+    "row": [
+      1,
+      "uint32",
+      false
+    ],
+    "column": [
+      2,
+      "uint32",
+      false
+    ]
+  },
+  "Cell": {
+    "symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "row": [
+      2,
+      "uint32",
+      false
+    ],
+    "column": [
+      3,
+      "uint32",
+      false
+    ],
+    "isGold": [
+      4,
+      "uint32",
+      false
+    ],
+    "lastGold": [
+      5,
+      "uint32",
+      false
+    ]
+  },
+  "AwardReel": {
+    "symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "block": [
+      2,
+      "Block",
+      true
+    ],
+    "win": [
+      3,
+      "double",
+      false
+    ],
+    "bonus": [
+      4,
+      "uint32",
+      false
+    ],
+    "maxLen": [
+      5,
+      "uint32",
+      false
+    ]
+  },
+  "Combo": {
+    "change": [
+      1,
+      "Cell",
+      true
+    ],
+    "award": [
+      2,
+      "AwardReel",
+      true
+    ],
+    "win": [
+      3,
+      "double",
+      false
+    ],
+    "comboBonus": [
+      4,
+      "uint32",
+      false
+    ],
+    "extraChange": [
+      5,
+      "Cell",
+      true
+    ]
+  },
+  "Plate": {
+    "column": [
+      1,
+      "ColumnData",
+      true
+    ],
+    "combo": [
+      3,
+      "Combo",
+      true
+    ],
+    "win": [
+      4,
+      "double",
+      false
+    ],
+    "bonusWin": [
+      5,
+      "double",
+      false
+    ],
+    "isBonus": [
+      6,
+      "bool",
+      false
+    ],
+    "totalFreeSpin": [
+      7,
+      "uint32",
+      false
+    ]
+  },
+  "AllPlate": {
+    "plate": [
+      1,
+      "Plate",
+      true
+    ]
+  },
+  "ColumnData": {
+    "row": [
+      1,
+      "int32",
+      true
+    ],
+    "isGold": [
+      2,
+      "uint32",
+      true
+    ]
+  },
+  "WalletInfo": {
+    "currencyNumber": [
+      1,
+      "int32",
+      false
+    ],
+    "currencyName": [
+      2,
+      "string",
+      false
+    ],
+    "currencySymbol": [
+      3,
+      "string",
+      false
+    ],
+    "coin": [
+      4,
+      "double",
+      false
+    ],
+    "bet": [
+      5,
+      "double",
+      true
+    ],
+    "unit": [
+      6,
+      "double",
+      false
+    ],
+    "ratio": [
+      7,
+      "double",
+      false
+    ],
+    "rate": [
+      8,
+      "double",
+      false
+    ],
+    "upper": [
+      9,
+      "double",
+      false
+    ],
+    "lower": [
+      10,
+      "double",
+      false
+    ],
+    "cycle": [
+      11,
+      "double",
+      false
+    ],
+    "decimal": [
+      12,
+      "int32",
+      false
+    ]
+  },
+  "MallInfo": {
+    "PriceOdd": [
+      1,
+      "double",
+      false
+    ],
+    "DescType": [
+      2,
+      "int32",
+      false
+    ],
+    "MaxBet": [
+      3,
+      "double",
+      false
+    ],
+    "AlterID": [
+      4,
+      "int32",
+      false
+    ],
+    "Show": [
+      5,
+      "int32",
+      false
+    ]
+  },
+  "GameMallInfo": {
+    "MaxBet": [
+      1,
+      "double",
+      false
+    ],
+    "PriceOdd": [
+      2,
+      "double",
+      true
+    ],
+    "AlterID": [
+      3,
+      "int32",
+      true
+    ]
+  },
+  "GameInfoAck": {
+    "WalletInfo": [
+      1,
+      "WalletInfo",
+      true
+    ],
+    "FreeSpinRemain": [
+      3,
+      "int32",
+      false
+    ],
+    "extraInfo": [
+      5,
+      "bytes",
+      false
+    ],
+    "mall": [
+      8,
+      "MallInfo",
+      false
+    ],
+    "ApiType": [
+      9,
+      "int32",
+      false
+    ],
+    "FreeSpinBet": [
+      10,
+      "double",
+      false
+    ],
+    "gameMall": [
+      12,
+      "GameMallInfo",
+      false
+    ],
+    "MaxOdd": [
+      13,
+      "double",
+      false
+    ],
+    "lastBet": [
+      19,
+      "double",
+      false
+    ]
+  },
+  "SpinReq": {
+    "bet": [
+      1,
+      "double",
+      false
+    ],
+    "customReq": [
+      10,
+      "bytes",
+      false
+    ],
+    "mall": [
+      23,
+      "MallSpin",
+      false
+    ],
+    "special": [
+      25,
+      "SpecialCase",
+      false
+    ],
+    "extraSpin": [
+      26,
+      "ExtraSpin",
+      false
+    ],
+    "freeSpin": [
+      27,
+      "FreeSpin",
+      false
+    ]
+  },
+  "MallSpin": {
+    "Type": [
+      1,
+      "int32",
+      false
+    ],
+    "Index": [
+      2,
+      "int32",
+      false
+    ],
+    "Bet": [
+      3,
+      "double",
+      false
+    ]
+  },
+  "SpecialCase": {
+    "cheat": [
+      1,
+      "int32",
+      false
+    ],
+    "turbo": [
+      2,
+      "bool",
+      false
+    ],
+    "tournament": [
+      3,
+      "bool",
+      false
+    ]
+  },
+  "ExtraSpin": {
+    "Index": [
+      1,
+      "int32",
+      false
+    ]
+  },
+  "FreeSpin": {
+    "free": [
+      1,
+      "bool",
+      false
+    ]
+  },
+  "ServiceData": {
+    "freeremain": [
+      7,
+      "int32",
+      false
+    ]
+  },
+  "SpinResponse": {
+    "data": [
+      1,
+      "bytes",
+      false
+    ],
+    "service": [
+      2,
+      "ServiceData",
+      false
+    ],
+    "totalWin": [
+      3,
+      "double",
+      false
+    ],
+    "roundIndex": [
+      4,
+      "int64",
+      false
+    ],
+    "postMoney": [
+      6,
+      "double",
+      false
+    ],
+    "StartRound": [
+      7,
+      "int32",
+      false
+    ],
+    "hasspin": [
+      8,
+      "bool",
+      false
+    ],
+    "BDType": [
+      9,
+      "int32",
+      false
+    ],
+    "BBTimes": [
+      10,
+      "int32",
+      false
+    ],
+    "MallBet": [
+      11,
+      "double",
+      false
+    ],
+    "AccuMallBet": [
+      12,
+      "double",
+      false
+    ],
+    "BaseBet": [
+      16,
+      "double",
+      false
+    ],
+    "RealBet": [
+      17,
+      "double",
+      false
+    ],
+    "SpinType": [
+      18,
+      "int32",
+      false
+    ],
+    "roundIndexV2": [
+      20,
+      "int64",
+      false
+    ],
+    "GameMallBet": [
+      21,
+      "double",
+      false
+    ],
+    "GameMallType": [
+      22,
+      "int32",
+      false
+    ],
+    "spinReq": [
+      23,
+      "SpinReq",
+      false
+    ]
+  },
+  "SpinEndAck": {
+    "AckType": [
+      1,
+      "int32",
+      false
+    ],
+    "NowRound": [
+      2,
+      "int32",
+      false
+    ],
+    "NowMoney": [
+      3,
+      "double",
+      false
+    ]
+  }
+}

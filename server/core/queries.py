@@ -12,7 +12,7 @@ class Queries:
         with self.store.connection() as db:
             p = self.sessions._player(db, token)
             return {'player_id': p['id'], 'balance_minor': p['balance_minor'],
-                    'currency': 'DEMO', 'minor_unit': 100}
+                    'currency': 'DEMO', 'minor_unit': self.sessions.minor_unit}
 
     def _state(self, db, player_id, game):
         row = db.execute('SELECT state_json FROM game_states WHERE player_id=? AND game_id=?',

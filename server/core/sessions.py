@@ -6,8 +6,20 @@ import uuid
 from .contracts import ServiceError
 
 class Sessions:
-    def __init__(self, store):
+    def __init__(self, store, minor_unit=100):
         self.store = store
+        if minor_unit not in (100, 10000):
+            raise ValueError('Unsupported monetary precision')
+        self.minor_unit = minor_unit
+        self.initial_credit = 2000 * minor_unit
+        with store.connection(True) as db:
+            db.execute('CREATE TABLE IF NOT EXISTS wallet_settings (name TEXT PRIMARY KEY, value INTEGER NOT NULL)')
+            row = db.execute("SELECT value FROM wallet_settings WHERE name='minor_unit'").fetchone()
+            # Existing wallets predate precision metadata and use cents.
+            old_unit = row[0] if row else 100 if db.execute('SELECT 1 FROM players LIMIT 1').fetchone() else minor_unit
+            if old_unit != minor_unit:
+                raise ValueError('Database wallet precision does not match the selected games')
+            db.execute("INSERT OR IGNORE INTO wallet_settings VALUES ('minor_unit',?)", (minor_unit,))
 
     @staticmethod
     def _token_hash(token):
@@ -23,12 +35,11 @@ class Sessions:
             raise ServiceError('SESSION_INVALID', 'Session is missing or expired.', 401)
         return row
 
-    @staticmethod
-    def _create_player(db, player_id):
+    def _create_player(self, db, player_id):
         now = int(time.time())
-        db.execute('INSERT INTO players VALUES (?,?,?)', (player_id, 200000, now))
+        db.execute('INSERT INTO players VALUES (?,?,?)', (player_id, self.initial_credit, now))
         db.execute('''INSERT INTO ledger(player_id,kind,debit_minor,credit_minor,balance_before,balance_after,created_at)
-                      VALUES (?,'initial_credit',0,200000,0,200000,?)''', (player_id, now))
+                      VALUES (?,'initial_credit',0,?,0,?,?)''', (player_id, self.initial_credit, self.initial_credit, now))
 
     def create_session(self):
         player_id, token = uuid.uuid4().hex, secrets.token_urlsafe(32)
@@ -37,7 +48,7 @@ class Sessions:
             self._create_player(db, player_id)
             db.execute('INSERT INTO sessions VALUES (?,?,?)', (self._token_hash(token), player_id, expiry))
         return {'player_id': player_id, 'token': token, 'expires_at': expiry,
-                'balance_minor': 200000, 'currency': 'DEMO', 'minor_unit': 100}
+                'balance_minor': self.initial_credit, 'currency': 'DEMO', 'minor_unit': self.minor_unit}
 
     def ensure_local_demo(self):
         # Fixed session is only for the existing captured client on loopback.

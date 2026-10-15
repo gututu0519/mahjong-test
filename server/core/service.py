@@ -7,8 +7,12 @@ from .settlement import Settlement
 
 class GameService:
     def __init__(self, database, registry):
+        units = {getattr(game, 'minor_unit', 100) for game in registry.games()}
+        if len(units) != 1:
+            raise ValueError('Games with different monetary precision require separate services')
+        minor_unit = units.pop()
         self.store = Storage(database, registry)
-        self.sessions = Sessions(self.store)
+        self.sessions = Sessions(self.store, minor_unit)
         self.queries = Queries(self.store, self.sessions)
         self.settlement = Settlement(self.store, self.sessions, self.queries)
         self.database, self.registry = self.store.database, registry

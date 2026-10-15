@@ -44,6 +44,8 @@ python -m server.run --service-dir services/buffalo-win
 
 ## 增加服务
 
+JILI Super Ace 开发检查点：端口 8088，`super_ace_client`。原版客户端尚有启动阻塞；已完成部分、验证结果及换电脑继续步骤见 [Super Ace 交接说明](super-ace/README.md)。
+
 PP Gates of Olympus 的独立生成服务见 [服务说明](gates-of-olympus/README.md)。
 Sweet Bonanza POP 的接入状态与补抓项见 [服务说明](sweet-bonanza-pop/README.md)，入口 `sweet_bonanza_pop_client`，端口 8086。
 `olympus_client` 入口只装载 `gates-of-olympus`，钱包、局面与设置保存到本服务 SQLite。旧 `olympus_preview` 入口仅供资源预览，`games` 必须为空。

@@ -1,0 +1,1827 @@
+[
+  {
+    "data": {
+      "plate": [
+        {
+          "column": [
+            {
+              "row": [
+                1,
+                4,
+                7,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                9,
+                6,
+                4,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                5,
+                5,
+                6,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                7,
+                4,
+                1
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                8,
+                4,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "symbol": 6,
+                  "row": 3
+                },
+                {
+                  "symbol": 5,
+                  "row": 1,
+                  "column": 1,
+                  "isGold": 1
+                },
+                {
+                  "symbol": 7,
+                  "row": 2,
+                  "column": 2
+                },
+                {
+                  "symbol": 2,
+                  "row": 3,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 3
+                    },
+                    {
+                      "row": 1,
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.1,
+                  "bonus": 2,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.1,
+              "comboBonus": 1
+            }
+          ],
+          "win": 0.1,
+          "totalFreeSpin": 10
+        }
+      ]
+    },
+    "totalWin": 0.1,
+    "spinReq": {
+      "bet": 0.5,
+      "special": {}
+    }
+  },
+  {
+    "data": {
+      "plate": [
+        {
+          "column": [
+            {
+              "row": [
+                7,
+                1,
+                2,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                6,
+                2,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                7,
+                6,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "row": [
+                1,
+                3,
+                5,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                2,
+                1,
+                8,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "symbol": 8
+                },
+                {
+                  "symbol": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 7,
+                  "column": 2
+                },
+                {
+                  "symbol": 8,
+                  "row": 1,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {},
+                    {
+                      "column": 1
+                    },
+                    {
+                      "column": 2
+                    },
+                    {
+                      "row": 1,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 7,
+                  "win": 0.1,
+                  "bonus": 2,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.1,
+              "comboBonus": 1
+            },
+            {
+              "change": [
+                {
+                  "symbol": 9
+                },
+                {
+                  "symbol": 9,
+                  "row": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 8,
+                  "row": 1,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {},
+                    {
+                      "row": 3,
+                      "column": 1
+                    },
+                    {
+                      "row": 1,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 8,
+                  "win": 0.025,
+                  "bonus": 1,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.05,
+              "comboBonus": 2
+            }
+          ],
+          "win": 0.15000000000000002,
+          "isBonus": true,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                4,
+                6,
+                1,
+                2
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                3,
+                3,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                3,
+                9,
+                8,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                7,
+                7,
+                8,
+                7
+              ],
+              "isGold": [
+                1,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                7,
+                8,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [],
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                3,
+                6,
+                9,
+                7
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                3,
+                7,
+                5,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                5,
+                8,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                3,
+                2,
+                6,
+                3
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                6,
+                7,
+                3,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "symbol": 7,
+                  "row": 1
+                },
+                {
+                  "symbol": 2,
+                  "row": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 3,
+                  "column": 2
+                },
+                {
+                  "symbol": 6,
+                  "row": 2,
+                  "column": 3
+                },
+                {
+                  "symbol": 4,
+                  "column": 4
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 1
+                    },
+                    {
+                      "column": 2
+                    },
+                    {
+                      "row": 2,
+                      "column": 3
+                    },
+                    {
+                      "column": 4
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.25,
+                  "bonus": 1,
+                  "maxLen": 5
+                }
+              ],
+              "extraChange": [],
+              "win": 0.5,
+              "comboBonus": 2
+            },
+            {
+              "change": [
+                {
+                  "row": 3,
+                  "column": 3,
+                  "isGold": 101,
+                  "lastGold": 1
+                },
+                {
+                  "symbol": 3
+                },
+                {
+                  "symbol": 2,
+                  "column": 1
+                },
+                {
+                  "symbol": 6,
+                  "column": 2
+                },
+                {
+                  "symbol": 7,
+                  "column": 3
+                },
+                {
+                  "symbol": 3,
+                  "row": 2,
+                  "column": 4
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {},
+                    {
+                      "column": 1
+                    },
+                    {
+                      "column": 2
+                    },
+                    {
+                      "column": 3
+                    },
+                    {
+                      "row": 3,
+                      "column": 3
+                    },
+                    {
+                      "row": 2,
+                      "column": 4
+                    }
+                  ],
+                  "symbol": 3,
+                  "win": 2.0,
+                  "bonus": 2,
+                  "maxLen": 5
+                }
+              ],
+              "extraChange": [],
+              "win": 8.0,
+              "comboBonus": 4
+            }
+          ],
+          "win": 8.5,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                7,
+                2,
+                9,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                3,
+                3,
+                7
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                9,
+                4,
+                2
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                5,
+                8,
+                5,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                4,
+                4,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [],
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                9,
+                7,
+                6,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                4,
+                6,
+                5
+              ],
+              "isGold": [
+                0,
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                3,
+                6,
+                3
+              ],
+              "isGold": [
+                0,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                7,
+                5,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                9,
+                4,
+                8,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "row": 2,
+                  "column": 2,
+                  "isGold": 101,
+                  "lastGold": 1
+                },
+                {
+                  "symbol": 6,
+                  "row": 2
+                },
+                {
+                  "symbol": 6,
+                  "column": 1
+                },
+                {
+                  "symbol": 5,
+                  "row": 2,
+                  "column": 1
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.1,
+                  "bonus": 2,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.2,
+              "comboBonus": 2
+            },
+            {
+              "change": [
+                {
+                  "symbol": 7,
+                  "row": 3
+                },
+                {
+                  "symbol": 2,
+                  "row": 2,
+                  "column": 1
+                },
+                {
+                  "symbol": 6,
+                  "row": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 6,
+                  "row": 2,
+                  "column": 2,
+                  "lastGold": 101
+                },
+                {
+                  "symbol": 7,
+                  "row": 2,
+                  "column": 3
+                },
+                {
+                  "symbol": 6,
+                  "row": 2
+                },
+                {
+                  "symbol": 5,
+                  "column": 1
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 3
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    },
+                    {
+                      "row": 2,
+                      "column": 3
+                    }
+                  ],
+                  "symbol": 5,
+                  "win": 0.6,
+                  "bonus": 2,
+                  "maxLen": 4
+                },
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.05,
+                  "bonus": 1,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 2.6,
+              "comboBonus": 4
+            },
+            {
+              "change": [
+                {
+                  "symbol": 6,
+                  "row": 2
+                },
+                {
+                  "symbol": 5,
+                  "row": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 7,
+                  "row": 2,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "row": 3,
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.05,
+                  "bonus": 1,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.30000000000000004,
+              "comboBonus": 6
+            }
+          ],
+          "win": 3.1000000000000005,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                8,
+                3,
+                3,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                6,
+                6,
+                6
+              ],
+              "isGold": [
+                1,
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                8,
+                9,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                5,
+                7,
+                9,
+                4
+              ],
+              "isGold": [
+                1,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                4,
+                4,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "column": 1,
+                  "isGold": 101,
+                  "lastGold": 1
+                },
+                {
+                  "row": 2,
+                  "column": 1,
+                  "isGold": 101,
+                  "lastGold": 1
+                },
+                {
+                  "symbol": 2,
+                  "row": 3
+                },
+                {
+                  "symbol": 2,
+                  "row": 1,
+                  "column": 1
+                },
+                {
+                  "symbol": 4,
+                  "row": 3,
+                  "column": 1
+                },
+                {
+                  "symbol": 3,
+                  "row": 3,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 3
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 1,
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 6,
+                  "win": 0.2,
+                  "bonus": 4,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.4,
+              "comboBonus": 2
+            },
+            {
+              "change": [
+                {
+                  "symbol": 3,
+                  "row": 1
+                },
+                {
+                  "symbol": 8,
+                  "row": 2
+                },
+                {
+                  "symbol": 7,
+                  "column": 1,
+                  "lastGold": 101
+                },
+                {
+                  "symbol": 5,
+                  "row": 2,
+                  "column": 1,
+                  "lastGold": 101
+                },
+                {
+                  "symbol": 6,
+                  "row": 3,
+                  "column": 2
+                },
+                {
+                  "symbol": 7
+                },
+                {
+                  "symbol": 3,
+                  "row": 1,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 1
+                    },
+                    {
+                      "row": 2
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 3,
+                  "win": 0.8,
+                  "bonus": 4,
+                  "maxLen": 3
+                },
+                {
+                  "block": [
+                    {},
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 1,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 8,
+                  "win": 0.05,
+                  "bonus": 2,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 3.4000000000000004,
+              "comboBonus": 4
+            }
+          ],
+          "win": 3.8000000000000003,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                5,
+                6,
+                7,
+                2
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                5,
+                3,
+                2,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                2,
+                5,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                3,
+                2,
+                6,
+                3
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                9,
+                7,
+                6,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "symbol": 6,
+                  "row": 3
+                },
+                {
+                  "symbol": 5,
+                  "row": 2,
+                  "column": 1
+                },
+                {
+                  "symbol": 7,
+                  "row": 1,
+                  "column": 2
+                },
+                {
+                  "symbol": 6,
+                  "row": 1,
+                  "column": 3
+                },
+                {
+                  "symbol": 9
+                },
+                {
+                  "symbol": 7,
+                  "column": 1
+                },
+                {
+                  "symbol": 3,
+                  "row": 2,
+                  "column": 2,
+                  "isGold": 1
+                },
+                {
+                  "symbol": 8,
+                  "row": 3,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 3
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "row": 1,
+                      "column": 2
+                    },
+                    {
+                      "row": 1,
+                      "column": 3
+                    }
+                  ],
+                  "symbol": 2,
+                  "win": 0.75,
+                  "bonus": 1,
+                  "maxLen": 4
+                },
+                {
+                  "block": [
+                    {},
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 5,
+                  "win": 0.2,
+                  "bonus": 2,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 1.9,
+              "comboBonus": 2
+            },
+            {
+              "change": [
+                {
+                  "symbol": 2,
+                  "row": 2
+                },
+                {
+                  "symbol": 8,
+                  "column": 1,
+                  "isGold": 1
+                },
+                {
+                  "symbol": 4,
+                  "row": 1,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 1,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 7,
+                  "win": 0.05,
+                  "bonus": 1,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.2,
+              "comboBonus": 4
+            }
+          ],
+          "win": 2.1,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                2,
+                9,
+                4,
+                3
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                2,
+                8,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                9,
+                4,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "row": [
+                8,
+                2,
+                9,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                9,
+                9,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [
+            {
+              "change": [
+                {
+                  "symbol": 8,
+                  "row": 2
+                },
+                {
+                  "symbol": 7,
+                  "column": 1
+                },
+                {
+                  "symbol": 7,
+                  "row": 2,
+                  "column": 2
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "column": 1
+                    },
+                    {
+                      "row": 2,
+                      "column": 2
+                    }
+                  ],
+                  "symbol": 4,
+                  "win": 0.15,
+                  "bonus": 1,
+                  "maxLen": 3
+                }
+              ],
+              "extraChange": [],
+              "win": 0.3,
+              "comboBonus": 2
+            },
+            {
+              "change": [
+                {
+                  "row": 3,
+                  "column": 2,
+                  "isGold": 101,
+                  "lastGold": 1
+                },
+                {
+                  "symbol": 8,
+                  "row": 2
+                },
+                {
+                  "symbol": 7,
+                  "row": 2,
+                  "column": 1,
+                  "isGold": 1
+                },
+                {
+                  "symbol": 4,
+                  "column": 2
+                },
+                {
+                  "symbol": 8,
+                  "column": 3
+                },
+                {
+                  "symbol": 6,
+                  "row": 3,
+                  "column": 3
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {
+                      "row": 2
+                    },
+                    {
+                      "row": 2,
+                      "column": 1
+                    },
+                    {
+                      "column": 2
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    },
+                    {
+                      "column": 3
+                    },
+                    {
+                      "row": 3,
+                      "column": 3
+                    }
+                  ],
+                  "symbol": 8,
+                  "win": 0.3,
+                  "bonus": 4,
+                  "maxLen": 4
+                }
+              ],
+              "extraChange": [],
+              "win": 1.2,
+              "comboBonus": 4
+            },
+            {
+              "change": [
+                {
+                  "symbol": 3
+                },
+                {
+                  "symbol": 2,
+                  "row": 1,
+                  "column": 1
+                },
+                {
+                  "symbol": 8,
+                  "row": 3,
+                  "column": 2,
+                  "isGold": 1,
+                  "lastGold": 101
+                },
+                {
+                  "symbol": 3,
+                  "row": 1,
+                  "column": 3
+                }
+              ],
+              "award": [
+                {
+                  "block": [
+                    {},
+                    {
+                      "row": 1,
+                      "column": 1
+                    },
+                    {
+                      "row": 3,
+                      "column": 2
+                    },
+                    {
+                      "row": 1,
+                      "column": 3
+                    }
+                  ],
+                  "symbol": 2,
+                  "win": 0.75,
+                  "bonus": 1,
+                  "maxLen": 4
+                }
+              ],
+              "extraChange": [],
+              "win": 4.5,
+              "comboBonus": 6
+            }
+          ],
+          "win": 6.0,
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                9,
+                9,
+                4,
+                2
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                4,
+                6,
+                5,
+                3
+              ],
+              "isGold": [
+                0,
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "row": [
+                3,
+                9,
+                6,
+                8
+              ],
+              "isGold": [
+                1,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                2,
+                7,
+                3,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                8,
+                8,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [],
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                2,
+                8,
+                3,
+                6
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                2,
+                5,
+                5,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                1,
+                1
+              ]
+            },
+            {
+              "row": [
+                3,
+                4,
+                9,
+                5
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                5,
+                6,
+                7,
+                8
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                9,
+                3,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [],
+          "totalFreeSpin": 10
+        },
+        {
+          "column": [
+            {
+              "row": [
+                6,
+                7,
+                8,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                6,
+                6,
+                5,
+                2
+              ],
+              "isGold": [
+                0,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "row": [
+                8,
+                9,
+                4,
+                9
+              ],
+              "isGold": [
+                1,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                7,
+                5,
+                8,
+                9
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "row": [
+                3,
+                9,
+                5,
+                4
+              ],
+              "isGold": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "combo": [],
+          "totalFreeSpin": 10
+        }
+      ]
+    },
+    "totalWin": 23.65,
+    "spinReq": {
+      "bet": 0.5,
+      "mall": {
+        "Bet": 20.25
+      },
+      "special": {}
+    }
+  }
+]

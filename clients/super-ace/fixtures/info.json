@@ -1,0 +1,47 @@
+{
+  "WalletInfo": [
+    {
+      "bet": [
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        10.0,
+        20.0,
+        30.0,
+        40.0,
+        50.0,
+        80.0,
+        100.0,
+        200.0,
+        500.0,
+        1000.0
+      ],
+      "currencyNumber": 3,
+      "coin": 2000.0,
+      "unit": 1.0,
+      "ratio": 1.0,
+      "rate": 1.0,
+      "decimal": 4
+    }
+  ],
+  "mall": {
+    "PriceOdd": 40.5,
+    "MaxBet": 1000.0,
+    "AlterID": 50,
+    "Show": 2
+  },
+  "ApiType": 8,
+  "gameMall": {
+    "PriceOdd": [
+      40.5
+    ],
+    "AlterID": [
+      50
+    ],
+    "MaxBet": 1000.0
+  },
+  "MaxOdd": 10000.0,
+  "lastBet": 500.0
+}
