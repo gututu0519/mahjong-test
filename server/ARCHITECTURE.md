@@ -83,3 +83,7 @@ server/
 
 每增加一个正式服务，都更新上面的服务表，注明入口、端口、数据归属和是否共享账号。
 每增加一个玩法，都更新该游戏的玩法清单及测试。共享能力应有多游戏需求支撑，避免只因名字相似抽成公共规则。
+
+## Big Bass Bonanza
+
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。

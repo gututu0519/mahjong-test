@@ -30,7 +30,7 @@ python -m server.app
 ## 演示站
 
 同一个麻将服务启动后，访问 <http://localhost:8080/demo/> 打开 SPINLAB Slot 试玩大厅。
-大厅提供游戏搜索及可试玩／即将上线筛选；当前麻将、美洲野牛、宙斯与 Sweet Bonanza POP 可试玩，另外两个主题是展示预告。
+大厅提供游戏搜索及可试玩／即将上线筛选；当前麻将、美洲野牛、宙斯、Sweet Bonanza POP 与 Big Bass Bonanza 可试玩，另外两个主题是展示预告。
 前端位于 `demo/`，无需安装依赖或构建。点击「试玩」请求
 `POST /api/v1/games/mahjong-ways2/launch`（JSON `{"language":"zh"}` 或 `{"language":"en"}`，省略默认中文），后端创建独立会话，
 返回 `launch_url`、`expires_at`、`balance_minor`、`minor_unit` 和 `currency`。
@@ -93,3 +93,7 @@ Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `python
 访问 <http://127.0.0.1:8090>；详细说明见 [抓取工具文档](response-capture/README.md)。
 
 数据库、抓取数据、诊断文件、虚拟环境和运行日志只保留在本机，不提交到 Git。
+
+## Big Bass Bonanza
+
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](services/big-bass-bonanza/README.md)。

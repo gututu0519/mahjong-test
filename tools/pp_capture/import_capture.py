@@ -1,4 +1,4 @@
-"""Import the captured Olympus client and initialization, without remote credentials."""
+"""Import a captured PP client and initialization, without remote credentials."""
 import argparse
 import hashlib
 import json
@@ -15,20 +15,21 @@ HOST = 'demogamesfree.pragmaticplay.net'
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('session')
-    parser.add_argument('--game', choices=['gates-of-olympus', 'sweet-bonanza-pop'], default='gates-of-olympus')
+    parser.add_argument('--game', choices=['gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza'], default='gates-of-olympus')
+    parser.add_argument('--language-pack', choices=['zh', 'en'], help='Import only locale packages, including the Asia /gs2c host')
     args = parser.parse_args()
     global CLIENT
     CLIENT = ROOT / 'clients' / args.game
-    symbol = 'vs10swtbnz' if args.game == 'sweet-bonanza-pop' else 'vs20olympgate'
+    symbol = {'sweet-bonanza-pop': 'vs10swtbnz', 'gates-of-olympus': 'vs20olympgate', 'big-bass-bonanza': 'vs10bbbonanza'}[args.game]
     if not re.fullmatch('[0-9a-f]{32}', args.session):
         parser.error('Expected a capture session ID')
     capture = ROOT / 'response-capture/captures' / args.session
     manifest = capture / 'manifest.json'
-    if manifest.exists():
-        snapshot = json.loads(manifest.read_text(encoding='utf-8'))
-    else:
+    try:
         with urlopen('http://127.0.0.1:8090/api/sessions/' + args.session, timeout=10) as response:
             snapshot = json.load(response)
+    except OSError:
+        snapshot = json.loads(manifest.read_text(encoding='utf-8'))
     fixtures = CLIENT / 'fixtures'
     fixtures.mkdir(parents=True, exist_ok=True)
     sources_path = fixtures / 'asset-sources.json'
@@ -36,6 +37,15 @@ def main():
     imported = 0
     for row in snapshot['rows']:
         url = urlsplit(row['url'])
+        source_url = url._replace(query='', fragment='').geturl()
+        if args.language_pack:
+            if url.hostname not in (HOST, 'demogamesfree-asia.pragmaticplay.net'):
+                continue
+            path = re.sub(r'^/gs2c/common/', '/hub-demo/common/', url.path)
+            if not re.fullmatch(r'/hub-demo/common/v3/games-html5/games/vs/' + re.escape(symbol) +
+                                r'/(desktop|mobile)/packages/' + args.language_pack + r'_(GUI_)?(desktop|mobile)\.json', path):
+                continue
+            url = url._replace(netloc=HOST, path=path)
         if url.hostname != HOST or row.get('status') != 200 or row.get('state') != 'complete' or not row.get('body'):
             continue
         source = (capture / row['body']).resolve()
@@ -81,7 +91,7 @@ def main():
             raise ValueError('Asset version conflict: ' + relative)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
-        sources[relative] = {'path': relative, 'source': url._replace(query='', fragment='').geturl(),
+        sources[relative] = {'path': relative, 'source': source_url,
                              'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data),
                              'session': args.session, 'request_id': row['id']}
         imported += 1

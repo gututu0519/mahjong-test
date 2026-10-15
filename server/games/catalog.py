@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'big-bass-bonanza': {
+        'factory': 'server.games.big_bass_bonanza:BigBassBonanza',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'money_collect', 'free_spins', 'free_retrigger'],
+    },
     'sweet-bonanza-pop': {
         'factory': 'server.games.sweet_bonanza_pop:SweetBonanzaPop',
         'category': 'slots', 'interaction': 'request_steps',

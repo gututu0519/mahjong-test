@@ -63,3 +63,7 @@ JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不
 游戏规则和客户端协议继续分别归属于 `games/` 和 `adapters/`。
 
 双进程隔离测试：`python -m unittest server.tests.test_process_isolation -v`。
+
+## Big Bass Bonanza
+
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
