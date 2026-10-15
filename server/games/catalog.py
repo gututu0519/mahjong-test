@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'sweet-bonanza-pop': {
+        'factory': 'server.games.sweet_bonanza_pop:SweetBonanzaPop',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['cascades', 'symbol_count', 'multiplier_symbols', 'free_spins', 'free_retrigger'],
+    },
     'gates-of-olympus': {
         'factory': 'server.games.gates_of_olympus:GatesOfOlympus',
         'category': 'slots', 'interaction': 'request_steps',

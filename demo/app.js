@@ -91,8 +91,9 @@
   function updatePlayerCopy() {
     const buffalo = activeGame === 'buffalo-win';
     const olympus = activeGame === 'gates-of-olympus';
-    setText('player-title', olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
-    frame.title = olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
+    const sweet = activeGame === 'sweet-bonanza-pop';
+    setText('player-title', sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
+    frame.title = sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
     setText('player-mode', '虚拟积分试玩');
   }
 
@@ -148,7 +149,7 @@
       });
       if (version !== requestVersion || !dialog.open) return;
       const url = new URL(data.launch_url, location.origin);
-      const expectedOrigin = activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
+      const expectedOrigin = activeGame === 'sweet-bonanza-pop' ? 'http://127.0.0.1:8086' : activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
       if (url.origin !== expectedOrigin || url.pathname !== '/' || url.searchParams.get('mock') !== '1' || !url.searchParams.get('ops')) throw new Error('无效的游戏链接');
       launchURL = url;
       $('reload-game').disabled = false;

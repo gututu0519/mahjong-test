@@ -15,7 +15,11 @@ HOST = 'demogamesfree.pragmaticplay.net'
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('session')
+    parser.add_argument('--game', choices=['gates-of-olympus', 'sweet-bonanza-pop'], default='gates-of-olympus')
     args = parser.parse_args()
+    global CLIENT
+    CLIENT = ROOT / 'clients' / args.game
+    symbol = 'vs10swtbnz' if args.game == 'sweet-bonanza-pop' else 'vs20olympgate'
     if not re.fullmatch('[0-9a-f]{32}', args.session):
         parser.error('Expected a capture session ID')
     capture = ROOT / 'response-capture/captures' / args.session
@@ -42,7 +46,7 @@ def main():
         if url.path == '/hub-demo/html5Game.do':
             html = data.decode('utf-8')
             config = json.loads(re.search(r"gameConfig: '(.*?)',", html)[1])
-            if '/vs20olympgate/' not in config['datapath']:
+            if '/' + symbol + '/' not in config['datapath']:
                 continue
             # Keep the original loader and document, replace its session configuration.
             def script(match):
@@ -60,11 +64,13 @@ def main():
             if not req_path.is_relative_to(capture.resolve()) or not req_path.is_file():
                 continue
             req = parse_qs(req_path.read_text())
-            if req.get('action') != ['doInit'] or req.get('symbol') != ['vs20olympgate']:
+            if req.get('action') != ['doInit'] or req.get('symbol') != [symbol]:
                 continue
             # Only static initialization; spin responses are never imported by this tool.
             relative = 'fixtures/init.txt'
         elif not url.path.startswith('/hub-demo/common/'):
+            continue
+        elif '/games/vs/' in url.path and '/games/vs/' + symbol + '/' not in url.path:
             continue
         target = (CLIENT / relative).resolve()
         if not target.is_relative_to(CLIENT.resolve()):

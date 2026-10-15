@@ -13,6 +13,7 @@ services/
   game-api/            独立 JSON API 演示服务，8082，同样一套目录
   buffalo-win/         美洲野牛网页及其服务，8083，同样一套目录
   gates-of-olympus/    PP 英文横竖屏试玩，8085，独立引擎和数据库
+  sweet-bonanza-pop/   PP 英文试玩，8086，独立引擎和数据库
 ```
 
 双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
@@ -44,6 +45,7 @@ python -m server.run --service-dir services/buffalo-win
 ## 增加服务
 
 PP Gates of Olympus 的独立生成服务见 [服务说明](gates-of-olympus/README.md)。
+Sweet Bonanza POP 的接入状态与补抓项见 [服务说明](sweet-bonanza-pop/README.md)，入口 `sweet_bonanza_pop_client`，端口 8086。
 `olympus_client` 入口只装载 `gates-of-olympus`，钱包、局面与设置保存到本服务 SQLite。旧 `olympus_preview` 入口仅供资源预览，`games` 必须为空。
 
 新建 `services/<service-id>/`，提供唯一 ID、独立端口和 `service.json`，在 `config/` 中放该服务选择的游戏配置。

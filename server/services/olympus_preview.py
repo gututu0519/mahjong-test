@@ -15,6 +15,9 @@ BASE = '/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/'
 
 
 class Handler(SimpleHTTPRequestHandler):
+    client_root = CLIENT
+    asset_base = BASE
+    default_language = 'zh'
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
@@ -36,12 +39,13 @@ class Handler(SimpleHTTPRequestHandler):
         return None
 
     def do_GET(self):
+        CLIENT, BASE = self.client_root, self.asset_base
         path = urlsplit(self.path).path
         if path == '/health':
             return self.respond(200, {'status': 'ok', 'service_id': 'gates-of-olympus-preview', 'mode': 'frontend-preview'})
         if path in ('/', '/index.html'):
             query = parse_qs(urlsplit(self.path).query)
-            language = query.get('lang', ['zh'])[0]
+            language = query.get('lang', [self.default_language])[0]
             if language not in ('zh', 'en'):
                 return self.respond(400, {'error': 'Invalid language'})
             token = query.get('ops', [''])[0]
@@ -52,7 +56,7 @@ class Handler(SimpleHTTPRequestHandler):
                       'datapath': origin + BASE, 'gameService': origin + '/hub-demo/ge/v3/gameService',
                       'lang': language, 'vendor': 'T', 'showRealCash': '1', 'clock': '0',
                       'mgckey': token, 'styleName': 'generic', 'extend_events': '1',
-                      'jurisdiction': '99', 'langSelectorEnabled': '0', 'demoMode': '1',
+                      'jurisdiction': '99', 'langSelectorEnabled': '0', 'demoMode': '0',
                       'umpcEnabled': False, 'lcEnabled': False,
                       'SETTINGS': '/hub-demo/saveSettings.do', 'announcementsUpdateSeconds': 0,
                       'announcementsUpdateSecondsDefault': 0,

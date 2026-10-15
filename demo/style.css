@@ -297,3 +297,7 @@ body:has(dialog[open]) { overflow:hidden; }
 .provider-toolbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:-6px 0 20px; }
 .provider-label { font-size:11px; color:#a79bb9; }
 .provider-filters { flex-wrap:wrap; }
+
+.game-cover.sweet-pop-cover { padding:0; background:#b76ee4; }
+.sweet-pop-cover:after { display:none; }
+.sweet-pop-cover-image { width:100%; height:100%; object-fit:contain; }

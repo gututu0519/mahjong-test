@@ -30,7 +30,7 @@ python -m server.app
 ## 演示站
 
 同一个麻将服务启动后，访问 <http://localhost:8080/demo/> 打开 SPINLAB Slot 试玩大厅。
-大厅提供游戏搜索及可试玩／即将上线筛选；当前麻将、美洲野牛与宙斯可试玩，另外两个主题是展示预告。
+大厅提供游戏搜索及可试玩／即将上线筛选；当前麻将、美洲野牛、宙斯与 Sweet Bonanza POP 可试玩，另外两个主题是展示预告。
 前端位于 `demo/`，无需安装依赖或构建。点击「试玩」请求
 `POST /api/v1/games/mahjong-ways2/launch`（JSON `{"language":"zh"}` 或 `{"language":"en"}`，省略默认中文），后端创建独立会话，
 返回 `launch_url`、`expires_at`、`balance_minor`、`minor_unit` 和 `currency`。
@@ -82,6 +82,8 @@ python ".\Mahjong Ways 2\serve_local.py" --port 8081
 运行 `python -m server.services.buffalo_demo` 启动独立的 8083 服务，然后在试玩大厅选择「美洲野牛 → 试玩」。已接入生成引擎、扩展转轴、免费旋转和独立持久化钱包；当前开放中文试玩。概率与未覆盖规则采用明确标注的本地配置，详见 [服务说明](services/buffalo-win/README.md)。
 
 ## 抓取工具
+
+Sweet Bonanza POP 已接入独立英文服务：运行 `python -m server.run --service-dir services/sweet-bonanza-pop`，访问 <http://127.0.0.1:8086/> 或从大厅进入。普通旋转、连消、免费、倍率与追加已有样本验证；POP 专用动画协议及其他补抓项见 [服务说明](services/sweet-bonanza-pop/README.md)。
 
 Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `python -m server.run --service-dir services/gates-of-olympus`，
 访问 <http://127.0.0.1:8085/> 或在大厅选择对应试玩卡片。已接入生成旋转、连消、倍率球、免费回合、免费购买及独立虚拟钱包。功能保留和补抓约定见 [AGENTS.md](AGENTS.md)。
