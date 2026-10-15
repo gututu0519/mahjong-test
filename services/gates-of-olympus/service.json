@@ -1,1 +1,1 @@
-{"id":"gates-of-olympus-preview","entry":"olympus_preview","port":8085,"games":[]}
+{"id":"gates-of-olympus","entry":"olympus_client","port":8085,"games":["gates-of-olympus"]}

@@ -518,5 +518,533 @@
     "bytes": 106181,
     "session": "f2e21fa2f7ee4a9daddb16f1f354bbdc",
     "request_id": 391
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/bootstrap.js",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/bootstrap.js",
+    "sha256": "118b97e52587ce28fbccac5a370b6d57288d7098ab1273a224fc16e429711fd5",
+    "bytes": 101522,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 115
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/customizations.info",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/customizations.info",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 116
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/build.js",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/build.js",
+    "sha256": "dcdb03dfbfa89b5febfa3f89be0189e353310edcdaf83d5c2b530af5926c55c1",
+    "bytes": 3230913,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 117
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/style.css",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/style.css",
+    "sha256": "d339e98f7b517291c347df66ecd331087f7195757149c73c12384c2c6d493100",
+    "bytes": 19631,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 118
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/client/resources.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/client/resources.json",
+    "sha256": "97258d3a0de5894c889245f1a9923bf275fa94237dc021e8b49ed24f41175d68",
+    "bytes": 97673,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 121
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/client/game.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/client/game.json",
+    "sha256": "8619a5473a3620200f62aa9869560775e182ebc181f10518c781e776340c9c56",
+    "bytes": 22296,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 125
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI000.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI000.json",
+    "sha256": "c0a3d1bbb3cc885b660587fdd7481624ace4b13f032798969c94b41055f66f07",
+    "bytes": 892517,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 127
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI001.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI001.json",
+    "sha256": "8b31c6aac764e6d45686e123a8d88e4bdd2c257d9fc2973d26210241d351b723",
+    "bytes": 1167045,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 128
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI002.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI002.json",
+    "sha256": "f25fd8432a06e08a3049aa1b834630e66eadf3b4b877ac1c8440f2b073c1777f",
+    "bytes": 1180413,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 129
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI003.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI003.json",
+    "sha256": "02051e582a27d04a6771cdd9dc35a5a617af69ddcf8955f7b7f48090cc77ddb8",
+    "bytes": 1245022,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 130
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI004.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI004.json",
+    "sha256": "77a29a0fc56a2a1f862d4209d6695407bfe565766f440ffa4c04f1280e22a249",
+    "bytes": 571441,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 131
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI005.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI005.json",
+    "sha256": "c790a2096f6c120e77b7a251244f5ac25fbd5e589794fb7361a3e7cb6919160e",
+    "bytes": 620740,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 132
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI006.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI006.json",
+    "sha256": "8c7359d8de08f902e7809ff4d4a2d03a4e179df0b9e6beb9ac7a16f855b50e4e",
+    "bytes": 588277,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 133
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI007.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI007.json",
+    "sha256": "5609def4d8180c266ff6e6ef7f152d1fa7dcefba3396126b0eeb11804179cf0c",
+    "bytes": 579062,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 134
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI008.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI008.json",
+    "sha256": "43adbc23fbf00ef0cb0bef46b415f7496096a0de246154a71170ffc433ed12b5",
+    "bytes": 618581,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 135
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI009.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI009.json",
+    "sha256": "52e5ad6e36e29f6a057e0319c6a0fcbe0708a0c2d46afdd35d61ba4b5afd28df",
+    "bytes": 840558,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 136
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI010.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI010.json",
+    "sha256": "447e36a2612b89d1c51e208e3a847dc919562d06c195d81d10a42a8d2fd5b999",
+    "bytes": 1168189,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 137
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI011.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI011.json",
+    "sha256": "dddbf72f8722becd2d4e559f549fab3fb5e41a36e3bf6912531deaa2441500d6",
+    "bytes": 992802,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 138
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_resources000.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_resources000.json",
+    "sha256": "4996005fb58df3b33fe6fc4912518ad3acb4dd17f0eb9a9da086ba6f4933413f",
+    "bytes": 536338,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 141
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_resources001.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_resources001.json",
+    "sha256": "f6649d85cc6c0c730bfe3aa3e3cf2b6e7be6319ff26d13a0aa44fd2cab42b784",
+    "bytes": 390258,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 142
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game000.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game000.json",
+    "sha256": "acad794f8672c500c942e054c1b7404ecfea848ea090d0e406c21093726eda5d",
+    "bytes": 1056536,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 145
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game001.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game001.json",
+    "sha256": "e407c67c94d771062fa1c65c9b2d2188e60b0fb6df9818f114d5265ceda63393",
+    "bytes": 1760615,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 146
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game002.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game002.json",
+    "sha256": "ec01c82c642ec02bf263564f82ec2cb55ea832c8c939aae257c6dac289283112",
+    "bytes": 1005818,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 147
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game003.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game003.json",
+    "sha256": "48ee1606d2356d9bf0760aff6f5acd52623e501a72ad8b823de253e587a69953",
+    "bytes": 1904076,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 148
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game004.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game004.json",
+    "sha256": "4e7770e41e203865126b72bf0c0e095a602ab7a614f7f06cf5013f418c29cd4f",
+    "bytes": 619696,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 149
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game005.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/game005.json",
+    "sha256": "f571a4b4836efcb41a4dddf0a48b7d94e3dd0b4c68a965c707c2cdb190ae7cfd",
+    "bytes": 523275,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 150
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources000.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources000.json",
+    "sha256": "7878a9a9aa318ec342851857da1e85e89ff6984d244d5f213f62a17a5ef82335",
+    "bytes": 700777,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 156
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources001.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources001.json",
+    "sha256": "f1e7dc7cad159bbb4e1dac485dd851adc548ed9da0e4da7408433ebf389d27c8",
+    "bytes": 619589,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 157
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources002.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources002.json",
+    "sha256": "a8ec54b99e11659e5b648300b3b20d350f731e73aee9c9fb0bcd205bc324081f",
+    "bytes": 599026,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 158
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources003.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources003.json",
+    "sha256": "605d4adc6b9e7320a6f5ec9d2ece2edbcb3527fc9589afc1eddd9f4a0a827e76",
+    "bytes": 628098,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 159
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources004.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources004.json",
+    "sha256": "66a29742f26ba9e1d8ec7519828067b28910e80481e6498bdc5503eca5492385",
+    "bytes": 549523,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 160
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources005.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources005.json",
+    "sha256": "e92b32db2eb42669b4607ef3f026c4b8a025066b6475d9bac12b28213b4f03fa",
+    "bytes": 538608,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 161
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources006.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources006.json",
+    "sha256": "3af468f5ddb83644c601d09b132db3bbb99d77424f1de914b9631e2ca16e7baf",
+    "bytes": 545860,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 162
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources007.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources007.json",
+    "sha256": "bf3d6805993d955e3f6bdfa84a69c5fb2c9e455efe86c3f931d348f056efbd7d",
+    "bytes": 765325,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 163
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources008.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources008.json",
+    "sha256": "deb6a5e7852d1e04c4d977db93f9de62059bd9410ac76476c3139db2bd647c2a",
+    "bytes": 749686,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 164
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources009.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources009.json",
+    "sha256": "ce6b603bd399e91f525462e908522d6a36f277f3e916cfed094483c739be1de8",
+    "bytes": 534893,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 165
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources010.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources010.json",
+    "sha256": "81fb4f2dd0a6288980aebe37d4711f7337fd5dbb020b6d1b1b729ddd81aa09a8",
+    "bytes": 533487,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 166
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources011.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources011.json",
+    "sha256": "59182ccac3df682c2305408a21797d9f507ab4138c1ed7a4c5caa0ce31b66cba",
+    "bytes": 638043,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 167
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources012.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/main_resources012.json",
+    "sha256": "08674aa1b2b75033983c7772c8b01587f32e5a7c82dde4b7ba1b0366898051b6",
+    "bytes": 91417,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 168
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/other_resources000.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/other_resources000.json",
+    "sha256": "d3ef4a122864dbdd97d9c47917aaab507f95939d5617cd1650909632ca3497b6",
+    "bytes": 558525,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 171
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/other_resources001.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/other_resources001.json",
+    "sha256": "3278838e1ede71be89bd980568d949cbb755001203a745756d21cef232790510",
+    "bytes": 99306,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 172
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b7a45c001e18b9f41b59da0652632f32.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b7a45c001e18b9f41b59da0652632f32.png",
+    "sha256": "9640e695e664ee44c5cf8dd0616ff4c74df12a946401bd1cc4eea64a75920484",
+    "bytes": 308526,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 247
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/3237267f46a865641ac884e77a2aca49.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/3237267f46a865641ac884e77a2aca49.png",
+    "sha256": "1bec8d8cb0fbe61c3cef81e5b818238f076bc31166d21485a7c83dbc29365432",
+    "bytes": 579308,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 283
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/7aa944b7a495d17439223872fbbf8906.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/7aa944b7a495d17439223872fbbf8906.png",
+    "sha256": "f195845b435537165362ace8c3c97bb7499aa03bd04b9aa7f4e14d0ed9cf2087",
+    "bytes": 506786,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 285
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/sounds.mp3.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/sounds.mp3.json",
+    "sha256": "b51786b2a197f01dc7573c713450a142e9bd3368e1f0b98b51c87fbdf09eea1e",
+    "bytes": 6523321,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 286
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_sounds.mp3.json",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/GUI_sounds.mp3.json",
+    "sha256": "d56ee4d6a470b244f9fba7503b4de84651fd5916839c247603dd5f1ad6a6bb0d",
+    "bytes": 548765,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 287
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/ca6d2c57026ca09449ba8a8c911ac27f.jpg",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/ca6d2c57026ca09449ba8a8c911ac27f.jpg",
+    "sha256": "48d101f20e9748f313d2769d15bbf551a9757fa9e15ad77241c592e160e4189c",
+    "bytes": 91649,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 291
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/932c6349ed296644fa2c4a7c7bcf1acd.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/932c6349ed296644fa2c4a7c7bcf1acd.png",
+    "sha256": "fcad76bd243518785f4bb852f89efb2d88b328cca37f1211d803299f0c12ac32",
+    "bytes": 314619,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 296
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/0aa6f18c9d1f78b48a6e59450d517ea0.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/0aa6f18c9d1f78b48a6e59450d517ea0.png",
+    "sha256": "bdfd205d156380f1836dc42cd5866572204ce4b9250392518def4d91821e2d4f",
+    "bytes": 379092,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 299
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/8bdd3f89414676c4185260a958f1431a.jpg",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/8bdd3f89414676c4185260a958f1431a.jpg",
+    "sha256": "fd8f0d0db1fcc222cec4243b3743cbdac3d8bb3e362b1bd1d670dd5e6d561c92",
+    "bytes": 100657,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 302
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/71e00837efab8e747ba199cdd9b8f2bc.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/71e00837efab8e747ba199cdd9b8f2bc.png",
+    "sha256": "694bc330c36a911fd58053f34d77c95092440c5675fa0fe735a93662f65142bf",
+    "bytes": 77223,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 304
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/de54e2c54c2e1e345833fa316080ed4c.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/de54e2c54c2e1e345833fa316080ed4c.png",
+    "sha256": "06cc373c47628c7bfc6229ab7ef93ef79ede49abcfe17538369fd7d87133a186",
+    "bytes": 180997,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 306
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b04d30f857ae6d74ba23577b2c136027.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b04d30f857ae6d74ba23577b2c136027.png",
+    "sha256": "d886556c7f84bb2c9310a1e7b2af55b323a6f4dab2d11f08488192408b472ccb",
+    "bytes": 158623,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 309
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b3e2706c1e4683741a453dec547cf212.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/b3e2706c1e4683741a453dec547cf212.png",
+    "sha256": "265089ebaae6a44c2009489e8176e286a8eb7cd2792232abcb8c84798222d778",
+    "bytes": 17553,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 311
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/099c10ba5e2980c4c8d7dece8c8140aa.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/099c10ba5e2980c4c8d7dece8c8140aa.png",
+    "sha256": "01659b7be202d9ff3f79f10727c6666fc243f7c93c51359dc5424568117c02d7",
+    "bytes": 12411,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 315
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/8ed4301cd5211c04cb300714cf3b8533.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/8ed4301cd5211c04cb300714cf3b8533.png",
+    "sha256": "d7ef7c64e1e653034a7018a2278941e9c726faeeef6561c43765a381353b25a9",
+    "bytes": 88447,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 317
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/77dd8a666c0ac3047a74c4e83376c474.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/77dd8a666c0ac3047a74c4e83376c474.png",
+    "sha256": "6e046211965880249fd9d99f43cd7c746654aeacec6c03fa8944170f3fe8cd63",
+    "bytes": 19852,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 319
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/1d5a911201044874dbc5655289fa8c52.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/1d5a911201044874dbc5655289fa8c52.png",
+    "sha256": "8a416aa92dc38e74b5e1c2bc0832b642ddd9cbb3c31120087958af346e0e35cb",
+    "bytes": 19826,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 321
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/0c8ccf7a412ebd54aaa341c3225ba05c.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/0c8ccf7a412ebd54aaa341c3225ba05c.png",
+    "sha256": "b073238d66e31d755b97c66b4e86dbe20709b26595dac6aa5274139246634bbd",
+    "bytes": 241354,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 323
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/a22aa3fe35415d648ac080a72ae06997.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/a22aa3fe35415d648ac080a72ae06997.png",
+    "sha256": "4a11c4c8b91476bc63327c6e2bc091e34710fa017e330934e8fdabe955a72266",
+    "bytes": 46493,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 326
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/6b1e0d505a2f54a4090fdeb93de7eb2e.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/6b1e0d505a2f54a4090fdeb93de7eb2e.png",
+    "sha256": "c9ac21ca415960527cd52436b5afb36cd02bf376419502a82fb8d16435b9f5ef",
+    "bytes": 41656,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 328
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/180e95c7d225a334a86f64315fb341c5.png",
+    "source": "https://demogamesfree.pragmaticplay.net/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/game/res/180e95c7d225a334a86f64315fb341c5.png",
+    "sha256": "e3f52c90f23f44c4d9fb9f40d1a9a6ed2b6b2d26cdc41a81d13ac0d594a93aa5",
+    "bytes": 58323,
+    "session": "fddd8db19e5a4236b61709cb4fead0c1",
+    "request_id": 330
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/desktop/packages/zh_desktop.json",
+    "source": "https://demogamesfree-asia.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20olympgate/desktop/packages/zh_desktop.json",
+    "sha256": "d07c7500f9e263fa7601cee75dc25cdf143648d613c83182a2845f5340d62330",
+    "bytes": 462057,
+    "session": "fffa52d88f214176aacf65630c51714f",
+    "request_id": 100
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/desktop/packages/zh_GUI_desktop.json",
+    "source": "https://demogamesfree-asia.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20olympgate/desktop/packages/zh_GUI_desktop.json",
+    "sha256": "86f064fa9ddf565a7bb9eb012d402a5cb5846c28c4d31b87e6d89cac937d6358",
+    "bytes": 1256731,
+    "session": "fffa52d88f214176aacf65630c51714f",
+    "request_id": 101
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/packages/zh_mobile.json",
+    "source": "https://demogamesfree-asia.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20olympgate/mobile/packages/zh_mobile.json",
+    "sha256": "3bcaad5b297517dc16512a67e9d7d709d2340bf60832812541a71d1cc4fa706f",
+    "bytes": 713357,
+    "session": "fffa52d88f214176aacf65630c51714f",
+    "request_id": 379
+  },
+  {
+    "path": "hub-demo/common/v3/games-html5/games/vs/vs20olympgate/mobile/packages/zh_GUI_mobile.json",
+    "source": "https://demogamesfree-asia.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20olympgate/mobile/packages/zh_GUI_mobile.json",
+    "sha256": "94994bdbfb59ed7cf51d9f0ffd6f233833d118d6d21cd00a9dec8e6b8d084259",
+    "bytes": 2031154,
+    "session": "fffa52d88f214176aacf65630c51714f",
+    "request_id": 380
   }
 ]

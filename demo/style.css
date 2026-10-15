@@ -103,10 +103,9 @@ h2 { margin:0; font-size:23px; font-weight:600; }
 .game-cover>strong { z-index:1; font-size:22px; line-height:.98; letter-spacing:-.5px; text-align:center; font-weight:950; font-style:italic; text-shadow:2px 3px #0004; }
 .game-cover>strong>span { font-size:28px; }
 .cover-caption { margin-top:12px; font-size:8px; color:#f4eff5b0; letter-spacing:1px; z-index:1; }
-.mahjong-cover { background:radial-gradient(ellipse at 50% 25%,#ae8e42,#625627 50%,#353d25); color:#fff1af; }
-.mahjong-art { display:flex; align-items:center; gap:3px; height:104px; padding:15px 0 12px; transform:rotate(-9deg); }
-.mahjong-art>span { display:grid; place-items:center; width:42px; height:56px; border-radius:6px; background:#fff2ce; color:#ad4732; font:bold 33px "KaiTi",serif; box-shadow:0 4px #cbb481,0 7px #3d5030,4px 10px 9px #0005; }
-.mahjong-art>span:nth-child(2) { color:#27704d; transform:translateY(-11px); }
+.game-cover.mahjong-cover { padding:0; background:#63c2a0; }
+.mahjong-cover:after { display:none; }
+.mahjong-cover-image { width:100%; height:100%; object-fit:cover; object-position:center top; }
 .fruit-cover { background:radial-gradient(ellipse at 50% 25%,#feaa7e,#c44d69 50%,#873959); color:#fff4b2; }
 .fruit-art { position:relative; height:104px; width:150px; }
 .fruit-art>span { position:absolute; font-size:62px; filter:drop-shadow(4px 9px 5px #682c5355); }
@@ -285,10 +284,16 @@ body:has(dialog[open]) { overflow:hidden; }
   * { scroll-behavior:auto!important; animation:none!important; transition:none!important; }
 }
 
-.buffalo-cover { background: linear-gradient(0deg, #21160bec, #21160b00 65%), url('/demo/buffalo-cover.jpg') center 28% / cover; }
-.buffalo-cover strong { text-shadow: 0 3px 12px #281100; color: #fff4cd; }
-.buffalo-cover strong span { color: #ffd37c; }
+.game-cover.buffalo-cover { padding:0; background:#47566a; }
+.buffalo-cover:after { display:none; }
+.buffalo-cover-image { width:100%; height:100%; object-fit:cover; object-position:center 25%; }
 #buffalo-note { max-width: 150px; font-size: 10px; line-height: 1.5; }
 @media(max-width:600px) { .catalog-toolbar { flex-wrap:wrap; gap:12px; } .filters { flex-wrap:wrap; } }
 
-.olympus-cover{background:radial-gradient(ellipse at 75% 20%,#dac98b88,transparent 45%),linear-gradient(135deg,#27204d,#645476 55%,#262549)}.olympus-cover strong{color:#ffedb3;text-shadow:0 3px 8px #201b38}.olympus-lightning{position:absolute;right:24px;top:0;font:210px Georgia,serif;color:#f7e9b866;text-shadow:0 0 25px #e7dcfa}
+.game-cover.olympus-cover { padding:0; background:#364da0; }
+.olympus-cover:after { display:none; }
+.olympus-cover-image { width:100%; height:100%; object-fit:contain; }
+
+.provider-toolbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:-6px 0 20px; }
+.provider-label { font-size:11px; color:#a79bb9; }
+.provider-filters { flex-wrap:wrap; }

@@ -2,6 +2,13 @@
 (() => {
   'use strict';
   const english = {
+    '游戏厂商': 'Game provider',
+    '厂商筛选': 'Filter by provider',
+    '全部厂商': 'All providers',
+    '中英文试玩已开放': 'Chinese and English demos available',
+    '连消 · 倍率球 · 免费旋转': 'Tumbles · Multipliers · Free spins',
+    '三款游戏可试玩；宙斯支持横竖屏，使用本地生成规则和虚拟积分。': 'Three playable games. Olympus supports portrait and landscape, with local rules and virtual credits.',
+
     '英文界面预览': 'English UI preview',
     '两款 PG 游戏可试玩；Gates of Olympus 提供英文界面预览，旋转暂未接入。': 'Two PG games are playable. Gates of Olympus offers an English UI preview; spins are not connected.',
     '美洲野牛试玩': 'Buffalo Win demo',

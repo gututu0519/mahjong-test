@@ -35,7 +35,7 @@ class OlympusPreviewTests(unittest.TestCase):
         self.assertEqual(status, 201)
         result = json.loads(body)
         self.assertEqual(result['mode'], 'frontend-preview')
-        self.assertEqual(result['language'], 'en')
+        self.assertEqual(result['language'], 'zh')
         return parse_qs(urlsplit(result['launch_url']).query)['ops'][0]
 
     def test_initialization_and_no_settlement(self):
@@ -65,10 +65,22 @@ class OlympusPreviewTests(unittest.TestCase):
         self.assertNotIn(b'__LOCAL_CONFIG__', html)
         self.assertNotIn(b'pragmaticplay.net', html)
 
-    def test_profile_loads_no_engines(self):
+    def test_profile_selects_generated_service(self):
         profile, configs = load_profile(ROOT / 'services/gates-of-olympus')
-        self.assertEqual(profile['games'], [])
-        self.assertEqual(configs, {})
+        self.assertEqual(profile['games'], ['gates-of-olympus'])
+        self.assertEqual(profile['entry'], 'olympus_client')
+        self.assertIn('gates-of-olympus', configs)
+
+    def test_both_layouts_include_local_adapter(self):
+        base = '/hub-demo/common/v3/games-html5/games/vs/vs20olympgate/'
+        adapter = (ROOT / 'clients/gates-of-olympus/local-deserializer.js').read_bytes()
+        for layout in ('desktop', 'mobile'):
+            with self.subTest(layout=layout):
+                status, body = self.request(base + layout + '/build.js')
+                self.assertEqual(status, 200)
+                self.assertTrue(body.endswith(adapter))
+                self.assertNotIn(b'capabilities["ogg"]?SoundHelper.AudioFormat.ogg', body)
+                self.assertEqual(self.request(base + layout + '/bootstrap.js')[0], 200)
 
 
 if __name__ == '__main__':

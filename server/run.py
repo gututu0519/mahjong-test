@@ -13,7 +13,7 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
@@ -28,6 +28,8 @@ def load_profile(directory):
         raise ValueError('Mahjong client service only supports its own game')
     if spec['entry'] == 'buffalo_client' and games != ['buffalo-win']:
         raise ValueError('Buffalo client service only supports its own game')
+    if spec['entry'] == 'olympus_client' and games != ['gates-of-olympus']:
+        raise ValueError('Olympus client service only supports its own game')
     configs = {}
     for game_id in games:
         path = (directory / 'config' / (game_id + '.json')).resolve()
@@ -46,6 +48,9 @@ def build_from_directory(directory, port=None):
     if spec['entry'] == 'olympus_preview':
         from server.services.olympus_preview import build_server
         http = build_server(actual_port)
+    elif spec['entry'] == 'olympus_client':
+        from server.services.olympus_demo import build_server
+        http = build_server(actual_port, database, configs['gates-of-olympus'])
     elif spec['entry'] == 'mahjong_client':
         from server.services.local_demo import build_server
         http = build_server(actual_port, database, configs['mahjong-ways2'])

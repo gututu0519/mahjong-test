@@ -28,7 +28,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
             return self._json(200, {'games': [
                 {'id': 'mahjong-ways2', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'buffalo-win', 'mode': 'playable', 'languages': ['zh', 'en']},
-                {'id': 'gates-of-olympus', 'mode': 'frontend-preview', 'languages': ['zh', 'en'], 'client_language': 'en'},
+                {'id': 'gates-of-olympus', 'mode': 'playable', 'languages': ['zh', 'en']},
             ]})
         return super()._get()
 
@@ -39,6 +39,8 @@ class Handler(PlatformRoutes, GameRequestHandler):
                       '/demo/style.css': ('style.css', 'text/css; charset=utf-8'),
                       '/demo/i18n.js': ('i18n.js', 'application/javascript; charset=utf-8'),
                       '/demo/app.js': ('app.js', 'application/javascript; charset=utf-8'),
+                      '/demo/mahjong-cover.jpg': ('mahjong-cover.jpg', 'image/jpeg'),
+                      '/demo/olympus-cover.webp': ('olympus-cover.webp', 'image/webp'),
                       '/demo/buffalo-cover.jpg': ('buffalo-cover.jpg', 'image/jpeg')}
         if path in demo_files:
             name, content_type = demo_files[path]

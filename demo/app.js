@@ -7,7 +7,7 @@
   const launchButtons = [...document.querySelectorAll('[data-launch]')];
   let launchURL = null, requestController = null, readyTimer = null, requestVersion = 0;
   let opener = null, activeGame = 'mahjong-ways2', catalog = [];
-  let activeFilter = 'all';
+  let activeFilter = 'all', activeProvider = 'all';
   const cards = [...document.querySelectorAll('.game-card')];
 
   function filterGames() {
@@ -15,6 +15,7 @@
     let playable = 0, preview = 0, upcoming = 0;
     cards.forEach(card => {
       const visible = (activeFilter === 'all' || card.dataset.status === activeFilter)
+        && (activeProvider === 'all' || card.dataset.provider === activeProvider)
         && card.dataset.name.toLocaleLowerCase().includes(query);
       card.hidden = !visible;
       if (visible) {
@@ -27,18 +28,27 @@
       ? `${playable} playable · ${preview} UI preview · ${upcoming} coming soon`
       : `${playable} 款可试玩 · ${preview} 款界面预览 · ${upcoming} 个主题预告`;
     $('empty-results').hidden = playable + preview + upcoming > 0;
+    document.querySelectorAll('[data-provider-filter]').forEach(button => {
+      const selected = button.dataset.providerFilter === activeProvider;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
     document.querySelectorAll('[data-filter]').forEach(button => {
       const selected = button.dataset.filter === activeFilter;
       button.classList.toggle('selected', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
   }
+  document.querySelectorAll('[data-provider-filter]').forEach(button => {
+    button.addEventListener('click', () => { activeProvider = button.dataset.providerFilter; filterGames(); });
+  });
   document.querySelectorAll('[data-filter]').forEach(button => {
     button.addEventListener('click', () => { activeFilter = button.dataset.filter; filterGames(); });
   });
   $('game-search').addEventListener('input', filterGames);
   $('reset-search').addEventListener('click', () => {
     activeFilter = 'all';
+    activeProvider = 'all';
     $('game-search').value = '';
     filterGames();
     $('game-search').focus();
@@ -82,8 +92,8 @@
     const buffalo = activeGame === 'buffalo-win';
     const olympus = activeGame === 'gates-of-olympus';
     setText('player-title', olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
-    frame.title = olympus ? 'Gates of Olympus UI preview' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
-    setText('player-mode', olympus ? '界面预览 · 旋转暂未接入' : '虚拟积分试玩');
+    frame.title = olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
+    setText('player-mode', '虚拟积分试玩');
   }
 
   function showError(title, detail) {
@@ -153,7 +163,7 @@
     if (event.data?.type === 'demo:ready') {
       clearTimeout(readyTimer);
       overlay.hidden = true;
-      setText('player-status', activeGame === 'gates-of-olympus' ? '界面预览 · 旋转暂未接入' : '试玩已连接 · 独立虚拟积分');
+      setText('player-status', '试玩已连接 · 独立虚拟积分');
     } else if (event.data?.type === 'demo:error') {
       showError('游戏连接已中断', '试玩会话可能已过期，请返回大厅重新开启试玩。');
     }

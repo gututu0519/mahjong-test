@@ -1,28 +1,23 @@
-# Gates of Olympus 前端预览
+# Gates of Olympus 独立试玩服务
 
-启动：`python -m server.run --service-dir services/gates-of-olympus`，或双击本目录的 `start.bat`。
-访问 <http://127.0.0.1:8085/>；麻将服务的 <http://127.0.0.1:8080/demo/> 也提供预览入口。
+运行 `python -m server.run --service-dir services/gates-of-olympus`，默认监听 `127.0.0.1:8085`。
+从麻将服务的 `/demo/` 大厅点击宙斯「试玩」，或直接打开 `http://127.0.0.1:8085/`。
+大厅在 8080 或 8081 时均可内嵌。每次从大厅进入创建独立的 2,000 虚拟积分会话，有效期 24 小时；刷新保留进度。
 
-当前是 PP `vs20olympgate` 的英文客户端界面预览，包含启动画面、主画面、设置和规则面板。
-大厅中英文界面都可打开此英文客户端。旋转、自动旋转与结算未接入；界面会提示，服务端也拒绝非初始化游戏动作。
-余额 2,000 仅为初始化展示，无数据库、钱包或账本。设置按内存预览会话隔离，重启清除。
-端口 8085、日志 `logs/`、客户端 `../../clients/gates-of-olympus/`，均独立于 PG 服务。
+普通旋转、连消、倍率球、免费旋转、免费重触发、ante 投注及领取结算由本地引擎生成。
+免费购买已接入，保留原版入口：100 倍普通投注购买 15 次免费旋转，支持重试和重启恢复。规则证据、派彩表及待补抓项见 [引擎说明](../../server/games/gates_of_olympus/README.md)。
 
-## 资源与本地适配
+- 配置：`config/gates-of-olympus.json`。卷轴与倍率权重是本地参数，不宣称等于原厂 RTP。
+- 数据：`data/games.sqlite3`。保存钱包、令牌、局面、幂等结果、账本和设置。
+- 日志：`logs/service.log`。与其他游戏服务的进程和数据库独立。
+- 协议：`/hub-demo/ge/v3/gameService` 接受 doInit、doSpin、doCollect；也提供通用会话、状态、钱包、历史和 spin API。
 
-资源来自本机抓取 `f2e21fa2f7ee4a9daddb16f1f354bbdc`。抓取进行中也可以增量导入：
+资源在 `clients/gates-of-olympus/`。按游戏容器宽高选择横版/移动竖版；窗口缩放、手机旋转或全屏导致方向改变时，延迟 300ms 装载相应版本，沿用持久化会话并恢复未完成回合。
+两个版本都使用已有的离线反序列化兼容分支，仅限同步反序列化调用。CSP 限制远程请求。
+捕获的音频包为 MP3，HTTP 输出局部替换音频选择表达式，避免请求缺失的 OGG；磁盘原始资源不修改。
 
-```powershell
-python tools/pp_capture/import_capture.py f2e21fa2f7ee4a9daddb16f1f354bbdc
-```
+资源导入：`python tools/pp_capture/import_capture.py <capture-id>`。旋转分析使用 `tools/pp_capture/analyze_spins.py`。运行中的引擎不读取测试旋转样本。中英文桌面与移动资源已导入；大厅语言透传到启动地址，横竖屏切换保留语言与会话。中文四个语言包来自抓取 `fffa52d88f214176aacf65630c51714f`，其余 122 个资源与已有版本字节一致。中文入口 `/?lang=zh`，英文入口 `/?lang=en`，默认中文。
 
-导入器保留静态路径并记录来源和 SHA-256，遇到静态资源版本冲突时报错。
-启动页移除原站会话配置、统计脚本及跨站会话消息，使用本地随机预览令牌。
-仅导入 `doInit`，不导入或回放旋转响应。原始 HAR 和完整请求保留在抓取工具目录。
-`fixtures/` 不通过 HTTP 暴露。
+旧 `server.services.olympus_preview` 保留为仅展示资源的基础入口和资产处理器；正式 service.json 使用 `olympus_client`。
 
-原版组件反序列化要求签名的原站会话；本地适配仅在同步反序列化调用期间使用客户端已有的离线分支，随后恢复标志。
-此兼容逻辑针对当前抓取版本，升级客户端需要重新验证。运营商 logo 脚本以空配置替代，避免加载远程大厅和统计；CSP 限制外部请求。
-桌面英文资源已验证，其他语言及原生移动端资源尚未导入。
-
-验证：`python -m unittest server.tests.test_olympus_preview server.tests.test_buffalo_preview server.tests.test_process_isolation -v`。
+测试：`python -m unittest server.tests.test_olympus_engine server.tests.test_olympus_http server.tests.test_olympus_preview -v`。

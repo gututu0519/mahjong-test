@@ -9,11 +9,11 @@
 
 | 维度 | 当前值 | 后续扩展方式 |
 | --- | --- | --- |
-| 游戏身份 | `mahjong-ways2`、`buffalo-win` | 每款游戏独立包、唯一 ID、引擎与规则版本 |
+| 游戏身份 | `mahjong-ways2`、`buffalo-win`、`gates-of-olympus` | 每款游戏独立包、唯一 ID、引擎与规则版本 |
 | 玩法类别 | `slots`，连消型转轴游戏 | 新增类别元数据；不按“麻将”名字归入真人麻将对战 |
 | 交互模型 | `request_steps`，请求逐步推进 | 房间对战、持续实时游戏另设契约与服务，不强套 Spin |
 | 玩法能力 | cascades、gold_to_wild、free_spins、free_retrigger | 仅登记已实现能力，具体边界写进该游戏玩法清单 |
-| 协议 | 通用 JSON、PG 麻将二进制适配、Buffalo v2 JSON 适配 | 按协议族建目录，再按游戏建立映射 |
+| 协议 | 通用 JSON、PG 麻将二进制适配、Buffalo v2 JSON 适配、PP 表单适配 | 按协议族建目录，再按游戏建立映射 |
 
 ## 代码归属
 
@@ -60,7 +60,7 @@ server/
 | 通用游戏 API | 已实现 | 8082 | `python -m server.run --service-dir services/game-api` | `services/game-api/data/games.sqlite3` |
 | 美洲野牛本地演示 | 已实现，中文 | 8083 | `python -m server.run --service-dir services/buffalo-win` | `services/buffalo-win/data/games.sqlite3`，独立钱包与会话 |
 | 请求采集工具 | 已有独立工具 | 8090 | `response-capture/start.bat` | 由工具自身管理 |
-| Gates of Olympus 前端预览 | 已实现，英文界面，旋转未接入 | 8085 | `python -m server.run --service-dir services/gates-of-olympus` | 内存预览会话，无钱包数据库 |
+| Gates of Olympus 本地试玩 | 已实现，中英文横竖屏、生成旋转及免费回合 | 8085 | `python -m server.run --service-dir services/gates-of-olympus` | `services/gates-of-olympus/data/games.sqlite3`，独立钱包与会话 |
 | 管理与审计 | 规划，未实现 | 待定 | 待实现独立入口 | 通过受控应用接口访问数据 |
 | 房间／实时对战 | 按需要规划，未实现 | 待定 | 单独交互契约与入口 | 房间状态与结算职责分别设计 |
 

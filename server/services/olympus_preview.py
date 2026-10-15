@@ -18,8 +18,8 @@ class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
-        self.send_header('X-Game-Engine', 'frontend-preview')
-        self.send_header('Content-Security-Policy', "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' data: blob:; frame-ancestors http://127.0.0.1:8080 http://localhost:8080 'self'")
+        self.send_header('X-Game-Engine', 'generated' if getattr(self.server, 'generated', False) else 'frontend-preview')
+        self.send_header('Content-Security-Policy', "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' data: blob:; frame-ancestors http://127.0.0.1:8080 http://localhost:8080 http://127.0.0.1:8081 http://localhost:8081 'self'")
         super().end_headers()
 
     def respond(self, status, body, mime='application/json; charset=utf-8'):
@@ -41,18 +41,22 @@ class Handler(SimpleHTTPRequestHandler):
             return self.respond(200, {'status': 'ok', 'service_id': 'gates-of-olympus-preview', 'mode': 'frontend-preview'})
         if path in ('/', '/index.html'):
             query = parse_qs(urlsplit(self.path).query)
+            language = query.get('lang', ['zh'])[0]
+            if language not in ('zh', 'en'):
+                return self.respond(400, {'error': 'Invalid language'})
             token = query.get('ops', [''])[0]
             if not self.valid_session(token):
                 token = self.new_session()
             origin = f'http://127.0.0.1:{self.server.server_port}'
             config = {'accountType': 'R', 'currency': 'USD', 'currencyOriginal': 'USD',
                       'datapath': origin + BASE, 'gameService': origin + '/hub-demo/ge/v3/gameService',
-                      'lang': 'en', 'vendor': 'T', 'showRealCash': '1', 'clock': '0',
+                      'lang': language, 'vendor': 'T', 'showRealCash': '1', 'clock': '0',
                       'mgckey': token, 'styleName': 'generic', 'extend_events': '1',
                       'jurisdiction': '99', 'langSelectorEnabled': '0', 'demoMode': '1',
                       'umpcEnabled': False, 'lcEnabled': False,
                       'SETTINGS': '/hub-demo/saveSettings.do', 'announcementsUpdateSeconds': 0,
-                      'announcementsUpdateSecondsDefault': 0}
+                      'announcementsUpdateSecondsDefault': 0,
+                      'localGenerated': getattr(self.server, 'generated', False)}
             html = (CLIENT / 'index.html').read_text(encoding='utf-8').replace('__LOCAL_CONFIG__', json.dumps(config))
             return self.respond(200, html.encode(), 'text/html; charset=utf-8')
         if path.startswith('/gs2c/announcements/'):
@@ -66,8 +70,13 @@ class Handler(SimpleHTTPRequestHandler):
         relative = target.relative_to(CLIENT.resolve()).as_posix()
         if relative != 'local-preview.js' and not relative.startswith('hub-demo/common/'):
             return self.send_error(404)
-        if path == BASE + 'desktop/build.js':
-            data = target.read_bytes() + b'\n' + (CLIENT / 'local-deserializer.js').read_bytes()
+        if path in (BASE + 'desktop/build.js', BASE + 'mobile/build.js'):
+            # Audio initialization runs inside the bundle, before the appended adapter.
+            # Both captures contain MP3 packages, not the browser-preferred OGG ones.
+            data = target.read_bytes().replace(
+                b'capabilities["ogg"]?SoundHelper.AudioFormat.ogg:SoundHelper.AudioFormat.mp3',
+                b'SoundHelper.AudioFormat.mp3')
+            data += b'\n' + (CLIENT / 'local-deserializer.js').read_bytes()
             return self.respond(200, data, 'application/javascript; charset=utf-8')
         return super().do_GET()
 
@@ -100,8 +109,8 @@ class Handler(SimpleHTTPRequestHandler):
                 if not isinstance(payload, dict) or payload.get('language', 'en') not in ('zh', 'en'):
                     raise ValueError()
                 token = self.new_session()
-                return self.respond(201, {'game_id': 'gates-of-olympus', 'language': 'en', 'mode': 'frontend-preview',
-                                         'launch_url': '/?' + urlencode({'mock': 1, 'ops': token, 'symbol': 'vs20olympgate'}),
+                return self.respond(201, {'game_id': 'gates-of-olympus', 'language': payload.get('language', 'zh'), 'mode': 'frontend-preview',
+                                         'launch_url': '/?' + urlencode({'mock': 1, 'ops': token, 'lang': payload.get('language', 'zh'), 'symbol': 'vs20olympgate'}),
                                          'expires_at': int(self.server.sessions[token]['expires'])})
             form = parse_qs(body.decode('utf-8'), keep_blank_values=True)
             token = form.get('mgckey', [''])[0]

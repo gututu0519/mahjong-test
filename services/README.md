@@ -12,7 +12,7 @@ services/
     logs/              本服务自己的运行日志（不提交）
   game-api/            独立 JSON API 演示服务，8082，同样一套目录
   buffalo-win/         美洲野牛网页及其服务，8083，同样一套目录
-  gates-of-olympus/    PP 英文前端预览，8085，无游戏引擎或数据库
+  gates-of-olympus/    PP 英文横竖屏试玩，8085，独立引擎和数据库
 ```
 
 双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
@@ -43,8 +43,8 @@ python -m server.run --service-dir services/buffalo-win
 
 ## 增加服务
 
-PP Gates of Olympus 的独立前端预览见 [预览服务说明](gates-of-olympus/README.md)。
-`olympus_preview` 入口仅加载客户端与初始化样本，`games` 必须为空；设置仅保存在各预览会话内存中。
+PP Gates of Olympus 的独立生成服务见 [服务说明](gates-of-olympus/README.md)。
+`olympus_client` 入口只装载 `gates-of-olympus`，钱包、局面与设置保存到本服务 SQLite。旧 `olympus_preview` 入口仅供资源预览，`games` 必须为空。
 
 新建 `services/<service-id>/`，提供唯一 ID、独立端口和 `service.json`，在 `config/` 中放该服务选择的游戏配置。
 JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不会自动加载全部游戏。
