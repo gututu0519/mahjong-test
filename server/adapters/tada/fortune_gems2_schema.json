@@ -1,0 +1,758 @@
+{
+  "AwardData": {
+    "Symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "Line": [
+      2,
+      "int32",
+      false
+    ],
+    "Win": [
+      3,
+      "double",
+      false
+    ]
+  },
+  "BuySpin": {
+    "BuyCustomType": [
+      1,
+      "int32",
+      false
+    ]
+  },
+  "Column": {
+    "Col": [
+      1,
+      "int32",
+      true
+    ]
+  },
+  "ExtraSpin": {
+    "Index": [
+      1,
+      "uint32",
+      false
+    ]
+  },
+  "FreeSpin": {
+    "free": [
+      1,
+      "bool",
+      false
+    ]
+  },
+  "GameInfoAck": {
+    "WalletInfo": [
+      1,
+      "WalletInfo",
+      true
+    ],
+    "Prefer": [
+      2,
+      "PreferRoundShow",
+      false
+    ],
+    "FreeSpinRemain": [
+      3,
+      "int32",
+      false
+    ],
+    "extraInfo": [
+      5,
+      "bytes",
+      false
+    ],
+    "jpUnlockBet": [
+      7,
+      "double",
+      true
+    ],
+    "mall": [
+      8,
+      "MallInfo",
+      false
+    ],
+    "ApiType": [
+      9,
+      "int32",
+      false
+    ],
+    "FreeSpinBet": [
+      10,
+      "double",
+      false
+    ],
+    "gameMall": [
+      12,
+      "GameMallInfo",
+      false
+    ],
+    "MaxOdd": [
+      13,
+      "double",
+      false
+    ],
+    "freeSpin": [
+      14,
+      "freeSpinList",
+      false
+    ],
+    "freeSpinType": [
+      15,
+      "int32",
+      false
+    ],
+    "tournament": [
+      16,
+      "Tournament",
+      false
+    ],
+    "clientData": [
+      17,
+      "string",
+      false
+    ],
+    "hotHandData": [
+      18,
+      "hotHandData",
+      true
+    ],
+    "lastBet": [
+      19,
+      "double",
+      false
+    ]
+  },
+  "GameInfoData": {
+    "Mul": [
+      6,
+      "double",
+      true
+    ],
+    "WheelOdds": [
+      9,
+      "double",
+      true
+    ]
+  },
+  "GameMallInfo": {
+    "MaxBet": [
+      1,
+      "double",
+      false
+    ],
+    "PriceOdd": [
+      2,
+      "double",
+      true
+    ],
+    "AlterID": [
+      3,
+      "int32",
+      true
+    ]
+  },
+  "HotHandSpin": {
+    "hotHand": [
+      1,
+      "bool",
+      false
+    ]
+  },
+  "ItemSpin": {
+    "Index": [
+      2,
+      "uint32",
+      false
+    ]
+  },
+  "MallInfo": {
+    "PriceOdd": [
+      1,
+      "double",
+      false
+    ],
+    "DescType": [
+      2,
+      "int32",
+      false
+    ],
+    "MaxBet": [
+      3,
+      "double",
+      false
+    ],
+    "AlterID": [
+      4,
+      "int32",
+      false
+    ],
+    "Show": [
+      5,
+      "int32",
+      false
+    ]
+  },
+  "MallSpin": {
+    "Type": [
+      1,
+      "int32",
+      false
+    ],
+    "Index": [
+      2,
+      "int32",
+      false
+    ],
+    "Bet": [
+      3,
+      "double",
+      false
+    ]
+  },
+  "PreferRoundShow": {
+    "BaseRound": [
+      1,
+      "double",
+      false
+    ],
+    "SigmaRound": [
+      2,
+      "double",
+      false
+    ],
+    "Show": [
+      7,
+      "int32",
+      false
+    ]
+  },
+  "ServiceData": {
+    "missionReward": [
+      1,
+      "uint32",
+      false
+    ],
+    "jpType": [
+      2,
+      "int32",
+      false
+    ],
+    "jpWin": [
+      3,
+      "double",
+      false
+    ],
+    "fullJpWin": [
+      4,
+      "double",
+      false
+    ],
+    "trialfinish": [
+      5,
+      "int32",
+      false
+    ],
+    "trialaward": [
+      6,
+      "int32",
+      false
+    ],
+    "freeremain": [
+      7,
+      "int32",
+      false
+    ],
+    "cardlist": [
+      8,
+      "bytes",
+      false
+    ],
+    "missionlist": [
+      13,
+      "bytes",
+      false
+    ],
+    "freeRemainV2": [
+      15,
+      "freeSpinList",
+      false
+    ],
+    "mission2": [
+      16,
+      "bytes",
+      false
+    ],
+    "hotHandData": [
+      18,
+      "hotHandData",
+      true
+    ],
+    "tadaJpOpen": [
+      19,
+      "TadaJPOpenResult",
+      false
+    ]
+  },
+  "SpecialBonus": {},
+  "SpecialCase": {
+    "turbo": [
+      1,
+      "bool",
+      false
+    ],
+    "cheat": [
+      2,
+      "uint32",
+      false
+    ],
+    "tournament": [
+      4,
+      "bool",
+      false
+    ]
+  },
+  "SpinAck": {
+    "PlateSymbol": [
+      1,
+      "Column",
+      true
+    ],
+    "AwardDataVec": [
+      2,
+      "AwardData",
+      true
+    ],
+    "AwardTypeFlag": [
+      3,
+      "int32",
+      false
+    ],
+    "LineMult": [
+      4,
+      "double",
+      false
+    ],
+    "LineWin": [
+      5,
+      "double",
+      false
+    ],
+    "WheelOdd": [
+      6,
+      "double",
+      false
+    ],
+    "WheelMult": [
+      7,
+      "double",
+      false
+    ],
+    "WheelWin": [
+      8,
+      "double",
+      false
+    ],
+    "TotalWin": [
+      9,
+      "double",
+      false
+    ],
+    "MultShowArray": [
+      10,
+      "double",
+      true
+    ],
+    "LightOnPos": [
+      11,
+      "int32",
+      true
+    ],
+    "Bet": [
+      12,
+      "double",
+      false
+    ],
+    "Extra": [
+      13,
+      "bool",
+      false
+    ],
+    "ShowIndex": [
+      14,
+      "string",
+      false
+    ],
+    "NowMoney": [
+      15,
+      "double",
+      false
+    ],
+    "AckType": [
+      16,
+      "int32",
+      false
+    ],
+    "IsBonus": [
+      17,
+      "bool",
+      false
+    ],
+    "RTP": [
+      18,
+      "double",
+      false
+    ],
+    "MaxFlag": [
+      19,
+      "bool",
+      false
+    ]
+  },
+  "SpinReq": {
+    "bet": [
+      1,
+      "double",
+      false
+    ],
+    "customReq": [
+      10,
+      "bytes",
+      false
+    ],
+    "item": [
+      22,
+      "ItemSpin",
+      false
+    ],
+    "mall": [
+      23,
+      "MallSpin",
+      false
+    ],
+    "buy": [
+      24,
+      "BuySpin",
+      false
+    ],
+    "special": [
+      25,
+      "SpecialCase",
+      false
+    ],
+    "extraSpin": [
+      26,
+      "ExtraSpin",
+      false
+    ],
+    "freeSpin": [
+      27,
+      "FreeSpin",
+      false
+    ],
+    "clientRecord": [
+      28,
+      "bytes",
+      false
+    ],
+    "specialBonus": [
+      29,
+      "SpecialBonus",
+      false
+    ],
+    "hotHandSpin": [
+      31,
+      "HotHandSpin",
+      false
+    ]
+  },
+  "SpinResponse": {
+    "data": [
+      1,
+      "bytes",
+      false
+    ],
+    "service": [
+      2,
+      "ServiceData",
+      false
+    ],
+    "totalWin": [
+      3,
+      "double",
+      false
+    ],
+    "roundIndex": [
+      4,
+      "int64",
+      false
+    ],
+    "postMoney": [
+      6,
+      "double",
+      false
+    ],
+    "StartRound": [
+      7,
+      "int32",
+      false
+    ],
+    "hasspin": [
+      8,
+      "bool",
+      false
+    ],
+    "BDType": [
+      9,
+      "int32",
+      false
+    ],
+    "BBTimes": [
+      10,
+      "int32",
+      false
+    ],
+    "MallBet": [
+      11,
+      "double",
+      false
+    ],
+    "AccuMallBet": [
+      12,
+      "double",
+      false
+    ],
+    "ItemID": [
+      13,
+      "int32",
+      false
+    ],
+    "ItemIcon": [
+      14,
+      "int32",
+      false
+    ],
+    "ItemAmount": [
+      15,
+      "int32",
+      false
+    ],
+    "BaseBet": [
+      16,
+      "double",
+      false
+    ],
+    "RealBet": [
+      17,
+      "double",
+      false
+    ],
+    "SpinType": [
+      18,
+      "int32",
+      false
+    ],
+    "ItemLevel": [
+      19,
+      "int32",
+      false
+    ],
+    "roundIndexV2": [
+      20,
+      "int64",
+      false
+    ],
+    "GameMallBet": [
+      21,
+      "double",
+      false
+    ],
+    "GameMallType": [
+      22,
+      "int32",
+      false
+    ],
+    "spinReq": [
+      23,
+      "SpinReq",
+      false
+    ],
+    "clientData": [
+      24,
+      "string",
+      false
+    ]
+  },
+  "TadaJPOpenResult": {
+    "success": [
+      1,
+      "bool",
+      false
+    ],
+    "jpType": [
+      2,
+      "uint32",
+      false
+    ],
+    "prizeAmount": [
+      3,
+      "double",
+      false
+    ],
+    "recordID": [
+      4,
+      "int64",
+      false
+    ],
+    "multiplier": [
+      5,
+      "int32",
+      false
+    ]
+  },
+  "Tournament": {
+    "balance": [
+      2,
+      "double",
+      false
+    ],
+    "initBalance": [
+      3,
+      "double",
+      false
+    ],
+    "MinBet": [
+      4,
+      "double",
+      false
+    ],
+    "MaxBet": [
+      5,
+      "double",
+      false
+    ],
+    "buyBonusOn": [
+      9,
+      "bool",
+      false
+    ],
+    "extraBetOn": [
+      10,
+      "bool",
+      false
+    ],
+    "category": [
+      11,
+      "int32",
+      false
+    ]
+  },
+  "WalletInfo": {
+    "currencyNumber": [
+      1,
+      "int32",
+      false
+    ],
+    "currencyName": [
+      2,
+      "string",
+      false
+    ],
+    "currencySymbol": [
+      3,
+      "string",
+      false
+    ],
+    "coin": [
+      4,
+      "double",
+      false
+    ],
+    "bet": [
+      5,
+      "double",
+      true
+    ],
+    "unit": [
+      6,
+      "double",
+      false
+    ],
+    "ratio": [
+      7,
+      "double",
+      false
+    ],
+    "rate": [
+      8,
+      "double",
+      false
+    ],
+    "upper": [
+      9,
+      "double",
+      false
+    ],
+    "lower": [
+      10,
+      "double",
+      false
+    ],
+    "cycle": [
+      11,
+      "double",
+      false
+    ],
+    "decimal": [
+      12,
+      "int32",
+      false
+    ]
+  },
+  "freeSpinList": {},
+  "hotHandData": {
+    "referenceId": [
+      1,
+      "string",
+      false
+    ],
+    "total": [
+      4,
+      "int32",
+      false
+    ],
+    "remain": [
+      5,
+      "int32",
+      false
+    ],
+    "multiplier": [
+      6,
+      "double",
+      false
+    ],
+    "maxBet": [
+      7,
+      "double",
+      false
+    ],
+    "totalWin": [
+      8,
+      "double",
+      false
+    ],
+    "maxWin": [
+      9,
+      "double",
+      false
+    ],
+    "gameID": [
+      10,
+      "int32",
+      false
+    ]
+  }
+}

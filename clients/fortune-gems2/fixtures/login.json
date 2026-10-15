@@ -1,0 +1,95 @@
+{
+  "homeUrl": "/",
+  "linecode": 0,
+  "profile": {
+    "id": 1,
+    "aid": 1,
+    "apiId": 2,
+    "transactionMode": 0,
+    "subAgentCode": 30,
+    "isLobbyOpen": false,
+    "meta": {},
+    "platform": "<nil>",
+    "lobbyMode": 0,
+    "switchOffs": [
+      35,
+      41,
+      49,
+      5,
+      25,
+      1
+    ],
+    "wallets": null,
+    "nickname": "Player",
+    "newNickname": "Player",
+    "siteId": 1,
+    "account": "Player",
+    "coin": 2000,
+    "isJPEnabled": 0,
+    "linecode": 0,
+    "prefix": "Player",
+    "clientMode": [
+      {
+        "eventId": 1,
+        "value": [
+          50
+        ]
+      },
+      {
+        "eventId": 3,
+        "value": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ]
+      },
+      {
+        "eventId": 7,
+        "value": [
+          "0"
+        ]
+      },
+      {
+        "eventId": 8,
+        "value": [
+          2400
+        ]
+      },
+      {
+        "eventId": 9,
+        "value": [
+          15
+        ]
+      }
+    ],
+    "betLevel": -1,
+    "betValue": 0,
+    "license": 0,
+    "isGiftCodeOpen": false,
+    "freeSpinBetValue": 0,
+    "apiType": 0,
+    "walletType": 1,
+    "liveId": "",
+    "liveSourceUrls": null
+  },
+  "token": "",
+  "response": {
+    "error": 0,
+    "message": "",
+    "time": 0
+  },
+  "platformVersion": "uat.2.0.245",
+  "lobbyMode": 0,
+  "disableFullScreen": 0,
+  "country": "United States",
+  "certId": 0,
+  "certArea": 0,
+  "isnewplayer": 0,
+  "clientApiParam": "",
+  "itaAuthId": "",
+  "thousandthMode": "",
+  "eventBannerId": 2,
+  "subDivision": "California"
+}

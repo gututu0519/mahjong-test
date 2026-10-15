@@ -112,13 +112,6 @@ h2 { margin:0; font-size:23px; font-weight:600; }
 .fruit-art>span:first-child { left:0; top:7px; transform:rotate(-20deg); }
 .fruit-art>span:nth-child(2) { right:0; top:0; transform:rotate(20deg); font-size:56px; }
 .fruit-art>span:last-child { right:12px; bottom:0; font-size:43px; }
-.cosmic-cover { background:radial-gradient(ellipse at 50% 20%,#8868d4,#4b3489 50%,#292451); color:#e9e3ff; }
-.gem-art { width:150px; height:104px; position:relative; }
-.gem-art>span { position:absolute; width:59px; height:64px; left:46px; top:12px; clip-path:polygon(25% 0,75% 0,100% 35%,50% 100%,0 35%); background:conic-gradient(from 45deg at 50% 35%,#eac9ff 0deg 60deg,#9c73fa 60deg 135deg,#5536b9 135deg 215deg,#ac84ff 215deg 270deg,#fff0ff 270deg); transform:rotate(8deg); }
-.gem-art>span:first-child { left:0; top:33px; width:43px; height:47px; transform:rotate(-22deg); filter:hue-rotate(40deg); }
-.gem-art>span:last-child { left:111px; top:35px; width:35px; height:39px; transform:rotate(26deg); filter:hue-rotate(-50deg); }
-.sevens-cover { background:radial-gradient(ellipse at 50% 20%,#d36fa1,#883a72 50%,#4b2752); color:#ffdda0; }
-.sevens-art { font:italic 900 74px/1 Georgia,serif; letter-spacing:-9px; padding-right:10px; height:104px; padding-top:17px; transform:rotate(-10deg); color:#ffe2a2; text-shadow:3px 3px #df7a61,6px 6px #94394c,9px 10px 14px #5d234f; }
 .game-details { padding:17px 15px 14px; }
 .game-category { font-size:8px; color:#8f829f; letter-spacing:.7px; }
 .game-category>span { padding:0 4px; }
@@ -128,7 +121,6 @@ h2 { margin:0; font-size:23px; font-weight:600; }
 .secondary { color:#f1e8ff; background:#8b54df; border:1px solid #ae7dfb55; border-radius:6px; font-size:11px; padding:9px 15px; display:inline-flex; gap:15px; align-items:center; justify-content:center; }
 .secondary:hover { background:#a66af8; }
 .secondary>span { font-size:8px; }
-.coming-soon { color:#9e91af; background:#26212e; padding:9px; border:1px solid #ffffff08; font-size:9px; border-radius:5px; white-space:nowrap; }
 .catalog-note { font-size:9px; color:#686072; margin:16px 0 0; }
 .catalog-error { padding:15px; color:#efc997; font-size:12px; }
 .text-button { color:#cba7ff; background:none; border:0; padding:5px 0; }
@@ -260,7 +252,6 @@ body:has(dialog[open]) { overflow:hidden; }
   .game-details h3 { font-size:13px; }
   .card-bottom { flex-wrap:wrap; gap:10px; }
   .secondary { padding:8px 12px; font-size:10px; gap:12px; }
-  .coming-soon { font-size:8px; padding:8px; }
   .cover-caption { font-size:7px; letter-spacing:0; }
   .catalog-note { font-size:8px; line-height:1.9; }
   .guide { padding:23px; margin-top:25px; }

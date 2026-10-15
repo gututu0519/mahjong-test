@@ -44,7 +44,9 @@ python -m server.run --service-dir services/buffalo-win
 
 ## 增加服务
 
-JILI Super Ace 开发检查点：端口 8088，`super_ace_client`。原版客户端尚有启动阻塞；已完成部分、验证结果及换电脑继续步骤见 [Super Ace 交接说明](super-ace/README.md)。
+TaDa Fortune Gems 2：端口 8089，`fortune_gems2_client`。当前为未完成的开发检查点，介绍页停在 100%，尚未接入大厅；明天的继续步骤、排障证据和补抓项见 [Fortune Gems 2 接续文档](fortune-gems2/README.md)。
+
+JILI Super Ace：端口 8088，`super_ace_client`。客户端启动与主游戏试玩已打通，平台附加功能仍待补齐；验证范围及继续步骤见 [Super Ace 交接说明](super-ace/README.md)。
 
 PP Gates of Olympus 的独立生成服务见 [服务说明](gates-of-olympus/README.md)。
 Sweet Bonanza POP 的接入状态与补抓项见 [服务说明](sweet-bonanza-pop/README.md)，入口 `sweet_bonanza_pop_client`，端口 8086。

@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'fortune-gems2': {
+        'factory': 'server.games.fortune_gems2:FortuneGems2',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'wild', 'multipliers', 'extra_bet', 'lucky_wheel'],
+    },
     'super-ace': {
         'factory': 'server.games.super_ace:SuperAce',
         'category': 'slots', 'interaction': 'request_steps',

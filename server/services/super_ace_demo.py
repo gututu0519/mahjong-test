@@ -15,6 +15,11 @@ from server.transport.http import PlatformRoutes
 
 ROOT = Path(__file__).resolve().parents[2]
 
+PAGE_BACK = ('<button type="button" aria-label="Back to game" '
+             'style="position:fixed;right:12px;top:12px;z-index:10;padding:8px 14px;'
+             'border:1px solid #c79b45;border-radius:6px;background:#24180d;color:#f9dfaa;cursor:pointer" '
+             'onclick="parent.postMessage(\'CloseWebView\',location.origin)">Back to game</button>')
+
 
 class Handler(SimpleHTTPRequestHandler):
     _json = PlatformRoutes._json
@@ -83,12 +88,17 @@ class Handler(SimpleHTTPRequestHandler):
                 row['wallet']['credit_minor']/10000, row['wallet']['after_minor']/10000) for row in rows)
             return self.respond(200, ('<!doctype html><meta name="viewport" content="width=device-width"><title>Super Ace History</title>'
                 '<style>body{background:#24180d;color:#f9dfaa;font:16px system-ui;padding:20px}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:right;border-bottom:1px solid #70532c}</style>'
-                '<h1>Super Ace</h1><table><tr><th>Round</th><th>Bet</th><th>Win</th><th>Balance</th></tr>' + body + '</table>').encode(), 'text/html; charset=utf-8')
+                + PAGE_BACK + '<h1>Super Ace</h1><table><tr><th>Round</th><th>Bet</th><th>Win</th><th>Balance</th></tr>' + body + '</table>').encode(), 'text/html; charset=utf-8')
         if path in ('/rules', '/en-US/intro'):
-            return self.respond(200, (CLIENT/'rules.html').read_bytes(), 'text/html; charset=utf-8')
+            document = (CLIENT/'rules.html').read_text(encoding='utf-8').replace('<h1>', PAGE_BACK + '<h1>', 1)
+            return self.respond(200, document.encode(), 'text/html; charset=utf-8')
         relative = path.lstrip('/')
         if path == '/fullhouse/':
             token = parse_qs(url.query).get('ops', [''])[0]
+            # Original connectivity monitor requests the bare launch path.
+            # A probe returns no session data and never creates a new account.
+            if not token and self.headers.get('Sec-Fetch-Dest') == 'empty':
+                return self.respond(204, b'')
             self.server.service.wallet(token)
             document = (CLIENT/'fullhouse/index.html').read_text(encoding='utf-8')
             document = document.replace('<head>', '<head><script src="/local-adapter.js"></script>', 1)

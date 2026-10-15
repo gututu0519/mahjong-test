@@ -25,8 +25,8 @@
       }
     });
     $('result-count').textContent = window.SpinLabI18n.language === 'en'
-      ? `${playable} playable · ${preview} UI preview · ${upcoming} coming soon`
-      : `${playable} 款可试玩 · ${preview} 款界面预览 · ${upcoming} 个主题预告`;
+      ? `${playable} playable · ${preview} UI preview` + (upcoming ? ` · ${upcoming} coming soon` : '')
+      : `${playable} 款可试玩 · ${preview} 款界面预览` + (upcoming ? ` · ${upcoming} 个主题预告` : '');
     $('empty-results').hidden = playable + preview + upcoming > 0;
     document.querySelectorAll('[data-provider-filter]').forEach(button => {
       const selected = button.dataset.providerFilter === activeProvider;

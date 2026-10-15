@@ -13,7 +13,7 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
@@ -32,6 +32,8 @@ def load_profile(directory):
         raise ValueError('Olympus client service only supports its own game')
     if spec['entry'] == 'big_bass_bonanza_client' and games != ['big-bass-bonanza']:
         raise ValueError('Big Bass service only supports its own game')
+    if spec['entry'] == 'fortune_gems2_client' and games != ['fortune-gems2']:
+        raise ValueError('Fortune Gems 2 service only supports its own game')
     configs = {}
     if spec['entry'] == 'super_ace_client' and games != ['super-ace']:
         raise ValueError('Super Ace service only supports its own game')
@@ -54,6 +56,9 @@ def build_from_directory(directory, port=None):
     if spec['entry'] == 'olympus_preview':
         from server.services.olympus_preview import build_server
         http = build_server(actual_port)
+    elif spec['entry'] == 'fortune_gems2_client':
+        from server.services.fortune_gems2_demo import build_server
+        http = build_server(actual_port, database, configs['fortune-gems2'])
     elif spec['entry'] == 'super_ace_client':
         from server.services.super_ace_demo import build_server
         http = build_server(actual_port, database, configs['super-ace'])

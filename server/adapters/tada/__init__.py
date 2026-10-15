@@ -1,0 +1,1 @@
+"""TaDa client protocol adapters."""

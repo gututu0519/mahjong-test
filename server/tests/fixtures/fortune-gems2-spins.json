@@ -1,0 +1,2770 @@
+[
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "Col": [
+            8,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            11,
+            8,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "Col": [
+            2,
+            7,
+            7
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            9,
+            11,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 5.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            6,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            8,
+            11,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 5.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            2
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            10,
+            8,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "Col": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 3,
+          "Line": 4,
+          "Win": 0.4
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 1,
+      "LineMult": 1.0,
+      "LineWin": 0.4,
+      "TotalWin": 0.4,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0.4
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            8,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            3
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            6
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            6
+          ]
+        },
+        {
+          "Col": [
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            8,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            14,
+            8,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            0,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "Col": [
+            6,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            8,
+            12,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 10.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "Col": [
+            0,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 1.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            9,
+            14,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 1,
+          "Line": 4,
+          "Win": 0.2
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 3,
+      "LineMult": 1.0,
+      "LineWin": 0.2,
+      "WheelOdd": 8.0,
+      "WheelMult": 1.0,
+      "WheelWin": 1.6,
+      "TotalWin": 1.8,
+      "Bet": 0.2,
+      "IsBonus": true,
+      "RTP": 0.97
+    },
+    "totalWin": 1.8
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            5,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            8,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 5,
+          "Line": 1,
+          "Win": 0.6
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 1,
+      "LineMult": 1.0,
+      "LineWin": 0.6,
+      "TotalWin": 0.6,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0.6
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            2
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            1
+          ]
+        },
+        {
+          "Col": [
+            8,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            11,
+            8
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 5.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            7,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            8,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "Col": [
+            2,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 6,
+          "Line": 2,
+          "Win": 1.6
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 1,
+      "LineMult": 2.0,
+      "LineWin": 1.6,
+      "TotalWin": 1.6,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 1.6
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            6
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            10,
+            11,
+            15
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 5.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            11,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "Col": [
+            5,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            6,
+            6,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "Col": [
+            10,
+            11,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 5.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            3,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            1,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            12,
+            10,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            13,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 15.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            5,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            1
+          ]
+        },
+        {
+          "Col": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            7,
+            7,
+            7
+          ]
+        },
+        {
+          "Col": [
+            1,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            1,
+            7,
+            7
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            4
+          ]
+        },
+        {
+          "Col": [
+            11,
+            9,
+            13
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            3
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            1
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "Col": [
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            11,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            3,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            7,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            2,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            6
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 2,
+          "Line": 1,
+          "Win": 0.96
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 1,
+      "LineMult": 3.0,
+      "LineWin": 0.96,
+      "TotalWin": 0.96,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0.96
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "Col": [
+            11,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            4,
+            0
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            11,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            3,
+            0
+          ]
+        },
+        {
+          "Col": [
+            4,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            11
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "Col": [
+            11,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "Col": [
+            11,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            12
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 2.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            6
+          ]
+        },
+        {
+          "Col": [
+            6,
+            6,
+            0
+          ]
+        },
+        {
+          "Col": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            11,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "Col": [
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            2,
+            2,
+            4
+          ]
+        },
+        {
+          "Col": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "Col": [
+            3,
+            3,
+            4
+          ]
+        },
+        {
+          "Col": [
+            10,
+            9,
+            10
+          ]
+        }
+      ],
+      "AwardDataVec": [
+        {
+          "Symbol": 4,
+          "Line": 2,
+          "Win": 0.96
+        }
+      ],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "AwardTypeFlag": 1,
+      "LineMult": 2.0,
+      "LineWin": 0.96,
+      "TotalWin": 0.96,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0.96
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            3,
+            5,
+            5
+          ]
+        },
+        {
+          "Col": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            5,
+            0,
+            0
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.2,
+      "extraSpin": {}
+    },
+    "spin": {
+      "PlateSymbol": [
+        {
+          "Col": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "Col": [
+            2,
+            6,
+            6
+          ]
+        },
+        {
+          "Col": [
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "Col": [
+            9,
+            10,
+            9
+          ]
+        }
+      ],
+      "AwardDataVec": [],
+      "MultShowArray": [],
+      "LightOnPos": [],
+      "LineMult": 3.0,
+      "Bet": 0.2,
+      "Extra": true,
+      "RTP": 0.97
+    },
+    "totalWin": 0
+  }
+]
