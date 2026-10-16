@@ -294,3 +294,5 @@ body:has(dialog[open]) { overflow:hidden; }
 .sweet-pop-cover-image { width:100%; height:100%; object-fit:contain; }
 
 .bass-cover{background:radial-gradient(ellipse at 50% 20%,#62d7dd 0%,#1588aa 42%,#064c73 100%)}
+
+.fortune-gems2-cover-image{width:100%;height:100%;object-fit:contain;padding:24px;box-sizing:border-box;background:radial-gradient(ellipse at center,#71411a,#211409)}

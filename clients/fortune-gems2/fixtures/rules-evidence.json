@@ -1,0 +1,49 @@
+{
+  "capture": "24652cc7afc340e38db4fdc47179f6f7",
+  "requests": [
+    450,
+    454
+  ],
+  "paytable_multiples": [
+    0.4,
+    1,
+    1.6,
+    2,
+    2.4,
+    3,
+    4,
+    5
+  ],
+  "strings": {
+    "i18_INTRO_FGP_1": "Symbol",
+    "i18_INTRO_FGP_14": "Paytable",
+    "i18_INTRO_FGP_16": "All winning symbols pay from left to right on adjacent reels starting from the leftmost reel.",
+    "i18_INTRO_FGP_18": "This is a video slot with 3 reels and 1 special reel, 3 rows and the number of  paylines is 5.",
+    "i18_INTRO_FGP_19": "All winning symbols pay from left to right on selected paylines.",
+    "i18_INTRO_FGP_20": "Payline:",
+    "i18_INTRO_FGP_22": "Winnings for normal bet mode = Payout x Bet x special reel multiplier/5",
+    "i18_INTRO_FGP_23": "e.g. In normal bet mode, player bets 1 and wins {img0}{img0}{img0} in the first payline and the special reel center is{img1}, that winnings will be \"(20 x 1 x 10)/5 = 40 \".",
+    "i18_INTRO_FGP_24": "Winnings for Extra Bet mode = Payout x Extra Bets x special reel multiplier/{num0}",
+    "i18_INTRO_FGP_25": "e.g.  In Extra Bet mode, player bets 1 which Extra Bets is {num0} and wins {img0}{img0}{img0} in the first payline and the special reel center is {img1}, that winnings will be \"{num1} \".",
+    "i18_INTRO_FGP_27": "Feature games will play with the same bet settings as those in the trigger game.",
+    "i18_INTRO_FGP_3": "Special Reel",
+    "i18_INTRO_FGP_4": "The 4th reel is a special reel, and{txt0} and {img0}.",
+    "i18_INTRO_FGP_4_txt0": "contains only multiplier symbols",
+    "i18_INTRO_FGP_5": "All winnings will be multiplied by the multiplier which is landed at the center of the special reel.",
+    "i18_INTRO_FGP_6": "There are 6 multiplier symbols in normal bet mode: 1x, 2x, 3x, 5x, 10x, 15x.",
+    "i18_INTRO_FGP_7_txt0": "trigger the Lucky Wheel",
+    "i18_INTRO_FGP_10": "Extra Bet",
+    "i18_INTRO_FGP_11": "An additional 50% of the bet is required to pay for the Extra Bets.",
+    "i18_INTRO_FGP_12": "In Extra Bet mode, 1x multiplier symbol will be removed from the special reel. And {txt0}",
+    "i18_INTRO_FGP_12_txt0": "the chance of landing the high multiplier symbols will significantly be increased!",
+    "i18_INTRO_FGP_13": "In Extra Bet mode, {img0} are upgraded to {img1}. The prize value on the Lucky Wheel will be multiplied by a random multiplier which could be: 1x, 2x, 3x, 5x, 10x, 15x.",
+    "i18_INTRO_FGP_15": "Payouts are shown as bet = {num0}.",
+    "i18_INTRO_FGP_17": "Game Rules",
+    "i18_INTRO_FGP_2": "This is the WILD symbol.\nIt appears on all reels and substitutes for all symbols.",
+    "i18_INTRO_FGP_21": "Only the highest win is paid on each payline.",
+    "i18_INTRO_FGP_26": "When winning on multiple paylines, all wins are added to the total win.",
+    "i18_INTRO_FGP_7": "Landing {img0} at the center of the special reel will {txt0}.",
+    "i18_INTRO_FGP_8": "Lucky Wheel",
+    "i18_INTRO_FGP_9": "Triggering the Lucky Wheel will award a random prize value which could be 1x, 3x, 5x, 8x, 10x, 15x, 20x, 30x, 50x, 100x, 200x or 1000x of the bet."
+  }
+}

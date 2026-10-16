@@ -374,17 +374,23 @@
     "fgp/assets/game/native/24/241b2935-e665-4d52-87d6-c86c688d3398.753fb.bin": {
       "request_id": 2414,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/24/241b2935-e665-4d52-87d6-c86c688d3398.753fb.bin",
-      "bytes": 3636
+      "bytes": 2931,
+      "sha256": "6f83999c841a77469346272948b2252dbfb89a25f8ed7c3ec79d2f88aed68730",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/7e/7e369212-f7ae-49b8-b138-5d8105176d43.b8d9f.bin": {
       "request_id": 2415,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/7e/7e369212-f7ae-49b8-b138-5d8105176d43.b8d9f.bin",
-      "bytes": 165957
+      "bytes": 128100,
+      "sha256": "03d519d0a17848dd32a4da240bf39aef44af53507b2f81b958fe686b30a309ef",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/6d/6de3c2a4-db89-40e3-a2e3-c8c391a94bb8.7af87.bin": {
       "request_id": 2416,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/6d/6de3c2a4-db89-40e3-a2e3-c8c391a94bb8.7af87.bin",
-      "bytes": 10261
+      "bytes": 8290,
+      "sha256": "4c639bb73044d979dbe99484f4ac6c18b4b16e1e29fec662e2101074ae59e4a7",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/f4/f4da8802-589e-4fe7-8a77-2d4676b226bc.e842c.webp": {
       "request_id": 2417,
@@ -429,7 +435,9 @@
     "fgp/assets/game/native/aa/aa532d30-9ff3-4121-b490-8c89123b896b.1967d.bin": {
       "request_id": 2424,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/aa/aa532d30-9ff3-4121-b490-8c89123b896b.1967d.bin",
-      "bytes": 6251
+      "bytes": 4671,
+      "sha256": "61ed69130bb52a990da5498e00b28cf43614415540d7520e520f8933f1c750df",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/f9/f935be1f-8477-4bb8-ae58-471772e9400c.17af2.png": {
       "request_id": 2426,
@@ -454,7 +462,9 @@
     "fgp/assets/game/native/b2/b2e462d0-2577-4874-9c77-a56e87a8fcc4.06738.bin": {
       "request_id": 2429,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/b2/b2e462d0-2577-4874-9c77-a56e87a8fcc4.06738.bin",
-      "bytes": 71652
+      "bytes": 57994,
+      "sha256": "cabb3f5466f6f7607629a09969a22a67513c27e42a18c34fd564276d5462e5fe",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/8d/8de8d18b-ee66-4559-a594-1a4e04e76b83.45f8f.png": {
       "request_id": 2431,
@@ -469,7 +479,9 @@
     "fgp/assets/game/native/3e/3e5c8547-334c-4f09-bd6f-c98802fd831f.898b5.bin": {
       "request_id": 2433,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/3e/3e5c8547-334c-4f09-bd6f-c98802fd831f.898b5.bin",
-      "bytes": 16285
+      "bytes": 12844,
+      "sha256": "d60dfe38215eeaddd8737565ed9facfe8fd2ed87656b96e8d72dddc09d226cff",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "fgp/assets/game/native/07/073165cb-0e5b-4883-84c2-fa751ae12b52.75b9c.png": {
       "request_id": 2434,
@@ -484,7 +496,9 @@
     "fgp/assets/game/native/29/29b01e76-7443-4795-abfb-c3852d9c1ac7.726d2.bin": {
       "request_id": 2436,
       "source": "https://casino-wbgame.tadagaming.com/fgp/assets/game/native/29/29b01e76-7443-4795-abfb-c3852d9c1ac7.726d2.bin",
-      "bytes": 11559
+      "bytes": 9295,
+      "sha256": "e9705bce7e6a73969d14d0a5505dd1ae2ed277fc0b4dd8167a2fee5fec726f40",
+      "retrieval": "raw HTTP: text/bin capture body was transcoded"
     },
     "astarte2/3.6/web-mobile/assets/other/import/07/0744c618a.39726.json": {
       "request_id": 2440,
@@ -687,9 +701,11 @@
       "bytes": 9608
     },
     "static/images/intro/fgp/symbol07.webp": {
-      "request_id": 515,
+      "request_id": 458,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol07.webp",
-      "bytes": 18716
+      "bytes": 18716,
+      "sha256": "e07c0873509141e78dffd3774f4b839eb34929350a640e9d92115cb6e92dfb79"
     },
     "static/images/intro/fgp/main.webp": {
       "request_id": 516,
@@ -702,44 +718,60 @@
       "bytes": 10342
     },
     "static/images/intro/fgp/symbol06.webp": {
-      "request_id": 518,
+      "request_id": 463,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol06.webp",
-      "bytes": 13782
+      "bytes": 13782,
+      "sha256": "59aa4c5dfa41e3c65833fd351194b43057678796f53d6318abd80a081a77b54d"
     },
     "static/images/intro/fgp/symbol05.webp": {
-      "request_id": 519,
+      "request_id": 464,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol05.webp",
-      "bytes": 12170
+      "bytes": 12170,
+      "sha256": "809f62e20d1a8d037d7597a93bb49f10072bc2f332a81b00e00acc546d8f31a7"
     },
     "static/images/intro/fgp/symbol04.webp": {
-      "request_id": 520,
+      "request_id": 465,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol04.webp",
-      "bytes": 9818
+      "bytes": 9818,
+      "sha256": "c3c4a83232a61dcdfa775ec4eddb32150e759363115714b59062d30460e6a661"
     },
     "static/images/intro/fgp/symbol03.webp": {
-      "request_id": 521,
+      "request_id": 466,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol03.webp",
-      "bytes": 7602
+      "bytes": 7602,
+      "sha256": "12df7ad87f15021b665c49b18de8347cb5977900c84b575e37db54a6a6164e9e"
     },
     "static/images/intro/fgp/symbol02.webp": {
-      "request_id": 522,
+      "request_id": 467,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol02.webp",
-      "bytes": 7638
+      "bytes": 7638,
+      "sha256": "601864d7a0644547eb53ee82118ced78bc05bdafcec66c6639bcea732c5612ff"
     },
     "static/images/intro/fgp/symbol01.webp": {
-      "request_id": 523,
+      "request_id": 468,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol01.webp",
-      "bytes": 7952
+      "bytes": 7952,
+      "sha256": "971731392b13d27b6397494fc436e131588abea2bf6f60ee54c919ab66098e7b"
     },
     "static/images/intro/fgp/symbol00.webp": {
-      "request_id": 524,
+      "request_id": 469,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/symbol00.webp",
-      "bytes": 7046
+      "bytes": 7046,
+      "sha256": "4a0c5be2cffca7c8023c0501321f0e5ab7205515e4349bf284a14d5c948bbee6"
     },
     "static/images/intro/fgp/payline.webp": {
-      "request_id": 525,
+      "request_id": 470,
+      "capture": "24652cc7afc340e38db4fdc47179f6f7",
       "source": "https://uat-web-cdn.tadagaming.com/static/images/intro/fgp/payline.webp",
-      "bytes": 4318
+      "bytes": 4318,
+      "sha256": "70a27ac45df4ed073afb5d36304552b9bf0af5c1a4749695b35d38fc04c74c15"
     },
     "static/images/intro/fgp/spin_small_tada.png": {
       "request_id": 526,

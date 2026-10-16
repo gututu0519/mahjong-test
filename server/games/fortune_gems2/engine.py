@@ -24,7 +24,7 @@ def evaluate(columns, bet, multiplier, paytable):
 
 
 class FortuneGems2:
-    game_id, title, version, minor_unit = 'fortune-gems2', 'Fortune Gems 2', '1.0.0', 10000
+    game_id, title, version, minor_unit = 'fortune-gems2', 'Fortune Gems 2', '1.0.1', 10000
 
     def __init__(self, config_path=None):
         self.config = json.loads(Path(config_path or Path(__file__).with_name('config.json')).read_text(encoding='utf-8'))
@@ -68,7 +68,10 @@ class FortuneGems2:
         awards = evaluate(columns, amount, multiplier, c['paytable_fifths'])
         line_minor = sum(round(a['Win'] * 10000) for a in awards)
         wheel_odd = rng.choices(c['wheel_odds'], c['wheel_weights'])[0] if wheel else 0
-        wheel_mult = rng.choices(MULTIPLIERS, c['wheel_multiplier_weights'])[0] if wheel and extra else 1
+        # The client indexes all twelve sectors when showing Extra Bet upgrades.
+        # These weights are local configuration, not inferred original frequencies.
+        mult_show = rng.choices(MULTIPLIERS, c['wheel_multiplier_weights'], k=12) if wheel and extra else [1] * 12
+        wheel_mult = mult_show[c['wheel_odds'].index(wheel_odd)] if wheel else 1
         wheel_minor = amount * wheel_odd * wheel_mult
         total = line_minor + wheel_minor
         # All-wild lines (25x) + maximum wheel (15000x) define the natural ceiling.
@@ -78,7 +81,7 @@ class FortuneGems2:
                     AwardTypeFlag=(1 if awards else 0) | (2 if wheel else 0), LineMult=multiplier,
                     LineWin=line_minor / 10000, WheelOdd=wheel_odd, WheelMult=wheel_mult,
                     WheelWin=wheel_minor / 10000, TotalWin=total / 10000, Bet=amount / 10000,
-                    Extra=extra, IsBonus=wheel, MultShowArray=[], LightOnPos=[])
+                    Extra=extra, IsBonus=wheel, MultShowArray=mult_show, LightOnPos=[])
         event = dict(round_id=sid, bet_minor=amount, extra=extra, spin=spin, total_minor=total)
         new_state = dict(sid=sid, round_id=sid, phase='ready', ruleset_id=self.ruleset_id,
                          last_event=event, last_bet_minor=amount, extra=extra)

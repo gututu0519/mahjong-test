@@ -16,6 +16,18 @@
   const token = params.get('ops');
   const NativeURL = window.URL;
   const nativeFetch = window.fetch.bind(window);
+  // This client waits for the authenticated life-service connection before
+  // starting game login. Keep the real WebSocket events and original callback.
+  const NativeWebSocket = window.WebSocket;
+  window.WebSocket = new Proxy(NativeWebSocket, {
+    construct(target, args) {
+      const url = new NativeURL(String(args[0]), location.href);
+      if (url.pathname === '/lifeservice/ws2') {
+        args[0] = `ws://${location.host}/lifeservice/ws2`;
+      }
+      return Reflect.construct(target, args);
+    }
+  });
   let queue = Promise.resolve();
   async function api(path, body) {
     const response = await nativeFetch(path, {method:'POST', headers:{'Content-Type':'application/json'},
@@ -106,7 +118,16 @@
 
   const readyTimer = setInterval(() => {
     if (!window.__localInfoReady) return;
+    const scene = window.cc?.director?.getScene();
+    if (!scene) return;
+    const visibleStart = node => (['Btn_Playing', 'Btn_Loading'].includes(node.name) && node.activeInHierarchy
+      && Math.abs(node.worldScale.x) > 0.1 && Math.abs(node.worldScale.y) > 0.1
+      && node.getComponent(window.cc.Button)?.interactable
+      && node.getComponentsInChildren(window.cc.Label).some(label => /continue/i.test(label.string)))
+      || node.children.some(visibleStart);
+    const game = scene.getComponentsInChildren('GameView')[0];
+    if (!visibleStart(scene) && game?.GetCurrentState() !== 1005) return;
     clearInterval(readyTimer);
-    if (window.parent !== window) window.parent.postMessage({type: 'demo:ready'}, '*');
+    if (window.parent !== window) window.parent.postMessage({type: 'demo:ready'}, 'http://127.0.0.1:8080');
   }, 100);
 })();

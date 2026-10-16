@@ -12,6 +12,7 @@ from server.core.contracts import ServiceError
 from server.core.service import GameService
 from server.games.catalog import create_registry
 from server.transport.http import PlatformRoutes
+from server.adapters.tada.life_service import serve as serve_life_service
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -67,6 +68,8 @@ class Handler(SimpleHTTPRequestHandler):
     def get(self):
         url = urlsplit(self.path)
         path = url.path
+        if path == '/lifeservice/ws2':
+            return serve_life_service(self)
         if path == '/':
             token = parse_qs(url.query).get('ops', [''])[0]
             if token:

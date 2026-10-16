@@ -1,13 +1,16 @@
 """Import original TaDa static assets; never copy session URLs or API responses."""
 import argparse
 import json
-import shutil
+import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
 HOSTS = {'casino-wbgame.tadagaming.com', 'uat-web-cdn.tadagaming.com'}
+STATIC_EXTENSIONS = {'.html', '.js', '.json', '.css', '.png', '.jpg', '.jpeg', '.webp',
+                     '.svg', '.ico', '.plist', '.bin', '.wasm', '.mp3', '.ogg', '.wav',
+                     '.ttf', '.woff', '.woff2', '.atlas'}
 
 
 def import_capture(session):
@@ -29,12 +32,26 @@ def import_capture(session):
             continue
         if relative.endswith('/'):
             relative += 'index.html'
+        if Path(relative).suffix.lower() not in STATIC_EXTENSIONS:
+            continue
         target = (destination / relative).resolve()
         if not target.is_relative_to(destination.resolve()):
             raise ValueError('Asset path escapes client directory')
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(capture / row['body'], target)
-        sources[relative] = {'request_id': row['id'], 'source': url._replace(query='', fragment='').geturl(), 'bytes': target.stat().st_size}
+        source = url._replace(query='', fragment='').geturl()
+        content = (capture / row['body']).read_bytes()
+        # CDP response bodies labeled text/bin can be irreversibly transcoded.
+        # Retrieve the immutable static resource as bytes, never a protocol URL.
+        if target.suffix == '.bin':
+            with urlopen(source, timeout=30) as response:
+                if urlsplit(response.url).hostname not in HOSTS:
+                    raise ValueError('Unexpected static asset redirect')
+                content = response.read()
+        target.write_bytes(content)
+        sources[relative] = {'request_id': row['id'], 'source': source, 'bytes': len(content),
+                             'sha256': hashlib.sha256(content).hexdigest()}
+        if target.suffix == '.bin':
+            sources[relative]['retrieval'] = 'raw HTTP: text/bin capture body may be transcoded'
     fixtures = destination / 'fixtures'
     fixtures.mkdir(parents=True, exist_ok=True)
     (fixtures / 'asset-sources.json').write_text(json.dumps({'capture': session, 'assets': sources}, indent=2) + '\n', encoding='utf-8')
