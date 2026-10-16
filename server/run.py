@@ -13,11 +13,13 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
     games = spec['games']
+    if spec['entry'] == 'jokers_fortune_winx_client' and games != ['jokers-fortune-winx']:
+        raise ValueError('Joker service only supports its own game')
     if spec['entry'] == 'olympus_preview':
         if games != []:
             raise ValueError('Frontend preview must not load game engines')
@@ -56,6 +58,9 @@ def build_from_directory(directory, port=None):
     if spec['entry'] == 'olympus_preview':
         from server.services.olympus_preview import build_server
         http = build_server(actual_port)
+    elif spec['entry'] == 'jokers_fortune_winx_client':
+        from server.services.jokers_fortune_winx_demo import build_server
+        http = build_server(actual_port, database, configs['jokers-fortune-winx'])
     elif spec['entry'] == 'fortune_gems2_client':
         from server.services.fortune_gems2_demo import build_server
         http = build_server(actual_port, database, configs['fortune-gems2'])

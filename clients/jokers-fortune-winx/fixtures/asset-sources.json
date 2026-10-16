@@ -1,0 +1,1391 @@
+{
+  "capture": "8d190caa92a74fa89c7baf472c2a28bd",
+  "assets": {
+    "sss-jf2/index.html": {
+      "request_id": 289,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/",
+      "bytes": 34782,
+      "sha256": "2c77b09c5ab66974b9620dca38d5727ad8941574e4821e058278566b0a8a8815"
+    },
+    "sss-jf2/TaDa_Logo_APNG_s.png": {
+      "request_id": 292,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/TaDa_Logo_APNG_s.png",
+      "bytes": 41805,
+      "sha256": "8fc93044e3c002244c71fd36d3b1fcc5ac189e671e9e12b295db8fefeadcc8e1"
+    },
+    "sss-jf2/JILI_US.png": {
+      "request_id": 296,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/JILI_US.png",
+      "bytes": 23046,
+      "sha256": "098bee065dcea3bce3fe71aeb08161ce9892a7e38a0a28eefed422298a097218"
+    },
+    "sss-jf2/src/polyfills.bundle.5adbf.js": {
+      "request_id": 293,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/src/polyfills.bundle.5adbf.js",
+      "bytes": 14750,
+      "sha256": "f1e4ced3322168d6b9915e782e4c1cf1055d75f66f2b38e7fcd60f48cf89082b"
+    },
+    "sss-jf2/src/system.bundle.692e9.js": {
+      "request_id": 294,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/src/system.bundle.692e9.js",
+      "bytes": 12028,
+      "sha256": "f2c184ae5bfab28d52006d71c514f194360c18f51f32de916818973f7e680b07"
+    },
+    "sss-jf2/Intro_ProgressBar_Bottom_JILI.png": {
+      "request_id": 297,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/Intro_ProgressBar_Bottom_JILI.png",
+      "bytes": 1013,
+      "sha256": "266b2adb81fbe71784ffcc61167736670b507771f4d8e450575da2b77f99ec43"
+    },
+    "sss-jf2/Intro_ProgressBar_JILI.png": {
+      "request_id": 298,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/Intro_ProgressBar_JILI.png",
+      "bytes": 1003,
+      "sha256": "b506947e41172304c5d411475f5dc67079fa7fccdbcf774ca10c0aed04179114"
+    },
+    "sss-jf2/src/import-map.76fb3.json": {
+      "request_id": 299,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/src/import-map.76fb3.json",
+      "bytes": 46,
+      "sha256": "f6f1d682deda9b1c130dcba4b2bfa28bc3878055908d6a73b1d7dcf3090c4921"
+    },
+    "sss-jf2/index.7ad28.js": {
+      "request_id": 301,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/index.7ad28.js",
+      "bytes": 836,
+      "sha256": "2dacc036f578029de52ae0983db64253cabab5f161b3a505a83e6ff16a8595d1"
+    },
+    "sss-jf2/application.30347.js": {
+      "request_id": 302,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/application.30347.js",
+      "bytes": 3169,
+      "sha256": "31f4be1373f0a63213ef35af5c86da9298f3207335bc60a082db6c8d7c275b9d"
+    },
+    "sss-jf2/cocos-js/cc.196d4.js": {
+      "request_id": 303,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/cocos-js/cc.196d4.js",
+      "bytes": 2218878,
+      "sha256": "89c33fdd407bb2110c6d87e506231fe5763872a783b51a7f5f88af7d2834d8d7"
+    },
+    "sss-jf2/src/settings.a8a74.json": {
+      "request_id": 305,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/src/settings.a8a74.json",
+      "bytes": 33036,
+      "sha256": "c63e23838841477db797de1e05a53d9d1a94e73ed0bb6116cf6dadb0b0fd1679"
+    },
+    "sss-jf2/assets/internal/config.41b5e.json": {
+      "request_id": 306,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/internal/config.41b5e.json",
+      "bytes": 2740,
+      "sha256": "d8b9a4d55d37040d39e69bf5ed84ab9080e0ff4c137a1b3907741dbe9eb4fb7a"
+    },
+    "sss-jf2/assets/internal/index.41b5e.js": {
+      "request_id": 307,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/internal/index.41b5e.js",
+      "bytes": 603,
+      "sha256": "3d55f338580aae8f67ca7d0f71dfa8d1460696b7f7a3a93266fc539cda98ea26"
+    },
+    "sss-jf2/assets/internal/import/0b/0bd122b70.d6dcd.json": {
+      "request_id": 308,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/internal/import/0b/0bd122b70.d6dcd.json",
+      "bytes": 651364,
+      "sha256": "af8e96b7af4d31eca1ab1118378cffe3fe0b250b99b1334e428acf32da7e2ad4"
+    },
+    "sss-jf2/src/zip-bundler/fflate.min.fdb1f.js": {
+      "request_id": 309,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/src/zip-bundler/fflate.min.fdb1f.js",
+      "bytes": 58754,
+      "sha256": "c1579c273b25f2e745d5ec0dd8dd90dba8c5e6767965f720200758b881871745"
+    },
+    "sss-jf2/assets/main/config.38352.json": {
+      "request_id": 310,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/config.38352.json",
+      "bytes": 826,
+      "sha256": "5d531bd0a5eb3b6a994241020af732e360c366711dd43ef8c95de9f9ac66ced3"
+    },
+    "sss-jf2/assets/main/index.38352.js": {
+      "request_id": 311,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/index.38352.js",
+      "bytes": 877838,
+      "sha256": "3f601adcfe3ecb8a4f6054e3d41a1c66480d3b4974fc96e14a8aa0fea0be053e"
+    },
+    "sss-jf2/assets/main/import/04/0401b9567.da433.json": {
+      "request_id": 312,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/import/04/0401b9567.da433.json",
+      "bytes": 5575,
+      "sha256": "8dbe77178ed146539de6cb85e2bec5dacc198b07f59343180ac9643f76af4b7f"
+    },
+    "sss-jf2/assets/main/native/1c/1c529aaef.111a3.webp": {
+      "request_id": 313,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/native/1c/1c529aaef.111a3.webp",
+      "bytes": 38112,
+      "sha256": "128621cef412ec9e1ddad3a7c122c4b713814768d123a338881405972d78f84e"
+    },
+    "sss-jf2/assets/main/native/18/185a605b-685b-4159-87b1-dcd1f9c8901d.ad46e.webp": {
+      "request_id": 314,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/native/18/185a605b-685b-4159-87b1-dcd1f9c8901d.ad46e.webp",
+      "bytes": 15572,
+      "sha256": "17524947ef1b659dd89344eacbd9958161325423e366c29bc31f2ec3938710a8"
+    },
+    "sss-jf2/assets/main/native/27/27ef8598-83e0-4421-b75d-ffae3f919ab7.dc188.webp": {
+      "request_id": 315,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/main/native/27/27ef8598-83e0-4421-b75d-ffae3f919ab7.dc188.webp",
+      "bytes": 13820,
+      "sha256": "c2e6807c8ab7a04e69161f2ca1b67ba2ffd2a81aeaf786187657adbc89fa9e3b"
+    },
+    "astarte4/3.6/web-mobile/assets/versions.json": {
+      "request_id": 317,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/versions.json",
+      "bytes": 475,
+      "sha256": "ab9b5adea26e9f405e38d2b6307d89ab8702f616c12f3e6de36b3590f394fcca"
+    },
+    "astarte4/3.6/web-mobile/src/chunks/bundle.1a791.js": {
+      "request_id": 318,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/src/chunks/bundle.1a791.js",
+      "bytes": 345184,
+      "sha256": "0c784a18ce5abd1dca857b2ab4c430d6b0fa7d5f44f1f96e236fa3cbc183eff5"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/config.e3fd5.json": {
+      "request_id": 319,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/config.e3fd5.json",
+      "bytes": 4660,
+      "sha256": "0d4a3077ad36ba9eb2080f1c572bd91caa845bb3f0f983545a8e669d9d64e875"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/index.e3fd5.js": {
+      "request_id": 320,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/index.e3fd5.js",
+      "bytes": 138204,
+      "sha256": "26f8a3fcf1a50f137ea070b2479c8fb3771c0cae3280f3833138ea076352f89f"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/config.4ac0c.json": {
+      "request_id": 321,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/config.4ac0c.json",
+      "bytes": 67074,
+      "sha256": "1d68a6534d9d31a3e4bdbc46f72f6633eda62c91f869c4a675a8f90bb0d34cdd"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/index.4ac0c.js": {
+      "request_id": 322,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/index.4ac0c.js",
+      "bytes": 603,
+      "sha256": "321ad88cd4287a98e5977c68dbdc0228f09dd06281c292faddff00e9cfaacdd1"
+    },
+    "astarte4/3.6/web-mobile/assets/other/config.ad6cf.json": {
+      "request_id": 323,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/config.ad6cf.json",
+      "bytes": 16960,
+      "sha256": "a8d4325a4a3bbe2a2dab853dce37c8d9797cf801e529127eec1c5f74ba5cefd2"
+    },
+    "astarte4/3.6/web-mobile/assets/other/index.ad6cf.js": {
+      "request_id": 324,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/index.ad6cf.js",
+      "bytes": 6584897,
+      "sha256": "569f218f7620f6770bf9095cdf3e6988d646b8e178b801a7445e7fd3c044689d"
+    },
+    "astarte4/3.6/web-mobile/assets/en/config.f59e9.json": {
+      "request_id": 325,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/config.f59e9.json",
+      "bytes": 29330,
+      "sha256": "b9a9805962cbefc7271402b9b604879425d4fca7ce6429b0e457b99d5773b1be"
+    },
+    "astarte4/3.6/web-mobile/assets/en/index.f59e9.js": {
+      "request_id": 326,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/index.f59e9.js",
+      "bytes": 585,
+      "sha256": "8ec2eccbf4b62e3ed4dd6be4ffec02e4d53a887691fb57c33cab72c4c0cd1bdb"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/jiliMain.4ac0c.zip": {
+      "request_id": 327,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/jiliMain.4ac0c.zip",
+      "bytes": 213171,
+      "sha256": "63cddf832867ab4acc99cb67859bb70018637e3f38ee7d552af6ef58578a8a91"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/config.a2c29.json": {
+      "request_id": 328,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/config.a2c29.json",
+      "bytes": 163273,
+      "sha256": "f268a7b08369df5f4b9e15bc5eddf5385c6aaaad36afeb158b8f6b8709a97041"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/index.a2c29.js": {
+      "request_id": 329,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/index.a2c29.js",
+      "bytes": 591,
+      "sha256": "02cafe51e6346b5c952d6a1549f5d6a5ba921df23929358c2677e574f9330971"
+    },
+    "sss-jf2/assets/game/config.76603.json": {
+      "request_id": 330,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/config.76603.json",
+      "bytes": 45065,
+      "sha256": "d3a0fbf4a06ec5967dd5e98c0a084321677e6456e740c4fc413288ed7fcce1e2"
+    },
+    "sss-jf2/assets/game/index.76603.js": {
+      "request_id": 331,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/index.76603.js",
+      "bytes": 1599,
+      "sha256": "d784166659aef094004d40c7c74d12196c1126d038732e9e3b0d1c40094e7c53"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/import/0f/0f6138ce8.b5196.json": {
+      "request_id": 332,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/import/0f/0f6138ce8.b5196.json",
+      "bytes": 885218,
+      "sha256": "a5f874749b8b2224cbf85eae086ffe78f7f6dcb5ff49ab0e5fad682b5952acd3"
+    },
+    "sss-jf2/assets/game/import/04/045d1adcc.703c9.json": {
+      "request_id": 333,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/import/04/045d1adcc.703c9.json",
+      "bytes": 464011,
+      "sha256": "21f5d2e41f0c309f0fafc74e4402afa0c72ffc9201b9fd115d722ca8850ad29a"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/import/0a/0a84eead6.038ce.json": {
+      "request_id": 334,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/import/0a/0a84eead6.038ce.json",
+      "bytes": 24344,
+      "sha256": "944af949c2076de45eae69832c3e90a30cf1be6c59c4de0139c6aaf298501ed0"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf": {
+      "request_id": 141,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf",
+      "bytes": 31052,
+      "sha256": "1dbc66b940e5d7478810d3b0fb3d9264107b9a790e14ef70ebfbacb7e5bce8c8"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/12/12edfc410.7fd99.webp": {
+      "request_id": 336,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/12/12edfc410.7fd99.webp",
+      "bytes": 9906,
+      "sha256": "83451c5edc5f203170e1d0eb38af0cf8171a48f68efa2ea011eaf661dabb6957"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/16/168b05255.38295.webp": {
+      "request_id": 337,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/16/168b05255.38295.webp",
+      "bytes": 4876,
+      "sha256": "8f282f1e912c0cd5cd4a92099489322ce8bbe1a9eb95acec132b4ba837c79977"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.955ab.png": {
+      "request_id": 338,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.955ab.png",
+      "bytes": 2053,
+      "sha256": "7b6b499ba45147824e33403105038b4007093bdc77f2cf74cebc976f25012836"
+    },
+    "sss-jf2/assets/game/native/1c/1c3983402.3c36f.webp": {
+      "request_id": 340,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1c/1c3983402.3c36f.webp",
+      "bytes": 163236,
+      "sha256": "dcd0fe74b01a259f4116a17426d487f66877443c0deb7c01c1b7f848bebc0b7b"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png": {
+      "request_id": 341,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png",
+      "bytes": 82,
+      "sha256": "83c9b8ce1937570a40bcedde29457a4ab7865ca1db23a46d2d68e6b1949f3c28"
+    },
+    "sss-jf2/assets/game/import/06/0629b9e6-43f1-4a25-a9e8-1457b9ee4dc5.dfe10.cconb": {
+      "request_id": 342,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/import/06/0629b9e6-43f1-4a25-a9e8-1457b9ee4dc5.dfe10.cconb",
+      "bytes": 21784,
+      "sha256": "218a2d1b0ce2c5af2eca17b671594837b84b97466b227fd8b147177b752df39b"
+    },
+    "sss-jf2/assets/game/import/7b/7b8935e3-ed93-4fd9-9bbb-f8939ff5549e.80a8b.cconb": {
+      "request_id": 339,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/import/7b/7b8935e3-ed93-4fd9-9bbb-f8939ff5549e.80a8b.cconb",
+      "bytes": 63316,
+      "sha256": "94e80d043e62f4b820e40e91ddc0b6b0c21c344e7c788578c1ba84119cfbdbba"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf": {
+      "request_id": 149,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf",
+      "bytes": 158548,
+      "sha256": "165cc4058788b44cc887bd73a993baf50cdb9e53653c267bd7fe15ca97f59740"
+    },
+    "smallicon/lang/en-US/strings.json": {
+      "request_id": 346,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/lang/en-US/strings.json",
+      "bytes": 144495,
+      "sha256": "9adbf538187292fc803bd375e7ad370b6291c077c197234d1424d8d350449ba8"
+    },
+    "smallicon/lang/en-US/strings_SSS.json": {
+      "request_id": 347,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/lang/en-US/strings_SSS.json",
+      "bytes": 9874,
+      "sha256": "7085640bfd832e12d2449294ece561e99ea105024bf3b6c29607c936eb37ef38"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf": {
+      "request_id": 349,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf",
+      "bytes": 57212,
+      "sha256": "4737b61d9d64c09edec9f3696b1f6aa8f9937a5f17497d8ae21e3458d74b78d1"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png": {
+      "request_id": 350,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png",
+      "bytes": 158,
+      "sha256": "428698a9cd4c031962c9f5defd15057fd1f20273dc3cd6eddcbd2ce14c4057d8"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/1c/1c2526437.c38e3.webp": {
+      "request_id": 351,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/1c/1c2526437.c38e3.webp",
+      "bytes": 84676,
+      "sha256": "5862532629caf4cc0635dd82820402f172d3d1574ab4c59242adf4753047b35f"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/18/186559350.72a6d.webp": {
+      "request_id": 352,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/18/186559350.72a6d.webp",
+      "bytes": 120922,
+      "sha256": "2a3259c7cd4468cefa430e2f4c210c0fab7c7b19e45c5edd488b2f3a97fb9f3d"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png": {
+      "request_id": 353,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png",
+      "bytes": 4273,
+      "sha256": "76ebb59620f0a591bfafe6f529299a1f15098ff713ea16778872f850eea49800"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/1c/1cf8af83e.89091.webp": {
+      "request_id": 354,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/1c/1cf8af83e.89091.webp",
+      "bytes": 4988,
+      "sha256": "6f6cbb8523746051b6241c3f8bebc19ed8ab702cbc1ba672e3d860c12d0bdedb"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png": {
+      "request_id": 355,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png",
+      "bytes": 1633,
+      "sha256": "328da1766915cb2c5db06827a48effc993bcf876e67b8412719a8ecae36e5dff"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/11/119c9384c.31874.webp": {
+      "request_id": 362,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/11/119c9384c.31874.webp",
+      "bytes": 5500,
+      "sha256": "9829fe103d93353b9fbe4d0a1831d8239ef4af29a564bfff4fdee8a6f6eb6b2e"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png": {
+      "request_id": 361,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png",
+      "bytes": 1082,
+      "sha256": "5e3e931db260d0f43c2f5fd0ea791fbdc25923a8c14fcd6b0912581cd893f96d"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png": {
+      "request_id": 360,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png",
+      "bytes": 1114,
+      "sha256": "132fda6a4b38333dcb471f09be05aed43d01b83dcc7a09c168b5629cdee31865"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.55a97.png": {
+      "request_id": 357,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.55a97.png",
+      "bytes": 2098,
+      "sha256": "ee89b9d8b25490be91f109bc9bbc9035322837355a5c8b77cbedc2fe8cbd1070"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.b251f.png": {
+      "request_id": 356,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.b251f.png",
+      "bytes": 13820,
+      "sha256": "25ba07f7da6753c8f1b6e3a385a11b7389d7a81521d3656bc881cabebb09c56d"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png": {
+      "request_id": 359,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png",
+      "bytes": 1050,
+      "sha256": "44b670047e5d34fc09f3e8538e8945445bc1bb913d6f21d7ac4e06b18c2e172b"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/jili.a2c29.zip": {
+      "request_id": 370,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/jili.a2c29.zip",
+      "bytes": 665336,
+      "sha256": "566070d8af9b1906fbdbabd50a7669d37f3e89fe3b212811b20b51b66a761767"
+    },
+    "sss-jf2/assets/game/game.76603.zip": {
+      "request_id": 371,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/game.76603.zip",
+      "bytes": 50326,
+      "sha256": "87b383b6fc726374546d872058f386e13e77dfd08056f34205f1694df8a63768"
+    },
+    "astarte4/3.6/web-mobile/assets/en/import/06/06541e2c8.b5060.json": {
+      "request_id": 372,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/import/06/06541e2c8.b5060.json",
+      "bytes": 94474,
+      "sha256": "1c943dbc30e5d6780a059f4865c6f8dec23edaef1056c1396742f03ca2b42f6d"
+    },
+    "sss-jf2/assets/game/native/17/1718c6580.6b0e1.webp": {
+      "request_id": 373,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/17/1718c6580.6b0e1.webp",
+      "bytes": 125972,
+      "sha256": "cc6145cbdb4bbb7e29b6aa3637a2f2d35f95094becb9c5947016977a6dc54f83"
+    },
+    "astarte4/3.6/web-mobile/assets/en/native/1d/1dbad73d5.83d26.webp": {
+      "request_id": 374,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/native/1d/1dbad73d5.83d26.webp",
+      "bytes": 112078,
+      "sha256": "a1fed6c1580e688948de5d2d8cbfd6c634bfea33d08c5f16bcc858664b5b35bb"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/import/0b/0b5d8544a.d12bf.json": {
+      "request_id": 363,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/import/0b/0b5d8544a.d12bf.json",
+      "bytes": 1806335,
+      "sha256": "4bf0db3ca2fc3b4a3afbc4c697baf8bf12fa0955cfbf6c002e2acc7f14121c30"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png": {
+      "request_id": 364,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png",
+      "bytes": 1187,
+      "sha256": "5d2e0481ed979890a79295427b5e219ab24f41cdb4129da753b7b8a475de3658"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/19/19feb5565.d13aa.webp": {
+      "request_id": 365,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/19/19feb5565.d13aa.webp",
+      "bytes": 27720,
+      "sha256": "deb029442ae6943071f3da7e8162374aff7f9644ced0479ccd37800e25fcd0a2"
+    },
+    "astarte4/3.6/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png": {
+      "request_id": 366,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png",
+      "bytes": 1047,
+      "sha256": "eccd4c8f70091a1a5f3459df5f8e64b9a5ff50feaef3ab0d6e678e3e6e1b017a"
+    },
+    "sss-jf2/assets/game/native/17/17f9d435c.02625.webp": {
+      "request_id": 375,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/17/17f9d435c.02625.webp",
+      "bytes": 13478,
+      "sha256": "fcd670ede2eafd650ec0dfa02ee853b8814d31fbb139d7f91e83c13442f27212"
+    },
+    "sss-jf2/assets/game/native/5c/5c3eb398-f290-4fb8-83ef-27166f60a60d.5529a.webp": {
+      "request_id": 377,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/5c/5c3eb398-f290-4fb8-83ef-27166f60a60d.5529a.webp",
+      "bytes": 29256,
+      "sha256": "47153663db7f4369ad38b7a586a022826432e3a7d1c6ffb531a15b82bc2250fe"
+    },
+    "sss-jf2/assets/game/native/f9/f9a9210a-9bfe-4b28-8999-39f83449aa88.761ac.webp": {
+      "request_id": 378,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/f9/f9a9210a-9bfe-4b28-8999-39f83449aa88.761ac.webp",
+      "bytes": 21682,
+      "sha256": "6f12b127907893ade27073cf1e565ec56c9ee0b819c976914ae083c6826ca7d3"
+    },
+    "sss-jf2/assets/game/native/02/0207ef20-02ef-4960-9865-82b3a147878e.bc211.png": {
+      "request_id": 379,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/02/0207ef20-02ef-4960-9865-82b3a147878e.bc211.png",
+      "bytes": 1023516,
+      "sha256": "91806b4e45a7f32ed40ade3d8e0c70e5c87b2593cebc8f0d2693cc06c1e09ede"
+    },
+    "sss-jf2/assets/game/native/ee/eea24cf9-7a53-478e-840b-1b9063088a5b.f09a0.png": {
+      "request_id": 380,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/ee/eea24cf9-7a53-478e-840b-1b9063088a5b.f09a0.png",
+      "bytes": 1165891,
+      "sha256": "b7383c78b7acfdc0374d35711486921a1f2fe9c19c63f048a2e7cb77d6438785"
+    },
+    "sss-jf2/assets/game/native/15/15e36fbc2.f75a1.webp": {
+      "request_id": 381,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/15/15e36fbc2.f75a1.webp",
+      "bytes": 71130,
+      "sha256": "1ad036a94a13ce88a295139808ba39af92a7ac2e77940688aa37e08d934a841d"
+    },
+    "sss-jf2/assets/game/native/11/11fb39ab9.e0096.webp": {
+      "request_id": 382,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/11/11fb39ab9.e0096.webp",
+      "bytes": 175256,
+      "sha256": "337dd73339a6a22a4013ec1cf0b29c3978d4129d080d2284caf34e33d7eff485"
+    },
+    "sss-jf2/assets/game/native/1e/1edcc0b4c.754da.webp": {
+      "request_id": 383,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1e/1edcc0b4c.754da.webp",
+      "bytes": 34776,
+      "sha256": "04f49f5198b95f20bd990be3cc5db370176b29242f82c336962b9790fc5b2ece"
+    },
+    "sss-jf2/assets/game/native/a3/a32ba5b7-5e03-491d-bb63-4cfed5eb54d5.e5652.bin": {
+      "request_id": 387,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/a3/a32ba5b7-5e03-491d-bb63-4cfed5eb54d5.e5652.bin",
+      "bytes": 32780,
+      "sha256": "9d55bd11d60d6fceabf33ae5d776188af71f4e28e7872d40c03293f9aa41c8b2"
+    },
+    "sss-jf2/assets/game/native/e0/e0e39d55-bb47-4a58-b252-a0772c0798ee.b70d5.bin": {
+      "request_id": 388,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/e0/e0e39d55-bb47-4a58-b252-a0772c0798ee.b70d5.bin",
+      "bytes": 106405,
+      "sha256": "d87041dc347d2f09eee8f9e2eaab326517d3c07b9f046d64ca367cb51d282bb8"
+    },
+    "sss-jf2/assets/game/native/51/5130e640-d792-46d6-a68a-2f24aaa515cf.f95cc.webp": {
+      "request_id": 393,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/51/5130e640-d792-46d6-a68a-2f24aaa515cf.f95cc.webp",
+      "bytes": 145398,
+      "sha256": "6834cced209f9d9e8acecb9289223bd88c5174438de9ed3f13e36500760b3f13"
+    },
+    "sss-jf2/assets/game/native/b9/b93c1da8-d0bb-402b-a353-23780b6c5d74.5e17c.webp": {
+      "request_id": 394,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/b9/b93c1da8-d0bb-402b-a353-23780b6c5d74.5e17c.webp",
+      "bytes": 401584,
+      "sha256": "15e268b718a4ff6b9318804c70210b92d6a7d0672e7c0afcf665eab2412a2c91"
+    },
+    "sss-jf2/assets/game/native/a0/a0c75788-4cf2-49b7-ae87-01b4589fd34c.0abb7.bin": {
+      "request_id": 389,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/a0/a0c75788-4cf2-49b7-ae87-01b4589fd34c.0abb7.bin",
+      "bytes": 511762,
+      "sha256": "106b8cdce4e8a619d26e81ea8b6001574df7d94d796a3fb117e1190ef5aaf3e3"
+    },
+    "sss-jf2/assets/game/native/38/38bb631d-803b-4d31-bb21-28bedf59e079.b03e1.webp": {
+      "request_id": 395,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/38/38bb631d-803b-4d31-bb21-28bedf59e079.b03e1.webp",
+      "bytes": 466108,
+      "sha256": "1f87794aeed2d4e6f42e49b86f2269a72517d886d90f0b8abb959928a14a64d5"
+    },
+    "sss-jf2/assets/game/native/13/133104ec-5967-4ed1-b8c5-89f3d3890aa8.fe9e1.png": {
+      "request_id": 396,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/13/133104ec-5967-4ed1-b8c5-89f3d3890aa8.fe9e1.png",
+      "bytes": 91587,
+      "sha256": "61f2e50d5aa0c0bf3bcf05ecd9a94e446bed3d2fa4aaa1b66123908eba3c01b1"
+    },
+    "sss-jf2/assets/game/native/09/096cbd3e-39b4-487f-bb32-60e886d97b51.6a166.bin": {
+      "request_id": 390,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/09/096cbd3e-39b4-487f-bb32-60e886d97b51.6a166.bin",
+      "bytes": 47733,
+      "sha256": "ed8da1e8729ae3302c0b947b1f8f78a6eda30fe173a9f3af50ed11442f6a4b36"
+    },
+    "sss-jf2/assets/game/native/82/825caff7-3773-4f82-a03a-061b07087f61.ca821.bin": {
+      "request_id": 391,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/82/825caff7-3773-4f82-a03a-061b07087f61.ca821.bin",
+      "bytes": 7090,
+      "sha256": "73e5606966c183f93ae05382e7ac931650e204277ca0935a7929a6cf026c48b1"
+    },
+    "sss-jf2/assets/game/native/34/34772466-4384-47b2-b5c3-aaab2ab24900.d13a2.webp": {
+      "request_id": 397,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/34/34772466-4384-47b2-b5c3-aaab2ab24900.d13a2.webp",
+      "bytes": 107436,
+      "sha256": "92adc320a61f3a1ed56499199136f40fa4d3be928a90042f0f58983cb8903dc5"
+    },
+    "sss-jf2/assets/game/native/57/574a9236-0087-44fb-b2f7-2a2b046dacb9.2a6cf.png": {
+      "request_id": 398,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/57/574a9236-0087-44fb-b2f7-2a2b046dacb9.2a6cf.png",
+      "bytes": 8139,
+      "sha256": "2570e8713a5bd3a567faf0d58baa4ff0cb835a47e31c4a9be8e2476dfa1afdf9"
+    },
+    "sss-jf2/assets/game/native/4a/4a7661a5-23ca-4665-8cd0-df08d22d5c4a.01e36.bin": {
+      "request_id": 392,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/4a/4a7661a5-23ca-4665-8cd0-df08d22d5c4a.01e36.bin",
+      "bytes": 85186,
+      "sha256": "3208f56efb47e2330af6274ebe68064814992d7af9dfc6757e30bee2f92642b2"
+    },
+    "sss-jf2/assets/game/native/f2/f27ffabb-6de4-4ca2-883d-031957109ad9.3c99e.bin": {
+      "request_id": 399,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/f2/f27ffabb-6de4-4ca2-883d-031957109ad9.3c99e.bin",
+      "bytes": 14919,
+      "sha256": "0f6f07bb42f62721456cef0226ade0ad7d324babd4f765d951f593525ca24878"
+    },
+    "sss-jf2/assets/game/native/8f/8f7d0764-049a-4869-b48f-4b5641277706.33c03.bin": {
+      "request_id": 400,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/8f/8f7d0764-049a-4869-b48f-4b5641277706.33c03.bin",
+      "bytes": 18678,
+      "sha256": "7536b53bc7a6f4408b8504c2797203f2a3f5c07bab92e811031d509576abfba4"
+    },
+    "sss-jf2/assets/game/native/63/6305951a-74f9-454b-a6c2-e85eaf527d19.37e46.webp": {
+      "request_id": 403,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/63/6305951a-74f9-454b-a6c2-e85eaf527d19.37e46.webp",
+      "bytes": 546970,
+      "sha256": "9ab8d0c847ac07672d30545375de9da9bc35b803fb95172807bbef3387fd0140"
+    },
+    "sss-jf2/assets/game/native/44/44d938d6-d571-4f88-81a2-b3be262d53ae.5bffc.bin": {
+      "request_id": 401,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/44/44d938d6-d571-4f88-81a2-b3be262d53ae.5bffc.bin",
+      "bytes": 83949,
+      "sha256": "0a7c241bf2e53ca7ecb280dc0c8127bfb541e0f0280982698bc8ab71905c1f40"
+    },
+    "sss-jf2/assets/game/native/b2/b2a2432f-4993-4415-aeab-9a099c975859.dc68d.bin": {
+      "request_id": 402,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/b2/b2a2432f-4993-4415-aeab-9a099c975859.dc68d.bin",
+      "bytes": 152494,
+      "sha256": "cf234fb23f61c944bac88c072939fca8058c24e9c22ed63de5a74b47c00b83de"
+    },
+    "sss-jf2/assets/game/native/c1/c10282da-a11c-4d87-8aee-ce3cba24573d.7104f.webp": {
+      "request_id": 404,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/c1/c10282da-a11c-4d87-8aee-ce3cba24573d.7104f.webp",
+      "bytes": 156784,
+      "sha256": "553efdf7dbbbeb5f0cd275f111df1f12709398182cff7abd4da82d16c94d1c0b"
+    },
+    "sss-jf2/assets/game/native/19/197296553.dee32.webp": {
+      "request_id": 408,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/19/197296553.dee32.webp",
+      "bytes": 110502,
+      "sha256": "3e276cca2775176d455583bceb267383b4c99dbb8cbc0e7798e8db7972342456"
+    },
+    "sss-jf2/assets/game/native/80/80a125ca-c063-4da9-b00f-ae466bb35592.c9cf5.bin": {
+      "request_id": 405,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/80/80a125ca-c063-4da9-b00f-ae466bb35592.c9cf5.bin",
+      "bytes": 85526,
+      "sha256": "25746eb74243d905b76682756f2f324629764888c5bf16f25348b03902b57d71"
+    },
+    "sss-jf2/assets/game/native/3b/3bdf93b4-1c0f-4c24-a6d4-f927f08f9873.b56fd.bin": {
+      "request_id": 406,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/3b/3bdf93b4-1c0f-4c24-a6d4-f927f08f9873.b56fd.bin",
+      "bytes": 5728,
+      "sha256": "e6979aaff898aade8167808dba7abaad8df940c4935c38258d2067c05c2b4aa4"
+    },
+    "sss-jf2/assets/game/native/6a/6a115a49-d4c4-4a80-a185-4fa1cb64ef72.973ff.bin": {
+      "request_id": 407,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/6a/6a115a49-d4c4-4a80-a185-4fa1cb64ef72.973ff.bin",
+      "bytes": 879,
+      "sha256": "53ad3abed57175a7ce36a609c6282f1fcfbd75981610377200031da4a790334e"
+    },
+    "sss-jf2/assets/game/native/dc/dc07cdbf-323d-42c0-89c0-ed719cacb668.d33e6.bin": {
+      "request_id": 409,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/dc/dc07cdbf-323d-42c0-89c0-ed719cacb668.d33e6.bin",
+      "bytes": 879,
+      "sha256": "f01255054d7308d6cddec6c0b7a07782c79b3e0888779bdf31e579d225f82281"
+    },
+    "sss-jf2/assets/game/native/1a/1a0baca7-5bbf-4621-b467-092723346f38.1b1c2.bin": {
+      "request_id": 410,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1a/1a0baca7-5bbf-4621-b467-092723346f38.1b1c2.bin",
+      "bytes": 903,
+      "sha256": "c3d5d17c08eab8975da0eb745aebd666cf83034166facff8f1c499b6ca8d3ae2"
+    },
+    "sss-jf2/assets/game/native/ab/ab926271-6c4f-4c13-aafe-9e1b9e1fe33e.39155.bin": {
+      "request_id": 411,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/ab/ab926271-6c4f-4c13-aafe-9e1b9e1fe33e.39155.bin",
+      "bytes": 879,
+      "sha256": "9590c6d3fd1920f9695f224338f7f3ba940a3e753f907fa95c6f8aaccfabcee7"
+    },
+    "sss-jf2/assets/game/native/5d/5d116bce-f21d-41b7-8ba4-beed1d3e417a.09dcb.bin": {
+      "request_id": 412,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/5d/5d116bce-f21d-41b7-8ba4-beed1d3e417a.09dcb.bin",
+      "bytes": 903,
+      "sha256": "c6e88456f34c09127828faabf7792d136411b88981090d0a34b6d9df80e215ab"
+    },
+    "sss-jf2/assets/game/native/12/12d15902-b740-4935-b454-68caba3d3536.335d9.bin": {
+      "request_id": 413,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/12/12d15902-b740-4935-b454-68caba3d3536.335d9.bin",
+      "bytes": 903,
+      "sha256": "96ed6b0a8e1c09f47e02554fec77b14e61ab3d789d59be49e747b24646c16141"
+    },
+    "sss-jf2/assets/game/native/d6/d6c79d38-9a63-4b78-bc13-a4a83f93dfa0.2acc6.bin": {
+      "request_id": 414,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/d6/d6c79d38-9a63-4b78-bc13-a4a83f93dfa0.2acc6.bin",
+      "bytes": 903,
+      "sha256": "df23710b495fa1bcc37cdd79b6084e19d01af35689e0d731bfd1c7e10074da57"
+    },
+    "sss-jf2/assets/game/native/72/72b58899-e38c-495b-a0d3-5976947a6467.22e7a.bin": {
+      "request_id": 376,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/72/72b58899-e38c-495b-a0d3-5976947a6467.22e7a.bin",
+      "bytes": 943,
+      "sha256": "9a581302549fa7c5a7831542dcbb41b93510dafa071accb92ab69589e327d601"
+    },
+    "sss-jf2/assets/game/native/c2/c2d7a02f-93ac-4bd9-8191-116ee462076e.d621e.webp": {
+      "request_id": 386,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/c2/c2d7a02f-93ac-4bd9-8191-116ee462076e.d621e.webp",
+      "bytes": 270792,
+      "sha256": "783e949352d8121fc0dd882bd663fa6cbead20c8698aa2592e27ffc1f51a2ee3"
+    },
+    "sss-jf2/assets/game/native/15/15811ec4b.89768.webp": {
+      "request_id": 385,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/15/15811ec4b.89768.webp",
+      "bytes": 101238,
+      "sha256": "6abb578566abcc6430b184878fab7ef09804f0bd8bbcde3f2c1c87b60e4a5a3b"
+    },
+    "sss-jf2/assets/game/native/1b/1b3046d60.050a5.webp": {
+      "request_id": 384,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1b/1b3046d60.050a5.webp",
+      "bytes": 110548,
+      "sha256": "f3f14a33b23fc26443d9148783626fdad56fc29149807046e0c6823221f7356e"
+    },
+    "astarte4/3.6/web-mobile/assets/other/import/07/077612923.12add.json": {
+      "request_id": 422,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/import/07/077612923.12add.json",
+      "bytes": 13138,
+      "sha256": "2d15f4d2fc74d19a6d07cd60ec921cfbb4dd90d3116a269d7d52040b848426b7"
+    },
+    "sss-jf2/assets/game/native/69/69e8f3ad-33a1-4008-afb3-cbdddfd932e4.9e332.mp3": {
+      "request_id": 423,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/69/69e8f3ad-33a1-4008-afb3-cbdddfd932e4.9e332.mp3",
+      "bytes": 129687,
+      "sha256": "cf1519e9432b68bc48c2fd06b3cd13dc5f0cf646d6649dc360a8051a8501bffa"
+    },
+    "sss-jf2/assets/game/native/1a/1a49c8e5-1d0f-41d3-98da-508c999cdee1.0724f.mp3": {
+      "request_id": 424,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1a/1a49c8e5-1d0f-41d3-98da-508c999cdee1.0724f.mp3",
+      "bytes": 54334,
+      "sha256": "202065a1c892aa3b6695b44939fed580c9acf84695ba0daadc07ea5716f1b795"
+    },
+    "sss-jf2/assets/game/native/c7/c7c8c6a2-552d-460a-a334-11ae75a6541b.2befb.mp3": {
+      "request_id": 425,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/c7/c7c8c6a2-552d-460a-a334-11ae75a6541b.2befb.mp3",
+      "bytes": 1923,
+      "sha256": "fb60490c6bf08f7291fc999d62eb65ea4bdd2f64b8e75c51b5908e43ecce00f5"
+    },
+    "sss-jf2/assets/game/native/d2/d23dcdf6-d9cf-4bfe-a9ec-cf1c67f92f7e.5ac35.mp3": {
+      "request_id": 426,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/d2/d23dcdf6-d9cf-4bfe-a9ec-cf1c67f92f7e.5ac35.mp3",
+      "bytes": 256933,
+      "sha256": "9c7446447a21925f974e2d49bd0d24c1fc06a454b9bba2bcc93ddb9a0f81f506"
+    },
+    "sss-jf2/assets/game/native/f9/f9ad383b-05cf-4e6e-8b27-5f1c5b40fc4a.a02e0.mp3": {
+      "request_id": 427,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/f9/f9ad383b-05cf-4e6e-8b27-5f1c5b40fc4a.a02e0.mp3",
+      "bytes": 14044,
+      "sha256": "e03653eaff4eb923ea9dd6072486fcfd8c6c29bed03563664f18393ee8126bec"
+    },
+    "sss-jf2/assets/game/native/b7/b79fd215-36a0-4b73-b775-747c746fd0cc.ba779.mp3": {
+      "request_id": 428,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/b7/b79fd215-36a0-4b73-b775-747c746fd0cc.ba779.mp3",
+      "bytes": 13835,
+      "sha256": "03c347be4e695716e027960deecda1dfe9feb6769bf0c9a662c38fa21e320050"
+    },
+    "sss-jf2/assets/game/native/a3/a35f8fd0-91cb-4130-8cfa-873df19168f4.9426c.mp3": {
+      "request_id": 429,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/a3/a35f8fd0-91cb-4130-8cfa-873df19168f4.9426c.mp3",
+      "bytes": 14044,
+      "sha256": "737194f134434b700d3561342cd4262244c355cfe700247008d79f57e83d76d7"
+    },
+    "sss-jf2/assets/game/native/9f/9f7582a3-48b9-47ef-b022-3ae0dfce3f3c.1c210.mp3": {
+      "request_id": 430,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/9f/9f7582a3-48b9-47ef-b022-3ae0dfce3f3c.1c210.mp3",
+      "bytes": 13835,
+      "sha256": "792c785350bbdfdbc1517dc043f753e96458da665fd4daf2049a97f43cb19679"
+    },
+    "sss-jf2/assets/game/native/15/15324bfd-1d04-4357-96b7-146ebb455f73.e5bfa.mp3": {
+      "request_id": 431,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/15/15324bfd-1d04-4357-96b7-146ebb455f73.e5bfa.mp3",
+      "bytes": 14044,
+      "sha256": "04dda37d6c175e575d47a0747e38a720f0cbd6024af67e09e2550e4d0bb1a2a9"
+    },
+    "sss-jf2/assets/game/native/ad/ad3dbbc0-fcc1-4af1-81b4-0338f1bc529e.efd53.mp3": {
+      "request_id": 432,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/ad/ad3dbbc0-fcc1-4af1-81b4-0338f1bc529e.efd53.mp3",
+      "bytes": 204425,
+      "sha256": "28fe65384a995a4013760b8883a1e1b65edc780bd5706438de21a636499444c4"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/12/1299bad2d.2c646.webp": {
+      "request_id": 433,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/12/1299bad2d.2c646.webp",
+      "bytes": 81654,
+      "sha256": "5f089b6e5c3093250ec8cd7ea9a458900e635376b47d9dfaaf1d68da3233fe13"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3": {
+      "request_id": 434,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3",
+      "bytes": 3959,
+      "sha256": "dd429421dc79d6f3f52ab218bd738b9d0d4d373c90cc1becf98eb4d55fc55900"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3": {
+      "request_id": 435,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3",
+      "bytes": 14750,
+      "sha256": "57a69937c1664dacfc03ce3a5ac405169caa884cf8a8a8b85cea3f3889629cea"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3": {
+      "request_id": 436,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3",
+      "bytes": 58200,
+      "sha256": "e43a4994aae31132c021cfdb6566f885300021c484caf1750b4b687b93b4fe41"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3": {
+      "request_id": 437,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3",
+      "bytes": 2708,
+      "sha256": "48371516675f757bd44e6abdb6843de071455ec8dc0bf3e0b7203fb23838b5b9"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3": {
+      "request_id": 438,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3",
+      "bytes": 3125,
+      "sha256": "1cf28eb27109fd8dc324a5576135ddcccea167602e621b812b79712110205d9d"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3": {
+      "request_id": 439,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3",
+      "bytes": 2972,
+      "sha256": "d87338dfcb2d19b39d489fab3f69200c8352e80b1e20ac370f6572711d03f7dd"
+    },
+    "astarte4/3.6/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3": {
+      "request_id": 440,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3",
+      "bytes": 2291,
+      "sha256": "fac16f5a0468df3006b9ec3c8dc5ad5e35b7ccfa4a6267cc0fec56c9bf079619"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/15/15820c817.fc7a1.webp": {
+      "request_id": 441,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/15/15820c817.fc7a1.webp",
+      "bytes": 69320,
+      "sha256": "8ec13abfa75796561381fde72305b1fd77ac311a4df050637fe9405770b41382"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/16/16edea480.13edf.webp": {
+      "request_id": 442,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/16/16edea480.13edf.webp",
+      "bytes": 1114,
+      "sha256": "e2f66c319e06cc1889bdfd65cd5251bae9cdc3934ba51c288c1e7763a31d2e15"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/17/17abd9622.92e4a.webp": {
+      "request_id": 443,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/17/17abd9622.92e4a.webp",
+      "bytes": 83490,
+      "sha256": "cec37b75468d3a71d29e09d338f0c34d88a67470090c68cff10e52d2c9f9d4b0"
+    },
+    "astarte4/3.6/web-mobile/assets/en/native/15/157eaa32a.f4864.webp": {
+      "request_id": 444,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/native/15/157eaa32a.f4864.webp",
+      "bytes": 30016,
+      "sha256": "98532e343386d57dd76f64f939d5eea76ee1b464ebfe9ac01c871a8fb02e68ae"
+    },
+    "astarte4/3.6/web-mobile/assets/en/native/11/11fd73305.e1749.webp": {
+      "request_id": 445,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/native/11/11fd73305.e1749.webp",
+      "bytes": 103330,
+      "sha256": "e6cd736ffa212fa452220797ca1c6b0f606bdf905bcc2c2253761175caf1d9db"
+    },
+    "sss-jf2/assets/game/native/e3/e33bfab7-b7f8-45be-b9c1-f232dac209e8.25017.mp3": {
+      "request_id": 446,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/e3/e33bfab7-b7f8-45be-b9c1-f232dac209e8.25017.mp3",
+      "bytes": 50040,
+      "sha256": "d442787c7576ae0c8abec7af9848e0493eeeb5f19df939fd3d01fb3a711fb4dc"
+    },
+    "sss-jf2/assets/game/native/c3/c3fdf2a3-3d03-40f3-a0f2-e444855849f6.66e51.mp3": {
+      "request_id": 447,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/c3/c3fdf2a3-3d03-40f3-a0f2-e444855849f6.66e51.mp3",
+      "bytes": 38364,
+      "sha256": "ae7e2bdcaff577142898eb65bca9fd7dcc2cadf1be43e6c093dce2507bdc8709"
+    },
+    "sss-jf2/assets/game/native/18/184ddab8-8102-46eb-a7b4-ae91cdab68b2.7ef8c.mp3": {
+      "request_id": 448,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/18/184ddab8-8102-46eb-a7b4-ae91cdab68b2.7ef8c.mp3",
+      "bytes": 35028,
+      "sha256": "1f8e57e6ef8a368c0e8534a99859c492353b858ddcd52ae0d3fef0a7579f5ca2"
+    },
+    "sss-jf2/assets/game/native/1c/1ca4a5ea-9126-48f4-a6bf-57c310d473a6.bfa33.mp3": {
+      "request_id": 449,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/1c/1ca4a5ea-9126-48f4-a6bf-57c310d473a6.bfa33.mp3",
+      "bytes": 40866,
+      "sha256": "a0e8bd5a9ed9b83b8d6f011eb0f73d3ce532ae0757f97c6743fe78c54420a431"
+    },
+    "sss-jf2/assets/game/native/2a/2a97bef8-8534-481f-802c-cb7a5f0db82c.41efd.mp3": {
+      "request_id": 450,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/2a/2a97bef8-8534-481f-802c-cb7a5f0db82c.41efd.mp3",
+      "bytes": 31692,
+      "sha256": "d4412bd4a3f7877694fcfe218a7e3c805cd9e05ba64ca60f66a59064e68549a1"
+    },
+    "sss-jf2/assets/game/native/c6/c6abe455-4e9a-4fe1-8fe1-b0b51d72a599.3b6c0.mp3": {
+      "request_id": 451,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/c6/c6abe455-4e9a-4fe1-8fe1-b0b51d72a599.3b6c0.mp3",
+      "bytes": 36696,
+      "sha256": "b84f8da6bce2ec9c2cde5828b2835dbed76a1e1851b0ea213c6fa7e1eafc6c07"
+    },
+    "sss-jf2/assets/game/native/37/3762b66c-79c9-45e3-86f9-9d81a341713a.7e0cb.mp3": {
+      "request_id": 452,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/37/3762b66c-79c9-45e3-86f9-9d81a341713a.7e0cb.mp3",
+      "bytes": 36279,
+      "sha256": "6e149354f080e4c2b54de95c4a4aa46b660db5e5b7c9586965da439cc6d8395b"
+    },
+    "sss-jf2/assets/game/native/0b/0bbabdfd-261a-462a-9476-26a9320e8ce9.f71a0.mp3": {
+      "request_id": 454,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/0b/0bbabdfd-261a-462a-9476-26a9320e8ce9.f71a0.mp3",
+      "bytes": 36279,
+      "sha256": "c7bc079cdc6d8dfd764f66eb8cfb2095618300a0f4263ce926d3cfc0a5751995"
+    },
+    "sss-jf2/assets/game/native/7c/7ca567e7-9299-4564-bf3d-eb513264393f.ff0e2.webp": {
+      "request_id": 455,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/7c/7ca567e7-9299-4564-bf3d-eb513264393f.ff0e2.webp",
+      "bytes": 14946,
+      "sha256": "8a4b3a7a93f111c86920bdaec5c87a0d41e7c54163702d7e1f433a0352c0cfa3"
+    },
+    "sss-jf2/assets/game/native/67/67b39d14-1d72-4754-9c7e-6673bf309903.4e9cf.webp": {
+      "request_id": 456,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/67/67b39d14-1d72-4754-9c7e-6673bf309903.4e9cf.webp",
+      "bytes": 16720,
+      "sha256": "dfa7aab2f0ed9c36ad2a2d5f09b5edcf77c68085b571f344015c7350dda9fc87"
+    },
+    "sss-jf2/assets/game/native/35/3514a7c6-4a26-428b-8bb5-eeef53d94449.ff398.mp3": {
+      "request_id": 457,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/35/3514a7c6-4a26-428b-8bb5-eeef53d94449.ff398.mp3",
+      "bytes": 23822,
+      "sha256": "5bd624f7bd7e98846fe5b3eb2fdde5d7f70826835d7347662887eedc0dfe6dc0"
+    },
+    "sss-jf2/assets/game/native/ac/ac70673f-81b5-46d5-8962-0999b2fde890.b8945.mp3": {
+      "request_id": 458,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/ac/ac70673f-81b5-46d5-8962-0999b2fde890.b8945.mp3",
+      "bytes": 28773,
+      "sha256": "915336c5895f7091b6b422624cec715e1628eedb1c9aff9e21d5a93fcb26356b"
+    },
+    "sss-jf2/assets/game/native/8a/8ac20132-9b6f-47bd-ba2b-9d019a9bfd69.18b8c.mp3": {
+      "request_id": 459,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/8a/8ac20132-9b6f-47bd-ba2b-9d019a9bfd69.18b8c.mp3",
+      "bytes": 21267,
+      "sha256": "30c1cbbd5f305ff9b169a5b235981d2549b1bf307f44127b5d5bee09d101f24d"
+    },
+    "sss-jf2/assets/game/native/93/93e26512-17cd-41c6-b180-218e8ae97181.4f0ca.mp3": {
+      "request_id": 460,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/93/93e26512-17cd-41c6-b180-218e8ae97181.4f0ca.mp3",
+      "bytes": 21267,
+      "sha256": "9f24229c843efcd40f0b800fec1835bccaf0c6685be20ecd7259671d22c5234b"
+    },
+    "sss-jf2/assets/game/native/41/4155ca5f-931a-4ee4-8053-8d2efca50bd0.7aeee.mp3": {
+      "request_id": 461,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/41/4155ca5f-931a-4ee4-8053-8d2efca50bd0.7aeee.mp3",
+      "bytes": 68388,
+      "sha256": "5d9f4f76ee00d76e882d25c0f78f769e353e0747bb0f1bb195c810df71b16a93"
+    },
+    "sss-jf2/assets/game/native/42/424fbc9a-ec91-46b7-8069-49f84ceb6c53.5c1cc.mp3": {
+      "request_id": 462,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/42/424fbc9a-ec91-46b7-8069-49f84ceb6c53.5c1cc.mp3",
+      "bytes": 11763,
+      "sha256": "2ee0e6d792b8d076adc33a58eb08b5732d6f99629c4db24870210b1cbc5feda3"
+    },
+    "sss-jf2/assets/game/native/5c/5c585a14-b5ec-4623-96c6-8728a4ffbe96.37bd1.mp3": {
+      "request_id": 463,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/5c/5c585a14-b5ec-4623-96c6-8728a4ffbe96.37bd1.mp3",
+      "bytes": 9030,
+      "sha256": "602f3ced32afac0c6d78e2f01525ed73537aaafb33ba9758925de3eff4b5fdd2"
+    },
+    "sss-jf2/assets/game/native/d7/d7f7887a-d335-40bc-ac42-a45aa691e3a6.631a0.mp3": {
+      "request_id": 464,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/d7/d7f7887a-d335-40bc-ac42-a45aa691e3a6.631a0.mp3",
+      "bytes": 13458,
+      "sha256": "6124acc4e89d8c2b79dd2bf62c696c4cd8b877bc97542b0146470db86aab8a55"
+    },
+    "sss-jf2/assets/game/native/3f/3fcc618c-c622-421c-9f1a-7c1665ca68c4.d13ba.mp3": {
+      "request_id": 465,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/3f/3fcc618c-c622-421c-9f1a-7c1665ca68c4.d13ba.mp3",
+      "bytes": 12790,
+      "sha256": "e112c7ec6dcd012e96d221c419188070d3f43c6a2a51fea961f6179093623ebe"
+    },
+    "sss-jf2/assets/game/native/ae/aec58127-7fab-44c2-92c6-80b0fc3ce8b5.1c6d2.mp3": {
+      "request_id": 466,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-jf2/assets/game/native/ae/aec58127-7fab-44c2-92c6-80b0fc3ce8b5.1c6d2.mp3",
+      "bytes": 20940,
+      "sha256": "f266e9ea84c5465965474d724c440f3d713bb4374f30085c57809f10265994d9"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/db/db9b3883-8538-4809-abc3-30a92c400d04.559d4.bin": {
+      "request_id": 467,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/db/db9b3883-8538-4809-abc3-30a92c400d04.559d4.bin",
+      "bytes": 59549,
+      "sha256": "2b561dbec5bdf84303268bb4ba25c2b49e8a28809353d2a13397681d8529fe63"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/11/11821491f.5f89a.webp": {
+      "request_id": 468,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/11/11821491f.5f89a.webp",
+      "bytes": 12806,
+      "sha256": "1ad3c37f6140ceb65587e610686e79879c32e705f3144b92aec85cc43805ae31"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/d0/d0c74a7a-86ea-400d-a22d-c1abbebdfa32.092d7.png": {
+      "request_id": 469,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/d0/d0c74a7a-86ea-400d-a22d-c1abbebdfa32.092d7.png",
+      "bytes": 58995,
+      "sha256": "55e09cc51e0f19c46a3b08e5c826d96a303ea50ed298ca1402ae7ab5459991fb"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/aa/aa0fdae4-433c-47e9-aa8a-3fd6f9179be4.0c634.png": {
+      "request_id": 470,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/aa/aa0fdae4-433c-47e9-aa8a-3fd6f9179be4.0c634.png",
+      "bytes": 2069,
+      "sha256": "d480acf86b5ecc7cf1d7c257babc0a205415c53a47793b9905d3232b3e6fbf84"
+    },
+    "astarte4/3.6/web-mobile/assets/jiliMain/native/19/195f5ebaf.1b580.webp": {
+      "request_id": 471,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jiliMain/native/19/195f5ebaf.1b580.webp",
+      "bytes": 20866,
+      "sha256": "1727ffa74a3b1741b9ed3da66a055eb5b80922a9f09722dd39e32831a8788e5c"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/13/13dad6fb6.7bcea.webp": {
+      "request_id": 472,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/13/13dad6fb6.7bcea.webp",
+      "bytes": 83822,
+      "sha256": "c7d779b93b6273372f451094fe648fdace3bb32b8d7a221565b7d88ddeec7a57"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/15/154f30a7-66d2-417c-aa11-83ac91ce0aaf.93e8e.webp": {
+      "request_id": 473,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/15/154f30a7-66d2-417c-aa11-83ac91ce0aaf.93e8e.webp",
+      "bytes": 119542,
+      "sha256": "f8d3fb8460b0300eb004620b14a76faff2f707552717ee2a09490fd2e6a3d99c"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/24/24c419ea-63a8-4ea1-a9d0-7fc469489bbc.841f5.png": {
+      "request_id": 474,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/24/24c419ea-63a8-4ea1-a9d0-7fc469489bbc.841f5.png",
+      "bytes": 1439,
+      "sha256": "cbca4eb7ae6158b9d65fc6495828b6c3a540085f8c704b1780f0690f0f0eba71"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/c9/c9373368-bb29-423c-9c60-907a759ee348.f736d.webp": {
+      "request_id": 475,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/c9/c9373368-bb29-423c-9c60-907a759ee348.f736d.webp",
+      "bytes": 668,
+      "sha256": "a98eb1f80e00caa3303b99a3d16bd027cebc44833b201152995beb956492c128"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/68/689f2fa5-d968-43eb-b377-cd863cbb4fbd.e44c1.bin": {
+      "request_id": 476,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/68/689f2fa5-d968-43eb-b377-cd863cbb4fbd.e44c1.bin",
+      "bytes": 12391,
+      "sha256": "a2c72f192b4866a01e1fb8655d126d851ac12dc35b3ccb524d6abd0c6a517094"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/e0/e03520a1-87b0-40d1-8dbd-6fd4c4ae9e9c.3fc6e.webp": {
+      "request_id": 477,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/e0/e03520a1-87b0-40d1-8dbd-6fd4c4ae9e9c.3fc6e.webp",
+      "bytes": 56880,
+      "sha256": "abac3cabb06035862c378f31637e822ad13a0a31588c0f6e0e2f0ed822829553"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/c0/c0a3e3be-74fa-4d01-8ca0-73126b2bf0a9.22f04.bin": {
+      "request_id": 478,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/c0/c0a3e3be-74fa-4d01-8ca0-73126b2bf0a9.22f04.bin",
+      "bytes": 14987,
+      "sha256": "3fb630513857ec06037819a91a379c9665b560a68d10678f7f844057ff912410"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/f2/f282725e-8f8b-4b12-9899-d59575966623.40516.webp": {
+      "request_id": 479,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/f2/f282725e-8f8b-4b12-9899-d59575966623.40516.webp",
+      "bytes": 3900,
+      "sha256": "741fd5d903a5c6e76f12119baa012917c3f800fdf524d0e05b6d851097ba0a21"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/e9/e988d278-0fda-46d8-a001-ae5b6389cb0b.7ef3a.png": {
+      "request_id": 480,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/e9/e988d278-0fda-46d8-a001-ae5b6389cb0b.7ef3a.png",
+      "bytes": 103285,
+      "sha256": "8133131e38b1efbf3c72f1d8d5ffaff04087c1d0826327405c86af99bc7e2dcc"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/a2/a2c8b88e-e90f-4c5e-bf3f-1a0c7520ab51.78477.png": {
+      "request_id": 481,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/a2/a2c8b88e-e90f-4c5e-bf3f-1a0c7520ab51.78477.png",
+      "bytes": 27450,
+      "sha256": "896a65d4755c20780b428641110f72022ab3dd3f63695d17ce10159fa95abfc0"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/bd/bd5b1333-dafb-49f1-b275-9390b9054bc0.a15db.webp": {
+      "request_id": 482,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/bd/bd5b1333-dafb-49f1-b275-9390b9054bc0.a15db.webp",
+      "bytes": 140,
+      "sha256": "94a11d82e933dc4c0a4c704478578f52a8479ced5e2d664fe3a455f67bccaf9a"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/15/15860bf53.44951.webp": {
+      "request_id": 492,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/15/15860bf53.44951.webp",
+      "bytes": 131050,
+      "sha256": "48c7d2daab04e29620f807607455f2f2d09ada2ee7d9bc1785087eaffc584ec8"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/b0/b0a0556f-f338-4c44-a6f0-9734d154c616.3fe52.png": {
+      "request_id": 493,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/b0/b0a0556f-f338-4c44-a6f0-9734d154c616.3fe52.png",
+      "bytes": 12768,
+      "sha256": "e919f4a4c3f4d87e486b906b41dd0839a38dfaa13cb6cbbc16176e7d92376325"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/9a/9a633273-ceb3-410b-9a3a-5960b738561c.6cdf1.png": {
+      "request_id": 494,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/9a/9a633273-ceb3-410b-9a3a-5960b738561c.6cdf1.png",
+      "bytes": 11393,
+      "sha256": "a42b51cb9c4b43d4bfd346e8bd2a00e743ac7afe5261b3f0cc3408becd03fb4a"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/fe/fef37957-612a-4480-9b8f-b4070b7ad165.21c7a.png": {
+      "request_id": 495,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/fe/fef37957-612a-4480-9b8f-b4070b7ad165.21c7a.png",
+      "bytes": 11687,
+      "sha256": "b7203cde8f615909de487a1eba6b32584422b2f8175477d886bb2f33c375f98d"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/13/132d2650d.1af90.webp": {
+      "request_id": 496,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/13/132d2650d.1af90.webp",
+      "bytes": 120442,
+      "sha256": "37702025100a6e8ee8eddaa840cf5bc3bb087002d9ab431bb45e039976b84fc0"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/55/5573b11e-8f83-455a-9f64-29b7d1005be1.1fcc9.png": {
+      "request_id": 497,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/55/5573b11e-8f83-455a-9f64-29b7d1005be1.1fcc9.png",
+      "bytes": 7173,
+      "sha256": "b3b4a97313fae102f97d1633d550fd4dc049d6890baa4140c1c404df3be90203"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/53/53cd037d-8e20-4e65-b0bd-f96e0755b387.ca150.png": {
+      "request_id": 498,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/53/53cd037d-8e20-4e65-b0bd-f96e0755b387.ca150.png",
+      "bytes": 16954,
+      "sha256": "995c9e08d2a2ead880f61d3c0ad98f744543d48716c15fc9e03456808ddb5c9e"
+    },
+    "smallicon/Icons/2_en.jpg": {
+      "request_id": 499,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/2_en.jpg",
+      "bytes": 14132,
+      "sha256": "56ef2c11652d82b1e193eccc46b900976aec8f6e189ecf6e3a0285ea6b4f9351"
+    },
+    "smallicon/Icons/9_en.jpg": {
+      "request_id": 500,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/9_en.jpg",
+      "bytes": 18017,
+      "sha256": "43a28ffcc18fae13b6fb728a6b027943118f3ff3fde16c9402e563748ee44ac7"
+    },
+    "smallicon/Icons/17_en.jpg": {
+      "request_id": 501,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/17_en.jpg",
+      "bytes": 12895,
+      "sha256": "9ded63cc67dd3c70558aba04f5a261f1f852f24f5ab75f3c9eb6bb5c921ce899"
+    },
+    "smallicon/Icons/30_en.jpg": {
+      "request_id": 502,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/30_en.jpg",
+      "bytes": 15534,
+      "sha256": "f61a66cd77d796faa3cf2109a17126739ea8a08f7b8c36d8628d2024467c134f"
+    },
+    "smallicon/Icons/35_en.jpg": {
+      "request_id": 503,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/35_en.jpg",
+      "bytes": 14663,
+      "sha256": "23553c73f857343c8dc14b77302b10940bb9947b1f1fc7a9430aaccac5f160ce"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/cf/cf928e79-7b97-4f4d-a8bf-4297b2f826a1.346a6.mp3": {
+      "request_id": 506,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/cf/cf928e79-7b97-4f4d-a8bf-4297b2f826a1.346a6.mp3",
+      "bytes": 6940,
+      "sha256": "52395316143f19b1d24b00c9ce592d78da74e205a75eea22e4863f8523f3e821"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/81/81ecd4c1-4136-46af-87c4-3fb8d80e8a9c.57350.mp3": {
+      "request_id": 507,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/81/81ecd4c1-4136-46af-87c4-3fb8d80e8a9c.57350.mp3",
+      "bytes": 33337,
+      "sha256": "28d65cc39dd42d3b838df6b996b47a32004d6af8ab8bdb054f64ee5417c2db4d"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/a1/a17de53a-0051-497e-a833-17da513c97e6.93f29.mp3": {
+      "request_id": 508,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/a1/a17de53a-0051-497e-a833-17da513c97e6.93f29.mp3",
+      "bytes": 138631,
+      "sha256": "34615da332709f9bf5bed3c88a74341f72e7cf68c7960a9d9fba6b5580f400cf"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/30/308454d2-7e6f-4c8d-8f5a-9c01c393fbff.ca1b1.mp3": {
+      "request_id": 509,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/30/308454d2-7e6f-4c8d-8f5a-9c01c393fbff.ca1b1.mp3",
+      "bytes": 108538,
+      "sha256": "7512614b69edfdfe1e0e11e53d64d88c79bf51ab7d9e06fea843ff9bbb578c89"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/02/02ccec23-010b-4332-8679-f88e181566d1.15e68.mp3": {
+      "request_id": 510,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/02/02ccec23-010b-4332-8679-f88e181566d1.15e68.mp3",
+      "bytes": 74133,
+      "sha256": "a7158a92d70e43a0a57218098b22bb1a4df40c1514669aa4db19f43ed185e058"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/a3/a380cb6a-615d-4ff1-806c-3afc46eb7393.40a1a.mp3": {
+      "request_id": 511,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/a3/a380cb6a-615d-4ff1-806c-3afc46eb7393.40a1a.mp3",
+      "bytes": 26089,
+      "sha256": "a48829b226115dab62816f3136680a5cba6183342de6dfad752b83c8333bdf71"
+    },
+    "astarte4/3.6/web-mobile/assets/en/native/16/1641b3a88.89d08.webp": {
+      "request_id": 512,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/native/16/1641b3a88.89d08.webp",
+      "bytes": 30954,
+      "sha256": "8f68f06bc4fcaf1f2089be02a00de2ca80d9098a373ff4cddfe1aafb269261d8"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/e6/e62dcf55-aa21-4816-a27d-a7ad802ef6a9.ca150.png": {
+      "request_id": 513,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/e6/e62dcf55-aa21-4816-a27d-a7ad802ef6a9.ca150.png",
+      "bytes": 16954,
+      "sha256": "995c9e08d2a2ead880f61d3c0ad98f744543d48716c15fc9e03456808ddb5c9e"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/88/8875f0a2-de64-47dc-b08f-09714fae272e.553ba.png": {
+      "request_id": 514,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/88/8875f0a2-de64-47dc-b08f-09714fae272e.553ba.png",
+      "bytes": 1500,
+      "sha256": "7b5b9a462c1bed02bc650c91c3209a64e1872f2dea536e61811d14f0ada2b641"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/16/166a618a4.7a6ab.webp": {
+      "request_id": 517,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/16/166a618a4.7a6ab.webp",
+      "bytes": 91270,
+      "sha256": "410370661eae9161821478987d3bf9bec57598982cdb94ea7ee1e7cc147ae2c8"
+    },
+    "smallicon/Icons/938_en.jpg": {
+      "request_id": 518,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/938_en.jpg",
+      "bytes": 9472,
+      "sha256": "c54711e4460e292dcdf79668033924c2aa47e56e4358d2d53967504b7ead491a"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/ed/edb27b42-d9ec-4d6d-8979-25af7d4204cf.346a6.mp3": {
+      "request_id": 519,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/ed/edb27b42-d9ec-4d6d-8979-25af7d4204cf.346a6.mp3",
+      "bytes": 6940,
+      "sha256": "52395316143f19b1d24b00c9ce592d78da74e205a75eea22e4863f8523f3e821"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/10/105b3a82-aa08-4819-88bc-8caad8c7719a.57350.mp3": {
+      "request_id": 520,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/10/105b3a82-aa08-4819-88bc-8caad8c7719a.57350.mp3",
+      "bytes": 33337,
+      "sha256": "28d65cc39dd42d3b838df6b996b47a32004d6af8ab8bdb054f64ee5417c2db4d"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/7a/7aaf61a2-a29f-4c13-93a9-6c49286e12c5.93f29.mp3": {
+      "request_id": 521,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/7a/7aaf61a2-a29f-4c13-93a9-6c49286e12c5.93f29.mp3",
+      "bytes": 138631,
+      "sha256": "34615da332709f9bf5bed3c88a74341f72e7cf68c7960a9d9fba6b5580f400cf"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/0f/0f4867b9-0c27-4ced-9221-48e2503ab976.ca1b1.mp3": {
+      "request_id": 522,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/0f/0f4867b9-0c27-4ced-9221-48e2503ab976.ca1b1.mp3",
+      "bytes": 108538,
+      "sha256": "7512614b69edfdfe1e0e11e53d64d88c79bf51ab7d9e06fea843ff9bbb578c89"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/ae/aeb314ab-666a-490c-a0b8-f529e5adab13.15e68.mp3": {
+      "request_id": 523,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/ae/aeb314ab-666a-490c-a0b8-f529e5adab13.15e68.mp3",
+      "bytes": 74133,
+      "sha256": "a7158a92d70e43a0a57218098b22bb1a4df40c1514669aa4db19f43ed185e058"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/06/067f06aa-a569-4ae4-a6c4-d0c93154c9f9.40a1a.mp3": {
+      "request_id": 524,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/06/067f06aa-a569-4ae4-a6c4-d0c93154c9f9.40a1a.mp3",
+      "bytes": 26089,
+      "sha256": "a48829b226115dab62816f3136680a5cba6183342de6dfad752b83c8333bdf71"
+    },
+    "astarte4/3.6/web-mobile/assets/en/native/17/172df1cf2.18157.webp": {
+      "request_id": 525,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/en/native/17/172df1cf2.18157.webp",
+      "bytes": 40116,
+      "sha256": "cc05568aee0b244049a1fa3ff783bf4db6455094ff931e9eae39046f61f99fc1"
+    },
+    "smallicon/Icons/108_en.jpg": {
+      "request_id": 526,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/108_en.jpg",
+      "bytes": 14708,
+      "sha256": "ba38bf79b86aa20499c1aada89257a54c7c0cc799e9d94669c7eb8068fb9ec26"
+    },
+    "smallicon/Icons/106_en.jpg": {
+      "request_id": 527,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/106_en.jpg",
+      "bytes": 14829,
+      "sha256": "abda21f15faef6a38625aefc81a08ce7c4aa7221d18e32ac189b494147de36a6"
+    },
+    "smallicon/Icons/103_en.jpg": {
+      "request_id": 528,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/103_en.jpg",
+      "bytes": 16829,
+      "sha256": "3a81e00176544b0fb7f4d4ff4b8e376e7fb608cdef391d85ec957907f31a3475"
+    },
+    "smallicon/Icons/102_en.jpg": {
+      "request_id": 529,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/102_en.jpg",
+      "bytes": 14589,
+      "sha256": "8f3af9a80ccb27c30ff39bdfdf2d4fb80ee8af361925ed506890def9e8851355"
+    },
+    "smallicon/Icons/58_en.jpg": {
+      "request_id": 530,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/58_en.jpg",
+      "bytes": 18381,
+      "sha256": "58c22eb5a9f33e5a99f40f5b09760434be887a1aaa70f1ee324036d950408764"
+    },
+    "smallicon/Icons/51_en.jpg": {
+      "request_id": 532,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/51_en.jpg",
+      "bytes": 16395,
+      "sha256": "7692c7a1d721c8c036b1ef137d041582cf571d2762c85fe5224186a8c038b33a"
+    },
+    "smallicon/Icons/49_en.jpg": {
+      "request_id": 533,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/49_en.jpg",
+      "bytes": 15025,
+      "sha256": "9babc629f7e425cd73768a843be4437a3a035d48d0839054c38484be0fc12962"
+    },
+    "smallicon/Icons/47_en.jpg": {
+      "request_id": 534,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/47_en.jpg",
+      "bytes": 15597,
+      "sha256": "88ef1a9227cdd363735f1fe891dbd2123c593a43e122efabf7d4991e251a75e3"
+    },
+    "astarte4/3.6/web-mobile/assets/jili/native/85/855a3546-fc38-4227-ba5f-2f23d17dad81.2c16f.png": {
+      "request_id": 535,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.6/web-mobile/assets/jili/native/85/855a3546-fc38-4227-ba5f-2f23d17dad81.2c16f.png",
+      "bytes": 6484,
+      "sha256": "0650958de0faaf670fa8956074ec4af0f6f7d8535a856232637db52e4608c374"
+    },
+    "smallicon/Icons/45_en.jpg": {
+      "request_id": 538,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/45_en.jpg",
+      "bytes": 13025,
+      "sha256": "d63088d4b431d7469d9b65108f8d4bc709ea5d4e66080f4db49809263a7a8222"
+    },
+    "smallicon/Icons/38_en.jpg": {
+      "request_id": 539,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/38_en.jpg",
+      "bytes": 15744,
+      "sha256": "276c9c4b230accf18e4a50f05d71b6892ce5bffe56c9dd565f0b0e3e82a15199"
+    },
+    "static/images/intro/sss-jf2/logo_en-US.webp": {
+      "request_id": 618,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/logo_en-US.webp",
+      "bytes": 16694,
+      "sha256": "32d11ff26688f29a78e6ae40349b0beaa2a2dbf5a11643cb68b19907b0a13c42"
+    },
+    "static/images/intro/sss-jf2/symbol_07.webp": {
+      "request_id": 619,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_07.webp",
+      "bytes": 7084,
+      "sha256": "8163cee4d3c25153e4b8d5a45db466f5beefa12e296f692ba2a7932da622047b"
+    },
+    "static/images/intro/sss-jf2/wheel.webp": {
+      "request_id": 620,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/wheel.webp",
+      "bytes": 23616,
+      "sha256": "e01c60afa57ddb0918efdc6e57c992e01df53af41f90f38cc64afda0913464c2"
+    },
+    "static/images/intro/sss-jf2/x1.webp": {
+      "request_id": 621,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x1.webp",
+      "bytes": 6320,
+      "sha256": "66ffabd7a2acfc6247670b17391bb69b2f6f15807c818d71cb334ac9c3782c6f"
+    },
+    "static/images/intro/sss-jf2/x2.webp": {
+      "request_id": 622,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x2.webp",
+      "bytes": 6576,
+      "sha256": "ae35774dc0b29d171c13791bd65d3b5b670fdee60c2624e263f3d3c3fb9c822e"
+    },
+    "static/images/intro/sss-jf2/x3.webp": {
+      "request_id": 623,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x3.webp",
+      "bytes": 6818,
+      "sha256": "f8013906d45921ebb7f2397d4981fb27ffb946f2f2e6768294250e05df784f03"
+    },
+    "static/images/intro/sss-jf2/x4.webp": {
+      "request_id": 624,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x4.webp",
+      "bytes": 6582,
+      "sha256": "15677047983be25e03a26e9812d1248e6eedce15900c84a1c1ea5a631d4c29e4"
+    },
+    "static/images/intro/sss-jf2/x5.webp": {
+      "request_id": 625,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x5.webp",
+      "bytes": 6656,
+      "sha256": "e7c9f6ae956aa440f0e242e1ab90d7edc6fbc5f8247075d78e035b3c9a42a4fc"
+    },
+    "static/images/intro/sss-jf2/x10.webp": {
+      "request_id": 626,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/x10.webp",
+      "bytes": 7348,
+      "sha256": "112f5e2e37e5eb5abfed0d272b7d7bb0e7cbca49ec75b6514d57b7deef240475"
+    },
+    "static/images/intro/sss-jf2/symbol_06.webp": {
+      "request_id": 627,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_06.webp",
+      "bytes": 8490,
+      "sha256": "97b779f6a494530264a05ee5f4888877601b3405f2990f1fd103c4ebd1c4d48a"
+    },
+    "static/images/intro/sss-jf2/symbol_05.webp": {
+      "request_id": 628,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_05.webp",
+      "bytes": 5106,
+      "sha256": "ed9560537161d5d47b5f3e32f4af59e30ebc86f2ed476ad30dac31d6d1b3aec6"
+    },
+    "static/images/intro/sss-jf2/symbol_04.webp": {
+      "request_id": 629,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_04.webp",
+      "bytes": 6390,
+      "sha256": "e9e5268c3c7361afbe5ef36efad3006b6604abe5785c0558ea0617910402b8b5"
+    },
+    "static/images/intro/sss-jf2/symbol_03.webp": {
+      "request_id": 630,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_03.webp",
+      "bytes": 6750,
+      "sha256": "1c89944c9c2feb12a0b9442b25285264099b447048050dfbcffab601e56cc91f"
+    },
+    "static/images/intro/sss-jf2/symbol_02.webp": {
+      "request_id": 631,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_02.webp",
+      "bytes": 3566,
+      "sha256": "1511b91f27b082c42127a87ae0ca38d49f911a948e20c0899853e8658fa1566e"
+    },
+    "static/images/intro/sss-jf2/symbol_01.webp": {
+      "request_id": 632,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_01.webp",
+      "bytes": 2688,
+      "sha256": "5368ac4a9b54f044b7180ab6ab9f05dace04b3ec9491574084c8526a06fd3636"
+    },
+    "static/images/intro/sss-jf2/symbol_00.webp": {
+      "request_id": 633,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/symbol_00.webp",
+      "bytes": 3200,
+      "sha256": "7a978356da14fb53e2b8f549675a26a29941aacb903eacd7bb6a8a9370cead4c"
+    },
+    "static/images/intro/sss-jf2/payline.webp": {
+      "request_id": 634,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-jf2/payline.webp",
+      "bytes": 5134,
+      "sha256": "ed63ed67936d33c00d1c02b4317cc96cb76543f54f57f05f5ff34cbc3c8d13d3"
+    }
+  }
+}

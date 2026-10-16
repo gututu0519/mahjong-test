@@ -56,11 +56,12 @@ class Capture:
         self.created = now()
         self.ws_count = 0
         self.accepting = True
+        self.decoded = dict(ready=False, spins=0, scatter_wins=0, errors=0)
 
     def snapshot(self):
         with self.lock:
             return copy.deepcopy(dict(id=self.id, url=self.url, created=self.created,
-                state=self.state, error=self.error, rows=self.rows, ws_count=self.ws_count))
+                state=self.state, error=self.error, rows=self.rows, ws_count=self.ws_count, decoded=self.decoded))
 
     def update(self, row, **values):
         with self.lock:
@@ -134,6 +135,40 @@ class Capture:
         ws.on('framesent', lambda data: record('sent', data))
         ws.on('framereceived', lambda data: record('received', data))
 
+    def decoded_event(self, source, event):
+        # Keep plaintext round data in the same private capture folder, never login tokens.
+        path = urlsplit(source['frame'].url).path
+        if not path.startswith('/sss-jf2/') or not isinstance(event, dict):
+            return
+        kind = event.get('kind')
+        if kind not in ('ready', 'spin', 'spin-error'):
+            return
+        record = dict(time=now(), path=path, **event)
+        with self.lock:
+            if kind == 'ready':
+                self.decoded['ready'] = True
+            elif kind == 'spin':
+                try:
+                    sys.path.insert(0, str(ROOT.parent)) if str(ROOT.parent) not in sys.path else None
+                    from server.adapters.jili.jokers_fortune_winx import unpack
+                    response = event['response']
+                    if response['ret'] != 0:
+                        raise ValueError('Game response ret=' + str(response['ret']))
+                    outer = unpack('SpinResponse', response['data'])
+                    spin = unpack('SpinAck', outer['data'])
+                    record['spin'] = spin
+                    record['request_decoded'] = unpack('SpinReq', event['request'])
+                    record['scatter_win'] = sum(r.get('ScatterWin', 0) for r in spin['RoundQueue'])
+                    self.decoded['spins'] += 1
+                    self.decoded['scatter_wins'] += int(record['scatter_win'] > 0)
+                except Exception as exc:
+                    record['decode_error'] = str(exc)
+                    self.decoded['errors'] += 1
+            else:
+                self.decoded['errors'] += 1
+            with (self.folder / 'decoded-rounds.jsonl').open('a', encoding='utf-8') as stream:
+                stream.write(json.dumps(record, ensure_ascii=False) + '\n')
+
     async def run(self):
         browser = None
         context = None
@@ -143,6 +178,8 @@ class Capture:
                     browser = await launch_browser(pw, self.headless)
                     context = await browser.new_context(record_har_path=str(self.folder / 'network.har'),
                         record_har_content='embed', record_har_mode='full')
+                    await context.expose_binding('__captureDecoded', self.decoded_event)
+                    await context.add_init_script(path=str(ROOT / 'decoded-hook.js'))
                     context.on('request', self.request)
                     context.on('response', lambda response: self.schedule(self.response(response)))
                     context.on('requestfailed', self.failed)

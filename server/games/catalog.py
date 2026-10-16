@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'jokers-fortune-winx': {
+        'factory': 'server.games.jokers_fortune_winx:JokersFortuneWinX',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'scatter', 'multipliers', 'extra_bet'],
+    },
     'fortune-gems2': {
         'factory': 'server.games.fortune_gems2:FortuneGems2',
         'category': 'slots', 'interaction': 'request_steps',

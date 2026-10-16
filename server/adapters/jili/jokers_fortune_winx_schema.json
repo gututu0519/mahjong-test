@@ -1,0 +1,137 @@
+{
+  "Column": {
+    "Col": [
+      1,
+      "int32",
+      true
+    ]
+  },
+  "AwardData": {
+    "Atype": [
+      1,
+      "int32",
+      false
+    ],
+    "Index": [
+      2,
+      "int32",
+      false
+    ],
+    "Symbol": [
+      3,
+      "int32",
+      false
+    ],
+    "Count": [
+      4,
+      "int32",
+      false
+    ],
+    "Win": [
+      5,
+      "double",
+      false
+    ],
+    "Pos": [
+      6,
+      "int32",
+      true
+    ]
+  },
+  "RoundInfo": {
+    "Symbol": [
+      1,
+      "Column",
+      true
+    ],
+    "AwardDataVec": [
+      2,
+      "AwardData",
+      true
+    ],
+    "MulVec": [
+      3,
+      "double",
+      true
+    ],
+    "LineWin": [
+      4,
+      "double",
+      false
+    ],
+    "ScatterWin": [
+      5,
+      "double",
+      false
+    ],
+    "BaseWin": [
+      6,
+      "double",
+      false
+    ],
+    "RoundWin": [
+      7,
+      "double",
+      false
+    ],
+    "AwardTypeFlag": [
+      8,
+      "int32",
+      false
+    ],
+    "MaxFlag": [
+      9,
+      "bool",
+      false
+    ]
+  },
+  "SpinAck": {
+    "RoundQueue": [
+      1,
+      "RoundInfo",
+      true
+    ],
+    "TotalBaseWin": [
+      2,
+      "double",
+      false
+    ],
+    "TotalWin": [
+      3,
+      "double",
+      false
+    ],
+    "RTP": [
+      4,
+      "double",
+      false
+    ],
+    "LID": [
+      5,
+      "int32",
+      false
+    ],
+    "RID": [
+      6,
+      "int32",
+      false
+    ],
+    "AckType": [
+      7,
+      "int32",
+      false
+    ],
+    "Extra": [
+      8,
+      "int32",
+      false
+    ]
+  },
+  "GameInfoData": {
+    "Mul": [
+      1,
+      "double",
+      true
+    ]
+  }
+}

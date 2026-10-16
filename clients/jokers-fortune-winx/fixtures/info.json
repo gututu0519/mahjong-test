@@ -1,0 +1,51 @@
+{
+  "WalletInfo": [
+    {
+      "bet": [
+        0.1,
+        0.2,
+        0.30000000000000004,
+        0.5,
+        0.8,
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        10.0
+      ],
+      "currencyNumber": 80,
+      "currencyName": "SC",
+      "currencySymbol": "SC",
+      "coin": 2000.0,
+      "unit": 1.0,
+      "ratio": 0.1,
+      "rate": 32.51,
+      "decimal": 2
+    }
+  ],
+  "jpUnlockBet": [],
+  "hotHandData": [],
+  "extraInfo": [
+    10,
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    240,
+    63,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    64
+  ],
+  "MaxOdd": 10000.0,
+  "freeSpin": {},
+  "freeSpinType": -1
+}

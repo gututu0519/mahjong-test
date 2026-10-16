@@ -1,0 +1,76 @@
+{
+  "capture": "8d190caa92a74fa89c7baf472c2a28bd",
+  "requests": [
+    612,
+    615
+  ],
+  "strings": {
+    "i18_INTRO_SSS_JF2_1": "Scatter",
+    "i18_INTRO_SSS_JF2_10": "Extra Play",
+    "i18_INTRO_SSS_JF2_11": "An additional 100% of the current play is required as the Extra Play.",
+    "i18_INTRO_SSS_JF2_12": "Each line win is multiplied by the corresponding reel multiplier.",
+    "i18_INTRO_SSS_JF2_13": "Line",
+    "i18_INTRO_SSS_JF2_14": "The number of lines is fixed at 5.",
+    "i18_INTRO_SSS_JF2_15": "Game Rules",
+    "i18_INTRO_SSS_JF2_16": "This is a 5-reel, 3-row video game.",
+    "i18_INTRO_SSS_JF2_17": "Winning combinations of identical symbols start from the leftmost reel and are counted consecutively from left to right on adjacent reels.",
+    "i18_INTRO_SSS_JF2_18": "Winning combinations and prizes are determined according to the win table.",
+    "i18_INTRO_SSS_JF2_19": "Only the highest prize is awarded per line.",
+    "i18_INTRO_SSS_JF2_2": "Scatter symbol appears on all reels.",
+    "i18_INTRO_SSS_JF2_20": "All winning combinations on multiple lines are accumulated and included in the total prize.",
+    "i18_INTRO_SSS_JF2_21": "Bonus games are calculated based on the play amount placed when the feature is triggered.",
+    "i18_INTRO_SSS_JF2_22": "Objects displayed in the game interface are for visual purposes only and do not affect or reflect the actual winning probability or prizes.",
+    "i18_INTRO_SSS_JF2_3": "Landing 3, 4, or 5 Scatters awards 10x, 50x, or 250x your current play.",
+    "i18_INTRO_SSS_JF2_4": "Scatter prizes are awarded independently and are added to any other potential winnings.",
+    "i18_INTRO_SSS_JF2_5": "Multiplier Reel",
+    "i18_INTRO_SSS_JF2_6": "Multiplier Reel values are x1, x2, x3, x4, x5, and x10.",
+    "i18_INTRO_SSS_JF2_7": "With a regular play, a win on second row awards the corresponding multiplier.",
+    "i18_INTRO_SSS_JF2_8": "Win Table",
+    "i18_INTRO_SSS_JF2_9": "Odds are shown based on a total play of {num0}."
+  },
+  "paytable_display_2_3_4_5": [
+    [
+      1,
+      3,
+      6,
+      40
+    ],
+    [
+      0,
+      3,
+      6,
+      40
+    ],
+    [
+      0,
+      3,
+      8,
+      40
+    ],
+    [
+      0,
+      3,
+      8,
+      40
+    ],
+    [
+      0,
+      7,
+      35,
+      200
+    ],
+    [
+      0,
+      7,
+      35,
+      200
+    ],
+    [
+      0,
+      15,
+      150,
+      2000
+    ]
+  ],
+  "note": "Paytable amounts multiply the base play directly. Validated against 60 decoded public-trial rounds (30 regular, 30 Extra Play); Scatter protocol details still require a real winning sample."
+}

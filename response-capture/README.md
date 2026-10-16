@@ -57,3 +57,13 @@ Windows 双击 `start.bat`。需要 Python 3.10 或更高版本；首次运行�
 使用本地测试网站验证界面抓取流程、JSON、二进制、POST、iframe、跳转、404、网络失败、WebSocket、预览、ZIP/HAR、历史恢复和移动布局。
 
 实现依据：[Playwright BrowserContext 网络事件](https://playwright.dev/python/docs/api/class-browsercontext)。
+
+## Joker’s Fortune WinX 解码记录
+
+新录制在 `/sss-jf2/` 页面载入前安装观察器，监听原版 WASM 命令完成后的结果，不改变旋转请求、Promise 或返回值。保存 `decoded-rounds.jsonl`，包括原始解密字节、下注参数、SpinAck 和 ScatterWin；不额外记录登录令牌或私钥。抓取页面实时显示已保存回合数、Scatter 中奖次数及错误数。
+
+先确认页面显示“Joker 解码已接入”，转一局确认回合数增加，再继续录制。正常旋转、Extra Play 和自动旋转均经过同一命令入口。旧记录没有该字段时显示尚未接入，不能把 HTTP 请求数量当作中奖统计。停止后明文文件与 manifest、HAR 一起进入 ZIP。
+
+此支持针对当前 Joker astarte4 客户端，其他游戏仍按原有方式保存网络数据。旧录制只保存 X25519 公钥和加密回包；会话关闭后没有私钥，不能靠重新登录恢复旧回包。旧数据完整保留。
+
+`python test_decoded.py` 使用本地浏览器夹具验证观察器不改变 Promise/异常、明文落盘与 Scatter 计数。
