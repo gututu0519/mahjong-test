@@ -138,7 +138,7 @@ class Capture:
     def decoded_event(self, source, event):
         # Keep plaintext round data in the same private capture folder, never login tokens.
         path = urlsplit(source['frame'].url).path
-        if not path.startswith('/sss-jf2/') or not isinstance(event, dict):
+        if not path.startswith(('/sss-jf2/', '/sss-tbv/')) or not isinstance(event, dict):
             return
         kind = event.get('kind')
         if kind not in ('ready', 'spin', 'spin-error'):
@@ -147,10 +147,14 @@ class Capture:
         with self.lock:
             if kind == 'ready':
                 self.decoded['ready'] = True
+                self.decoded['game'] = '3 Billion Vaults' if path.startswith('/sss-tbv/') else 'Joker'
             elif kind == 'spin':
                 try:
                     sys.path.insert(0, str(ROOT.parent)) if str(ROOT.parent) not in sys.path else None
-                    from server.adapters.jili.jokers_fortune_winx import unpack
+                    if path.startswith('/sss-tbv/'):
+                        from server.adapters.jili.three_billion_vaults import unpack
+                    else:
+                        from server.adapters.jili.jokers_fortune_winx import unpack
                     response = event['response']
                     if response['ret'] != 0:
                         raise ValueError('Game response ret=' + str(response['ret']))
@@ -159,6 +163,9 @@ class Capture:
                     record['spin'] = spin
                     record['request_decoded'] = unpack('SpinReq', event['request'])
                     record['scatter_win'] = sum(r.get('ScatterWin', 0) for r in spin['RoundQueue'])
+                    if path.startswith('/sss-tbv/'):
+                        self.decoded['feature_spins'] = self.decoded.get('feature_spins', 0) + int(any(r.get('FreeTotalRound', 0) > 0 for r in spin['RoundQueue']))
+                        self.decoded['jackpot_wins'] = self.decoded.get('jackpot_wins', 0) + int(any(r.get('JPPlate', {}).get('Win', 0) > 0 for r in spin['RoundQueue']))
                     self.decoded['spins'] += 1
                     self.decoded['scatter_wins'] += int(record['scatter_win'] > 0)
                 except Exception as exc:

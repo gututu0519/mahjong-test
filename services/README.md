@@ -73,3 +73,7 @@ JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不
 已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
 
 JILIUS Joker’s Fortune WinX：端口 8091，`jokers_fortune_winx_client`，已接入大厅。实现及补抓项见 [接入记录](jokers-fortune-winx/README.md)。
+
+### 3 Billion Vaults
+
+独立服务 `services/3-billion-vaults/start.bat`，端口 8092。原版横竖屏客户端与本地钱包，接入证据、验证范围和待补抓项见 [接入记录](3-billion-vaults/README.md)。

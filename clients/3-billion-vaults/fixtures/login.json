@@ -1,0 +1,80 @@
+{
+  "homeUrl": "/",
+  "linecode": 0,
+  "profile": {
+    "id": 1,
+    "aid": 1,
+    "apiId": 20004,
+    "transactionMode": 1,
+    "subAgentCode": 1,
+    "isLobbyOpen": false,
+    "meta": {},
+    "platform": "",
+    "lobbyMode": 0,
+    "switchOffs": [
+      2,
+      3,
+      5,
+      6,
+      10,
+      14,
+      25,
+      26,
+      27,
+      42,
+      45,
+      46,
+      47,
+      49,
+      50,
+      51,
+      52,
+      41,
+      62
+    ],
+    "wallets": null,
+    "nickname": "Player",
+    "newNickname": "",
+    "siteId": 1,
+    "account": "local",
+    "coin": 0,
+    "isJPEnabled": 1,
+    "linecode": 0,
+    "prefix": "",
+    "clientMode": [
+      {
+        "eventId": 4,
+        "value": [
+          1
+        ]
+      }
+    ],
+    "betLevel": -1,
+    "betValue": 0,
+    "license": 0,
+    "isGiftCodeOpen": false,
+    "freeSpinBetValue": 0,
+    "apiType": 0,
+    "walletType": 2,
+    "liveId": "",
+    "liveSourceUrls": {}
+  },
+  "token": "local",
+  "response": {
+    "error": 0,
+    "message": "",
+    "time": 0
+  },
+  "platformVersion": "local",
+  "lobbyMode": 0,
+  "disableFullScreen": 0,
+  "country": "",
+  "certId": 0,
+  "certArea": 0,
+  "isnewplayer": 0,
+  "clientApiParam": {},
+  "itaAuthId": "",
+  "thousandthMode": "",
+  "eventBannerId": 0,
+  "subDivision": ""
+}

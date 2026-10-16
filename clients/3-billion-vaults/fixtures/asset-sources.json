@@ -1,0 +1,2159 @@
+{
+  "capture": "4780cdf213754d54bcc757e36b6346b9",
+  "assets": {
+    "sss-tbv/index.html": {
+      "request_id": 1639,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/",
+      "bytes": 34164,
+      "sha256": "e3f8955b064b46e821eff3567657584ef0fcc554ef914169ac7aab091c154582"
+    },
+    "sss-tbv/TaDa_Logo_APNG_s.19933.png": {
+      "request_id": 1642,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/TaDa_Logo_APNG_s.19933.png",
+      "bytes": 41805,
+      "sha256": "8fc93044e3c002244c71fd36d3b1fcc5ac189e671e9e12b295db8fefeadcc8e1"
+    },
+    "sss-tbv/src/polyfills.bundle.e60f8.js": {
+      "request_id": 1645,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/polyfills.bundle.e60f8.js",
+      "bytes": 6467,
+      "sha256": "a02f62b63f14b6cbd21910bb38ff09d0510d626cf88040d1de344c05a0ac71d7"
+    },
+    "sss-tbv/src/system.bundle.543e6.js": {
+      "request_id": 1646,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/system.bundle.543e6.js",
+      "bytes": 12259,
+      "sha256": "90f192f3b04f7fcb5bba9c15745cdd1a798d9b855f752c5ee7e48bb526dd543d"
+    },
+    "sss-tbv/JILI_US.d16e3.png": {
+      "request_id": 1644,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/JILI_US.d16e3.png",
+      "bytes": 18068,
+      "sha256": "4c7409dc96270f44665d2a444245c11d55a17d00bbf1c69f20def8fa51aca9ca"
+    },
+    "sss-tbv/Intro_ProgressBar_Bottom_JILI.52849.png": {
+      "request_id": 1648,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/Intro_ProgressBar_Bottom_JILI.52849.png",
+      "bytes": 1013,
+      "sha256": "266b2adb81fbe71784ffcc61167736670b507771f4d8e450575da2b77f99ec43"
+    },
+    "sss-tbv/Intro_ProgressBar_JILI.44191.png": {
+      "request_id": 1649,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/Intro_ProgressBar_JILI.44191.png",
+      "bytes": 1003,
+      "sha256": "b506947e41172304c5d411475f5dc67079fa7fccdbcf774ca10c0aed04179114"
+    },
+    "sss-tbv/src/import-map.0f123.json": {
+      "request_id": 1647,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/import-map.0f123.json",
+      "bytes": 46,
+      "sha256": "387123340b5f407ca2624d7db8bbf4a3201ef1503bdb8d1898203234f4b666b8"
+    },
+    "sss-tbv/index.1350f.js": {
+      "request_id": 1651,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/index.1350f.js",
+      "bytes": 824,
+      "sha256": "127ae5c70011bf4bf2c07bbbc7ebf42a2f99915e0dd6d50061ebb11e4aa35a90"
+    },
+    "sss-tbv/application.4aa06.js": {
+      "request_id": 1652,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/application.4aa06.js",
+      "bytes": 1837,
+      "sha256": "7e1ce19f3f623981600d412c9e78fcad4aa404b3f3129ea86209b2eb5c312f63"
+    },
+    "sss-tbv/cocos-js/cc.868a2.js": {
+      "request_id": 1653,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/cocos-js/cc.868a2.js",
+      "bytes": 1947216,
+      "sha256": "a1d1737e498540d2021157e081b125b19afa1eda765af2b74926e9f4577141d3"
+    },
+    "sss-tbv/src/settings.e5355.json": {
+      "request_id": 1654,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/settings.e5355.json",
+      "bytes": 2119,
+      "sha256": "38b359df6ed15421f515267d0cc88b234cf853ae71fe17f47997e5b39b6ceccc"
+    },
+    "sss-tbv/cocos-js/spine.wasm-AX2dhSSe.js": {
+      "request_id": 1655,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/cocos-js/spine.wasm-AX2dhSSe.js",
+      "bytes": 22212,
+      "sha256": "158591e4046ed20932465e3fa66f579e2c6827a04d5ef27b670e4d5c95ce8c97"
+    },
+    "sss-tbv/cocos-js/spine-9KUNBejt.js": {
+      "request_id": 1656,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/cocos-js/spine-9KUNBejt.js",
+      "bytes": 119,
+      "sha256": "7b24dc02d4cc6059466f194d7155b250e9aa06709cfec1d45d7c836a00ef4b06"
+    },
+    "sss-tbv/cocos-js/assets/spine-BX4EhF6Q.wasm": {
+      "request_id": 1657,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/cocos-js/assets/spine-BX4EhF6Q.wasm",
+      "bytes": 268758,
+      "sha256": "30a293baa4d19e6b7d709438a98c801d9329eb849f1230c368fca776bcadb6f1"
+    },
+    "sss-tbv/src/chunks/bundle.3feff.js": {
+      "request_id": 1658,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/chunks/bundle.3feff.js",
+      "bytes": 134379,
+      "sha256": "e4fda4174bdd20915278d112e8694f6d0149b49de059b44baa89feb06ddeb97f"
+    },
+    "sss-tbv/assets/internal/config.ab914.json": {
+      "request_id": 1659,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/internal/config.ab914.json",
+      "bytes": 2693,
+      "sha256": "d4282827360445cc9eaeb75e508c9650ee7b21f663f4c569d1c11f02f65c4c8d"
+    },
+    "sss-tbv/assets/internal/index.ab914.js": {
+      "request_id": 1660,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/internal/index.ab914.js",
+      "bytes": 8022,
+      "sha256": "70f806ebd0d37153a4004f711077768d1f0aa8ea4d26a348b24c9ddecd98fddd"
+    },
+    "sss-tbv/assets/internal/import/07/07467f153.edfd7.json": {
+      "request_id": 1661,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/internal/import/07/07467f153.edfd7.json",
+      "bytes": 610535,
+      "sha256": "3fcc65f3cafdb74c5cf6e8132129e672a76e5894678e7132270876fd2df2b3f3"
+    },
+    "sss-tbv/src/zip-bundler/fflate.min.5fd4f.js": {
+      "request_id": 1662,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/src/zip-bundler/fflate.min.5fd4f.js",
+      "bytes": 33382,
+      "sha256": "2fbc2fce1d5a4b7aa0baa9c38827185a429b7a9e187c6c64e1c128890a5d6d9a"
+    },
+    "sss-tbv/assets/main/config.3e4ea.json": {
+      "request_id": 1663,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/config.3e4ea.json",
+      "bytes": 947,
+      "sha256": "4889fde851acde12ec0379e9cab769004932650a0c0a0634e707fa8d62b65216"
+    },
+    "sss-tbv/assets/main/index.3e4ea.js": {
+      "request_id": 1664,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/index.3e4ea.js",
+      "bytes": 854831,
+      "sha256": "4ed04fa8a0d553f29943c048d07c0c04dd12a1b7dd6d9a8cbad940eb4de63228"
+    },
+    "sss-tbv/assets/main/import/0a/0a7a36033.6e41d.json": {
+      "request_id": 1665,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/import/0a/0a7a36033.6e41d.json",
+      "bytes": 5428,
+      "sha256": "ef82784563f30bfac9434d8ca2d91ccbebf437634ad4f62724c03f7b05924a3c"
+    },
+    "sss-tbv/assets/main/native/1c/1ce206b5a.609ab.webp": {
+      "request_id": 1666,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/native/1c/1ce206b5a.609ab.webp",
+      "bytes": 10694,
+      "sha256": "778143f4305151656060b72f0560943010083aa730b51298ee472990fe292590"
+    },
+    "sss-tbv/assets/main/native/84/841f0631-b2ed-4b29-b6f5-97f2a12d44a9.690f5.webp": {
+      "request_id": 1667,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/native/84/841f0631-b2ed-4b29-b6f5-97f2a12d44a9.690f5.webp",
+      "bytes": 8330,
+      "sha256": "138bc1a7658497ae74e32e25a45fe7b366f2821fff1c294ff8c36cba44f63b58"
+    },
+    "sss-tbv/assets/main/native/d0/d05f311c-dbf4-4bc7-8c26-2705b04c10f7.bef4a.webp": {
+      "request_id": 1668,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/main/native/d0/d05f311c-dbf4-4bc7-8c26-2705b04c10f7.bef4a.webp",
+      "bytes": 23124,
+      "sha256": "65594de94d13a9fd60fd67285e537bec45bd0d32dbf1bb5a54aebee568f67078"
+    },
+    "astarte4/3.8/web-mobile/assets/versions.json": {
+      "request_id": 1670,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/versions.json",
+      "bytes": 475,
+      "sha256": "053717664a5e87b44028c974a4458de84bf8ff976e8765db4d26cab50a2ad3d3"
+    },
+    "astarte4/3.8/web-mobile/src/chunks/bundle.c5faa.js": {
+      "request_id": 1671,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/src/chunks/bundle.c5faa.js",
+      "bytes": 327608,
+      "sha256": "5d36b06e199dc94df004e5c9f00c8962208334d13344af17c01d88f9baf7376c"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/config.5bbe4.json": {
+      "request_id": 1672,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/config.5bbe4.json",
+      "bytes": 4677,
+      "sha256": "6f56fc6ee01512ae0a02ff824d0867dda3b6aef1dcc4b22e47fd26a891dbe307"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/index.5bbe4.js": {
+      "request_id": 1673,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/index.5bbe4.js",
+      "bytes": 91990,
+      "sha256": "a5e185ebfa45957ef3d86ce251ea3d173ee5d2d2041d7cdbcca45b832386254b"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/config.4e223.json": {
+      "request_id": 1674,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/config.4e223.json",
+      "bytes": 94906,
+      "sha256": "aa7d412484c0c658194488df4022aa7c776dc988eb5124dd743d85e8d2a31704"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/index.4e223.js": {
+      "request_id": 1675,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/index.4e223.js",
+      "bytes": 590,
+      "sha256": "db13a49d6f2313daa44b496e06fb36c750f7e3a0c5fad11551426314a88ae12f"
+    },
+    "astarte4/3.8/web-mobile/assets/other/config.a2960.json": {
+      "request_id": 1676,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/config.a2960.json",
+      "bytes": 17019,
+      "sha256": "ac33fa26c6e6ed5c37f5ed4fa5b0563d18ca9a5eb701aa3987005076aaa118a6"
+    },
+    "astarte4/3.8/web-mobile/assets/other/index.a2960.js": {
+      "request_id": 1677,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/index.a2960.js",
+      "bytes": 5825434,
+      "sha256": "aacaaa1e1a3a8949b2c381a158c8990630c9c2e5d403a2440b774337990d091d"
+    },
+    "astarte4/3.8/web-mobile/assets/en/config.c93f7.json": {
+      "request_id": 1678,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/config.c93f7.json",
+      "bytes": 28823,
+      "sha256": "5ff47382fd6c9bd60e4f67eb1ba7464f2dd2b8d846a6175307a916b277f93364"
+    },
+    "astarte4/3.8/web-mobile/assets/en/index.c93f7.js": {
+      "request_id": 1679,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/index.c93f7.js",
+      "bytes": 572,
+      "sha256": "fd17e174d967a74cb803e302c0d5d32d81b2c128e973a73cc46696c4a31c1b2b"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/jiliMain.4e223.zip": {
+      "request_id": 1680,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/jiliMain.4e223.zip",
+      "bytes": 10651,
+      "sha256": "4920a4b206aee2f71e7568d82d5a16c94e58aa3c273ff43ee7eb6d377610657c"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/config.37ed5.json": {
+      "request_id": 1681,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/config.37ed5.json",
+      "bytes": 210471,
+      "sha256": "9c4668e77a5d2126414cfffb3ceac8e1701453c27047b262b2f12a4f4a74c59c"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/index.37ed5.js": {
+      "request_id": 1682,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/index.37ed5.js",
+      "bytes": 578,
+      "sha256": "2497e7c61562fe52cbd04f31d535c4a8ef98196837e5c21432e0897ace528ed7"
+    },
+    "sss-tbv/assets/game/config.e9fe2.json": {
+      "request_id": 1683,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/config.e9fe2.json",
+      "bytes": 41304,
+      "sha256": "1afa2d7adc382ef98380671e1031218bb3492f23e239cf6676f360532fd8595f"
+    },
+    "sss-tbv/assets/game/index.e9fe2.js": {
+      "request_id": 1684,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/index.e9fe2.js",
+      "bytes": 1677,
+      "sha256": "31dcde541aef8f15411226610d1c26d6e3d08c1f331bf8d47d794fac063f3b7b"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/import/09/095e101bd.11c39.json": {
+      "request_id": 1685,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/import/09/095e101bd.11c39.json",
+      "bytes": 949121,
+      "sha256": "7b60aede1fb05f5e292691c9b8266e693144cfda8698fcc4cb6e3ccc803aa2ae"
+    },
+    "sss-tbv/assets/game/import/84/84675336-da60-4043-8f92-5d872a42d289.ff329.json": {
+      "request_id": 1686,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/84/84675336-da60-4043-8f92-5d872a42d289.ff329.json",
+      "bytes": 10597,
+      "sha256": "e22fbac5b7c4ebd143bbbc5db3f29b4582412b45419c0018ed9394aa97a4b1d8"
+    },
+    "sss-tbv/assets/game/import/b7/b78118d9-7899-4852-859d-7db687b5d20d.e1f9b.json": {
+      "request_id": 1687,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b7/b78118d9-7899-4852-859d-7db687b5d20d.e1f9b.json",
+      "bytes": 10668,
+      "sha256": "d4158675e55fccf373fc2dbb521326624e51d9bd4a68dc4feeea09b4649534cf"
+    },
+    "sss-tbv/assets/game/import/01/01dadedea.2d350.json": {
+      "request_id": 1695,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/01/01dadedea.2d350.json",
+      "bytes": 6868,
+      "sha256": "9113695b1ffb200b08f29b5b2b6c07c557b33362c698b46e882180e8ff0fd5af"
+    },
+    "sss-tbv/assets/game/import/06/069c5b6d7.a2cc8.json": {
+      "request_id": 1696,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/06/069c5b6d7.a2cc8.json",
+      "bytes": 6615,
+      "sha256": "54bc4a1bb5e2195aef5124eaa03ff305ba34a23fe8e44632c90ff0fc4bc2a39d"
+    },
+    "sss-tbv/assets/game/import/09/092f64dd2.dc7f2.json": {
+      "request_id": 1697,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/09/092f64dd2.dc7f2.json",
+      "bytes": 28127,
+      "sha256": "08b614339bd929049f29c9522ccd10d903f78202be3b203bae226d3a4e9f7060"
+    },
+    "sss-tbv/assets/game/import/01/01808d5b9.46208.json": {
+      "request_id": 1698,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/01/01808d5b9.46208.json",
+      "bytes": 18497,
+      "sha256": "c284daa8baad7f049da411cda19e0f5ededb5ebef9baccaadf65ce7d6d5335ef"
+    },
+    "sss-tbv/assets/game/import/0c/0c4c7c52c.8c52e.json": {
+      "request_id": 1699,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/0c/0c4c7c52c.8c52e.json",
+      "bytes": 8145,
+      "sha256": "04aa6f2a9c688444ebf0c42bdfdcd7728e6e192e128259ab3d34028ed780e35c"
+    },
+    "sss-tbv/assets/game/import/04/04f165fda.dedca.json": {
+      "request_id": 1700,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/04/04f165fda.dedca.json",
+      "bytes": 19419,
+      "sha256": "9d4b9a20a3c984b9d7f414dd6464133202ec07e8317ea6054988cc3ee2a6ebbc"
+    },
+    "sss-tbv/assets/game/import/01/01313d987.f79bd.bin": {
+      "request_id": 1701,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/01/01313d987.f79bd.bin",
+      "bytes": 353380,
+      "sha256": "91f20431c6fa87c021e07aca4dc6c10d70f377a49c118423dc0bb7858575e4f3"
+    },
+    "sss-tbv/assets/game/import/03/036e036f0.243ff.json": {
+      "request_id": 1703,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/03/036e036f0.243ff.json",
+      "bytes": 1800,
+      "sha256": "d9e62fc3a052959764ef18679ed1ad46a3cd101813d4e859e3c9c098f0390b56"
+    },
+    "sss-tbv/assets/game/native/4b/4bef6dda-1751-4ddf-9565-fbadf669dcdb.23ec6.bin": {
+      "request_id": 1704,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/4b/4bef6dda-1751-4ddf-9565-fbadf669dcdb.23ec6.bin",
+      "bytes": 806529,
+      "sha256": "d85639ce9eddf569e40c1cbdf1a97139077302c75445d1cb64a4e939f38c60e1"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/import/0e/0e888e82a.6232b.json": {
+      "request_id": 1688,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/import/0e/0e888e82a.6232b.json",
+      "bytes": 32142,
+      "sha256": "ddb4931dcac0a8cba8470844c847e920d4ef7bd4166e4cfc2678b16ba0788911"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/import/08/08135a0aa.11107.bin": {
+      "request_id": 1689,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/import/08/08135a0aa.11107.bin",
+      "bytes": 1371744,
+      "sha256": "79583bdd0bc1ced0c3ab8ae0cfadeb3846271c5e20779dfe58e0042760378be9"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf": {
+      "request_id": 122,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf",
+      "bytes": 31052,
+      "sha256": "1dbc66b940e5d7478810d3b0fb3d9264107b9a790e14ef70ebfbacb7e5bce8c8"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf": {
+      "request_id": 123,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf",
+      "bytes": 158548,
+      "sha256": "165cc4058788b44cc887bd73a993baf50cdb9e53653c267bd7fe15ca97f59740"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/12/12edfc410.24e4a.webp": {
+      "request_id": 1692,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/12/12edfc410.24e4a.webp",
+      "bytes": 9862,
+      "sha256": "1de4c24a20533511642271b5f1a2c9822e39aea3c30f430216ce3d27abba88c6"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/16/168b05255.9551a.webp": {
+      "request_id": 1693,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/16/168b05255.9551a.webp",
+      "bytes": 6508,
+      "sha256": "88ce9a43881335d02ec6f1fd2199ff6585634b1487c279d9d68e2c12a240196a"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.f6a9a.png": {
+      "request_id": 1694,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.f6a9a.png",
+      "bytes": 2203,
+      "sha256": "cc5b920a36842db1f0fdf27268004c7be00d390d4c82ea85552667300056c934"
+    },
+    "sss-tbv/assets/game/native/cd/cd42c691-2452-46eb-a2f4-5e75a6372815.4314e.bin": {
+      "request_id": 1705,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/cd/cd42c691-2452-46eb-a2f4-5e75a6372815.4314e.bin",
+      "bytes": 97913,
+      "sha256": "c835d1b2b876f18e61f3c39bec11f7abe1b9e497febd42549695d1a05430f1f0"
+    },
+    "sss-tbv/assets/game/import/ad/ada29b4e-9b2a-4923-95bd-28560900631c.698b0.json": {
+      "request_id": 1706,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/ad/ada29b4e-9b2a-4923-95bd-28560900631c.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/8d/8d5e11aa-6e31-47b6-bbde-3a3512e75cc9.a2533.json": {
+      "request_id": 1707,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/8d/8d5e11aa-6e31-47b6-bbde-3a3512e75cc9.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/1d/1d8813bfa.d37f1.json": {
+      "request_id": 1708,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/1d/1d8813bfa.d37f1.json",
+      "bytes": 85,
+      "sha256": "a392280257ac3f33063a9f6b848078cbe4dcd67bdae3f305784edcd8d98164a7"
+    },
+    "sss-tbv/assets/game/import/47/47ef4ab7-be38-441e-96b6-7af67582f5b2.698b0.json": {
+      "request_id": 1709,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/47/47ef4ab7-be38-441e-96b6-7af67582f5b2.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/1a/1ae4d1f6d.8a5ea.json": {
+      "request_id": 1710,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/1a/1ae4d1f6d.8a5ea.json",
+      "bytes": 84,
+      "sha256": "055f55d812c39ef482258f38e026de5164b7f7103ec8643d59b478cd894e57dd"
+    },
+    "sss-tbv/assets/game/import/20/20716ce7-54fa-475c-bb2c-3fdeef5824f9.698b0.json": {
+      "request_id": 1711,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/20/20716ce7-54fa-475c-bb2c-3fdeef5824f9.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png": {
+      "request_id": 1702,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png",
+      "bytes": 82,
+      "sha256": "83c9b8ce1937570a40bcedde29457a4ab7865ca1db23a46d2d68e6b1949f3c28"
+    },
+    "sss-tbv/assets/game/native/ad/ada29b4e-9b2a-4923-95bd-28560900631c.07142.webp": {
+      "request_id": 1712,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/ad/ada29b4e-9b2a-4923-95bd-28560900631c.07142.webp",
+      "bytes": 3040,
+      "sha256": "13a1c580e2cdb42eb0c5592f53b81146521672d5a0ab345ddeab6824036e8efc"
+    },
+    "sss-tbv/assets/game/native/8d/8d5e11aa-6e31-47b6-bbde-3a3512e75cc9.bfdb0.png": {
+      "request_id": 1713,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/8d/8d5e11aa-6e31-47b6-bbde-3a3512e75cc9.bfdb0.png",
+      "bytes": 111587,
+      "sha256": "f449357771a9a4eca5d8ea031bd388bbecf4faeea836db2f7da7254b127c7250"
+    },
+    "sss-tbv/assets/game/native/1d/1d8813bfa.7a4c6.webp": {
+      "request_id": 1714,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/1d/1d8813bfa.7a4c6.webp",
+      "bytes": 377906,
+      "sha256": "c62f54304a316c30a93528daa4090008447239acd230372d0dc82d8a23c016bf"
+    },
+    "sss-tbv/assets/game/native/1a/1ae4d1f6d.7d5b9.webp": {
+      "request_id": 1716,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/1a/1ae4d1f6d.7d5b9.webp",
+      "bytes": 183196,
+      "sha256": "1dc8ba20621d9246d074be70cfb4c73a1a5871ff613ccde553cb252028faed5e"
+    },
+    "sss-tbv/assets/game/native/47/47ef4ab7-be38-441e-96b6-7af67582f5b2.a5ab6.webp": {
+      "request_id": 1715,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/47/47ef4ab7-be38-441e-96b6-7af67582f5b2.a5ab6.webp",
+      "bytes": 330792,
+      "sha256": "99bfca9e1cb37386595a1a7291c31ccd7b00100de8fb0e1a81bc213e406aa0d7"
+    },
+    "sss-tbv/assets/game/native/20/20716ce7-54fa-475c-bb2c-3fdeef5824f9.03d02.webp": {
+      "request_id": 1717,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/20/20716ce7-54fa-475c-bb2c-3fdeef5824f9.03d02.webp",
+      "bytes": 135316,
+      "sha256": "4ddf35ac17beb22b4f97a43ea550cf1c8f3d5f3a586035d2eb8750cffe4f6abe"
+    },
+    "smallicon/lang/en-US/strings.json": {
+      "request_id": 1719,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/lang/en-US/strings.json",
+      "bytes": 144495,
+      "sha256": "9adbf538187292fc803bd375e7ad370b6291c077c197234d1424d8d350449ba8"
+    },
+    "smallicon/lang/en-US/strings_SSS.json": {
+      "request_id": 1720,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/lang/en-US/strings_SSS.json",
+      "bytes": 9874,
+      "sha256": "7085640bfd832e12d2449294ece561e99ea105024bf3b6c29607c936eb37ef38"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf": {
+      "request_id": 1722,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf",
+      "bytes": 57212,
+      "sha256": "4737b61d9d64c09edec9f3696b1f6aa8f9937a5f17497d8ae21e3458d74b78d1"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png": {
+      "request_id": 1723,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png",
+      "bytes": 158,
+      "sha256": "428698a9cd4c031962c9f5defd15057fd1f20273dc3cd6eddcbd2ce14c4057d8"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/1c/1c2526437.8cc5f.webp": {
+      "request_id": 1724,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/1c/1c2526437.8cc5f.webp",
+      "bytes": 88288,
+      "sha256": "e22fe6864259b3f069c04280932313feb2bcc9066dcf71c60564ac78fedbc5da"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/18/186559350.74db0.webp": {
+      "request_id": 1725,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/18/186559350.74db0.webp",
+      "bytes": 125642,
+      "sha256": "62330ff21bf8549bdef92a0df508cbe8fcef8a7e3032d9c2a0d6b261dd614bdc"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png": {
+      "request_id": 1726,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png",
+      "bytes": 4273,
+      "sha256": "76ebb59620f0a591bfafe6f529299a1f15098ff713ea16778872f850eea49800"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/1c/1cf8af83e.db4de.webp": {
+      "request_id": 1727,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/1c/1cf8af83e.db4de.webp",
+      "bytes": 4974,
+      "sha256": "bb87dcecf7e828bce3a858e88335983bd9279b8f8168aa87042a2ae70a7d0f8f"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png": {
+      "request_id": 1728,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png",
+      "bytes": 1633,
+      "sha256": "328da1766915cb2c5db06827a48effc993bcf876e67b8412719a8ecae36e5dff"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/11/119c9384c.8a1b3.webp": {
+      "request_id": 1729,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/11/119c9384c.8a1b3.webp",
+      "bytes": 5676,
+      "sha256": "7f1f763a18076fd23d36f30c3d2013e9f78db006731f0d388da65392eb92e247"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png": {
+      "request_id": 1730,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png",
+      "bytes": 1082,
+      "sha256": "5e3e931db260d0f43c2f5fd0ea791fbdc25923a8c14fcd6b0912581cd893f96d"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png": {
+      "request_id": 1731,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png",
+      "bytes": 1114,
+      "sha256": "132fda6a4b38333dcb471f09be05aed43d01b83dcc7a09c168b5629cdee31865"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.3b1bc.png": {
+      "request_id": 1732,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.3b1bc.png",
+      "bytes": 2209,
+      "sha256": "3b57c430cd7f67198d3586200246b488f98dfc585b70ec9ce7bb64f0b874dd03"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.2319e.png": {
+      "request_id": 1734,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.2319e.png",
+      "bytes": 14206,
+      "sha256": "4db6ca60a2b6221cf7c218b51605a0f9decd83972c7d2b8f52d4b6542a875c73"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png": {
+      "request_id": 1735,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png",
+      "bytes": 1050,
+      "sha256": "44b670047e5d34fc09f3e8538e8945445bc1bb913d6f21d7ac4e06b18c2e172b"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/import/0f/0fcbe7034.d995b.json": {
+      "request_id": 1736,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/import/0f/0fcbe7034.d995b.json",
+      "bytes": 1898295,
+      "sha256": "dcf60e6cb860d54fcab98f29537e4d6a6d133b54fc520b1976369a1d6ee9f110"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png": {
+      "request_id": 1737,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png",
+      "bytes": 1187,
+      "sha256": "5d2e0481ed979890a79295427b5e219ab24f41cdb4129da753b7b8a475de3658"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/1d/1d15181f1.0002a.webp": {
+      "request_id": 1738,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/1d/1d15181f1.0002a.webp",
+      "bytes": 27708,
+      "sha256": "b5eaedc79632a10f5c097d9426417f4fc164fe62f577858afe342a88b1b22ac8"
+    },
+    "astarte4/3.8/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png": {
+      "request_id": 1739,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png",
+      "bytes": 1047,
+      "sha256": "eccd4c8f70091a1a5f3459df5f8e64b9a5ff50feaef3ab0d6e678e3e6e1b017a"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/jili.37ed5.zip": {
+      "request_id": 1743,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/jili.37ed5.zip",
+      "bytes": 35247,
+      "sha256": "0cbaafa0ab89a3580d8401ec454870d3ca5ada38d27d26d8ad93cc75e27fce4c"
+    },
+    "sss-tbv/assets/game/game.e9fe2.zip": {
+      "request_id": 1744,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/game.e9fe2.zip",
+      "bytes": 397053,
+      "sha256": "4258f09c720e0355745e35a4c7ad3851c5054cd877192dd847dbbd29605bfe55"
+    },
+    "sss-tbv/assets/game/import/d1/d1f525a3-0d1b-4bca-9699-5b068bebe7d3.89c92.json": {
+      "request_id": 1745,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/d1/d1f525a3-0d1b-4bca-9699-5b068bebe7d3.89c92.json",
+      "bytes": 3797,
+      "sha256": "814013469ad332e7a9f29aca539c8ed23202915a3b254aad6705722a788bd213"
+    },
+    "astarte4/3.8/web-mobile/assets/en/import/08/0848cef53.36c4a.json": {
+      "request_id": 1746,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/import/08/0848cef53.36c4a.json",
+      "bytes": 105914,
+      "sha256": "a41b60407d550189ed20110eba71e31d7e57446023f71017e8c48a2f0bfdcb64"
+    },
+    "astarte4/3.8/web-mobile/assets/en/native/1b/1b691ca02.70126.webp": {
+      "request_id": 1747,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/native/1b/1b691ca02.70126.webp",
+      "bytes": 115366,
+      "sha256": "6afdefe1052f6fe5422f4005ff49dd1712c6238b71da5f7f6d71cc4bab24edba"
+    },
+    "sss-tbv/assets/game/import/0b/0b192a100.f14ef.json": {
+      "request_id": 1748,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/0b/0b192a100.f14ef.json",
+      "bytes": 1227,
+      "sha256": "c36dbd5d3f13c61c740dea811893518f77ce567ab482e4f19829eb50ed6fc2f6"
+    },
+    "sss-tbv/assets/game/import/09/093d7ec70.3b660.json": {
+      "request_id": 1749,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/09/093d7ec70.3b660.json",
+      "bytes": 207910,
+      "sha256": "bffef11062bc391e09f72725fb84e76ab14f66562baf1985d5d4c7c3dc1a9f1a"
+    },
+    "sss-tbv/assets/game/import/1e/1ebce98fa.1adcf.json": {
+      "request_id": 1750,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/1e/1ebce98fa.1adcf.json",
+      "bytes": 84,
+      "sha256": "37825e7851ba56466fe39ee21c0f9179e9049105333aca0ece05f4244fd6c34d"
+    },
+    "sss-tbv/assets/game/import/1a/1afff1d7-7eac-45f3-bcf5-8098ca43f413.698b0.json": {
+      "request_id": 1751,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/1a/1afff1d7-7eac-45f3-bcf5-8098ca43f413.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/2e/2e615b38-dc88-452f-87b6-c51c439313d4.698b0.json": {
+      "request_id": 1752,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/2e/2e615b38-dc88-452f-87b6-c51c439313d4.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/e6/e6bcbff2-1f29-4bb9-822c-32a6097e68d9.698b0.json": {
+      "request_id": 1753,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/e6/e6bcbff2-1f29-4bb9-822c-32a6097e68d9.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/3a/3aead9a2-f6ee-4c65-972e-8f1f9e0bcd6c.698b0.json": {
+      "request_id": 1754,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/3a/3aead9a2-f6ee-4c65-972e-8f1f9e0bcd6c.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/5d/5d6ec67c-c47d-42a4-ac91-726744884925.698b0.json": {
+      "request_id": 1755,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/5d/5d6ec67c-c47d-42a4-ac91-726744884925.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/5f/5fde1981-7cfe-42bc-979f-cdba4ae293e5.698b0.json": {
+      "request_id": 1756,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/5f/5fde1981-7cfe-42bc-979f-cdba4ae293e5.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/89/890d15f5-204f-4ac6-bcb3-345153bae989.698b0.json": {
+      "request_id": 1757,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/89/890d15f5-204f-4ac6-bcb3-345153bae989.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/9a/9abfdef3-58c8-487e-9806-ee76085146d0.698b0.json": {
+      "request_id": 1823,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/9a/9abfdef3-58c8-487e-9806-ee76085146d0.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/native/1e/1ebce98fa.3ffb7.webp": {
+      "request_id": 1762,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/1e/1ebce98fa.3ffb7.webp",
+      "bytes": 23258,
+      "sha256": "a4470b87967a9ac1a804949f44ce235436a5eb9c78b1de3669b4c3e100417654"
+    },
+    "sss-tbv/assets/game/native/2e/2e615b38-dc88-452f-87b6-c51c439313d4.92809.webp": {
+      "request_id": 1764,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/2e/2e615b38-dc88-452f-87b6-c51c439313d4.92809.webp",
+      "bytes": 3322,
+      "sha256": "1f48101a3c5cf7ff5468b029057cfa1b54552b9dae2d860b3ce73145adb725bf"
+    },
+    "sss-tbv/assets/game/native/1a/1afff1d7-7eac-45f3-bcf5-8098ca43f413.aa8e3.webp": {
+      "request_id": 1763,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/1a/1afff1d7-7eac-45f3-bcf5-8098ca43f413.aa8e3.webp",
+      "bytes": 57854,
+      "sha256": "059752e2d99f053d6765729b3424656cc3272c9b332e77a78fa9909bed38b991"
+    },
+    "sss-tbv/assets/game/native/e6/e6bcbff2-1f29-4bb9-822c-32a6097e68d9.92809.webp": {
+      "request_id": 1765,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/e6/e6bcbff2-1f29-4bb9-822c-32a6097e68d9.92809.webp",
+      "bytes": 3322,
+      "sha256": "1f48101a3c5cf7ff5468b029057cfa1b54552b9dae2d860b3ce73145adb725bf"
+    },
+    "sss-tbv/assets/game/native/3a/3aead9a2-f6ee-4c65-972e-8f1f9e0bcd6c.5bf73.webp": {
+      "request_id": 1766,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/3a/3aead9a2-f6ee-4c65-972e-8f1f9e0bcd6c.5bf73.webp",
+      "bytes": 4068,
+      "sha256": "0ceeaf011c3bd1c9d2813fe4ddd4e5707cace19ad9c5df77f5d044291c251e3e"
+    },
+    "sss-tbv/assets/game/native/5d/5d6ec67c-c47d-42a4-ac91-726744884925.e6eb1.webp": {
+      "request_id": 1767,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/5d/5d6ec67c-c47d-42a4-ac91-726744884925.e6eb1.webp",
+      "bytes": 30480,
+      "sha256": "5fa266c1013249931a79a75028740d5de9072f936eef809600c9d3ea2eb1cc9b"
+    },
+    "sss-tbv/assets/game/native/5f/5fde1981-7cfe-42bc-979f-cdba4ae293e5.209ca.webp": {
+      "request_id": 1768,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/5f/5fde1981-7cfe-42bc-979f-cdba4ae293e5.209ca.webp",
+      "bytes": 3324,
+      "sha256": "db812f975ce10a976407102c3dfe48ea1d8005be5247e0f9e19cdd270c8b4ae0"
+    },
+    "sss-tbv/assets/game/native/89/890d15f5-204f-4ac6-bcb3-345153bae989.7d177.webp": {
+      "request_id": 1769,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/89/890d15f5-204f-4ac6-bcb3-345153bae989.7d177.webp",
+      "bytes": 112648,
+      "sha256": "6144875ae1953033f84228d8eeccc7a26d0af387734f03ff24f1fe6059438a6d"
+    },
+    "sss-tbv/assets/game/native/9a/9abfdef3-58c8-487e-9806-ee76085146d0.6f63f.webp": {
+      "request_id": 1830,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/9a/9abfdef3-58c8-487e-9806-ee76085146d0.6f63f.webp",
+      "bytes": 4070,
+      "sha256": "c50a11300b8c34537e4020be92e06a582396688d86957e3f9e5ec739158a85ef"
+    },
+    "sss-tbv/assets/game/native/2f/2f501166-bca4-4ee7-981a-3bc4cabfd796.b43e3.bin": {
+      "request_id": 1773,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/2f/2f501166-bca4-4ee7-981a-3bc4cabfd796.b43e3.bin",
+      "bytes": 637390,
+      "sha256": "1a0b91590761b19494d3f66398769f329076c802a9950d15f0869632224d3d63"
+    },
+    "sss-tbv/assets/game/import/bf/bf3b25a1-f409-4913-824d-4163457ee95f.698b0.json": {
+      "request_id": 1774,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/bf/bf3b25a1-f409-4913-824d-4163457ee95f.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/0a/0a7f82bd2.393ae.json": {
+      "request_id": 1775,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/0a/0a7f82bd2.393ae.json",
+      "bytes": 2378,
+      "sha256": "60698933925d32df8266b7c451fe48dc763dc63c854657a48c3071b51bace6ab"
+    },
+    "sss-tbv/assets/game/import/02/022030d7-6c4f-4b7c-ba89-fddb5127b333.698b0.json": {
+      "request_id": 1776,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/02/022030d7-6c4f-4b7c-ba89-fddb5127b333.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/e4/e4e6334c-200d-40b5-867b-05076e1933e0.698b0.json": {
+      "request_id": 1777,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/e4/e4e6334c-200d-40b5-867b-05076e1933e0.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/c4/c49196bd-0a15-4757-9782-4fd2a0958419.698b0.json": {
+      "request_id": 1778,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c4/c49196bd-0a15-4757-9782-4fd2a0958419.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/e0/e02c4f1b-000f-4529-b6f2-2f05992eeb02.698b0.json": {
+      "request_id": 1779,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/e0/e02c4f1b-000f-4529-b6f2-2f05992eeb02.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/7e/7e8b2fe1-7877-4c15-8d83-b93f776a6046.a2533.json": {
+      "request_id": 1787,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/7e/7e8b2fe1-7877-4c15-8d83-b93f776a6046.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/native/bf/bf3b25a1-f409-4913-824d-4163457ee95f.50fef.webp": {
+      "request_id": 1786,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/bf/bf3b25a1-f409-4913-824d-4163457ee95f.50fef.webp",
+      "bytes": 149078,
+      "sha256": "6ea419bae67d70f0f085cf1934ff62fcfa83a3dc1d881c1b5f03c4cef501dade"
+    },
+    "sss-tbv/assets/game/native/e4/e4e6334c-200d-40b5-867b-05076e1933e0.f9897.webp": {
+      "request_id": 1789,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/e4/e4e6334c-200d-40b5-867b-05076e1933e0.f9897.webp",
+      "bytes": 67132,
+      "sha256": "a05e9dd2775473124a0dfb0af00bdb921ca408cf5c9868501f4ac50eb2d953e2"
+    },
+    "sss-tbv/assets/game/native/02/022030d7-6c4f-4b7c-ba89-fddb5127b333.e3ca2.webp": {
+      "request_id": 1788,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/02/022030d7-6c4f-4b7c-ba89-fddb5127b333.e3ca2.webp",
+      "bytes": 461354,
+      "sha256": "d12a4613eece0b8c6f98c244b2a1cf6e92e9c6bb39d1c7b9ad3e16a2bab91015"
+    },
+    "sss-tbv/assets/game/native/e0/e02c4f1b-000f-4529-b6f2-2f05992eeb02.afb41.webp": {
+      "request_id": 1791,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/e0/e02c4f1b-000f-4529-b6f2-2f05992eeb02.afb41.webp",
+      "bytes": 528518,
+      "sha256": "56b75f4889a28e31f4b4d7ba53502129f00aa1bbd39779d17b0c9f1c4fab6d8b"
+    },
+    "sss-tbv/assets/game/native/c4/c49196bd-0a15-4757-9782-4fd2a0958419.17444.webp": {
+      "request_id": 1790,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c4/c49196bd-0a15-4757-9782-4fd2a0958419.17444.webp",
+      "bytes": 468258,
+      "sha256": "36d1fa4b4987157f7205a2c9005f27d0201a1cef971e48e840b19afcd430fbd7"
+    },
+    "sss-tbv/assets/game/native/7e/7e8b2fe1-7877-4c15-8d83-b93f776a6046.4312d.png": {
+      "request_id": 1799,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/7e/7e8b2fe1-7877-4c15-8d83-b93f776a6046.4312d.png",
+      "bytes": 119526,
+      "sha256": "c1b9236e8941dd47274d3d938ae9e1643eafadd5cb12cf32cfc51c3f1f27c8a0"
+    },
+    "sss-tbv/assets/game/import/9f/9fb440f7-bf09-4793-a7c0-b79fc64533c4.698b0.json": {
+      "request_id": 1780,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/9f/9fb440f7-bf09-4793-a7c0-b79fc64533c4.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/0a/0aa893e6c.12f39.json": {
+      "request_id": 1781,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/0a/0aa893e6c.12f39.json",
+      "bytes": 17303,
+      "sha256": "aa517f3c59dec2018c13d1d914bdbf91daefed147d35561e1e2295e7e869d4ce"
+    },
+    "sss-tbv/assets/game/import/04/04f9dccb1.f73ff.json": {
+      "request_id": 1782,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/04/04f9dccb1.f73ff.json",
+      "bytes": 2586,
+      "sha256": "5260088a1d271d96fc8bd41e9c31b9920bab582d4782ac2cfc157b1bc8fe185d"
+    },
+    "sss-tbv/assets/game/import/b5/b5e44a87-a8fd-4bb5-88e5-bda5c5e5ef53.7bfa1.json": {
+      "request_id": 1783,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b5/b5e44a87-a8fd-4bb5-88e5-bda5c5e5ef53.7bfa1.json",
+      "bytes": 1859,
+      "sha256": "214e6e49b0a6d1d99bb58ae4c907852657d3ff61414d7fb8f92774ba49aa90e7"
+    },
+    "sss-tbv/assets/game/import/a6/a680bbe5-00ff-4162-92a1-b37b453dca98.fc53e.json": {
+      "request_id": 1784,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/a6/a680bbe5-00ff-4162-92a1-b37b453dca98.fc53e.json",
+      "bytes": 2771,
+      "sha256": "d7221ba97e18e3cd6a49b648487f1b4837569df6175aaf874651382e6a660b59"
+    },
+    "sss-tbv/assets/game/import/02/0213f06f3.b3efb.json": {
+      "request_id": 1785,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/02/0213f06f3.b3efb.json",
+      "bytes": 1455,
+      "sha256": "6a73aa4fb78f8f2f2bc4c80313f79e3f100a8cb49c88c31f220e815f4be7cbcb"
+    },
+    "sss-tbv/assets/game/import/04/0477911bf.50e28.json": {
+      "request_id": 1797,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/04/0477911bf.50e28.json",
+      "bytes": 2297,
+      "sha256": "8950a7d1f4983ccd0f74a6a358fb3b2fd7bb1c64297a7006a93520402b1ec8a0"
+    },
+    "sss-tbv/assets/game/import/04/04bedfcec.e17a2.json": {
+      "request_id": 1798,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/04/04bedfcec.e17a2.json",
+      "bytes": 3860,
+      "sha256": "6c61c0ccd54b3834ba7f9bb309fb7553996d61db69cd1bb94b1d3d033ce25389"
+    },
+    "sss-tbv/assets/game/import/09/0936b639e.6a5cf.json": {
+      "request_id": 1800,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/09/0936b639e.6a5cf.json",
+      "bytes": 3411,
+      "sha256": "f944943f42c3a9c947d72ad74ebf98c0ee42259fd883a07d0b540813b28a377b"
+    },
+    "sss-tbv/assets/game/import/08/0898f5e55.d5695.json": {
+      "request_id": 1803,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/08/0898f5e55.d5695.json",
+      "bytes": 4155,
+      "sha256": "bdd3b205dafa68353e7165fa8b527c4e0823eccb2d4f2b28baa3fe14884df9f3"
+    },
+    "sss-tbv/assets/game/native/9f/9fb440f7-bf09-4793-a7c0-b79fc64533c4.ebf9a.webp": {
+      "request_id": 1792,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/9f/9fb440f7-bf09-4793-a7c0-b79fc64533c4.ebf9a.webp",
+      "bytes": 4620,
+      "sha256": "9e89d1b3b4f6f470755ab1ac41881143f160149dc4512229822264dd6be2d9ec"
+    },
+    "sss-tbv/assets/game/import/b6/b6664bf4-0d4d-41ee-83a5-b5b32d5a3799.a2533.json": {
+      "request_id": 1793,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b6/b6664bf4-0d4d-41ee-83a5-b5b32d5a3799.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/d0/d0948b7b-c076-4aa1-b400-8577700c733f.698b0.json": {
+      "request_id": 1794,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/d0/d0948b7b-c076-4aa1-b400-8577700c733f.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/92/925f7a4c-1098-4c37-92ea-062e60b2edb5.698b0.json": {
+      "request_id": 1796,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/92/925f7a4c-1098-4c37-92ea-062e60b2edb5.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/16/1650eb4e-e85f-4c04-90a0-4be766a0bce7.698b0.json": {
+      "request_id": 1795,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/16/1650eb4e-e85f-4c04-90a0-4be766a0bce7.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/b6/b6dd024f-0ba5-47df-a01c-d1ae0aa27e67.a2533.json": {
+      "request_id": 1809,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b6/b6dd024f-0ba5-47df-a01c-d1ae0aa27e67.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/47/47ba7d5b-af3f-4928-99b1-8371c6a56c3b.698b0.json": {
+      "request_id": 1810,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/47/47ba7d5b-af3f-4928-99b1-8371c6a56c3b.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/c8/c84fd330-e1e3-46f8-8807-a5fb7a0fceec.698b0.json": {
+      "request_id": 1815,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c8/c84fd330-e1e3-46f8-8807-a5fb7a0fceec.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/native/b6/b6664bf4-0d4d-41ee-83a5-b5b32d5a3799.023ac.png": {
+      "request_id": 1801,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/b6/b6664bf4-0d4d-41ee-83a5-b5b32d5a3799.023ac.png",
+      "bytes": 3365,
+      "sha256": "c632e1d2a902e5b63a36cac01495b600613a2030a98ef74fade83a43123759d5"
+    },
+    "sss-tbv/assets/game/native/d0/d0948b7b-c076-4aa1-b400-8577700c733f.80f63.webp": {
+      "request_id": 1802,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/d0/d0948b7b-c076-4aa1-b400-8577700c733f.80f63.webp",
+      "bytes": 53040,
+      "sha256": "d53d44ef29375a9e9a49941aa834bd9f3585f188499468ce8ee92564760c1a38"
+    },
+    "sss-tbv/assets/game/native/92/925f7a4c-1098-4c37-92ea-062e60b2edb5.78dda.webp": {
+      "request_id": 1808,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/92/925f7a4c-1098-4c37-92ea-062e60b2edb5.78dda.webp",
+      "bytes": 2352,
+      "sha256": "d247b6ba4ce57cea82ccf99c81c816529ce95bf725213d0ad98eb0e715c93a33"
+    },
+    "sss-tbv/assets/game/native/b6/b6dd024f-0ba5-47df-a01c-d1ae0aa27e67.a8e96.png": {
+      "request_id": 1817,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/b6/b6dd024f-0ba5-47df-a01c-d1ae0aa27e67.a8e96.png",
+      "bytes": 49220,
+      "sha256": "8da5496c4a18960ddced4821353673165f87fa971e34d801c37fd1a2f92afe57"
+    },
+    "sss-tbv/assets/game/native/16/1650eb4e-e85f-4c04-90a0-4be766a0bce7.f9b59.webp": {
+      "request_id": 1807,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/16/1650eb4e-e85f-4c04-90a0-4be766a0bce7.f9b59.webp",
+      "bytes": 1632,
+      "sha256": "98c912f385dadcb1ce9cbf556cc7c3e57399f54a47daa9e6a470c0d24ca812e6"
+    },
+    "sss-tbv/assets/game/native/47/47ba7d5b-af3f-4928-99b1-8371c6a56c3b.d6730.webp": {
+      "request_id": 1818,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/47/47ba7d5b-af3f-4928-99b1-8371c6a56c3b.d6730.webp",
+      "bytes": 97336,
+      "sha256": "9f792bd6bd3a4d14996aabb3060f7e89a88c2314a9b2be69216a42a1616cea41"
+    },
+    "sss-tbv/assets/game/native/c8/c84fd330-e1e3-46f8-8807-a5fb7a0fceec.43606.webp": {
+      "request_id": 1825,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c8/c84fd330-e1e3-46f8-8807-a5fb7a0fceec.43606.webp",
+      "bytes": 44612,
+      "sha256": "e55fb93104144caa839d9a7dfeb9e6bc39e362872cbd755987b47e94027c1957"
+    },
+    "sss-tbv/assets/game/import/35/3582eb3e-0f72-4ddf-8385-c3dd5b26964a.698b0.json": {
+      "request_id": 1812,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/35/3582eb3e-0f72-4ddf-8385-c3dd5b26964a.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/import/5d/5d766209-2dcc-4068-b20d-75180d65a137.c33a5.json": {
+      "request_id": 1804,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/5d/5d766209-2dcc-4068-b20d-75180d65a137.c33a5.json",
+      "bytes": 2865,
+      "sha256": "717806e51feeb4ff3f1dc10e130ff5465a76293b5399a394c365b1616582810d"
+    },
+    "sss-tbv/assets/game/import/8e/8e61fce0-5dfd-4813-9647-aa490daf332d.add72.json": {
+      "request_id": 1805,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/8e/8e61fce0-5dfd-4813-9647-aa490daf332d.add72.json",
+      "bytes": 2865,
+      "sha256": "85d95e41f504822b0e916ba0d2b20277486ef70d41e55fd0f037a571e3a41f88"
+    },
+    "sss-tbv/assets/game/import/07/07d2fb55b.5ea9e.json": {
+      "request_id": 1806,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/07/07d2fb55b.5ea9e.json",
+      "bytes": 4342,
+      "sha256": "9611af4659d150360f1fde360a54d088670843bc5d08780ac840511fe714b670"
+    },
+    "sss-tbv/assets/game/import/54/541c8092-8134-47d0-8ed6-64c2af254652.4e49a.json": {
+      "request_id": 1811,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/54/541c8092-8134-47d0-8ed6-64c2af254652.4e49a.json",
+      "bytes": 2913,
+      "sha256": "f10081c5c7709ecc87779923f72dd67aafda1e1f5e97102ece4aaba8f8599f2e"
+    },
+    "sss-tbv/assets/game/import/11/11d4b832-6431-46fb-a6ff-2fa999a53368.68674.json": {
+      "request_id": 1813,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/11/11d4b832-6431-46fb-a6ff-2fa999a53368.68674.json",
+      "bytes": 2913,
+      "sha256": "523927b5818932b154b9927353a73eaa4f7e448b9697cd5b8afe13f0c582d5dc"
+    },
+    "sss-tbv/assets/game/import/58/588387ba-3f05-4c50-9c1d-616c1dad09b3.a92c3.json": {
+      "request_id": 1814,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/58/588387ba-3f05-4c50-9c1d-616c1dad09b3.a92c3.json",
+      "bytes": 2916,
+      "sha256": "a58070418ee9acd006f89c2b330a99aecd356a410c5b7333eaa3ca2f5ffa25a2"
+    },
+    "sss-tbv/assets/game/import/85/8544c26d-ab86-48c7-8ba3-e717aeced86d.a2533.json": {
+      "request_id": 1819,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/85/8544c26d-ab86-48c7-8ba3-e717aeced86d.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/b8/b873aa08-87fb-4a32-8750-ea1c3fdf39ec.a2533.json": {
+      "request_id": 1820,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b8/b873aa08-87fb-4a32-8750-ea1c3fdf39ec.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/25/2592a3ad-77cc-47f9-8d8a-d77ec2ea880b.a2533.json": {
+      "request_id": 1821,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/25/2592a3ad-77cc-47f9-8d8a-d77ec2ea880b.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/native/35/3582eb3e-0f72-4ddf-8385-c3dd5b26964a.941b3.webp": {
+      "request_id": 1824,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/35/3582eb3e-0f72-4ddf-8385-c3dd5b26964a.941b3.webp",
+      "bytes": 370852,
+      "sha256": "05afd4f114a099f1083820d249b0136866efce27d404de5115c4a9a403e7f8e2"
+    },
+    "sss-tbv/assets/game/native/85/8544c26d-ab86-48c7-8ba3-e717aeced86d.a8877.png": {
+      "request_id": 1827,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/85/8544c26d-ab86-48c7-8ba3-e717aeced86d.a8877.png",
+      "bytes": 60926,
+      "sha256": "e8ea6e9b6357d25cb652cd5cfcfd6f7f3d54f49bd54c2342f32e3d509fe07346"
+    },
+    "sss-tbv/assets/game/native/25/2592a3ad-77cc-47f9-8d8a-d77ec2ea880b.47ea1.png": {
+      "request_id": 1829,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/25/2592a3ad-77cc-47f9-8d8a-d77ec2ea880b.47ea1.png",
+      "bytes": 30360,
+      "sha256": "355927d92d4b972fb9428519944d19e56a21baa2ecdd7ac1f2fa3566c36534e9"
+    },
+    "sss-tbv/assets/game/native/b8/b873aa08-87fb-4a32-8750-ea1c3fdf39ec.d7b11.png": {
+      "request_id": 1828,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/b8/b873aa08-87fb-4a32-8750-ea1c3fdf39ec.d7b11.png",
+      "bytes": 27711,
+      "sha256": "e2f966e23261d0382ac442ece4f02c12ac0e47b2c2eb25b03d2e589d17c07625"
+    },
+    "sss-tbv/assets/game/import/04/04714958-28e4-4253-9e28-bd658f96081e.698b0.json": {
+      "request_id": 1816,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/04/04714958-28e4-4253-9e28-bd658f96081e.698b0.json",
+      "bytes": 79,
+      "sha256": "a02e88176552fd5c66e95e8833cc33ad6635f89b6975662b0b0e06cc8683d0eb"
+    },
+    "sss-tbv/assets/game/native/04/04714958-28e4-4253-9e28-bd658f96081e.91e99.webp": {
+      "request_id": 1826,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/04/04714958-28e4-4253-9e28-bd658f96081e.91e99.webp",
+      "bytes": 135274,
+      "sha256": "e95fd71d0e09e992668a885cabe63f4da1b6117500f8c5c9da63b32b26368447"
+    },
+    "sss-tbv/assets/game/import/89/890655e0-3e9d-4576-8098-2f7cf8df22f0.a2533.json": {
+      "request_id": 1761,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/89/890655e0-3e9d-4576-8098-2f7cf8df22f0.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/59/599fb1b0-dd15-46b5-9e7f-b88723429b32.a2533.json": {
+      "request_id": 1760,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/59/599fb1b0-dd15-46b5-9e7f-b88723429b32.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/0b/0b86f496c.2b239.json": {
+      "request_id": 1759,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/0b/0b86f496c.2b239.json",
+      "bytes": 46784,
+      "sha256": "4883783d9957bd4a7624a0fb27e2a897fd614f00f9ee592bf0f4d0652a8a0d85"
+    },
+    "sss-tbv/assets/game/import/03/03046eae-66fa-4f4d-9df7-35b21038f3db.a2533.json": {
+      "request_id": 1758,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/03/03046eae-66fa-4f4d-9df7-35b21038f3db.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    "sss-tbv/assets/game/import/92/92f5183d-2c84-43cb-aac7-3493004d45fb.8f70b.json": {
+      "request_id": 1822,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/92/92f5183d-2c84-43cb-aac7-3493004d45fb.8f70b.json",
+      "bytes": 2512,
+      "sha256": "1b246236b514c7176c759c7d9b18979aa8f1463b0c3d4487706cc19ab918048b"
+    },
+    "sss-tbv/assets/game/native/89/890655e0-3e9d-4576-8098-2f7cf8df22f0.9ad3f.png": {
+      "request_id": 1772,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/89/890655e0-3e9d-4576-8098-2f7cf8df22f0.9ad3f.png",
+      "bytes": 29911,
+      "sha256": "9703df6d27dd70e12f4007cdd0db37f463c5f413f863524d32481b3c1179dbb9"
+    },
+    "sss-tbv/assets/game/native/59/599fb1b0-dd15-46b5-9e7f-b88723429b32.e1085.png": {
+      "request_id": 1771,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/59/599fb1b0-dd15-46b5-9e7f-b88723429b32.e1085.png",
+      "bytes": 35108,
+      "sha256": "dc121f85778bdaa1cfbd814907a28987737758250deac0a9fa13c12ef1887fc6"
+    },
+    "sss-tbv/assets/game/native/03/03046eae-66fa-4f4d-9df7-35b21038f3db.6477a.png": {
+      "request_id": 1770,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/03/03046eae-66fa-4f4d-9df7-35b21038f3db.6477a.png",
+      "bytes": 66774,
+      "sha256": "ee7b95b0a07bd1e856efee04ada54c404dfd4a7133cf79c685911b805942f78a"
+    },
+    "astarte4/3.8/web-mobile/assets/other/import/04/04d7adfbb.bf45c.json": {
+      "request_id": 1839,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/import/04/04d7adfbb.bf45c.json",
+      "bytes": 15001,
+      "sha256": "d092f007ede366dde19debdcb65d57bcfdc37af2e9b0fb0d6ad568a55062664e"
+    },
+    "sss-tbv/assets/game/import/8a/8abe01d9-d64b-4e1d-b0d9-a4a8a5b165ca.fdc5b.json": {
+      "request_id": 1840,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/8a/8abe01d9-d64b-4e1d-b0d9-a4a8a5b165ca.fdc5b.json",
+      "bytes": 120,
+      "sha256": "cf5d900b6f19667478a9cff21c790c384f4fdea37b626557b03bb59689cd20f2"
+    },
+    "sss-tbv/assets/game/import/99/99f54106-628e-4148-a42f-d2d0681a68b7.30d37.json": {
+      "request_id": 1841,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/99/99f54106-628e-4148-a42f-d2d0681a68b7.30d37.json",
+      "bytes": 120,
+      "sha256": "e6fb50de06f53b1dadcc3253f1ed9a8cc721d87fbff39a7003c853743d0112ac"
+    },
+    "sss-tbv/assets/game/import/9a/9a6c6200-11a1-4ce9-b150-411d6e244eb3.fd5d3.json": {
+      "request_id": 1842,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/9a/9a6c6200-11a1-4ce9-b150-411d6e244eb3.fd5d3.json",
+      "bytes": 120,
+      "sha256": "6e429e7d02e4b061c4cf173b610165747cf730d5fe9bbc97d8988bbe864b59fb"
+    },
+    "sss-tbv/assets/game/import/e3/e3559658-b18a-4ad9-9704-50f0acf7a0c4.d4cf1.json": {
+      "request_id": 1843,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/e3/e3559658-b18a-4ad9-9704-50f0acf7a0c4.d4cf1.json",
+      "bytes": 117,
+      "sha256": "1a281ac4a87506590880ae98a780e07ca686d3a2b6cbd98c12cef26d4bc31d52"
+    },
+    "sss-tbv/assets/game/import/c9/c983ab0f-8e75-4404-b738-eccae8c81c66.e1ef4.json": {
+      "request_id": 1844,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c9/c983ab0f-8e75-4404-b738-eccae8c81c66.e1ef4.json",
+      "bytes": 125,
+      "sha256": "1ea0b2a783ef2195bf27af0599474d93945c5e58ca9d0a9ca8f0777621c496f2"
+    },
+    "sss-tbv/assets/game/import/5e/5e321b90-d1d0-4e69-9c59-ea8de3214946.e582b.json": {
+      "request_id": 1845,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/5e/5e321b90-d1d0-4e69-9c59-ea8de3214946.e582b.json",
+      "bytes": 124,
+      "sha256": "e36cc4d810b90ddd9c8c4355080f8986b9bf421b5f591f641a308d1bcec44694"
+    },
+    "sss-tbv/assets/game/import/65/6534e17c-81b4-4dde-9a42-83c988cc67cf.4f829.json": {
+      "request_id": 1846,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/65/6534e17c-81b4-4dde-9a42-83c988cc67cf.4f829.json",
+      "bytes": 130,
+      "sha256": "13513cc3260efa482207e604046c7644d38f2d0d33975e88c0a1f768b4ebf8c2"
+    },
+    "sss-tbv/assets/game/import/3b/3bb314a6-7b68-454c-846e-e2cf889b1d3c.ec967.json": {
+      "request_id": 1847,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/3b/3bb314a6-7b68-454c-846e-e2cf889b1d3c.ec967.json",
+      "bytes": 124,
+      "sha256": "aed1908c81cbfaf5dfef2c6e575a8c0366c67434d083fb50a95036dc793344b5"
+    },
+    "sss-tbv/assets/game/import/fc/fcd57b2c-9849-4be5-a3df-8be3a4041276.9a597.json": {
+      "request_id": 1848,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/fc/fcd57b2c-9849-4be5-a3df-8be3a4041276.9a597.json",
+      "bytes": 120,
+      "sha256": "755b4b7536dfc8830ef87da1cf776f414f713cd0827d563fef293c897b018873"
+    },
+    "sss-tbv/assets/game/import/37/3757e492-c9cd-4cc0-a50b-1980e2d9cf0f.a0ea7.json": {
+      "request_id": 1849,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/37/3757e492-c9cd-4cc0-a50b-1980e2d9cf0f.a0ea7.json",
+      "bytes": 128,
+      "sha256": "8e83478b819b19ef45d35467f7ee1a2ec6940b2e6947c52d6ca6ac72e0a315cd"
+    },
+    "sss-tbv/assets/game/import/ac/ac06fc51-a1d3-4b37-894f-7b23a798af33.2dc2b.json": {
+      "request_id": 1850,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/ac/ac06fc51-a1d3-4b37-894f-7b23a798af33.2dc2b.json",
+      "bytes": 128,
+      "sha256": "628af44900d66a6897dd7ca39bb1094fdb6feb5ea1a926919ff1123ec469543c"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3": {
+      "request_id": 1852,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3",
+      "bytes": 3959,
+      "sha256": "dd429421dc79d6f3f52ab218bd738b9d0d4d373c90cc1becf98eb4d55fc55900"
+    },
+    "sss-tbv/assets/game/native/8a/8abe01d9-d64b-4e1d-b0d9-a4a8a5b165ca.6783e.mp3": {
+      "request_id": 1853,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/8a/8abe01d9-d64b-4e1d-b0d9-a4a8a5b165ca.6783e.mp3",
+      "bytes": 267456,
+      "sha256": "2114f0d430b3272304ab8f3d59b8dbee054616386db571089a27002ac02a1c26"
+    },
+    "sss-tbv/assets/game/native/99/99f54106-628e-4148-a42f-d2d0681a68b7.855d9.mp3": {
+      "request_id": 1854,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/99/99f54106-628e-4148-a42f-d2d0681a68b7.855d9.mp3",
+      "bytes": 234816,
+      "sha256": "7cc419634de1f1f20f4318afa7f37015a982549589b7c5896170398abbc5cd7a"
+    },
+    "sss-tbv/assets/game/native/e3/e3559658-b18a-4ad9-9704-50f0acf7a0c4.55cb8.mp3": {
+      "request_id": 1856,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/e3/e3559658-b18a-4ad9-9704-50f0acf7a0c4.55cb8.mp3",
+      "bytes": 4608,
+      "sha256": "3940b4a83ef2d79814a0895a0a431dc53898159fd5fd41bfc47b657c47ed117c"
+    },
+    "sss-tbv/assets/game/native/9a/9a6c6200-11a1-4ce9-b150-411d6e244eb3.accbf.mp3": {
+      "request_id": 1855,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/9a/9a6c6200-11a1-4ce9-b150-411d6e244eb3.accbf.mp3",
+      "bytes": 294912,
+      "sha256": "db40039c4fead5cd5ed18c71306f775530f9b12169e56fd9b3782129a4fefe3b"
+    },
+    "sss-tbv/assets/game/native/5e/5e321b90-d1d0-4e69-9c59-ea8de3214946.ec428.mp3": {
+      "request_id": 1858,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/5e/5e321b90-d1d0-4e69-9c59-ea8de3214946.ec428.mp3",
+      "bytes": 7488,
+      "sha256": "717f17036ff8290c37168c6c351d41050963497f1bc8b5fa85e28d75d6f25b27"
+    },
+    "sss-tbv/assets/game/native/c9/c983ab0f-8e75-4404-b738-eccae8c81c66.b7b89.mp3": {
+      "request_id": 1857,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c9/c983ab0f-8e75-4404-b738-eccae8c81c66.b7b89.mp3",
+      "bytes": 2504,
+      "sha256": "a73e52d2837bb4dd7b35e6d90a259d619de01d410ef107cef570369b7343e640"
+    },
+    "sss-tbv/assets/game/native/3b/3bb314a6-7b68-454c-846e-e2cf889b1d3c.155e1.mp3": {
+      "request_id": 1860,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/3b/3bb314a6-7b68-454c-846e-e2cf889b1d3c.155e1.mp3",
+      "bytes": 10368,
+      "sha256": "c182279088c97279df60df100000ef6baa7d431e75824f18c75101cfcdc53a03"
+    },
+    "sss-tbv/assets/game/native/fc/fcd57b2c-9849-4be5-a3df-8be3a4041276.a0bf3.mp3": {
+      "request_id": 1861,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/fc/fcd57b2c-9849-4be5-a3df-8be3a4041276.a0bf3.mp3",
+      "bytes": 19776,
+      "sha256": "5e88856d77297cbdf04696a33066c5a9813d3ca8ebe3dd3e16d7d5e19488fca2"
+    },
+    "sss-tbv/assets/game/native/37/3757e492-c9cd-4cc0-a50b-1980e2d9cf0f.f0c4e.mp3": {
+      "request_id": 1862,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/37/3757e492-c9cd-4cc0-a50b-1980e2d9cf0f.f0c4e.mp3",
+      "bytes": 7421,
+      "sha256": "ad2870bece9ce57b7830cd7badf5abfd56c5148089dc175742d0a1c09e35f0d6"
+    },
+    "sss-tbv/assets/game/native/ac/ac06fc51-a1d3-4b37-894f-7b23a798af33.9d9ac.mp3": {
+      "request_id": 1863,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/ac/ac06fc51-a1d3-4b37-894f-7b23a798af33.9d9ac.mp3",
+      "bytes": 36480,
+      "sha256": "a567a1404f3892e91dbfa58b27ea959a4ac461cfb38d0e8b2e0f5fa56c673f55"
+    },
+    "sss-tbv/assets/game/native/65/6534e17c-81b4-4dde-9a42-83c988cc67cf.ce359.mp3": {
+      "request_id": 1859,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/65/6534e17c-81b4-4dde-9a42-83c988cc67cf.ce359.mp3",
+      "bytes": 5959,
+      "sha256": "77b3e5f483d1c26b9c275ea5b88cff16682fefc35a879232a7b1f34dc6aff82b"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/import/04/04384444b.f262b.bin": {
+      "request_id": 1851,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/import/04/04384444b.f262b.bin",
+      "bytes": 4908204,
+      "sha256": "c3ea6b15e61852f57da2e6bd5442632228673d1013d5b6befb98c02cdd7340e4"
+    },
+    "astarte4/3.8/web-mobile/assets/en/native/11/11fd73305.3849d.webp": {
+      "request_id": 1874,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/native/11/11fd73305.3849d.webp",
+      "bytes": 106016,
+      "sha256": "28bfecc9f0b5d1a01d4c45e8c3735cf5345942d28b04c4baf15ffaf9ef5e62f3"
+    },
+    "astarte4/3.8/web-mobile/assets/en/native/15/157eaa32a.f61da.webp": {
+      "request_id": 1873,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/native/15/157eaa32a.f61da.webp",
+      "bytes": 32040,
+      "sha256": "76391c2ba5a8d0dfdca2f9c7c733c9a3772fe7fe1039e664ccda716cac0bbd15"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/17/17abd9622.7b2ab.webp": {
+      "request_id": 1872,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/17/17abd9622.7b2ab.webp",
+      "bytes": 82918,
+      "sha256": "04cd4be8e2c293db286d76667d7be98574e15d43b6da6b18804cd6dbd4235109"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/16/16edea480.9d16a.webp": {
+      "request_id": 1871,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/16/16edea480.9d16a.webp",
+      "bytes": 1112,
+      "sha256": "5c0f53cd07c5aa4fd182ffc316b905666db600acc7600ce9b557bae1283e6b6f"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/15/15820c817.03550.webp": {
+      "request_id": 1870,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/15/15820c817.03550.webp",
+      "bytes": 70064,
+      "sha256": "ae04cb4f876e373edf5bef51636b3080407fb6a5c5b504e3bb0ac17a2b76f0ab"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3": {
+      "request_id": 1864,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3",
+      "bytes": 14750,
+      "sha256": "57a69937c1664dacfc03ce3a5ac405169caa884cf8a8a8b85cea3f3889629cea"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3": {
+      "request_id": 1865,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3",
+      "bytes": 58200,
+      "sha256": "e43a4994aae31132c021cfdb6566f885300021c484caf1750b4b687b93b4fe41"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3": {
+      "request_id": 1866,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3",
+      "bytes": 2708,
+      "sha256": "48371516675f757bd44e6abdb6843de071455ec8dc0bf3e0b7203fb23838b5b9"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3": {
+      "request_id": 1867,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3",
+      "bytes": 3125,
+      "sha256": "1cf28eb27109fd8dc324a5576135ddcccea167602e621b812b79712110205d9d"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3": {
+      "request_id": 1868,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3",
+      "bytes": 2972,
+      "sha256": "d87338dfcb2d19b39d489fab3f69200c8352e80b1e20ac370f6572711d03f7dd"
+    },
+    "astarte4/3.8/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3": {
+      "request_id": 1869,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3",
+      "bytes": 2291,
+      "sha256": "fac16f5a0468df3006b9ec3c8dc5ad5e35b7ccfa4a6267cc0fec56c9bf079619"
+    },
+    "sss-tbv/assets/game/import/94/947abed9-9227-41b1-99da-f1b05cbb37a1.64ad9.json": {
+      "request_id": 1875,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/94/947abed9-9227-41b1-99da-f1b05cbb37a1.64ad9.json",
+      "bytes": 123,
+      "sha256": "5046487db23413c3715693b8360a02f6b0421679b3693795f40f216923d0a26a"
+    },
+    "sss-tbv/assets/game/import/5f/5ff863b8-b0b8-4bb3-995c-23127da9c42c.377a5.json": {
+      "request_id": 1876,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/5f/5ff863b8-b0b8-4bb3-995c-23127da9c42c.377a5.json",
+      "bytes": 124,
+      "sha256": "c25a5e2222dead42fe56b0bc657b6e9596cc559252c2712398fd6dd0cbbcfd00"
+    },
+    "sss-tbv/assets/game/import/98/98339439-1fcc-457f-9132-d68fe1b0f5e4.b8711.json": {
+      "request_id": 1877,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/98/98339439-1fcc-457f-9132-d68fe1b0f5e4.b8711.json",
+      "bytes": 121,
+      "sha256": "78c4008fa2c551d0b35a7193cf5f03fd5308a6358b99513d60cc7b0ddfec502b"
+    },
+    "sss-tbv/assets/game/native/94/947abed9-9227-41b1-99da-f1b05cbb37a1.bc9dc.mp3": {
+      "request_id": 1882,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/94/947abed9-9227-41b1-99da-f1b05cbb37a1.bc9dc.mp3",
+      "bytes": 17664,
+      "sha256": "dce7910fe59ac92d487d675394891d09bd81f1ccaa50a9d98060cd229e05f81a"
+    },
+    "sss-tbv/assets/game/native/5f/5ff863b8-b0b8-4bb3-995c-23127da9c42c.cfe73.mp3": {
+      "request_id": 1883,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/5f/5ff863b8-b0b8-4bb3-995c-23127da9c42c.cfe73.mp3",
+      "bytes": 22656,
+      "sha256": "e8f4a06785ce8155346cc2d374b12d92e58eb6c61219449d2f3aef4c833904fa"
+    },
+    "sss-tbv/assets/game/native/98/98339439-1fcc-457f-9132-d68fe1b0f5e4.a34d4.mp3": {
+      "request_id": 1884,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/98/98339439-1fcc-457f-9132-d68fe1b0f5e4.a34d4.mp3",
+      "bytes": 184512,
+      "sha256": "8262b0260ff11beef31168bb9614f2549e105b520dd5ad7608464814fbbb59d3"
+    },
+    "sss-tbv/assets/game/import/d3/d3437577-ac28-420a-9a1c-094e17e7eba4.11c47.json": {
+      "request_id": 1878,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/d3/d3437577-ac28-420a-9a1c-094e17e7eba4.11c47.json",
+      "bytes": 123,
+      "sha256": "ea60ed03a5c0d0041b40c1fa00f9e1f275b8e361772f255d967c9aa0c26ca03d"
+    },
+    "sss-tbv/assets/game/import/3c/3c826393-a1b7-4222-9a1b-e7b84e4afa6a.3ada3.json": {
+      "request_id": 1879,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/3c/3c826393-a1b7-4222-9a1b-e7b84e4afa6a.3ada3.json",
+      "bytes": 124,
+      "sha256": "d7c2acbabcfaab60cb9c08142e15c36ab367eab6835da293b51ebf2713117747"
+    },
+    "sss-tbv/assets/game/import/4c/4ca3927f-0df5-42e3-9746-b96a0e68253f.59b43.json": {
+      "request_id": 1880,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/4c/4ca3927f-0df5-42e3-9746-b96a0e68253f.59b43.json",
+      "bytes": 124,
+      "sha256": "08095092a0a36dd8305c6ad6d6569c51350262a59a3ea34db601472abea6ab49"
+    },
+    "sss-tbv/assets/game/import/b8/b8d6e0e3-0656-423e-904a-5513092744b8.5d8c8.json": {
+      "request_id": 1881,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b8/b8d6e0e3-0656-423e-904a-5513092744b8.5d8c8.json",
+      "bytes": 125,
+      "sha256": "9455cffa32ce2a3d2f1a8895e49c963396885130efab087e375e547a5994a9f7"
+    },
+    "sss-tbv/assets/game/import/98/98386335-19cc-4661-8338-9a2ae6509c3d.3cc82.json": {
+      "request_id": 1889,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/98/98386335-19cc-4661-8338-9a2ae6509c3d.3cc82.json",
+      "bytes": 120,
+      "sha256": "ec59698881c7ef8eb5dbf7909635d6dde66da5c26b610907cead311bce47a110"
+    },
+    "sss-tbv/assets/game/import/c2/c2a693d8-bf94-42d7-9480-06c8011e86fd.30d88.json": {
+      "request_id": 1891,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c2/c2a693d8-bf94-42d7-9480-06c8011e86fd.30d88.json",
+      "bytes": 121,
+      "sha256": "e6a323ab19d6317ae6fcb5fa944934f699cc570773177efd592feed0a04a04a2"
+    },
+    "sss-tbv/assets/game/import/3f/3f077fd9-84f7-41ee-ad0a-db4806ca3f4e.d522d.json": {
+      "request_id": 1892,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/3f/3f077fd9-84f7-41ee-ad0a-db4806ca3f4e.d522d.json",
+      "bytes": 119,
+      "sha256": "a2abe63c169a5d34aa91f09c90cae7e2cfa0b98dd8174c18d990c25497ab8b58"
+    },
+    "sss-tbv/assets/game/import/10/1042f6bb-37b8-4964-89f6-3278182daab8.bff80.json": {
+      "request_id": 1893,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/10/1042f6bb-37b8-4964-89f6-3278182daab8.bff80.json",
+      "bytes": 126,
+      "sha256": "edd3fd71956aeca462432424a78da44c1901a2bf7600f778efd1d0d53f92fff0"
+    },
+    "sss-tbv/assets/game/import/10/10c9bc06-2d60-4812-984f-e08d8f1ca8b6.7c9a1.json": {
+      "request_id": 1894,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/10/10c9bc06-2d60-4812-984f-e08d8f1ca8b6.7c9a1.json",
+      "bytes": 132,
+      "sha256": "ce2635d5775f666e7425311b47e39042d81385e79aef3b3b858a56ca776603fd"
+    },
+    "sss-tbv/assets/game/import/35/35d64374-55e2-4c52-befd-a5dd45c5fc01.c56e6.json": {
+      "request_id": 1899,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/35/35d64374-55e2-4c52-befd-a5dd45c5fc01.c56e6.json",
+      "bytes": 131,
+      "sha256": "0112eb26b0245e63fe37c5c6c4e159eef3190945a024e5a291c6bab4cbed6f50"
+    },
+    "sss-tbv/assets/game/import/46/463649bf-3eb6-42ee-97ae-b89f7b309b60.95b64.json": {
+      "request_id": 1901,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/46/463649bf-3eb6-42ee-97ae-b89f7b309b60.95b64.json",
+      "bytes": 131,
+      "sha256": "b37c7c07000f996f93217a21d5c90cceddcec3e01d8e5dcd0e09dceac1c2e794"
+    },
+    "sss-tbv/assets/game/import/c6/c6c252d3-3fef-461b-87c4-293cc7b634fd.77861.json": {
+      "request_id": 1903,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c6/c6c252d3-3fef-461b-87c4-293cc7b634fd.77861.json",
+      "bytes": 129,
+      "sha256": "e37c6d85ad8af75aef044b2e97f52859f292515f32ba76f6cb224bb1b69179ae"
+    },
+    "sss-tbv/assets/game/native/d3/d3437577-ac28-420a-9a1c-094e17e7eba4.7a139.mp3": {
+      "request_id": 1885,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/d3/d3437577-ac28-420a-9a1c-094e17e7eba4.7a139.mp3",
+      "bytes": 16320,
+      "sha256": "737f470ec662e0668541f413323aa535055aa5fbd92ac4288d86e131537559aa"
+    },
+    "sss-tbv/assets/game/native/3c/3c826393-a1b7-4222-9a1b-e7b84e4afa6a.adde8.mp3": {
+      "request_id": 1886,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/3c/3c826393-a1b7-4222-9a1b-e7b84e4afa6a.adde8.mp3",
+      "bytes": 16416,
+      "sha256": "dd221b17a38366c36aff74e0b555c1e310c1c1ae034d0475cbadbf5497ccb469"
+    },
+    "sss-tbv/assets/game/native/4c/4ca3927f-0df5-42e3-9746-b96a0e68253f.ae23b.mp3": {
+      "request_id": 1887,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/4c/4ca3927f-0df5-42e3-9746-b96a0e68253f.ae23b.mp3",
+      "bytes": 16416,
+      "sha256": "d533716d5897fbdb6d7af6d57146af47f03c9974c7550a1ef0b6b6d49a642896"
+    },
+    "sss-tbv/assets/game/native/b8/b8d6e0e3-0656-423e-904a-5513092744b8.c083a.mp3": {
+      "request_id": 1888,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/b8/b8d6e0e3-0656-423e-904a-5513092744b8.c083a.mp3",
+      "bytes": 85632,
+      "sha256": "c2122634659c26b2743c86d7ceea985058efd447fedc8585efbc1838081e00f3"
+    },
+    "sss-tbv/assets/game/native/98/98386335-19cc-4661-8338-9a2ae6509c3d.a36ad.mp3": {
+      "request_id": 1890,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/98/98386335-19cc-4661-8338-9a2ae6509c3d.a36ad.mp3",
+      "bytes": 16128,
+      "sha256": "68ff5ee6e9ea1c5bd2cc3e3eeebcaefae95bab3f038d60512221c2ccb3c91fef"
+    },
+    "sss-tbv/assets/game/native/c2/c2a693d8-bf94-42d7-9480-06c8011e86fd.28ee3.mp3": {
+      "request_id": 1895,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c2/c2a693d8-bf94-42d7-9480-06c8011e86fd.28ee3.mp3",
+      "bytes": 9024,
+      "sha256": "806e31d92b2191a102e9973070b2ad98b3fc47d9ddee48b455d6703971929d1b"
+    },
+    "sss-tbv/assets/game/native/3f/3f077fd9-84f7-41ee-ad0a-db4806ca3f4e.ed90e.mp3": {
+      "request_id": 1896,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/3f/3f077fd9-84f7-41ee-ad0a-db4806ca3f4e.ed90e.mp3",
+      "bytes": 72192,
+      "sha256": "e1481b9c9ff30b0252e819f770bf41695a242ca71703725f5efac5a88c0d0d4f"
+    },
+    "sss-tbv/assets/game/native/10/1042f6bb-37b8-4964-89f6-3278182daab8.2fd34.mp3": {
+      "request_id": 1897,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/10/1042f6bb-37b8-4964-89f6-3278182daab8.2fd34.mp3",
+      "bytes": 9408,
+      "sha256": "49b31cc629a11b7d27387454753f80abd42eba9f2b6935ee766ae0688ef96178"
+    },
+    "sss-tbv/assets/game/native/10/10c9bc06-2d60-4812-984f-e08d8f1ca8b6.14b76.mp3": {
+      "request_id": 1898,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/10/10c9bc06-2d60-4812-984f-e08d8f1ca8b6.14b76.mp3",
+      "bytes": 10765,
+      "sha256": "95594c46caa9ee737f602570d29e2bee5d41c87348fec8b5d07ee5b1763fb387"
+    },
+    "sss-tbv/assets/game/native/35/35d64374-55e2-4c52-befd-a5dd45c5fc01.5c02c.mp3": {
+      "request_id": 1900,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/35/35d64374-55e2-4c52-befd-a5dd45c5fc01.5c02c.mp3",
+      "bytes": 12646,
+      "sha256": "f75229afe81ec8934cdef9f969024bebbb753e20939f6cf5d0db9ef01fc5508b"
+    },
+    "sss-tbv/assets/game/native/46/463649bf-3eb6-42ee-97ae-b89f7b309b60.0b240.mp3": {
+      "request_id": 1902,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/46/463649bf-3eb6-42ee-97ae-b89f7b309b60.0b240.mp3",
+      "bytes": 13482,
+      "sha256": "e592f2c8c4b001fe3db8109a5538d1d0ec8fc1d487fa4e691491a242e1372ddd"
+    },
+    "sss-tbv/assets/game/native/c6/c6c252d3-3fef-461b-87c4-293cc7b634fd.1c145.mp3": {
+      "request_id": 1905,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c6/c6c252d3-3fef-461b-87c4-293cc7b634fd.1c145.mp3",
+      "bytes": 14736,
+      "sha256": "37f6f90a5250595da33c5d94f8ff6e9c29fbdfe477c54af50295d44ff5804a7e"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/68/689f2fa5-d968-43eb-b377-cd863cbb4fbd.e44c1.bin": {
+      "request_id": 1932,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/68/689f2fa5-d968-43eb-b377-cd863cbb4fbd.e44c1.bin",
+      "bytes": 12391,
+      "sha256": "a2c72f192b4866a01e1fb8655d126d851ac12dc35b3ccb524d6abd0c6a517094"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/c0/c0a3e3be-74fa-4d01-8ca0-73126b2bf0a9.22f04.bin": {
+      "request_id": 1933,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/c0/c0a3e3be-74fa-4d01-8ca0-73126b2bf0a9.22f04.bin",
+      "bytes": 14987,
+      "sha256": "3fb630513857ec06037819a91a379c9665b560a68d10678f7f844057ff912410"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/c9/c9373368-bb29-423c-9c60-907a759ee348.551de.webp": {
+      "request_id": 1934,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/c9/c9373368-bb29-423c-9c60-907a759ee348.551de.webp",
+      "bytes": 670,
+      "sha256": "45bbaf6c787c5bf7cc5263fd90b823663482c80cafb4125163ef8868f060f123"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/e0/e03520a1-87b0-40d1-8dbd-6fd4c4ae9e9c.df760.webp": {
+      "request_id": 1935,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/e0/e03520a1-87b0-40d1-8dbd-6fd4c4ae9e9c.df760.webp",
+      "bytes": 57570,
+      "sha256": "95b5db60c04a33154f3589b1df02dee4a7d6e0a79fa4b7960f5b8e88cc69d0b8"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/db/db9b3883-8538-4809-abc3-30a92c400d04.559d4.bin": {
+      "request_id": 1923,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/db/db9b3883-8538-4809-abc3-30a92c400d04.559d4.bin",
+      "bytes": 59549,
+      "sha256": "2b561dbec5bdf84303268bb4ba25c2b49e8a28809353d2a13397681d8529fe63"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/f2/f282725e-8f8b-4b12-9899-d59575966623.44fc4.webp": {
+      "request_id": 1936,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/f2/f282725e-8f8b-4b12-9899-d59575966623.44fc4.webp",
+      "bytes": 3900,
+      "sha256": "741fd5d903a5c6e76f12119baa012917c3f800fdf524d0e05b6d851097ba0a21"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/e9/e988d278-0fda-46d8-a001-ae5b6389cb0b.c9c21.png": {
+      "request_id": 1937,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/e9/e988d278-0fda-46d8-a001-ae5b6389cb0b.c9c21.png",
+      "bytes": 105120,
+      "sha256": "de541f2070d0882cdf5168c53351fac0b21d0351e86eda49f3e08cba77307f07"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/a2/a2c8b88e-e90f-4c5e-bf3f-1a0c7520ab51.9ba47.png": {
+      "request_id": 1938,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/a2/a2c8b88e-e90f-4c5e-bf3f-1a0c7520ab51.9ba47.png",
+      "bytes": 27512,
+      "sha256": "29e9d066ab7937dbc74265483374a87f1a7d6ec6571fd4848213741493a27219"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/bd/bd5b1333-dafb-49f1-b275-9390b9054bc0.5a2d4.webp": {
+      "request_id": 1931,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/bd/bd5b1333-dafb-49f1-b275-9390b9054bc0.5a2d4.webp",
+      "bytes": 140,
+      "sha256": "fd90028d48376d946ee148ac8a6aa74a468ce899a727fc2f186b865dcc8c8157"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/24/24c419ea-63a8-4ea1-a9d0-7fc469489bbc.841f5.png": {
+      "request_id": 1930,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/24/24c419ea-63a8-4ea1-a9d0-7fc469489bbc.841f5.png",
+      "bytes": 1439,
+      "sha256": "cbca4eb7ae6158b9d65fc6495828b6c3a540085f8c704b1780f0690f0f0eba71"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/15/154f30a7-66d2-417c-aa11-83ac91ce0aaf.4027c.webp": {
+      "request_id": 1929,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/15/154f30a7-66d2-417c-aa11-83ac91ce0aaf.4027c.webp",
+      "bytes": 113350,
+      "sha256": "2a60b3487c6b234dcee7b0cfadace5aae30bdba112cd4f319131fe8f3677f842"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/13/13dad6fb6.0b380.webp": {
+      "request_id": 1928,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/13/13dad6fb6.0b380.webp",
+      "bytes": 93526,
+      "sha256": "a235157c47db831e36b3276486ee96bec12c9ad3e9bbef722e3941d08f911a3e"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/19/195f5ebaf.3d5fe.webp": {
+      "request_id": 1927,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/19/195f5ebaf.3d5fe.webp",
+      "bytes": 22434,
+      "sha256": "47e7fa07962dd95ae6b6948af605169b5f236e9bfd380c1d240caef2d352b415"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/aa/aa0fdae4-433c-47e9-aa8a-3fd6f9179be4.f01e8.png": {
+      "request_id": 1926,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/aa/aa0fdae4-433c-47e9-aa8a-3fd6f9179be4.f01e8.png",
+      "bytes": 2182,
+      "sha256": "24a2aed540e83f5fcaa04883004b6fc7f74d86c1e2c1eb668fda3786b0749b33"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/d0/d0c74a7a-86ea-400d-a22d-c1abbebdfa32.092d7.png": {
+      "request_id": 1925,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/d0/d0c74a7a-86ea-400d-a22d-c1abbebdfa32.092d7.png",
+      "bytes": 58995,
+      "sha256": "55e09cc51e0f19c46a3b08e5c826d96a303ea50ed298ca1402ae7ab5459991fb"
+    },
+    "astarte4/3.8/web-mobile/assets/jiliMain/native/11/11821491f.4b401.webp": {
+      "request_id": 1924,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jiliMain/native/11/11821491f.4b401.webp",
+      "bytes": 13080,
+      "sha256": "66877ce6bd94eae9075e613e044f15b7450ceca5d3fe147859fe001149b5d4d5"
+    },
+    "sss-tbv/assets/game/import/31/31a1c270-05db-416c-82e0-ce6d6bc17b56.67837.json": {
+      "request_id": 1904,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/31/31a1c270-05db-416c-82e0-ce6d6bc17b56.67837.json",
+      "bytes": 126,
+      "sha256": "c8318b1ac9d149d8450d805128aca2e9529aa10a2bb35ffa679a82f73f1899e6"
+    },
+    "sss-tbv/assets/game/import/f5/f5682741-301d-4d78-acc1-228bf82d0323.f1866.json": {
+      "request_id": 1906,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/f5/f5682741-301d-4d78-acc1-228bf82d0323.f1866.json",
+      "bytes": 126,
+      "sha256": "543f7ba85b08503aeaed2ddb1f2784b3dc4edb5bb2f8940d7a6354af5ae0eaee"
+    },
+    "sss-tbv/assets/game/import/48/4848d1ca-31f1-4ff1-a93f-7cf025685868.f68bc.json": {
+      "request_id": 1909,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/48/4848d1ca-31f1-4ff1-a93f-7cf025685868.f68bc.json",
+      "bytes": 126,
+      "sha256": "924c8776ad2dd66d93cbcd9b189ecb31f1ff8a28c4bb19c113fc3cfeabdba213"
+    },
+    "sss-tbv/assets/game/import/b4/b40f06a1-bc82-4ea9-a7f8-96969f5df43c.bf051.json": {
+      "request_id": 1911,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/b4/b40f06a1-bc82-4ea9-a7f8-96969f5df43c.bf051.json",
+      "bytes": 126,
+      "sha256": "69ac95704e0c8eb50a04dbc7f66a9b6e919e74ea76062d31f551d2ae1fecd04f"
+    },
+    "sss-tbv/assets/game/import/8e/8ea3bded-3ecb-49ad-b4d9-3f831c991409.3c143.json": {
+      "request_id": 1912,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/8e/8ea3bded-3ecb-49ad-b4d9-3f831c991409.3c143.json",
+      "bytes": 123,
+      "sha256": "1966cc866f1192f80d80176ffeacb843ce0ce6096d51eede2ac33373e4bdbe67"
+    },
+    "sss-tbv/assets/game/import/46/46575d2b-f2e5-4e5a-96af-a72984b49a90.20ea9.json": {
+      "request_id": 1913,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/46/46575d2b-f2e5-4e5a-96af-a72984b49a90.20ea9.json",
+      "bytes": 128,
+      "sha256": "fc2daed8302381c666ca6b68c51e47cf04a2d83cf255975499c6fafaaab78838"
+    },
+    "sss-tbv/assets/game/import/ea/ea2721fb-6dd7-4261-9bf8-fe898a1563ad.563a0.json": {
+      "request_id": 1914,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/ea/ea2721fb-6dd7-4261-9bf8-fe898a1563ad.563a0.json",
+      "bytes": 120,
+      "sha256": "390f46d9afa84843965f49ac18ed44062328da898988857fae8b4b65a9644b05"
+    },
+    "sss-tbv/assets/game/native/31/31a1c270-05db-416c-82e0-ce6d6bc17b56.8ef2f.mp3": {
+      "request_id": 1907,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/31/31a1c270-05db-416c-82e0-ce6d6bc17b56.8ef2f.mp3",
+      "bytes": 6336,
+      "sha256": "55ec44aa3ab130977665e40f62f0bf193f985f1008b33c5416b31f4b1ba4ef17"
+    },
+    "sss-tbv/assets/game/native/f5/f5682741-301d-4d78-acc1-228bf82d0323.e9e63.mp3": {
+      "request_id": 1908,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/f5/f5682741-301d-4d78-acc1-228bf82d0323.e9e63.mp3",
+      "bytes": 7488,
+      "sha256": "16194f5a20019cba6f3c2a98c1c26519248d4ab1e2e28bf5ca2aa513f6550207"
+    },
+    "sss-tbv/assets/game/native/b4/b40f06a1-bc82-4ea9-a7f8-96969f5df43c.c0fdd.mp3": {
+      "request_id": 1917,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/b4/b40f06a1-bc82-4ea9-a7f8-96969f5df43c.c0fdd.mp3",
+      "bytes": 9216,
+      "sha256": "9cd38e4c7ae5d0828c558fd0eb33a6cbeac5084ab44c162078cfcc843690bf12"
+    },
+    "sss-tbv/assets/game/native/48/4848d1ca-31f1-4ff1-a93f-7cf025685868.4cbf3.mp3": {
+      "request_id": 1910,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/48/4848d1ca-31f1-4ff1-a93f-7cf025685868.4cbf3.mp3",
+      "bytes": 8832,
+      "sha256": "6339085d2d80a60a90b4e423983317c37803b068ba9aa273f1cc64c8a898297b"
+    },
+    "sss-tbv/assets/game/native/46/46575d2b-f2e5-4e5a-96af-a72984b49a90.89814.mp3": {
+      "request_id": 1919,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/46/46575d2b-f2e5-4e5a-96af-a72984b49a90.89814.mp3",
+      "bytes": 3975,
+      "sha256": "b2e44e61ac2b4cb4bd94fd4962e315ef24786c06e0ee3ddf5c927abc0ed4df6c"
+    },
+    "sss-tbv/assets/game/native/8e/8ea3bded-3ecb-49ad-b4d9-3f831c991409.92bd2.mp3": {
+      "request_id": 1918,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/8e/8ea3bded-3ecb-49ad-b4d9-3f831c991409.92bd2.mp3",
+      "bytes": 18240,
+      "sha256": "d29b7be1ffc19175f62898552f2141342c67ef80d9b8569152e0695b70147f23"
+    },
+    "sss-tbv/assets/game/native/ea/ea2721fb-6dd7-4261-9bf8-fe898a1563ad.0dff9.mp3": {
+      "request_id": 1920,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/ea/ea2721fb-6dd7-4261-9bf8-fe898a1563ad.0dff9.mp3",
+      "bytes": 9408,
+      "sha256": "b09f816abfea757f2bbba5d14a8b13bafbdb0e1839b8e94d8b54e8593d2e5a6a"
+    },
+    "sss-tbv/assets/game/import/c6/c6d154c6-1494-4614-a8b6-98194f5bfdcd.4f403.json": {
+      "request_id": 1915,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c6/c6d154c6-1494-4614-a8b6-98194f5bfdcd.4f403.json",
+      "bytes": 121,
+      "sha256": "baa6c17933a298a5f2e56c6a2ea0029899d963df075018ffc56d1baa5b5040b8"
+    },
+    "sss-tbv/assets/game/import/c1/c13dd5e4-77fc-4d6c-a86b-783031d19ab5.baa6a.json": {
+      "request_id": 1916,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/import/c1/c13dd5e4-77fc-4d6c-a86b-783031d19ab5.baa6a.json",
+      "bytes": 119,
+      "sha256": "5f55dd2c537d8348ffb7bac805512dd0601c3adae1719c6698d7c3f5c4424879"
+    },
+    "sss-tbv/assets/game/native/c6/c6d154c6-1494-4614-a8b6-98194f5bfdcd.7dfd6.mp3": {
+      "request_id": 1921,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c6/c6d154c6-1494-4614-a8b6-98194f5bfdcd.7dfd6.mp3",
+      "bytes": 10368,
+      "sha256": "2ae53e076b6b2021cf35aa363b48df4740cf5e68eed57584b495444c3cd7b111"
+    },
+    "sss-tbv/assets/game/native/c1/c13dd5e4-77fc-4d6c-a86b-783031d19ab5.aecfd.mp3": {
+      "request_id": 1922,
+      "source": "https://uat-wbgame.rsne4d5q.com/sss-tbv/assets/game/native/c1/c13dd5e4-77fc-4d6c-a86b-783031d19ab5.aecfd.mp3",
+      "bytes": 59136,
+      "sha256": "10e593a7a9f96a979abe4772abfe82e2a50dd4e0be821a787ef8cec008549590"
+    },
+    "smallicon/Icons/863_en.jpg": {
+      "request_id": 1949,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/863_en.jpg",
+      "bytes": 74223,
+      "sha256": "f7940dba43208c1b1348c88612a2922c8528d7cf3058ee7b561440f768bd16ff"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/16/166a618a4.48103.webp": {
+      "request_id": 1950,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/16/166a618a4.48103.webp",
+      "bytes": 93120,
+      "sha256": "70f0d40482e5ccefea9cd2ae9cf346d6d0fb0a125b349c8a1eb17349e71ecd2a"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/12/1299bad2d.9b4e9.webp": {
+      "request_id": 1951,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/12/1299bad2d.9b4e9.webp",
+      "bytes": 83046,
+      "sha256": "2d6e43d2921acb384425ffb2ca76d9e52b6c5b00a56502e09658c1082ad4183f"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/15/15860bf53.547cd.webp": {
+      "request_id": 1952,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/15/15860bf53.547cd.webp",
+      "bytes": 132804,
+      "sha256": "57e95823f9aafb25bc287bfacfd1a04864ec5ef36f95600ab6da74c6b6c01f88"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/b0/b0a0556f-f338-4c44-a6f0-9734d154c616.3fe52.png": {
+      "request_id": 1953,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/b0/b0a0556f-f338-4c44-a6f0-9734d154c616.3fe52.png",
+      "bytes": 12768,
+      "sha256": "e919f4a4c3f4d87e486b906b41dd0839a38dfaa13cb6cbbc16176e7d92376325"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/9a/9a633273-ceb3-410b-9a3a-5960b738561c.6cdf1.png": {
+      "request_id": 1954,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/9a/9a633273-ceb3-410b-9a3a-5960b738561c.6cdf1.png",
+      "bytes": 11393,
+      "sha256": "a42b51cb9c4b43d4bfd346e8bd2a00e743ac7afe5261b3f0cc3408becd03fb4a"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/fe/fef37957-612a-4480-9b8f-b4070b7ad165.21c7a.png": {
+      "request_id": 1955,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/fe/fef37957-612a-4480-9b8f-b4070b7ad165.21c7a.png",
+      "bytes": 11687,
+      "sha256": "b7203cde8f615909de487a1eba6b32584422b2f8175477d886bb2f33c375f98d"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/13/132d2650d.13ffb.webp": {
+      "request_id": 1956,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/13/132d2650d.13ffb.webp",
+      "bytes": 121624,
+      "sha256": "e583211437b54008668812b57bc1b7c84b24ed52d4ed1014558a20a4a24a9587"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/55/5573b11e-8f83-455a-9f64-29b7d1005be1.1fcc9.png": {
+      "request_id": 1957,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/55/5573b11e-8f83-455a-9f64-29b7d1005be1.1fcc9.png",
+      "bytes": 7173,
+      "sha256": "b3b4a97313fae102f97d1633d550fd4dc049d6890baa4140c1c404df3be90203"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/53/53cd037d-8e20-4e65-b0bd-f96e0755b387.ca150.png": {
+      "request_id": 1958,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/53/53cd037d-8e20-4e65-b0bd-f96e0755b387.ca150.png",
+      "bytes": 16954,
+      "sha256": "995c9e08d2a2ead880f61d3c0ad98f744543d48716c15fc9e03456808ddb5c9e"
+    },
+    "smallicon/Icons/2_en.jpg": {
+      "request_id": 1959,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/2_en.jpg",
+      "bytes": 14132,
+      "sha256": "56ef2c11652d82b1e193eccc46b900976aec8f6e189ecf6e3a0285ea6b4f9351"
+    },
+    "smallicon/Icons/9_en.jpg": {
+      "request_id": 1960,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/9_en.jpg",
+      "bytes": 18017,
+      "sha256": "43a28ffcc18fae13b6fb728a6b027943118f3ff3fde16c9402e563748ee44ac7"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/cf/cf928e79-7b97-4f4d-a8bf-4297b2f826a1.346a6.mp3": {
+      "request_id": 1961,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/cf/cf928e79-7b97-4f4d-a8bf-4297b2f826a1.346a6.mp3",
+      "bytes": 6940,
+      "sha256": "52395316143f19b1d24b00c9ce592d78da74e205a75eea22e4863f8523f3e821"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/81/81ecd4c1-4136-46af-87c4-3fb8d80e8a9c.57350.mp3": {
+      "request_id": 1962,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/81/81ecd4c1-4136-46af-87c4-3fb8d80e8a9c.57350.mp3",
+      "bytes": 33337,
+      "sha256": "28d65cc39dd42d3b838df6b996b47a32004d6af8ab8bdb054f64ee5417c2db4d"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/a1/a17de53a-0051-497e-a833-17da513c97e6.93f29.mp3": {
+      "request_id": 1964,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/a1/a17de53a-0051-497e-a833-17da513c97e6.93f29.mp3",
+      "bytes": 138631,
+      "sha256": "34615da332709f9bf5bed3c88a74341f72e7cf68c7960a9d9fba6b5580f400cf"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/30/308454d2-7e6f-4c8d-8f5a-9c01c393fbff.ca1b1.mp3": {
+      "request_id": 1965,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/30/308454d2-7e6f-4c8d-8f5a-9c01c393fbff.ca1b1.mp3",
+      "bytes": 108538,
+      "sha256": "7512614b69edfdfe1e0e11e53d64d88c79bf51ab7d9e06fea843ff9bbb578c89"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/02/02ccec23-010b-4332-8679-f88e181566d1.15e68.mp3": {
+      "request_id": 1966,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/02/02ccec23-010b-4332-8679-f88e181566d1.15e68.mp3",
+      "bytes": 74133,
+      "sha256": "a7158a92d70e43a0a57218098b22bb1a4df40c1514669aa4db19f43ed185e058"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/a3/a380cb6a-615d-4ff1-806c-3afc46eb7393.40a1a.mp3": {
+      "request_id": 1967,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/a3/a380cb6a-615d-4ff1-806c-3afc46eb7393.40a1a.mp3",
+      "bytes": 26089,
+      "sha256": "a48829b226115dab62816f3136680a5cba6183342de6dfad752b83c8333bdf71"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/ed/edb27b42-d9ec-4d6d-8979-25af7d4204cf.346a6.mp3": {
+      "request_id": 1973,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/ed/edb27b42-d9ec-4d6d-8979-25af7d4204cf.346a6.mp3",
+      "bytes": 6940,
+      "sha256": "52395316143f19b1d24b00c9ce592d78da74e205a75eea22e4863f8523f3e821"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/10/105b3a82-aa08-4819-88bc-8caad8c7719a.57350.mp3": {
+      "request_id": 1974,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/10/105b3a82-aa08-4819-88bc-8caad8c7719a.57350.mp3",
+      "bytes": 33337,
+      "sha256": "28d65cc39dd42d3b838df6b996b47a32004d6af8ab8bdb054f64ee5417c2db4d"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/7a/7aaf61a2-a29f-4c13-93a9-6c49286e12c5.93f29.mp3": {
+      "request_id": 1975,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/7a/7aaf61a2-a29f-4c13-93a9-6c49286e12c5.93f29.mp3",
+      "bytes": 138631,
+      "sha256": "34615da332709f9bf5bed3c88a74341f72e7cf68c7960a9d9fba6b5580f400cf"
+    },
+    "astarte4/3.8/web-mobile/assets/en/native/18/18fbb620d.031ce.webp": {
+      "request_id": 1968,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/native/18/18fbb620d.031ce.webp",
+      "bytes": 33390,
+      "sha256": "39c7724781ccf3670042849562ad297a93b8f1d8f5fab2821076de587d7824d7"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/e6/e62dcf55-aa21-4816-a27d-a7ad802ef6a9.ca150.png": {
+      "request_id": 1969,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/e6/e62dcf55-aa21-4816-a27d-a7ad802ef6a9.ca150.png",
+      "bytes": 16954,
+      "sha256": "995c9e08d2a2ead880f61d3c0ad98f744543d48716c15fc9e03456808ddb5c9e"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/88/8875f0a2-de64-47dc-b08f-09714fae272e.553ba.png": {
+      "request_id": 1970,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/88/8875f0a2-de64-47dc-b08f-09714fae272e.553ba.png",
+      "bytes": 1500,
+      "sha256": "7b5b9a462c1bed02bc650c91c3209a64e1872f2dea536e61811d14f0ada2b641"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/0f/0f4867b9-0c27-4ced-9221-48e2503ab976.ca1b1.mp3": {
+      "request_id": 1976,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/0f/0f4867b9-0c27-4ced-9221-48e2503ab976.ca1b1.mp3",
+      "bytes": 108538,
+      "sha256": "7512614b69edfdfe1e0e11e53d64d88c79bf51ab7d9e06fea843ff9bbb578c89"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/ae/aeb314ab-666a-490c-a0b8-f529e5adab13.15e68.mp3": {
+      "request_id": 1977,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/ae/aeb314ab-666a-490c-a0b8-f529e5adab13.15e68.mp3",
+      "bytes": 74133,
+      "sha256": "a7158a92d70e43a0a57218098b22bb1a4df40c1514669aa4db19f43ed185e058"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/06/067f06aa-a569-4ae4-a6c4-d0c93154c9f9.40a1a.mp3": {
+      "request_id": 1978,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/06/067f06aa-a569-4ae4-a6c4-d0c93154c9f9.40a1a.mp3",
+      "bytes": 26089,
+      "sha256": "a48829b226115dab62816f3136680a5cba6183342de6dfad752b83c8333bdf71"
+    },
+    "astarte4/3.8/web-mobile/assets/en/native/17/172df1cf2.49590.webp": {
+      "request_id": 1979,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/en/native/17/172df1cf2.49590.webp",
+      "bytes": 40192,
+      "sha256": "5c7cdaa13ce63e8158b7dc9b0f691f90fd3979f0e5cb7952c323e4424e35033f"
+    },
+    "smallicon/Icons/108_en.jpg": {
+      "request_id": 1980,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/108_en.jpg",
+      "bytes": 14708,
+      "sha256": "ba38bf79b86aa20499c1aada89257a54c7c0cc799e9d94669c7eb8068fb9ec26"
+    },
+    "smallicon/Icons/106_en.jpg": {
+      "request_id": 1981,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/106_en.jpg",
+      "bytes": 14829,
+      "sha256": "abda21f15faef6a38625aefc81a08ce7c4aa7221d18e32ac189b494147de36a6"
+    },
+    "smallicon/Icons/103_en.jpg": {
+      "request_id": 1983,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/103_en.jpg",
+      "bytes": 16829,
+      "sha256": "3a81e00176544b0fb7f4d4ff4b8e376e7fb608cdef391d85ec957907f31a3475"
+    },
+    "smallicon/Icons/102_en.jpg": {
+      "request_id": 1984,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/102_en.jpg",
+      "bytes": 14589,
+      "sha256": "8f3af9a80ccb27c30ff39bdfdf2d4fb80ee8af361925ed506890def9e8851355"
+    },
+    "smallicon/Icons/58_en.jpg": {
+      "request_id": 1985,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/58_en.jpg",
+      "bytes": 18381,
+      "sha256": "58c22eb5a9f33e5a99f40f5b09760434be887a1aaa70f1ee324036d950408764"
+    },
+    "smallicon/Icons/51_en.jpg": {
+      "request_id": 1986,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/51_en.jpg",
+      "bytes": 16395,
+      "sha256": "7692c7a1d721c8c036b1ef137d041582cf571d2762c85fe5224186a8c038b33a"
+    },
+    "smallicon/Icons/49_en.jpg": {
+      "request_id": 1987,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/49_en.jpg",
+      "bytes": 15025,
+      "sha256": "9babc629f7e425cd73768a843be4437a3a035d48d0839054c38484be0fc12962"
+    },
+    "smallicon/Icons/47_en.jpg": {
+      "request_id": 1988,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/47_en.jpg",
+      "bytes": 15597,
+      "sha256": "88ef1a9227cdd363735f1fe891dbd2123c593a43e122efabf7d4991e251a75e3"
+    },
+    "smallicon/Icons/45_en.jpg": {
+      "request_id": 1989,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/45_en.jpg",
+      "bytes": 13025,
+      "sha256": "d63088d4b431d7469d9b65108f8d4bc709ea5d4e66080f4db49809263a7a8222"
+    },
+    "smallicon/Icons/38_en.jpg": {
+      "request_id": 1990,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/38_en.jpg",
+      "bytes": 15744,
+      "sha256": "276c9c4b230accf18e4a50f05d71b6892ce5bffe56c9dd565f0b0e3e82a15199"
+    },
+    "smallicon/Icons/35_en.jpg": {
+      "request_id": 1993,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/35_en.jpg",
+      "bytes": 14663,
+      "sha256": "23553c73f857343c8dc14b77302b10940bb9947b1f1fc7a9430aaccac5f160ce"
+    },
+    "smallicon/Icons/30_en.jpg": {
+      "request_id": 1994,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/30_en.jpg",
+      "bytes": 15534,
+      "sha256": "f61a66cd77d796faa3cf2109a17126739ea8a08f7b8c36d8628d2024467c134f"
+    },
+    "astarte4/3.8/web-mobile/assets/jili/native/85/855a3546-fc38-4227-ba5f-2f23d17dad81.2c16f.png": {
+      "request_id": 1982,
+      "source": "https://uat-wbgame.rsne4d5q.com/astarte4/3.8/web-mobile/assets/jili/native/85/855a3546-fc38-4227-ba5f-2f23d17dad81.2c16f.png",
+      "bytes": 6484,
+      "sha256": "0650958de0faaf670fa8956074ec4af0f6f7d8535a856232637db52e4608c374"
+    },
+    "smallicon/Icons/17_en.jpg": {
+      "request_id": 1996,
+      "source": "https://uat-wbgame.rsne4d5q.com/smallicon/Icons/17_en.jpg",
+      "bytes": 12895,
+      "sha256": "9ded63cc67dd3c70558aba04f5a261f1f852f24f5ab75f3c9eb6bb5c921ce899"
+    },
+    "static/images/intro/sss-tbv/logo_en-US.webp": {
+      "request_id": 2046,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/logo_en-US.webp",
+      "bytes": 11666,
+      "sha256": "684fa5a02920ae2e5cd657b8ecc62779b9fbbb215a71cfb585affa04f7be7ff3"
+    },
+    "static/images/intro/sss-tbv/symbol_08.webp": {
+      "request_id": 2047,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_08.webp",
+      "bytes": 7954,
+      "sha256": "8ce7b78b322f1e82bcb6ed92948c1e37372776b021ef6479d50b6841dfd28e54"
+    },
+    "static/images/intro/sss-tbv/symbol_09.webp": {
+      "request_id": 2048,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_09.webp",
+      "bytes": 7688,
+      "sha256": "bb033060b94b2bb7d1b76d69e1241d9587559d57d5d59c149f77d39cd3bb5006"
+    },
+    "static/images/intro/sss-tbv/symbol_10.webp": {
+      "request_id": 2049,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_10.webp",
+      "bytes": 7622,
+      "sha256": "28a775a84a29058fdc83d25b1bb42683cf740515a3ced7a9fabe3493f78abf78"
+    },
+    "static/images/intro/sss-tbv/symbol_11.webp": {
+      "request_id": 2050,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_11.webp",
+      "bytes": 7524,
+      "sha256": "f72401577d81a672e80b7829680f8f78abff940248266ca644fbf5e5ce6e888a"
+    },
+    "static/images/intro/sss-tbv/symbol_12.webp": {
+      "request_id": 2051,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_12.webp",
+      "bytes": 4104,
+      "sha256": "20454ddaa05715ab8438e2a9f094ce2bf78da3abe6c07e560632f95a8beaa30e"
+    },
+    "static/images/intro/sss-tbv/symbol_14.webp": {
+      "request_id": 2052,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_14.webp",
+      "bytes": 3800,
+      "sha256": "7b414c8343286559a88de068fb13c1f7f2702ab2c0e4cfa714ed8ec516a24084"
+    },
+    "static/images/intro/sss-tbv/symbol_13.webp": {
+      "request_id": 2053,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_13.webp",
+      "bytes": 3880,
+      "sha256": "d63b4c46a599b29cd38a552b7756210bde5518cf2bb7c0be1def5afea91d4afb"
+    },
+    "static/images/intro/sss-tbv/bill.webp": {
+      "request_id": 2054,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/bill.webp",
+      "bytes": 5486,
+      "sha256": "5bb974cf32a815c6093a125a4459713f692ee563ebc0b465fde40bc8d0e37b5c"
+    },
+    "static/images/intro/sss-tbv/symbol_20.webp": {
+      "request_id": 2055,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_20.webp",
+      "bytes": 3768,
+      "sha256": "7cb2b5336a3b765d3f9fe4331c0ed0940dcef97e92f246cbdee001f961b59f7a"
+    },
+    "static/images/intro/sss-tbv/symbol_21.webp": {
+      "request_id": 2056,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_21.webp",
+      "bytes": 4214,
+      "sha256": "b630b910f9abca3274d1c07ccf8f030291de04a00faf807a67b4f39d94793440"
+    },
+    "static/images/intro/sss-tbv/symbol_22.webp": {
+      "request_id": 2057,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_22.webp",
+      "bytes": 4204,
+      "sha256": "e55b7ed880e43f4864556b714a606dded78dd81574ec9fc705dc07eec82b0e3d"
+    },
+    "static/images/intro/sss-tbv/symbol_23.webp": {
+      "request_id": 2058,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_23.webp",
+      "bytes": 4138,
+      "sha256": "8a5451dafed123665fa2aadcb13f4683fff4be778b17cc5cf8f02312ff07ff02"
+    },
+    "static/images/intro/sss-tbv/symbol_24.webp": {
+      "request_id": 2059,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_24.webp",
+      "bytes": 3834,
+      "sha256": "3a49126c01f9350d81056858c0bab8cb2f07163496319605aacf96cdd9e0a99c"
+    },
+    "static/images/intro/sss-tbv/jp_01.webp": {
+      "request_id": 2060,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/jp_01.webp",
+      "bytes": 6082,
+      "sha256": "4c328945de24ce8fb8316ee8e4cd3674a3dc7e25a344fd49dda9658b7795baa3"
+    },
+    "static/images/intro/sss-tbv/jp_02.webp": {
+      "request_id": 2061,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/jp_02.webp",
+      "bytes": 3244,
+      "sha256": "88df515aa41db3131ecfccc38b7f879686cd99f7f574f83df2de410c36423eb8"
+    },
+    "static/images/intro/sss-tbv/jp_03.webp": {
+      "request_id": 2062,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/jp_03.webp",
+      "bytes": 2274,
+      "sha256": "7a73f11be8271d548d09e8a4917db1d1d8ec72c0c978e326d79fa9eea3606b4b"
+    },
+    "static/images/intro/sss-tbv/jp_04.webp": {
+      "request_id": 2063,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/jp_04.webp",
+      "bytes": 2394,
+      "sha256": "6e40fba8a5a0b2b896ee28aeda6b5e2672a6d6a0ccfa3c13eaffb3b56d58c629"
+    },
+    "static/images/intro/sss-tbv/jp_05.webp": {
+      "request_id": 2064,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/jp_05.webp",
+      "bytes": 1814,
+      "sha256": "8e406ed0686ede1eab2109151a8c70a5f947c3a7a4051b428d8a9f96d3bdeb47"
+    },
+    "static/images/intro/sss-tbv/symbol_19.webp": {
+      "request_id": 2065,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_19.webp",
+      "bytes": 4294,
+      "sha256": "e35569da297e6ef59922b58a432f8480fd68e790ab3242fd5eb89ce8dfcaf12e"
+    },
+    "static/images/intro/sss-tbv/symbol_19_1.webp": {
+      "request_id": 2066,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_19_1.webp",
+      "bytes": 4364,
+      "sha256": "2c9d8191a5caf6638ee5d8ad6a46d2a5b4b127418ea791b6b10a5aea55a70cea"
+    },
+    "static/images/intro/sss-tbv/3.webp": {
+      "request_id": 2067,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/3.webp",
+      "bytes": 5006,
+      "sha256": "cfce7c475be5b4600a53337e801c135cf7f4a18535c11dd8573bd94e2d76fdf3"
+    },
+    "static/images/intro/sss-tbv/5.webp": {
+      "request_id": 2068,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/5.webp",
+      "bytes": 5036,
+      "sha256": "8891f96cb9af20fe12397a8b3da4051dc277870a2f4b98835db33496f2706b30"
+    },
+    "static/images/intro/sss-tbv/4.webp": {
+      "request_id": 2069,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/4.webp",
+      "bytes": 4912,
+      "sha256": "3c5cc6748d1edb40897b466cdb7024dab98239f8a2f90cf4dcf019bb6fbdb4dc"
+    },
+    "static/images/intro/sss-tbv/mix0.webp": {
+      "request_id": 2070,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/mix0.webp",
+      "bytes": 5458,
+      "sha256": "65d7c837b16bc2d0541672c24816962ce8b78743d40ef9866d9375504b2a8e81"
+    },
+    "static/images/intro/sss-tbv/mix1.webp": {
+      "request_id": 2071,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/mix1.webp",
+      "bytes": 5504,
+      "sha256": "51424be521fa1018afec798958e05f8fe2f8a2acc4740b72e4d8cd4b678ac7dc"
+    },
+    "static/images/intro/sss-tbv/mix2.webp": {
+      "request_id": 2072,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/mix2.webp",
+      "bytes": 5484,
+      "sha256": "678d0b240869d6a0415a920b03db59faf9e8b8846f14af2ce10fe95345c320e3"
+    },
+    "static/images/intro/sss-tbv/mix3.webp": {
+      "request_id": 2073,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/mix3.webp",
+      "bytes": 8358,
+      "sha256": "dea463869c7685802a90a866ff77ccb6d6709fa5728fe8cca814ba41dc36df71"
+    },
+    "static/images/intro/sss-tbv/symbol_07.webp": {
+      "request_id": 2074,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_07.webp",
+      "bytes": 5746,
+      "sha256": "4a7794ee9dfb3d694e8fc23134052ce66cf6ed58bd2714963d798d17156065a4"
+    },
+    "static/images/intro/sss-tbv/symbol_06.webp": {
+      "request_id": 2075,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_06.webp",
+      "bytes": 4236,
+      "sha256": "f5e7100114e7d387e5dabab181580bd749ddabfc2cc0b900b1a9385aa81a0f48"
+    },
+    "static/images/intro/sss-tbv/symbol_05.webp": {
+      "request_id": 2076,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_05.webp",
+      "bytes": 5084,
+      "sha256": "cecf851319c3404f6bc7d0f1f6828fa17a81283a71e2fa08a443343e20160589"
+    },
+    "static/images/intro/sss-tbv/symbol_04.webp": {
+      "request_id": 2077,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_04.webp",
+      "bytes": 4442,
+      "sha256": "c0533c75581ce6b84bb16cc6eaae738e1e9712a7cd84de16eac9b24d2f0bf4c8"
+    },
+    "static/images/intro/sss-tbv/symbol_03.webp": {
+      "request_id": 2078,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_03.webp",
+      "bytes": 4230,
+      "sha256": "c9d56af4fdd078be6468015e1136644ad183364e43f8cb14b7dac4c1572ad7ab"
+    },
+    "static/images/intro/sss-tbv/symbol_02.webp": {
+      "request_id": 2079,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_02.webp",
+      "bytes": 2232,
+      "sha256": "9e6f3e9ffea3d95c41aef02afdb6d269c918d77c7263c38d3c5561131a2f8794"
+    },
+    "static/images/intro/sss-tbv/symbol_01.webp": {
+      "request_id": 2080,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_01.webp",
+      "bytes": 1738,
+      "sha256": "912c903159b9214a5207d768b8d7d5d7bfd27cb2d8a679d9ec12b2805fd93a27"
+    },
+    "static/images/intro/sss-tbv/symbol_00.webp": {
+      "request_id": 2081,
+      "source": "https://uat-web-cdn.rsne4d5q.com/static/images/intro/sss-tbv/symbol_00.webp",
+      "bytes": 2110,
+      "sha256": "3d6aba624df34ecbe97c36c6df812b649280be1b0b224a4124d84a71e83b5b82"
+    }
+  }
+}

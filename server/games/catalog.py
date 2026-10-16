@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    '3-billion-vaults': {
+        'factory': 'server.games.three_billion_vaults:ThreeBillionVaults',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['ways', 'moving_wild', 'free_spins', 'buy_bonus', 'jackpot', 'extra_bet'],
+    },
     'jokers-fortune-winx': {
         'factory': 'server.games.jokers_fortune_winx:JokersFortuneWinX',
         'category': 'slots', 'interaction': 'request_steps',

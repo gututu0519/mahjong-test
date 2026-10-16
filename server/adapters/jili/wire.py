@@ -69,6 +69,16 @@ def encode(schema, value, schemas):
     return bytes(result)
 
 
+def scalar(kind, value):
+    if kind == 'bool':
+        return bool(value)
+    bits = {'int32': 32, 'int64': 64}.get(kind)
+    if bits:
+        value &= (1 << bits) - 1
+        return value - (1 << bits) if value >= (1 << (bits - 1)) else value
+    return value
+
+
 def decode(schema, data, schemas):
     reverse = {v[0]: (k, v[1], v[2]) for k, v in schema.items()}
     result = {k: [] for k, (_, _, repeated) in schema.items() if repeated}
@@ -85,13 +95,13 @@ def decode(schema, data, schemas):
                     offset += size
                 else:
                     item, offset = read_varint(value, offset)
-                    packed.append(item)
+                    packed.append(scalar(kind, item))
             result[key].extend(packed)
             continue
         if kind in ('int32', 'uint32', 'int64', 'bool'):
             if wire != 0:
                 raise ValueError('Incorrect scalar wire type')
-            item = bool(value) if kind == 'bool' else value
+            item = scalar(kind, value)
         elif kind in ('double', 'float'):
             if wire != (1 if kind == 'double' else 5):
                 raise ValueError('Incorrect floating point wire type')

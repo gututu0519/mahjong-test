@@ -1,0 +1,6314 @@
+[
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                7
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                0,
+                7,
+                7
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                16,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                4,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                5
+              ]
+            },
+            {
+              "Column": [
+                1,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                3,
+                2,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                0,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                6,
+                0
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                4,
+                4
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                1,
+                5
+              ]
+            },
+            {
+              "Column": [
+                0,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                6
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                6,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                14,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [
+            7
+          ],
+          "NowWildPos": [
+            7
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                3,
+                5
+              ]
+            },
+            {
+              "Column": [
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            6
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 5,
+              "Count": 4,
+              "LineNum": 4,
+              "Win": 0.16
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.16,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.16,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              7
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.16
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                5,
+                0,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              6
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                0,
+                7
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                6,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                2
+              ]
+            },
+            {
+              "Column": [
+                1,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                3,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            7
+          ],
+          "NowWildPos": [
+            7
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 5,
+              "Count": 3,
+              "LineNum": 4,
+              "Win": 0.12
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.12,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.12,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.12
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                2,
+                2
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                2,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                6,
+                6
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            6
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              7
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                4,
+                6,
+                2
+              ]
+            },
+            {
+              "Column": [
+                1,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              6
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                1,
+                1,
+                2
+              ]
+            },
+            {
+              "Column": [
+                5,
+                3,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                7
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [
+            8
+          ],
+          "NowWildPos": [
+            8
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                3,
+                7
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                7,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            7
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 7,
+              "Count": 4,
+              "LineNum": 2,
+              "Win": 0.1
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.1,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.1,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              8
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.1
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                6,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                4,
+                6,
+                2
+              ]
+            },
+            {
+              "Column": [
+                2,
+                5,
+                5
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            6
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              7
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                6,
+                4,
+                7
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [
+            12,
+            14
+          ],
+          "NowWildPos": [
+            12,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              6
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                6,
+                0,
+                3
+              ]
+            },
+            {
+              "Column": [
+                2,
+                1,
+                5
+              ]
+            },
+            {
+              "Column": [
+                16,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                7
+              ]
+            },
+            {
+              "Column": [
+                0,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [
+            12,
+            14
+          ],
+          "NowWildPos": [
+            13,
+            12,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              12,
+              14
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                0,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                5,
+                0,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                5
+              ]
+            },
+            {
+              "Column": [
+                5,
+                2,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            12,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 1,
+              "Count": 5,
+              "LineNum": 4,
+              "Win": 0.12
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.12,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.12,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              13,
+              12,
+              14
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.12
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                2,
+                7
+              ]
+            },
+            {
+              "Column": [
+                5,
+                2,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                7,
+                0
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                4
+              ]
+            },
+            {
+              "Column": [
+                0,
+                2,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [
+            7
+          ],
+          "NowWildPos": [
+            12,
+            7
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 2,
+              "Count": 3,
+              "LineNum": 4,
+              "Win": 0.04
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.04,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.04,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              12,
+              13
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.04
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                7,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                1,
+                3
+              ]
+            },
+            {
+              "Column": [
+                4,
+                0,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            6
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              12,
+              7
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                7,
+                7,
+                0
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                7
+              ]
+            },
+            {
+              "Column": [
+                1,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                2,
+                0,
+                7
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              6
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                2
+              ]
+            },
+            {
+              "Column": [
+                1,
+                2,
+                6
+              ]
+            },
+            {
+              "Column": [
+                5,
+                2,
+                2
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 2,
+              "Count": 3,
+              "LineNum": 2,
+              "Win": 0.02
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.02,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.02,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.02
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                2,
+                6
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                6
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                0,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [
+            11,
+            14
+          ],
+          "NowWildPos": [
+            11,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 6,
+              "Count": 5,
+              "LineNum": 2,
+              "Win": 0.1
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.1,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.1,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.1
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                2
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                2
+              ]
+            },
+            {
+              "Column": [
+                5,
+                0,
+                2
+              ]
+            },
+            {
+              "Column": [
+                4,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                5,
+                5
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            10,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 2,
+              "Count": 5,
+              "LineNum": 1,
+              "Win": 0.03
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.03,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.03,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              11,
+              14
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.03
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                0,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                14
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                0,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            9,
+            12
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              10,
+              13
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                2,
+                6,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                4
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              9,
+              12
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                0,
+                4,
+                6
+              ]
+            },
+            {
+              "Column": [
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                3
+              ]
+            },
+            {
+              "Column": [
+                2,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                6
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                2,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                1
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                2
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                1,
+                0,
+                5
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                0,
+                5
+              ]
+            },
+            {
+              "Column": [
+                5,
+                3,
+                0
+              ]
+            },
+            {
+              "Column": [
+                4,
+                0,
+                3
+              ]
+            },
+            {
+              "Column": [
+                2,
+                5,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                3,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "NowWildPos": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Count": 5,
+              "LineNum": 6,
+              "Win": 0.18
+            },
+            {
+              "Symbol": 5,
+              "Count": 4,
+              "LineNum": 6,
+              "Win": 0.24
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.42,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.42,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.42
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                14,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                6,
+                0,
+                4
+              ]
+            },
+            {
+              "Column": [
+                0,
+                5,
+                16
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                7,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [
+            13
+          ],
+          "AwardDataVec": [
+            {
+              "Count": 4,
+              "LineNum": 2,
+              "Win": 0.04
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.04,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.04,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.04
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                6,
+                6,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                2,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                0,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [
+            12
+          ],
+          "NowWildPos": [
+            12
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                1,
+                3
+              ]
+            },
+            {
+              "Column": [
+                5,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                1,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              12
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                2,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                4
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                6,
+                6
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                1,
+                5,
+                3
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                0,
+                6
+              ]
+            },
+            {
+              "Column": [
+                1,
+                0,
+                6
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                5,
+                0,
+                3
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                0,
+                4
+              ]
+            },
+            {
+              "Column": [
+                1,
+                0,
+                4
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1,
+      "mall": {
+        "Type": 2
+      }
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                5
+              ]
+            },
+            {
+              "Column": [
+                0,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                5,
+                2,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                5,
+                3
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                2,
+                3
+              ]
+            },
+            {
+              "Column": [
+                0,
+                3,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                6,
+                2
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "WildSymbol": 10
+        }
+      ],
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0
+  },
+  {
+    "request": {
+      "bet": 0.1
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                6,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                5,
+                2,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                0,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                5,
+                4,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            7,
+            13,
+            14
+          ],
+          "NowWildPos": [
+            7,
+            13,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Count": 5,
+              "LineNum": 4,
+              "Win": 0.12
+            },
+            {
+              "Symbol": 2,
+              "Count": 5,
+              "LineNum": 2,
+              "Win": 0.06
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.18,
+          "AwardTypeFlag": 1,
+          "WildSymbol": 10
+        }
+      ],
+      "TotalWin": 0.18,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92
+    },
+    "totalWin": 0.18
+  },
+  {
+    "request": {
+      "bet": 0.1,
+      "mall": {
+        "Type": 1,
+        "Index": 0,
+        "Bet": 2.3
+      }
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                15,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                3
+              ]
+            },
+            {
+              "Column": [
+                14,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                14,
+                2,
+                6
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            6,
+            12,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "AwardTypeFlag": 18,
+          "GameType": 1,
+          "FreeRemainRound": 6,
+          "FreeTotalRound": 6,
+          "WildSymbol": 10
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                18,
+                1
+              ]
+            },
+            {
+              "Column": [
+                4,
+                18,
+                7
+              ]
+            },
+            {
+              "Column": [
+                5,
+                0,
+                0
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            5,
+            12,
+            13
+          ],
+          "NowWildPos": [
+            4,
+            5,
+            12,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.15
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 7,
+              "Win": 0.05
+            },
+            {
+              "Pos": 10,
+              "Win": 0.15
+            }
+          ],
+          "RoundWin": 0.2,
+          "AwardTypeFlag": 68,
+          "GameType": 1,
+          "FreeRemainRound": 5,
+          "FreeNowRound": 1,
+          "FreeTotalRound": 6,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                18,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                6,
+                18,
+                6
+              ]
+            },
+            {
+              "Column": [
+                18,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                1,
+                6,
+                18
+              ]
+            },
+            {
+              "Column": [
+                7,
+                2,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            4,
+            7,
+            14
+          ],
+          "NowWildPos": [
+            3,
+            4,
+            7,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.15
+            },
+            {
+              "Count": 3,
+              "LineNum": 2,
+              "Win": 0.02
+            },
+            {
+              "Symbol": 1,
+              "Count": 5,
+              "LineNum": 2,
+              "Win": 0.06
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Win": 0.05
+            },
+            {
+              "Pos": 4,
+              "Win": 0.1
+            },
+            {
+              "Pos": 6,
+              "Win": 0.1
+            },
+            {
+              "Pos": 11,
+              "Win": 0.15
+            }
+          ],
+          "RoundWin": 0.48,
+          "AwardTypeFlag": 69,
+          "GameType": 1,
+          "FreeRemainRound": 4,
+          "FreeNowRound": 2,
+          "FreeTotalRound": 6,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                7
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                6
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            }
+          ],
+          "NewWildPos": [
+            9,
+            10,
+            11
+          ],
+          "NowWildPos": [
+            9,
+            10,
+            11
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "AwardTypeFlag": 4,
+          "GameType": 1,
+          "FreeRemainRound": 3,
+          "FreeNowRound": 3,
+          "FreeTotalRound": 6,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                18,
+                2
+              ]
+            },
+            {
+              "Column": [
+                19,
+                1,
+                3
+              ]
+            },
+            {
+              "Column": [
+                5,
+                18,
+                5
+              ]
+            },
+            {
+              "Column": [
+                19,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                0,
+                18,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "NowWildPos": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Count": 3,
+              "LineNum": 4,
+              "Win": 0.04
+            },
+            {
+              "Symbol": 2,
+              "Count": 3,
+              "LineNum": 4,
+              "Win": 0.04
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 1,
+              "Win": 0.05
+            },
+            {
+              "Pos": 3,
+              "AddRound": 1
+            },
+            {
+              "Pos": 7,
+              "Win": 0.05
+            },
+            {
+              "Pos": 9,
+              "AddRound": 1
+            },
+            {
+              "Pos": 13,
+              "Win": 0.1
+            }
+          ],
+          "RoundWin": 0.28,
+          "AwardTypeFlag": 1093,
+          "GameType": 1,
+          "FreeRemainRound": 4,
+          "FreeNowRound": 4,
+          "FreeTotalRound": 8,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                18
+              ]
+            },
+            {
+              "Column": [
+                6,
+                0,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                5
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                18
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            5,
+            9,
+            13
+          ],
+          "NowWildPos": [
+            3,
+            5,
+            9,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 2,
+              "Win": 0.05
+            },
+            {
+              "Pos": 14,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.1,
+          "AwardTypeFlag": 68,
+          "GameType": 1,
+          "FreeRemainRound": 3,
+          "FreeNowRound": 5,
+          "FreeTotalRound": 8,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                1,
+                7,
+                0
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                18,
+                1
+              ]
+            },
+            {
+              "Column": [
+                18,
+                2,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            5,
+            9,
+            10,
+            11
+          ],
+          "NowWildPos": [
+            5,
+            9,
+            10,
+            11
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 10,
+              "Win": 0.1
+            },
+            {
+              "Pos": 12,
+              "Win": 0.1
+            }
+          ],
+          "RoundWin": 0.2,
+          "AwardTypeFlag": 68,
+          "GameType": 1,
+          "FreeRemainRound": 2,
+          "FreeNowRound": 6,
+          "FreeTotalRound": 8,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                7,
+                18,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                2,
+                18
+              ]
+            },
+            {
+              "Column": [
+                2,
+                6,
+                5
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                18,
+                2,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            5,
+            7,
+            13
+          ],
+          "NowWildPos": [
+            3,
+            5,
+            7,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 1,
+              "Count": 5,
+              "LineNum": 4,
+              "Win": 0.12
+            },
+            {
+              "Symbol": 7,
+              "Count": 3,
+              "LineNum": 2,
+              "Win": 0.08
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 1,
+              "Win": 0.05
+            },
+            {
+              "Pos": 5,
+              "Win": 0.05
+            },
+            {
+              "Pos": 12,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.35,
+          "AwardTypeFlag": 69,
+          "GameType": 1,
+          "FreeRemainRound": 1,
+          "FreeNowRound": 7,
+          "FreeTotalRound": 8,
+          "WildSymbol": 11
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                3,
+                1,
+                7
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                3,
+                5,
+                0
+              ]
+            },
+            {
+              "Column": [
+                18,
+                1,
+                7
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            5,
+            9,
+            14
+          ],
+          "NowWildPos": [
+            4,
+            5,
+            9,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 4,
+              "Count": 5,
+              "LineNum": 18,
+              "Win": 0.72
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 12,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.77,
+          "AwardTypeFlag": 77,
+          "GameType": 1,
+          "FreeNowRound": 8,
+          "FreeTotalRound": 8,
+          "WildSymbol": 11
+        }
+      ],
+      "FreeTotalWin": 2.38,
+      "TotalWin": 2.38,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              7,
+              13,
+              14
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92,
+      "IsBuy": true
+    },
+    "totalWin": 2.38
+  },
+  {
+    "request": {
+      "bet": 0.1,
+      "mall": {
+        "Type": 1,
+        "Index": 1,
+        "Bet": 4.65
+      }
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                15,
+                6
+              ]
+            },
+            {
+              "Column": [
+                7,
+                7,
+                7
+              ]
+            },
+            {
+              "Column": [
+                14,
+                2,
+                4
+              ]
+            },
+            {
+              "Column": [
+                7,
+                5,
+                7
+              ]
+            },
+            {
+              "Column": [
+                16,
+                4,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [
+            12
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "AwardTypeFlag": 34,
+          "GameType": 2,
+          "FreeRemainRound": 6,
+          "FreeTotalRound": 6,
+          "WildSymbol": 10
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                3,
+                2
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "Column": [
+                6,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            5,
+            8,
+            9,
+            11
+          ],
+          "NowWildPos": [
+            4,
+            5,
+            8,
+            9,
+            11
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 2,
+              "Count": 4,
+              "LineNum": 4,
+              "Win": 0.08
+            },
+            {
+              "Symbol": 3,
+              "Count": 4,
+              "LineNum": 16,
+              "Win": 0.48
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 0.56,
+          "AwardTypeFlag": 5,
+          "GameType": 2,
+          "FreeRemainRound": 5,
+          "FreeNowRound": 1,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                18,
+                3
+              ]
+            },
+            {
+              "Column": [
+                6,
+                0,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                2
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            4,
+            5,
+            9,
+            12,
+            13
+          ],
+          "NowWildPos": [
+            3,
+            4,
+            5,
+            9,
+            12,
+            13
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 3,
+              "Count": 5,
+              "LineNum": 12,
+              "Win": 0.48
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 1,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.53,
+          "AwardTypeFlag": 69,
+          "GameType": 2,
+          "FreeRemainRound": 4,
+          "FreeNowRound": 2,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                6
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                5,
+                3,
+                0
+              ]
+            },
+            {
+              "Column": [
+                2,
+                2,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "NowWildPos": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "AwardTypeFlag": 4,
+          "GameType": 2,
+          "FreeRemainRound": 3,
+          "FreeNowRound": 3,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                4
+              ]
+            },
+            {
+              "Column": [
+                1,
+                0,
+                18
+              ]
+            },
+            {
+              "Column": [
+                0,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                3,
+                2,
+                3
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            6,
+            7,
+            10,
+            11
+          ],
+          "NowWildPos": [
+            4,
+            6,
+            7,
+            10,
+            11
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 2,
+              "Count": 5,
+              "LineNum": 4,
+              "Win": 0.12
+            },
+            {
+              "Symbol": 4,
+              "Count": 4,
+              "LineNum": 16,
+              "Win": 0.48
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 8,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.65,
+          "AwardTypeFlag": 69,
+          "GameType": 2,
+          "FreeRemainRound": 2,
+          "FreeNowRound": 4,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                7,
+                18,
+                1
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                18,
+                3,
+                4
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                6
+              ]
+            },
+            {
+              "Column": [
+                4,
+                2,
+                18
+              ]
+            }
+          ],
+          "NewWildPos": [
+            7,
+            8,
+            9,
+            12,
+            13,
+            14
+          ],
+          "NowWildPos": [
+            7,
+            8,
+            9,
+            12,
+            13,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 1,
+              "Count": 5,
+              "LineNum": 12,
+              "Win": 0.36
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 1,
+              "Win": 0.05
+            },
+            {
+              "Pos": 6,
+              "Win": 0.1
+            },
+            {
+              "Pos": 14,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.56,
+          "AwardTypeFlag": 69,
+          "GameType": 2,
+          "FreeRemainRound": 1,
+          "FreeNowRound": 5,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                18,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                6,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                2,
+                3,
+                18
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                2,
+                4,
+                4
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "NowWildPos": [
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Count": 3,
+              "LineNum": 6,
+              "Win": 0.06
+            },
+            {
+              "Symbol": 1,
+              "Count": 4,
+              "LineNum": 18,
+              "Win": 0.36
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Win": 0.05
+            },
+            {
+              "Pos": 8,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.52,
+          "AwardTypeFlag": 77,
+          "GameType": 2,
+          "FreeNowRound": 6,
+          "FreeTotalRound": 6,
+          "WildSymbol": 12
+        }
+      ],
+      "FreeTotalWin": 2.82,
+      "TotalWin": 2.82,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              6,
+              12,
+              13
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92,
+      "IsBuy": true
+    },
+    "totalWin": 2.82
+  },
+  {
+    "request": {
+      "bet": 0.1,
+      "mall": {
+        "Type": 1,
+        "Index": 2,
+        "Bet": 10.0
+      }
+    },
+    "spin": {
+      "RoundQueue": [
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                14,
+                4,
+                6
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                6,
+                4,
+                15
+              ]
+            },
+            {
+              "Column": [
+                7,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                6,
+                2,
+                15
+              ]
+            }
+          ],
+          "NewWildPos": [],
+          "NowWildPos": [],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [],
+          "FGRedCoins": [],
+          "AwardTypeFlag": 50,
+          "GameType": 4,
+          "FreeRemainRound": 6,
+          "FreeTotalRound": 6,
+          "WildSymbol": 10
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                4
+              ]
+            },
+            {
+              "Column": [
+                6,
+                3,
+                3
+              ]
+            },
+            {
+              "Column": [
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                18,
+                1,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            14
+          ],
+          "NowWildPos": [
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Count": 5,
+              "LineNum": 12,
+              "Win": 0.36
+            },
+            {
+              "Symbol": 3,
+              "Count": 5,
+              "LineNum": 6,
+              "Win": 0.24
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 12,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.65,
+          "AwardTypeFlag": 69,
+          "GameType": 4,
+          "FreeRemainRound": 5,
+          "FreeNowRound": 1,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                0,
+                18,
+                1
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                2,
+                3
+              ]
+            },
+            {
+              "Column": [
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                5
+              ]
+            }
+          ],
+          "NewWildPos": [
+            5,
+            6,
+            9,
+            10,
+            12,
+            13,
+            14
+          ],
+          "NowWildPos": [
+            5,
+            6,
+            9,
+            10,
+            12,
+            13,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Count": 5,
+              "LineNum": 18,
+              "Win": 0.54
+            },
+            {
+              "Symbol": 1,
+              "Count": 5,
+              "LineNum": 6,
+              "Win": 0.18
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 1,
+              "Win": 0.1
+            }
+          ],
+          "RoundWin": 0.82,
+          "AwardTypeFlag": 69,
+          "GameType": 4,
+          "FreeRemainRound": 4,
+          "FreeNowRound": 2,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            },
+            {
+              "Column": [
+                7,
+                0,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                6
+              ]
+            },
+            {
+              "Column": [
+                18,
+                1,
+                5
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                5
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            4,
+            5,
+            9,
+            10,
+            12,
+            14
+          ],
+          "NowWildPos": [
+            3,
+            4,
+            5,
+            9,
+            10,
+            12,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 9,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.05,
+          "AwardTypeFlag": 68,
+          "GameType": 4,
+          "FreeRemainRound": 3,
+          "FreeNowRound": 3,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                3,
+                3,
+                18
+              ]
+            },
+            {
+              "Column": [
+                6,
+                5,
+                5
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                6
+              ]
+            },
+            {
+              "Column": [
+                6,
+                1,
+                1
+              ]
+            },
+            {
+              "Column": [
+                7,
+                18,
+                1
+              ]
+            }
+          ],
+          "NewWildPos": [
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "NowWildPos": [
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.1
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 3,
+              "Count": 4,
+              "LineNum": 18,
+              "Win": 0.54
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 2,
+              "Win": 0.1
+            },
+            {
+              "Pos": 13,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.69,
+          "AwardTypeFlag": 69,
+          "GameType": 4,
+          "FreeRemainRound": 2,
+          "FreeNowRound": 4,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                2,
+                2,
+                2
+              ]
+            },
+            {
+              "Column": [
+                5,
+                4,
+                18
+              ]
+            },
+            {
+              "Column": [
+                3,
+                2,
+                3
+              ]
+            },
+            {
+              "Column": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "Column": [
+                0,
+                0,
+                18
+              ]
+            }
+          ],
+          "NewWildPos": [
+            5,
+            6,
+            7,
+            8,
+            10,
+            12,
+            14
+          ],
+          "NowWildPos": [
+            5,
+            6,
+            7,
+            8,
+            10,
+            12,
+            14
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": -98,
+              "Count": 5,
+              "Win": 0.05
+            },
+            {
+              "Symbol": 2,
+              "Count": 5,
+              "LineNum": 18,
+              "Win": 0.54
+            }
+          ],
+          "FGRedCoins": [
+            {
+              "Pos": 5,
+              "Win": 0.05
+            },
+            {
+              "Pos": 14,
+              "Win": 0.05
+            }
+          ],
+          "RoundWin": 0.64,
+          "AwardTypeFlag": 69,
+          "GameType": 4,
+          "FreeRemainRound": 1,
+          "FreeNowRound": 5,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        },
+        {
+          "PlateSymbol": [
+            {
+              "Column": [
+                4,
+                4,
+                4
+              ]
+            },
+            {
+              "Column": [
+                6,
+                6,
+                0
+              ]
+            },
+            {
+              "Column": [
+                3,
+                3,
+                1
+              ]
+            },
+            {
+              "Column": [
+                5,
+                5,
+                6
+              ]
+            },
+            {
+              "Column": [
+                4,
+                4,
+                2
+              ]
+            }
+          ],
+          "NewWildPos": [
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "NowWildPos": [
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "RedEnvelopePos": [],
+          "AwardDataVec": [
+            {
+              "Symbol": 4,
+              "Count": 5,
+              "LineNum": 108,
+              "Win": 4.32
+            }
+          ],
+          "FGRedCoins": [],
+          "RoundWin": 4.32,
+          "AwardTypeFlag": 13,
+          "GameType": 4,
+          "FreeNowRound": 6,
+          "FreeTotalRound": 6,
+          "WildSymbol": 13
+        }
+      ],
+      "FreeTotalWin": 7.17,
+      "TotalWin": 7.17,
+      "LastInfo": {
+        "WildRecordVec": [
+          {
+            "Pos": [
+              12
+            ],
+            "Bet": 0.1
+          },
+          {
+            "Pos": [],
+            "Bet": 0.2
+          },
+          {
+            "Pos": [],
+            "Bet": 0.3
+          },
+          {
+            "Pos": [],
+            "Bet": 0.5
+          },
+          {
+            "Pos": [],
+            "Bet": 0.8
+          },
+          {
+            "Pos": [],
+            "Bet": 1.0
+          },
+          {
+            "Pos": [],
+            "Bet": 2.0
+          },
+          {
+            "Pos": [],
+            "Bet": 3.0
+          },
+          {
+            "Pos": [],
+            "Bet": 5.0
+          },
+          {
+            "Pos": [],
+            "Bet": 10.0
+          }
+        ]
+      },
+      "RTP": 0.92,
+      "IsBuy": true
+    },
+    "totalWin": 7.17
+  }
+]

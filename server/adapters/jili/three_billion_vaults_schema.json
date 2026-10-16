@@ -1,0 +1,259 @@
+{
+  "Column": {
+    "Column": [
+      1,
+      "int32",
+      true
+    ]
+  },
+  "AwardData": {
+    "Symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "Count": [
+      2,
+      "int32",
+      false
+    ],
+    "LineNum": [
+      3,
+      "int32",
+      false
+    ],
+    "Win": [
+      4,
+      "double",
+      false
+    ]
+  },
+  "RoundInfo": {
+    "PlateSymbol": [
+      1,
+      "Column",
+      true
+    ],
+    "NewWildPos": [
+      2,
+      "int32",
+      true
+    ],
+    "NowWildPos": [
+      3,
+      "int32",
+      true
+    ],
+    "RedEnvelopePos": [
+      4,
+      "int32",
+      true
+    ],
+    "RedEnvelopeWin": [
+      5,
+      "double",
+      false
+    ],
+    "RoundWin": [
+      6,
+      "double",
+      false
+    ],
+    "JPPlate": [
+      7,
+      "JPData",
+      false
+    ],
+    "AwardDataVec": [
+      8,
+      "AwardData",
+      true
+    ],
+    "AwardTypeFlag": [
+      9,
+      "int32",
+      false
+    ],
+    "GameType": [
+      10,
+      "int32",
+      false
+    ],
+    "FreeRemainRound": [
+      11,
+      "int32",
+      false
+    ],
+    "FreeNowRound": [
+      12,
+      "int32",
+      false
+    ],
+    "FreeTotalRound": [
+      13,
+      "int32",
+      false
+    ],
+    "WildSymbol": [
+      14,
+      "int32",
+      false
+    ],
+    "FGRedCoins": [
+      15,
+      "FGRedCoin",
+      true
+    ],
+    "MaxFlag": [
+      16,
+      "bool",
+      false
+    ]
+  },
+  "JPData": {
+    "SymbolSerial": [
+      1,
+      "int32",
+      true
+    ],
+    "Win": [
+      2,
+      "double",
+      false
+    ],
+    "HitSymbol": [
+      3,
+      "int32",
+      false
+    ],
+    "JPType": [
+      4,
+      "int32",
+      false
+    ],
+    "IsUpgraded": [
+      5,
+      "bool",
+      false
+    ]
+  },
+  "FGRedCoin": {
+    "Pos": [
+      1,
+      "int32",
+      false
+    ],
+    "AddRound": [
+      2,
+      "int32",
+      false
+    ],
+    "Win": [
+      3,
+      "double",
+      false
+    ]
+  },
+  "SpinAck": {
+    "RoundQueue": [
+      1,
+      "RoundInfo",
+      true
+    ],
+    "FreeTotalWin": [
+      2,
+      "double",
+      false
+    ],
+    "TotalWin": [
+      3,
+      "double",
+      false
+    ],
+    "LastInfo": [
+      4,
+      "StateInfo",
+      false
+    ],
+    "RTP": [
+      5,
+      "double",
+      false
+    ],
+    "LID": [
+      6,
+      "int32",
+      false
+    ],
+    "RID": [
+      7,
+      "int32",
+      false
+    ],
+    "IsBuy": [
+      8,
+      "bool",
+      false
+    ]
+  },
+  "GameInfoData": {
+    "ShowExtra": [
+      1,
+      "bool",
+      false
+    ],
+    "Mul": [
+      2,
+      "double",
+      true
+    ],
+    "JPOdds": [
+      3,
+      "int32",
+      true
+    ],
+    "State": [
+      4,
+      "StateInfo",
+      false
+    ],
+    "Pot": [
+      5,
+      "PotInfo",
+      false
+    ]
+  },
+  "WildRecordSet": {
+    "Bet": [
+      1,
+      "double",
+      false
+    ],
+    "Pos": [
+      2,
+      "int32",
+      true
+    ]
+  },
+  "StateInfo": {
+    "WildRecordVec": [
+      2,
+      "WildRecordSet",
+      true
+    ]
+  },
+  "JPInfo": {
+    "Front": [
+      1,
+      "double",
+      false
+    ]
+  },
+  "PotInfo": {
+    "Pot": [
+      1,
+      "string",
+      false
+    ]
+  }
+}
