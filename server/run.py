@@ -13,7 +13,7 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
@@ -22,6 +22,10 @@ def load_profile(directory):
         raise ValueError('Vaults service must isolate its game.')
     if spec['entry'] == 'jokers_fortune_winx_client' and games != ['jokers-fortune-winx']:
         raise ValueError('Joker service only supports its own game')
+    if spec['entry'] == 'roma_x_10000_client' and games != ['roma-x-10000']:
+        raise ValueError('Roma X 10000 client service only supports its own game')
+    if spec['entry'] == 'money_pot_deluxe_client' and games != ['money-pot-deluxe']:
+        raise ValueError('Money Pot DELUXE client service only supports its own game')
     if spec['entry'] == 'olympus_preview':
         if games != []:
             raise ValueError('Frontend preview must not load game engines')
@@ -57,7 +61,13 @@ def build_from_directory(directory, port=None):
     database = directory / 'data' / 'games.sqlite3'
     # The directory owns all runtime state; no shared/default database fallback.
     actual_port = spec['port'] if port is None else port
-    if spec['entry'] == 'olympus_preview':
+    if spec['entry'] == 'roma_x_10000_client':
+        from server.services.roma_x_10000_demo import build_server
+        http = build_server(actual_port, database, configs['roma-x-10000'])
+    elif spec['entry'] == 'money_pot_deluxe_client':
+        from server.services.money_pot_deluxe_demo import build_server
+        http = build_server(actual_port, database, configs['money-pot-deluxe'])
+    elif spec['entry'] == 'olympus_preview':
         from server.services.olympus_preview import build_server
         http = build_server(actual_port)
     elif spec['entry'] == 'three_billion_vaults_client':

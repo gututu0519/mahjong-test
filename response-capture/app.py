@@ -138,7 +138,7 @@ class Capture:
     def decoded_event(self, source, event):
         # Keep plaintext round data in the same private capture folder, never login tokens.
         path = urlsplit(source['frame'].url).path
-        if not path.startswith(('/sss-jf2/', '/sss-tbv/')) or not isinstance(event, dict):
+        if not path.startswith(('/sss-jf2/', '/sss-tbv/', '/mpt2/', '/rx10000/')) or not isinstance(event, dict):
             return
         kind = event.get('kind')
         if kind not in ('ready', 'spin', 'spin-error'):
@@ -147,11 +147,17 @@ class Capture:
         with self.lock:
             if kind == 'ready':
                 self.decoded['ready'] = True
-                self.decoded['game'] = '3 Billion Vaults' if path.startswith('/sss-tbv/') else 'Joker'
+                self.decoded['game'] = ('Roma X 10000' if path.startswith('/rx10000/')
+                                        else 'Money Pot DELUXE' if path.startswith('/mpt2/')
+                                        else '3 Billion Vaults' if path.startswith('/sss-tbv/') else 'Joker')
             elif kind == 'spin':
                 try:
                     sys.path.insert(0, str(ROOT.parent)) if str(ROOT.parent) not in sys.path else None
-                    if path.startswith('/sss-tbv/'):
+                    if path.startswith('/rx10000/'):
+                        from server.adapters.jili.roma_x_10000 import unpack
+                    elif path.startswith('/mpt2/'):
+                        from server.adapters.jili.money_pot_deluxe import unpack
+                    elif path.startswith('/sss-tbv/'):
                         from server.adapters.jili.three_billion_vaults import unpack
                     else:
                         from server.adapters.jili.jokers_fortune_winx import unpack
@@ -166,6 +172,11 @@ class Capture:
                     if path.startswith('/sss-tbv/'):
                         self.decoded['feature_spins'] = self.decoded.get('feature_spins', 0) + int(any(r.get('FreeTotalRound', 0) > 0 for r in spin['RoundQueue']))
                         self.decoded['jackpot_wins'] = self.decoded.get('jackpot_wins', 0) + int(any(r.get('JPPlate', {}).get('Win', 0) > 0 for r in spin['RoundQueue']))
+                    if path.startswith('/mpt2/'):
+                        self.decoded['feature_spins'] = self.decoded.get('feature_spins', 0) + int(any(r.get('GetReSpin', False) for r in spin['RoundQueue']))
+                    if path.startswith('/rx10000/'):
+                        self.decoded['feature_spins'] = self.decoded.get('feature_spins', 0) + int(
+                            any(r.get('FreeTotalRound', 0) > 0 for r in spin['RoundQueue']) or bool(spin.get('BonusInfo')) or bool(spin.get('BonusWheelMult')))
                     self.decoded['spins'] += 1
                     self.decoded['scatter_wins'] += int(record['scatter_win'] > 0)
                 except Exception as exc:

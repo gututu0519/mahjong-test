@@ -1,0 +1,206 @@
+{
+  "Column": {
+    "Col": [
+      1,
+      "int32",
+      true
+    ]
+  },
+  "AwardData": {
+    "Symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "Count": [
+      2,
+      "int32",
+      false
+    ],
+    "Line": [
+      3,
+      "int32",
+      false
+    ],
+    "Win": [
+      4,
+      "double",
+      false
+    ]
+  },
+  "ComboStageInfo": {
+    "ComboStageSymbol": [
+      1,
+      "Column",
+      true
+    ],
+    "ComboStageWin": [
+      2,
+      "double",
+      false
+    ],
+    "AwardDataVec": [
+      3,
+      "AwardData",
+      true
+    ],
+    "FillSymbols": [
+      4,
+      "Column",
+      true
+    ],
+    "BonusHit": [
+      5,
+      "bool",
+      false
+    ],
+    "BonusWheelHit": [
+      6,
+      "bool",
+      false
+    ],
+    "MaxFlag": [
+      7,
+      "bool",
+      false
+    ]
+  },
+  "RoundInfo": {
+    "ComboStageData": [
+      1,
+      "ComboStageInfo",
+      true
+    ],
+    "RoundWin": [
+      2,
+      "double",
+      false
+    ],
+    "AwardTypeFlag": [
+      3,
+      "int32",
+      false
+    ],
+    "FreeRemainRound": [
+      4,
+      "int32",
+      false
+    ],
+    "FreeNowRound": [
+      5,
+      "int32",
+      false
+    ],
+    "FreeTotalRound": [
+      6,
+      "int32",
+      false
+    ],
+    "AddRound": [
+      7,
+      "int32",
+      false
+    ],
+    "MaxFlag": [
+      8,
+      "bool",
+      false
+    ]
+  },
+  "BonusGameInfo": {
+    "Symbol": [
+      1,
+      "int32",
+      false
+    ],
+    "Result": [
+      2,
+      "int32",
+      false
+    ],
+    "Win": [
+      3,
+      "double",
+      false
+    ],
+    "HealthPoint": [
+      4,
+      "int32",
+      false
+    ]
+  },
+  "SpinAck": {
+    "RoundQueue": [
+      1,
+      "RoundInfo",
+      true
+    ],
+    "FreeTotalWin": [
+      2,
+      "double",
+      false
+    ],
+    "BonusInfo": [
+      3,
+      "BonusGameInfo",
+      true
+    ],
+    "BonusTotalWin": [
+      4,
+      "double",
+      false
+    ],
+    "BonusWheelWin": [
+      5,
+      "double",
+      false
+    ],
+    "BonusWheelMult": [
+      6,
+      "double",
+      false
+    ],
+    "BonusMaxFlag": [
+      7,
+      "bool",
+      false
+    ],
+    "TotalWin": [
+      8,
+      "double",
+      false
+    ],
+    "RTP": [
+      9,
+      "double",
+      false
+    ],
+    "RID": [
+      10,
+      "int32",
+      false
+    ],
+    "LID": [
+      11,
+      "int32",
+      false
+    ],
+    "BonusWheelResult": [
+      12,
+      "int32",
+      false
+    ]
+  },
+  "GameInfoData": {
+    "ShowExtra": [
+      1,
+      "bool",
+      false
+    ],
+    "Mul": [
+      2,
+      "double",
+      true
+    ]
+  }
+}

@@ -4,6 +4,16 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'roma-x-10000': {
+        'factory': 'server.games.roma_x_10000:RomaX10000',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'cascades', 'free_spins', 'free_retrigger', 'battle_bonus', 'bonus_wheel', 'buy_bonus'],
+    },
+    'money-pot-deluxe': {
+        'factory': 'server.games.money_pot_deluxe:MoneyPotDeluxe',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'money_collect', 'mystery', 'hold_and_respin', 'jackpot', 'extra_bet'],
+    },
     '3-billion-vaults': {
         'factory': 'server.games.three_billion_vaults:ThreeBillionVaults',
         'category': 'slots', 'interaction': 'request_steps',

@@ -1,0 +1,245 @@
+{
+  "Column": {
+    "Col": [
+      1,
+      "int32",
+      true
+    ]
+  },
+  "ColumnM": {
+    "Col": [
+      1,
+      "double",
+      true
+    ]
+  },
+  "AwardData": {
+    "Atype": [
+      1,
+      "int32",
+      false
+    ],
+    "Index": [
+      2,
+      "int32",
+      false
+    ],
+    "Count": [
+      3,
+      "int32",
+      false
+    ],
+    "Symbol": [
+      4,
+      "int32",
+      true
+    ],
+    "Pos": [
+      5,
+      "int32",
+      false
+    ],
+    "Mul": [
+      6,
+      "double",
+      true
+    ],
+    "AllMul": [
+      7,
+      "double",
+      false
+    ],
+    "Win": [
+      8,
+      "double",
+      false
+    ]
+  },
+  "PotSymbol": {
+    "Pos": [
+      1,
+      "int32",
+      false
+    ],
+    "Symbol": [
+      2,
+      "int32",
+      false
+    ],
+    "Mul": [
+      3,
+      "double",
+      false
+    ]
+  },
+  "Mystery": {
+    "IsJP": [
+      1,
+      "bool",
+      false
+    ],
+    "Pos": [
+      2,
+      "int32",
+      false
+    ],
+    "Symbol": [
+      3,
+      "int32",
+      false
+    ],
+    "Mul": [
+      4,
+      "double",
+      false
+    ]
+  },
+  "Collect": {
+    "Pos": [
+      1,
+      "int32",
+      false
+    ],
+    "CPos": [
+      2,
+      "int32",
+      true
+    ],
+    "Mul": [
+      3,
+      "double",
+      false
+    ],
+    "SymbolMul": [
+      4,
+      "double",
+      false
+    ]
+  },
+  "RoundInfo": {
+    "Symbol": [
+      1,
+      "Column",
+      true
+    ],
+    "Mul": [
+      2,
+      "ColumnM",
+      true
+    ],
+    "FinalSymbol": [
+      3,
+      "Column",
+      true
+    ],
+    "FinalMul": [
+      4,
+      "ColumnM",
+      true
+    ],
+    "CollectList": [
+      5,
+      "Collect",
+      true
+    ],
+    "MysteryList": [
+      6,
+      "Mystery",
+      true
+    ],
+    "AwardDataVec": [
+      7,
+      "AwardData",
+      true
+    ],
+    "RoundWin": [
+      8,
+      "double",
+      false
+    ],
+    "PotType": [
+      9,
+      "int32",
+      false
+    ],
+    "PotList": [
+      10,
+      "PotSymbol",
+      true
+    ],
+    "ReSpinRemainRound": [
+      11,
+      "int32",
+      false
+    ],
+    "ReSpinTotalRound": [
+      12,
+      "int32",
+      false
+    ],
+    "GetReSpin": [
+      13,
+      "bool",
+      false
+    ],
+    "GetAdd": [
+      14,
+      "bool",
+      false
+    ],
+    "AwardTypeFlag": [
+      15,
+      "int32",
+      false
+    ],
+    "MaxFlag": [
+      16,
+      "bool",
+      false
+    ]
+  },
+  "SpinAck": {
+    "RoundQueue": [
+      1,
+      "RoundInfo",
+      true
+    ],
+    "GameType": [
+      2,
+      "int32",
+      false
+    ],
+    "TotalWin": [
+      3,
+      "double",
+      false
+    ],
+    "Extra": [
+      4,
+      "int32",
+      false
+    ],
+    "RTP": [
+      5,
+      "double",
+      false
+    ],
+    "LID": [
+      6,
+      "int32",
+      false
+    ],
+    "RID": [
+      7,
+      "int32",
+      false
+    ]
+  },
+  "GameInfoData": {
+    "Mul": [
+      1,
+      "double",
+      true
+    ]
+  }
+}

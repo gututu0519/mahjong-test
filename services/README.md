@@ -77,3 +77,11 @@ JILIUS Joker’s Fortune WinX：端口 8091，`jokers_fortune_winx_client`，已
 ### 3 Billion Vaults
 
 独立服务 `services/3-billion-vaults/start.bat`，端口 8092。原版横竖屏客户端与本地钱包，接入证据、验证范围和待补抓项见 [接入记录](3-billion-vaults/README.md)。
+
+## Money Pot DELUXE
+
+端口 8093，`money_pot_deluxe_client`，已加入试玩大厅。原版英文横竖屏、六线收集、神秘符号、Golden Lock Respin 与三档 EX 的实现和证据见 [服务说明](money-pot-deluxe/README.md)。
+
+## Roma X 10000
+
+开发中：端口 8094，`roma_x_10000_client`，已保留大厅入口并具备连消、免费、战斗、转盘和购买奖励的阶段代码；仅完成普通旋转浏览器验证，其余流程尚未验收。证据、暂停状态与补抓项见 [服务说明](roma-x-10000/README.md)。

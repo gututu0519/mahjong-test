@@ -1,5 +1,5 @@
 (() => {
-  if (!['/sss-jf2/', '/sss-tbv/'].some(path => location.pathname.startsWith(path))) return;
+  if (!['/sss-jf2/', '/sss-tbv/', '/mpt2/', '/rx10000/'].some(path => location.pathname.startsWith(path))) return;
   const emit = event => { try { Promise.resolve(window.__captureDecoded(event)).catch(() => {}); } catch {} };
   let system;
   const installed = new WeakSet();
@@ -12,7 +12,8 @@
         args[args.length - 1] = function (publish, context) {
           return factory(function (key, value) {
             const exports = typeof key === 'object' ? {...key} : {[key]: value};
-            const commandKey = name === 'chunks:///WASM-80e4c733.js' ? 'b' : name === 'chunks:///WASM-b0a7e8f0.js' ? 'c' : null;
+            const commandKey = name === 'chunks:///WASM-80e4c733.js' ? 'b'
+              : ['chunks:///WASM-b0a7e8f0.js', 'chunks:///WASM-fb1f222b.js'].includes(name) ? 'c' : null;
             if (commandKey && typeof exports[commandKey] === 'function') {
               const command = exports[commandKey];
               exports[commandKey] = function (...input) {

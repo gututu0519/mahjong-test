@@ -1,0 +1,1505 @@
+{
+  "capture": "ca118facf745438086269f8c58ce2bc5",
+  "assets": {
+    "rx10000/index.html": {
+      "request_id": 705,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/",
+      "bytes": 46673,
+      "sha256": "ccee0a8d58c0dc32563dcab83a9c1a72b861c497fc49d08c829d0b1cb9996866"
+    },
+    "rx10000/JILI_NEW.png": {
+      "request_id": 707,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/JILI_NEW.png",
+      "bytes": 242584,
+      "sha256": "34a9831751ff2e865bab71b2a0587a30f452b2fd0bf89aa1367e607d93d592a6"
+    },
+    "rx10000/TaDa_Logo_APNG_s.png": {
+      "request_id": 708,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/TaDa_Logo_APNG_s.png",
+      "bytes": 41805,
+      "sha256": "8fc93044e3c002244c71fd36d3b1fcc5ac189e671e9e12b295db8fefeadcc8e1"
+    },
+    "rx10000/src/polyfills.bundle.5adbf.js": {
+      "request_id": 709,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/polyfills.bundle.5adbf.js",
+      "bytes": 14750,
+      "sha256": "f1e4ced3322168d6b9915e782e4c1cf1055d75f66f2b38e7fcd60f48cf89082b"
+    },
+    "rx10000/src/system.bundle.692e9.js": {
+      "request_id": 710,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/system.bundle.692e9.js",
+      "bytes": 12028,
+      "sha256": "f2c184ae5bfab28d52006d71c514f194360c18f51f32de916818973f7e680b07"
+    },
+    "rx10000/Intro_ProgressBar_Bottom_JILI.png": {
+      "request_id": 711,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/Intro_ProgressBar_Bottom_JILI.png",
+      "bytes": 1013,
+      "sha256": "266b2adb81fbe71784ffcc61167736670b507771f4d8e450575da2b77f99ec43"
+    },
+    "rx10000/Intro_ProgressBar_JILI.png": {
+      "request_id": 712,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/Intro_ProgressBar_JILI.png",
+      "bytes": 1003,
+      "sha256": "b506947e41172304c5d411475f5dc67079fa7fccdbcf774ca10c0aed04179114"
+    },
+    "rx10000/src/import-map.e7209.json": {
+      "request_id": 714,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/import-map.e7209.json",
+      "bytes": 46,
+      "sha256": "755e1a1699d956cf15014d83f56eca23ac4330cb5a0342e564da2422df565fa2"
+    },
+    "rx10000/index.e8ecb.js": {
+      "request_id": 716,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/index.e8ecb.js",
+      "bytes": 836,
+      "sha256": "7bacc503f7833d2da5e3f28bb37078725b8a55f70e1d3e4dc5c0c3495639fae7"
+    },
+    "rx10000/application.2a8e5.js": {
+      "request_id": 717,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/application.2a8e5.js",
+      "bytes": 5407,
+      "sha256": "8cd0d3193fc8a914422b6d5fccbe9d5bbb254057a1b4ae2b23e31207786c227f"
+    },
+    "rx10000/cocos-js/cc.af2c4.js": {
+      "request_id": 718,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/cocos-js/cc.af2c4.js",
+      "bytes": 2217638,
+      "sha256": "afaf6635f8a390724e58a283c14879b96b653dba13820eadee36c33a527daba9"
+    },
+    "rx10000/src/settings.96913.json": {
+      "request_id": 719,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/settings.96913.json",
+      "bytes": 33034,
+      "sha256": "669e07ff972af06c9f1d51b64357e8ccf4d5242e0b381bd5b7a67fe303b68164"
+    },
+    "rx10000/assets/internal/config.af4b9.json": {
+      "request_id": 720,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/internal/config.af4b9.json",
+      "bytes": 2740,
+      "sha256": "d8b9a4d55d37040d39e69bf5ed84ab9080e0ff4c137a1b3907741dbe9eb4fb7a"
+    },
+    "rx10000/assets/internal/index.af4b9.js": {
+      "request_id": 721,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/internal/index.af4b9.js",
+      "bytes": 615,
+      "sha256": "e86163be08e0bf5414618f882d9d9b449aa6bb21f31eeaacd4a0e752d8bff47c"
+    },
+    "rx10000/assets/internal/import/0b/0bd122b70.d6dcd.json": {
+      "request_id": 722,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/internal/import/0b/0bd122b70.d6dcd.json",
+      "bytes": 651364,
+      "sha256": "af8e96b7af4d31eca1ab1118378cffe3fe0b250b99b1334e428acf32da7e2ad4"
+    },
+    "rx10000/src/zip-bundler/fflate.min.fdb1f.js": {
+      "request_id": 723,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/zip-bundler/fflate.min.fdb1f.js",
+      "bytes": 58754,
+      "sha256": "c1579c273b25f2e745d5ec0dd8dd90dba8c5e6767965f720200758b881871745"
+    },
+    "rx10000/src/chunks/bundle.be9d8.js": {
+      "request_id": 724,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/src/chunks/bundle.be9d8.js",
+      "bytes": 315390,
+      "sha256": "b72288002beaa0365323e1347147cd18ac14769809bad270f979ae34dce39263"
+    },
+    "rx10000/assets/main/config.dcdf8.json": {
+      "request_id": 725,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/config.dcdf8.json",
+      "bytes": 1643,
+      "sha256": "f1436b5e5005e83d58c6d4ad429c966bb9a772c3e8b454a60dec64e236041876"
+    },
+    "rx10000/assets/main/index.dcdf8.js": {
+      "request_id": 726,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/index.dcdf8.js",
+      "bytes": 486453,
+      "sha256": "613497492052f5e9026ef3513276cfdd8016bbd1c9300fa2fb273b7399a1e124"
+    },
+    "rx10000/assets/main/import/0d/0da17d6be.f32cc.json": {
+      "request_id": 727,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/import/0d/0da17d6be.f32cc.json",
+      "bytes": 11351,
+      "sha256": "fcead700246c95f672a6da1cf59db4e4d3ae2fd0c16eb223f3e5f32b173c446e"
+    },
+    "rx10000/assets/main/native/1f/1faa3af85.d55e0.webp": {
+      "request_id": 728,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/native/1f/1faa3af85.d55e0.webp",
+      "bytes": 29310,
+      "sha256": "98ff274e4463333287a544c767258215373e5f828320508e48afb904d401a4b8"
+    },
+    "rx10000/assets/main/native/ed/edf72f56-6123-4048-858c-80a8204a79e0.faad1.webp": {
+      "request_id": 729,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/native/ed/edf72f56-6123-4048-858c-80a8204a79e0.faad1.webp",
+      "bytes": 5024,
+      "sha256": "f8a779184a575ed89f1fa8bb38dc43c4b66b24a7a6d600512eaf74064a2c06fa"
+    },
+    "rx10000/assets/main/native/79/7904c642-37af-4bea-b4e0-ef59330083da.8bc11.webp": {
+      "request_id": 730,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/native/79/7904c642-37af-4bea-b4e0-ef59330083da.8bc11.webp",
+      "bytes": 6542,
+      "sha256": "86cee2e7c5690faf2bb1ca3899d87f59f40c0c1639201f8e941d6a27019d98d9"
+    },
+    "rx10000/assets/main/native/1b/1be672310.3a1e1.webp": {
+      "request_id": 731,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/native/1b/1be672310.3a1e1.webp",
+      "bytes": 207846,
+      "sha256": "ae4b19e47a73b8af25fd16968e86f97062a3083a586b319580658c7393a22204"
+    },
+    "astarte2/3.6/web-mobile/assets/versions.json": {
+      "request_id": 733,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/versions.json",
+      "bytes": 520,
+      "sha256": "ed36d0873d6d2f4f7063f4fae6564e0110b123dfd5e1c101932b663e17133a7c"
+    },
+    "astarte2/3.6/web-mobile/src/chunks/bundle.e881b.js": {
+      "request_id": 734,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/src/chunks/bundle.e881b.js",
+      "bytes": 950130,
+      "sha256": "cb5f0f5797fdeef91d08bc2390d6bb533eb93a71db39c5847b158a9f8ada0369"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/config.aaff2.json": {
+      "request_id": 735,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/config.aaff2.json",
+      "bytes": 4667,
+      "sha256": "faa0b8f480d4f4f1927ac79c3819e72f215cced501848f0cb91313f4f7e30318"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/index.aaff2.js": {
+      "request_id": 736,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/index.aaff2.js",
+      "bytes": 138798,
+      "sha256": "19c60ca61007456ed14efdb121112b7ed0fe6528c6895e47731c8d8ae1f07db0"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/config.d2aa1.json": {
+      "request_id": 737,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/config.d2aa1.json",
+      "bytes": 114553,
+      "sha256": "6a48bb8c84980879425bbb7a406cce0ba4aa02e279b7bcfad252820b3e7d77a0"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/index.d2aa1.js": {
+      "request_id": 738,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/index.d2aa1.js",
+      "bytes": 603,
+      "sha256": "321ad88cd4287a98e5977c68dbdc0228f09dd06281c292faddff00e9cfaacdd1"
+    },
+    "astarte2/3.6/web-mobile/assets/other/config.cc06b.json": {
+      "request_id": 739,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/config.cc06b.json",
+      "bytes": 17050,
+      "sha256": "8cd65c6c0bd4aae24907194c6ed91a91077aece89f80560d517cd24a1e25ad75"
+    },
+    "astarte2/3.6/web-mobile/assets/other/index.cc06b.js": {
+      "request_id": 740,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/index.cc06b.js",
+      "bytes": 4557047,
+      "sha256": "431ac9a5f6bd31097384ef86ec46141939484cc706be54dcb38e077715608e3f"
+    },
+    "astarte2/3.6/web-mobile/assets/en/config.b30ea.json": {
+      "request_id": 741,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/en/config.b30ea.json",
+      "bytes": 29330,
+      "sha256": "44a164fe09ecc2477a379f0dfdbb16012f94519e5a38b380e61dbc6804ff2883"
+    },
+    "astarte2/3.6/web-mobile/assets/en/index.b30ea.js": {
+      "request_id": 742,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/en/index.b30ea.js",
+      "bytes": 585,
+      "sha256": "8ec2eccbf4b62e3ed4dd6be4ffec02e4d53a887691fb57c33cab72c4c0cd1bdb"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/jiliMain.d2aa1.zip": {
+      "request_id": 743,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/jiliMain.d2aa1.zip",
+      "bytes": 295757,
+      "sha256": "f81d9f3b5959e1c054aeb3df22a020baac99746c61da03ecf1fde622d5949f30"
+    },
+    "astarte2/3.6/web-mobile/assets/jili/config.44424.json": {
+      "request_id": 744,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jili/config.44424.json",
+      "bytes": 171083,
+      "sha256": "d5f96c9eb4ee3a8f4f557b5cc128f686203eccb3fb122768832d027396c2a818"
+    },
+    "astarte2/3.6/web-mobile/assets/jili/index.44424.js": {
+      "request_id": 745,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jili/index.44424.js",
+      "bytes": 591,
+      "sha256": "02cafe51e6346b5c952d6a1549f5d6a5ba921df23929358c2677e574f9330971"
+    },
+    "rx10000/assets/game/config.a456d.json": {
+      "request_id": 746,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/config.a456d.json",
+      "bytes": 184636,
+      "sha256": "92d96c8f711d8ff533ab731edff086bf3eee0f3c55538f73fff7845aa0861acb"
+    },
+    "rx10000/assets/game/index.a456d.js": {
+      "request_id": 747,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/index.a456d.js",
+      "bytes": 707038,
+      "sha256": "0d60f90bc1e967542ac0909fec5b4a771a11882dfd35d063ecfd5b0c0682587c"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/import/0a/0a6d77910.1c34b.json": {
+      "request_id": 748,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/import/0a/0a6d77910.1c34b.json",
+      "bytes": 1062936,
+      "sha256": "aac8a5bb5b99aac4aaa79009a206dbe6c7b66ce7276403ba4960b18044ee37ff"
+    },
+    "rx10000/assets/game/import/0d/0ddc15e79.23c79.json": {
+      "request_id": 749,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/import/0d/0ddc15e79.23c79.json",
+      "bytes": 1217209,
+      "sha256": "a58d66106dbd69ea58b3424243a9cab96a6dfdf554bcf192aeb62ef94ab2fe2f"
+    },
+    "rx10000/assets/game/import/30/307e0378-13c7-405f-84df-9f7f1913cd2d.c7c75.cconb": {
+      "request_id": 750,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/import/30/307e0378-13c7-405f-84df-9f7f1913cd2d.c7c75.cconb",
+      "bytes": 15612,
+      "sha256": "bc1d01f0c8c805b14f8cb3144664939c5a1ade482e462eaa063b4ba40b561325"
+    },
+    "rx10000/assets/game/import/9d/9de43801-ef3d-4258-b9d2-27c585de5d45.6c125.cconb": {
+      "request_id": 751,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/import/9d/9de43801-ef3d-4258-b9d2-27c585de5d45.6c125.cconb",
+      "bytes": 11386,
+      "sha256": "a1211ce733aec63556f19eac6c5fc88c62a37f113c452e7180344cf94b04263b"
+    },
+    "rx10000/assets/main/native/1b/1b614a95f.e123e.webp": {
+      "request_id": 752,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/main/native/1b/1b614a95f.e123e.webp",
+      "bytes": 130278,
+      "sha256": "54dca5c3ca636adb972be1abb0f5c3c4b355096e6f2a2f6fc86c402bce22880b"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png": {
+      "request_id": 753,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.cea68.png",
+      "bytes": 82,
+      "sha256": "83c9b8ce1937570a40bcedde29457a4ab7865ca1db23a46d2d68e6b1949f3c28"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/15/1508a92e0.3d169.webp": {
+      "request_id": 754,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/15/1508a92e0.3d169.webp",
+      "bytes": 27304,
+      "sha256": "231a2cb277c4b22b19895a07e257abcbf27a8f0ea0d136d0dea6c598864aa8f0"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/1c/1c2526437.2403e.webp": {
+      "request_id": 755,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/1c/1c2526437.2403e.webp",
+      "bytes": 84676,
+      "sha256": "5862532629caf4cc0635dd82820402f172d3d1574ab4c59242adf4753047b35f"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf": {
+      "request_id": 756,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/6e/6e3b2203-4f59-470e-94c8-658c03af3e66.aa298/TTF_Malicious_Moonlight_Regular.ttf",
+      "bytes": 158548,
+      "sha256": "165cc4058788b44cc887bd73a993baf50cdb9e53653c267bd7fe15ca97f59740"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.955ab.png": {
+      "request_id": 757,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/46/4662ccfe-365b-4bc8-ac00-233b4513f956.955ab.png",
+      "bytes": 2053,
+      "sha256": "7b6b499ba45147824e33403105038b4007093bdc77f2cf74cebc976f25012836"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf": {
+      "request_id": 758,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/fd/fd3fa279-31ec-4644-b450-64a7e2f59dc0.0526a/TTF_BasicFont_Bold.ttf",
+      "bytes": 31052,
+      "sha256": "1dbc66b940e5d7478810d3b0fb3d9264107b9a790e14ef70ebfbacb7e5bce8c8"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/16/168b05255.d75c6.webp": {
+      "request_id": 759,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/16/168b05255.d75c6.webp",
+      "bytes": 4876,
+      "sha256": "8f282f1e912c0cd5cd4a92099489322ce8bbe1a9eb95acec132b4ba837c79977"
+    },
+    "smallicon/lang/en-US/strings.json": {
+      "request_id": 760,
+      "source": "https://casino-wbgame.jiligames.com/smallicon/lang/en-US/strings.json",
+      "bytes": 144915,
+      "sha256": "8d3f275dbebae39bd5255516e57c38d7407411b3c4d61f7c1137330d2e9b9d0c"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf": {
+      "request_id": 761,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/fe/fe093c4a-412f-4ce9-8bd1-41cf8308c119.08675/TTF_BasicFont_Normal.ttf",
+      "bytes": 57212,
+      "sha256": "4737b61d9d64c09edec9f3696b1f6aa8f9937a5f17497d8ae21e3458d74b78d1"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/import/06/06688c9b0.63f2d.json": {
+      "request_id": 762,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/import/06/06688c9b0.63f2d.json",
+      "bytes": 24350,
+      "sha256": "ad10e160a11a109843ba3bc21591a8045f208916a567109920934a1e6ec37b62"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png": {
+      "request_id": 763,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/b7/b730527c-3233-41c2-aaf7-7cdab58f9749.cdbc9.png",
+      "bytes": 158,
+      "sha256": "428698a9cd4c031962c9f5defd15057fd1f20273dc3cd6eddcbd2ce14c4057d8"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/18/186559350.1db69.webp": {
+      "request_id": 764,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/18/186559350.1db69.webp",
+      "bytes": 120922,
+      "sha256": "2a3259c7cd4468cefa430e2f4c210c0fab7c7b19e45c5edd488b2f3a97fb9f3d"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png": {
+      "request_id": 765,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/47/47231194-2b9f-4e69-bc81-dafd9c61d5a4.be4c7.png",
+      "bytes": 4273,
+      "sha256": "76ebb59620f0a591bfafe6f529299a1f15098ff713ea16778872f850eea49800"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/1c/1cf8af83e.51784.webp": {
+      "request_id": 766,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/1c/1cf8af83e.51784.webp",
+      "bytes": 4988,
+      "sha256": "6f6cbb8523746051b6241c3f8bebc19ed8ab702cbc1ba672e3d860c12d0bdedb"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.b251f.png": {
+      "request_id": 767,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/f7/f7923284-9323-49af-87b2-9fc7fe77221c.b251f.png",
+      "bytes": 13820,
+      "sha256": "25ba07f7da6753c8f1b6e3a385a11b7389d7a81521d3656bc881cabebb09c56d"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.55a97.png": {
+      "request_id": 768,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/3c/3ca95754-cbb4-4074-ad9a-4fa5fa15746f.55a97.png",
+      "bytes": 2098,
+      "sha256": "ee89b9d8b25490be91f109bc9bbc9035322837355a5c8b77cbedc2fe8cbd1070"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/11/119c9384c.39d24.webp": {
+      "request_id": 770,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/11/119c9384c.39d24.webp",
+      "bytes": 5500,
+      "sha256": "9829fe103d93353b9fbe4d0a1831d8239ef4af29a564bfff4fdee8a6f6eb6b2e"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png": {
+      "request_id": 771,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/57/57520716-48c8-4a19-8acf-41c9f8777fb0.6d3cf.png",
+      "bytes": 1633,
+      "sha256": "328da1766915cb2c5db06827a48effc993bcf876e67b8412719a8ecae36e5dff"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png": {
+      "request_id": 772,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.90cf4.png",
+      "bytes": 1082,
+      "sha256": "5e3e931db260d0f43c2f5fd0ea791fbdc25923a8c14fcd6b0912581cd893f96d"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png": {
+      "request_id": 773,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.83fcc.png",
+      "bytes": 1114,
+      "sha256": "132fda6a4b38333dcb471f09be05aed43d01b83dcc7a09c168b5629cdee31865"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png": {
+      "request_id": 774,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.c06a9.png",
+      "bytes": 1050,
+      "sha256": "44b670047e5d34fc09f3e8538e8945445bc1bb913d6f21d7ac4e06b18c2e172b"
+    },
+    "astarte2/3.6/web-mobile/assets/jili/import/05/056802297.12fc2.json": {
+      "request_id": 775,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jili/import/05/056802297.12fc2.json",
+      "bytes": 1841162,
+      "sha256": "02562bc905c4bb4cf52a5512b98e8ed5121cc8e2555011511c079bc3248ff491"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png": {
+      "request_id": 776,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/ff/ffb88a8f-af62-48f4-8f1d-3cb606443a43.6d707.png",
+      "bytes": 1187,
+      "sha256": "5d2e0481ed979890a79295427b5e219ab24f41cdb4129da753b7b8a475de3658"
+    },
+    "astarte2/3.6/web-mobile/assets/jiliMain/native/19/19feb5565.b8d4e.webp": {
+      "request_id": 777,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jiliMain/native/19/19feb5565.b8d4e.webp",
+      "bytes": 27720,
+      "sha256": "deb029442ae6943071f3da7e8162374aff7f9644ced0479ccd37800e25fcd0a2"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png": {
+      "request_id": 778,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/af/afc47931-f066-46b0-90be-9fe61f213428.d55c2.png",
+      "bytes": 1047,
+      "sha256": "eccd4c8f70091a1a5f3459df5f8e64b9a5ff50feaef3ab0d6e678e3e6e1b017a"
+    },
+    "astarte2/3.6/web-mobile/assets/jili/jili.44424.zip": {
+      "request_id": 779,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jili/jili.44424.zip",
+      "bytes": 671539,
+      "sha256": "ba7d94121af5a1a189632c8f0af44b5e3a08a6d2bbc8427a87231de0f311cd81"
+    },
+    "rx10000/assets/game/game.a456d.zip": {
+      "request_id": 780,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/game.a456d.zip",
+      "bytes": 493299,
+      "sha256": "fd1a064f401ec80006a68486a13f2a7e197ea44a2177b3ee9daccf72a264c05f"
+    },
+    "astarte2/3.6/web-mobile/assets/en/import/06/06541e2c8.b5060.json": {
+      "request_id": 781,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/en/import/06/06541e2c8.b5060.json",
+      "bytes": 94474,
+      "sha256": "1c943dbc30e5d6780a059f4865c6f8dec23edaef1056c1396742f03ca2b42f6d"
+    },
+    "rx10000/assets/game/native/12/1232e6cd6.8dc35.webp": {
+      "request_id": 782,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/12/1232e6cd6.8dc35.webp",
+      "bytes": 216310,
+      "sha256": "d07e318e8f99f9fc640071373648637cdfe2f536561f60cf2ff1629d74b81739"
+    },
+    "astarte2/3.6/web-mobile/assets/en/native/1d/1dbad73d5.dbbbf.webp": {
+      "request_id": 783,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/en/native/1d/1dbad73d5.dbbbf.webp",
+      "bytes": 112078,
+      "sha256": "a1fed6c1580e688948de5d2d8cbfd6c634bfea33d08c5f16bcc858664b5b35bb"
+    },
+    "astarte2/3.6/web-mobile/assets/en/native/1a/1a7a9de2e.13797.webp": {
+      "request_id": 784,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/en/native/1a/1a7a9de2e.13797.webp",
+      "bytes": 38568,
+      "sha256": "49a2e3f2762913323d954e12d6d2580f008b5bedf2f67956ff5dbf1718cb692f"
+    },
+    "rx10000/assets/game/native/11/11a1f89d4.69e14.webp": {
+      "request_id": 785,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/11/11a1f89d4.69e14.webp",
+      "bytes": 14842,
+      "sha256": "563810b56b2e0bfefbc456920eb297b1825dc57c75946209595afc62639bc0b0"
+    },
+    "rx10000/assets/game/native/c3/c3551af9-fa25-4ba7-8ff1-913a996d6ea3.5b7cf.webp": {
+      "request_id": 786,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c3/c3551af9-fa25-4ba7-8ff1-913a996d6ea3.5b7cf.webp",
+      "bytes": 71100,
+      "sha256": "5dace26be975df8d54e5afc895f595776cb703766b1357091b317badf473bcb9"
+    },
+    "rx10000/assets/game/native/82/824ec69a-de24-4a84-99e6-b51b356b21c5.6a3ac.webp": {
+      "request_id": 787,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/82/824ec69a-de24-4a84-99e6-b51b356b21c5.6a3ac.webp",
+      "bytes": 56008,
+      "sha256": "246c0e4049b1fd0db13efc0a4e10d3a7d24003ec3e59d3d1183048f381efe179"
+    },
+    "rx10000/assets/game/native/14/14fb29a3a.30578.webp": {
+      "request_id": 788,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/14/14fb29a3a.30578.webp",
+      "bytes": 186226,
+      "sha256": "ffdf8e0b28fa158df9c5a31f1dc7faaca9ef00b6ae43f4d93878e7742c72fb3c"
+    },
+    "rx10000/assets/game/native/ca/ca319305-fd7b-415f-91fa-301a687427e0.36624.webp": {
+      "request_id": 789,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ca/ca319305-fd7b-415f-91fa-301a687427e0.36624.webp",
+      "bytes": 69956,
+      "sha256": "80f199aa1dc16be9ca4d61e60cb8f1eac0362b851548be41e5bed8b7ef37ce91"
+    },
+    "rx10000/assets/game/native/11/119c98cf-9bc1-40c5-8b89-5de4bba1b067.8911f.webp": {
+      "request_id": 790,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/11/119c98cf-9bc1-40c5-8b89-5de4bba1b067.8911f.webp",
+      "bytes": 45440,
+      "sha256": "2ffac18d25ad17c61fdd609d746eebfa3550caa5bb602dede08bf0882abde2a4"
+    },
+    "rx10000/assets/game/native/19/199cc2028.ec7fd.webp": {
+      "request_id": 791,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/19/199cc2028.ec7fd.webp",
+      "bytes": 94358,
+      "sha256": "ad38c70189d4e8da505fb3caa3524dbb22d2ff2416014848f3d27fa3dc8094e6"
+    },
+    "rx10000/assets/game/native/26/26dff6b2-df62-4889-9d57-6f604b49e050.eccd3.webp": {
+      "request_id": 792,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/26/26dff6b2-df62-4889-9d57-6f604b49e050.eccd3.webp",
+      "bytes": 5000,
+      "sha256": "21a49d69cfc9654d7e2a86c05f9726f985a521a68b837e118eaf28608910249f"
+    },
+    "rx10000/assets/game/native/1d/1d5220c4-9fde-4b7d-b750-d8747ecde820.61ce7.webp": {
+      "request_id": 793,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1d/1d5220c4-9fde-4b7d-b750-d8747ecde820.61ce7.webp",
+      "bytes": 1310,
+      "sha256": "fe997021cd0e41dfad907d22e508f568a004645fe0efb2aecd81e5db0d2e3da7"
+    },
+    "rx10000/assets/game/native/18/18756701b.161f3.webp": {
+      "request_id": 794,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/18/18756701b.161f3.webp",
+      "bytes": 196498,
+      "sha256": "1629e8fb3b096f16e80280f6360835f15f55fbed6e441a0e5b66d4f699d96c38"
+    },
+    "rx10000/assets/game/native/82/82580d47-af8e-49cb-8e44-d4da12accff5.ef27d.webp": {
+      "request_id": 795,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/82/82580d47-af8e-49cb-8e44-d4da12accff5.ef27d.webp",
+      "bytes": 301782,
+      "sha256": "d99acd72c3fb1c2252e83317c3bef099bf67248a49caa094f16edbb2925ca1c6"
+    },
+    "rx10000/assets/game/native/12/129b482aa.1ddd7.webp": {
+      "request_id": 796,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/12/129b482aa.1ddd7.webp",
+      "bytes": 119684,
+      "sha256": "100cf032ee90ccb14e44fb284cb4bddbb8f13a576e8f3a12064602334ac6efa8"
+    },
+    "rx10000/assets/game/native/14/1480b97b2.46d05.webp": {
+      "request_id": 797,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/14/1480b97b2.46d05.webp",
+      "bytes": 38838,
+      "sha256": "818ae8461f6b790b4a27d686590777dbdf8b8134206d7874b3173da0a01f7b90"
+    },
+    "rx10000/assets/game/native/16/16de463b2.0930d.webp": {
+      "request_id": 798,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/16/16de463b2.0930d.webp",
+      "bytes": 128034,
+      "sha256": "696dd9a13cb207dc4d9bd67396ffe165290ed84b3a077781462df866bfe54da1"
+    },
+    "rx10000/assets/game/native/1c/1cadff7fd.d218e.webp": {
+      "request_id": 799,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1c/1cadff7fd.d218e.webp",
+      "bytes": 160676,
+      "sha256": "2aceec2d001633a7793db5808973747c0f25e9507a4456677b3974d0f10d6c15"
+    },
+    "rx10000/assets/game/native/1d/1dbfbb1d0.8b17e.webp": {
+      "request_id": 800,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1d/1dbfbb1d0.8b17e.webp",
+      "bytes": 126626,
+      "sha256": "54063616125d2ca70abbf648300afe372ac831861ff7961448826e736ba66d34"
+    },
+    "rx10000/assets/game/native/14/1446d1140.f5da3.webp": {
+      "request_id": 801,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/14/1446d1140.f5da3.webp",
+      "bytes": 153796,
+      "sha256": "f5dd82088a1d056ada4f1e5d629a1a838e916a3a24bb557e85430e2a4fe8a474"
+    },
+    "rx10000/assets/game/native/39/398ea002-31ec-4a92-9cd9-e185e3d62e27.483ee.bin": {
+      "request_id": 802,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/39/398ea002-31ec-4a92-9cd9-e185e3d62e27.483ee.bin",
+      "bytes": 5978,
+      "sha256": "a524b7a3d6534cfc07c94d7604a416c046101306b76a9c7c743613bff627ca10"
+    },
+    "rx10000/assets/game/native/14/142a6cfcc.04378.webp": {
+      "request_id": 803,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/14/142a6cfcc.04378.webp",
+      "bytes": 185646,
+      "sha256": "1566a41d31a64704cd95a3106e7443fe8f44eac50138fbf2bd6dd42472cc79ea"
+    },
+    "rx10000/assets/game/native/9f/9f90c71a-f25d-48d7-9479-05e6d109d0a8.d56ae.png": {
+      "request_id": 804,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9f/9f90c71a-f25d-48d7-9479-05e6d109d0a8.d56ae.png",
+      "bytes": 18685,
+      "sha256": "eb75dc34da96cf8aac760e1e18472448952a033e6b21b96c987083f3ecf14a34"
+    },
+    "rx10000/assets/game/native/58/58cf9cbe-8aab-4c4c-be29-9a79634d3a22.c3120.webp": {
+      "request_id": 805,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/58/58cf9cbe-8aab-4c4c-be29-9a79634d3a22.c3120.webp",
+      "bytes": 228336,
+      "sha256": "691d21c5ad8283dfe1b9d81d9267c23eb458673f220b171e7ae66f4c195e81b4"
+    },
+    "rx10000/assets/game/native/ba/ba62420f-ae69-4b7e-b9ad-dd0a5cea83bd.34f39.png": {
+      "request_id": 806,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ba/ba62420f-ae69-4b7e-b9ad-dd0a5cea83bd.34f39.png",
+      "bytes": 9406,
+      "sha256": "0c55ab01fcd6bb10310f340ce6cb371c047c061b4f2b797663924821d096434e"
+    },
+    "rx10000/assets/game/native/52/525a534a-7aff-470b-a4c6-9086c75da09d.f72a1.png": {
+      "request_id": 807,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/52/525a534a-7aff-470b-a4c6-9086c75da09d.f72a1.png",
+      "bytes": 16165,
+      "sha256": "3bc88a5d969a09531eb1ad724e153a08fb8b437c9f188ba81901a6bff0869993"
+    },
+    "rx10000/assets/game/native/95/956d5507-24c0-4c7f-adcb-6716d2d03e5a.5f762.bin": {
+      "request_id": 808,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/95/956d5507-24c0-4c7f-adcb-6716d2d03e5a.5f762.bin",
+      "bytes": 19327,
+      "sha256": "8f18fc64537be234cb6b58c4340e1593587302970a24bc89385c82df3b2bc0e0"
+    },
+    "rx10000/assets/game/native/58/58324a1c-33ec-40f0-939a-bb9c6169d873.30d85.bin": {
+      "request_id": 809,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/58/58324a1c-33ec-40f0-939a-bb9c6169d873.30d85.bin",
+      "bytes": 43325,
+      "sha256": "4a47c8fd40b483fd4245fd41573b64d46d34e0adb890a5d4e43e35d5a03d37d0"
+    },
+    "rx10000/assets/game/native/aa/aadd504c-1c2e-4b08-abaa-21795ac80529.09dc7.webp": {
+      "request_id": 810,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/aa/aadd504c-1c2e-4b08-abaa-21795ac80529.09dc7.webp",
+      "bytes": 237548,
+      "sha256": "fd305af517f4587a929b4a59f27433b8bee7df537e91316cc38739f41f722b87"
+    },
+    "rx10000/assets/game/native/33/33c0a2ac-2bc4-4dca-9656-02461167eba6.3bb15.webp": {
+      "request_id": 811,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/33/33c0a2ac-2bc4-4dca-9656-02461167eba6.3bb15.webp",
+      "bytes": 214906,
+      "sha256": "652e3ecf329fab373d470595422f5a39158d672b36fa8231c3675ced20ff3b04"
+    },
+    "rx10000/assets/game/native/05/05f95229-fb0f-413b-8174-9ba586da681b.6edb3.bin": {
+      "request_id": 812,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/05/05f95229-fb0f-413b-8174-9ba586da681b.6edb3.bin",
+      "bytes": 5575,
+      "sha256": "19a61c55203c7dddd1c2695fda9880dab54c089d3673d7ebea507cd9c2b79767"
+    },
+    "rx10000/assets/game/native/34/34897b40-0a37-4bac-989b-79c96396b12e.88695.bin": {
+      "request_id": 813,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/34/34897b40-0a37-4bac-989b-79c96396b12e.88695.bin",
+      "bytes": 40804,
+      "sha256": "379ece073907105c5c74b3358c16bddd2e105e8d123b5afd40ea857ba4de1e53"
+    },
+    "rx10000/assets/game/native/e8/e8db6474-0f12-488a-b5ad-20bd83b573e7.d39a0.webp": {
+      "request_id": 814,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/e8/e8db6474-0f12-488a-b5ad-20bd83b573e7.d39a0.webp",
+      "bytes": 162912,
+      "sha256": "75fa1db667cae76ff076a41a04d37eedd226a0a1c30b121fe846e3c950d8c1b5"
+    },
+    "rx10000/assets/game/native/54/54d6ab75-0ca4-4ff8-bcbf-8cca875a3b30.92095.bin": {
+      "request_id": 815,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/54/54d6ab75-0ca4-4ff8-bcbf-8cca875a3b30.92095.bin",
+      "bytes": 31736,
+      "sha256": "88309ce4568d3cc0b793d0bd7dc4f647181b6d19d016eb320ae2806fb03ba2ca"
+    },
+    "rx10000/assets/game/native/c2/c2f0aaea-b702-4ab0-ae08-8d7e5049c6da.79936.webp": {
+      "request_id": 816,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c2/c2f0aaea-b702-4ab0-ae08-8d7e5049c6da.79936.webp",
+      "bytes": 118142,
+      "sha256": "5a505413d1cdddb7d69db3c3a8deca95f484efadc0cf700a6612f88c972da9b3"
+    },
+    "rx10000/assets/game/native/f4/f49680d4-bc51-4cc1-ba26-ab95bae413bf.9b709.webp": {
+      "request_id": 817,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f4/f49680d4-bc51-4cc1-ba26-ab95bae413bf.9b709.webp",
+      "bytes": 490850,
+      "sha256": "5324abb2dfbeda62167cf830de7df77632888ede1c0677dc621435f210ec1892"
+    },
+    "rx10000/assets/game/native/48/484906b8-1e3c-4176-b54e-eaef62c7dd30.c8a24.bin": {
+      "request_id": 818,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/48/484906b8-1e3c-4176-b54e-eaef62c7dd30.c8a24.bin",
+      "bytes": 3145,
+      "sha256": "46bc5d9eae345883cf858714033cdd4dece71327844adbb3534f86f70bf2deed"
+    },
+    "rx10000/assets/game/native/11/11fc2e1f-c99b-4100-9466-dabec3718270.1e3ee.webp": {
+      "request_id": 819,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/11/11fc2e1f-c99b-4100-9466-dabec3718270.1e3ee.webp",
+      "bytes": 6120,
+      "sha256": "20fbd9e18f7c2e33f046040f063feba132b0d4101b432ce15d2cd8488ec47745"
+    },
+    "rx10000/assets/game/native/d3/d335c1d4-8d6e-44e3-b92e-d62d4a1b5972.32ac6.png": {
+      "request_id": 820,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/d3/d335c1d4-8d6e-44e3-b92e-d62d4a1b5972.32ac6.png",
+      "bytes": 17692,
+      "sha256": "736c38793c29825c18c2f1e3e9ec3a4311b37efdf5aab0692869ba1976ee8314"
+    },
+    "rx10000/assets/game/native/33/331f918f-0c2b-48e2-9386-711a2f08b538.1bf73.webp": {
+      "request_id": 821,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/33/331f918f-0c2b-48e2-9386-711a2f08b538.1bf73.webp",
+      "bytes": 20818,
+      "sha256": "90d3686b9f3d6d7ab43465f7ffd7a04d302aea5d711cc60db7ed2094a84b6557"
+    },
+    "rx10000/assets/game/native/81/81702c8b-bfaf-41c1-990b-d20c0355dc07.74b0e.webp": {
+      "request_id": 822,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/81/81702c8b-bfaf-41c1-990b-d20c0355dc07.74b0e.webp",
+      "bytes": 33044,
+      "sha256": "0e86c2e446c96d3e7dd933e9e96da8638909fdba45bb0b440691d725b1c00184"
+    },
+    "rx10000/assets/game/native/26/268b3b24-def7-44f9-855d-b7c92b30c2ba.ab718.jpg": {
+      "request_id": 823,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/26/268b3b24-def7-44f9-855d-b7c92b30c2ba.ab718.jpg",
+      "bytes": 7824,
+      "sha256": "fd607f5276cbcf95e656a97c49617e684bcdb3d42889a3d6726e7cd9d264c769"
+    },
+    "rx10000/assets/game/native/ba/baafa1f4-76fe-423d-93d9-f68204e559fe.936ad.bin": {
+      "request_id": 824,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ba/baafa1f4-76fe-423d-93d9-f68204e559fe.936ad.bin",
+      "bytes": 60475,
+      "sha256": "6b7278c113856fa0108a159d2833ec753a0f3d70ef7c2c2b216b8ea43edf851d"
+    },
+    "rx10000/assets/game/native/b4/b4fa2c25-a203-408f-8e6c-dbfa970cf8b3.40c60.png": {
+      "request_id": 825,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b4/b4fa2c25-a203-408f-8e6c-dbfa970cf8b3.40c60.png",
+      "bytes": 140371,
+      "sha256": "fa4d228d33588961d753a4bc71a6c322f03ee4b016c08d2eeceea7514eeab355"
+    },
+    "rx10000/assets/game/native/6f/6f6dce68-a47c-46bf-b154-443f7433cacb.bc0a5.webp": {
+      "request_id": 826,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/6f/6f6dce68-a47c-46bf-b154-443f7433cacb.bc0a5.webp",
+      "bytes": 318572,
+      "sha256": "1db3b987c6e5a6ee6efad375f451ddfd48e4fee3fda05ec2cde25997e7424f26"
+    },
+    "rx10000/assets/game/native/11/117375629.c65bb.webp": {
+      "request_id": 827,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/11/117375629.c65bb.webp",
+      "bytes": 71840,
+      "sha256": "6d38afd2fecbdac2aad8a4efe27ce6d0ebf976edac57f07f5ef60a51a2f0e710"
+    },
+    "rx10000/assets/game/native/0c/0c864bcc-f5c7-4694-9b49-5529b54ce6e0.75ee0.webp": {
+      "request_id": 828,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/0c/0c864bcc-f5c7-4694-9b49-5529b54ce6e0.75ee0.webp",
+      "bytes": 1688,
+      "sha256": "5fb434ff4ed83150420aea7a23b244b2e60801ec9daf4d7a17304da9828782e7"
+    },
+    "rx10000/assets/game/native/a5/a5fea89e-b20c-42a0-8aed-029d12969343.f6517.webp": {
+      "request_id": 829,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a5/a5fea89e-b20c-42a0-8aed-029d12969343.f6517.webp",
+      "bytes": 1720,
+      "sha256": "c72bc1ae427fc1ca5835610dcc8a238602b61127278bae753ef6e6c2cc9e331c"
+    },
+    "rx10000/assets/game/native/70/70dc3413-e824-4800-8b3b-069df4cd354f.d447d.webp": {
+      "request_id": 830,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/70/70dc3413-e824-4800-8b3b-069df4cd354f.d447d.webp",
+      "bytes": 1836,
+      "sha256": "1bd022c242d162f9f5d6e98afdf6a824b197a44cd484e226f191b31250b29374"
+    },
+    "rx10000/assets/game/native/9f/9f19c720-cc12-43c7-98e2-a52ca4b3cfb0.d8be2.png": {
+      "request_id": 831,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9f/9f19c720-cc12-43c7-98e2-a52ca4b3cfb0.d8be2.png",
+      "bytes": 2368,
+      "sha256": "71e5c949583f5ce0c5854cde29c2e4de1ee6735709b6e9c2d2da38f4042073db"
+    },
+    "rx10000/assets/game/native/6c/6c0927a1-25e5-4aef-8ae8-4cb84b0e4cb0.134a7.png": {
+      "request_id": 832,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/6c/6c0927a1-25e5-4aef-8ae8-4cb84b0e4cb0.134a7.png",
+      "bytes": 1972,
+      "sha256": "a2e2e8bed6084e2091eba5957a6c2a73a6c8bf65a4175759d49759aa9b36e034"
+    },
+    "rx10000/assets/game/native/15/159502f02.09bf9.webp": {
+      "request_id": 833,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/15/159502f02.09bf9.webp",
+      "bytes": 1198,
+      "sha256": "1c3421a17db7234209d83ef2467c75c7f86460b8dc6be53f9bda71defd6243d5"
+    },
+    "rx10000/assets/game/native/3c/3c0b258c-c77d-42bd-9a26-1e444c1ba913.d986d.png": {
+      "request_id": 834,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/3c/3c0b258c-c77d-42bd-9a26-1e444c1ba913.d986d.png",
+      "bytes": 3609,
+      "sha256": "387b1c6fad676f0d91d82382e4a74b694784e836eb65f53a1e56b7133c102164"
+    },
+    "rx10000/assets/game/native/83/834510a5-c5e2-429c-aacd-0e8495b2bc3f.c93f6.png": {
+      "request_id": 835,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/83/834510a5-c5e2-429c-aacd-0e8495b2bc3f.c93f6.png",
+      "bytes": 9744,
+      "sha256": "5a0c12685d73fcdbb8208501902ed7b4d497cbe3055c1b184aca1e59c5643cfb"
+    },
+    "rx10000/assets/game/native/cd/cd7b13f9-5955-4fa0-b3bb-a285cac8e819.c84b6.bin": {
+      "request_id": 836,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/cd/cd7b13f9-5955-4fa0-b3bb-a285cac8e819.c84b6.bin",
+      "bytes": 57095,
+      "sha256": "ed6626e21b2e2d0f0742ab0d40e5e0ed5b988645b30b94ad9a82750e2d626c02"
+    },
+    "rx10000/assets/game/native/13/131e6f39-279e-4929-aee4-8e71888b3ae8.16ebe.webp": {
+      "request_id": 837,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/13/131e6f39-279e-4929-aee4-8e71888b3ae8.16ebe.webp",
+      "bytes": 199752,
+      "sha256": "c2e26dc6214dfff64fd4ed8081ed42f09507baa4d2cfaa3dada87ef6a73f5ff9"
+    },
+    "rx10000/assets/game/native/62/62d9d27a-118f-43c6-ae62-f9b98dbd785d.63275.png": {
+      "request_id": 838,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/62/62d9d27a-118f-43c6-ae62-f9b98dbd785d.63275.png",
+      "bytes": 68986,
+      "sha256": "7a258182f58b8b169fd4c7785d3f424eba5efaf45a8fba195d94cf25848f8e49"
+    },
+    "rx10000/assets/game/native/8c/8cf2b18a-8554-4b0e-b11c-560923771a62.768ee.bin": {
+      "request_id": 839,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8c/8cf2b18a-8554-4b0e-b11c-560923771a62.768ee.bin",
+      "bytes": 61041,
+      "sha256": "c1caec93c3cbc723b8049483438148f27f369bd379031ae4786c66bcedf6d1a9"
+    },
+    "rx10000/assets/game/native/8b/8b9ad3f8-a52a-45bb-a879-ebd2f4b83563.27807.webp": {
+      "request_id": 840,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8b/8b9ad3f8-a52a-45bb-a879-ebd2f4b83563.27807.webp",
+      "bytes": 575166,
+      "sha256": "0af692bd1d933a4cc48f74471207c9d58b0f85569aff7bdc6dcd5c40990a9e9c"
+    },
+    "rx10000/assets/game/native/a2/a2db14a4-b2ac-4c3f-a1be-36e91b0e28ed.82c9a.png": {
+      "request_id": 841,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a2/a2db14a4-b2ac-4c3f-a1be-36e91b0e28ed.82c9a.png",
+      "bytes": 7744,
+      "sha256": "aaf9ed7aff7dd7b3a105cbe6ccaed9184e3233a02bbdf682c9ad02f087ce76d2"
+    },
+    "rx10000/assets/game/native/ba/ba31f055-af01-476a-934c-d28d8b01e9a0.18ece.png": {
+      "request_id": 842,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ba/ba31f055-af01-476a-934c-d28d8b01e9a0.18ece.png",
+      "bytes": 4098,
+      "sha256": "6e377c812b0d102c7e386ea6a141138691bb950dcb2de2910e4e3ffe45361faf"
+    },
+    "rx10000/assets/game/native/65/655db1de-74d4-4ff6-a917-9d4fe20a4a17.e6c53.png": {
+      "request_id": 843,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/65/655db1de-74d4-4ff6-a917-9d4fe20a4a17.e6c53.png",
+      "bytes": 66981,
+      "sha256": "ea5814f228cded6c75295552bd72f8d276be3b5f233c34dbd2565ad44da01ab6"
+    },
+    "rx10000/assets/game/native/11/115bd3a3-28aa-46a8-961e-f900b7c140a5.bea52.bin": {
+      "request_id": 844,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/11/115bd3a3-28aa-46a8-961e-f900b7c140a5.bea52.bin",
+      "bytes": 257010,
+      "sha256": "e25a59dcfa4393d0c9e5f08f5f1be05837ba00f81b7759da017105d6435b7d64"
+    },
+    "rx10000/assets/game/native/b8/b8e1caca-9761-48c7-a42b-9436f8954010.fee8a.webp": {
+      "request_id": 845,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b8/b8e1caca-9761-48c7-a42b-9436f8954010.fee8a.webp",
+      "bytes": 136960,
+      "sha256": "65fa55dd4660e8377472f6a13b317110adf0fba00dd7ca24206a111158dff126"
+    },
+    "rx10000/assets/game/native/1f/1fad55e2-6a40-47d8-99d8-10655acd0db5.e5318.bin": {
+      "request_id": 846,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1f/1fad55e2-6a40-47d8-99d8-10655acd0db5.e5318.bin",
+      "bytes": 281576,
+      "sha256": "06bfd613a8a4908ada97ffd59c1d7d6081e5758a6f3234cc3caf1b2020966608"
+    },
+    "rx10000/assets/game/native/1f/1f6640bb5.e0729.webp": {
+      "request_id": 847,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1f/1f6640bb5.e0729.webp",
+      "bytes": 108898,
+      "sha256": "1ad3422d0fda1ef43f57357b6008cd293ebc74f1596c7461db7b80bbb1b14797"
+    },
+    "rx10000/assets/game/native/1d/1d2505e70.c8189.webp": {
+      "request_id": 848,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1d/1d2505e70.c8189.webp",
+      "bytes": 32146,
+      "sha256": "351af0f88ab185cca59311be6cf67c844219301283c3c099e68d41ccfd7505e6"
+    },
+    "rx10000/assets/game/native/1f/1fab01d0b.29610.webp": {
+      "request_id": 849,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1f/1fab01d0b.29610.webp",
+      "bytes": 165552,
+      "sha256": "1052238bbbeb9e1d42344ff99fd775f9ec61a9f1c4a1607a4123162e1c4c5102"
+    },
+    "rx10000/assets/game/native/1f/1f2ffd066.8eca6.webp": {
+      "request_id": 850,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1f/1f2ffd066.8eca6.webp",
+      "bytes": 332222,
+      "sha256": "a9086ad8241e447a6e3e5c80165e85192ca5622f99ef0e9303a207bed2a40a56"
+    },
+    "rx10000/assets/game/native/14/1434eccd8.8f561.webp": {
+      "request_id": 851,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/14/1434eccd8.8f561.webp",
+      "bytes": 450396,
+      "sha256": "97d00b6b5376440205df2cacdc88f8d7a017b03f88058cdc9e5cfce0bdb8c4c4"
+    },
+    "rx10000/assets/game/native/16/16b3ceeff.de2aa.webp": {
+      "request_id": 852,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/16/16b3ceeff.de2aa.webp",
+      "bytes": 354604,
+      "sha256": "66d461b888945fc5bb654c8d961f5ad676f76b1867fb8dc66be4091a61488c57"
+    },
+    "rx10000/assets/game/native/17/17da964c6.d5409.webp": {
+      "request_id": 853,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/17/17da964c6.d5409.webp",
+      "bytes": 361420,
+      "sha256": "d4bbedc116748931116a93d96d7b8d35661f1ab397aef73a09446be82be83fff"
+    },
+    "rx10000/assets/game/native/12/12e8a09af.20e1d.webp": {
+      "request_id": 854,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/12/12e8a09af.20e1d.webp",
+      "bytes": 370724,
+      "sha256": "3ce77ed50ebc2bce16e86442bd2f03c7827881fd9c70bfb64db8ecb13c287464"
+    },
+    "rx10000/assets/game/native/63/6368400d-1460-4ce8-87c5-0757148ee9eb.c6b8a.webp": {
+      "request_id": 855,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/63/6368400d-1460-4ce8-87c5-0757148ee9eb.c6b8a.webp",
+      "bytes": 4624,
+      "sha256": "ad267d1d201acdef02fdcdbf4dfb05328f6bb148f1febb914c4b496ac59663c4"
+    },
+    "rx10000/assets/game/native/8f/8f908084-f6ee-4564-99a3-c08c0c728fbe.c3885.webp": {
+      "request_id": 856,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8f/8f908084-f6ee-4564-99a3-c08c0c728fbe.c3885.webp",
+      "bytes": 4524,
+      "sha256": "3e377511fdd67f4ff4493289a0c1b4c1b438e62628e6154c667daf530796d3b3"
+    },
+    "rx10000/assets/game/native/6f/6ffe9841-c280-4629-b31c-c45c179b091b.32414.mp3": {
+      "request_id": 859,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/6f/6ffe9841-c280-4629-b31c-c45c179b091b.32414.mp3",
+      "bytes": 79083,
+      "sha256": "3061f1da77627e397473f5db20af5bab52124fed0b663820bd3257dbce50e638"
+    },
+    "rx10000/assets/game/native/b8/b8df2cb3-7e6b-4c61-9ce1-014c7882b46c.8ed13.mp3": {
+      "request_id": 860,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b8/b8df2cb3-7e6b-4c61-9ce1-014c7882b46c.8ed13.mp3",
+      "bytes": 355086,
+      "sha256": "d9c88298b076c272a67a3541d9043718a6e7ec1fca28c07e5a3a4a3586373f6b"
+    },
+    "rx10000/assets/game/native/55/553aba5e-21cc-4677-8e03-de8163e86acd.f290a.mp3": {
+      "request_id": 861,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/55/553aba5e-21cc-4677-8e03-de8163e86acd.f290a.mp3",
+      "bytes": 275706,
+      "sha256": "c3a8eb7e6e9dd24c4fe5fdde0b2866cbd4f2697814a2720caeecb005b4a03a6a"
+    },
+    "rx10000/assets/game/native/f7/f7520a01-e948-465a-a760-2c58d9c0ca93.ab809.mp3": {
+      "request_id": 862,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f7/f7520a01-e948-465a-a760-2c58d9c0ca93.ab809.mp3",
+      "bytes": 55859,
+      "sha256": "1f4e568cdb570ddbd6db01e15ac7c448c0c31b28f6ede91396fa709a3d59dcf9"
+    },
+    "rx10000/assets/game/native/97/9791af40-f728-4415-8c3a-08851437ed8b.a5334.mp3": {
+      "request_id": 863,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/97/9791af40-f728-4415-8c3a-08851437ed8b.a5334.mp3",
+      "bytes": 8433,
+      "sha256": "78c3abca7b4505684c423cd4c014af15add14c24bd44aac534167c2b4ba859a3"
+    },
+    "rx10000/assets/game/native/f5/f5e5846f-01f3-48bf-bb0c-f18953ace5fa.6b1f5.mp3": {
+      "request_id": 864,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f5/f5e5846f-01f3-48bf-bb0c-f18953ace5fa.6b1f5.mp3",
+      "bytes": 11776,
+      "sha256": "97a884ef89fa06fc7faaf59a30e05c2eb3e1526355114d607fea7fc568261816"
+    },
+    "rx10000/assets/game/native/81/814b623d-f4f6-4968-b21a-2360304c0241.022da.mp3": {
+      "request_id": 865,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/81/814b623d-f4f6-4968-b21a-2360304c0241.022da.mp3",
+      "bytes": 6746,
+      "sha256": "454eca74043adc8b985f427c179d33d40c01c6922daf00f5cfc70fc03d36fdf0"
+    },
+    "rx10000/assets/game/native/2b/2bab23a1-bb6b-4e52-8222-e0849f01bef1.160a2.mp3": {
+      "request_id": 866,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/2b/2bab23a1-bb6b-4e52-8222-e0849f01bef1.160a2.mp3",
+      "bytes": 5894,
+      "sha256": "2011c2de67dcd6968ffd6b5bfc04d4cf9090d7fcc36fd1bce723c297a2138d18"
+    },
+    "rx10000/assets/game/native/29/29a2d95d-e06f-4ebb-81fd-f36950afbd24.059d4.mp3": {
+      "request_id": 867,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/29/29a2d95d-e06f-4ebb-81fd-f36950afbd24.059d4.mp3",
+      "bytes": 13851,
+      "sha256": "9da66a5df112a244fc00fbbbd725ffce1a835c78c5e71a44fb6548a17182ba7f"
+    },
+    "rx10000/assets/game/native/93/938773c0-b971-4fbb-93ff-239de2b71b5b.12c51.mp3": {
+      "request_id": 868,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/93/938773c0-b971-4fbb-93ff-239de2b71b5b.12c51.mp3",
+      "bytes": 14542,
+      "sha256": "ad169e66f09ad9a90453520c623d98803d59e247f720948ea2b5a07ed2f1e32b"
+    },
+    "rx10000/assets/game/native/39/394f800f-259d-48cb-a0d3-4b8fb0c78170.ffc6e.mp3": {
+      "request_id": 869,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/39/394f800f-259d-48cb-a0d3-4b8fb0c78170.ffc6e.mp3",
+      "bytes": 26320,
+      "sha256": "0b01efb237cd6ec008cca39d0a80a67ceac21d5813e80217d15e838cab778f7b"
+    },
+    "rx10000/assets/game/native/29/2900d685-7fcd-4500-815c-95eb062b0399.51b6b.mp3": {
+      "request_id": 870,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/29/2900d685-7fcd-4500-815c-95eb062b0399.51b6b.mp3",
+      "bytes": 914,
+      "sha256": "69a16cd66a60f02e353148368a0e290dbcb27a4ba71e216525609c3b0446a563"
+    },
+    "astarte2/3.6/web-mobile/assets/jili/native/12/1299bad2d.49a9e.webp": {
+      "request_id": 872,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/jili/native/12/1299bad2d.49a9e.webp",
+      "bytes": 81654,
+      "sha256": "5f089b6e5c3093250ec8cd7ea9a458900e635376b47d9dfaaf1d68da3233fe13"
+    },
+    "astarte2/3.6/web-mobile/assets/other/import/06/068152bba.2e86a.json": {
+      "request_id": 873,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/import/06/068152bba.2e86a.json",
+      "bytes": 13205,
+      "sha256": "016a187d662eb21dcf58436b4c245eb0fc4baeac74eac95c50bea0beaf86551b"
+    },
+    "rx10000/assets/game/native/90/90a052f7-581c-46b3-8e48-8c9f05e9213d.1affd.mp3": {
+      "request_id": 874,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/90/90a052f7-581c-46b3-8e48-8c9f05e9213d.1affd.mp3",
+      "bytes": 19269,
+      "sha256": "25be3dcd322218ec349065b5d31dd05d0586b51cb24aaf037c1251db6854f044"
+    },
+    "rx10000/assets/game/native/36/36ae79da-e6e9-4dfd-bd11-e4caaaa00f0a.efc4d.mp3": {
+      "request_id": 875,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/36/36ae79da-e6e9-4dfd-bd11-e4caaaa00f0a.efc4d.mp3",
+      "bytes": 12999,
+      "sha256": "61c0291f2868956a115acddc5605b6c910f2a1ec68d7a2f3d9416a537c12c6b9"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3": {
+      "request_id": 876,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e2/e249afed-4536-4d9c-b1e2-d004ab257fe0.01fa4.mp3",
+      "bytes": 3959,
+      "sha256": "dd429421dc79d6f3f52ab218bd738b9d0d4d373c90cc1becf98eb4d55fc55900"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3": {
+      "request_id": 877,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a8/a80663d5-db58-4a3c-9d59-4f6d71bc2d67.65f74.mp3",
+      "bytes": 14750,
+      "sha256": "57a69937c1664dacfc03ce3a5ac405169caa884cf8a8a8b85cea3f3889629cea"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3": {
+      "request_id": 878,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7f/7fecdd1a-aa6a-45ee-bd60-fc3692edec6b.1235c.mp3",
+      "bytes": 58200,
+      "sha256": "e43a4994aae31132c021cfdb6566f885300021c484caf1750b4b687b93b4fe41"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3": {
+      "request_id": 879,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/01/01536f1c-cca7-4b2b-8ce7-42636457c3e4.c0eb8.mp3",
+      "bytes": 2708,
+      "sha256": "48371516675f757bd44e6abdb6843de071455ec8dc0bf3e0b7203fb23838b5b9"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3": {
+      "request_id": 880,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/9e/9ed96bb3-de66-4502-a4c9-8303eaf6a14c.95f83.mp3",
+      "bytes": 3125,
+      "sha256": "1cf28eb27109fd8dc324a5576135ddcccea167602e621b812b79712110205d9d"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3": {
+      "request_id": 881,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/70/70efe7a9-2da9-4751-a746-6dd9f21143f2.225ea.mp3",
+      "bytes": 2972,
+      "sha256": "d87338dfcb2d19b39d489fab3f69200c8352e80b1e20ac370f6572711d03f7dd"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3": {
+      "request_id": 882,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/22/2202566c-a217-4e40-ac2e-390ee269f472.7225d.mp3",
+      "bytes": 2291,
+      "sha256": "fac16f5a0468df3006b9ec3c8dc5ad5e35b7ccfa4a6267cc0fec56c9bf079619"
+    },
+    "rx10000/assets/game/native/68/68388fe2-90e1-41ed-812a-2434bd819ca0.6bb93.mp3": {
+      "request_id": 883,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/68/68388fe2-90e1-41ed-812a-2434bd819ca0.6bb93.mp3",
+      "bytes": 8820,
+      "sha256": "552aada01eac5732a54cbbf33c634e4abfc503929550a4eb22e90359c82e10ce"
+    },
+    "rx10000/assets/game/native/21/21dfd039-38f2-4a10-a0f7-bb6c22c497ba.e412b.mp3": {
+      "request_id": 884,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/21/21dfd039-38f2-4a10-a0f7-bb6c22c497ba.e412b.mp3",
+      "bytes": 8611,
+      "sha256": "4a19f41d0f5a4df671cb260a332e51b611018644251c73079e2145149d8f7dc0"
+    },
+    "rx10000/assets/game/native/9e/9eb13ca1-5b02-47c5-af59-8a147b9ec4c0.12ddc.mp3": {
+      "request_id": 885,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9e/9eb13ca1-5b02-47c5-af59-8a147b9ec4c0.12ddc.mp3",
+      "bytes": 32203,
+      "sha256": "f1364caa19a48277991fd75c594467a08db75959860881aa0213e7f4846290bd"
+    },
+    "rx10000/assets/game/native/0a/0a71904b-a677-47cc-912e-4fabffd5c2e4.cf19b.mp3": {
+      "request_id": 886,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/0a/0a71904b-a677-47cc-912e-4fabffd5c2e4.cf19b.mp3",
+      "bytes": 130231,
+      "sha256": "74cd8f7c6bc8a12f446a9c27240224c0b3d09a4e460ee95d69fff860742358bd"
+    },
+    "rx10000/assets/game/native/9d/9dadae20-3020-4245-998c-7f09449d5370.b6496.webp": {
+      "request_id": 889,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9d/9dadae20-3020-4245-998c-7f09449d5370.b6496.webp",
+      "bytes": 17100,
+      "sha256": "bf7ac6ba739f30cd850d652ac417e04be4c6761efc1fcbbf530e9de23918f122"
+    },
+    "rx10000/assets/game/native/1d/1d70477a-e77d-4ab0-b431-63a8912442b4.1aebf.webp": {
+      "request_id": 890,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1d/1d70477a-e77d-4ab0-b431-63a8912442b4.1aebf.webp",
+      "bytes": 33430,
+      "sha256": "a2e6b1321da794913d3e89b0576873ad6164f890f305f289f411e82ae614ca48"
+    },
+    "rx10000/assets/game/native/70/70895948-5600-40f1-a5da-5806d34f3812.75b2f.mp3": {
+      "request_id": 891,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/70/70895948-5600-40f1-a5da-5806d34f3812.75b2f.mp3",
+      "bytes": 13824,
+      "sha256": "b913000ea2ec04e20661e1e81df6cf36e9fc7f69b75480ca4cdb6ae44707a5b8"
+    },
+    "rx10000/assets/game/native/cf/cff4f595-b0dd-4422-a821-6a35a79d2fce.a026f.mp3": {
+      "request_id": 892,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/cf/cff4f595-b0dd-4422-a821-6a35a79d2fce.a026f.mp3",
+      "bytes": 12096,
+      "sha256": "c0e9286663f4646ebe09cf960867e08fd0321d4ee4a8d190fbc00a810aced3cb"
+    },
+    "rx10000/assets/game/native/f0/f0603c54-f23e-4157-bc3e-2d17bc1d282d.b696d.mp3": {
+      "request_id": 893,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f0/f0603c54-f23e-4157-bc3e-2d17bc1d282d.b696d.mp3",
+      "bytes": 12960,
+      "sha256": "a21a40b1f87355f6a3855ecdd31da10b4bb728d58456aff0be78e1ade61797e0"
+    },
+    "rx10000/assets/game/native/b7/b76a0d6c-ec96-4809-b124-40841b7ed975.a9d56.mp3": {
+      "request_id": 894,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b7/b76a0d6c-ec96-4809-b124-40841b7ed975.a9d56.mp3",
+      "bytes": 15882,
+      "sha256": "1198a73dee48a1619dcdd34d90e8cc144324f809a03909074dbc7bd249d5b81b"
+    },
+    "rx10000/assets/game/native/3c/3c1431b9-5fc6-4465-a8ba-7d0c1ebcf5fd.b9f3e.mp3": {
+      "request_id": 895,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/3c/3c1431b9-5fc6-4465-a8ba-7d0c1ebcf5fd.b9f3e.mp3",
+      "bytes": 38633,
+      "sha256": "13baf64f12fe2c1b9ddab912297bf5463611b4789a6c2a8728279e83ae60f9c4"
+    },
+    "rx10000/assets/game/native/3f/3f85893d-d033-4682-8eb4-acad8ea59925.d49bc.mp3": {
+      "request_id": 896,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/3f/3f85893d-d033-4682-8eb4-acad8ea59925.d49bc.mp3",
+      "bytes": 193556,
+      "sha256": "8431cedfb4961f918255aa1bb246b7ea013836175a1bb665bc80f2e827a8374f"
+    },
+    "rx10000/assets/game/native/b6/b659fc48-8830-4cee-9ac4-8de0a42babe0.0183d.mp3": {
+      "request_id": 897,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b6/b659fc48-8830-4cee-9ac4-8de0a42babe0.0183d.mp3",
+      "bytes": 37828,
+      "sha256": "8adfcdbac5c5122254c42b7e286f379a1b824896845985d3514601578151cafd"
+    },
+    "rx10000/assets/game/native/23/239f35f1-17a8-48ac-ab81-be22cf5036de.75bbe.mp3": {
+      "request_id": 898,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/23/239f35f1-17a8-48ac-ab81-be22cf5036de.75bbe.mp3",
+      "bytes": 94667,
+      "sha256": "4fb75a8cc5069797dcc4152d3f2e4f4a0ed05207e28e246137216063c4fcba97"
+    },
+    "rx10000/assets/game/native/71/7111474e-91b5-4945-90f5-62e3e081c07a.b45ea.mp3": {
+      "request_id": 899,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/71/7111474e-91b5-4945-90f5-62e3e081c07a.b45ea.mp3",
+      "bytes": 63073,
+      "sha256": "3bf4057be0d2728ce6abde0f9078205d5200f2edcbdb5dfc18019d754d0294a9"
+    },
+    "rx10000/assets/game/native/96/960badbd-501e-4fe1-9cfd-865a690805d1.c04e8.mp3": {
+      "request_id": 900,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/96/960badbd-501e-4fe1-9cfd-865a690805d1.c04e8.mp3",
+      "bytes": 26374,
+      "sha256": "0500e8576530e56876f7c10df8d461361bc5d69c1aeb45a4592c0762b9121c01"
+    },
+    "rx10000/assets/game/native/01/01139c48-c0b2-4cbf-8316-cd34e988efbd.706a3.mp3": {
+      "request_id": 901,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/01/01139c48-c0b2-4cbf-8316-cd34e988efbd.706a3.mp3",
+      "bytes": 30750,
+      "sha256": "323129ba00f2b5022aab1a73914834aed89006aa2679e72a1cbcd7485eceafc7"
+    },
+    "rx10000/assets/game/native/84/84858dd4-5420-470c-84ff-9ed936637229.4b5e4.mp3": {
+      "request_id": 902,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/84/84858dd4-5420-470c-84ff-9ed936637229.4b5e4.mp3",
+      "bytes": 4970,
+      "sha256": "cde8d20b9392a6b04dc276d94e76f9e46c74e723ded6654ee438b6bbc9f10b74"
+    },
+    "rx10000/assets/game/native/ab/ab42afa7-cba7-4add-8515-119098563d07.8b24a.mp3": {
+      "request_id": 903,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ab/ab42afa7-cba7-4add-8515-119098563d07.8b24a.mp3",
+      "bytes": 6294,
+      "sha256": "2b4993830cec79cc909c2e0fc557aeb0dcea237240ca49c4f7c7f66ea512abaa"
+    },
+    "rx10000/assets/game/native/b5/b577cad7-46c0-473e-9f8a-235745fdd31d.2f5f2.mp3": {
+      "request_id": 904,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b5/b577cad7-46c0-473e-9f8a-235745fdd31d.2f5f2.mp3",
+      "bytes": 7566,
+      "sha256": "e403fc78c66e7e2b927ba97dd066df9024180bfd2aa1bca421f110a5381e8900"
+    },
+    "rx10000/assets/game/native/54/5430a057-7336-4a15-8c09-40c867c7e72e.872dd.mp3": {
+      "request_id": 905,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/54/5430a057-7336-4a15-8c09-40c867c7e72e.872dd.mp3",
+      "bytes": 29048,
+      "sha256": "c28bc505347b17c84f61e5161732535087c05c9316f83d8c75d9c43e8319317e"
+    },
+    "rx10000/assets/game/native/f0/f060778d-fd5a-4bbe-b124-cfb70f18d6ac.305f3.mp3": {
+      "request_id": 906,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f0/f060778d-fd5a-4bbe-b124-cfb70f18d6ac.305f3.mp3",
+      "bytes": 19182,
+      "sha256": "9d582a0b835b91c1faf0bc569cd12267650e3ce2969b4070a4c895ee87396896"
+    },
+    "rx10000/assets/game/native/ef/eff7ba65-cf66-4422-8cdd-24b63ed96366.31a4c.mp3": {
+      "request_id": 907,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ef/eff7ba65-cf66-4422-8cdd-24b63ed96366.31a4c.mp3",
+      "bytes": 16777,
+      "sha256": "a1071273e8741da1cbf2060094c5d8740db8a45d38c0a729fb368cef9944b4bb"
+    },
+    "rx10000/assets/game/native/af/af46c564-462d-4f73-bcb5-50eccb6281e4.f8333.mp3": {
+      "request_id": 908,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/af/af46c564-462d-4f73-bcb5-50eccb6281e4.f8333.mp3",
+      "bytes": 43048,
+      "sha256": "baf10a1971b54d699735a8d4a6a6a222dc0b8b25e35902a5b10bb751182dea43"
+    },
+    "rx10000/assets/game/native/57/57dbb846-7dde-4605-83cc-1361843771c2.4e727.mp3": {
+      "request_id": 909,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/57/57dbb846-7dde-4605-83cc-1361843771c2.4e727.mp3",
+      "bytes": 15944,
+      "sha256": "bc197dd256410fa47e94f97096c712a8871d0eb38575b705ac8d97d623a5ac04"
+    },
+    "rx10000/assets/game/native/b4/b467372d-db06-40a2-ae86-0ee0421e78e6.9e43d.mp3": {
+      "request_id": 910,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b4/b467372d-db06-40a2-ae86-0ee0421e78e6.9e43d.mp3",
+      "bytes": 20938,
+      "sha256": "c8d37eaad035a9a5ad9ab2677ada38b0d4fc1916c01f2f569107e2dc1ccd9189"
+    },
+    "rx10000/assets/game/native/e2/e2e0562b-041d-44d7-a93e-4839ffd9c2a9.961e2.mp3": {
+      "request_id": 911,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/e2/e2e0562b-041d-44d7-a93e-4839ffd9c2a9.961e2.mp3",
+      "bytes": 20938,
+      "sha256": "93e807a427c13a5b4f38654778343d52d75a07e7e552edc4eada9921e75b2563"
+    },
+    "rx10000/assets/game/native/72/72da5159-367c-4f3e-b58d-1d0a429533ca.b5723.mp3": {
+      "request_id": 912,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/72/72da5159-367c-4f3e-b58d-1d0a429533ca.b5723.mp3",
+      "bytes": 20938,
+      "sha256": "34f9032a1bac3321d7a7ec953fec10523ad3ae832d872ed082cb554d78640bc0"
+    },
+    "rx10000/assets/game/native/4a/4a21bcc5-b3b2-47cf-9931-26e281f6da80.5d8b7.mp3": {
+      "request_id": 913,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/4a/4a21bcc5-b3b2-47cf-9931-26e281f6da80.5d8b7.mp3",
+      "bytes": 20938,
+      "sha256": "a0579cf328504b401c9f320d67b652bb020bce36a745505271790fd1dcf8f693"
+    },
+    "rx10000/assets/game/native/f9/f95f0ccb-ebb7-42bd-ab4b-654332df18fe.72047.mp3": {
+      "request_id": 914,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f9/f95f0ccb-ebb7-42bd-ab4b-654332df18fe.72047.mp3",
+      "bytes": 20938,
+      "sha256": "1c1bcbbfa73d1dd02426f256f1bb6b2a37152e010c6d280e854421c01f431c24"
+    },
+    "rx10000/assets/game/native/e7/e70eda41-003b-4029-8aca-a13ccad0f007.49cf6.mp3": {
+      "request_id": 915,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/e7/e70eda41-003b-4029-8aca-a13ccad0f007.49cf6.mp3",
+      "bytes": 198720,
+      "sha256": "e6b6fd0e1b61edad0f1e0050a6a38691c236ef6052dcfadac46bbf951de2cb3a"
+    },
+    "rx10000/assets/game/native/1b/1bb91fc4-e952-4c2d-a000-22e503dce846.eb03a.mp3": {
+      "request_id": 916,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/1b/1bb91fc4-e952-4c2d-a000-22e503dce846.eb03a.mp3",
+      "bytes": 257315,
+      "sha256": "dae6d19b07b9c1db0923a0be66db78019355b48dccb4aa0a1f7e316af20f13d8"
+    },
+    "rx10000/assets/game/native/7d/7d449612-ec5f-41f4-a1f6-6376f0d7d134.2e93f.mp3": {
+      "request_id": 919,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/7d/7d449612-ec5f-41f4-a1f6-6376f0d7d134.2e93f.mp3",
+      "bytes": 43399,
+      "sha256": "f640a94b8047fb291f0556d0ab842afa48721a6e3a1b6708a1b5047f874b156c"
+    },
+    "rx10000/assets/game/native/4a/4a3bf7d9-a8fa-48b9-83db-0617a1d4e0df.671f8.mp3": {
+      "request_id": 920,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/4a/4a3bf7d9-a8fa-48b9-83db-0617a1d4e0df.671f8.mp3",
+      "bytes": 22634,
+      "sha256": "e72a423c2391c9f7547cb8426ea0617a420cd220e19f07c711453b70529fcb1e"
+    },
+    "rx10000/assets/game/native/c6/c6426534-3de6-46d6-8e98-88961f162ff9.771bc.mp3": {
+      "request_id": 921,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c6/c6426534-3de6-46d6-8e98-88961f162ff9.771bc.mp3",
+      "bytes": 15904,
+      "sha256": "f529532291771bf3ab16bf2b98b6f492c9bde720eaab6e27ea6a4512986dcde9"
+    },
+    "rx10000/assets/game/native/50/50e42b03-28eb-4e2e-b1a9-cd17a8b95788.fa89d.mp3": {
+      "request_id": 922,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/50/50e42b03-28eb-4e2e-b1a9-cd17a8b95788.fa89d.mp3",
+      "bytes": 62042,
+      "sha256": "623fd22279c43c9175ab6183a41e254840d2356413512432c7c2921385757737"
+    },
+    "rx10000/assets/game/native/04/04115f42-261f-410f-b30d-09c8bc2dfe3f.ffc19.mp3": {
+      "request_id": 923,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/04/04115f42-261f-410f-b30d-09c8bc2dfe3f.ffc19.mp3",
+      "bytes": 17376,
+      "sha256": "3706187c43da2971a25ed1e23a2a11b2e77f9ed181f318fc231b5afe9fff7abf"
+    },
+    "rx10000/assets/game/native/88/886a11ed-b75c-47da-abba-56222850ef0d.65ee2.mp3": {
+      "request_id": 924,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/88/886a11ed-b75c-47da-abba-56222850ef0d.65ee2.mp3",
+      "bytes": 18208,
+      "sha256": "6b670cbb71f7205d7bbc284a6642782ecd1a2dfb6a035857e861790a83c3adc4"
+    },
+    "rx10000/assets/game/native/9e/9e03067b-7980-4cb3-9c9a-99d1a362e9e6.085dd.mp3": {
+      "request_id": 925,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9e/9e03067b-7980-4cb3-9c9a-99d1a362e9e6.085dd.mp3",
+      "bytes": 9435,
+      "sha256": "e28b4baf5e507d042f74a5e867506fced92367e1e9cac89a54ab39cd8e37d64a"
+    },
+    "rx10000/assets/game/native/a4/a48e23fc-ea4b-4c4b-8658-1d085da50c0e.5b719.mp3": {
+      "request_id": 926,
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a4/a48e23fc-ea4b-4c4b-8658-1d085da50c0e.5b719.mp3",
+      "bytes": 5474,
+      "sha256": "f4e0d23d1df833b77831e4d2037efc68e5c233f3b8eb21c0d81153977b338dfb"
+    },
+    "static/images/intro/rx10000/logo_en-US.webp": {
+      "request_id": 971,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/logo_en-US.webp",
+      "bytes": 16936,
+      "sha256": "7d0f4a8fe4a4c8598cf952cb262e9a18a1e0d4d5cbb78306be50c45fec83f509"
+    },
+    "static/images/intro/rx10000/wheel.webp": {
+      "request_id": 972,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/wheel.webp",
+      "bytes": 73304,
+      "sha256": "bd890bf97de674b58dc5978ca1b82f503d9b8e5843c9cab6ee1f7a0b8464c06b"
+    },
+    "static/images/intro/rx10000/s_08.webp": {
+      "request_id": 973,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_08.webp",
+      "bytes": 10534,
+      "sha256": "a532afe3cc9eeeb9ecf60063776641378b8579996af79fd24fe7ae7d447bec13"
+    },
+    "static/images/intro/rx10000/symbol_09.webp": {
+      "request_id": 974,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/symbol_09.webp",
+      "bytes": 11732,
+      "sha256": "73c9bb13def8ccf3a26dfab7d30e27c592795c26b1778d5503db79ef722fc9d9"
+    },
+    "static/images/intro/rx10000/hpvalue.webp": {
+      "request_id": 975,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/hpvalue.webp",
+      "bytes": 3356,
+      "sha256": "c34ad149e0fd49a99e46496c2619e93f12eea439f31a51ae17c9d263a54d89e3"
+    },
+    "static/images/intro/rx10000/stonetablet03.webp": {
+      "request_id": 976,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/stonetablet03.webp",
+      "bytes": 7520,
+      "sha256": "c08b4c60c8de279164b36b59a29d3f611c37dde73f987e8d55cc182d6664f9e6"
+    },
+    "static/images/intro/rx10000/stonetablet04.webp": {
+      "request_id": 977,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/stonetablet04.webp",
+      "bytes": 4260,
+      "sha256": "e39760bd76864ab379c308271e9bf83a14dcff88fc0ff01103a60e049e56ae57"
+    },
+    "static/images/intro/rx10000/stonetablet05.webp": {
+      "request_id": 978,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/stonetablet05.webp",
+      "bytes": 8668,
+      "sha256": "a2caabb23ce611e23bcf40c2c8dfeebaef57997b5a4df1017aea7bf9dd777774"
+    },
+    "static/images/intro/rx10000/s_07.webp": {
+      "request_id": 979,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_07.webp",
+      "bytes": 10640,
+      "sha256": "5ebe5768c7f5b534f8902fb86f364322aaa724b9e4a96a0df16b28ecd90f2f6b"
+    },
+    "static/images/intro/rx10000/s_06.webp": {
+      "request_id": 980,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_06.webp",
+      "bytes": 7614,
+      "sha256": "2ea53b8b28c7b8cec9ab077a3cf1c76367dcfc525e9490e297074919b1e39f37"
+    },
+    "static/images/intro/rx10000/s_05.webp": {
+      "request_id": 981,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_05.webp",
+      "bytes": 6678,
+      "sha256": "6322fc52900f52c3d37f3bae4f125ebe107049f20a177bed0834683dd5c22332"
+    },
+    "static/images/intro/rx10000/s_04.webp": {
+      "request_id": 982,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_04.webp",
+      "bytes": 7588,
+      "sha256": "c0d49d3217b7ffcfd14525c54c4a98933d8fb313ebf934b10940ed75b22723ee"
+    },
+    "static/images/intro/rx10000/s_03.webp": {
+      "request_id": 983,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_03.webp",
+      "bytes": 4822,
+      "sha256": "0e7990fd3fad420adebb708e71585fefd7f521801a78b5764cf28714fb779c3c"
+    },
+    "static/images/intro/rx10000/s_02.webp": {
+      "request_id": 984,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_02.webp",
+      "bytes": 4224,
+      "sha256": "9f1767222c543d61e8cae70ff2939412a050af8e3a434738225bd88a25f9c2d2"
+    },
+    "static/images/intro/rx10000/s_01.webp": {
+      "request_id": 985,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_01.webp",
+      "bytes": 3778,
+      "sha256": "99239869b6a75a59a27215703bb44436cc1f34a99b8832e9ced921a1e42229e4"
+    },
+    "static/images/intro/rx10000/s_00.webp": {
+      "request_id": 986,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/s_00.webp",
+      "bytes": 3098,
+      "sha256": "8f83c29f19b7044b6e74282ddb231b41561d38dc9f7083400152ac80bd7c62d2"
+    },
+    "static/images/intro/rx10000/buybonus.webp": {
+      "request_id": 987,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/buybonus.webp",
+      "bytes": 3032,
+      "sha256": "51a78f30eb52da776e0ade840686912a691485fabeaa1e7adb54669a17f03890"
+    },
+    "static/images/intro/rx10000/pic_01.webp": {
+      "request_id": 988,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/pic_01.webp",
+      "bytes": 12462,
+      "sha256": "976ef5dfe2c08c1bed5fb920447310897e60afb48b175a5c1b7a11886bec739e"
+    },
+    "static/images/intro/rx10000/pic_02.webp": {
+      "request_id": 989,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/pic_02.webp",
+      "bytes": 7600,
+      "sha256": "8955e2ec053eaa5d0e49dda1b5fe78249842307a04692e01818e10a437b11995"
+    },
+    "static/images/intro/rx10000/payline.webp": {
+      "request_id": 990,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/payline.webp",
+      "bytes": 8306,
+      "sha256": "1ab3f7a9b5134e45d0b38ae86a9218eddc3cd2403815113d0531eb7fe93a47b7"
+    },
+    "static/images/intro/rx10000/spin_small.png": {
+      "request_id": 991,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/spin_small.png",
+      "bytes": 8130,
+      "sha256": "61004eb289493212ef2eddac407bf795b7d4ef92a11b4c2844c91f516f105054"
+    },
+    "static/images/intro/rx10000/autospin_small.png": {
+      "request_id": 992,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/autospin_small.png",
+      "bytes": 7296,
+      "sha256": "ae627ebc4b76186159e1acaf06f42bffb7b8923f9109cb634dce19c7f45a1f22"
+    },
+    "static/images/intro/rx10000/bet_small.png": {
+      "request_id": 993,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/bet_small.png",
+      "bytes": 7161,
+      "sha256": "e57f979e02a786cf31cce4ab079e2da4d7901793eb31e2f755ddf8c90698de25"
+    },
+    "static/images/intro/rx10000/turbospin.png": {
+      "request_id": 994,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/turbospin.png",
+      "bytes": 6692,
+      "sha256": "adb13f4a3a19268b0786272f0eef77106ab78cba65360a0a9c1d8ec1bc1928b0"
+    },
+    "static/images/intro/rx10000/turbospin2.png": {
+      "request_id": 995,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/turbospin2.png",
+      "bytes": 6850,
+      "sha256": "2a6cc4a3fa9dcf596439ee15146c6fd597fa9eb2ca8b76afb3ff04532de7bc39"
+    },
+    "static/images/intro/rx10000/option.png": {
+      "request_id": 996,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/option.png",
+      "bytes": 7049,
+      "sha256": "0c6903b67156a0c4f03eea567aba6ba6b4c3a4df147f0df5a16a9fcfcbf30b2e"
+    },
+    "static/images/intro/rx10000/gamerules.png": {
+      "request_id": 997,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/gamerules.png",
+      "bytes": 7361,
+      "sha256": "03b5556fa418f443ebc23de422f9d8a15de8e20ea370a71287df7d9862bcf92c"
+    },
+    "static/images/intro/rx10000/sounds.png": {
+      "request_id": 998,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/sounds.png",
+      "bytes": 6881,
+      "sha256": "db76d15c0ffa5d8b815c49511bc840eef053633fc919abd2af5d012da023493d"
+    },
+    "static/images/intro/rx10000/buybonus.png": {
+      "request_id": 999,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/buybonus.png",
+      "bytes": 17442,
+      "sha256": "1d94a6b978c7ae2026d1d66657fda00710a67db27db5d2c63dc2ff2d0fa1ae91"
+    },
+    "static/images/intro/rx10000/spin_small.webp": {
+      "request_id": 1002,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/spin_small.webp",
+      "bytes": 2068,
+      "sha256": "f1faa136611a7a27125bff190b3afecb1b4afa26cf9935788e1dba1bdb5c65ec"
+    },
+    "static/images/intro/rx10000/turbospin.webp": {
+      "request_id": 1003,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/turbospin.webp",
+      "bytes": 1352,
+      "sha256": "7dcbc01f173ddf30c1372a0af1387445b50dddbb02df4341fd1395ec91f078bd"
+    },
+    "static/images/intro/rx10000/autospin_small.webp": {
+      "request_id": 1004,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/autospin_small.webp",
+      "bytes": 1602,
+      "sha256": "b8841db4af8fdea88350e6e72ca2136ef34f2df3c77d895d8d5c5f33ce312f49"
+    },
+    "static/images/intro/rx10000/bet_small.webp": {
+      "request_id": 1005,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/bet_small.webp",
+      "bytes": 1564,
+      "sha256": "09cce8d0579754f8f42b2c8b804c1a00cf78fe22dff0a1dab86b022b47d463b2"
+    },
+    "static/images/intro/rx10000/option.webp": {
+      "request_id": 1006,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/option.webp",
+      "bytes": 1512,
+      "sha256": "6ab43761d7009b95959db7652257c5912bc4711bc3cb51f0d3352dd2deab0d8d"
+    },
+    "static/images/intro/rx10000/turbospin2.webp": {
+      "request_id": 1007,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/turbospin2.webp",
+      "bytes": 1530,
+      "sha256": "67b1810e3aefa58d3e04968aa91ba4760d533fb2f654823b1509ccbfd5fe7c14"
+    },
+    "static/images/intro/rx10000/sounds.webp": {
+      "request_id": 1008,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/sounds.webp",
+      "bytes": 1480,
+      "sha256": "25cd465b3dfae89930666ebaec197c2b5caa9b66d422ef3226a12abfc48f47f3"
+    },
+    "static/images/intro/rx10000/gamerules.webp": {
+      "request_id": 1009,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/rx10000/gamerules.webp",
+      "bytes": 1500,
+      "sha256": "7a1609e7a388912c4532114ddec0e7b24c1e75177d809092cc04f0af9818442b"
+    },
+    "static/images/intro/share/record.webp": {
+      "request_id": 1010,
+      "source": "https://uat-web-cdn.jiligames.com/static/images/intro/share/record.webp",
+      "bytes": 1692,
+      "sha256": "b0dc05856b055e7c507340c22d8ccaeb61152fe5d3bbe75520de6b6fe6384dc0"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/68/685b38ba-dcfc-48da-b94c-26dc0dc05f60.9926e.tfm91lsoxwh": {
+      "request_id": 1012,
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/68/685b38ba-dcfc-48da-b94c-26dc0dc05f60.9926e.tfm91lsoxwh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82"
+    },
+    "rx10000/assets/game/native/74/7472b46b-90ed-4133-948d-b7ec428f53b9.9926e.rijgmy310b": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/74/7472b46b-90ed-4133-948d-b7ec428f53b9.9926e.rijgmy310b",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "reason": "Original client integrity resource requested by the local client; checked active capture first"
+    }
+  }
+}

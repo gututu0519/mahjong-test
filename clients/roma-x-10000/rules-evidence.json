@@ -1,0 +1,60 @@
+{
+  "capture": "ca118facf745438086269f8c58ce2bc5",
+  "request_id": 963,
+  "rules": {
+    "i18_INTRO_RX10000_11": "G. Bonus Game x 2",
+    "i18_INTRO_RX10000_13": "Landing on D, E, F, or G grants entry to the Bonus Game, and your total win from the bonus game will be multiplied by the indicated multiplier.",
+    "i18_INTRO_RX10000_14": "Free Games",
+    "i18_INTRO_RX10000_20": "In each bonus game, if the fighter is attacked by the lion, {img0} decreases by 1. When it reaches 0, the bonus game ends.",
+    "i18_INTRO_RX10000_21": "For each battle, pick one from three options—{img0}, {img1}, or {img2} will show up randomly.",
+    "i18_INTRO_RX10000_22": "Hit the lion or block the lion’s attack to win a reward (the lion might dodge the gladiator's attacks).",
+    "i18_INTRO_RX10000_23": "{img0} - Bet ×20",
+    "i18_INTRO_RX10000_26": "WILD",
+    "i18_INTRO_RX10000_28": "Game Rules",
+    "i18_INTRO_RX10000_29": "All winning symbols must land consecutively from the leftmost reel.",
+    "i18_INTRO_RX10000_3": "The Super Bonus Game lets you win prizes through the bonus wheel.",
+    "i18_INTRO_RX10000_31": "Paylines:",
+    "i18_INTRO_RX10000_33": "Feature games use the same bet amount as the game that triggered them.",
+    "i18_INTRO_RX10000_4": "Wheel Prizes:",
+    "i18_INTRO_RX10000_5": "A. 10000x",
+    "i18_INTRO_RX10000_8": "D. Bonus Game x 10",
+    "i18_INTRO_RX10000_BUY_BONUS_2": "This feature offers buy-in to different game modes by pressing the BUY & PLAY button.",
+    "i18_INTRO_RX10000_1": "Super Bonus Game",
+    "i18_INTRO_RX10000_10": "F. Bonus Game x 3",
+    "i18_INTRO_RX10000_12": "If you hit A, B, or C, you’ll be granted a payout of your bet multiplied by the respective multiplier.",
+    "i18_INTRO_RX10000_15": "In the Main Game, 4 or more consecutive wins in a single spin trigger Free Games.",
+    "i18_INTRO_RX10000_16": "Get 4, 5, 6, or 7 consecutive wins in one spin to trigger 3, 5, 10, or 20 Free Games respectively.",
+    "i18_INTRO_RX10000_17": "In the Free Game, 4, 5, 6, or 7 consecutive wins in a single spin retrigger 3, 5, 10, or 20 additional Free Games respectively.",
+    "i18_INTRO_RX10000_18": "Bonus Game",
+    "i18_INTRO_RX10000_19": "Get 3 {img0} on a payline during the main game to trigger the Bonus Game.",
+    "i18_INTRO_RX10000_2": "Landing 2 {img0} and 1 {img1} on a payline in the main game to trigger the Super Bonus Game.",
+    "i18_INTRO_RX10000_24": "{img0} - Bet ×10",
+    "i18_INTRO_RX10000_25": "{img0} - Bet ×3",
+    "i18_INTRO_RX10000_27": "The Wild substitutes for any symbol except {img0} and {img1}.",
+    "i18_INTRO_RX10000_30": "Only the highest win on each line will be paid.",
+    "i18_INTRO_RX10000_32": "Winning combinations pay from leftmost reel to right on adjacent reels.",
+    "i18_INTRO_RX10000_6": "B. 5000x",
+    "i18_INTRO_RX10000_7": "C. 1000x",
+    "i18_INTRO_RX10000_9": "E. Bonus Game x 5",
+    "i18_INTRO_RX10000_BUY_BONUS_1": "Buy Bonus",
+    "i18_INTRO_RX10000_BUY_BONUS_3": "Click the \"+\" or \"-\" buttons to change the bet values.",
+    "i18_INTRO_RX10000_BUY_BONUS_4": "{img0}: With {num0}x the selected bet amount, randomly trigger the Bonus Game or Super Bonus Game.",
+    "i18_INTRO_RX10000_BUY_BONUS_5": "{img0}: With {num0}x the selected bet amount, the Super Bonus Game is guaranteed to trigger."
+  },
+  "buy_price_evidence": {
+    "Code": 0,
+    "Message": "成功",
+    "Data": [
+      {
+        "BaseRtpValue": "0.97",
+        "IsCert": false,
+        "ExtraInfo": "{\"b\":[{\"o\":50,\"r\":0.97},{\"o\":250,\"r\":0.97}]}"
+      },
+      {
+        "BaseRtpValue": "0.975",
+        "IsCert": true,
+        "ExtraInfo": "{\"b\":[{\"o\":50,\"r\":0.975},{\"o\":100,\"r\":0.975}]}"
+      }
+    ]
+  }
+}

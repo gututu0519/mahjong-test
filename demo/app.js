@@ -10,6 +10,17 @@
   let activeFilter = 'all', activeProvider = 'all';
   const cards = [...document.querySelectorAll('.game-card')];
 
+  function updateCatalogCounts() {
+    document.querySelectorAll('[data-filter]').forEach(button => {
+      const badge = button.querySelector('span');
+      if (badge) badge.textContent = cards.filter(card => card.dataset.status === button.dataset.filter).length;
+    });
+    document.querySelectorAll('[data-provider-filter]').forEach(button => {
+      const badge = button.querySelector('span');
+      if (badge) badge.textContent = cards.filter(card => card.dataset.provider === button.dataset.providerFilter).length;
+    });
+  }
+
   function filterGames() {
     const query = $('game-search').value.trim().toLocaleLowerCase();
     let playable = 0, preview = 0, upcoming = 0;
@@ -94,11 +105,13 @@
     const bass = activeGame === 'big-bass-bonanza';
     const sweet = activeGame === 'sweet-bonanza-pop';
     const ace = activeGame === 'super-ace';
+    const moneyPot = activeGame === 'money-pot-deluxe';
+    const roma = activeGame === 'roma-x-10000';
     const vaults = activeGame === '3-billion-vaults';
     const joker = activeGame === 'jokers-fortune-winx';
     const gems = activeGame === 'fortune-gems2';
-    setText('player-title', vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
-    frame.title = vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
+    setText('player-title', roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
+    frame.title = roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
     setText('player-mode', '虚拟积分试玩');
   }
 
@@ -154,7 +167,7 @@
       });
       if (version !== requestVersion || !dialog.open) return;
       const url = new URL(data.launch_url, location.origin);
-      const expectedOrigin = activeGame === '3-billion-vaults' ? 'http://127.0.0.1:8092' : activeGame === 'jokers-fortune-winx' ? 'http://127.0.0.1:8091' : activeGame === 'fortune-gems2' ? 'http://127.0.0.1:8089' : activeGame === 'super-ace' ? 'http://127.0.0.1:8088' : activeGame === 'big-bass-bonanza' ? 'http://127.0.0.1:8087' : activeGame === 'sweet-bonanza-pop' ? 'http://127.0.0.1:8086' : activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
+      const expectedOrigin = activeGame === 'roma-x-10000' ? 'http://127.0.0.1:8094' : activeGame === 'money-pot-deluxe' ? 'http://127.0.0.1:8093' : activeGame === '3-billion-vaults' ? 'http://127.0.0.1:8092' : activeGame === 'jokers-fortune-winx' ? 'http://127.0.0.1:8091' : activeGame === 'fortune-gems2' ? 'http://127.0.0.1:8089' : activeGame === 'super-ace' ? 'http://127.0.0.1:8088' : activeGame === 'big-bass-bonanza' ? 'http://127.0.0.1:8087' : activeGame === 'sweet-bonanza-pop' ? 'http://127.0.0.1:8086' : activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
       if (url.origin !== expectedOrigin || url.pathname !== '/' || url.searchParams.get('mock') !== '1' || !url.searchParams.get('ops')) throw new Error('无效的游戏链接');
       launchURL = url;
       $('reload-game').disabled = false;
@@ -197,6 +210,7 @@
   });
   launchButtons.forEach(button => button.addEventListener('click', () => launch(button.dataset.launch)));
   window.addEventListener('spinlab:languagechange', () => { filterGames(); updateAvailability(); updatePlayerCopy(); });
+  updateCatalogCounts();
   filterGames();
   loadCatalog();
 })();

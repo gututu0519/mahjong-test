@@ -67,3 +67,15 @@ Windows 双击 `start.bat`。需要 Python 3.10 或更高版本；首次运行�
 此支持针对当前 Joker astarte4 客户端，其他游戏仍按原有方式保存网络数据。旧录制只保存 X25519 公钥和加密回包；会话关闭后没有私钥，不能靠重新登录恢复旧回包。旧数据完整保留。
 
 `python test_decoded.py` 使用本地浏览器夹具验证观察器不改变 Promise/异常、明文落盘与 Scatter 计数。
+
+## Money Pot DELUXE 解码
+
+新增 `/mpt2/` 和 `chunks:///WASM-fb1f222b.js` 的 `c` 命令观察器，保存 SpinReq、SpinAck 与 Golden Lock 触发计数。观察器保留原 Promise、异常和返回值；`test_decoded.py` 同时覆盖 Joker、Vaults 和 Money Pot。
+
+更新代码后，须待当前录制正常停止并保存，再重启工具、新建录制。已有上下文不会自动加载新观察器；旧加密回包不会因此自动解码。2026-10-16：Money Pot 用户会话正常停止并保存（1419 条请求、315 帧 WebSocket）后已重启工具，历史会话可读。刷新页面后新建录制即可使用新解码观察器。
+
+## Roma X 10000 解码与暂停状态
+
+源码已支持 `/rx10000/`，按该游戏 schema 保存明文回合并统计免费、战斗和转盘触发。`python response-capture/test_roma_decoded.py -v`（仓库根目录）验证原 Promise 和异常保持、明文落盘及触发计数，已通过。
+
+2026-10-16 的用户录制 `ca118facf745438086269f8c58ce2bc5` 已 completed，1104 条请求、202 帧 WebSocket，HAR 和响应文件保存完整。该录制开始时还没有 Roma 观察器，明文计数为 0；不能据此判断没有旋转或奖励。目前仅保存开发阶段代码，工具尚未为 Roma 支持重启。继续时重启 8090 并新建录制，先转一局核对解码计数再补抓。原始记录不因代码更新自动解密。具体接入进度见 [Roma 服务说明](../services/roma-x-10000/README.md)。
