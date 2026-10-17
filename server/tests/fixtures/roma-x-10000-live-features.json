@@ -1,0 +1,357 @@
+{
+  "capture": "d60bae0514304f849b8087783be82a8e",
+  "samples": [
+    {
+      "capture_round": 1,
+      "request": {
+        "bet": 6.0,
+        "mall": {
+          "Type": 1,
+          "Index": 1,
+          "Bet": 1500.0
+        },
+        "special": {
+          "cheat": 0,
+          "turbo": false
+        }
+      },
+      "spin": {
+        "RoundQueue": [
+          {
+            "ComboStageData": [
+              {
+                "ComboStageSymbol": [
+                  {
+                    "Col": [
+                      4,
+                      8,
+                      0
+                    ]
+                  },
+                  {
+                    "Col": [
+                      2,
+                      8,
+                      6
+                    ]
+                  },
+                  {
+                    "Col": [
+                      0,
+                      9,
+                      1
+                    ]
+                  },
+                  {
+                    "Col": [
+                      1,
+                      3,
+                      0
+                    ]
+                  },
+                  {
+                    "Col": [
+                      3,
+                      1,
+                      6
+                    ]
+                  }
+                ],
+                "AwardDataVec": [
+                  {
+                    "Symbol": 8,
+                    "Count": 3
+                  }
+                ],
+                "FillSymbols": [
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  }
+                ],
+                "BonusHit": true,
+                "BonusWheelHit": true
+              }
+            ],
+            "AwardTypeFlag": 48
+          }
+        ],
+        "BonusInfo": [
+          {
+            "Symbol": 10,
+            "Win": 18.0,
+            "HealthPoint": 2
+          },
+          {
+            "Symbol": 11,
+            "Result": 1,
+            "Win": 60.0,
+            "HealthPoint": 1
+          },
+          {
+            "Symbol": 10,
+            "Win": 18.0
+          }
+        ],
+        "BonusTotalWin": 960.0,
+        "BonusWheelMult": 10.0,
+        "TotalWin": 960.0,
+        "BonusWheelResult": 3
+      }
+    },
+    {
+      "capture_round": 21,
+      "request": {
+        "bet": 6.0,
+        "mall": {
+          "Type": 1,
+          "Index": 0,
+          "Bet": 300.0
+        },
+        "special": {
+          "cheat": 0,
+          "turbo": false
+        }
+      },
+      "spin": {
+        "RoundQueue": [
+          {
+            "ComboStageData": [
+              {
+                "ComboStageSymbol": [
+                  {
+                    "Col": [
+                      0,
+                      3,
+                      8
+                    ]
+                  },
+                  {
+                    "Col": [
+                      1,
+                      8,
+                      5
+                    ]
+                  },
+                  {
+                    "Col": [
+                      1,
+                      5,
+                      8
+                    ]
+                  },
+                  {
+                    "Col": [
+                      6,
+                      3,
+                      2
+                    ]
+                  },
+                  {
+                    "Col": [
+                      3,
+                      1,
+                      6
+                    ]
+                  }
+                ],
+                "AwardDataVec": [
+                  {
+                    "Symbol": 8,
+                    "Count": 3,
+                    "Line": 11
+                  }
+                ],
+                "FillSymbols": [
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  }
+                ],
+                "BonusHit": true
+              }
+            ],
+            "AwardTypeFlag": 16
+          }
+        ],
+        "BonusInfo": [
+          {
+            "Symbol": 12,
+            "Result": 1,
+            "Win": 120.0,
+            "HealthPoint": 2
+          },
+          {
+            "Symbol": 12,
+            "Result": 2,
+            "HealthPoint": 2
+          },
+          {
+            "Symbol": 10,
+            "Win": 18.0,
+            "HealthPoint": 1
+          },
+          {
+            "Symbol": 11,
+            "Result": 1,
+            "Win": 60.0
+          }
+        ],
+        "BonusTotalWin": 198.0,
+        "BonusWheelMult": 1.0,
+        "TotalWin": 198.0
+      }
+    },
+    {
+      "capture_round": 57,
+      "request": {
+        "bet": 6.0,
+        "mall": {
+          "Type": 1,
+          "Index": 0,
+          "Bet": 300.0
+        },
+        "special": {
+          "cheat": 0,
+          "turbo": false
+        }
+      },
+      "spin": {
+        "RoundQueue": [
+          {
+            "ComboStageData": [
+              {
+                "ComboStageSymbol": [
+                  {
+                    "Col": [
+                      4,
+                      9,
+                      0
+                    ]
+                  },
+                  {
+                    "Col": [
+                      6,
+                      1,
+                      9
+                    ]
+                  },
+                  {
+                    "Col": [
+                      1,
+                      5,
+                      8
+                    ]
+                  },
+                  {
+                    "Col": [
+                      3,
+                      2,
+                      2
+                    ]
+                  },
+                  {
+                    "Col": [
+                      0,
+                      2,
+                      2
+                    ]
+                  }
+                ],
+                "AwardDataVec": [
+                  {
+                    "Symbol": 8,
+                    "Count": 3,
+                    "Line": 8
+                  }
+                ],
+                "FillSymbols": [
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  },
+                  {
+                    "Col": []
+                  }
+                ],
+                "BonusHit": true,
+                "BonusWheelHit": true
+              }
+            ],
+            "AwardTypeFlag": 48
+          }
+        ],
+        "BonusInfo": [
+          {
+            "Symbol": 12,
+            "Result": 2,
+            "HealthPoint": 3
+          },
+          {
+            "Symbol": 11,
+            "Result": 2,
+            "HealthPoint": 3
+          },
+          {
+            "Symbol": 10,
+            "Win": 18.0,
+            "HealthPoint": 2
+          },
+          {
+            "Symbol": 10,
+            "Win": 18.0,
+            "HealthPoint": 1
+          },
+          {
+            "Symbol": 12,
+            "Result": 2,
+            "HealthPoint": 1
+          },
+          {
+            "Symbol": 12,
+            "Result": 2,
+            "HealthPoint": 1
+          },
+          {
+            "Symbol": 10,
+            "Win": 18.0
+          }
+        ],
+        "BonusTotalWin": 108.0,
+        "BonusWheelMult": 2.0,
+        "TotalWin": 108.0,
+        "BonusWheelResult": 6
+      }
+    }
+  ]
+}

@@ -15,14 +15,41 @@ EXTENSIONS = {'.html', '.js', '.json', '.css', '.png', '.jpg', '.webp', '.ico', 
               '.bin', '.wasm', '.mp3', '.ogg', '.wav', '.ttf', '.woff', '.woff2', '.atlas', '.zip', '.cconb', '.ccon'}
 
 
-def import_capture(session):
+def audit_assets():
+    """Check inventory, provenance and bytes without a browser or network access."""
+    destination = ROOT / 'clients/roma-x-10000'
+    sources = json.loads((destination / 'fixtures/asset-sources.json').read_text(encoding='utf-8'))['assets']
+    files = {file.relative_to(destination).as_posix() for prefix in
+             ('rx10000', 'astarte2', 'smallicon', 'static')
+             for file in (destination / prefix).rglob('*') if file.is_file()}
+    errors = ['Unindexed asset: ' + name for name in sorted(files - sources.keys())]
+    for relative, record in sources.items():
+        file = (destination / relative).resolve()
+        if not file.is_relative_to(destination.resolve()) or not file.is_file():
+            errors.append('Missing or invalid asset: ' + relative)
+            continue
+        source = urlsplit(record['source'])
+        if source.scheme != 'https' or source.hostname not in HOSTS:
+            errors.append('Unexpected source: ' + relative)
+        content = file.read_bytes()
+        if len(content) != record['bytes'] or hashlib.sha256(content).hexdigest() != record['sha256']:
+            errors.append('Asset checksum mismatch: ' + relative)
+    print(json.dumps({'files': len(files), 'indexed': len(sources), 'errors': errors}, indent=2))
+    if errors:
+        raise SystemExit(1)
+
+
+def import_capture(session, references_only=False):
     capture = ROOT / 'response-capture/captures' / session
     manifest = capture / 'manifest.json'
-    try:
-        with urlopen('http://127.0.0.1:8090/api/sessions/' + session, timeout=10) as response:
-            snapshot = json.load(response)
-    except OSError:
-        snapshot = json.loads(manifest.read_text(encoding='utf-8'))
+    if references_only:
+        snapshot = {'rows': [], 'state': 'existing configuration references'}
+    else:
+        try:
+            with urlopen('http://127.0.0.1:8090/api/sessions/' + session, timeout=10) as response:
+                snapshot = json.load(response)
+        except OSError:
+            snapshot = json.loads(manifest.read_text(encoding='utf-8'))
     destination = ROOT / 'clients/roma-x-10000'
     destination.mkdir(parents=True, exist_ok=True)
     destination = destination.resolve()
@@ -108,7 +135,8 @@ def import_capture(session):
                     name = uuid(config['uuids'][int(index)])
                     relative = (config_file.parent / f'native/{name[:2]}/{name}.{native[str(index)]}{extension}').relative_to(destination).as_posix()
                     guards[relative] = ({'id': None, 'body': None}, 'https://casino-wbgame.jiligames.com/' + relative)
-    for relative, (row, source) in guards.items():
+    def recover_reference(item):
+        relative, (row, source) = item
         target = destination / relative
         if not target.is_file():
             with urlopen(source, timeout=45) as response:
@@ -118,17 +146,28 @@ def import_capture(session):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(content)
         content = target.read_bytes()
-        sources[relative] = dict(source=source, bytes=len(content), sha256=hashlib.sha256(content).hexdigest(),
-                                 evidence='Native reference in captured Cocos configuration and import pack')
+        return relative, dict(source=source, bytes=len(content), sha256=hashlib.sha256(content).hexdigest(),
+                              evidence='Native reference in captured Cocos configuration and import pack')
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        sources.update(pool.map(recover_reference, guards.items()))
     sources = {**previous, **sources}
     fixtures = destination / 'fixtures'
     fixtures.mkdir(parents=True, exist_ok=True)
     (fixtures / 'asset-sources.json').write_text(json.dumps(
-        {'capture': session, 'assets': sources}, indent=2) + '\n', encoding='utf-8')
+        {'capture': session, 'assets': sources}, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"Imported {len(sources)} static assets; capture state: {snapshot['state']}.")
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('session')
-    import_capture(parser.parse_args().session)
+    parser.add_argument('session', nargs='?')
+    parser.add_argument('--audit', action='store_true', help='Verify indexed asset inventory and checksums offline')
+    parser.add_argument('--references-only', action='store_true',
+                        help='Recover and index native references from already imported configurations without requiring the raw capture')
+    args = parser.parse_args()
+    if args.audit:
+        audit_assets()
+    elif not args.session:
+        parser.error('session is required unless --audit is selected')
+    else:
+        import_capture(args.session, args.references_only)

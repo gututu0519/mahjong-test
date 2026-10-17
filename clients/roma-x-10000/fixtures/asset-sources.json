@@ -1490,16 +1490,1816 @@
       "sha256": "b0dc05856b055e7c507340c22d8ccaeb61152fe5d3bbe75520de6b6fe6384dc0"
     },
     "astarte2/3.6/web-mobile/assets/other/native/68/685b38ba-dcfc-48da-b94c-26dc0dc05f60.9926e.tfm91lsoxwh": {
-      "request_id": 1012,
       "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/68/685b38ba-dcfc-48da-b94c-26dc0dc05f60.9926e.tfm91lsoxwh",
       "bytes": 746,
-      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82"
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
     },
     "rx10000/assets/game/native/74/7472b46b-90ed-4133-948d-b7ec428f53b9.9926e.rijgmy310b": {
       "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/74/7472b46b-90ed-4133-948d-b7ec428f53b9.9926e.rijgmy310b",
       "bytes": 746,
       "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
-      "reason": "Original client integrity resource requested by the local client; checked active capture first"
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/06/06ae656e-1a42-46ba-83d9-d39683688039.9926e.yfpgug81krr": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/06/06ae656e-1a42-46ba-83d9-d39683688039.9926e.yfpgug81krr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/09/091c9198-b060-45d4-a406-a48aaf825253.9926e.szeh8snwbts": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/09/091c9198-b060-45d4-a406-a48aaf825253.9926e.szeh8snwbts",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/0e/0e8ad104-3e2e-43f6-aaaa-a78afb9905e4.9926e.s2htf0714m": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/0e/0e8ad104-3e2e-43f6-aaaa-a78afb9905e4.9926e.s2htf0714m",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/13/13b6a797-2e1f-4483-b6a7-d5d30fcf8d6d.9926e.8ta9js1qzxd": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/13/13b6a797-2e1f-4483-b6a7-d5d30fcf8d6d.9926e.8ta9js1qzxd",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/17/1729eb7c-47d3-4d12-b9a5-1b286d50b123.9926e.855xvsbzwy8": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/17/1729eb7c-47d3-4d12-b9a5-1b286d50b123.9926e.855xvsbzwy8",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/18/18c4e9ec-e8e0-4707-86a7-8cc58d45c458.9926e.sklke6p05os": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/18/18c4e9ec-e8e0-4707-86a7-8cc58d45c458.9926e.sklke6p05os",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/1b/1baa743b-d50d-48c9-ad58-85249de4124c.9926e.ksryjdd2qls": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/1b/1baa743b-d50d-48c9-ad58-85249de4124c.9926e.ksryjdd2qls",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/1d/1da5aa04-4aff-40bb-aded-5ac6b5d488b4.9926e.zw7fcf1g22o": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/1d/1da5aa04-4aff-40bb-aded-5ac6b5d488b4.9926e.zw7fcf1g22o",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/20/200d1df6-ea46-42eb-9b42-826d151b7ac9.9926e.fp5qlx6wvrn": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/20/200d1df6-ea46-42eb-9b42-826d151b7ac9.9926e.fp5qlx6wvrn",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/28/282b2869-a6ab-4f29-9796-d911ce495807.9926e.btpry7xug3r": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/28/282b2869-a6ab-4f29-9796-d911ce495807.9926e.btpry7xug3r",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/32/32e25d9b-a117-4494-8d01-7d543117fb50.9926e.797mub7gs76": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/32/32e25d9b-a117-4494-8d01-7d543117fb50.9926e.797mub7gs76",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/34/3440b29d-d5cd-466b-ba1c-0030161a7ce3.9926e.3gi6u3td04d": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/34/3440b29d-d5cd-466b-ba1c-0030161a7ce3.9926e.3gi6u3td04d",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/38/38785a9a-0bbb-44a4-b19d-1aa10db04b1d.9926e.2klvcvxkio1": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/38/38785a9a-0bbb-44a4-b19d-1aa10db04b1d.9926e.2klvcvxkio1",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/46/46234dc5-3b88-428c-8059-9c524b402cfd.9926e.xcqyz7vdal": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/46/46234dc5-3b88-428c-8059-9c524b402cfd.9926e.xcqyz7vdal",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/46/46a6d97c-a563-460b-92d9-de0418ac365a.9926e.e5c95sjlsvc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/46/46a6d97c-a563-460b-92d9-de0418ac365a.9926e.e5c95sjlsvc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/48/488d7752-33eb-42d5-8f54-5c2149fa5f1e.9926e.jqpfkt7qv5p": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/48/488d7752-33eb-42d5-8f54-5c2149fa5f1e.9926e.jqpfkt7qv5p",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/4b/4b381196-acca-4008-84b2-c4c17ccac41b.9926e.0cvezkmfg69h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/4b/4b381196-acca-4008-84b2-c4c17ccac41b.9926e.0cvezkmfg69h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/53/532f0264-bf65-405e-93dc-9bd3d26733e2.9926e.gl4i0ghj5rs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/53/532f0264-bf65-405e-93dc-9bd3d26733e2.9926e.gl4i0ghj5rs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/54/54da8f4f-e7e0-4a22-b584-a306ef532184.9926e.izu6qwimyh9": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/54/54da8f4f-e7e0-4a22-b584-a306ef532184.9926e.izu6qwimyh9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/59/59247846-4691-463f-b2af-28d50f678f8f.9926e.561sksc03hl": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/59/59247846-4691-463f-b2af-28d50f678f8f.9926e.561sksc03hl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/60/60ee683b-e1bd-40fa-8c91-be8a1c382056.9926e.7i9hcko7507": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/60/60ee683b-e1bd-40fa-8c91-be8a1c382056.9926e.7i9hcko7507",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/61/6161ca63-b267-4dbd-9545-a51ddc6e423a.9926e.rttncinsvw": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/61/6161ca63-b267-4dbd-9545-a51ddc6e423a.9926e.rttncinsvw",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/66/660e779b-27c4-48a3-b546-abc83be14847.9926e.etm7a2m3y0q": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/66/660e779b-27c4-48a3-b546-abc83be14847.9926e.etm7a2m3y0q",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/67/6718c46b-ddbd-4c26-bf04-95a70d2f357f.9926e.vah0w7421ac": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/67/6718c46b-ddbd-4c26-bf04-95a70d2f357f.9926e.vah0w7421ac",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/6d/6d290635-49cc-4929-9e56-c31f384b2c63.9926e.vxwlapsw9ya": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/6d/6d290635-49cc-4929-9e56-c31f384b2c63.9926e.vxwlapsw9ya",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/6e/6e9e8d51-ed31-4ea1-8603-adc39167d700.9926e.on7tg7837bb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/6e/6e9e8d51-ed31-4ea1-8603-adc39167d700.9926e.on7tg7837bb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/72/72fd31f9-7f01-4914-9d22-ba95561d525d.9926e.sqogjvq3i28": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/72/72fd31f9-7f01-4914-9d22-ba95561d525d.9926e.sqogjvq3i28",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/74/74765889-6618-4869-a8e1-aebfe9846f2a.9926e.dm7z4h95xmb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/74/74765889-6618-4869-a8e1-aebfe9846f2a.9926e.dm7z4h95xmb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/76/76b52f3d-bc4a-4655-8ae4-4ea134dee819.9926e.igrohxoancl": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/76/76b52f3d-bc4a-4655-8ae4-4ea134dee819.9926e.igrohxoancl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/88/882dc8eb-4d08-4848-8326-e94cd8db3f95.9926e.b3nf29n6emo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/88/882dc8eb-4d08-4848-8326-e94cd8db3f95.9926e.b3nf29n6emo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/99/9968c0b1-4cfd-4474-9488-c7f7d26510d9.9926e.cjf1cc7v1fk": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/99/9968c0b1-4cfd-4474-9488-c7f7d26510d9.9926e.cjf1cc7v1fk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/a4/a42b1d0b-6b26-492a-aa13-644f51def3f7.9926e.k59mq5us47j": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/a4/a42b1d0b-6b26-492a-aa13-644f51def3f7.9926e.k59mq5us47j",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/a5/a543b858-db4d-4acd-b122-e5a11ecfed6f.9926e.kkxvlzoigp": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/a5/a543b858-db4d-4acd-b122-e5a11ecfed6f.9926e.kkxvlzoigp",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/ad/adad4915-5fa8-4651-a2f0-a7970d464ec3.9926e.yxjvanrdc2e": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/ad/adad4915-5fa8-4651-a2f0-a7970d464ec3.9926e.yxjvanrdc2e",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/b3/b36d3871-571c-41a4-ab5d-1a388a34fc3a.9926e.gh65yge40jq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/b3/b36d3871-571c-41a4-ab5d-1a388a34fc3a.9926e.gh65yge40jq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/b9/b97a172b-2d59-4738-9634-4e3a8bea7cb9.9926e.0tbz3r5lu27": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/b9/b97a172b-2d59-4738-9634-4e3a8bea7cb9.9926e.0tbz3r5lu27",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/c1/c1dfb66a-00c6-4217-be4b-cdece4f8bf85.9926e.9b9j31x7zvi": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/c1/c1dfb66a-00c6-4217-be4b-cdece4f8bf85.9926e.9b9j31x7zvi",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/c8/c8912f4b-0484-43ed-b174-f397ac603ff8.9926e.07b7frnziuk": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/c8/c8912f4b-0484-43ed-b174-f397ac603ff8.9926e.07b7frnziuk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/c9/c9291c06-1854-4dbe-8dfa-1ac90e6f3dc9.9926e.5a6bmfhxvpu": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/c9/c9291c06-1854-4dbe-8dfa-1ac90e6f3dc9.9926e.5a6bmfhxvpu",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/cc/cce4f168-93db-4b9c-a72c-c9fcabb7bac7.9926e.lb7owsm5ado": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/cc/cce4f168-93db-4b9c-a72c-c9fcabb7bac7.9926e.lb7owsm5ado",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/cf/cff00e64-a61d-47ea-a716-d9a7579fcdbd.9926e.pivdvlizqwm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/cf/cff00e64-a61d-47ea-a716-d9a7579fcdbd.9926e.pivdvlizqwm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/d2/d2ea34c9-2bb1-4e20-800d-a8f2ccbfa04f.9926e.qn3eneeel6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/d2/d2ea34c9-2bb1-4e20-800d-a8f2ccbfa04f.9926e.qn3eneeel6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/d3/d32146f7-56ca-454a-afc1-7473f09d4a63.9926e.qjqs1yu8ek": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/d3/d32146f7-56ca-454a-afc1-7473f09d4a63.9926e.qjqs1yu8ek",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/d9/d988e2d7-d2c9-4205-8c16-a1c049c08faf.9926e.00tw8jid9tzc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/d9/d988e2d7-d2c9-4205-8c16-a1c049c08faf.9926e.00tw8jid9tzc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/db/db8dba95-02fb-47f2-86dd-dbb76f01deae.9926e.gm6c61sw6c": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/db/db8dba95-02fb-47f2-86dd-dbb76f01deae.9926e.gm6c61sw6c",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/dc/dc8cf88d-a1f7-4d6a-a2e8-0a0d1506dc8a.9926e.c58sc425ek": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/dc/dc8cf88d-a1f7-4d6a-a2e8-0a0d1506dc8a.9926e.c58sc425ek",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/dd/dd4e74bf-a7ac-45cc-be61-39eea517de5e.9926e.xcxbit8v65": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/dd/dd4e74bf-a7ac-45cc-be61-39eea517de5e.9926e.xcxbit8v65",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/e4/e4a95018-d4b5-459e-86a1-98f6d736ce84.9926e.y3dxh5k061h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/e4/e4a95018-d4b5-459e-86a1-98f6d736ce84.9926e.y3dxh5k061h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/e9/e958f486-e4a9-4074-b6d1-c846eba7c944.9926e.sril1zj9yu": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/e9/e958f486-e4a9-4074-b6d1-c846eba7c944.9926e.sril1zj9yu",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/f0/f06b863e-346e-4726-b910-54a4aef6da90.9926e.qjvruixbppq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/f0/f06b863e-346e-4726-b910-54a4aef6da90.9926e.qjvruixbppq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/extra/native/fc/fcd99965-5f91-4c11-96b0-b665a8dd0d2f.9926e.x2fxwfufupq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/extra/native/fc/fcd99965-5f91-4c11-96b0-b665a8dd0d2f.9926e.x2fxwfufupq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/02/02a565b8-fcb0-4a84-a44e-baf99c10656f.9926e.4v0mj9wid8n": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/02/02a565b8-fcb0-4a84-a44e-baf99c10656f.9926e.4v0mj9wid8n",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/08/08aa6967-0ded-4c7a-bb37-f5df1ae20b01.9926e.74emdg0xqhm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/08/08aa6967-0ded-4c7a-bb37-f5df1ae20b01.9926e.74emdg0xqhm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/08/08b2c125-683a-4eb0-887b-f1cdb859ddc5.9926e.pnsp23cixsn": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/08/08b2c125-683a-4eb0-887b-f1cdb859ddc5.9926e.pnsp23cixsn",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/08/08c6d37c-0158-42e7-97fa-39e7215a5b9f.9926e.xan8aqjq0l": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/08/08c6d37c-0158-42e7-97fa-39e7215a5b9f.9926e.xan8aqjq0l",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/09/09b0c12c-26f9-4dbc-8af8-97254960c706.9926e.yeezosojzq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/09/09b0c12c-26f9-4dbc-8af8-97254960c706.9926e.yeezosojzq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0b/0b10b933-2354-4ba8-95e7-cce01daad47c.9926e.uw82ovxfr3c": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0b/0b10b933-2354-4ba8-95e7-cce01daad47c.9926e.uw82ovxfr3c",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0b/0b5188a5-c8c1-41ad-8324-14774dc6e353.9926e.z3ft790jkq8": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0b/0b5188a5-c8c1-41ad-8324-14774dc6e353.9926e.z3ft790jkq8",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0c/0c126cb4-5da8-4ff9-bcc3-c410c2e951f9.9926e.n44m9agc38n": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0c/0c126cb4-5da8-4ff9-bcc3-c410c2e951f9.9926e.n44m9agc38n",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0d/0d4d13ce-9b5d-4c23-b357-96e6f7acda51.9926e.ro1n0c2fy3": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0d/0d4d13ce-9b5d-4c23-b357-96e6f7acda51.9926e.ro1n0c2fy3",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0d/0dc1a6f9-c3e0-49ea-a6ce-d6a2375b7ee2.9926e.0tlxisy0wdz": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0d/0dc1a6f9-c3e0-49ea-a6ce-d6a2375b7ee2.9926e.0tlxisy0wdz",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0f/0f1d2ae2-79d0-4d1c-adbc-16c0c594500e.9926e.n50bb5jeryc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0f/0f1d2ae2-79d0-4d1c-adbc-16c0c594500e.9926e.n50bb5jeryc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0f/0f3edff1-d472-43ff-9bb5-52ae87bc3a3d.9926e.t6selzygj4e": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0f/0f3edff1-d472-43ff-9bb5-52ae87bc3a3d.9926e.t6selzygj4e",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/0f/0f466526-784a-43a6-9bcd-d8525f9bba60.9926e.4vfni4caego": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/0f/0f466526-784a-43a6-9bcd-d8525f9bba60.9926e.4vfni4caego",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/11/11526ded-38f4-465d-8e60-f0127eeaf6b1.9926e.0r6up1ss6g4": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/11/11526ded-38f4-465d-8e60-f0127eeaf6b1.9926e.0r6up1ss6g4",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/12/120e7e62-cefc-4927-96d9-7c8252088747.9926e.xvv4dxueytq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/12/120e7e62-cefc-4927-96d9-7c8252088747.9926e.xvv4dxueytq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/14/14124d0f-6bde-4ade-8022-77bd9c299377.9926e.0gqmsm2k8bj": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/14/14124d0f-6bde-4ade-8022-77bd9c299377.9926e.0gqmsm2k8bj",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/15/15a95f1d-527c-4050-880d-2b95985551ac.9926e.d55tflbz6rk": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/15/15a95f1d-527c-4050-880d-2b95985551ac.9926e.d55tflbz6rk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/15/15e6f7fe-b10b-4b38-806c-cd1b5c06e49e.9926e.h5sx9pn8kle": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/15/15e6f7fe-b10b-4b38-806c-cd1b5c06e49e.9926e.h5sx9pn8kle",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/17/1762b6d5-daa6-4233-aeda-4e05baffee7d.9926e.hgloqs3c149": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/17/1762b6d5-daa6-4233-aeda-4e05baffee7d.9926e.hgloqs3c149",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/18/18e7198c-3804-46c3-8045-3a9b79584fff.9926e.zcf9f8qyy68": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/18/18e7198c-3804-46c3-8045-3a9b79584fff.9926e.zcf9f8qyy68",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/19/191bdce9-7a08-4a68-b4e4-270573ca0b22.9926e.ozs6zjdktra": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/19/191bdce9-7a08-4a68-b4e4-270573ca0b22.9926e.ozs6zjdktra",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/19/198e809c-ec67-4366-8780-dec6a5b26e26.9926e.ac6wfsoj1c6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/19/198e809c-ec67-4366-8780-dec6a5b26e26.9926e.ac6wfsoj1c6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/1e/1e933dbb-ce73-4222-b678-70743b1697b5.9926e.y84cqp9kcsm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/1e/1e933dbb-ce73-4222-b678-70743b1697b5.9926e.y84cqp9kcsm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/1f/1f2e7d24-1379-408f-9400-27d5d275f547.9926e.ssevl5i4x3": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/1f/1f2e7d24-1379-408f-9400-27d5d275f547.9926e.ssevl5i4x3",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/20/20148be5-3b84-413e-9a7f-4f9a7f64fd8c.9926e.4a7eqmxv6pe": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/20/20148be5-3b84-413e-9a7f-4f9a7f64fd8c.9926e.4a7eqmxv6pe",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/20/202bae71-dceb-42e3-b245-7a7089ba99ac.9926e.x489vb41bqr": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/20/202bae71-dceb-42e3-b245-7a7089ba99ac.9926e.x489vb41bqr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/22/22f3e14c-9f53-4f53-81e7-b058bff01071.9926e.1nqggx5rlhc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/22/22f3e14c-9f53-4f53-81e7-b058bff01071.9926e.1nqggx5rlhc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/22/22fd8a4e-7a11-48f8-889a-8b7f72bf09c9.9926e.tq1hwgs9brl": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/22/22fd8a4e-7a11-48f8-889a-8b7f72bf09c9.9926e.tq1hwgs9brl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/25/25ea7edc-7a96-4ba6-aba4-e8de2d59a83e.9926e.h6bz8zf0eqm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/25/25ea7edc-7a96-4ba6-aba4-e8de2d59a83e.9926e.h6bz8zf0eqm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/27/271e3783-0c8a-4af3-b68c-eb86f714bba4.9926e.8tkrsrhlfd7": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/27/271e3783-0c8a-4af3-b68c-eb86f714bba4.9926e.8tkrsrhlfd7",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/27/2795c161-2eb9-4671-ae6f-a4d7b820abf1.9926e.wv2sqm0o588": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/27/2795c161-2eb9-4671-ae6f-a4d7b820abf1.9926e.wv2sqm0o588",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/29/2949e46e-0ce2-49fa-8eac-65680d6102a1.9926e.dwivwp07ltm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/29/2949e46e-0ce2-49fa-8eac-65680d6102a1.9926e.dwivwp07ltm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/29/29853169-8e84-40df-a72e-395be09a27aa.9926e.zmwpaobuk19": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/29/29853169-8e84-40df-a72e-395be09a27aa.9926e.zmwpaobuk19",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/2a/2a9dd977-152b-4f5b-8945-a4b819dbd6a0.9926e.e928y448bzi": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/2a/2a9dd977-152b-4f5b-8945-a4b819dbd6a0.9926e.e928y448bzi",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/2c/2c0d567f-ae56-4e86-8b84-cf2d2a19eeab.9926e.36wicn1q38l": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/2c/2c0d567f-ae56-4e86-8b84-cf2d2a19eeab.9926e.36wicn1q38l",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/2d/2d1f27cf-80f7-4db9-9991-3b771b8ead6e.9926e.bognhqilr5h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/2d/2d1f27cf-80f7-4db9-9991-3b771b8ead6e.9926e.bognhqilr5h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/2e/2e72ba32-94f8-448c-999d-34942dc92f46.9926e.h9t2rnywi": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/2e/2e72ba32-94f8-448c-999d-34942dc92f46.9926e.h9t2rnywi",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/32/324ea0c2-91f1-4496-8a12-742202285b7c.9926e.ptwr9darerk": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/32/324ea0c2-91f1-4496-8a12-742202285b7c.9926e.ptwr9darerk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/32/32fa0a3f-a939-4434-ad5c-29336eae3744.9926e.0q8o3a6newfc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/32/32fa0a3f-a939-4434-ad5c-29336eae3744.9926e.0q8o3a6newfc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/35/350852ff-4a19-4578-a16f-fe856da17413.9926e.0r9tmo4mtv4": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/35/350852ff-4a19-4578-a16f-fe856da17413.9926e.0r9tmo4mtv4",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/35/3578a814-de30-4573-9b8a-0402204fe5da.9926e.lbknm68u1zo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/35/3578a814-de30-4573-9b8a-0402204fe5da.9926e.lbknm68u1zo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/37/37ca1663-cd3d-4f23-87d4-4d7f43c737f2.9926e.ny4udi3pa4t": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/37/37ca1663-cd3d-4f23-87d4-4d7f43c737f2.9926e.ny4udi3pa4t",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/38/3864710c-d678-423e-bebc-a063a458bc56.9926e.2l7gtnl366s": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/38/3864710c-d678-423e-bebc-a063a458bc56.9926e.2l7gtnl366s",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/39/39f3712d-7543-4088-9ef6-1ac0109c898f.9926e.i14rs66ayua": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/39/39f3712d-7543-4088-9ef6-1ac0109c898f.9926e.i14rs66ayua",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3b/3bc0ed25-8b91-4d2a-b924-2a97cac9ee34.9926e.9tf5rzavvbs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3b/3bc0ed25-8b91-4d2a-b924-2a97cac9ee34.9926e.9tf5rzavvbs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3d/3d37b70a-cc11-4b64-98d9-b7c028534eb0.9926e.nw0z5fay6i": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3d/3d37b70a-cc11-4b64-98d9-b7c028534eb0.9926e.nw0z5fay6i",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3d/3d86dd0d-1ceb-4d33-b32a-324001604cd0.9926e.jnnl6gztgl8": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3d/3d86dd0d-1ceb-4d33-b32a-324001604cd0.9926e.jnnl6gztgl8",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3d/3dddecdf-0d6b-4999-90c1-a378ac557172.9926e.n8vzeyv5dbb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3d/3dddecdf-0d6b-4999-90c1-a378ac557172.9926e.n8vzeyv5dbb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3e/3e593150-daed-42f1-ae20-9cb3fa4ce572.9926e.83oalc8p0ry": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3e/3e593150-daed-42f1-ae20-9cb3fa4ce572.9926e.83oalc8p0ry",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/3f/3f873911-e5f4-4b1f-98fc-b69457acf4ba.9926e.9lvjhie8ks": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/3f/3f873911-e5f4-4b1f-98fc-b69457acf4ba.9926e.9lvjhie8ks",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/40/40265f81-5619-4cad-af58-a3accab5fc0c.9926e.wctwttjt20i": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/40/40265f81-5619-4cad-af58-a3accab5fc0c.9926e.wctwttjt20i",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/40/4050b585-7882-4d0c-8b1b-a4faf8378b83.9926e.vhfo1afrzqc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/40/4050b585-7882-4d0c-8b1b-a4faf8378b83.9926e.vhfo1afrzqc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/41/413d0f6a-b21f-4340-b9f4-ce67c15c08f7.9926e.24bgwhu7sx6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/41/413d0f6a-b21f-4340-b9f4-ce67c15c08f7.9926e.24bgwhu7sx6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/43/4349bdc7-7ed5-43a9-95ae-00f8d2ad34ae.9926e.k2awvkp2rf": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/43/4349bdc7-7ed5-43a9-95ae-00f8d2ad34ae.9926e.k2awvkp2rf",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/45/45735912-e2cc-4b95-bccc-65287b406ad3.9926e.326ifryz84h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/45/45735912-e2cc-4b95-bccc-65287b406ad3.9926e.326ifryz84h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/45/45f7b710-9858-420a-983f-e8a3218a5c57.9926e.zwbors2gn0f": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/45/45f7b710-9858-420a-983f-e8a3218a5c57.9926e.zwbors2gn0f",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/46/46a1e35d-9e1a-4097-995d-f418cf35a85a.9926e.yux9eoders": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/46/46a1e35d-9e1a-4097-995d-f418cf35a85a.9926e.yux9eoders",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/46/46a4d1fb-184f-48ef-ac7d-83526e052bb3.9926e.jzq8uxybn5": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/46/46a4d1fb-184f-48ef-ac7d-83526e052bb3.9926e.jzq8uxybn5",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/46/46dcb7ea-1b57-4238-8b9a-4a6f8be8beed.9926e.yqdlf2lcgx9": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/46/46dcb7ea-1b57-4238-8b9a-4a6f8be8beed.9926e.yqdlf2lcgx9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/48/4859d184-c27a-4e0c-8023-1f402f9447de.9926e.8z5zeuxoavo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/48/4859d184-c27a-4e0c-8023-1f402f9447de.9926e.8z5zeuxoavo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/49/498c39b1-13e5-4e64-9402-f715784e139f.9926e.uf0qo1cdjs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/49/498c39b1-13e5-4e64-9402-f715784e139f.9926e.uf0qo1cdjs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4a/4aa52200-ee11-4638-bf0a-bcb13c1a48f8.9926e.ng5egqch4mp": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4a/4aa52200-ee11-4638-bf0a-bcb13c1a48f8.9926e.ng5egqch4mp",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4b/4baf8b78-2008-47c3-a627-b1ed6a347932.9926e.5ne5vb5jlb6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4b/4baf8b78-2008-47c3-a627-b1ed6a347932.9926e.5ne5vb5jlb6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4b/4bb713a8-4538-44a2-a2da-69638a91e95b.9926e.d63ke5xmvjs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4b/4bb713a8-4538-44a2-a2da-69638a91e95b.9926e.d63ke5xmvjs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4b/4be0f094-16ac-42e4-809e-24a91f171b43.9926e.3gz9n6arz7u": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4b/4be0f094-16ac-42e4-809e-24a91f171b43.9926e.3gz9n6arz7u",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4b/4bfc673b-2133-4b5a-b684-50653154ce82.9926e.mpji54fhl2": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4b/4bfc673b-2133-4b5a-b684-50653154ce82.9926e.mpji54fhl2",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4c/4c4143ee-8296-4378-84d8-a830fe56e517.9926e.xv9fkchh07n": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4c/4c4143ee-8296-4378-84d8-a830fe56e517.9926e.xv9fkchh07n",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/4f/4f98a8e1-57a3-4803-9787-b84112beeb3b.9926e.lrtuuwy5fd": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/4f/4f98a8e1-57a3-4803-9787-b84112beeb3b.9926e.lrtuuwy5fd",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/51/519b817b-8f44-42f3-87e9-0d1b8b1cb85c.9926e.jdrvcmge7m": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/51/519b817b-8f44-42f3-87e9-0d1b8b1cb85c.9926e.jdrvcmge7m",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/52/52a17162-22b5-4ad9-9d70-dd64d2bbc88f.9926e.yz994b3cqz": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/52/52a17162-22b5-4ad9-9d70-dd64d2bbc88f.9926e.yz994b3cqz",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/52/52e879ce-c383-4d3f-8a10-2403d2993c21.9926e.7cr9an4byml": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/52/52e879ce-c383-4d3f-8a10-2403d2993c21.9926e.7cr9an4byml",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/55/55ed9357-128a-4e82-872e-6ed40accae36.9926e.k3qt7qxtb9": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/55/55ed9357-128a-4e82-872e-6ed40accae36.9926e.k3qt7qxtb9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/57/570949c5-ba95-4331-b49d-c9e9e713cf3b.9926e.hojouciic55": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/57/570949c5-ba95-4331-b49d-c9e9e713cf3b.9926e.hojouciic55",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/57/576b7fd9-2c6d-4c57-89f0-97d3c1ca1050.9926e.09c5j997ejq5": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/57/576b7fd9-2c6d-4c57-89f0-97d3c1ca1050.9926e.09c5j997ejq5",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/5c/5c391539-8173-418f-bd9c-7b2379f5fd24.9926e.luqf74yudb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/5c/5c391539-8173-418f-bd9c-7b2379f5fd24.9926e.luqf74yudb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/5c/5c5bd79c-5a89-468b-850e-eeff8e086608.9926e.302i9gw95hs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/5c/5c5bd79c-5a89-468b-850e-eeff8e086608.9926e.302i9gw95hs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/5c/5c86f80a-e1da-401c-8aa8-7e9349abccf4.9926e.x1xirod5igc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/5c/5c86f80a-e1da-401c-8aa8-7e9349abccf4.9926e.x1xirod5igc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/5e/5e8c9f0e-b39a-4496-a1de-d62b74f41cdd.9926e.rjzn4zl2s": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/5e/5e8c9f0e-b39a-4496-a1de-d62b74f41cdd.9926e.rjzn4zl2s",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/5f/5fb7d274-f856-49c0-826e-355397954be9.9926e.ne8nwr55wif": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/5f/5fb7d274-f856-49c0-826e-355397954be9.9926e.ne8nwr55wif",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/60/600204df-7649-47a0-a693-8a2f1bdd5382.9926e.tf29zcy0cc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/60/600204df-7649-47a0-a693-8a2f1bdd5382.9926e.tf29zcy0cc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/62/62ebddcb-13a4-4be2-9c26-36e554a42b4e.9926e.b7wr1ngpj9": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/62/62ebddcb-13a4-4be2-9c26-36e554a42b4e.9926e.b7wr1ngpj9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/63/633cf862-f7ef-42af-b120-97484d8e794d.9926e.0ql96mee04g": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/63/633cf862-f7ef-42af-b120-97484d8e794d.9926e.0ql96mee04g",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/63/635e7f38-5e08-43bd-a26c-cdaeb1034e93.9926e.5gabcouwo32": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/63/635e7f38-5e08-43bd-a26c-cdaeb1034e93.9926e.5gabcouwo32",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/68/68730a7d-8005-4155-95b8-2c11f7c48f55.9926e.t7we5oiaj3": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/68/68730a7d-8005-4155-95b8-2c11f7c48f55.9926e.t7we5oiaj3",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6a/6a7a5880-2630-4826-8661-1502dd012cac.9926e.jobdn1f8arh": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6a/6a7a5880-2630-4826-8661-1502dd012cac.9926e.jobdn1f8arh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6b/6b7c9fb5-213d-4163-9db0-5f61bbc678aa.9926e.6v2tz7ytnho": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6b/6b7c9fb5-213d-4163-9db0-5f61bbc678aa.9926e.6v2tz7ytnho",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6b/6bd2357a-4588-481d-8bcd-92f64e18819c.9926e.hfnub2lrndp": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6b/6bd2357a-4588-481d-8bcd-92f64e18819c.9926e.hfnub2lrndp",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6d/6d9acfdd-35eb-41ac-93d5-89748ffa2715.9926e.mmnejixlcsn": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6d/6d9acfdd-35eb-41ac-93d5-89748ffa2715.9926e.mmnejixlcsn",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6e/6eeed4fc-a5f5-4eb5-ac1f-f5ca31d7c68d.9926e.s9vbky1rkns": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6e/6eeed4fc-a5f5-4eb5-ac1f-f5ca31d7c68d.9926e.s9vbky1rkns",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6e/6efedbdf-9f91-4ce2-a654-204493de05d0.9926e.mv0mub9m6fo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6e/6efedbdf-9f91-4ce2-a654-204493de05d0.9926e.mv0mub9m6fo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/6f/6fb48897-5e2b-4ce7-9091-1400c4004568.9926e.4x81sfdf5ts": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/6f/6fb48897-5e2b-4ce7-9091-1400c4004568.9926e.4x81sfdf5ts",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/70/70ceb24b-c998-4975-b194-296bff8be6af.9926e.dq4ol5wou": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/70/70ceb24b-c998-4975-b194-296bff8be6af.9926e.dq4ol5wou",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/70/70ef4ebc-54e1-48f7-a2d1-ae14a9d72b67.9926e.2vklw0nz0pk": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/70/70ef4ebc-54e1-48f7-a2d1-ae14a9d72b67.9926e.2vklw0nz0pk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/73/73ccc434-dfcf-4e3c-b3f4-f102feea0ec3.9926e.75ri0ag0swq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/73/73ccc434-dfcf-4e3c-b3f4-f102feea0ec3.9926e.75ri0ag0swq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/74/742c9ea1-895a-4298-b709-e11abf4e9de7.9926e.2q4263kjwwd": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/74/742c9ea1-895a-4298-b709-e11abf4e9de7.9926e.2q4263kjwwd",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/74/74835ce9-b7a5-452d-95d0-55664c23e36a.9926e.j8cb05wrbx": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/74/74835ce9-b7a5-452d-95d0-55664c23e36a.9926e.j8cb05wrbx",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/76/76973e83-9873-4b01-bca9-412100b22a48.9926e.9ioyfjl0r49": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/76/76973e83-9873-4b01-bca9-412100b22a48.9926e.9ioyfjl0r49",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/78/78999136-8df4-45fa-9ec2-d15a4d530596.9926e.z3ss4nrs5jb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/78/78999136-8df4-45fa-9ec2-d15a4d530596.9926e.z3ss4nrs5jb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7a/7a579d01-fedf-402b-b2c8-be12ba9e9408.9926e.5us8o0lfomt": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7a/7a579d01-fedf-402b-b2c8-be12ba9e9408.9926e.5us8o0lfomt",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7b/7bac6b85-b04d-4fd3-82b2-5aaeaf678767.9926e.wjyey4sdyuj": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7b/7bac6b85-b04d-4fd3-82b2-5aaeaf678767.9926e.wjyey4sdyuj",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7c/7c59020d-c267-4f2f-b0b2-52e31c9005b5.9926e.qyaetvg0p": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7c/7c59020d-c267-4f2f-b0b2-52e31c9005b5.9926e.qyaetvg0p",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7c/7cf1595f-f2fc-43e8-82b6-e51e4f1d5386.9926e.4i4bcgll58w": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7c/7cf1595f-f2fc-43e8-82b6-e51e4f1d5386.9926e.4i4bcgll58w",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7e/7e2e3d00-c560-4a2d-a8f9-be6ffc4dc965.9926e.bataoomkgil": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7e/7e2e3d00-c560-4a2d-a8f9-be6ffc4dc965.9926e.bataoomkgil",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/7f/7f8b15cd-8ad7-4453-8369-c1b35181ac7c.9926e.nmsg2pcus1h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/7f/7f8b15cd-8ad7-4453-8369-c1b35181ac7c.9926e.nmsg2pcus1h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/82/821634ab-f6ed-48c1-9d96-58a1a383ed82.9926e.631bks9mx1u": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/82/821634ab-f6ed-48c1-9d96-58a1a383ed82.9926e.631bks9mx1u",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/83/8323e036-9620-4592-965b-7db1f79cfe52.9926e.96onn0aveof": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/83/8323e036-9620-4592-965b-7db1f79cfe52.9926e.96onn0aveof",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/83/83d99fac-7aa4-442e-9dc0-72a2a54e8059.9926e.4rt1eg91kgb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/83/83d99fac-7aa4-442e-9dc0-72a2a54e8059.9926e.4rt1eg91kgb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/85/85031141-c98f-4092-b736-8558309db4f2.9926e.oglu7q1tpb": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/85/85031141-c98f-4092-b736-8558309db4f2.9926e.oglu7q1tpb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/86/86a959e3-d18a-48ca-8a69-5ec2cccb4f78.9926e.pg27ax04m3l": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/86/86a959e3-d18a-48ca-8a69-5ec2cccb4f78.9926e.pg27ax04m3l",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/87/876f495e-7a74-48d4-bb60-3a6dc13076f0.9926e.im7o622t99": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/87/876f495e-7a74-48d4-bb60-3a6dc13076f0.9926e.im7o622t99",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/89/896de54e-94bd-4a2e-9945-eb26d21bfcbc.9926e.mxg799y5x9h": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/89/896de54e-94bd-4a2e-9945-eb26d21bfcbc.9926e.mxg799y5x9h",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/8b/8bb89f23-8023-4121-a64e-a1d8d3ed2012.9926e.3ltjguql1tm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/8b/8bb89f23-8023-4121-a64e-a1d8d3ed2012.9926e.3ltjguql1tm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/8e/8e8a68c3-be08-451f-950e-627b52c2ff9f.9926e.masmk3iva2": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/8e/8e8a68c3-be08-451f-950e-627b52c2ff9f.9926e.masmk3iva2",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/8e/8ebe59ee-d641-4243-9320-9f66f3e7fa49.7e34e.otf": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/8e/8ebe59ee-d641-4243-9320-9f66f3e7fa49.7e34e.otf",
+      "bytes": 42376,
+      "sha256": "1ae9cb725956cc84c08e53b7880eda51258812338525405ae93c054a7c3c6b3b",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/92/92c84afc-9411-4aa3-a8c3-408705d9b3ed.9926e.fd7kojw245r": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/92/92c84afc-9411-4aa3-a8c3-408705d9b3ed.9926e.fd7kojw245r",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/93/93bc8556-0c1f-4108-9319-d571a6464ffc.9926e.g4cim32sw3w": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/93/93bc8556-0c1f-4108-9319-d571a6464ffc.9926e.g4cim32sw3w",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/94/94068a6c-4e2c-4b27-aef4-cbc1ddfd1368.9926e.ws4yr20eh4i": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/94/94068a6c-4e2c-4b27-aef4-cbc1ddfd1368.9926e.ws4yr20eh4i",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/94/94ac9ac2-a59d-4b35-8f72-ed0425857549.9926e.0m4hep8y71w": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/94/94ac9ac2-a59d-4b35-8f72-ed0425857549.9926e.0m4hep8y71w",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/95/95f28727-2ce6-47bd-ace5-906ad8081b62.9926e.5i7jsrlmf5e": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/95/95f28727-2ce6-47bd-ace5-906ad8081b62.9926e.5i7jsrlmf5e",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/98/980a7c67-bfb4-4c0d-9d97-57683ce5c442.9926e.l4pkd234ky": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/98/980a7c67-bfb4-4c0d-9d97-57683ce5c442.9926e.l4pkd234ky",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/98/98676eb9-f262-4cc5-bee7-0e69c48d21d1.9926e.gwfezp7g6il": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/98/98676eb9-f262-4cc5-bee7-0e69c48d21d1.9926e.gwfezp7g6il",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/98/98c19aae-782e-4367-b139-1fd6950f60b0.9926e.68mkaipiw5k": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/98/98c19aae-782e-4367-b139-1fd6950f60b0.9926e.68mkaipiw5k",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/9a/9a0e32ba-4727-4558-87cc-c4ed27547fb6.9926e.21bno6yp34wh": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/9a/9a0e32ba-4727-4558-87cc-c4ed27547fb6.9926e.21bno6yp34wh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/9b/9b704eda-41c4-4761-b616-9c1384ce8da4.9926e.d1qg4g7ems5": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/9b/9b704eda-41c4-4761-b616-9c1384ce8da4.9926e.d1qg4g7ems5",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/9b/9be7f503-8982-4129-9b4f-0360d201f115.9926e.cnlbjspi50t": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/9b/9be7f503-8982-4129-9b4f-0360d201f115.9926e.cnlbjspi50t",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/9d/9dc74012-c350-48d2-b5dc-59200ea1a871.9926e.k6eg4m9s0w": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/9d/9dc74012-c350-48d2-b5dc-59200ea1a871.9926e.k6eg4m9s0w",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a0/a05546b0-aaa4-42df-83e5-ef1cd0d47d4b.9926e.io5jadinyo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a0/a05546b0-aaa4-42df-83e5-ef1cd0d47d4b.9926e.io5jadinyo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a7/a70f3284-a18a-42dc-9d26-2a80bcfc7e72.9926e.4x15utbh867": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a7/a70f3284-a18a-42dc-9d26-2a80bcfc7e72.9926e.4x15utbh867",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a7/a7328ddd-bba6-4e2d-a1e8-071e59221024.9926e.idacjhlhvr": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a7/a7328ddd-bba6-4e2d-a1e8-071e59221024.9926e.idacjhlhvr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a7/a740fca7-fe59-4c84-ac0c-b343075b69a4.9926e.i74n1085xs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a7/a740fca7-fe59-4c84-ac0c-b343075b69a4.9926e.i74n1085xs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a7/a7df2fa1-47a0-46d8-9a65-52a73c990b16.9926e.ihdsystu2r": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a7/a7df2fa1-47a0-46d8-9a65-52a73c990b16.9926e.ihdsystu2r",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a8/a8ddb462-564a-48c0-b7d4-00c0494fc8ee.9926e.jr9j3zr5if": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a8/a8ddb462-564a-48c0-b7d4-00c0494fc8ee.9926e.jr9j3zr5if",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/a9/a90d4326-84f6-4dae-a491-5fab6f3fe69b.9926e.kq7632qxfr": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/a9/a90d4326-84f6-4dae-a491-5fab6f3fe69b.9926e.kq7632qxfr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/aa/aaf776ee-27d7-4f10-810b-af5c498faccf.9926e.saannokh6k": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/aa/aaf776ee-27d7-4f10-810b-af5c498faccf.9926e.saannokh6k",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ab/ab279130-9032-4711-9d73-7add86b00e6e.9926e.m44xufrsxt": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ab/ab279130-9032-4711-9d73-7add86b00e6e.9926e.m44xufrsxt",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ab/abd22300-a74a-41e9-ac3b-7f9d1707a772.9926e.al9r1r3gx5v": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ab/abd22300-a74a-41e9-ac3b-7f9d1707a772.9926e.al9r1r3gx5v",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ac/ac1e571f-824e-4e84-a224-65d7812724be.9926e.j2ak6vx3q18": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ac/ac1e571f-824e-4e84-a224-65d7812724be.9926e.j2ak6vx3q18",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ae/aeb60956-4588-4377-a97b-481603bfc3f8.9926e.dwcyac7yks": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ae/aeb60956-4588-4377-a97b-481603bfc3f8.9926e.dwcyac7yks",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/af/af961f6f-6971-4419-94f4-69d2d50f5fcf.9926e.hjrbdidwujt": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/af/af961f6f-6971-4419-94f4-69d2d50f5fcf.9926e.hjrbdidwujt",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/af/afb51407-5ca8-4a80-b4ae-968b535c8823.9926e.t9r81yco4zm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/af/afb51407-5ca8-4a80-b4ae-968b535c8823.9926e.t9r81yco4zm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/af/afbaae6f-3a36-463f-ae90-1d25df6133d7.9926e.23e1uwj3zi7": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/af/afbaae6f-3a36-463f-ae90-1d25df6133d7.9926e.23e1uwj3zi7",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/b4/b40bbe33-bbd5-42b6-9d6a-e6f3056f8d86.9926e.un8xz746jem": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/b4/b40bbe33-bbd5-42b6-9d6a-e6f3056f8d86.9926e.un8xz746jem",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/b6/b63c3c3c-256c-4556-9761-124b0cd25815.9926e.j0cm045wim": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/b6/b63c3c3c-256c-4556-9761-124b0cd25815.9926e.j0cm045wim",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/bc/bc76c6ae-7211-498b-ab5f-7fb5a499eb5e.9926e.8gvyxdtfukc": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/bc/bc76c6ae-7211-498b-ab5f-7fb5a499eb5e.9926e.8gvyxdtfukc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/bc/bcc7197b-90cf-4ead-9aa0-4d2acb618e19.9926e.d40wif9mma": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/bc/bcc7197b-90cf-4ead-9aa0-4d2acb618e19.9926e.d40wif9mma",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/bd/bd8f26e9-6335-4b2c-b876-790a5e20bb0f.9926e.klehaymijhq": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/bd/bd8f26e9-6335-4b2c-b876-790a5e20bb0f.9926e.klehaymijhq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/be/bedee9d5-48a8-48ce-87e2-709acd0ece7d.9926e.aw0drdvmdcv": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/be/bedee9d5-48a8-48ce-87e2-709acd0ece7d.9926e.aw0drdvmdcv",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c0/c08256dc-d36a-4c82-b9f3-41c8f3118482.9926e.3gblw7kedzz": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c0/c08256dc-d36a-4c82-b9f3-41c8f3118482.9926e.3gblw7kedzz",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c0/c098898f-ee50-4559-9110-40935179a3d5.9926e.4e73pto5n3c": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c0/c098898f-ee50-4559-9110-40935179a3d5.9926e.4e73pto5n3c",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c1/c17db669-cac1-4f03-9afb-5e455a7ab17f.9926e.i0ey2v7elp": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c1/c17db669-cac1-4f03-9afb-5e455a7ab17f.9926e.i0ey2v7elp",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c1/c1f5acec-71e4-477a-9e01-28d860efb4a8.9926e.r8dkue8na49": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c1/c1f5acec-71e4-477a-9e01-28d860efb4a8.9926e.r8dkue8na49",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c3/c34dfba3-76c2-4cb1-a0c6-d17c0f9d0d2a.9926e.2i48sg6wv2g": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c3/c34dfba3-76c2-4cb1-a0c6-d17c0f9d0d2a.9926e.2i48sg6wv2g",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c3/c38e73ea-274a-4ee0-8885-0926e70601bc.9926e.l3tnurtbh1": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c3/c38e73ea-274a-4ee0-8885-0926e70601bc.9926e.l3tnurtbh1",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c3/c3c2848c-9149-4233-be0d-8ccd8ba1184c.9926e.uq85lh1ryeh": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c3/c3c2848c-9149-4233-be0d-8ccd8ba1184c.9926e.uq85lh1ryeh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c6/c612f9d3-63e4-4c79-b938-a8f444ee8cfa.9926e.1g0rfwu3daw": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c6/c612f9d3-63e4-4c79-b938-a8f444ee8cfa.9926e.1g0rfwu3daw",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/c7/c7148c43-6df7-489b-9655-96e6731cd39a.9926e.cir68fqd1jl": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/c7/c7148c43-6df7-489b-9655-96e6731cd39a.9926e.cir68fqd1jl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ca/cadcc179-8a37-4604-a86f-57de1c958170.9926e.13ogqgl327e": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ca/cadcc179-8a37-4604-a86f-57de1c958170.9926e.13ogqgl327e",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cb/cbfc8f72-0b41-4331-a894-72b644c1d6ef.9926e.d6691clincs": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cb/cbfc8f72-0b41-4331-a894-72b644c1d6ef.9926e.d6691clincs",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cc/cc4ddbf8-4aa2-405e-88a1-f02865a7c915.9926e.fnvunh0crru": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cc/cc4ddbf8-4aa2-405e-88a1-f02865a7c915.9926e.fnvunh0crru",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cc/cce0969e-1824-4a3b-a8a7-85d4c53d9f60.9926e.aj4pkjnbka": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cc/cce0969e-1824-4a3b-a8a7-85d4c53d9f60.9926e.aj4pkjnbka",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cd/cd2be75d-f7b9-4df9-8045-a6247becf7fb.9926e.aioyynkxssd": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cd/cd2be75d-f7b9-4df9-8045-a6247becf7fb.9926e.aioyynkxssd",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cd/cd32ec62-764d-40d6-adb2-db1f92712539.9926e.vyqrw2mv4re": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cd/cd32ec62-764d-40d6-adb2-db1f92712539.9926e.vyqrw2mv4re",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cd/cda8354b-d48b-426a-8bad-b0f53bc394e4.9926e.06ekhakigda6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cd/cda8354b-d48b-426a-8bad-b0f53bc394e4.9926e.06ekhakigda6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/cd/cdc4a020-f26a-448a-886a-e054a4fa083a.9926e.evdlzjypw2k": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/cd/cdc4a020-f26a-448a-886a-e054a4fa083a.9926e.evdlzjypw2k",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/d0/d00ef449-37c8-43ba-9de7-2b7b1fab4697.9926e.ifqsac401u": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/d0/d00ef449-37c8-43ba-9de7-2b7b1fab4697.9926e.ifqsac401u",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/d1/d1717b94-a60d-4acd-8ab5-19fa666a7280.9926e.7lo380mpfom": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/d1/d1717b94-a60d-4acd-8ab5-19fa666a7280.9926e.7lo380mpfom",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/d2/d2cbaba7-2f3e-487c-8e9d-26b2e765176f.9926e.gwqk8rropq6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/d2/d2cbaba7-2f3e-487c-8e9d-26b2e765176f.9926e.gwqk8rropq6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/d8/d83a3aad-f0a4-4efa-a4ea-aad8923566ac.9926e.3r0quq6v8ra": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/d8/d83a3aad-f0a4-4efa-a4ea-aad8923566ac.9926e.3r0quq6v8ra",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/d8/d8e8e42c-d6fb-4306-a6d7-bd7a00b71a2c.9926e.ksrn6byb65b": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/d8/d8e8e42c-d6fb-4306-a6d7-bd7a00b71a2c.9926e.ksrn6byb65b",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/db/db676513-f7e7-4b5d-b738-d5fca704f2c0.9926e.s4c4gvu2iyo": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/db/db676513-f7e7-4b5d-b738-d5fca704f2c0.9926e.s4c4gvu2iyo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/dd/dd0f1013-846f-47ba-a04c-f2db5500c778.9926e.u86ic4npubh": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/dd/dd0f1013-846f-47ba-a04c-f2db5500c778.9926e.u86ic4npubh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/dd/dddedae8-17d2-4262-a769-905a54c4ba78.9926e.7aiibuj23vx": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/dd/dddedae8-17d2-4262-a769-905a54c4ba78.9926e.7aiibuj23vx",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/de/dead6aaf-3e57-42b3-8e04-cb97cae9308d.9926e.cxgjdq30q5p": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/de/dead6aaf-3e57-42b3-8e04-cb97cae9308d.9926e.cxgjdq30q5p",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/df/df25827e-1cfe-4f5c-aea2-9d9c1f037302.9926e.xzxdktrguf": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/df/df25827e-1cfe-4f5c-aea2-9d9c1f037302.9926e.xzxdktrguf",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/df/dfcf1204-7865-4af0-9a63-11ef40bf358f.9926e.9oupq1gsep": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/df/dfcf1204-7865-4af0-9a63-11ef40bf358f.9926e.9oupq1gsep",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e2/e290cbcb-58cd-4e32-8821-a528a306bb21.9926e.d5r7dr94nyv": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e2/e290cbcb-58cd-4e32-8821-a528a306bb21.9926e.d5r7dr94nyv",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e3/e38751e4-ca95-4052-96d0-61083245fbc4.9926e.6iehp69tnmy": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e3/e38751e4-ca95-4052-96d0-61083245fbc4.9926e.6iehp69tnmy",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e5/e5be9c4c-de59-4197-a3c3-5eb746cdfa3f.9926e.1yr2fngx3il": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e5/e5be9c4c-de59-4197-a3c3-5eb746cdfa3f.9926e.1yr2fngx3il",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e6/e612d39b-0f8a-46f7-98ec-194a91f9f879.9926e.xa3kr21d4q": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e6/e612d39b-0f8a-46f7-98ec-194a91f9f879.9926e.xa3kr21d4q",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e6/e6655d67-f3d9-4e80-858c-9f64a1ef2aa7.9926e.z1wwr6tno1": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e6/e6655d67-f3d9-4e80-858c-9f64a1ef2aa7.9926e.z1wwr6tno1",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e7/e7552cae-4d3a-4365-a679-1176090506fa.9926e.gqa4qpf7dp5": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e7/e7552cae-4d3a-4365-a679-1176090506fa.9926e.gqa4qpf7dp5",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e7/e7ad80d9-8bd7-4c1c-b4f2-222441610d40.9926e.bpzmcmd65a8": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e7/e7ad80d9-8bd7-4c1c-b4f2-222441610d40.9926e.bpzmcmd65a8",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e8/e8ad07bc-4272-49d8-a765-b09960fa28c7.9926e.9c8p9wmvnj6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e8/e8ad07bc-4272-49d8-a765-b09960fa28c7.9926e.9c8p9wmvnj6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e9/e9456fbf-f60f-4493-867d-4360a5f1c7f4.9926e.51deow07zj3": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e9/e9456fbf-f60f-4493-867d-4360a5f1c7f4.9926e.51deow07zj3",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/e9/e99c6584-1766-4a9f-bdcc-8b2b843ca4e1.9926e.t07psibon6": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/e9/e99c6584-1766-4a9f-bdcc-8b2b843ca4e1.9926e.t07psibon6",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ea/ea1d26a0-f86b-4969-9167-8eafd66a26bf.9926e.womdvjeoecg": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ea/ea1d26a0-f86b-4969-9167-8eafd66a26bf.9926e.womdvjeoecg",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ed/ed2f62ef-d8b7-4b1c-bd20-e38568d66276.9926e.2qee561menm": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ed/ed2f62ef-d8b7-4b1c-bd20-e38568d66276.9926e.2qee561menm",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ee/ee573f7d-7eea-492b-8e1d-760b21f9f666.9926e.rzp9z7wp4m": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ee/ee573f7d-7eea-492b-8e1d-760b21f9f666.9926e.rzp9z7wp4m",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ee/ee9a115a-78b8-4321-82b3-7f7df0f67cd6.9926e.okhks0hyas": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ee/ee9a115a-78b8-4321-82b3-7f7df0f67cd6.9926e.okhks0hyas",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/ef/ef67702b-a55b-4a9f-b80a-83d6d7abbfc6.9926e.rehczmb2g8i": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/ef/ef67702b-a55b-4a9f-b80a-83d6d7abbfc6.9926e.rehczmb2g8i",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f4/f40ffe5e-1903-4a4a-ae87-e11088e6a443.9926e.cwh11dkwj4l": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f4/f40ffe5e-1903-4a4a-ae87-e11088e6a443.9926e.cwh11dkwj4l",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f4/f4337da8-0032-488e-b1e5-e5a0eb5894d5.9926e.mxizd6pezeg": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f4/f4337da8-0032-488e-b1e5-e5a0eb5894d5.9926e.mxizd6pezeg",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f7/f76a803d-878e-4e62-8091-e52400116e6e.9926e.pi9eiu8vie": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f7/f76a803d-878e-4e62-8091-e52400116e6e.9926e.pi9eiu8vie",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f7/f7a92167-d254-46a8-bf23-ffaf0988e09f.9926e.kj37zjjeudi": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f7/f7a92167-d254-46a8-bf23-ffaf0988e09f.9926e.kj37zjjeudi",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f8/f8a8aabf-7ed9-4f7a-a05c-9029b2066b5b.9926e.agdx9cdah4m": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f8/f8a8aabf-7ed9-4f7a-a05c-9029b2066b5b.9926e.agdx9cdah4m",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/f9/f99b1165-922a-4a56-9f85-221bc9fa7051.9926e.i71za4xyoui": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/f9/f99b1165-922a-4a56-9f85-221bc9fa7051.9926e.i71za4xyoui",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/fa/fafea7ea-db15-459c-94ad-c00e84f324fa.9926e.e2xckqz2gyg": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/fa/fafea7ea-db15-459c-94ad-c00e84f324fa.9926e.e2xckqz2gyg",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/fb/fb35c788-5e15-4def-81e8-87e833aadf87.9926e.qdidwofcxr": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/fb/fb35c788-5e15-4def-81e8-87e833aadf87.9926e.qdidwofcxr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/fb/fbed2088-0697-4a4e-94dc-560fb934ec89.9926e.9ivc6uqxtjn": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/fb/fbed2088-0697-4a4e-94dc-560fb934ec89.9926e.9ivc6uqxtjn",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "astarte2/3.6/web-mobile/assets/other/native/fc/fc55c4fa-6cb7-4c0b-a953-7e7d0e72ed87.9926e.xk3egxpb9dn": {
+      "source": "https://casino-wbgame.jiligames.com/astarte2/3.6/web-mobile/assets/other/native/fc/fc55c4fa-6cb7-4c0b-a953-7e7d0e72ed87.9926e.xk3egxpb9dn",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/01/0183921b-ea14-4bb2-baf2-d55049c252c4.9926e.5sedb8tw6za": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/01/0183921b-ea14-4bb2-baf2-d55049c252c4.9926e.5sedb8tw6za",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/0e/0eca512f-fd17-47bf-a46c-2d68e6025603.9926e.01m7i9gpweq9": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/0e/0eca512f-fd17-47bf-a46c-2d68e6025603.9926e.01m7i9gpweq9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/10/10c72077-8c67-4ab7-91c2-1127da02742e.9926e.t2ul4dqt1gb": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/10/10c72077-8c67-4ab7-91c2-1127da02742e.9926e.t2ul4dqt1gb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/15/157728c4-d449-4c3c-81b6-fda02ab679ca.9926e.43am470eeov": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/15/157728c4-d449-4c3c-81b6-fda02ab679ca.9926e.43am470eeov",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/22/223a16db-ff6a-4f01-8d4d-ac2c73d238ae.9926e.4pwe247hzxo": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/22/223a16db-ff6a-4f01-8d4d-ac2c73d238ae.9926e.4pwe247hzxo",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/34/34bf0c8d-d7b7-48a7-a42a-76424ce9b5f9.9926e.25xswel7iz3i": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/34/34bf0c8d-d7b7-48a7-a42a-76424ce9b5f9.9926e.25xswel7iz3i",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/41/41404824-9722-40f9-8ab1-5bc931c2fa19.9926e.t9zet7uehrg": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/41/41404824-9722-40f9-8ab1-5bc931c2fa19.9926e.t9zet7uehrg",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/48/4837307c-997c-4c22-9c46-a236c6bc0304.9926e.ip5lps3cbss": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/48/4837307c-997c-4c22-9c46-a236c6bc0304.9926e.ip5lps3cbss",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/53/53b2d9cd-dbb9-42b4-b73d-16af11cd795e.9926e.j52ndkcxt4": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/53/53b2d9cd-dbb9-42b4-b73d-16af11cd795e.9926e.j52ndkcxt4",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/5a/5a0252d2-f4b2-46b9-aed7-e927800b8ecb.9926e.xl6ubz9jmwf": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/5a/5a0252d2-f4b2-46b9-aed7-e927800b8ecb.9926e.xl6ubz9jmwf",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/60/60b224c6-7a9f-4e92-8f6f-f480a9a1e2a3.9926e.xkjpx0izamc": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/60/60b224c6-7a9f-4e92-8f6f-f480a9a1e2a3.9926e.xkjpx0izamc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/60/60def3ff-80de-40aa-89cd-a464b9e3c797.9926e.ujwg9deybfa": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/60/60def3ff-80de-40aa-89cd-a464b9e3c797.9926e.ujwg9deybfa",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/65/65003042-8a4a-4b6a-9f07-a6ca1fba9433.9926e.juyzij2aauq": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/65/65003042-8a4a-4b6a-9f07-a6ca1fba9433.9926e.juyzij2aauq",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/77/77d334bc-5115-459a-857d-13c8f711ef6a.9926e.f67ul4m45ho": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/77/77d334bc-5115-459a-857d-13c8f711ef6a.9926e.f67ul4m45ho",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/7b/7b5bb8e5-335d-4817-b588-641dfe3344f9.9926e.t70r2mihb49": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/7b/7b5bb8e5-335d-4817-b588-641dfe3344f9.9926e.t70r2mihb49",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/84/842a133c-2b9b-484d-871b-51dce28a0b75.9926e.izxiwytsq9": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/84/842a133c-2b9b-484d-871b-51dce28a0b75.9926e.izxiwytsq9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/89/8905541c-5323-40e7-9f35-d6b89de7596f.9926e.n8fptdejato": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/89/8905541c-5323-40e7-9f35-d6b89de7596f.9926e.n8fptdejato",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/89/89c3bc86-d75f-4601-9b3f-e696a7560503.9926e.nz19b00jpr": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/89/89c3bc86-d75f-4601-9b3f-e696a7560503.9926e.nz19b00jpr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/8a/8ae59b07-af49-40da-844a-c13393921d28.9926e.57jtik2g3yt": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8a/8ae59b07-af49-40da-844a-c13393921d28.9926e.57jtik2g3yt",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/8b/8bc2726d-0674-4b2c-bd91-cca5732b83c7.9926e.q6h1hnn7yr": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8b/8bc2726d-0674-4b2c-bd91-cca5732b83c7.9926e.q6h1hnn7yr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/8d/8ddb0b2a-c795-4b47-898f-5c2bc0930a2e.9926e.k55wnj2o2qb": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8d/8ddb0b2a-c795-4b47-898f-5c2bc0930a2e.9926e.k55wnj2o2qb",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/8e/8ee4a822-39fa-4352-9705-640ad3cc9e74.9926e.q2mk0qg5z5t": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/8e/8ee4a822-39fa-4352-9705-640ad3cc9e74.9926e.q2mk0qg5z5t",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/93/93bc0e07-b12c-459b-85ef-ec5fb1e64d74.9926e.3kw8doi1yft": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/93/93bc0e07-b12c-459b-85ef-ec5fb1e64d74.9926e.3kw8doi1yft",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/9c/9c152031-5979-426a-b655-f778eb38e71c.9926e.0v1s3oqxuaak": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/9c/9c152031-5979-426a-b655-f778eb38e71c.9926e.0v1s3oqxuaak",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/a0/a066c3c9-e550-4a1e-8c77-9c0ed2091842.9926e.m3s9fwbrqw": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a0/a066c3c9-e550-4a1e-8c77-9c0ed2091842.9926e.m3s9fwbrqw",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/a0/a06c2bba-5251-4168-8502-00bbe7c3bc97.9926e.z1h23u5vedg": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a0/a06c2bba-5251-4168-8502-00bbe7c3bc97.9926e.z1h23u5vedg",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/a8/a8243523-6f28-4842-a676-11c02df1543d.9926e.grbze88uki4": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/a8/a8243523-6f28-4842-a676-11c02df1543d.9926e.grbze88uki4",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/aa/aab80d2c-d6dd-41f2-823e-41131696c7e1.9926e.r2drrqwjscl": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/aa/aab80d2c-d6dd-41f2-823e-41131696c7e1.9926e.r2drrqwjscl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/ae/ae1eca7c-e963-4107-84f4-2996f3e5d7e0.9926e.691ghn40w16": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ae/ae1eca7c-e963-4107-84f4-2996f3e5d7e0.9926e.691ghn40w16",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/b0/b011ada1-92a0-418f-bf0d-ef9c59f8a68e.9926e.pyufg9os4dr": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b0/b011ada1-92a0-418f-bf0d-ef9c59f8a68e.9926e.pyufg9os4dr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/b6/b62ee98d-af4d-42ff-b2d1-a93ff5a1f7f1.9926e.p538mrn1cpc": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/b6/b62ee98d-af4d-42ff-b2d1-a93ff5a1f7f1.9926e.p538mrn1cpc",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/bb/bb30b324-a3a7-4c72-bae7-396a047c2415.9926e.xodlcq7x71q": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/bb/bb30b324-a3a7-4c72-bae7-396a047c2415.9926e.xodlcq7x71q",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/bb/bb3f34e6-bb0e-4b28-ae75-4c82c9b0d932.9926e.mfnhagnq6r": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/bb/bb3f34e6-bb0e-4b28-ae75-4c82c9b0d932.9926e.mfnhagnq6r",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/c1/c16277e5-ae4a-41cc-860b-e4eb41cbadc2.9926e.cob96c6q9et": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c1/c16277e5-ae4a-41cc-860b-e4eb41cbadc2.9926e.cob96c6q9et",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/c3/c3542aca-d11f-499e-94ca-415a78124ee7.9926e.nbyl9plb1v9": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c3/c3542aca-d11f-499e-94ca-415a78124ee7.9926e.nbyl9plb1v9",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/c6/c6d432d5-041b-4188-aa5e-b3c360fa0c3d.9926e.o6rszy9mbnl": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c6/c6d432d5-041b-4188-aa5e-b3c360fa0c3d.9926e.o6rszy9mbnl",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/c7/c749e807-909c-48d8-9a59-4e314eb05472.9926e.pox33a1o5bp": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c7/c749e807-909c-48d8-9a59-4e314eb05472.9926e.pox33a1o5bp",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/c7/c7b533e0-baff-41ff-a95e-4c967d1c7a53.9926e.1k23ib742ogh": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/c7/c7b533e0-baff-41ff-a95e-4c967d1c7a53.9926e.1k23ib742ogh",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/ca/ca454f92-f68d-4157-80b9-2d3a152d6bc9.9926e.a1j8czhe92": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ca/ca454f92-f68d-4157-80b9-2d3a152d6bc9.9926e.a1j8czhe92",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/ca/ca494868-b83e-441b-b11d-4b357fcba440.9926e.cfekf4wpxqr": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ca/ca494868-b83e-441b-b11d-4b357fcba440.9926e.cfekf4wpxqr",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/d2/d27bf5ba-6b0a-42c2-83ba-bbff0dc40c2a.9926e.48h9fbaj4ne": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/d2/d27bf5ba-6b0a-42c2-83ba-bbff0dc40c2a.9926e.48h9fbaj4ne",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/d6/d6e89bac-9aad-48aa-8905-4c0ee7b77c3f.9926e.gd5iaizx43r": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/d6/d6e89bac-9aad-48aa-8905-4c0ee7b77c3f.9926e.gd5iaizx43r",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/d9/d901a05b-ed22-4202-ab50-d57a23b57aab.9926e.ncozj8p72df": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/d9/d901a05b-ed22-4202-ab50-d57a23b57aab.9926e.ncozj8p72df",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/d9/d978a1e2-6e1c-4ebb-9810-01c05c06aed1.9926e.omv4hy6kr5f": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/d9/d978a1e2-6e1c-4ebb-9810-01c05c06aed1.9926e.omv4hy6kr5f",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/db/dbec6059-7105-417c-97fa-918c76342967.9926e.6y38o5rdna": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/db/dbec6059-7105-417c-97fa-918c76342967.9926e.6y38o5rdna",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/ec/ecc17da1-8acd-47cc-9dcf-d594fc00ad7a.9926e.yqezxtsibed": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/ec/ecc17da1-8acd-47cc-9dcf-d594fc00ad7a.9926e.yqezxtsibed",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/f1/f183a664-a4a4-4bf0-84a1-bc18eb2432cb.9926e.cqgw6810qm8": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f1/f183a664-a4a4-4bf0-84a1-bc18eb2432cb.9926e.cqgw6810qm8",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/f4/f4f0e247-e08b-40be-b4db-53c6d37fbbc8.9926e.eey9q2670hk": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/f4/f4f0e247-e08b-40be-b4db-53c6d37fbbc8.9926e.eey9q2670hk",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
+    },
+    "rx10000/assets/game/native/fd/fd844ca7-9e5a-432f-9e9b-86684b60ba99.9926e.t9vo43rt3ea": {
+      "source": "https://casino-wbgame.jiligames.com/rx10000/assets/game/native/fd/fd844ca7-9e5a-432f-9e9b-86684b60ba99.9926e.t9vo43rt3ea",
+      "bytes": 746,
+      "sha256": "6a7340a324579cd3735145aa5c72d0cce9902ce87332edb99ba04c46037e5c82",
+      "evidence": "Native reference in captured Cocos configuration and import pack"
     }
   }
 }

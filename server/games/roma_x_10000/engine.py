@@ -11,6 +11,11 @@ def columns(values):
     return [dict(Col=list(col)) for col in values]
 
 
+def free_rounds_for_wins(wins):
+    """Original rules: consecutive winning cascades award 3/5/10/20 games."""
+    return (3, 5, 10, 20)[min(wins - 4, 3)] if wins >= 4 else 0
+
+
 def evaluate(plate, amount, config):
     awards, removed, total = [], set(), 0
     for line, positions in enumerate(config['line_infos']):
@@ -37,7 +42,7 @@ def evaluate(plate, amount, config):
 
 
 class RomaX10000:
-    game_id, title, version, minor_unit = 'roma-x-10000', 'Roma X 10000', '1.0.0', 10000
+    game_id, title, version, minor_unit = 'roma-x-10000', 'Roma X 10000', '1.0.1', 10000
 
     def __init__(self, config_path=None):
         self.config = json.loads(Path(config_path or Path(__file__).with_name('config.json')).read_text(encoding='utf-8'))
@@ -129,11 +134,12 @@ class RomaX10000:
                 feature = 'bonus'
         if feature == 'bonus':
             spin['BonusInfo'], cash = self._battle(rng, amount)
+            spin['BonusWheelMult'] = multiplier
             spin['BonusTotalWin'] = cash * multiplier / 10000
             first['AwardTypeFlag'] |= 16
             total += cash * multiplier
         wins = sum(stage['ComboStageWin'] > 0 for stage in first['ComboStageData'])
-        remaining = [3, 5, 10, 20][min(wins - 4, 3)] if wins >= 4 else 0
+        remaining = free_rounds_for_wins(wins)
         if remaining:
             first.update(AwardTypeFlag=first['AwardTypeFlag'] | 2, AddRound=remaining, FreeRemainRound=remaining, FreeTotalRound=remaining)
         free_total, current, free_count = 0, 0, remaining
@@ -142,7 +148,7 @@ class RomaX10000:
             remaining -= 1
             record = self._round(rng, amount)
             wins = sum(stage['ComboStageWin'] > 0 for stage in record['ComboStageData'])
-            added = [3, 5, 10, 20][min(wins - 4, 3)] if wins >= 4 else 0
+            added = free_rounds_for_wins(wins)
             remaining += added
             free_count += added
             record.update(AwardTypeFlag=record['AwardTypeFlag'] | 4 | (8 if not remaining else 0),
