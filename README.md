@@ -1,5 +1,7 @@
 # Mahjong Test
 
+Wicked Grin（Hacksaw Gaming）独立服务启动：`python -m server.run --service-dir services/wicked-grin`，端口 8095。实现、抓取证据及未完成验收见 [接入记录](services/wicked-grin/README.md)。
+
 独立服务的入口、配置、数据与进程隔离以 [服务目录说明](services/README.md) 为准。
 
 本仓库包含本地多游戏服务端、麻将客户端资源，以及浏览器请求抓取工具。

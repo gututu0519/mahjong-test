@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'wicked-grin': {
+        'factory': 'server.games.wicked_grin:WickedGrin',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['symbol_count', 'cascades', 'expanding_coins', 'multipliers', 'feature_spins', 'free_spins', 'free_retrigger', 'buy_bonus'],
+    },
     'roma-x-10000': {
         'factory': 'server.games.roma_x_10000:RomaX10000',
         'category': 'slots', 'interaction': 'request_steps',

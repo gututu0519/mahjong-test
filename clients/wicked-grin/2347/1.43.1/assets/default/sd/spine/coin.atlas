@@ -1,0 +1,9 @@
+coin.png
+size:256,256
+filter:Linear,Linear
+coin_edge
+bounds:1,1,100,10
+coin_side
+bounds:1,130,114,116
+gold
+bounds:1,12,114,116

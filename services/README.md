@@ -1,5 +1,7 @@
 # 独立服务目录
 
+Wicked Grin（Hacksaw Gaming）：端口 8095，`wicked_grin_client`，独立钱包与原版客户端。当前接入和验证范围见 [接入记录](wicked-grin/README.md)。
+
 每个子目录代表一个独立运行的服务，不代表共享服务里的一个路由。
 
 ```text
