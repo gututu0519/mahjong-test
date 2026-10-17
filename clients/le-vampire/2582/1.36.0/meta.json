@@ -1,0 +1,7 @@
+{
+  "deployEnv": "prod",
+  "gameName": "Le Vampire",
+  "gameType": "slot",
+  "hasJackpot": "false",
+  "gameUuid": ""
+}

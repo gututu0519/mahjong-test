@@ -1,5 +1,7 @@
 # Mahjong Test
 
+Le Vampire（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8096。启动：`python -m server.run --service-dir services/le-vampire`。玩法、验收及证据边界见 [接入记录](services/le-vampire/README.md)。
+
 Wicked Grin（Hacksaw Gaming）独立服务启动：`python -m server.run --service-dir services/wicked-grin`，端口 8095。实现、抓取证据及未完成验收见 [接入记录](services/wicked-grin/README.md)。
 
 独立服务的入口、配置、数据与进程隔离以 [服务目录说明](services/README.md) 为准。

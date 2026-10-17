@@ -1,0 +1,82 @@
+digits_clover.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+0
+  rotate: false
+  xy: 1, 1
+  size: 65, 88
+  orig: 67, 96
+  offset: 1, 8
+  index: -1
+1
+  rotate: false
+  xy: 68, 90
+  size: 61, 87
+  orig: 67, 96
+  offset: 3, 9
+  index: -1
+2
+  rotate: false
+  xy: 131, 360
+  size: 63, 87
+  orig: 67, 96
+  offset: 2, 9
+  index: -1
+3
+  rotate: false
+  xy: 1, 361
+  size: 63, 88
+  orig: 67, 96
+  offset: 2, 8
+  index: -1
+4
+  rotate: false
+  xy: 67, 271
+  size: 67, 87
+  orig: 67, 96
+  offset: 0, 9
+  index: -1
+5
+  rotate: false
+  xy: 68, 1
+  size: 63, 87
+  orig: 67, 96
+  offset: 2, 9
+  index: -1
+6
+  rotate: false
+  xy: 1, 91
+  size: 65, 88
+  orig: 67, 96
+  offset: 1, 8
+  index: -1
+7
+  rotate: false
+  xy: 1, 181
+  size: 65, 88
+  orig: 67, 96
+  offset: 1, 8
+  index: -1
+8
+  rotate: false
+  xy: 1, 271
+  size: 64, 88
+  orig: 67, 96
+  offset: 1, 8
+  index: -1
+9
+  rotate: false
+  xy: 66, 361
+  size: 63, 88
+  orig: 67, 96
+  offset: 2, 8
+  index: -1
+x
+  rotate: false
+  xy: 68, 179
+  size: 67, 73
+  orig: 67, 96
+  offset: 0, 8
+  index: -1

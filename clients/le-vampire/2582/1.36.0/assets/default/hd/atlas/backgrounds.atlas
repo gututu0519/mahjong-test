@@ -1,0 +1,19 @@
+backgrounds.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bg
+  rotate: false
+  xy: 0, 0
+  size: 1152, 614
+  orig: 1152, 614
+  offset: 0, 0
+  index: -1
+fs_bg
+  rotate: false
+  xy: 0, 614
+  size: 1152, 614
+  orig: 1152, 614
+  offset: 0, 0
+  index: -1

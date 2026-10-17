@@ -1,0 +1,19 @@
+splash_backgrounds.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+fs_splash
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1024
+  orig: 1920, 1024
+  offset: 0, 0
+  index: -1
+splash
+  rotate: false
+  xy: 0, 1024
+  size: 1920, 1024
+  orig: 1920, 1024
+  offset: 0, 0
+  index: -1

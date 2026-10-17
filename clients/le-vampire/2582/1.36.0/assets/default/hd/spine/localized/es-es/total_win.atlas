@@ -1,0 +1,16 @@
+total_win.png
+size:2048,2048
+filter:Linear,Linear
+bats
+bounds:2,1418,882,615
+gravestone
+bounds:886,1580,453,638
+rotate:90
+premio_total
+bounds:886,1431,634,147
+shadow
+bounds:1526,1416,617,507
+offsets:14,8,648,533
+rotate:90
+total_es
+bounds:886,1278,504,151

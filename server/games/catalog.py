@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'le-vampire': {
+        'factory': 'server.games.le_vampire:LeVampire',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['clusters', 'super_cascades', 'golden_squares', 'blood_squares', 'collectors', 'multipliers', 'free_spins', 'free_retrigger', 'buy_bonus'],
+    },
     'wicked-grin': {
         'factory': 'server.games.wicked_grin:WickedGrin',
         'category': 'slots', 'interaction': 'request_steps',

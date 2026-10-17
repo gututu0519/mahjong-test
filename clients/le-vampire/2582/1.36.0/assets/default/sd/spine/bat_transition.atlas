@@ -1,0 +1,7 @@
+bat_transition.png
+size:1024,1024
+filter:Linear,Linear
+bat
+bounds:2,294,550,290
+bat_blurred
+bounds:2,2,550,290

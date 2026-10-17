@@ -1,0 +1,89 @@
+digits_countup.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+0
+  rotate: false
+  xy: 1, 1
+  size: 252, 269
+  orig: 252, 297
+  offset: 0, 28
+  index: -1
+1
+  rotate: false
+  xy: 496, 268
+  size: 154, 262
+  orig: 174, 297
+  offset: 10, 31
+  index: -1
+2
+  rotate: false
+  xy: 489, 1
+  size: 238, 265
+  orig: 252, 297
+  offset: 7, 31
+  index: -1
+3
+  rotate: false
+  xy: 253, 272
+  size: 241, 268
+  orig: 252, 297
+  offset: 7, 28
+  index: -1
+4
+  rotate: false
+  xy: 729, 1
+  size: 252, 263
+  orig: 252, 297
+  offset: 0, 33
+  index: -1
+5
+  rotate: false
+  xy: 255, 1
+  size: 232, 268
+  orig: 252, 297
+  offset: 10, 28
+  index: -1
+6
+  rotate: false
+  xy: 1, 543
+  size: 247, 269
+  orig: 252, 297
+  offset: 4, 28
+  index: -1
+7
+  rotate: false
+  xy: 729, 266
+  size: 211, 263
+  orig: 252, 297
+  offset: 22, 33
+  index: -1
+8
+  rotate: false
+  xy: 1, 272
+  size: 250, 269
+  orig: 252, 297
+  offset: 1, 28
+  index: -1
+9
+  rotate: false
+  xy: 250, 543
+  size: 244, 269
+  orig: 252, 297
+  offset: 4, 28
+  index: -1
+comma
+  rotate: false
+  xy: 1, 814
+  size: 139, 170
+  orig: 153, 297
+  offset: 7, 0
+  index: -1
+dot
+  rotate: false
+  xy: 142, 814
+  size: 133, 142
+  orig: 153, 297
+  offset: 10, 31
+  index: -1

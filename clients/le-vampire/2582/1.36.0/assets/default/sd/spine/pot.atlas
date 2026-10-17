@@ -1,0 +1,16 @@
+pot.png
+size:512,512
+filter:Linear,Linear
+pot_global
+bounds:196,368,135,152
+offsets:13,1,160,160
+rotate:90
+pot_global_empty
+bounds:350,370,135,133
+offsets:13,2,160,160
+sparkle_1
+bounds:350,303,153,65
+offsets:0,0,154,66
+sparkle_2
+bounds:2,343,192,160
+offsets:0,0,192,161

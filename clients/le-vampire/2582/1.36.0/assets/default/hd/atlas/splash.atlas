@@ -1,0 +1,68 @@
+splash.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+a
+  rotate: false
+  xy: 1, 1
+  size: 944, 956
+  orig: 944, 956
+  offset: 0, 0
+  index: -1
+b
+  rotate: false
+  xy: 1, 959
+  size: 944, 956
+  orig: 944, 956
+  offset: 0, 0
+  index: -1
+backplate
+  rotate: false
+  xy: 1787, 1217
+  size: 190, 189
+  orig: 190, 189
+  offset: 0, 0
+  index: -1
+c
+  rotate: false
+  xy: 947, 1
+  size: 944, 956
+  orig: 944, 956
+  offset: 0, 0
+  index: -1
+coffin_break
+  rotate: false
+  xy: 947, 959
+  size: 838, 289
+  orig: 838, 289
+  offset: 0, 0
+  index: -1
+do_your_fang
+  rotate: false
+  xy: 947, 1250
+  size: 838, 289
+  orig: 838, 289
+  offset: 0, 0
+  index: -1
+hidden_epic_bonus
+  rotate: false
+  xy: 1787, 959
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+love_at_first_bite
+  rotate: false
+  xy: 947, 1541
+  size: 838, 289
+  orig: 838, 289
+  offset: 0, 0
+  index: -1
+volatility
+  rotate: false
+  xy: 1, 1917
+  size: 505, 99
+  orig: 505, 99
+  offset: 0, 0
+  index: -1

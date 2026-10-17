@@ -33,6 +33,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
                 {'id': 'sweet-bonanza-pop', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
                 {'id': 'super-ace', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
                 {'id': 'money-pot-deluxe', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
+                {'id': 'le-vampire', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'wicked-grin', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'roma-x-10000', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
                 {'id': '3-billion-vaults', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
@@ -53,6 +54,7 @@ class Handler(PlatformRoutes, GameRequestHandler):
                       '/demo/big-bass-cover.webp': ('big-bass-cover.webp', 'image/webp'),
                       '/demo/sweet-pop-cover.webp': ('sweet-pop-cover.webp', 'image/webp'),
                       '/demo/money-pot-deluxe-cover.png': ('money-pot-deluxe-cover.png', 'image/png'),
+                      '/demo/le-vampire-cover.jpg': ('le-vampire-cover.jpg', 'image/jpeg'),
                       '/demo/wicked-grin-cover.jpg': ('wicked-grin-cover.jpg', 'image/jpeg'),
                       '/demo/roma-x-10000-cover.png': ('roma-x-10000-cover.png', 'image/png'),
                       '/demo/3-billion-vaults-cover.webp': ('3-billion-vaults-cover.webp', 'image/webp'),
@@ -67,10 +69,10 @@ class Handler(PlatformRoutes, GameRequestHandler):
         GameRequestHandler.do_GET(self)
 
     def launch_game(self, game_id, language='zh'):
-        if game_id in ('buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza', 'super-ace', 'fortune-gems2', 'jokers-fortune-winx', '3-billion-vaults', 'money-pot-deluxe', 'roma-x-10000', 'wicked-grin'):
+        if game_id in ('buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza', 'super-ace', 'fortune-gems2', 'jokers-fortune-winx', '3-billion-vaults', 'money-pot-deluxe', 'roma-x-10000', 'wicked-grin', 'le-vampire'):
             if language not in ('zh', 'en'):
                 raise ServiceError('LANGUAGE_INVALID', 'Supported languages: zh, en.')
-            origin = 'http://127.0.0.1:' + {'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087', 'super-ace': '8088', 'fortune-gems2': '8089', 'jokers-fortune-winx': '8091', '3-billion-vaults': '8092', 'money-pot-deluxe': '8093', 'roma-x-10000': '8094', 'wicked-grin': '8095'}[game_id]
+            origin = 'http://127.0.0.1:' + {'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087', 'super-ace': '8088', 'fortune-gems2': '8089', 'jokers-fortune-winx': '8091', '3-billion-vaults': '8092', 'money-pot-deluxe': '8093', 'roma-x-10000': '8094', 'wicked-grin': '8095', 'le-vampire': '8096'}[game_id]
             request = Request(origin + '/api/v1/games/' + game_id + '/launch',
                               data=json.dumps({'language': language}).encode(),
                               headers={'Content-Type': 'application/json'}, method='POST')

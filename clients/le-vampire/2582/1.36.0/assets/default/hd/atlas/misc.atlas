@@ -1,0 +1,117 @@
+misc.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+base_particle_1
+  rotate: false
+  xy: 1944, 264
+  size: 80, 73
+  orig: 80, 73
+  offset: 0, 0
+  index: -1
+bat_1
+  rotate: false
+  xy: 1944, 1
+  size: 92, 41
+  orig: 92, 41
+  offset: 0, 0
+  index: -1
+bat_2
+  rotate: false
+  xy: 1944, 44
+  size: 92, 41
+  orig: 92, 41
+  offset: 0, 0
+  index: -1
+bat_3
+  rotate: false
+  xy: 1944, 87
+  size: 92, 41
+  orig: 92, 41
+  offset: 0, 0
+  index: -1
+bat_4
+  rotate: false
+  xy: 1944, 130
+  size: 92, 41
+  orig: 92, 41
+  offset: 0, 0
+  index: -1
+blood_1
+  rotate: false
+  xy: 1944, 339
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+blood_2
+  rotate: false
+  xy: 1944, 390
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+blood_3
+  rotate: false
+  xy: 1856, 426
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+blood_4
+  rotate: false
+  xy: 1821, 630
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1045, 426
+  size: 809, 149
+  orig: 809, 149
+  offset: 0, 0
+  index: -1
+reel_bg
+  rotate: false
+  xy: 1, 1
+  size: 1042, 906
+  orig: 1042, 906
+  offset: 0, 0
+  index: -1
+reel_frame
+  rotate: false
+  xy: 1, 909
+  size: 1042, 906
+  orig: 1042, 906
+  offset: 0, 0
+  index: -1
+reel_glow
+  rotate: false
+  xy: 1045, 1
+  size: 897, 423
+  orig: 897, 423
+  offset: 0, 0
+  index: -1
+smokey_base_support
+  rotate: false
+  xy: 1045, 577
+  size: 774, 273
+  orig: 774, 273
+  offset: 0, 0
+  index: -1
+spark_1
+  rotate: false
+  xy: 1856, 477
+  size: 151, 151
+  orig: 151, 151
+  offset: 0, 0
+  index: -1
+spark_2
+  rotate: false
+  xy: 1944, 173
+  size: 89, 89
+  orig: 89, 89
+  offset: 0, 0
+  index: -1

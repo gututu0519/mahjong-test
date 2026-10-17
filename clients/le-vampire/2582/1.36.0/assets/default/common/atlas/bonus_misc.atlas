@@ -1,0 +1,54 @@
+bonus_misc.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+backplate
+  rotate: false
+  xy: 1, 1027
+  size: 948, 943
+  orig: 948, 943
+  offset: 0, 0
+  index: -1
+fr_retrigger_epic_rainbow
+  rotate: false
+  xy: 951, 1408
+  size: 328, 334
+  orig: 328, 334
+  offset: 0, 0
+  index: -1
+fr_retrigger_rainbow
+  rotate: false
+  xy: 1281, 1408
+  size: 328, 334
+  orig: 328, 334
+  offset: 0, 0
+  index: -1
+particle_rainbow_1
+  rotate: false
+  xy: 1, 1993
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+particle_rainbow_2
+  rotate: false
+  xy: 1, 1972
+  size: 14, 19
+  orig: 14, 19
+  offset: 0, 0
+  index: -1
+rainbow
+  rotate: false
+  xy: 1, 1
+  size: 1920, 1024
+  orig: 1920, 1024
+  offset: 0, 0
+  index: -1
+retrigger_2
+  rotate: false
+  xy: 951, 1027
+  size: 398, 379
+  orig: 398, 379
+  offset: 0, 0
+  index: -1

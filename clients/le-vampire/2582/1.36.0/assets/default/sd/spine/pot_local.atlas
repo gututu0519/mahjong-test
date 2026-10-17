@@ -1,0 +1,15 @@
+pot_local.png
+size:512,512
+filter:Linear,Linear
+pot_local
+bounds:196,361,141,131
+offsets:9,10,160,160
+pot_local_empty
+bounds:339,372,138,120
+offsets:12,21,160,160
+sparkle_1
+bounds:339,305,153,65
+offsets:0,0,154,66
+sparkle_2
+bounds:2,332,192,160
+offsets:0,0,192,161

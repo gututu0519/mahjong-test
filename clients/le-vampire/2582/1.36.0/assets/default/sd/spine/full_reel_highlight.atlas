@@ -1,0 +1,14 @@
+full_reel_highlight.png
+size:2048,2048
+filter:Linear,Linear
+blood
+bounds:2,322,824,655
+blood_frame
+bounds:846,981,839,704
+offsets:11,9,860,721
+frame
+bounds:2,979,842,706
+offsets:9,8,860,721
+full_reel_blood
+bounds:846,275,839,704
+offsets:11,9,860,721
