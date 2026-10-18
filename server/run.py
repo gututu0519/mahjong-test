@@ -13,11 +13,13 @@ def load_profile(directory):
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client', 'wicked_grin_client', 'le_vampire_client', 'dr_zappo_client', 'great_game_serengeti_client'):
+    if spec['entry'] not in ('mahjong_client', 'buffalo_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client', 'wicked_grin_client', 'le_vampire_client', 'dr_zappo_client', 'great_game_serengeti_client', 'tower_run_treasure_steps_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
     games = spec['games']
+    if spec['entry'] == 'tower_run_treasure_steps_client' and games != ['tower-run-treasure-steps']:
+        raise ValueError('Tower Run service must isolate its game.')
     if spec['entry'] == 'great_game_serengeti_client' and games != ['great-game-serengeti']:
         raise ValueError('Great Game Serengeti service must isolate its game.')
     if spec['entry'] == 'dr_zappo_client' and games != ['dr-zappo']:
@@ -69,7 +71,10 @@ def build_from_directory(directory, port=None):
     database = directory / 'data' / 'games.sqlite3'
     # The directory owns all runtime state; no shared/default database fallback.
     actual_port = spec['port'] if port is None else port
-    if spec['entry'] == 'great_game_serengeti_client':
+    if spec['entry'] == 'tower_run_treasure_steps_client':
+        from server.services.tower_run_treasure_steps_demo import build_server
+        http = build_server(actual_port, database, configs['tower-run-treasure-steps'])
+    elif spec['entry'] == 'great_game_serengeti_client':
         from server.services.great_game_serengeti_demo import build_server
         http = build_server(actual_port, database, configs['great-game-serengeti'])
     elif spec['entry'] == 'dr_zappo_client':

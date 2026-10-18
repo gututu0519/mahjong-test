@@ -105,3 +105,7 @@ Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `python
 ## Big Bass Bonanza
 
 已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](services/big-bass-bonanza/README.md)。
+
+## Tower Run Treasure Steps
+
+Tower Run Treasure Steps（Play’n GO，1098）已接入中英文原版客户端和独立生成服务 8099；启动 `python -m server.run --service-dir services/tower-run-treasure-steps`，可从大厅进入。规则、证据范围及补抓项见 [接入文档](docs/tower-run-treasure-steps-rules.md)。

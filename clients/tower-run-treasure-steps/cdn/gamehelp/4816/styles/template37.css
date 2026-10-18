@@ -1,0 +1,107 @@
+@import "help.css";
+.newUIButtonDetails {
+  width: 95% !important;
+}
+
+.newUIMain {
+  width: 100%;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.newUIHeader {
+  flex: 1;
+  border: 1px solid #333;
+  padding: 5px;
+  background-color: rgba(0,0,0,.2);
+}
+
+.newUIContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+}
+
+.newUIImg {
+  flex: 0.33;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #333;
+}
+
+.newUIDesc {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.layout_new_ui-svg {
+  width: 95%;
+}
+
+.layout_new_ui-layout-buttons {
+  width: 100%;
+}
+
+.layout_new_ui-layout-double-buttons {
+  width: 50%;
+}
+
+.layout_new_ui-bet-modal-buttons {
+  width: 100%;
+}
+
+.layout_new_ui-bet-booster-buttons {
+  width: 100%;
+}
+
+.layout_new_ui-button-text {
+  font-family: Arial-BoldMT, Arial;
+  font-size: 19.37px;
+  font-weight: 700;
+  isolation: isolate;
+  stroke-width: 0px;
+  fill: #000;
+}
+
+.layout_new_ui-settings-button-text {
+  font-family: Arial-BoldMT, Arial;
+  font-size: 22.37px;
+  font-weight: 700;
+  isolation: isolate;
+  stroke-width: 0px;
+  fill: #000;
+  text-transform: uppercase;
+}
+
+.layout_new_ui-autoplay-modal-text {
+  font-family: Arial-BoldMT, Arial;
+  font-size: 45px;
+  font-weight: 700;
+  isolation: isolate;
+  stroke-width: 0px;
+  fill: #000;
+}
+
+.layout_new_ui-autoplay-modal-text-sm {
+  font-family: Arial-BoldMT, Arial;
+  font-size: 30px;
+  font-weight: 700;
+  isolation: isolate;
+  stroke-width: 0px;
+  fill: #000;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.new_ui_div_panel {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

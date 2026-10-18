@@ -1,0 +1,15 @@
+{
+  "gameId": 1098,
+  "gId": "towerruntreasuresteps",
+  "name": "Tower Run Treasure Steps",
+  "gameType": "gridslot",
+  "limitsValues": [
+    "game.rtp",
+    "game.denominations",
+    "game.mysteryjackpot",
+    "game.jackpot",
+    "game.gojackpot",
+    "game.leaderboard",
+    "game.disablebetbooster"
+  ]
+}

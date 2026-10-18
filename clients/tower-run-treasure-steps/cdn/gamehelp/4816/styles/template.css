@@ -1,0 +1,1602 @@
+.template1-spinBtn{
+	width:115px;
+	height:104px;
+	background-position: 64.79257641921397% 99.91789819376027%;
+	background-size: 1693.0434782608695% 2442.3076923076924%;
+}
+.template1-paytableBtn {
+	width:108px;
+	height:43px;
+	background-position: 26.20989668297988% 99.75971165398478%;
+	background-size: 1802.7777777777778% 5906.976744186047%;
+}
+.template2-paytableBtn {
+	width:108px;
+	height:43px;
+	background-position: 26.20989668297988% 99.75971165398478%;
+	background-size: 1802.7777777777778% 5906.976744186047%;
+}
+.template10-paytableBtn {
+	width:108px;
+	height:43px;
+	background-position: 26.20989668297988% 99.75971165398478%;
+	background-size: 1802.7777777777778% 5906.976744186047%;
+}
+.template17-paytableBtn {
+	width:108px;
+	height:43px;
+	background-position: 26.20989668297988% 99.75971165398478%;
+	background-size: 1802.7777777777778% 5906.976744186047%;
+}
+.template21-paytableBtn{
+	width:108px;
+	height:43px;
+	background-position: 26.20989668297988% 99.75971165398478%;
+	background-size: 1802.7777777777778% 5906.976744186047%;
+}
+.template1-betBtn{
+	width:69px;
+	height:46px;
+	background-position: 36.315228966986155% 99.87971130713713%;
+	background-size: 2821.7391304347825% 5521.739130434783%;
+}  
+.template3-betBtn{
+	width:69px;
+	height:46px;
+	background-position: 36.315228966986155% 99.87971130713713%;
+	background-size: 2821.7391304347825% 5521.739130434783%;
+}    
+.template4-betBtn{
+	width:69px;
+	height:46px;
+	background-position: 36.315228966986155% 99.87971130713713%;
+	background-size: 2821.7391304347825% 5521.739130434783%;
+}  
+.template1-betMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template2-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}   
+.template2-linesMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}   
+.template3-betMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}   
+.template4-betMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}  
+.template5-denominationMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template5-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}  
+.template5-linesMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template10-denominationMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template10-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template14-betMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template17-cardsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}  
+.template21-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}   
+.template22-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}   
+.template22-denominationMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template1-betPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.template2-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template2-linesPlusBtn {
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.template3-betPlusBtn {
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.template5-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.template4-betPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template5-denominationPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template5-linesPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template10-denominationPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template10-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template14-betPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template17-cardsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template21-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}   
+.template22-denominationPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}  
+.template22-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.statusbar-settingsBtn{
+	width:37px;
+	height:26px;
+	background-position: 91.72774869109948% 64.51869530628481%;
+	background-size: 5262.1621621621625% 9769.23076923077%;
+}
+.statusbar-exitBtn{
+	width:27px;
+	height:24px;
+	background-position: 99.94791666666667% 0.0397456279809221%;
+	background-size: 7211.111111111111% 10583.333333333334%;
+}
+.statusbar-historyBtn{
+	width:25px;
+	height:24px;
+	background-position: 93.1321540062435% 64.46740858505565%;
+	background-size: 7788% 10583.333333333334%;
+}
+.statusbar-infosBtn{
+	width:17px;
+	height:24px;
+	background-position: 99.43005181347151% 2.46422893481717%;
+	background-size: 11452.941176470587% 10583.333333333334%;
+}
+.statusbar-fastplayBtn-on{
+	width:17px;
+	height:25px;
+	background-position: 99.17098445595855% 57.415506958250496%;
+	background-size: 11452.941176470587% 10160%;
+}
+.statusbar-fastplayBtn-off{
+	width:21px;
+	height:24px;
+	background-position: 94.6521287642783% 69.4356120826709%;
+	background-size: 9271.42857142857% 10583.333333333334%;
+}
+.statusbar-soundsBtn-on{
+	width:31px;
+	height:23px;
+	background-position: 78.39248434237996% 69.68613428684942%;
+	background-size: 6280.645161290323% 11043.478260869566%;
+}
+.statusbar-soundsBtn-off{
+	width:31px;
+	height:25px;
+	background-position: 82.93319415448852% 99.64214711729622%;
+	background-size: 6280.645161290323% 10160%;
+}
+.template2-spinBtn{
+	width:115px;
+	height:62px;
+	background-position: 95.63318777292577% 62.9136400322841%;
+	background-size: 1693.0434782608695% 4096.774193548387%;
+}
+.template21-spinBtn{
+	width:115px;
+	height:62px;
+	background-position: 95.63318777292577% 62.9136400322841%;
+	background-size: 1693.0434782608695% 4096.774193548387%;
+}
+.template2-betMaxBtn{
+	width:114px;
+	height:46px;
+	background-position: 7.474086197490453% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template10-betMaxBtn{
+	width:114px;
+	height:46px;
+	background-position: 7.474086197490453% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template21-betMaxBtn{
+	width:114px;
+	height:46px;
+	background-position: 7.474086197490453% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template2-denominationBtn{
+	width:106px;
+	height:57px;
+	background-position: 94.40521455730581% 57.43052758759565%;
+	background-size: 1836.7924528301887% 4456.140350877193%;
+}
+.template21-denominationBtn{
+	width:106px;
+	height:57px;
+	background-position: 94.40521455730581% 57.43052758759565%;
+	background-size: 1836.7924528301887% 4456.140350877193%;
+}
+.template17-coinValueBtn{
+	width:106px;
+	height:57px;
+	background-position: 94.40521455730581% 57.43052758759565%;
+	background-size: 1836.7924528301887% 4456.140350877193%;
+}
+.template3-spinBtn{
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template4-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template5-spinBtn{
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+}  
+.template7-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template8-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template9-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template20-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template22-spinBtn {
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template24-spinBtn{
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+}  
+.template26-spinBtn{
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+}  
+.template27-spinBtn{
+	width:184px;
+	height:93px;
+	background-position: 73.34089619965967% 53.45320800980793%;
+	background-size: 1058.1521739130435% 2731.1827956989246%;
+} 
+.template3-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+}
+.template4-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+} 
+.template5-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+} 
+.template7-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+} 
+.template8-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+} 
+.template20-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+} 
+.template22-paytableBtn{
+	width:48px;
+	height:48px;
+	background-position: 31.1216429699842% 99.95987158908507%;
+	background-size: 4056.25% 5291.666666666667%;
+}
+.template2-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template4-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template5-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}    
+.template22-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}  
+.template10-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}  
+.template11-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}  
+.template25-gambleBtn{
+	width:114px;
+	height:46px;
+	background-position: 20.021822149481725% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}  
+.template2-collectBtn{
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template4-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template5-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template22-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template10-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template11-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template25-collectBtn {
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template17-collectBtn{
+	width:114px;
+	height:46px;
+	background-position: 13.747954173486088% 99.87971130713713%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template7-betMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+}
+.template8-denominationMinusBtn {
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+}
+.template11-denominationMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template11-coinsMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template11-handsMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template15-coinsMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template15-denominationMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template19-coinsMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template19-denominationMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template25-denominationMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+} 
+.template25-coinsMinusBtn{
+	width:38px;
+	height:33px;
+	background-position: 79.25615505500262% 99.96011168727563%;
+	background-size: 5123.684210526316% 7696.969696969697%;
+}
+.template7-betPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+} 
+.template8-denominationPlusBtn {
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+} 
+.template11-denominationPlusBtn {
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+} 
+.template11-coinsPlusBtn {
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+} 
+.template11-handsPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}   
+.template15-coinsPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}  
+.template15-denominationPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}  
+.template19-coinsPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}  
+.template19-denominationPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}  
+.template25-denominationPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+}  
+.template25-coinsPlusBtn{
+	width:36px;
+	height:33px;
+	background-position: 81.21402407116693% 99.96011168727563%;
+	background-size: 5408.333333333333% 7696.969696969697%;
+} 
+.template7-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+}
+.template3-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+}
+.template4-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+} 
+.template5-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+} 
+.template8-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+} 
+.template9-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+}  
+.template20-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+} 
+.template22-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+} 
+.template27-autoPlayBtn{
+	width:131px;
+	height:69px;
+	background-position: 88.87665198237886% 52.934034803723186%;
+	background-size: 1486.2595419847328% 3681.159420289855%;
+}
+.template2-autoPlayBtn{
+	width:114px;
+	height:46px;
+	background-position: 70.54009819967267% 69.92782678428227%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template1-autoPlayBtn{
+	width:114px;
+	height:46px;
+	background-position: 70.54009819967267% 69.92782678428227%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template10-autoPlayBtn{
+	width:114px;
+	height:46px;
+	background-position: 70.54009819967267% 69.92782678428227%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+} 
+.template21-autoPlayBtn{
+	width:114px;
+	height:46px;
+	background-position: 70.54009819967267% 69.92782678428227%;
+	background-size: 1707.8947368421052% 5521.739130434783%;
+}
+.template8-template8-transfer{
+	width:101px;
+	height:102px;
+	background-position: 75.83965330444204% 67.22723543888434%;
+	background-size: 1927.7227722772277% 2490.1960784313724%;
+}
+.template8-template8-collect{
+	width:67px;
+	height:67px;
+	background-position: 99.30851063829788% 55.64092195713708%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template9-denominationMinusBtn{
+	width:24px;
+	height:37px;
+	background-position: 47.32189287571503% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+} 
+.template9-coinsMinusBtn{
+	width:24px;
+	height:37px;
+	background-position: 47.32189287571503% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+} 
+.template27-coinsMinusBtn{
+	width:24px;
+	height:37px;
+	background-position: 47.32189287571503% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+}  
+.template20-denominationMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}  
+.template20-coinsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+}  
+.template20-cardsMinusBtn{
+	width:41px;
+	height:48px;
+	background-position: 33.5781741867786% 99.95987158908507%;
+	background-size: 4748.780487804878% 5291.666666666667%;
+} 
+.template9-denominationPlusBtn{
+	width:24px;
+	height:37px;
+	background-position: 48.62194487779511% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+}
+.template9-coinsPlusBtn{
+	width:24px;
+	height:37px;
+	background-position: 48.62194487779511% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+}
+.template27-coinsPlusBtn{
+	width:24px;
+	height:37px;
+	background-position: 48.62194487779511% 99.52057530962844%;
+	background-size: 8112.5% 6864.864864864865%;
+} 
+.template20-denominationPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+} 
+.template20-cardsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}
+.template20-coinsPlusBtn{
+	width:42px;
+	height:46px;
+	background-position: 45.511811023622045% 99.87971130713713%;
+	background-size: 4635.714285714285% 5521.739130434783%;
+}
+.template10-spinBtn{
+	width:112px;
+	height:60px;
+	background-position: 99.34604904632153% 67.98387096774194%;
+	background-size: 1738.392857142857% 4233.333333333333%;
+}
+.template11-dealBtn{
+	width:135px;
+	height:73px;
+	background-position: 81.56732891832229% 53.01986218078638%;
+	background-size: 1442.2222222222222% 3479.4520547945203%;
+} 
+.template25-dealBtn{
+	width:135px;
+	height:73px;
+	background-position: 81.56732891832229% 53.01986218078638%;
+	background-size: 1442.2222222222222% 3479.4520547945203%;
+} 
+.template11-holdBtn{
+	width:135px;
+	height:35px;
+	background-position: 0.05518763796909492% 99.44111776447106%;
+	background-size: 1442.2222222222222% 7257.142857142857%;
+}
+.template25-holdBtn{
+	width:135px;
+	height:35px;
+	background-position: 0.05518763796909492% 99.44111776447106%;
+	background-size: 1442.2222222222222% 7257.142857142857%;
+}
+.template13-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template12-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template16-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+}  
+.template18-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+}  
+.template23-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+}  
+.template24-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+}  
+.template26-chipMinusBtn{
+	width:24px;
+	height:35px;
+	background-position: 99.79199167966719% 1.0379241516966067%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template13-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+}
+.template12-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+}
+.template16-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template18-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template23-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template24-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+} 
+.template26-chipPlusBtn{
+	width:24px;
+	height:35px;
+	background-position: 95.99583983359334% 60.35928143712575%;
+	background-size: 8112.5% 7257.142857142857%;
+}
+.template13-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+} 
+.template12-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+} 
+.template16-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+} 
+.template18-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+} 
+.template23-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+}  
+.template24-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+}  
+.template26-xChipBtn{
+	width:43px;
+	height:43px;
+	background-position: 76.57563025210084% 69.7637164597517%;
+	background-size: 4527.906976744186% 5906.976744186047%;
+} 
+.template13-dealBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+} 
+.template12-dealBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}  
+.template13-callBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}  
+.template16-dealBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}  
+.template18-dealBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}  
+.template23-dealBtn{
+	 width:67px;
+	height:67px;
+	background-position: 98.19148936170212% 58.390618681763044%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+} 
+.template13-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template13-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template12-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template12-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template16-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template16-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template18-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template18-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template23-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template23-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template24-clearAllBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template24-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template26-clearTableBtn{
+	width:67px;
+	height:67px;
+	background-position: 99.52127659574468% 52.89122523251112%;
+	background-size: 2905.9701492537315% 3791.044776119403%;
+}
+.template13-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template12-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template16-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template18-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template23-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template24-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template26-rebetBtn{
+	width:108px;
+	height:106px;
+	background-position: 70.30995106035888% 62.8594905505341%;
+	background-size: 1802.7777777777778% 2396.2264150943397%;
+}
+.template13-foldBtn{
+	width:106px;
+	height:106px;
+	background-position: 76.96903856599674% 57.60065735414955%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+} 
+.template12-standBtn{
+	width:106px;
+	height:106px;
+	background-position: 76.96903856599674% 57.60065735414955%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}  
+.template16-standBtn{
+	width:106px;
+	height:106px;
+	background-position: 76.96903856599674% 57.60065735414955%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}  
+.template18-standBtn{
+	width:106px;
+	height:106px;
+	background-position: 76.96903856599674% 57.60065735414955%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+} 
+.template12-hitBtn{
+	width:106px;
+	height:106px;
+	background-position: 82.78109722976643% 56.77896466721446%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template16-hitBtn {
+	width:106px;
+	height:106px;
+	background-position: 82.78109722976643% 56.77896466721446%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-hitBtn{
+	width:106px;
+	height:106px;
+	background-position: 82.78109722976643% 56.77896466721446%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-doubleBtn{
+	width:106px;
+	height:106px;
+	background-position: 70.23356871265617% 67.25554642563681%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template16-doubleBtn{
+	width:106px;
+	height:106px;
+	background-position: 70.23356871265617% 67.25554642563681%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-doubleBtn{
+	width:106px;
+	height:106px;
+	background-position: 70.23356871265617% 67.25554642563681%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template26-doubleBtn{
+	width:106px;
+	height:106px;
+	background-position: 70.23356871265617% 67.25554642563681%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-splitBtn{
+	 width:106px;
+	height:106px;
+	background-position: 88.647474198805% 61.01068200493015%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template16-splitBtn{
+	 width:106px;
+	height:106px;
+	background-position: 88.647474198805% 61.01068200493015%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-splitBtn{
+	 width:106px;
+	height:106px;
+	background-position: 88.647474198805% 61.01068200493015%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-noToAllBtn{
+	 width:106px;
+	height:106px;
+	background-position: 82.83541553503531% 61.17502054231717%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-noToAllBtn{
+	 width:106px;
+	height:106px;
+	background-position: 82.83541553503531% 61.17502054231717%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-noBtn{
+	width:106px;
+	height:106px;
+	background-position: 88.59315589353612% 56.61462612982744%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-noBtn{
+	width:106px;
+	height:106px;
+	background-position: 88.59315589353612% 56.61462612982744%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-yesBtn{
+	width:106px;
+	height:106px;
+	background-position: 87.39815317762086% 68.48808545603944%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-yesBtn{
+	width:106px;
+	height:106px;
+	background-position: 87.39815317762086% 68.48808545603944%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template12-yesToAllBtn{
+	width:106px;
+	height:106px;
+	background-position: 93.21021184139055% 68.48808545603944%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template18-yesToAllBtn{
+	width:106px;
+	height:106px;
+	background-position: 93.21021184139055% 68.48808545603944%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template14-clearBtn{
+	width:107px;
+	height:74px;
+	background-position: 89.34782608695652% 64.55798864557988%;
+	background-size: 1819.6261682242991% 3432.4324324324325%;
+}
+.template14-autopickBtn{
+	width:107px;
+	height:74px;
+	background-position: 77.01086956521739% 61.19221411192214%;
+	background-size: 1819.6261682242991% 3432.4324324324325%;
+}
+.template14-playBtn{
+	 width:106px;
+	height:74px;
+	background-position: 94.45953286257469% 60.17842660178427%;
+	background-size: 1836.7924528301887% 3432.4324324324325%;
+}
+.template15-newcardsBtn{
+	width:120px;
+	height:54px;
+	background-position: 95.56650246305419% 55.14883346741754%;
+	background-size: 1622.5% 4703.7037037037035%;
+} 
+.template17-newCardsBtn{
+	width:120px;
+	height:54px;
+	background-position: 95.56650246305419% 55.14883346741754%;
+	background-size: 1622.5% 4703.7037037037035%;
+} 
+.template19-newCardsBtn{
+	width:120px;
+	height:54px;
+	background-position: 95.56650246305419% 55.14883346741754%;
+	background-size: 1622.5% 4703.7037037037035%;
+} 
+.template15-flashBtn{
+	width:120px;
+	height:54px;
+	background-position: 76.73782156540777% 63.716814159292035%;
+	background-size: 1622.5% 4703.7037037037035%;
+} 
+.template19-flashBtn{
+	width:120px;
+	height:54px;
+	background-position: 76.73782156540777% 63.716814159292035%;
+	background-size: 1622.5% 4703.7037037037035%;
+}
+.template15-playBtn{
+	width:120px;
+	height:105px;
+	background-position: 52.545155993431855% 99.95893223819301%;
+	background-size: 1622.5% 2419.0476190476193%;
+}
+.template19-playBtn{
+	width:120px;
+	height:105px;
+	background-position: 52.545155993431855% 99.95893223819301%;
+	background-size: 1622.5% 2419.0476190476193%;
+}
+.template15-autoPlayBtn{
+	width:120px;
+	height:50px;
+	background-position: 83.36070060207992% 64.09638554216868%;
+	background-size: 1622.5% 5080%;
+}
+.template19-autoPlayBtn{
+	width:120px;
+	height:50px;
+	background-position: 83.36070060207992% 64.09638554216868%;
+	background-size: 1622.5% 5080%;
+}
+.template17-playBtn{
+	width:135px;
+	height:65px;
+	background-position: 91.00441501103752% 98.34343434343434%;
+	background-size: 1442.2222222222222% 3907.6923076923076%;
+}
+.template17-fastplayBtn{
+	width:56px;
+	height:47px;
+	background-position: 42.834479111581174% 99.91977537103891%;
+	background-size: 3476.785714285714% 5404.255319148936%;
+}
+.template17-autoPlayBtn{
+	width:57px;
+	height:47px;
+	background-position: 39.78835978835979% 99.91977537103891%;
+	background-size: 3415.7894736842104% 5404.255319148936%;
+}
+.template18-surrenderBtn{
+	width:105px;
+	height:105px;
+	background-position: 58.68621064060803% 99.95893223819301%;
+	background-size: 1854.2857142857142% 2419.0476190476193%;
+}
+.template19-talismanBtn{
+	width:123px;
+	height:127px;
+	background-position: 70.88815789473684% 58.101947782842934%;
+	background-size: 1582.9268292682927% 2000%;
+}
+.template20-newCardsBtn{
+	width:63px;
+	height:63px;
+	background-position: 96.76220806794055% 65.48243843358902%;
+	background-size: 3090.4761904761904% 4031.746031746032%;
+}
+.template20-fastplayBtn{
+	width:49px;
+	height:49px;
+	background-position: 74.18335089567967% 69.93175431553593%;
+	background-size: 3973.469387755102% 5183.673469387755%;
+}
+.template26-undoBtn{
+	 width:106px;
+	height:106px;
+	background-position: 81.58609451385117% 67.66639276910435%;
+	background-size: 1836.7924528301887% 2396.2264150943397%;
+}
+.template20-buyExtraBallBtn{
+	width:104px;
+	height:104px;
+	background-position: 70.69994574064026% 99.91789819376027%;
+	background-size: 1872.1153846153845% 2442.3076923076924%;
+}
+.template20-collectBtn{
+	width:104px;
+	height:104px;
+	background-position: 76.39717851329354% 99.91789819376027%;
+	background-size: 1872.1153846153845% 2442.3076923076924%;
+}
+.template19-NoBtn{
+	width:124px;
+	height:62px;
+	background-position: 95.77619308831596% 52.78450363196126%;
+	background-size: 1570.1612903225807% 4096.774193548387%;
+} 
+.template15-NoBtn{
+	width:124px;
+	height:62px;
+	background-position: 95.77619308831596% 52.78450363196126%;
+	background-size: 1570.1612903225807% 4096.774193548387%;
+} 
+.template19-yesBtn{
+	width:124px;
+	height:62px;
+	background-position: 97.91552386176632% 98.22437449556094%;
+	background-size: 1570.1612903225807% 4096.774193548387%;
+} 
+.template15-yesBtn{
+	width:124px;
+	height:62px;
+	background-position: 97.91552386176632% 98.22437449556094%;
+	background-size: 1570.1612903225807% 4096.774193548387%;
+}
+.template17-buyExtraBallBtn{
+	width:135px;
+	height:71px;
+	background-position: 83.49889624724062% 98.58242203321183%;
+	background-size: 1442.2222222222222% 3577.4647887323945%;
+}
+.template1-panel{
+	width: 80vw;
+    height: 8vw;
+	background-position: 97.06774519716886% 14.751358127872964%;
+	background-size: 203.23590814196243% 1727.891156462585%;
+}
+.template2-panel{
+	width:80vw;
+	height:10vw;
+	background-position: 97.06774519716886% 0.042283298097251586%;
+	background-size: 203.23590814196243% 1451.4285714285713%;
+}
+.template2-panel-gamble{
+	width: 80vw;
+    height: 10vw;
+	background-position: 97.06774519716886% 7.484143763213531%;
+	background-size: 203.23590814196243% 1451.4285714285713%;
+}
+.template3-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 26.875%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template4-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 26.875%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+} 
+.template4-panel-gamble{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 86.625%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template5-panel-gamble{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 86.625%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template5-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 38.56073211314476%;
+	background-size: 203.23590814196243% 1867.6470588235295%;
+}
+.template7-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 32.75%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template8-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 95.56752278376139%;
+	background-size: 203.23590814196243% 2015.873015873016%;
+}
+.template9-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 44.20440382218529%;
+	background-size: 203.23590814196243% 1909.7744360902257%;
+}
+.template10-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 74.84355444305382%;
+	background-size: 203.23590814196243% 1776.2237762237762%;
+}
+.template10-panel-gamble{
+	width: 80vw;
+    height: 7vw;
+ 	background-position: 97.06774519716886% 20.90112640801001%;
+	background-size: 203.23590814196243% 1776.2237762237762%;
+}
+.template11-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.1524390243902439% 54.98108448928121%;
+	background-size: 150.81332300542215% 1577.6397515527951%;
+}
+.template11-panel-gamble{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.1524390243902439% 68.60025220680959%;
+	background-size: 150.81332300542215% 1577.6397515527951%;
+}
+.template12-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.3630831643002% 74.37810945273633%;
+	background-size: 202.60145681581685% 1984.375%;
+}
+.template13-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.3630831643002% 74.37810945273633%;
+	background-size: 202.60145681581685% 1984.375%;
+}
+.template14-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.06774519716886% 49.28013163307281%;
+	background-size: 203.23590814196243% 2330.2752293577983%;
+}
+.template15-panel{
+	width: 80vw;
+    height: 29vw;
+	background-position: 0.10111223458038422% 29.76071784646062%;
+	background-size: 203.23590814196243% 475.6554307116105%;
+}
+.template17-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 80.75%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template19-panel{
+	width: 80vw;
+    height: 29vw;
+	background-position: 0.10111223458038422% 0.05141388174807198%;
+	background-size: 203.23590814196243% 426.890756302521%;
+}
+.template20-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.16599190283401% 90.31055900621118%;
+	background-size: 203.02398331595413% 2032%;
+}
+.template21-panel{
+	width: 80vw;
+    height: 8vw;
+	background-position: 0.10111223458038422% 47.86469344608879%;
+	background-size: 203.23590814196243% 1451.4285714285713%;
+}
+.template22-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 92.34608985024958%;
+	background-size: 203.23590814196243% 1867.6470588235295%;
+}
+.template22-panel-gamble{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 86.625%;
+	background-size: 203.23590814196243% 1814.2857142857142%;
+}
+.template24-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.3630831643002% 79.72636815920399%;
+	background-size: 202.60145681581685% 1984.375%;
+}
+.template25-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.1524390243902439% 61.7906683480454%;
+	background-size: 150.81332300542215% 1577.6397515527951%;
+}
+.template26-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 97.3630831643002% 85.07462686567165%;
+	background-size: 202.60145681581685% 1984.375%;
+}
+.template27-panel{
+	width: 80vw;
+    height: 7vw;
+	background-position: 0.10111223458038422% 97.9227253842958%;
+	background-size: 203.23590814196243% 1909.7744360902257%;
+}

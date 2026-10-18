@@ -1,0 +1,14 @@
+{
+  "session": "b649feb51dbf481cba2d00441b9337b7",
+  "state": "recording",
+  "last_request": 557,
+  "frames": 2196,
+  "packets": 1296,
+  "requests": {
+    "0": 135,
+    "1": 174,
+    "2": 263,
+    "4": 63,
+    "7": 28
+  }
+}

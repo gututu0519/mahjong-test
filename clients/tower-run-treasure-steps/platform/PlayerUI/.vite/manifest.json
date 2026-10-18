@@ -1,0 +1,53 @@
+{
+  "src/prod/index.html": {
+    "file": "main.js",
+    "name": "main",
+    "src": "src/prod/index.html",
+    "isEntry": true,
+    "css": [
+      "assets/main-C_BO40xl.css"
+    ],
+    "assets": [
+      "assets/GO_Rewards-DSmh6irz.png",
+      "assets/GO_Drops-DvpiKeAB.png",
+      "assets/GO_Tournaments-zVZnhsd-.png",
+      "assets/GO_Star-DaklOXoX.png",
+      "assets/Go_Rewards_Gold-B_X3HckH.png",
+      "assets/Go_Drops_Gold-bNWdP_17.png",
+      "assets/Go_Tournaments_Gold-Bl1vs3qQ.png",
+      "assets/crown-CYIqdnW9.png"
+    ]
+  },
+  "src/public/GO_Drops/GO_Drops.png": {
+    "file": "assets/GO_Drops-DvpiKeAB.png",
+    "src": "src/public/GO_Drops/GO_Drops.png"
+  },
+  "src/public/GO_Drops/Go_Drops_Gold.png": {
+    "file": "assets/Go_Drops_Gold-bNWdP_17.png",
+    "src": "src/public/GO_Drops/Go_Drops_Gold.png"
+  },
+  "src/public/Go_Momentum/GO_Star.png": {
+    "file": "assets/GO_Star-DaklOXoX.png",
+    "src": "src/public/Go_Momentum/GO_Star.png"
+  },
+  "src/public/Go_Rewards/GO_Rewards.png": {
+    "file": "assets/GO_Rewards-DSmh6irz.png",
+    "src": "src/public/Go_Rewards/GO_Rewards.png"
+  },
+  "src/public/Go_Rewards/Go_Rewards_Gold.png": {
+    "file": "assets/Go_Rewards_Gold-B_X3HckH.png",
+    "src": "src/public/Go_Rewards/Go_Rewards_Gold.png"
+  },
+  "src/public/Go_Tournaments/GO_Tournaments.png": {
+    "file": "assets/GO_Tournaments-zVZnhsd-.png",
+    "src": "src/public/Go_Tournaments/GO_Tournaments.png"
+  },
+  "src/public/Go_Tournaments/Go_Tournaments_Gold.png": {
+    "file": "assets/Go_Tournaments_Gold-Bl1vs3qQ.png",
+    "src": "src/public/Go_Tournaments/Go_Tournaments_Gold.png"
+  },
+  "src/public/icons/crown.png": {
+    "file": "assets/crown-CYIqdnW9.png",
+    "src": "src/public/icons/crown.png"
+  }
+}

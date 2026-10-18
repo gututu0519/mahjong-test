@@ -1,0 +1,177 @@
+@import "template.css";
+/* Help popups */
+#help
+{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #eee;
+/*	width: 745px;*/
+	padding: 0;
+	margin: 0;
+}
+
+#help h1
+{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 1px 1px 1px #777;
+}
+
+#help h2
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#help h3
+{
+	font-size: 9px;
+	font-weight: bold;
+}
+
+#help p
+{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#help ul
+{
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+/*
+#help .content
+{
+}
+
+#help .header
+{
+	width: 745px;
+}
+*/
+#help .body
+{
+	padding: 0 25px 0 25px;
+/*	padding: 0px 30px 0px 30px;
+	overflow: auto;
+	height: 410px;*/
+}
+
+#help .paytable
+{
+	border: thin black solid;
+	width: 80%;
+}
+
+#help .paytable th
+{
+	background-color: #ffeeee;
+	text-decoration: underline;
+}
+
+#help .paytable td
+{
+	background-color: #ffffe0;
+	text-align: center;
+}
+
+#help .actions span
+{
+	color: #801010;
+	font-style: italic;
+	display: block;
+}
+
+#help .keys span
+{
+	color: #801010;
+	font-style: italic;
+}
+
+
+#help .simplelist
+{
+	list-style-type: disc;
+	margin-left: 0;
+	padding-left: 2em;
+	text-indent: 0em;
+}
+
+#help .casinoversion
+{
+	float: right;
+	font-size: 1em;
+}
+#help .platformversion{
+	font-size: 1em;
+}
+
+#help td.title {
+		background-color: rgba(0,0,0,.2);
+		font-size: 9px;
+		padding: 5px;
+}
+
+#help td.desc {
+    /* background-color: green; */
+    padding-left: 10px;
+    font-size: 10px;
+	border-right: 1px solid #333;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+    margin: 0;
+    border-right: none;
+}
+
+#help td.img {
+    /* background-color: blue; */
+    height: 50px;
+    width: 170px;
+    /* margin: 0 auto; */
+    text-align: center;
+	border-right: 1px solid #333;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+    padding: 5px;
+    margin: 0;
+}
+
+
+#help table.main {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+#help div.panel {
+    padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#help div.buttondetails {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+    width: 80vw;
+	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1130px){
+  #help div.buttondetails {
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-top: 1px solid black;
+		width: 80vw;
+		margin-bottom: 10px;
+	}
+}
+
+#help td.img div {
+    margin-right: auto;
+	margin-left: auto;
+}

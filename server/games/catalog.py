@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'tower-run-treasure-steps': {
+        'factory': 'server.games.tower_run_treasure_steps:TowerRunTreasureSteps',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['cascades', 'anywhere_pays', 'per_bet_progress', 'wild_rift', 'global_multiplier', 'hold_and_spin', 'chests', 'keys', 'go_ultra'],
+    },
     'great-game-serengeti': {
         'factory': 'server.games.great_game_serengeti:GreatGameSerengeti',
         'category': 'slots', 'interaction': 'request_steps',
