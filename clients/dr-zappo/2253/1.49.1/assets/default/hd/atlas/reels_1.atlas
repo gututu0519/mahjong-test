@@ -1,0 +1,19 @@
+reels_1.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+reel_base
+  rotate: false
+  xy: 1, 1026
+  size: 1237, 1016
+  orig: 1512, 1218
+  offset: 134, 61
+  index: -1
+reel_fs
+  rotate: false
+  xy: 1, 1
+  size: 1313, 1023
+  orig: 1512, 1218
+  offset: 100, 53
+  index: -1

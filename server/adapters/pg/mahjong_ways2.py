@@ -34,7 +34,10 @@ def encode_message(data, name, types):
             continue
         number, kind = spec['id'], spec['type']
         if 'keyType' in spec:
-            for map_key, item in value.items():
+            # Storage sorts JSON object keys; use a stable wire order for fresh
+            # results and cached retries, including multi-digit map keys.
+            for map_key in sorted(value, key=int):
+                item = value[map_key]
                 if kind == 'Int32List':
                     item = {'__value': item}
                 entry = _value(1, spec['keyType'], int(map_key), types) + _value(2, kind, item, types)
@@ -72,7 +75,8 @@ def transaction(event, wallet, thresholds):
             gwt = index
     grid = '#'.join(';'.join(str(e['board_before'][col * 7 + row]) for col in range(5)) for row in range(7))
     hash_text = f"{e['multiplier_index']}:{grid}"
-    for symbol, positions in e['winning_positions'].items():
+    for symbol in sorted(e['winning_positions'], key=int):
+        positions = e['winning_positions'][symbol]
         hash_text += '#R#' + symbol + '#' + ''.join(f'{p // 7}{p % 7}' for p in positions)
     hash_text += f"#MV#{amount(e['debit_minor'])}#MT#1#MG#{amount(e['win_minor'])}#"
     return {
@@ -86,7 +90,7 @@ def transaction(event, wallet, thresholds):
         'rl': e['board_after'], 'orl': e['board_before'], 'ctw': amount(e['win_minor']),
         'cwc': e['combo'], 'fstc': {str(PHASES[k]): v for k, v in e['counts'].items()} or None,
         'pcwc': int(e['phase'] == 'ready' and e['win_minor'] > 0),
-        'rwsp': json.dumps(e['rates'], separators=(',', ':')) if e['rates'] else None,
+        'rwsp': json.dumps(e['rates'], sort_keys=True, separators=(',', ':')) if e['rates'] else None,
         'hashr': hash_text, 'fb': None, 'gwt': gwt, 'snww': e['ways'] or None,
         'ssb': e['gold_before'] or None, 'ss': e['gold_after'] or None, 'fs': fs, 'rs': rs,
         'ssaw': amount(e['spin_award_minor']), 'ptbr': e['removed'] or None,

@@ -1,0 +1,96 @@
+digits_multipliers.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+0
+  rotate: false
+  xy: 132, 1
+  size: 75, 127
+  orig: 76, 134
+  offset: 1, 3
+  index: -1
+1
+  rotate: false
+  xy: 144, 130
+  size: 54, 127
+  orig: 76, 134
+  offset: 12, 4
+  index: -1
+2
+  rotate: false
+  xy: 209, 1
+  size: 68, 126
+  orig: 76, 134
+  offset: 5, 4
+  index: -1
+3
+  rotate: false
+  xy: 65, 1
+  size: 65, 128
+  orig: 76, 134
+  offset: 7, 4
+  index: -1
+4
+  rotate: false
+  xy: 134, 261
+  size: 70, 127
+  orig: 76, 134
+  offset: 4, 4
+  index: -1
+5
+  rotate: false
+  xy: 1, 264
+  size: 65, 128
+  orig: 76, 134
+  offset: 7, 3
+  index: -1
+6
+  rotate: false
+  xy: 1, 1
+  size: 62, 130
+  orig: 76, 134
+  offset: 8, 4
+  index: -1
+7
+  rotate: false
+  xy: 1, 133
+  size: 76, 129
+  orig: 76, 134
+  offset: 0, 2
+  index: -1
+8
+  rotate: false
+  xy: 68, 264
+  size: 64, 128
+  orig: 76, 134
+  offset: 7, 4
+  index: -1
+9
+  rotate: false
+  xy: 79, 131
+  size: 63, 128
+  orig: 76, 134
+  offset: 8, 4
+  index: -1
+10
+  rotate: false
+  xy: 1, 394
+  size: 39, 66
+  orig: 50, 134
+  offset: 7, 0
+  index: -1
+11
+  rotate: false
+  xy: 42, 394
+  size: 39, 62
+  orig: 50, 134
+  offset: 7, 4
+  index: -1
+x
+  rotate: false
+  xy: 200, 130
+  size: 76, 126
+  orig: 76, 134
+  offset: 0, 5
+  index: -1

@@ -1,0 +1,54 @@
+backgrounds_1.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+background_base
+  rotate: false
+  xy: 3, 3
+  size: 1344, 717
+  orig: 1344, 717
+  offset: 0, 0
+  index: -1
+background_fs
+  rotate: false
+  xy: 3, 726
+  size: 1344, 717
+  orig: 1344, 717
+  offset: 0, 0
+  index: -1
+base_eye
+  rotate: false
+  xy: 1898, 3
+  size: 95, 92
+  orig: 95, 92
+  offset: 0, 0
+  index: -1
+fs_light_city
+  rotate: false
+  xy: 3, 1449
+  size: 750, 367
+  orig: 960, 512
+  offset: 210, 145
+  index: -1
+fs_zap_green_left
+  rotate: false
+  xy: 1898, 101
+  size: 65, 53
+  orig: 960, 512
+  offset: 697, 260
+  index: -1
+fs_zap_green_right
+  rotate: false
+  xy: 1729, 3
+  size: 163, 104
+  orig: 960, 512
+  offset: 767, 218
+  index: -1
+fs_zap_yellow
+  rotate: false
+  xy: 1353, 3
+  size: 370, 148
+  orig: 960, 512
+  offset: 590, 364
+  index: -1

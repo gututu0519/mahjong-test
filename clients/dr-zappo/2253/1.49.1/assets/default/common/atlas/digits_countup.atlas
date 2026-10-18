@@ -1,0 +1,89 @@
+digits_countup.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+0
+  rotate: false
+  xy: 1, 628
+  size: 166, 206
+  orig: 207, 212
+  offset: 22, 6
+  index: -1
+1
+  rotate: false
+  xy: 337, 208
+  size: 140, 202
+  orig: 207, 212
+  offset: 35, 7
+  index: -1
+2
+  rotate: false
+  xy: 167, 1
+  size: 175, 205
+  orig: 207, 212
+  offset: 17, 7
+  index: -1
+3
+  rotate: false
+  xy: 326, 417
+  size: 184, 203
+  orig: 207, 212
+  offset: 13, 8
+  index: -1
+4
+  rotate: false
+  xy: 156, 417
+  size: 168, 205
+  orig: 207, 212
+  offset: 21, 7
+  index: -1
+5
+  rotate: false
+  xy: 169, 624
+  size: 173, 204
+  orig: 207, 212
+  offset: 18, 5
+  index: -1
+6
+  rotate: false
+  xy: 1, 210
+  size: 153, 207
+  orig: 207, 212
+  offset: 28, 5
+  index: -1
+7
+  rotate: false
+  xy: 156, 210
+  size: 179, 205
+  orig: 207, 212
+  offset: 15, 6
+  index: -1
+8
+  rotate: false
+  xy: 1, 1
+  size: 164, 207
+  orig: 207, 212
+  offset: 23, 5
+  index: -1
+9
+  rotate: false
+  xy: 1, 419
+  size: 153, 207
+  orig: 207, 212
+  offset: 28, 5
+  index: -1
+10
+  rotate: false
+  xy: 1, 836
+  size: 85, 105
+  orig: 130, 212
+  offset: 24, 0
+  index: -1
+11
+  rotate: false
+  xy: 88, 836
+  size: 86, 97
+  orig: 130, 212
+  offset: 24, 8
+  index: -1

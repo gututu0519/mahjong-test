@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'dr-zappo': {
+        'factory': 'server.games.dr_zappo:DrZappo',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'reflected_lasers', 'additive_wild_multipliers', 'feature_spins', 'free_spins', 'free_retrigger', 'buy_bonus'],
+    },
     'le-vampire': {
         'factory': 'server.games.le_vampire:LeVampire',
         'category': 'slots', 'interaction': 'request_steps',

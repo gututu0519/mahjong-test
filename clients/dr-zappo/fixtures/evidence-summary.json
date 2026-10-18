@@ -1,0 +1,27 @@
+{
+  "session": "3e9ac987654445cc8939da579840b77e",
+  "capture_state": "recording",
+  "responses": 423,
+  "last_request": 687,
+  "modes": {
+    "base": 101,
+    "mod_bonus": 121,
+    "mod_laser": 50,
+    "fs": 1,
+    "fs_2": 1
+  },
+  "events": {
+    "reveal": 274,
+    "feature_enter": 8,
+    "fs_reveal": 76,
+    "feature_exit": 8,
+    "fs_2_reveal": 12
+  },
+  "actions": {
+    "gridwin": 778,
+    "laser": 152,
+    "totalMulti": 90,
+    "bonusfeaturewon": 8,
+    "retrigger": 4
+  }
+}

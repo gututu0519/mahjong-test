@@ -1,5 +1,7 @@
 # 独立服务目录
 
+Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `python -m server.run --service-dir services/dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
+
 Le Vampire（Hacksaw Gaming）：端口 8096，`le_vampire_client`，独立钱包、原版中英文客户端及大厅入口。实现和验证范围见 [接入记录](le-vampire/README.md)。
 
 Wicked Grin（Hacksaw Gaming）：端口 8095，`wicked_grin_client`，独立钱包与原版客户端。当前接入和验证范围见 [接入记录](wicked-grin/README.md)。

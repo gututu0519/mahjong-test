@@ -1,0 +1,3222 @@
+{
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_1.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_1.atlas",
+    "sha256": "9120ac8fa3b440e46d092bfd736a71aae2b4777d213fd2cdf02b0ed2f2bcb5cb",
+    "bytes": 841,
+    "source": "capture",
+    "request": 197
+  },
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_1.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_1.ktx2",
+    "sha256": "5ee011566ab1d8ad27c215469c476f8035867e52010f943beeef5cf95e24d6a9",
+    "bytes": 1605591,
+    "source": "capture",
+    "request": 196
+  },
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_2.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_2.atlas",
+    "sha256": "a40f1e3f4cf450311c5931ccc59d747b233618727d26257db799e27450d82d78",
+    "bytes": 1199,
+    "source": "capture",
+    "request": 191
+  },
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_2.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_2.ktx2",
+    "sha256": "9fc49acceb9c6a3c7eff6a3d8ec64e53531478780b1efc72be2c1c94474499d1",
+    "bytes": 1857579,
+    "source": "capture",
+    "request": 189
+  },
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_3.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_3.atlas",
+    "sha256": "e6de7c6f2731fc46059080709aca75d3a20dd537a27254ca2b95c17b2a0bdb00",
+    "bytes": 512,
+    "source": "capture",
+    "request": 199
+  },
+  "2253/1.49.1/assets/default/common/atlas/backgrounds_3.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/backgrounds_3.ktx2",
+    "sha256": "31e6da7512c1c5383a1cbad0566c1ed3dc25b4e894b626a02d4479ac9f33d48f",
+    "bytes": 1243649,
+    "source": "capture",
+    "request": 198
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits.atlas",
+    "sha256": "9f8af50c6a1aaffaa08519d457f002ec53e432ff865faa9cde7dc88355551d00",
+    "bytes": 1345,
+    "source": "capture",
+    "request": 201
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits.ktx2",
+    "sha256": "96cb6390cccd3209609f36fe79245e1e8b3c73968172efe1ac2c869a9c319f26",
+    "bytes": 22450,
+    "source": "capture",
+    "request": 200
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits_countup.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits_countup.atlas",
+    "sha256": "4171b4dfed01c89d36d9df50f8935aefede29a096eeaef260fcb991831cd5744",
+    "bytes": 1302,
+    "source": "capture",
+    "request": 188
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits_countup.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits_countup.ktx2",
+    "sha256": "1657c5a3a2dc1b888e1754dbaf22d1d83e113a9afe08ec0f84f21111187bf488",
+    "bytes": 52911,
+    "source": "capture",
+    "request": 186
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits_multipliers.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits_multipliers.atlas",
+    "sha256": "05fb6b3260892442310d1de33a1df89390cf6f50263d1d4d2fbb17ca3b0144de",
+    "bytes": 1364,
+    "source": "capture",
+    "request": 194
+  },
+  "2253/1.49.1/assets/default/common/atlas/digits_multipliers.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/atlas/digits_multipliers.ktx2",
+    "sha256": "532d969947cbcf261d7dbd51319d2e57c1a39ad1257e426d646f1f019cfc9d2e",
+    "bytes": 33532,
+    "source": "capture",
+    "request": 193
+  },
+  "2253/1.49.1/assets/default/common/font/bangers_regular.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/bangers_regular.ttf",
+    "sha256": "c52cfd4b2d755770e34eb1787ac1088eec59286efb1d147867046feff64aa8ff",
+    "bytes": 109624,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/cyrillicfb.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/cyrillicfb.ttf",
+    "sha256": "93beb73af12eb186f2d1c282bcb12b7fcd1c69dc38af700f97a0f4bd85bc6cd4",
+    "bytes": 666152,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/fontconfig.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/fontconfig.json",
+    "sha256": "68fcedbab5f23ee05e3a38174d97dd1ac5dc26e34c8d6b7f5cde815c7de9e986",
+    "bytes": 304,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/bg-bg/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/bg-bg/bangers_regular.json",
+    "sha256": "21177f487cf12db0f7aab07022a62242515da68b6fb0d23ac040f41b4d66f371",
+    "bytes": 53021,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/bg-bg/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/bg-bg/bangers_regular.png",
+    "sha256": "f985ecab4505985c983267f69f25e3c6b74879ac5cd822f80d40a33e196711b0",
+    "bytes": 113777,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/cs-cz/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/cs-cz/bangers_regular.json",
+    "sha256": "b6a74614fc653342ff2afa141133b9eac7dfca3caba9bd2fb513cc41dc9c4093",
+    "bytes": 17719,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/cs-cz/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/cs-cz/bangers_regular.png",
+    "sha256": "f76828cc59a24da0c952bcdbeac78cf6e2386afcbfb8f9fafd43fb28887337f9",
+    "bytes": 157453,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/da-dk/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/da-dk/bangers_regular.json",
+    "sha256": "83bd553c639e83b925ccc4c9c644a26b01b9b8fc47c9539f3d5ded58c7c0f673",
+    "bytes": 15067,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/da-dk/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/da-dk/bangers_regular.png",
+    "sha256": "25836256ac80001ae8490b05cb90afc91b903566cf6779145eee7035103fee63",
+    "bytes": 126957,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/de-de/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/de-de/bangers_regular.json",
+    "sha256": "38f8071e3066b17824353e4cd914b542d8caa296fd5e224dfc8acac654785338",
+    "bytes": 15467,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/de-de/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/de-de/bangers_regular.png",
+    "sha256": "fbe935487c2e0c7ca65bc608f487b2d9308b112bae2191a0436d60c3a49a8c7d",
+    "bytes": 128444,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/el-gr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/el-gr/bangers_regular.json",
+    "sha256": "30750e5c869d1b185107fdb64d69f8f737e3540ec6a732438c87ea82b07e6602",
+    "bytes": 52543,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/el-gr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/el-gr/bangers_regular.png",
+    "sha256": "5f6e3f2e2f205fe2965307e4406911bea2cdc13d7f0f9a07f9deb52d4dee84ab",
+    "bytes": 122750,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/en-us/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/en-us/bangers_regular.json",
+    "sha256": "51a7aa1c56f64ecb1999c3496a887d96ec8075f80285de854e0c087811225206",
+    "bytes": 13302,
+    "source": "capture",
+    "request": 177
+  },
+  "2253/1.49.1/assets/default/common/font/localized/en-us/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/en-us/bangers_regular.png",
+    "sha256": "0e64e4a091ce09e1a620ead877f2ce31174cc57f0998a24113839df972ed59a9",
+    "bytes": 110506,
+    "source": "capture",
+    "request": 176
+  },
+  "2253/1.49.1/assets/default/common/font/localized/es-es/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/es-es/bangers_regular.json",
+    "sha256": "b5a4d71087cffd38dfa44295c25bdc65886c7573fce6e9cd9a903e1ef31373ae",
+    "bytes": 14898,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/es-es/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/es-es/bangers_regular.png",
+    "sha256": "13f434a73e7bf226353f3ad36cb4b6709858954ee9e208869d35db5818a684b3",
+    "bytes": 126930,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/fi-fi/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/fi-fi/bangers_regular.json",
+    "sha256": "4ccee39ddbac10a33088cfa5ad3cde311ef066b80246da234a8f433ad366e13d",
+    "bytes": 13882,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/fi-fi/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/fi-fi/bangers_regular.png",
+    "sha256": "ef112c0557dedb2da9af1f671a8880bb49f6a70431205ebe1af23ff1e43bdbca",
+    "bytes": 118532,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/fr-fr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/fr-fr/bangers_regular.json",
+    "sha256": "04a6fda492b168c1dba5a10b0c2008febb0bdc3ac0227218f39d8904119bc7cb",
+    "bytes": 15679,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/fr-fr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/fr-fr/bangers_regular.png",
+    "sha256": "491681137a8887520d22a2646361d8781cb100614c4baa3c9ac27d0d8576eb6d",
+    "bytes": 127288,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/hr-hr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/hr-hr/bangers_regular.json",
+    "sha256": "b48314574a778bd5bab91c0ebcab8f92d6eba1cace2973095d84f19b07b0accc",
+    "bytes": 15448,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/hr-hr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/hr-hr/bangers_regular.png",
+    "sha256": "1e1e22e724e0ca70841928ac60b732c1a6b7152e0d2a93324b60d5e7df701f57",
+    "bytes": 132827,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/hu-hu/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/hu-hu/bangers_regular.json",
+    "sha256": "c1eccf79ca0f0419c74a4d53c1900dcb69ca0a65750da88da27395c4317c5e2b",
+    "bytes": 16505,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/hu-hu/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/hu-hu/bangers_regular.png",
+    "sha256": "2efc5cf64080c00f0b08dc18de682904dc30e8e08f57963926f560845b9bfd42",
+    "bytes": 137431,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/id-id/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/id-id/bangers_regular.json",
+    "sha256": "21ad1d57b8c66b2a2a5073acf108ef87808dc4b2d574ba3f7e70234ab3af3112",
+    "bytes": 13493,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/id-id/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/id-id/bangers_regular.png",
+    "sha256": "753bcca7fdd846022892228b695871622cdc2a6ddae32a11cb7619d77940a099",
+    "bytes": 112727,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/it-it/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/it-it/bangers_regular.json",
+    "sha256": "3dcb3a0b37ff2f0214a503a6c3b88550373bb3f134d17c8c62d3f96951f27b35",
+    "bytes": 14295,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/it-it/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/it-it/bangers_regular.png",
+    "sha256": "c5341f0c626d3b8c524bb93f97420772a9290e7d9c963ba5e15dcac2965131bf",
+    "bytes": 121401,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ja-jp/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ja-jp/bangers_regular.json",
+    "sha256": "2f7a1b7ccb44415e48969ceaba21a15e90d5394748672e4d5c0dfd19548dbc1d",
+    "bytes": 28027,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ja-jp/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ja-jp/bangers_regular.png",
+    "sha256": "20255e6b35dbe838503d899405199372f8a5f007ae0e70fe5c79ee4447d5f6f9",
+    "bytes": 338312,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ko-kr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ko-kr/bangers_regular.json",
+    "sha256": "c50ecd59287b4fd22951dea299ce7f70f0ed6a0f870c0ab783a13eba07518335",
+    "bytes": 31052,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ko-kr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ko-kr/bangers_regular.png",
+    "sha256": "00e76f2f533af01f521c81e361246fca383ee2c673fb7bad24ccfefd67ec4c5e",
+    "bytes": 247266,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/lt-lt/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/lt-lt/bangers_regular.json",
+    "sha256": "f4ce77f0f57bd486fdc6ecc8a336da45ffb6cf5d5400cb5fc61137bb7bf02d68",
+    "bytes": 15645,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/lt-lt/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/lt-lt/bangers_regular.png",
+    "sha256": "6790047d887c96be76324103d2048e031044a396ee98828b329f0737d4e12c94",
+    "bytes": 132509,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/lv-lv/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/lv-lv/bangers_regular.json",
+    "sha256": "b6c62c62ef817763c8055e032b58b211e3d3c67fe0d3a2cf54d5b58120cac02c",
+    "bytes": 16445,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/lv-lv/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/lv-lv/bangers_regular.png",
+    "sha256": "6d122ff59590acaa9aa185dc5eeb2ce6acd96a67138659366583592846d93eb3",
+    "bytes": 141681,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/nl-nl/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/nl-nl/bangers_regular.json",
+    "sha256": "433cb677f20485b00e20ca9303e1f382787d48eb97e129344d3b793ce269b328",
+    "bytes": 14478,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/nl-nl/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/nl-nl/bangers_regular.png",
+    "sha256": "33b894f4387165f63f61bf43774386ae7ef0b32a7ea3d90d845e1945f305985d",
+    "bytes": 119123,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/no-no/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/no-no/bangers_regular.json",
+    "sha256": "1128d2f125ddc3fa308a12db8932ce1aef0a3ca0bb7aea56d4ee5156e54a023f",
+    "bytes": 14873,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/no-no/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/no-no/bangers_regular.png",
+    "sha256": "e4e586717fa84f7cf88aa9fc9377239a50b2a5e1c92e3127f065f47e721a136b",
+    "bytes": 122993,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pl-pl/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pl-pl/bangers_regular.json",
+    "sha256": "becd359ac95bb89f2a4a2bd927faa4a0b8badd1ec67caf9a4af052df1017dd7b",
+    "bytes": 16468,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pl-pl/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pl-pl/bangers_regular.png",
+    "sha256": "6b20309296a83a832086ce11d72b3b6c622118640a0e7c07875e2eb59fb21cd8",
+    "bytes": 139778,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pt-br/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pt-br/bangers_regular.json",
+    "sha256": "51f07bca3f5101511f90177db3f27af392fc94f0ac7d05668bb99b0f1e6de46f",
+    "bytes": 16087,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pt-br/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pt-br/bangers_regular.png",
+    "sha256": "be18d24bc084063ce2e53b4262a7e41e2cc7dea69e1d4aea6a33ac17e0cccc91",
+    "bytes": 133046,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pt-pt/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pt-pt/bangers_regular.json",
+    "sha256": "54fa8a6e93a8e24066d4632b4bdb50286359abcdc3d160a720199b01da527889",
+    "bytes": 15884,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/pt-pt/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/pt-pt/bangers_regular.png",
+    "sha256": "0b363cc212ff946270c2e3d935ee54740cdcd0d97549ee06e9c2f34acb8ed5ac",
+    "bytes": 134644,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ro-ro/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ro-ro/bangers_regular.json",
+    "sha256": "23f7d531cb8f8c4d9ea67b47b96a72fcf90e19437c421ccdd03e326469677d9a",
+    "bytes": 15273,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ro-ro/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ro-ro/bangers_regular.png",
+    "sha256": "f7322552788450801bc05c2400e3221b6da5cb610dcbca9fc03d99c4b0273dd1",
+    "bytes": 128026,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ru-ru/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ru-ru/bangers_regular.json",
+    "sha256": "466088642ba05195ebd0e966a9be13780497848c939fdffd37b82c3aabe0f695",
+    "bytes": 64401,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/ru-ru/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/ru-ru/bangers_regular.png",
+    "sha256": "134f2fae9762a53c9b734fc570dedc69eca81603d91eba1ddc1ed68c57138a85",
+    "bytes": 125824,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/sv-se/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/sv-se/bangers_regular.json",
+    "sha256": "32aeb2b30c9aa3338dea1851cc4793dfba18bf3e1f9bea6a17590efba300968b",
+    "bytes": 14673,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/sv-se/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/sv-se/bangers_regular.png",
+    "sha256": "9a50d191c217664fb7888360f238d81d354fb7b514e962bbe07e9e45108e4cb4",
+    "bytes": 124209,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/th-th/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/th-th/bangers_regular.json",
+    "sha256": "c743a35b863ac4efbff51083cf9a9b1b18347617efd804b09627f4ab640698a0",
+    "bytes": 34506,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/th-th/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/th-th/bangers_regular.png",
+    "sha256": "e54a7a3a9bcc5b46f7a5746fea622ef1e04239a8d960dd76d69b703dd7bd031d",
+    "bytes": 118120,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/tr-tr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/tr-tr/bangers_regular.json",
+    "sha256": "2c05b9e25991e210e39e2e8fe1e2cf8185ab4baed415a7b955284d849fe62d0c",
+    "bytes": 16455,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/tr-tr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/tr-tr/bangers_regular.png",
+    "sha256": "ae9f3bfd7d952b063a4f9017bd87bb19b9dd200364f4e4717d68a29d3b2fc53c",
+    "bytes": 134615,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/uk-ua/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/uk-ua/bangers_regular.json",
+    "sha256": "9702d7f16719daa1c1ab7fff9a99f750a18c6f6b2d090a6a624a40a2a7df1d4d",
+    "bytes": 68089,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/uk-ua/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/uk-ua/bangers_regular.png",
+    "sha256": "7a0c8713afd907dd33fbc08bf5adb729855fd6d332e01496928d8827b9c187ed",
+    "bytes": 125926,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/vi-vn/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/vi-vn/bangers_regular.json",
+    "sha256": "c6fb3894111a85614e553e2ec25b99b8e65cf1db3c4e20b0735ca92676921527",
+    "bytes": 239890,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/vi-vn/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/vi-vn/bangers_regular.png",
+    "sha256": "64265be02fd52a81e4750d3bc993d694c4fa70a57e2f1872349ec5515c8b6c18",
+    "bytes": 171914,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/zh-cn/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/zh-cn/bangers_regular.json",
+    "sha256": "f10224f053cc11cb815b23874f81e3e1027e379e899fd39b9ae7a44b63afcb6f",
+    "bytes": 26920,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/zh-cn/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/zh-cn/bangers_regular.png",
+    "sha256": "df88f2f2c364701fd8f8afbeffca7b3f79eccb5e6480e6f50ca7f405ad8d401a",
+    "bytes": 339534,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/zh-tw/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/zh-tw/bangers_regular.json",
+    "sha256": "8b9545c69446bc1fb8831796624fea4764a6356e906f949d67e898e1cca8b2a9",
+    "bytes": 26737,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/localized/zh-tw/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/localized/zh-tw/bangers_regular.png",
+    "sha256": "a130efbddbd030b361787b8467be237f481eb13b3330b70a80ac259e4a370778",
+    "bytes": 338957,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/notosansblack.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/notosansblack.ttf",
+    "sha256": "c60af8520477355a53ff0b9f6658b53802bac34376040f5d9db79e5a04828f18",
+    "bytes": 739792,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/pridi.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/pridi.ttf",
+    "sha256": "e1d959f77919030f87c6ab0f51ecc770245b803309aa8d20658527ec1cc5f987",
+    "bytes": 552264,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/sourcehansans_hwj_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/sourcehansans_hwj_bold.ttf",
+    "sha256": "6b2a5ae93c21ed8873867f763af29a2b0827590d47d70dac0a3cea06b07f9f41",
+    "bytes": 17945856,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/font/sourcehansans_hwsc_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/font/sourcehansans_hwsc_bold.ttf",
+    "sha256": "605929c2ebcd38a0a1eb2776996ca97994242bd364cecb88191f630b62f1a0b0",
+    "bytes": 17857688,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/ambience.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ambience.mp4",
+    "sha256": "e917354c09f83abc6998876365c18a2451d024cdd3f48cf08378b3f3d7d2c399",
+    "bytes": 661924,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/ambience.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ambience.webm",
+    "sha256": "23d184445eb5cf7e6e139a38719e3ffe0eab86d512f0f0d3a8b4c751dd5ecfde",
+    "bytes": 598435,
+    "source": "capture",
+    "request": 164
+  },
+  "2253/1.49.1/assets/default/common/sound/betlevel.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/betlevel.mp4",
+    "sha256": "155042147608512ed3d8f9156f41e32cf0816aed338c4f22476c3571bef87e96",
+    "bytes": 3054,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/betlevel.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/betlevel.webm",
+    "sha256": "8039b53457045603bfdc3925f6ef8caed4601b6eb49bd96e9c0b5434146b0263",
+    "bytes": 2245,
+    "source": "capture",
+    "request": 119
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_1.mp4",
+    "sha256": "ef265e652c0ef33309e45e36e7f4f819c06aa452e157abd51b0070114dd82d7e",
+    "bytes": 20416,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_1.webm",
+    "sha256": "08662e3a1bc19a3778222af1e4366a736c48d67ac60c28592ae24eb4bada2b15",
+    "bytes": 19757,
+    "source": "capture",
+    "request": 143
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_2.mp4",
+    "sha256": "24455cd32758306be4ad6fe6313e5ea17e5cb8e348988949f1f58014e988138b",
+    "bytes": 20669,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_2.webm",
+    "sha256": "b4fe8547af5bb6774c6719b80ccd1f021f948ee431fe7086c1bd64825e702c04",
+    "bytes": 19770,
+    "source": "capture",
+    "request": 149
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_3.mp4",
+    "sha256": "88b0651276c7af9fd31a4b88326c481c481aee22e4595f341276d6c57803f193",
+    "bytes": 24776,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/big_zap_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/big_zap_3.webm",
+    "sha256": "35907f67d9302ee2ff0ed327e1927500c980da387ecd2efdd0460a55a4e60337",
+    "bytes": 23263,
+    "source": "capture",
+    "request": 104
+  },
+  "2253/1.49.1/assets/default/common/sound/bomb.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bomb.mp4",
+    "sha256": "ec74d789de338ec0eff01cf6073804a2c51f1d9357f1fadc9f617669442cb215",
+    "bytes": 21750,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bomb.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bomb.webm",
+    "sha256": "342c5a2e89691458ae5c27671199955d2e68d1c682d00e704e16f4b545ff7e18",
+    "bytes": 19267,
+    "source": "capture",
+    "request": 120
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_1.mp4",
+    "sha256": "97414879be61503664ab262b7e828dcf6e0b005742420ddd9d7c27bfbd4b3dbc",
+    "bytes": 11970,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_1.webm",
+    "sha256": "c593d4afefffc0ec3986d761a0cbea5f41f8707f759e15b6ddb88ccb671600b6",
+    "bytes": 11152,
+    "source": "capture",
+    "request": 93
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_2.mp4",
+    "sha256": "c8f596a7bf107db2d96c4e5f2b8241d73ba89a92c055bf6362d2f0dd8e9a302c",
+    "bytes": 11815,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_2.webm",
+    "sha256": "35ceb2f88b7356ccd716408a7285ecc4258822305ee4d3196c9373ef790e63de",
+    "bytes": 10454,
+    "source": "capture",
+    "request": 80
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_3.mp4",
+    "sha256": "57216a5048ee3ba1c6e466c7d05deab33a0c303a3d44d36e3f392d260abd2243",
+    "bytes": 11923,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_3.webm",
+    "sha256": "ab26026ecb98b5b0296ba6e4ab44fb0cf24fb86152fd5345fba35eef40976c5a",
+    "bytes": 11168,
+    "source": "capture",
+    "request": 167
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_4.mp4",
+    "sha256": "61fcb88f18f01272623042d16b8b1fc0f17f56dc3cfc0b1d7ba4dc38607cba23",
+    "bytes": 11871,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_4.webm",
+    "sha256": "eac1bffc378cb3d17d1a4770e8f12b83bca728a05489670271b712fb916710dc",
+    "bytes": 11586,
+    "source": "capture",
+    "request": 107
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_5.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_5.mp4",
+    "sha256": "36d98b080b066c3f44c2aad713ad99decf814d74b69d433bcc92dfb2483dd2f1",
+    "bytes": 11762,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_landed_5.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_landed_5.webm",
+    "sha256": "79ae7f3bc76b76687292d30643787eb97fb308c8dc63c2868390c69a89cf8f71",
+    "bytes": 11245,
+    "source": "capture",
+    "request": 174
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_1.mp4",
+    "sha256": "ec0c49eee59d9650b307ea119127e1dd54d79dc34bd45eb901873acc38022d93",
+    "bytes": 55841,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_1.webm",
+    "sha256": "85bb1d2c07ecbd832b1e7b5c42db970681f96be73b36bbf79671c34ce5af53d3",
+    "bytes": 51124,
+    "source": "capture",
+    "request": 128
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_2.mp4",
+    "sha256": "bd7744ee5487b231a14d1df0d5d354dfcbec1184960921c7e8f1aadb270c11d4",
+    "bytes": 61847,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_2.webm",
+    "sha256": "6ffa15a236caddc89d641b049e377dc9a6e7f46f7d66bde9363f2ed83f2df77b",
+    "bytes": 61224,
+    "source": "capture",
+    "request": 75
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_3.mp4",
+    "sha256": "7f4d6d1266ecc0c2e20d0c5cadc192ea6392faaf2c058dc282b0e841a0a33fcd",
+    "bytes": 73972,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bonus_triggered_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bonus_triggered_3.webm",
+    "sha256": "a12febf50d4133adffcef8f5e9fc736cf26e1a048f9204c51a7908049c9d8fe7",
+    "bytes": 70336,
+    "source": "capture",
+    "request": 112
+  },
+  "2253/1.49.1/assets/default/common/sound/bounce.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bounce.mp4",
+    "sha256": "76429839fedf6617156247d253c3f2d171e8ccbbce1a5d326aed2345de340696",
+    "bytes": 6515,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bounce.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bounce.webm",
+    "sha256": "3ea199e3ed7d3aec663e9396895de30cd94c1f414e2d38f388799c90bc58f9c3",
+    "bytes": 7342,
+    "source": "capture",
+    "request": 166
+  },
+  "2253/1.49.1/assets/default/common/sound/bounce_zap.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bounce_zap.mp4",
+    "sha256": "12b2d14c3a4fdb2774c5de59b21527f92dd9c8330493287fd8c3cad884bf4334",
+    "bytes": 16485,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/bounce_zap.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/bounce_zap.webm",
+    "sha256": "625131cb3ca3daee12ac6d80dd2a4f687f519b931881bf620d12af7f979ba4f2",
+    "bytes": 14035,
+    "source": "capture",
+    "request": 83
+  },
+  "2253/1.49.1/assets/default/common/sound/charge.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/charge.mp4",
+    "sha256": "035e5ba0cfb8d32b7fcc35677ee34d19f81a1526aad02f72979c46f6ea5aca41",
+    "bytes": 14889,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/charge.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/charge.webm",
+    "sha256": "73f88d29baba8cee76cd77d61bd4f464d655794644446b189f131f0bdb639af0",
+    "bytes": 13813,
+    "source": "capture",
+    "request": 161
+  },
+  "2253/1.49.1/assets/default/common/sound/click_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_1.mp4",
+    "sha256": "672138727af2063cda9c944a2dfaeed3fe2c75d15181d0fed9a763a5d322cf7f",
+    "bytes": 12413,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/click_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_1.webm",
+    "sha256": "71619ac0247830c61030837d6b599fdfb24626a2bd616e875b21522769376d18",
+    "bytes": 10493,
+    "source": "capture",
+    "request": 67
+  },
+  "2253/1.49.1/assets/default/common/sound/click_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_2.mp4",
+    "sha256": "b4e1af370623769cd24aa558a5d1b4cf7f6412eaba40f6cd6ac2d06e1a3e9f8a",
+    "bytes": 8670,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/click_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_2.webm",
+    "sha256": "2f67013eea8dbd79053c1b1c5181e07534cc64e82edbd8e3ccff588142646fa7",
+    "bytes": 9856,
+    "source": "capture",
+    "request": 170
+  },
+  "2253/1.49.1/assets/default/common/sound/click_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_3.mp4",
+    "sha256": "ee70d12680feefc164366a546fa18335505abd0c02f98660aae87fb9ba2af7a4",
+    "bytes": 9132,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/click_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_3.webm",
+    "sha256": "5eb2ebca69192415bd9ccad94adfd89d8193f969ba95bdbfae137062fddaffa2",
+    "bytes": 10450,
+    "source": "capture",
+    "request": 94
+  },
+  "2253/1.49.1/assets/default/common/sound/click_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_4.mp4",
+    "sha256": "3d2a6abe27fa9af5e67f659fb11c36c88a4b77a245554fa2602c0c780b56981e",
+    "bytes": 9022,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/click_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/click_4.webm",
+    "sha256": "61d3f71db4e328e9f3912f1207065dc7fb366c9b9d7df14a6b459fb4bc57e3d1",
+    "bytes": 11960,
+    "source": "capture",
+    "request": 98
+  },
+  "2253/1.49.1/assets/default/common/sound/device_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/device_1.mp4",
+    "sha256": "e28e1ae633da2667411b6a1df691a65ff37cf35b91b554295a0466e09f0b74af",
+    "bytes": 8351,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/device_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/device_1.webm",
+    "sha256": "685f56ce3614f7c8ecf8211ae066e73e9d46772bd6723b57e953ef9c08a97485",
+    "bytes": 8961,
+    "source": "capture",
+    "request": 122
+  },
+  "2253/1.49.1/assets/default/common/sound/device_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/device_2.mp4",
+    "sha256": "ec5ca3f9d09ee202f6cbcccac96630622096ec2e904187d0def0a0206a21a783",
+    "bytes": 7255,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/device_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/device_2.webm",
+    "sha256": "8dfc004434fea2f2f07c5880df1fae495785598937e6a1445103521d2f910670",
+    "bytes": 7504,
+    "source": "capture",
+    "request": 169
+  },
+  "2253/1.49.1/assets/default/common/sound/digital_attention.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/digital_attention.mp4",
+    "sha256": "eb2b3153dd3b28317b9d25b455bb7e553e8e6c0c120090681f0a04c638740988",
+    "bytes": 10413,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/digital_attention.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/digital_attention.webm",
+    "sha256": "b0e244e5d14203372adfe050c3ae3968f05cf6780646c6832e97b5c528981583",
+    "bytes": 11643,
+    "source": "capture",
+    "request": 109
+  },
+  "2253/1.49.1/assets/default/common/sound/digital_stop.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/digital_stop.mp4",
+    "sha256": "baff4980370ae3fb8ed73683dab115a0d7eaa84028b7c85bb4a75cc3f5db4958",
+    "bytes": 29136,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/digital_stop.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/digital_stop.webm",
+    "sha256": "53387a51648da3e8c2254c8dd0fc8c1e084b8e98bdc4a30b84f6abd06d1624a5",
+    "bytes": 25978,
+    "source": "capture",
+    "request": 126
+  },
+  "2253/1.49.1/assets/default/common/sound/ding.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ding.mp4",
+    "sha256": "402f52ed3c7fb0d322d73772cd03291d01813608525f7e9d47e6ae7383823b0f",
+    "bytes": 17822,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/ding.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ding.webm",
+    "sha256": "5058b14ae278275dc8cbbfd90091ba57e39bf092862835130087afc1c1eed961",
+    "bytes": 24928,
+    "source": "capture",
+    "request": 88
+  },
+  "2253/1.49.1/assets/default/common/sound/ding_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ding_2.mp4",
+    "sha256": "39dc499d4aab291ab3d9f5286bdbd47132a5b13d12de13252613ae8e09780f3a",
+    "bytes": 17807,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/ding_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ding_2.webm",
+    "sha256": "757bf886059144c2a01fafd043fd6d1cbf9d4f7bf41b8a4b88c47b0b3ef9989e",
+    "bytes": 18692,
+    "source": "capture",
+    "request": 157
+  },
+  "2253/1.49.1/assets/default/common/sound/electric_arc.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electric_arc.mp4",
+    "sha256": "4b66e1e4f96b0c6d20e67deccf488dd4798e01fba8fe994a2e7a0d0143e6afe5",
+    "bytes": 13963,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/electric_arc.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electric_arc.webm",
+    "sha256": "2c57045caec713205b940c5b9d958e830961cc63eb10a1915ddbd98c8668392a",
+    "bytes": 15875,
+    "source": "capture",
+    "request": 97
+  },
+  "2253/1.49.1/assets/default/common/sound/electricity_loop.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electricity_loop.mp4",
+    "sha256": "395faaf26f8d738a3f597defcd5ea0645981faefa568d30fcd8c95e5ad917aa5",
+    "bytes": 75706,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/electricity_loop.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electricity_loop.webm",
+    "sha256": "0f52eaaaa17d75b716ce590c9df3de012f6f9a4d3991a90d3acd469e49808fca",
+    "bytes": 79956,
+    "source": "capture",
+    "request": 175
+  },
+  "2253/1.49.1/assets/default/common/sound/electricity_start.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electricity_start.mp4",
+    "sha256": "db183cb7ecaa71c7b4de516d399bd6c3f6ca77d363e6ae49ea57a14ab2097f51",
+    "bytes": 35355,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/electricity_start.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/electricity_start.webm",
+    "sha256": "1947b6197afc31977b12a809e1b11e578a581b6a4bcf4755eeaa2b20608c27e8",
+    "bytes": 28949,
+    "source": "capture",
+    "request": 153
+  },
+  "2253/1.49.1/assets/default/common/sound/enter.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/enter.mp4",
+    "sha256": "6e65ae0e1c467e726ecc2a8e9e2c9c0daae964651ae00905d67941d5fc131b16",
+    "bytes": 19194,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/enter.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/enter.webm",
+    "sha256": "075e545f4e8fd8f4c24df9f0b6f2fcc15560c50630f2ccec7f205d600c42d040",
+    "bytes": 25520,
+    "source": "capture",
+    "request": 139
+  },
+  "2253/1.49.1/assets/default/common/sound/exit.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/exit.mp4",
+    "sha256": "2c0dd881be2ec146f60314483a96f5d8c4e21848f76112fb8f13a7d88b6dabb0",
+    "bytes": 21936,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/exit.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/exit.webm",
+    "sha256": "520bf26ed1172562ef7dce0b7be8d2fa36826e7b9fdc39caa496477bf02b7af1",
+    "bytes": 27560,
+    "source": "capture",
+    "request": 152
+  },
+  "2253/1.49.1/assets/default/common/sound/gore_loop.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/gore_loop.mp4",
+    "sha256": "eedf5dfd5b308039d68c333c41a193236afea0e9a6b6f55fc6a3282186522fcf",
+    "bytes": 78464,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/gore_loop.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/gore_loop.webm",
+    "sha256": "84741f8efa52dc3f223fe4c18ec0c7131606e507a4c9cafd64a9730e636cbd1c",
+    "bytes": 116904,
+    "source": "capture",
+    "request": 147
+  },
+  "2253/1.49.1/assets/default/common/sound/gore_splash.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/gore_splash.mp4",
+    "sha256": "edeb914e27c0e104840316767b13e93bb3c4f508e668c2e11076953fd895f286",
+    "bytes": 19235,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/gore_splash.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/gore_splash.webm",
+    "sha256": "fc3595e92fa7c255cb4a09e90eb631ab0e00d7f2b0a32e33eb67cb3103d7ccbe",
+    "bytes": 25703,
+    "source": "capture",
+    "request": 90
+  },
+  "2253/1.49.1/assets/default/common/sound/intro.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/intro.mp4",
+    "sha256": "7508386a142613e7d725e1b26fe89944576252c506de25c7da8b39bc523af34b",
+    "bytes": 68144,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/intro.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/intro.webm",
+    "sha256": "6bad85ea2d407adc4f728458a6bacfd6a7db392d524a2191fc92a26f7ed7b8e4",
+    "bytes": 65407,
+    "source": "capture",
+    "request": 130
+  },
+  "2253/1.49.1/assets/default/common/sound/laboratory.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laboratory.mp4",
+    "sha256": "7afc5ea27300b3392ab6628038e16ed200be300f6723c8301cf12171f20964da",
+    "bytes": 466855,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/laboratory.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laboratory.webm",
+    "sha256": "27e19c3c30b57e888462b8fda4812b2bcf820e1a3b15d791d5bf17e42ea4b5f1",
+    "bytes": 424096,
+    "source": "capture",
+    "request": 110
+  },
+  "2253/1.49.1/assets/default/common/sound/laser.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laser.mp4",
+    "sha256": "4d9525ead6a95ce0f82e9239953a4ea9401b857e3c256b2f2189cc01e7fdd71d",
+    "bytes": 13680,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/laser.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laser.webm",
+    "sha256": "143fc1ddbcd1d62d03c57d1848752145c9e5f690a744e88e6c58772f08119015",
+    "bytes": 14635,
+    "source": "capture",
+    "request": 70
+  },
+  "2253/1.49.1/assets/default/common/sound/laugh.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laugh.mp4",
+    "sha256": "54a9e7ef4fa62b4b5d6b550d8d94924eb7d90c60e5baf5cb3833fb6edc8e636c",
+    "bytes": 27392,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/laugh.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/laugh.webm",
+    "sha256": "a8c7f460a5afc24b4cd3b63784d0642f07232cfad4950d6629de10e3b6d7b6b0",
+    "bytes": 22376,
+    "source": "capture",
+    "request": 106
+  },
+  "2253/1.49.1/assets/default/common/sound/machine_spin.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/machine_spin.mp4",
+    "sha256": "b7c91d3a09787419cd32110de37a9925f805edddb98237d703b5a4d29c92e757",
+    "bytes": 36029,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/machine_spin.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/machine_spin.webm",
+    "sha256": "6dfde91536b2c56d8249e9615d6003c93757b6ab96cc5c9387e7925ab507ab87",
+    "bytes": 33774,
+    "source": "capture",
+    "request": 108
+  },
+  "2253/1.49.1/assets/default/common/sound/mech.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech.mp4",
+    "sha256": "0d2ce5aedb536fec0b8ac950496a21c637a6db692b6759319717d978c78b998c",
+    "bytes": 5170,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/mech.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech.webm",
+    "sha256": "8813b8fc168783a59d58b3dfb694a514caae4504d9f9058ba67bc3f853a4ee54",
+    "bytes": 7595,
+    "source": "capture",
+    "request": 142
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_1.mp4",
+    "sha256": "8d1709b60cf17b8f09c1386a10aabc15b2b6161b2dd3ba56aa9399b624cfdbbd",
+    "bytes": 8684,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_1.webm",
+    "sha256": "3e653d02f13718964bf92ec10ec038d47c888c0eba4861d20190835b18dbda28",
+    "bytes": 10554,
+    "source": "capture",
+    "request": 131
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_2.mp4",
+    "sha256": "1a2924e3e93793fd37f8122184b1f878e43e6c9a5929674300c0ac675afbc7d5",
+    "bytes": 8437,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_2.webm",
+    "sha256": "15cb5c87e787d375650a174a3cabec97a41db31fdc228400b08377a4ba59dc31",
+    "bytes": 11008,
+    "source": "capture",
+    "request": 73
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_3.mp4",
+    "sha256": "b6f9f5b5727d61e79ca65774f45c5871dc63c53f25598ac661f163b8fbefb512",
+    "bytes": 7780,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_3.webm",
+    "sha256": "35e024aa9f8540d36968b0e872b0335cbda88bce6cbb1c20c7ee5810c9e1b187",
+    "bytes": 10036,
+    "source": "capture",
+    "request": 96
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_4.mp4",
+    "sha256": "805c99b0d1f7b58c4e9aee39cc998abb44448e7c5f9d474a74dac578b59e0ea3",
+    "bytes": 8637,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/mech_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/mech_4.webm",
+    "sha256": "af277bc82f49f64061ef238b63229fbdaeb94f8d6eccc3394daa70f95b6878c7",
+    "bytes": 11387,
+    "source": "capture",
+    "request": 81
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_1.mp4",
+    "sha256": "ac2d1f71e83d18d83e62bb53160e37a776c3cfb2e377313a89dc982660a70ab1",
+    "bytes": 10049,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_1.webm",
+    "sha256": "358db2fe41f65e948a9eeb785f42112b6ad3830bf8fc85bd72080761ce1df729",
+    "bytes": 11076,
+    "source": "capture",
+    "request": 165
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_2.mp4",
+    "sha256": "26fb82152394bdd9165346d852540f9ab3e89a9cb121f6798862aa95a0a4b056",
+    "bytes": 9007,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_2.webm",
+    "sha256": "7be35d02bbe4e1796c3922e815f478d6bda1d9c9b71872efc31e744fdd7a124d",
+    "bytes": 10239,
+    "source": "capture",
+    "request": 168
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_3.mp4",
+    "sha256": "7b96cba5416086b0962b3733b70a19a64aa7934b8f6e4d19859e27ae408cab54",
+    "bytes": 8344,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/monkey_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/monkey_3.webm",
+    "sha256": "51f190d32d9fd3b70e0708429741bc981431e4229d150245ad616fc499fe0be2",
+    "bytes": 9757,
+    "source": "capture",
+    "request": 85
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_0.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_0.mp4",
+    "sha256": "533ffbb5116d22d427828b79d335ce010521ebd3ed47edb52dda81ff21300843",
+    "bytes": 553445,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_0.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_0.webm",
+    "sha256": "0dd3b7680f2a04dee9be7fa9527788ee48c1304b6a555b0f7ad7bcc5dc5f9e70",
+    "bytes": 585100,
+    "source": "capture",
+    "request": 124
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_1.mp4",
+    "sha256": "2a5e04808c1364cb691253eebc0916c74e9731446f35ec9b61bcd4b9d3bab161",
+    "bytes": 554118,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_1.webm",
+    "sha256": "e4fd53fff1228a8e025c891d17d8d3d42f2f8696368cd78607686cc7c1a48be6",
+    "bytes": 564332,
+    "source": "capture",
+    "request": 125
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_2.mp4",
+    "sha256": "9ff623b058428829c20aef3e6ce5643c9094dbc457a1225663ececc751a1bcff",
+    "bytes": 553806,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_2.webm",
+    "sha256": "b18d9f13786c48ce9849b06283f491130c41d390d96c99dd8e9469f6eaf56cee",
+    "bytes": 562549,
+    "source": "capture",
+    "request": 115
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_3.mp4",
+    "sha256": "c14ff8826189b19dedcf2b0c4541029d41fcb7430f26dc3c766708d1537ac31c",
+    "bytes": 554747,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_2_level_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_2_level_3.webm",
+    "sha256": "f6957a4baa4ef551aa66a23c126cf7e6710d7e6084888367288eca9407f3db4b",
+    "bytes": 562262,
+    "source": "capture",
+    "request": 151
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_3_level_0.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_3_level_0.mp4",
+    "sha256": "2108a752aa8932d8ce0adfd1838e0e75d5f1aa3a096d18535a25cf4d1725eb5b",
+    "bytes": 1085241,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_3_level_0.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_3_level_0.webm",
+    "sha256": "ca676c70ede3625d9e31630ebd571339ae1628fc467d33fbe9db7e35cc8f5ee7",
+    "bytes": 1090395,
+    "source": "capture",
+    "request": 95
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_0.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_0.mp4",
+    "sha256": "9da9f66869240d51d11d3f39bea7dcdc70626108b897614878d12253a5467c7c",
+    "bytes": 542885,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_0.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_0.webm",
+    "sha256": "fda2eedd93a1ef55ac34e47d963ef39cb4897f4666ea82962bbe600d0be2151b",
+    "bytes": 553753,
+    "source": "capture",
+    "request": 138
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_1.mp4",
+    "sha256": "40a5201aa17efecadfe5e1e6ab414752d3b43ae5a5712655faf9a3104d075f37",
+    "bytes": 543508,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_1.webm",
+    "sha256": "23e4e2b5f73900ddf6b7b7494a1b7b6c58974f4f23179c6f2124133641611396",
+    "bytes": 579006,
+    "source": "capture",
+    "request": 77
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_2.mp4",
+    "sha256": "8ab0e2c98cd540013fb9bfb6d61afce252e03874d8645581f6f1fdb4d410659f",
+    "bytes": 543435,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_2.webm",
+    "sha256": "1bbd8cdbd451eed1b83fa567958dd91139e9ede4a9175a7ad2f90604493d8c1d",
+    "bytes": 587892,
+    "source": "capture",
+    "request": 66
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_3.mp4",
+    "sha256": "46e1cef7f3d0a2c5e4184107ce192bfdcf281e2bb057465f8848fc0f7486a587",
+    "bytes": 544088,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_bonus_level_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_bonus_level_3.webm",
+    "sha256": "5ef39ec2facdc4d5fc9b2e9dd2471aee2a6aaa74c9a2a030a96a829080d3050c",
+    "bytes": 541337,
+    "source": "capture",
+    "request": 111
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_0.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_0.mp4",
+    "sha256": "bdbce2a5526666ac9a39d5e54fe989154cfa1975c40a796e435f6c9072c3c5ab",
+    "bytes": 394722,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_0.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_0.webm",
+    "sha256": "6122aacc0e8197f648106af57cacc78e5774708fc39d551edf9cd7a92d1fb994",
+    "bytes": 439566,
+    "source": "capture",
+    "request": 155
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_1.mp4",
+    "sha256": "3e4b55ce67ada5d3244bcc5811b80aef487a15420646628fac60f55fdd7e6a7a",
+    "bytes": 393746,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_1.webm",
+    "sha256": "3fbe37ba241f1c6525187ac328d22a83abe64cfa697675a9c534deed3f5aafab",
+    "bytes": 430560,
+    "source": "capture",
+    "request": 172
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_2.mp4",
+    "sha256": "275b790cd02bf6497e797357c311eef0e6c6be115a20e9b5921a3716e3deff7d",
+    "bytes": 392309,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_2.webm",
+    "sha256": "7463ce13becd2c9a58925b9e73e612da2d673f12045055d62d64542b325596fd",
+    "bytes": 384052,
+    "source": "capture",
+    "request": 74
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_3.mp4",
+    "sha256": "6091a9eec8e830c740acf7c32e9f2fc4d6f0cc14b9dcd9d6151f90444f366019",
+    "bytes": 392392,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/music_level_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/music_level_3.webm",
+    "sha256": "d8080496400c4d24cce5f3b9c727ff9c1177079e5fff97ca475796c4957f8b3b",
+    "bytes": 373508,
+    "source": "capture",
+    "request": 144
+  },
+  "2253/1.49.1/assets/default/common/sound/night_park.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/night_park.mp4",
+    "sha256": "66a98d9339cd2720bcdc04827718a52397ee138818d3605351d28427e5ef8dfd",
+    "bytes": 367332,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/night_park.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/night_park.webm",
+    "sha256": "a8b23d9a3e9ec5ff853401371cd7d8603af429ceaf5f744efc5165e1460fc87e",
+    "bytes": 327239,
+    "source": "capture",
+    "request": 68
+  },
+  "2253/1.49.1/assets/default/common/sound/pop_sparkle.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/pop_sparkle.mp4",
+    "sha256": "1751864a5c68b0ba8632aa656a6a7ef9d57fa96e9e208acd6cf46a5252a5a8f9",
+    "bytes": 13238,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/pop_sparkle.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/pop_sparkle.webm",
+    "sha256": "69fb7725a15bf16a592d1059a87f1ad73a6902532922ccfbf674a13d759fc4f0",
+    "bytes": 13486,
+    "source": "capture",
+    "request": 129
+  },
+  "2253/1.49.1/assets/default/common/sound/robot.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/robot.mp4",
+    "sha256": "48f0ea2de6a58e3fdc1dc4da39b7a8390f95a5b8cef7be177c33e8827cb04aac",
+    "bytes": 13111,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/robot.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/robot.webm",
+    "sha256": "db4fbf8df6d56e06b43de283704b7cd6fe8f2c0945c69340c3783aceb4ba797c",
+    "bytes": 13649,
+    "source": "capture",
+    "request": 156
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_1.mp4",
+    "sha256": "862cea5f0d6b612ca76f5268a2e6ce3db3e449f2bd6b3e9f339b25f72696d173",
+    "bytes": 15331,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_1.webm",
+    "sha256": "63d6e49c1c1455159371f436de082971e8dddea0318c94a17d4afacdac84ed10",
+    "bytes": 14273,
+    "source": "capture",
+    "request": 84
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_2.mp4",
+    "sha256": "c791d6c66d7e61c2614b92650c73cf4439168120834ca900df368b4f885443ef",
+    "bytes": 13480,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_2.webm",
+    "sha256": "308cbee3724cdc68ca5c9db4bfcee0bf325ac14dedbc38755ee87e95280d4df9",
+    "bytes": 14255,
+    "source": "capture",
+    "request": 146
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_3.mp4",
+    "sha256": "4cd8cd190299885e3df63cb115d872871854a82044450accfe2c070afef663ee",
+    "bytes": 16078,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/scifi_weapon_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/scifi_weapon_3.webm",
+    "sha256": "d67adb4e459e49e57c0ce2df1b3d43f307ec62c46886c738ee3fb4e6c89ca4f3",
+    "bytes": 16151,
+    "source": "capture",
+    "request": 87
+  },
+  "2253/1.49.1/assets/default/common/sound/ship.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ship.mp4",
+    "sha256": "11d7396a7dc6a4d9343cfc74bc88bdbedd2319727232f41ad16aa6c4f6bdeb40",
+    "bytes": 21069,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/ship.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/ship.webm",
+    "sha256": "51e06e1c82c1a522ebaca1e7e7cd26a6c5ca935b146dda46a480476821b0c00f",
+    "bytes": 19552,
+    "source": "capture",
+    "request": 102
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_1.mp4",
+    "sha256": "31451427901e82c2c844f5140b4ca4458e9cf785dd00ab6d9e574f09a2adcfc8",
+    "bytes": 15989,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_1.webm",
+    "sha256": "3fdd18f1a5a77911492c468f7ece28ab0f5a59e70b5d4f0effcdbaa625df3df7",
+    "bytes": 16518,
+    "source": "capture",
+    "request": 71
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_2.mp4",
+    "sha256": "94889b2d7c679a67f2a75dee26a73443e6a60e15861b6b878526431fd8876347",
+    "bytes": 13581,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_2.webm",
+    "sha256": "719880e6212b9a224f67e9215c961b882dae088b23efd8f28aae09201b14fe58",
+    "bytes": 14251,
+    "source": "capture",
+    "request": 116
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_3.mp4",
+    "sha256": "49ee0995eb85f532fc3cb62741f96fbf161a53bb4af580ee314176261ca9f05c",
+    "bytes": 13877,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_3.webm",
+    "sha256": "5abd73c58f401db07b8dcb977880c5e883b909abe0a56dcab6eb49d2d7adfb82",
+    "bytes": 14190,
+    "source": "capture",
+    "request": 141
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_4.mp4",
+    "sha256": "3c63d31c7a48692953e6091b3d8cb045e6261a8bbb16f62f79d651f342193aa4",
+    "bytes": 13762,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_4.webm",
+    "sha256": "c4edf5eb626589473be34cec318efc50bf37bc2eeb70464ccde841c40a2d78d4",
+    "bytes": 14136,
+    "source": "capture",
+    "request": 72
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_5.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_5.mp4",
+    "sha256": "723fe40c00c86a119aa87bfa8f022b64970f725ae274a6889a56e4fc7e300e4e",
+    "bytes": 15914,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/slime_move_5.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/slime_move_5.webm",
+    "sha256": "462ca7612c20bdee9e0ea84fea9f2755bc9a829c9fb7cd906afbfa973b6660a1",
+    "bytes": 15889,
+    "source": "capture",
+    "request": 118
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_1.mp4",
+    "sha256": "5ba27027e064da5fa17b1ef1cb2fc364c2163e15d03e5b8a6e474f6fffe98693",
+    "bytes": 11622,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_1.webm",
+    "sha256": "0accf07f3e3d53f994c45d3de5aaa3d5783255b28ea77780139d0a60e77c9e23",
+    "bytes": 13231,
+    "source": "capture",
+    "request": 158
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_2.mp4",
+    "sha256": "a0e76e3275efb3147c3e8017f0ada56d854848205efb741d48041d0c2d7aa75c",
+    "bytes": 32467,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_2.webm",
+    "sha256": "db552e63897fe1b06eab804c9b825816e319346102100501679f7c230800df10",
+    "bytes": 37045,
+    "source": "capture",
+    "request": 82
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_3.mp4",
+    "sha256": "8631c3488cc4933d846791d0cfc42c791a42bd4f8bde7be1da0934bbd6c7dc4a",
+    "bytes": 25427,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_3.webm",
+    "sha256": "16cb8e8f300d7bf0e46751b6b2a09ddc6871f2754bfa24b72adde86f2f08d320",
+    "bytes": 24844,
+    "source": "capture",
+    "request": 103
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_4.mp4",
+    "sha256": "65f2b9e340bd9a155da9995978ce719ec7b0ecbc05beb110221ce19703203d6a",
+    "bytes": 37180,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_4.webm",
+    "sha256": "56ff0d2fe81698d7b6a6b5ca59090098d2464e6634c9cf17ba222fc3d339b6e6",
+    "bytes": 29914,
+    "source": "capture",
+    "request": 114
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_5.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_5.mp4",
+    "sha256": "74d620cd1d9fa763f525ee192f7a803c9148146488c00da4a4a7ce8daeaae6a4",
+    "bytes": 51477,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/splat_5.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/splat_5.webm",
+    "sha256": "7dc3d2058a024f0852515acea1a64b9a4b88308029fea288dd49017a682c51d5",
+    "bytes": 57791,
+    "source": "capture",
+    "request": 148
+  },
+  "2253/1.49.1/assets/default/common/sound/swoosh_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/swoosh_1.mp4",
+    "sha256": "fd092e94c98ecc309e7db67baa6ef8cd484b45e0c0f38a318860d7dcc5dc7837",
+    "bytes": 25387,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/swoosh_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/swoosh_1.webm",
+    "sha256": "28eb970ee8964a23c108fe4be8a6078d08f2a970faa1461b6537f5d86b6e11fd",
+    "bytes": 21960,
+    "source": "capture",
+    "request": 69
+  },
+  "2253/1.49.1/assets/default/common/sound/swoosh_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/swoosh_2.mp4",
+    "sha256": "a679ebe7fafcc8c5c739824ba0e78dec1f22a3961c89123a77a7b32308cf3043",
+    "bytes": 18915,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/swoosh_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/swoosh_2.webm",
+    "sha256": "c9cc878d68705027878e575b06ecf8f666c8f4ca83b46dc79f249a59abca74e6",
+    "bytes": 18685,
+    "source": "capture",
+    "request": 76
+  },
+  "2253/1.49.1/assets/default/common/sound/timpani_end.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/timpani_end.mp4",
+    "sha256": "3fb70a79963597e17947f3773371dd83d63123dd36de39bc96a319bd9a44c0ea",
+    "bytes": 16852,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/timpani_end.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/timpani_end.webm",
+    "sha256": "fee5e33a6dcbf7ee5b335bc2222437b028cae4a7a74048126f4b52e16705a200",
+    "bytes": 13998,
+    "source": "capture",
+    "request": 113
+  },
+  "2253/1.49.1/assets/default/common/sound/total_win_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/total_win_1.mp4",
+    "sha256": "cfd398c57c9d78b1988b1e1b8def23632e0787b3ee25a5cfaa80f2b179f0eae2",
+    "bytes": 36140,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/total_win_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/total_win_1.webm",
+    "sha256": "84e6c146ecdbf77bb63833b43c81ee6941f38e496ace67f06854b02511661dc5",
+    "bytes": 26703,
+    "source": "capture",
+    "request": 79
+  },
+  "2253/1.49.1/assets/default/common/sound/total_win_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/total_win_2.mp4",
+    "sha256": "d40025215f0b81835c3bad6b41d77bd7b0f287924d2373cfb24df3c9f9355559",
+    "bytes": 70252,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/total_win_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/total_win_2.webm",
+    "sha256": "f3cfb202e5a5e35e55ff2ee9c8022235cd06ec288ec643838ecaa846f6873379",
+    "bytes": 68812,
+    "source": "capture",
+    "request": 86
+  },
+  "2253/1.49.1/assets/default/common/sound/win_count.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_count.mp4",
+    "sha256": "3bdfc3badd6bd7c4cf0fd331c7e3a811689158e3bade7ab79a4911d772c9bcc2",
+    "bytes": 5350,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/win_count.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_count.webm",
+    "sha256": "1d5c0b1d3b543ab75c69b382ec1f216edb968c28f653d2d55f5402c95949ac20",
+    "bytes": 8997,
+    "source": "capture",
+    "request": 163
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_bet_low.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_bet_low.mp4",
+    "sha256": "c43d82b6091e99b7215010e59e58b36c3af521c409caae87400214cc2427f832",
+    "bytes": 7997,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_bet_low.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_bet_low.webm",
+    "sha256": "d0bb4b9335a8a0b8e8993094596da720c6435afe9dff75cbd818ebc98a988da2",
+    "bytes": 7096,
+    "source": "capture",
+    "request": 145
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_bet_over.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_bet_over.mp4",
+    "sha256": "ff6d765dbd74f074e08e577e7557810ccb91bff49ad7f3f010c824d21758fb39",
+    "bytes": 10488,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_bet_over.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_bet_over.webm",
+    "sha256": "0aba48a8a037ea641bc834dd3fc15829958d3a7cc21d1e3715cf6c7ba5e1917d",
+    "bytes": 10503,
+    "source": "capture",
+    "request": 132
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_high.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_high.mp4",
+    "sha256": "d2c1890ad36b8cc35c01037c18c5eea8e673169dbe9ee71d8e41ce0ee85dae73",
+    "bytes": 40858,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/win_end_high.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/win_end_high.webm",
+    "sha256": "4fc752daa450e7990b184b7576977df86a01b92ac68e77fddba431a2cf387dd1",
+    "bytes": 35038,
+    "source": "capture",
+    "request": 154
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_1.mp4",
+    "sha256": "06f6d8530e4f5c5688f1800240d61bfe2b8297d498be22e94043a5f9896425e2",
+    "bytes": 34963,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_1.webm",
+    "sha256": "28aebd84a9602faf21bf81cbead7a161f16df20394814e63f2b96f3f21da297e",
+    "bytes": 33236,
+    "source": "capture",
+    "request": 65
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_2.mp4",
+    "sha256": "7f5cab4b35d8a35404ed890b7cf9ebb565216dfd6acd0cd15997b5fce7164f3d",
+    "bytes": 35089,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_2.webm",
+    "sha256": "4d0c21feeb6c77259070edf41bcb4372bb41172bf2e1776d0fc1dead0397f521",
+    "bytes": 32856,
+    "source": "capture",
+    "request": 100
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_3.mp4",
+    "sha256": "a954d58c927893b7e71f30877f6f7d63d1b8b81ffd4ddeec34cea3fe99cb7b16",
+    "bytes": 37705,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_3.webm",
+    "sha256": "7d7db6e80c6108d48e29ace41b12b4fd0099070d32b899b78d3736ae595ea34d",
+    "bytes": 35635,
+    "source": "capture",
+    "request": 123
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_4.mp4",
+    "sha256": "2d8a6397103126d00caea5f0f14acb1de0203f27d4b580cfa1cd0adc04785607",
+    "bytes": 57065,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wintier_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wintier_4.webm",
+    "sha256": "bdabf0f366985de18a60890b005bb9b6f7d6861395b9255d2cf2d89a0c676e06",
+    "bytes": 53645,
+    "source": "capture",
+    "request": 150
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_1.mp4",
+    "sha256": "03ab5f69e0c3da675ec95466697571c1bf97076f2e441e7a5d4369512be3f99c",
+    "bytes": 16522,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_1.webm",
+    "sha256": "4cdd310dcaf7f762044a04fd35faff5d95f2b42e29d56b672d6c57aba5ed5881",
+    "bytes": 16246,
+    "source": "capture",
+    "request": 127
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_2.mp4",
+    "sha256": "a3f1610ef23c80f9b5db1af237c26d68b36cc7ce31f884784cee16a973482b42",
+    "bytes": 16687,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_2.webm",
+    "sha256": "f89996f7e48b6ce3d78873cd5b2928cac0faf9df926a0305d23c30ec1f41dd37",
+    "bytes": 17149,
+    "source": "capture",
+    "request": 134
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_3.mp4",
+    "sha256": "c71072b2afd68c22069677d75dcbfe1d7532d0c813346c23678d267cfc902ba8",
+    "bytes": 14415,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_3.webm",
+    "sha256": "ed44b13aa7e824353d96288c7aeec85a94f29fab285fbb9f1fa1bdb3ae7a525e",
+    "bytes": 15310,
+    "source": "capture",
+    "request": 136
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_4.mp4",
+    "sha256": "e0cfc486c368b601f19ad0d74d9f5bd1a6827687c9aca32d5d451e693c2cab8c",
+    "bytes": 22851,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/wow_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/wow_4.webm",
+    "sha256": "d4448692a69e51dbd28d6d3b3eb4354f4c146d32119b64fd14b32a0a247a0357",
+    "bytes": 21171,
+    "source": "capture",
+    "request": 99
+  },
+  "2253/1.49.1/assets/default/common/sound/zap.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap.mp4",
+    "sha256": "36469e7064bf5ce9cf2b85874d1695a07fca0c0a2c9430e9d07ee87ce20644e8",
+    "bytes": 20051,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap.webm",
+    "sha256": "83a75d96a231973a866edcb4a4364275a3daca3d0e904c48538d9ed3f99abe44",
+    "bytes": 17756,
+    "source": "capture",
+    "request": 159
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_1.mp4",
+    "sha256": "8c805576f07d22742b7fc5ae36e531a3afde4c5fa60b51d08955126ff6d3438a",
+    "bytes": 8444,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_1.webm",
+    "sha256": "87e5fbf6525835ebb9493be25df5c88686298f004ab0ddfd05739c392d80fd61",
+    "bytes": 8705,
+    "source": "capture",
+    "request": 140
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_10.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_10.mp4",
+    "sha256": "cb69f32c4272b89517269b1b8d8edf2d8ec90d0d0061a58a81b2acdae2428c3d",
+    "bytes": 5553,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_10.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_10.webm",
+    "sha256": "f9cd42ebbfbd61aa91a93780034c5a7c77ec8e6d40b2860270396bbd7d3be864",
+    "bytes": 7419,
+    "source": "capture",
+    "request": 101
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_2.mp4",
+    "sha256": "49dfa29d02a86badc1b6c344e051f2459a170729f7566a181fa8ed7dadca0891",
+    "bytes": 5361,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_2.webm",
+    "sha256": "023f46b378fe95af5d321da0eac2cc5c70e879ea6d8a67576eddf7a89c7c1633",
+    "bytes": 5412,
+    "source": "capture",
+    "request": 133
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_3.mp4",
+    "sha256": "e3eaa425e7bb5c7ff2eeb5c54b75a876664c116411b8ba2463aa928675eda2da",
+    "bytes": 6951,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_3.webm",
+    "sha256": "c26c76ecb54ffb5df1bad911313d5ea7d03cf45c8a18270e786017fca433d100",
+    "bytes": 7002,
+    "source": "capture",
+    "request": 89
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_4.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_4.mp4",
+    "sha256": "436afbc7d6550b5d2b8dc7750438d8bfdf100f2dfd7aba6f867ab1c5b341f9d9",
+    "bytes": 6266,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_4.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_4.webm",
+    "sha256": "8d25e4d16e829e95ff79decd9c1f007daa43eadf359f8f79e8f0a0a0f9d354a4",
+    "bytes": 6682,
+    "source": "capture",
+    "request": 135
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_5.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_5.mp4",
+    "sha256": "ee95eb59afe5a0d4eeb9b072bacd154f7b8501a804440cd48b0e9b58702d4ce3",
+    "bytes": 11063,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_5.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_5.webm",
+    "sha256": "d8bfc9eddc1f40ea0cae36ffde42287328a44b63536e7bb2a90367ffcf956da1",
+    "bytes": 11008,
+    "source": "capture",
+    "request": 160
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_6.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_6.mp4",
+    "sha256": "dda70952876be2444900549ec4f1bf897d9157c46ecb5af65bfc2b8dd5ce2113",
+    "bytes": 6787,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_6.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_6.webm",
+    "sha256": "9530e47ecb2272b216fa05dfa06c869ab58cba2908dda5cba0886fe58ee59835",
+    "bytes": 8500,
+    "source": "capture",
+    "request": 92
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_7.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_7.mp4",
+    "sha256": "689fdf2b4c2849239a44d328e3149aa04fb9f1f19d20ec5be5a4992ac562c461",
+    "bytes": 5834,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_7.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_7.webm",
+    "sha256": "32434adccc5ddaeba97f6f47fbdd3018ec17c1644d9b3feb3df4cddbc34a411f",
+    "bytes": 6743,
+    "source": "capture",
+    "request": 121
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_8.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_8.mp4",
+    "sha256": "c643a35fef920c01b78cd1a951a30b2f577ff8ca16243eed5f003018b156273e",
+    "bytes": 6050,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_8.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_8.webm",
+    "sha256": "88588a811a96f412a1ff1b6bfc493818a2d1dac3dd16333da7ef2602b52aee1b",
+    "bytes": 5995,
+    "source": "capture",
+    "request": 137
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_9.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_9.mp4",
+    "sha256": "7c6273be04c0911563a3a915ec916fcef928de0eb281d254fbb8739d9226df91",
+    "bytes": 7292,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_9.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_9.webm",
+    "sha256": "1f8d6734b131e4d8bf41aa8f5b06283c103eeb5ecc482a57413a3d01c9d86974",
+    "bytes": 7917,
+    "source": "capture",
+    "request": 105
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_bounce.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_bounce.mp4",
+    "sha256": "27049b56e62b7897401436c3067cecc90e752c5476afb06989e1fe09298ad608",
+    "bytes": 25996,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_bounce.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_bounce.webm",
+    "sha256": "c3f797afa5ed49684c0d154c513b50c5ae283004eeeef7e7e40d961bb0e1147b",
+    "bytes": 18463,
+    "source": "capture",
+    "request": 171
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_off.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_off.mp4",
+    "sha256": "b7c48e2d8dd042bcb093765472501584c6837dec68194c0f026542e4caf0edd5",
+    "bytes": 10034,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_off.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_off.webm",
+    "sha256": "b4c97e204cbb2af61583c4db4aa049eef802d154f80e00d847d3ec5083d25bdf",
+    "bytes": 10486,
+    "source": "capture",
+    "request": 162
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_splash.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_splash.mp4",
+    "sha256": "fe6cc58447ef9b43a5dc11342822293e26a04f326c75044f17c898c440a96bca",
+    "bytes": 34640,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zap_splash.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zap_splash.webm",
+    "sha256": "7cb5f6e057278d26b360e8021773216a3a665f64325a766d8d135c934c5272c4",
+    "bytes": 29211,
+    "source": "capture",
+    "request": 117
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_1.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_1.mp4",
+    "sha256": "83c7c652251fd4743a6274008d5cc122d9a40a9d5a2de3d6fcfdda69e9c54dcb",
+    "bytes": 62096,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_1.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_1.webm",
+    "sha256": "9a06d9ff33d6a17d7d8cb37714be8967d2750e59f21946ac1e64e17d19b608bd",
+    "bytes": 34705,
+    "source": "capture",
+    "request": 78
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_2.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_2.mp4",
+    "sha256": "5303372438d4805a57137b88d14cb8f667771681450aab3488333dff56e8598a",
+    "bytes": 61518,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_2.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_2.webm",
+    "sha256": "bd6b7e37d9085f4d8d231d1c6c7310717cd9b66b69d8a9589b17027e41eed4e5",
+    "bytes": 34734,
+    "source": "capture",
+    "request": 173
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_3.mp4": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_3.mp4",
+    "sha256": "9462a0a7af05d64f44dd351727f6031752db97d58d882a32efd9b8c421000def",
+    "bytes": 74797,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/sound/zappo_laugh_3.webm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/sound/zappo_laugh_3.webm",
+    "sha256": "451a8011fa894d5cb2fa33755d3110677447db6301bcc2f7c7abd097b4427ec6",
+    "bytes": 45056,
+    "source": "capture",
+    "request": 91
+  },
+  "2253/1.49.1/assets/default/common/spine/encoding.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/encoding.json",
+    "sha256": "7132a8f84e70c029478963eda84a88f2d00ea9940745591fcfbad837be074f4d",
+    "bytes": 110,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/common/spine/fs_attention.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/fs_attention.atlas",
+    "sha256": "47d0aad44890b888c38449d5d4db51ee6d22d72a2e9e6b416e5325449674e702",
+    "bytes": 307,
+    "source": "capture",
+    "request": 216
+  },
+  "2253/1.49.1/assets/default/common/spine/fs_attention.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/fs_attention.json",
+    "sha256": "27b7d38739d32d4519a4325ea8b6de402ca0e35e8d3221b3923f08cc727ce5cf",
+    "bytes": 29272,
+    "source": "capture",
+    "request": 215
+  },
+  "2253/1.49.1/assets/default/common/spine/fs_attention.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/fs_attention.ktx2",
+    "sha256": "d72ea9fc1f1cbbc44a7642f845b88620ed8437d76ce7a5fe618a92a484eaf295",
+    "bytes": 82132,
+    "source": "capture",
+    "request": 214
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_brain.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_brain.atlas",
+    "sha256": "ce5d2851f5b2a81546640c5441080cae63e3d0014fd60b72ec3193ef13e84938",
+    "bytes": 776,
+    "source": "capture",
+    "request": 219
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_brain.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_brain.json",
+    "sha256": "836d1f38b52ff0ccf694d9e8dd8ab9e904905a1bd9b7efa001944e172df81287",
+    "bytes": 111613,
+    "source": "capture",
+    "request": 218
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_brain.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_brain.ktx2",
+    "sha256": "9e22538d8031b50f7edad9dd8ec0b8c6a35bdb9a1cc995f308770ac7fe8bf0eb",
+    "bytes": 77481,
+    "source": "capture",
+    "request": 217
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_eye.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_eye.atlas",
+    "sha256": "3abc256540f3f6626e147a8d93e88ed94e345f664786a0b3d7bc72548f867f40",
+    "bytes": 567,
+    "source": "capture",
+    "request": 222
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_eye.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_eye.json",
+    "sha256": "e8ad456000658229bceaecf226b0bc762b8133efd03b73386c0fc0c749c0eb35",
+    "bytes": 129483,
+    "source": "capture",
+    "request": 221
+  },
+  "2253/1.49.1/assets/default/common/spine/mr_eye.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/mr_eye.ktx2",
+    "sha256": "712c4d796d33a145f0b5f0d798f51cd669fff17871eca376a9dabed5e4acc331",
+    "bytes": 149216,
+    "source": "capture",
+    "request": 220
+  },
+  "2253/1.49.1/assets/default/common/spine/reel.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/reel.atlas",
+    "sha256": "5a1587448fbc179c2eb2582e6b7df67cf36fa32de97b29680e3ecaeef5c2d511",
+    "bytes": 2394,
+    "source": "capture",
+    "request": 228
+  },
+  "2253/1.49.1/assets/default/common/spine/reel.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/reel.json",
+    "sha256": "8dab3c3a01d9713126a67799557b825d435f7fbde70c4e6cd8f14ad42ebe3d61",
+    "bytes": 43969,
+    "source": "capture",
+    "request": 227
+  },
+  "2253/1.49.1/assets/default/common/spine/reel.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/reel.ktx2",
+    "sha256": "55868adcf62eadbed113574d07cea8cbac15e7a3321aa57a36cae055761a2f37",
+    "bytes": 326163,
+    "source": "capture",
+    "request": 226
+  },
+  "2253/1.49.1/assets/default/common/spine/zappo_and_monkey.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/zappo_and_monkey.atlas",
+    "sha256": "de85516de248cc36062978d661384475f798badeeb061013c3a3424d7e50a8fd",
+    "bytes": 2107,
+    "source": "capture",
+    "request": 225
+  },
+  "2253/1.49.1/assets/default/common/spine/zappo_and_monkey.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/zappo_and_monkey.json",
+    "sha256": "2154b26d884f52a7bd6c9a356bb1e25dfc1b5e0403b88208389930a1aac6eacf",
+    "bytes": 142218,
+    "source": "capture",
+    "request": 224
+  },
+  "2253/1.49.1/assets/default/common/spine/zappo_and_monkey.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/common/spine/zappo_and_monkey.ktx2",
+    "sha256": "67dd66c8b6b654f15aa4a3e487fac9e9b57ec400b99f7c888761b88e3698387e",
+    "bytes": 202122,
+    "source": "capture",
+    "request": 223
+  },
+  "2253/1.49.1/assets/default/hd/atlas/misc.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/misc.atlas",
+    "sha256": "7ae619adead616cc52f1b84470299a3d98ca9d857195f382564c80421b2f46f9",
+    "bytes": 2166,
+    "source": "capture",
+    "request": 181
+  },
+  "2253/1.49.1/assets/default/hd/atlas/misc.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/misc.ktx2",
+    "sha256": "12ddca4c47d2a12f45009cab3da66d69f318f87d1157a5fa09142de4268f43b5",
+    "bytes": 1464871,
+    "source": "capture",
+    "request": 180
+  },
+  "2253/1.49.1/assets/default/hd/atlas/reels_1.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/reels_1.atlas",
+    "sha256": "8d25564e7bc78425604df957c938051ee65717ae01bd6e5660345904aca70d39",
+    "bytes": 293,
+    "source": "capture",
+    "request": 185
+  },
+  "2253/1.49.1/assets/default/hd/atlas/reels_1.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/reels_1.ktx2",
+    "sha256": "b8721edea69791be771457d9ff39498f22f884e24c9427d49e386c401703d622",
+    "bytes": 882662,
+    "source": "capture",
+    "request": 182
+  },
+  "2253/1.49.1/assets/default/hd/atlas/reels_2.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/reels_2.atlas",
+    "sha256": "ba08f40ac950fbc0a44caf397bbf450e4f01af501da1d54f8b2190b4edb7841d",
+    "bytes": 294,
+    "source": "capture",
+    "request": 179
+  },
+  "2253/1.49.1/assets/default/hd/atlas/reels_2.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/atlas/reels_2.ktx2",
+    "sha256": "367e0c0794fa79945d0f60172dc9b186e1501df529cc1ed6f3015ee63f76cbad",
+    "bytes": 710457,
+    "source": "capture",
+    "request": 178
+  },
+  "2253/1.49.1/assets/default/hd/spine/countup_tiers.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/countup_tiers.atlas",
+    "sha256": "6955bd383228eb1e23f20b649d8b3afb8db2ac9fe4639fee373557e9b16795f5",
+    "bytes": 5033,
+    "source": "capture",
+    "request": 213
+  },
+  "2253/1.49.1/assets/default/hd/spine/countup_tiers.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/countup_tiers.json",
+    "sha256": "41de9e286e96c9b04b38ddb91f7551f4b974c2d8da7fea0068442fdecaef004d",
+    "bytes": 123362,
+    "source": "capture",
+    "request": 212
+  },
+  "2253/1.49.1/assets/default/hd/spine/countup_tiers.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/countup_tiers.ktx2",
+    "sha256": "8d67ae6cdccb661776409d450993b9ff1f15984c41ae0352f60223b91608b003",
+    "bytes": 1153394,
+    "source": "capture",
+    "request": 211
+  },
+  "2253/1.49.1/assets/default/hd/spine/encoding.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/encoding.json",
+    "sha256": "7d2eaf3df34ada4ee874144660f359214294ce3ed7843144721092d841d731c2",
+    "bytes": 277,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/eye.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/eye.atlas",
+    "sha256": "1cedac52c89a2a3f93d33ab6acd72d723019b07c6266de3dcc1b0149ced019f0",
+    "bytes": 3939,
+    "source": "capture",
+    "request": 204
+  },
+  "2253/1.49.1/assets/default/hd/spine/eye.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/eye.json",
+    "sha256": "5e9ddca11d7bdddb2c1370da8e35cdd2eb7f70c7098f21e9123d134614f2fc6e",
+    "bytes": 443920,
+    "source": "capture",
+    "request": 203
+  },
+  "2253/1.49.1/assets/default/hd/spine/eye.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/eye.ktx2",
+    "sha256": "9e2c4b61a34b92d6bbbf4192f08b3ccfcef3a6db2fa89ceea030dfb9e15c53b2",
+    "bytes": 485453,
+    "source": "capture",
+    "request": 202
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.atlas",
+    "sha256": "5ae0fa1c9a37f36821b98a9b4e255124dc971baf8a6d34094c5675c2fe433310",
+    "bytes": 3428,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.json",
+    "sha256": "641cefdfb2e8c6b09cae3ded990b8d44497e78fbe58a1c5f8ba7736d9c2e3c74",
+    "bytes": 109232,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/countup_tiers.ktx2",
+    "sha256": "7b0b4e5926ad3769402fb5d0aa9eb3ea75d5f13bb53ba40d69ee5463fa2076bc",
+    "bytes": 939818,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/encoding.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/encoding.json",
+    "sha256": "aeb499a81e660c9fa9be0f1efdbf59c6a88f1ce34a0c5c41b7a7b99bc21ca436",
+    "bytes": 145,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.atlas",
+    "sha256": "9dfd673b0dd23783353e9c4eb78a00afcfeab1bbbb6a137d489d4dbd673cd99a",
+    "bytes": 1780,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.json",
+    "sha256": "38c3391e89a35a9025d509c7ea9769a04cf43768587cbe00b135b466b63f7411",
+    "bytes": 17710,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/localized/es-es/total_win.ktx2",
+    "sha256": "910ac5b25ecc47e082e641fd903d16ed843347c5175bab0649676d7f8f13aeeb",
+    "bytes": 450541,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/hd/spine/symbols.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/symbols.atlas",
+    "sha256": "893dd3ab492304afccd9fcd420fe06b5da6d217380c1f7e6fcc31541ce84aa17",
+    "bytes": 10562,
+    "source": "capture",
+    "request": 210
+  },
+  "2253/1.49.1/assets/default/hd/spine/symbols.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/symbols.json",
+    "sha256": "765cf711de6e06e7221412fb3e07fb2de6566d990f1c0b47e374e6c780400027",
+    "bytes": 313416,
+    "source": "capture",
+    "request": 209
+  },
+  "2253/1.49.1/assets/default/hd/spine/symbols.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/symbols.ktx2",
+    "sha256": "df436be9b753ca282c76ec53d6ec832dad197d924928b41dc259cce8dfa11414",
+    "bytes": 796713,
+    "source": "capture",
+    "request": 208
+  },
+  "2253/1.49.1/assets/default/hd/spine/total_win.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/total_win.atlas",
+    "sha256": "9dfd673b0dd23783353e9c4eb78a00afcfeab1bbbb6a137d489d4dbd673cd99a",
+    "bytes": 1780,
+    "source": "capture",
+    "request": 207
+  },
+  "2253/1.49.1/assets/default/hd/spine/total_win.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/total_win.json",
+    "sha256": "6f706fff2534144ca85cbc814c1921cade3d301f507fdf2812ff5c5b91c6f3a2",
+    "bytes": 17724,
+    "source": "capture",
+    "request": 206
+  },
+  "2253/1.49.1/assets/default/hd/spine/total_win.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/hd/spine/total_win.ktx2",
+    "sha256": "910ac5b25ecc47e082e641fd903d16ed843347c5175bab0649676d7f8f13aeeb",
+    "bytes": 450541,
+    "source": "capture",
+    "request": 205
+  },
+  "2253/1.49.1/assets/default/sd/atlas/misc.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/misc.atlas",
+    "sha256": "7ae619adead616cc52f1b84470299a3d98ca9d857195f382564c80421b2f46f9",
+    "bytes": 2166,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/atlas/misc.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/misc.ktx2",
+    "sha256": "98c520ccf457fb4717c08a63908e8791294c5ad0c30006ff0a79fd61b11d6374",
+    "bytes": 1410360,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/atlas/reels_1.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/reels_1.atlas",
+    "sha256": "8d25564e7bc78425604df957c938051ee65717ae01bd6e5660345904aca70d39",
+    "bytes": 293,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/atlas/reels_1.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/reels_1.ktx2",
+    "sha256": "3c9d4e279505ff1fba8e72e74e5d3567078fcc64efa0928ea67471e9fdc0c9b9",
+    "bytes": 786278,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/atlas/reels_2.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/reels_2.atlas",
+    "sha256": "ba08f40ac950fbc0a44caf397bbf450e4f01af501da1d54f8b2190b4edb7841d",
+    "bytes": 294,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/atlas/reels_2.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/atlas/reels_2.ktx2",
+    "sha256": "16bf7ccdf59328b279eb3c51d9b4fe9d9e4fdcc014277c4dba22b5953f2b470f",
+    "bytes": 651165,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/countup_tiers.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/countup_tiers.atlas",
+    "sha256": "6955bd383228eb1e23f20b649d8b3afb8db2ac9fe4639fee373557e9b16795f5",
+    "bytes": 5033,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/countup_tiers.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/countup_tiers.json",
+    "sha256": "41de9e286e96c9b04b38ddb91f7551f4b974c2d8da7fea0068442fdecaef004d",
+    "bytes": 123362,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/countup_tiers.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/countup_tiers.ktx2",
+    "sha256": "00b06b4ed26708916de49f05ce4088c195e8410432f51d6368ad62e23e74400c",
+    "bytes": 266532,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/encoding.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/encoding.json",
+    "sha256": "8f77cf2129c9065e3b39623f76e3bb28f44aec47f510d3e3970c123964650c19",
+    "bytes": 190,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/eye.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/eye.atlas",
+    "sha256": "1cedac52c89a2a3f93d33ab6acd72d723019b07c6266de3dcc1b0149ced019f0",
+    "bytes": 3939,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/eye.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/eye.json",
+    "sha256": "5e9ddca11d7bdddb2c1370da8e35cdd2eb7f70c7098f21e9123d134614f2fc6e",
+    "bytes": 443920,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/eye.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/eye.ktx2",
+    "sha256": "1c6a8b88320d318673412f6b132809cd3d627537a61cef105b8f2b3241dc2ce3",
+    "bytes": 184890,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.atlas",
+    "sha256": "5ae0fa1c9a37f36821b98a9b4e255124dc971baf8a6d34094c5675c2fe433310",
+    "bytes": 3428,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.json",
+    "sha256": "641cefdfb2e8c6b09cae3ded990b8d44497e78fbe58a1c5f8ba7736d9c2e3c74",
+    "bytes": 109232,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/countup_tiers.ktx2",
+    "sha256": "043d3d78babaddbfbcba0d2dba732051caa2aaa026c730fc50d614f4295fce26",
+    "bytes": 227032,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/encoding.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/encoding.json",
+    "sha256": "22f4bed57ad5f817df0b2b4c4b4844fe804abdabd8ae25996108ce11d7c8c397",
+    "bytes": 116,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.atlas",
+    "sha256": "9dfd673b0dd23783353e9c4eb78a00afcfeab1bbbb6a137d489d4dbd673cd99a",
+    "bytes": 1780,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.json",
+    "sha256": "38c3391e89a35a9025d509c7ea9769a04cf43768587cbe00b135b466b63f7411",
+    "bytes": 17710,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/localized/es-es/total_win.ktx2",
+    "sha256": "7f6c58024cd0d977287e142699069d056d04b9e0c09b88d4e489ac4392667e1e",
+    "bytes": 415463,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/symbols.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/symbols.atlas",
+    "sha256": "893dd3ab492304afccd9fcd420fe06b5da6d217380c1f7e6fcc31541ce84aa17",
+    "bytes": 10562,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/symbols.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/symbols.json",
+    "sha256": "765cf711de6e06e7221412fb3e07fb2de6566d990f1c0b47e374e6c780400027",
+    "bytes": 313416,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/symbols.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/symbols.ktx2",
+    "sha256": "83ff8b91e719862f0a835696707a17c40ab467ecb5646372aa9ffb0b44aab43d",
+    "bytes": 260387,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/total_win.atlas": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/total_win.atlas",
+    "sha256": "9dfd673b0dd23783353e9c4eb78a00afcfeab1bbbb6a137d489d4dbd673cd99a",
+    "bytes": 1780,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/total_win.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/total_win.json",
+    "sha256": "6f706fff2534144ca85cbc814c1921cade3d301f507fdf2812ff5c5b91c6f3a2",
+    "bytes": 17724,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/default/sd/spine/total_win.ktx2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/default/sd/spine/total_win.ktx2",
+    "sha256": "7f6c58024cd0d977287e142699069d056d04b9e0c09b88d4e489ac4392667e1e",
+    "bytes": 415463,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/desc.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/desc.json",
+    "sha256": "45c534efeae5627b894e8d2e8b0b8d0a3612d00b17898aa6dae25c8a7fca5cf0",
+    "bytes": 186280,
+    "source": "capture",
+    "request": 64
+  },
+  "2253/1.49.1/assets/social/common/config/gameconfig.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/config/gameconfig.json",
+    "sha256": "5ec737f0c7ed3e5e200560ff7344ef7afc63ec41f391b0bff3e1d64122908155",
+    "bytes": 3212,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/bangers_regular.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/bangers_regular.ttf",
+    "sha256": "c52cfd4b2d755770e34eb1787ac1088eec59286efb1d147867046feff64aa8ff",
+    "bytes": 109624,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/cyrillicfb.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/cyrillicfb.ttf",
+    "sha256": "93beb73af12eb186f2d1c282bcb12b7fcd1c69dc38af700f97a0f4bd85bc6cd4",
+    "bytes": 666152,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/fontconfig.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/fontconfig.json",
+    "sha256": "68fcedbab5f23ee05e3a38174d97dd1ac5dc26e34c8d6b7f5cde815c7de9e986",
+    "bytes": 304,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/bg-bg/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/bg-bg/bangers_regular.json",
+    "sha256": "21177f487cf12db0f7aab07022a62242515da68b6fb0d23ac040f41b4d66f371",
+    "bytes": 53021,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/bg-bg/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/bg-bg/bangers_regular.png",
+    "sha256": "f985ecab4505985c983267f69f25e3c6b74879ac5cd822f80d40a33e196711b0",
+    "bytes": 113777,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/cs-cz/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/cs-cz/bangers_regular.json",
+    "sha256": "b6a74614fc653342ff2afa141133b9eac7dfca3caba9bd2fb513cc41dc9c4093",
+    "bytes": 17719,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/cs-cz/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/cs-cz/bangers_regular.png",
+    "sha256": "f76828cc59a24da0c952bcdbeac78cf6e2386afcbfb8f9fafd43fb28887337f9",
+    "bytes": 157453,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/da-dk/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/da-dk/bangers_regular.json",
+    "sha256": "83bd553c639e83b925ccc4c9c644a26b01b9b8fc47c9539f3d5ded58c7c0f673",
+    "bytes": 15067,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/da-dk/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/da-dk/bangers_regular.png",
+    "sha256": "25836256ac80001ae8490b05cb90afc91b903566cf6779145eee7035103fee63",
+    "bytes": 126957,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/de-de/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/de-de/bangers_regular.json",
+    "sha256": "38f8071e3066b17824353e4cd914b542d8caa296fd5e224dfc8acac654785338",
+    "bytes": 15467,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/de-de/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/de-de/bangers_regular.png",
+    "sha256": "fbe935487c2e0c7ca65bc608f487b2d9308b112bae2191a0436d60c3a49a8c7d",
+    "bytes": 128444,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/el-gr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/el-gr/bangers_regular.json",
+    "sha256": "30750e5c869d1b185107fdb64d69f8f737e3540ec6a732438c87ea82b07e6602",
+    "bytes": 52543,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/el-gr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/el-gr/bangers_regular.png",
+    "sha256": "5f6e3f2e2f205fe2965307e4406911bea2cdc13d7f0f9a07f9deb52d4dee84ab",
+    "bytes": 122750,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/en-us/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/en-us/bangers_regular.json",
+    "sha256": "51a7aa1c56f64ecb1999c3496a887d96ec8075f80285de854e0c087811225206",
+    "bytes": 13302,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/en-us/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/en-us/bangers_regular.png",
+    "sha256": "0e64e4a091ce09e1a620ead877f2ce31174cc57f0998a24113839df972ed59a9",
+    "bytes": 110506,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/es-es/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/es-es/bangers_regular.json",
+    "sha256": "b5a4d71087cffd38dfa44295c25bdc65886c7573fce6e9cd9a903e1ef31373ae",
+    "bytes": 14898,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/es-es/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/es-es/bangers_regular.png",
+    "sha256": "13f434a73e7bf226353f3ad36cb4b6709858954ee9e208869d35db5818a684b3",
+    "bytes": 126930,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/fi-fi/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/fi-fi/bangers_regular.json",
+    "sha256": "4ccee39ddbac10a33088cfa5ad3cde311ef066b80246da234a8f433ad366e13d",
+    "bytes": 13882,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/fi-fi/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/fi-fi/bangers_regular.png",
+    "sha256": "ef112c0557dedb2da9af1f671a8880bb49f6a70431205ebe1af23ff1e43bdbca",
+    "bytes": 118532,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/fr-fr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/fr-fr/bangers_regular.json",
+    "sha256": "04a6fda492b168c1dba5a10b0c2008febb0bdc3ac0227218f39d8904119bc7cb",
+    "bytes": 15679,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/fr-fr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/fr-fr/bangers_regular.png",
+    "sha256": "491681137a8887520d22a2646361d8781cb100614c4baa3c9ac27d0d8576eb6d",
+    "bytes": 127288,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/hr-hr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/hr-hr/bangers_regular.json",
+    "sha256": "b48314574a778bd5bab91c0ebcab8f92d6eba1cace2973095d84f19b07b0accc",
+    "bytes": 15448,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/hr-hr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/hr-hr/bangers_regular.png",
+    "sha256": "1e1e22e724e0ca70841928ac60b732c1a6b7152e0d2a93324b60d5e7df701f57",
+    "bytes": 132827,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/hu-hu/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/hu-hu/bangers_regular.json",
+    "sha256": "c1eccf79ca0f0419c74a4d53c1900dcb69ca0a65750da88da27395c4317c5e2b",
+    "bytes": 16505,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/hu-hu/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/hu-hu/bangers_regular.png",
+    "sha256": "2efc5cf64080c00f0b08dc18de682904dc30e8e08f57963926f560845b9bfd42",
+    "bytes": 137431,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/id-id/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/id-id/bangers_regular.json",
+    "sha256": "21ad1d57b8c66b2a2a5073acf108ef87808dc4b2d574ba3f7e70234ab3af3112",
+    "bytes": 13493,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/id-id/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/id-id/bangers_regular.png",
+    "sha256": "753bcca7fdd846022892228b695871622cdc2a6ddae32a11cb7619d77940a099",
+    "bytes": 112727,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/it-it/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/it-it/bangers_regular.json",
+    "sha256": "3dcb3a0b37ff2f0214a503a6c3b88550373bb3f134d17c8c62d3f96951f27b35",
+    "bytes": 14295,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/it-it/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/it-it/bangers_regular.png",
+    "sha256": "c5341f0c626d3b8c524bb93f97420772a9290e7d9c963ba5e15dcac2965131bf",
+    "bytes": 121401,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ja-jp/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ja-jp/bangers_regular.json",
+    "sha256": "2f7a1b7ccb44415e48969ceaba21a15e90d5394748672e4d5c0dfd19548dbc1d",
+    "bytes": 28027,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ja-jp/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ja-jp/bangers_regular.png",
+    "sha256": "20255e6b35dbe838503d899405199372f8a5f007ae0e70fe5c79ee4447d5f6f9",
+    "bytes": 338312,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ko-kr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ko-kr/bangers_regular.json",
+    "sha256": "c50ecd59287b4fd22951dea299ce7f70f0ed6a0f870c0ab783a13eba07518335",
+    "bytes": 31052,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ko-kr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ko-kr/bangers_regular.png",
+    "sha256": "00e76f2f533af01f521c81e361246fca383ee2c673fb7bad24ccfefd67ec4c5e",
+    "bytes": 247266,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/lt-lt/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/lt-lt/bangers_regular.json",
+    "sha256": "f4ce77f0f57bd486fdc6ecc8a336da45ffb6cf5d5400cb5fc61137bb7bf02d68",
+    "bytes": 15645,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/lt-lt/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/lt-lt/bangers_regular.png",
+    "sha256": "6790047d887c96be76324103d2048e031044a396ee98828b329f0737d4e12c94",
+    "bytes": 132509,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/lv-lv/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/lv-lv/bangers_regular.json",
+    "sha256": "b6c62c62ef817763c8055e032b58b211e3d3c67fe0d3a2cf54d5b58120cac02c",
+    "bytes": 16445,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/lv-lv/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/lv-lv/bangers_regular.png",
+    "sha256": "6d122ff59590acaa9aa185dc5eeb2ce6acd96a67138659366583592846d93eb3",
+    "bytes": 141681,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/nl-nl/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/nl-nl/bangers_regular.json",
+    "sha256": "433cb677f20485b00e20ca9303e1f382787d48eb97e129344d3b793ce269b328",
+    "bytes": 14478,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/nl-nl/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/nl-nl/bangers_regular.png",
+    "sha256": "33b894f4387165f63f61bf43774386ae7ef0b32a7ea3d90d845e1945f305985d",
+    "bytes": 119123,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/no-no/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/no-no/bangers_regular.json",
+    "sha256": "1128d2f125ddc3fa308a12db8932ce1aef0a3ca0bb7aea56d4ee5156e54a023f",
+    "bytes": 14873,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/no-no/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/no-no/bangers_regular.png",
+    "sha256": "e4e586717fa84f7cf88aa9fc9377239a50b2a5e1c92e3127f065f47e721a136b",
+    "bytes": 122993,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pl-pl/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pl-pl/bangers_regular.json",
+    "sha256": "becd359ac95bb89f2a4a2bd927faa4a0b8badd1ec67caf9a4af052df1017dd7b",
+    "bytes": 16468,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pl-pl/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pl-pl/bangers_regular.png",
+    "sha256": "6b20309296a83a832086ce11d72b3b6c622118640a0e7c07875e2eb59fb21cd8",
+    "bytes": 139778,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pt-br/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pt-br/bangers_regular.json",
+    "sha256": "51f07bca3f5101511f90177db3f27af392fc94f0ac7d05668bb99b0f1e6de46f",
+    "bytes": 16087,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pt-br/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pt-br/bangers_regular.png",
+    "sha256": "be18d24bc084063ce2e53b4262a7e41e2cc7dea69e1d4aea6a33ac17e0cccc91",
+    "bytes": 133046,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pt-pt/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pt-pt/bangers_regular.json",
+    "sha256": "54fa8a6e93a8e24066d4632b4bdb50286359abcdc3d160a720199b01da527889",
+    "bytes": 15884,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/pt-pt/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/pt-pt/bangers_regular.png",
+    "sha256": "0b363cc212ff946270c2e3d935ee54740cdcd0d97549ee06e9c2f34acb8ed5ac",
+    "bytes": 134644,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ro-ro/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ro-ro/bangers_regular.json",
+    "sha256": "23f7d531cb8f8c4d9ea67b47b96a72fcf90e19437c421ccdd03e326469677d9a",
+    "bytes": 15273,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ro-ro/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ro-ro/bangers_regular.png",
+    "sha256": "f7322552788450801bc05c2400e3221b6da5cb610dcbca9fc03d99c4b0273dd1",
+    "bytes": 128026,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ru-ru/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ru-ru/bangers_regular.json",
+    "sha256": "466088642ba05195ebd0e966a9be13780497848c939fdffd37b82c3aabe0f695",
+    "bytes": 64401,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/ru-ru/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/ru-ru/bangers_regular.png",
+    "sha256": "134f2fae9762a53c9b734fc570dedc69eca81603d91eba1ddc1ed68c57138a85",
+    "bytes": 125824,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/sv-se/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/sv-se/bangers_regular.json",
+    "sha256": "32aeb2b30c9aa3338dea1851cc4793dfba18bf3e1f9bea6a17590efba300968b",
+    "bytes": 14673,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/sv-se/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/sv-se/bangers_regular.png",
+    "sha256": "9a50d191c217664fb7888360f238d81d354fb7b514e962bbe07e9e45108e4cb4",
+    "bytes": 124209,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/th-th/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/th-th/bangers_regular.json",
+    "sha256": "c743a35b863ac4efbff51083cf9a9b1b18347617efd804b09627f4ab640698a0",
+    "bytes": 34506,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/th-th/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/th-th/bangers_regular.png",
+    "sha256": "e54a7a3a9bcc5b46f7a5746fea622ef1e04239a8d960dd76d69b703dd7bd031d",
+    "bytes": 118120,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/tr-tr/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/tr-tr/bangers_regular.json",
+    "sha256": "2c05b9e25991e210e39e2e8fe1e2cf8185ab4baed415a7b955284d849fe62d0c",
+    "bytes": 16455,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/tr-tr/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/tr-tr/bangers_regular.png",
+    "sha256": "ae9f3bfd7d952b063a4f9017bd87bb19b9dd200364f4e4717d68a29d3b2fc53c",
+    "bytes": 134615,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/uk-ua/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/uk-ua/bangers_regular.json",
+    "sha256": "9702d7f16719daa1c1ab7fff9a99f750a18c6f6b2d090a6a624a40a2a7df1d4d",
+    "bytes": 68089,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/uk-ua/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/uk-ua/bangers_regular.png",
+    "sha256": "7a0c8713afd907dd33fbc08bf5adb729855fd6d332e01496928d8827b9c187ed",
+    "bytes": 125926,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/vi-vn/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/vi-vn/bangers_regular.json",
+    "sha256": "c6fb3894111a85614e553e2ec25b99b8e65cf1db3c4e20b0735ca92676921527",
+    "bytes": 239890,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/vi-vn/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/vi-vn/bangers_regular.png",
+    "sha256": "64265be02fd52a81e4750d3bc993d694c4fa70a57e2f1872349ec5515c8b6c18",
+    "bytes": 171914,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/zh-cn/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/zh-cn/bangers_regular.json",
+    "sha256": "f10224f053cc11cb815b23874f81e3e1027e379e899fd39b9ae7a44b63afcb6f",
+    "bytes": 26920,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/zh-cn/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/zh-cn/bangers_regular.png",
+    "sha256": "df88f2f2c364701fd8f8afbeffca7b3f79eccb5e6480e6f50ca7f405ad8d401a",
+    "bytes": 339534,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/zh-tw/bangers_regular.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/zh-tw/bangers_regular.json",
+    "sha256": "8b9545c69446bc1fb8831796624fea4764a6356e906f949d67e898e1cca8b2a9",
+    "bytes": 26737,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/localized/zh-tw/bangers_regular.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/localized/zh-tw/bangers_regular.png",
+    "sha256": "a130efbddbd030b361787b8467be237f481eb13b3330b70a80ac259e4a370778",
+    "bytes": 338957,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/notosansblack.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/notosansblack.ttf",
+    "sha256": "c60af8520477355a53ff0b9f6658b53802bac34376040f5d9db79e5a04828f18",
+    "bytes": 739792,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/pridi.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/pridi.ttf",
+    "sha256": "e1d959f77919030f87c6ab0f51ecc770245b803309aa8d20658527ec1cc5f987",
+    "bytes": 552264,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/sourcehansans_hwj_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/sourcehansans_hwj_bold.ttf",
+    "sha256": "6b2a5ae93c21ed8873867f763af29a2b0827590d47d70dac0a3cea06b07f9f41",
+    "bytes": 17945856,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/assets/social/common/font/sourcehansans_hwsc_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/assets/social/common/font/sourcehansans_hwsc_bold.ttf",
+    "sha256": "605929c2ebcd38a0a1eb2776996ca97994242bd364cecb88191f630b62f1a0b0",
+    "bytes": 17857688,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/casino/desc-locale.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/desc-locale.json",
+    "sha256": "cf67c8c138f3668f2e31f3b7131ddac097cf5a642e12a3c543d87d52b5b3cc91",
+    "bytes": 20157,
+    "source": "capture",
+    "request": 51
+  },
+  "2253/1.49.1/casino/fonts/localized/en-us/hacksawui_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/fonts/localized/en-us/hacksawui_bold.ttf",
+    "sha256": "7c7b9ecbad287999bc2a4129fa9caca7e0b6819a0010e946f4856ba476d40ecd",
+    "bytes": 12536,
+    "source": "capture",
+    "request": 230
+  },
+  "2253/1.49.1/casino/fonts/localized/en-us/hacksawui_regular.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/fonts/localized/en-us/hacksawui_regular.ttf",
+    "sha256": "d0e6e423c58b23345c899757980c1991277aa4cfc8dd3e426aadf482249ec8d2",
+    "bytes": 12464,
+    "source": "capture",
+    "request": 231
+  },
+  "2253/1.49.1/casino/fonts/localized/zh-cn/hacksawui_bold.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/fonts/localized/zh-cn/hacksawui_bold.ttf",
+    "sha256": "7736a8379d5daaedb444695f0c6d02a95e2f94593c8de0d50a378895d8f82057",
+    "bytes": 12316,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/casino/fonts/localized/zh-cn/hacksawui_regular.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/fonts/localized/zh-cn/hacksawui_regular.ttf",
+    "sha256": "8a6c469a117c2c988e817e4957574f44d2570c0c5770a923c0aff1e0392bb88e",
+    "bytes": 12252,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/casino/hacksaw-casino.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/hacksaw-casino.min.js",
+    "sha256": "f672c190845b67c48e22905e70637fcb86ffb920a1a470c68897863da982a9ec",
+    "bytes": 473930,
+    "source": "capture",
+    "request": 42
+  },
+  "2253/1.49.1/casino/locale/en-us/en-us.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/locale/en-us/en-us.json",
+    "sha256": "e09e162a3dd943b2597c127f32d9707c254df1bc73d718381d8ebb0403eea90a",
+    "bytes": 36713,
+    "source": "capture",
+    "request": 63
+  },
+  "2253/1.49.1/casino/locale/zh-cn/zh-cn.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/casino/locale/zh-cn/zh-cn.json",
+    "sha256": "2981bc00e7a21af96b4136e62ca87a3c56b30759ee28916c5e8191b8070a2f13",
+    "bytes": 34126,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/dependencies.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/dependencies.json",
+    "sha256": "b91e7234922eec18c64f5ed981df12b9f568e40f39b36e13c794900ac84fd710",
+    "bytes": 370,
+    "source": "capture",
+    "request": 57
+  },
+  "2253/1.49.1/favicon.ico": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/favicon.ico",
+    "sha256": "3ef6b7e2d36d6a5f7ce66a195a642bcf590128fad6c4feecba58887c05f58e32",
+    "bytes": 15086,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/gameinfoassets/3_fs_symbols.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/3_fs_symbols.png",
+    "sha256": "49390ad031dfe46976f4b2c4f4de7b79633537e16d4a364fd7ec2d8b64b965f2",
+    "bytes": 10769,
+    "source": "capture",
+    "request": 239
+  },
+  "2253/1.49.1/gameinfoassets/4_fs_symbols.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/4_fs_symbols.png",
+    "sha256": "7d6d9f1092d2d70b397760026394f674472ec2bd11c08f53cc855fba2074796d",
+    "bytes": 10577,
+    "source": "capture",
+    "request": 240
+  },
+  "2253/1.49.1/gameinfoassets/5_fs_symbols.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/5_fs_symbols.png",
+    "sha256": "d28afdd260dc0cf0ee7c7c64a03de2fe1a17626814673720542087499ee252b0",
+    "bytes": 11166,
+    "source": "capture",
+    "request": 241
+  },
+  "2253/1.49.1/gameinfoassets/bonushunt_featurespins.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/bonushunt_featurespins.png",
+    "sha256": "19598d65eda09f40820a3ba280a1719f315aec27dfe7da4fbde5d0d46df15499",
+    "bytes": 9725,
+    "source": "capture",
+    "request": 232
+  },
+  "2253/1.49.1/gameinfoassets/energy_field_top.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/energy_field_top.png",
+    "sha256": "82f7595ff61f00bb7232c40df4cc5d401c12d0d36b0b9d4d1b8b355d2b75965a",
+    "bytes": 39457,
+    "source": "capture",
+    "request": 238
+  },
+  "2253/1.49.1/gameinfoassets/eye.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/eye.png",
+    "sha256": "5a924921c5df641543ed51454667305e8204569e5e2872be15505f55487bcba6",
+    "bytes": 15324,
+    "source": "capture",
+    "request": 236
+  },
+  "2253/1.49.1/gameinfoassets/eyeconic.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/eyeconic.png",
+    "sha256": "11d4b4c2b623bc7189314be3844004443f9e64ba341c8552b731c52cc1b37c94",
+    "bytes": 13121,
+    "source": "capture",
+    "request": 234
+  },
+  "2253/1.49.1/gameinfoassets/high_1.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/high_1.png",
+    "sha256": "9283ea2b28900621a1372bd32fd3d369345a4e94143d052b9eb94c97053b4e8b",
+    "bytes": 8345,
+    "source": "capture",
+    "request": 247
+  },
+  "2253/1.49.1/gameinfoassets/high_2.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/high_2.png",
+    "sha256": "cf592467d9276a7f012317680d927cfa4cee1a002ec04eb8779e7e9b3b1386a0",
+    "bytes": 9897,
+    "source": "capture",
+    "request": 248
+  },
+  "2253/1.49.1/gameinfoassets/high_3.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/high_3.png",
+    "sha256": "0d478486c1ed0a503da50297dd9754b8294d451c91a0eb50dc732345ed2be5c0",
+    "bytes": 14028,
+    "source": "capture",
+    "request": 249
+  },
+  "2253/1.49.1/gameinfoassets/high_4.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/high_4.png",
+    "sha256": "5a3e490dfb5ff50956c41ff3dea76dbf0ff9d425313d1723d4dff7c6b4540f9c",
+    "bytes": 17367,
+    "source": "capture",
+    "request": 250
+  },
+  "2253/1.49.1/gameinfoassets/high_5.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/high_5.png",
+    "sha256": "787fa549ac7f334a0c2277951e015b45fd9f4aefc89ff6dca1c2ec91afe45f0a",
+    "bytes": 19165,
+    "source": "capture",
+    "request": 251
+  },
+  "2253/1.49.1/gameinfoassets/low_1.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/low_1.png",
+    "sha256": "5858b27ed0ba816e04253766bf29fdda81084a53d171fabf3c023ed4f0d4fec9",
+    "bytes": 3739,
+    "source": "capture",
+    "request": 242
+  },
+  "2253/1.49.1/gameinfoassets/low_2.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/low_2.png",
+    "sha256": "efd89ed6f3995fe19cb4227f5adbb2cb039c7398ce861a7b341e9f35845007a8",
+    "bytes": 2445,
+    "source": "capture",
+    "request": 243
+  },
+  "2253/1.49.1/gameinfoassets/low_3.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/low_3.png",
+    "sha256": "a67346f58235da1b67e1f87ba813adb5fa43c0219960a5732a35ad8b97549893",
+    "bytes": 2595,
+    "source": "capture",
+    "request": 244
+  },
+  "2253/1.49.1/gameinfoassets/low_4.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/low_4.png",
+    "sha256": "03b116d689afac2b3caae9b7e3225b69ed9c60d38c317cb65612333a37bce5c3",
+    "bytes": 2472,
+    "source": "capture",
+    "request": 245
+  },
+  "2253/1.49.1/gameinfoassets/low_5.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/low_5.png",
+    "sha256": "a79295cab9785fd6ec606e09717f0b26c2b49e8042b9183f715ae5164bb1ab8d",
+    "bytes": 2314,
+    "source": "capture",
+    "request": 246
+  },
+  "2253/1.49.1/gameinfoassets/no_brainer.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/no_brainer.png",
+    "sha256": "15817dff8bf4f7600221ee5ff16a589ca67feb02c7412f081f124bd9dc8170ef",
+    "bytes": 14891,
+    "source": "capture",
+    "request": 235
+  },
+  "2253/1.49.1/gameinfoassets/templates/en-us/en-us-gameinfo.html": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/templates/en-us/en-us-gameinfo.html",
+    "sha256": "e11f46f23ab7755f0bf396eeb7517d1cfeac64bd926a2d37cdde3dd789aee345",
+    "bytes": 46869,
+    "source": "capture",
+    "request": 62
+  },
+  "2253/1.49.1/gameinfoassets/templates/zh-cn/zh-cn-gameinfo.html": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/templates/zh-cn/zh-cn-gameinfo.html",
+    "sha256": "3c5ef32d3df55a187e7ac211c96aaee05b099f44d6e0998b0c6f6a775c5ad89b",
+    "bytes": 44638,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/gameinfoassets/wild.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/wild.png",
+    "sha256": "eeeec6faf4338089bba5595576bdc1ceb4759fe1faba1a8ad0a1514b5b0c5773",
+    "bytes": 12156,
+    "source": "capture",
+    "request": 237
+  },
+  "2253/1.49.1/gameinfoassets/zigzag_zappo_featurespins.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/gameinfoassets/zigzag_zappo_featurespins.png",
+    "sha256": "d2dacff42e05d5ecd6cc87c7178c59977cd4357a1860149e0ea1eba39bffe072",
+    "bytes": 11387,
+    "source": "capture",
+    "request": 233
+  },
+  "2253/1.49.1/index.html": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/index.html",
+    "sha256": "46e8525a9cef4bc18ae549577c1adf7e46d818466f4954bbc554ef5961277366",
+    "bytes": 39814,
+    "source": "capture",
+    "request": 35
+  },
+  "2253/1.49.1/locale/en-us/en-us.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/locale/en-us/en-us.json",
+    "sha256": "046d768385cfd7b6c7bca1957cece61bde8728a89cd17a8b0872218fb16d57bb",
+    "bytes": 6836,
+    "source": "capture",
+    "request": 59
+  },
+  "2253/1.49.1/locale/zh-cn/zh-cn.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/locale/zh-cn/zh-cn.json",
+    "sha256": "c2955991842d1cd3922ce566b3bd784783af25b8f4018b9bb5eccce7ef40932d",
+    "bytes": 5421,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/main.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/main.js",
+    "sha256": "bb7d5129af36806693d4649e4009739e0983f4aaf33f72607aac13f2ee86848d",
+    "bytes": 2662813,
+    "source": "capture",
+    "request": 45
+  },
+  "2253/1.49.1/meta.json": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/meta.json",
+    "sha256": "0b57a27c3dd4170e029ff946807b2b582d6a79f4b9dec2513c3b6c019f80e366",
+    "bytes": 116,
+    "source": "capture",
+    "request": 56
+  },
+  "2253/1.49.1/ui.min.css": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui.min.css",
+    "sha256": "7a1c5a5b07f2af2392aab240e38c4191ff9aab79ed8859dfbcd9276ce5a77214",
+    "bytes": 430857,
+    "source": "capture",
+    "request": 38
+  },
+  "2253/1.49.1/ui/fonts/icons/icomoon.eot": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/fonts/icons/icomoon.eot",
+    "sha256": "406fae23f82162ee5782fe94d009328375588469d0f81a11731bec18ea5d7e21",
+    "bytes": 22660,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/ui/fonts/icons/icomoon.svg": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/fonts/icons/icomoon.svg",
+    "sha256": "a9c8b3ecc3e8b1b2d13291345e279e5b58651c08b10c8d4947a6e23c3260d820",
+    "bytes": 84407,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/ui/fonts/icons/icomoon.ttf": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/fonts/icons/icomoon.ttf",
+    "sha256": "48ffd030d0f0a1d6267807ec45e023b74f4ddfb6cba5e6377ad3f0271b6d87c1",
+    "bytes": 22496,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/ui/fonts/icons/icomoon.woff": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/fonts/icons/icomoon.woff",
+    "sha256": "69c9e3a553459051f558304397fb6c988c7ec662032581fa01536d8aef0c2364",
+    "bytes": 22572,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/ui/fonts/icons/icomoon.woff2": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/fonts/icons/icomoon.woff2",
+    "sha256": "b29323e8832ddbc0b48b67a8bde6f920a67a035ef7c576d0b1cc97e70ee18092",
+    "bytes": 10960,
+    "source": "capture",
+    "request": 50
+  },
+  "2253/1.49.1/ui/hacksaw-ui.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/hacksaw-ui.min.js",
+    "sha256": "a2449ab37b4fc8bf1fd15b74834ff86bb0fb6973cc83e4a3dfecd5a3ea09f983",
+    "bytes": 592840,
+    "source": "capture",
+    "request": 43
+  },
+  "2253/1.49.1/ui/images/branding_logo.svg": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/branding_logo.svg",
+    "sha256": "528a58c24c9c7e43d12f53c6bf88430d59089590231c950ca9534ab75efb74a9",
+    "bytes": 434,
+    "source": "capture",
+    "request": 256
+  },
+  "2253/1.49.1/ui/images/coljuegos.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/coljuegos.png",
+    "sha256": "0f1e2c8bf32616d65a2d428c4a388094d2774225a5e2ee463f7f0d0af50c1be5",
+    "bytes": 2206,
+    "source": "capture",
+    "request": 39
+  },
+  "2253/1.49.1/ui/images/hunt_frame_landscape.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/hunt_frame_landscape.png",
+    "sha256": "add6714168e941b2a37d7c7b0bee0b8106ad110d95da1f1966224ca4d261bf74",
+    "bytes": 25688,
+    "source": "capture",
+    "request": 495
+  },
+  "2253/1.49.1/ui/images/hunt_frame_portrait.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/hunt_frame_portrait.png",
+    "sha256": "1d067b08da449ffb022be0c38353cd0e4a0c91539b2e09308127f7a9c31f5d09",
+    "bytes": 30011,
+    "source": "original-reference"
+  },
+  "2253/1.49.1/ui/images/juegabien.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/juegabien.png",
+    "sha256": "d2db1f2fbd894d07d27da58dbb315c9668c2dc29908d5fed35017f09849ae8b9",
+    "bytes": 1727,
+    "source": "capture",
+    "request": 40
+  },
+  "2253/1.49.1/ui/images/promotion_button.png": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/ui/images/promotion_button.png",
+    "sha256": "577755364c67206f4c87e3d658abcf7660ed2e3f896aaa0c5aca34ed6203d9b2",
+    "bytes": 6940,
+    "source": "capture",
+    "request": 41
+  },
+  "2253/1.49.1/vendor/analytics.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/analytics.min.js",
+    "sha256": "4e5e6f45edb5e0d23c7198ed5c4d7e0a45acc4de6ef4f588bbebf9ef8cb7503d",
+    "bytes": 2682,
+    "source": "capture",
+    "request": 47
+  },
+  "2253/1.49.1/vendor/array-find-polyfill.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/array-find-polyfill.min.js",
+    "sha256": "b7f3750691f16e4e3c3edb1ea58a801b5fa915a2f8dbea718c61345f5bbbafaf",
+    "bytes": 463,
+    "source": "capture",
+    "request": 37
+  },
+  "2253/1.49.1/vendor/basis_transcoder.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/basis_transcoder.js",
+    "sha256": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
+    "bytes": 57529,
+    "source": "capture",
+    "request": 183
+  },
+  "2253/1.49.1/vendor/basis_transcoder.wasm": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/basis_transcoder.wasm",
+    "sha256": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
+    "bytes": 527333,
+    "source": "capture",
+    "request": 184
+  },
+  "2253/1.49.1/vendor/needles.umd.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/needles.umd.js",
+    "sha256": "9279fe79498141e56f9c6af65d613b6f132496fa78ecd1ead4669de6cf504408",
+    "bytes": 11010,
+    "source": "capture",
+    "request": 53
+  },
+  "2253/1.49.1/vendor/nosleep.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/nosleep.min.js",
+    "sha256": "72bb206dc10b8d71e57e85d4f734b0e617738e8b4c7447ab0cabc8d2c03cb251",
+    "bytes": 1315,
+    "source": "capture",
+    "request": 46
+  },
+  "2253/1.49.1/vendor/promise-polyfill.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/promise-polyfill.min.js",
+    "sha256": "92af64f07491ea0e22757946d2ce62820a616374c42c8ac5668febdbae41b448",
+    "bytes": 2883,
+    "source": "capture",
+    "request": 36
+  },
+  "2253/1.49.1/vendor/reporter.min.js": {
+    "url": "https://static-live.hacksawgaming.com/2253/1.49.1/vendor/reporter.min.js",
+    "sha256": "2293a31f91f0f7ea0fdb39fec689a29a1fce9ac336d95807cd0f2c01d7f38e68",
+    "bytes": 32043,
+    "source": "capture",
+    "request": 48
+  },
+  "integrations/currency/currencies.json": {
+    "url": "https://static-live.hacksawgaming.com/integrations/currency/currencies.json",
+    "sha256": "9dbed65465f5214989dbf467b28b38339fdd835803edfbbe730511e9f5937025",
+    "bytes": 35366,
+    "source": "capture",
+    "request": 60
+  },
+  "integrations/integration.js": {
+    "url": "https://static-live.hacksawgaming.com/integrations/integration.js",
+    "sha256": "a41d99771f8811a0a723d26e4508a33a81f2c0bd3ab09dff8c3ead667717dc71",
+    "bytes": 13791,
+    "source": "capture",
+    "request": 44
+  }
+}

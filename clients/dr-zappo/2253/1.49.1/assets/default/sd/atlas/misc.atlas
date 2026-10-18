@@ -1,0 +1,138 @@
+misc.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+countup_backplate
+  rotate: false
+  xy: 798, 1
+  size: 795, 484
+  orig: 795, 484
+  offset: 0, 0
+  index: -1
+eye_fountain_particle_1
+  rotate: false
+  xy: 1826, 567
+  size: 200, 137
+  orig: 200, 137
+  offset: 0, 0
+  index: -1
+eye_fountain_particle_2
+  rotate: false
+  xy: 1925, 477
+  size: 116, 88
+  orig: 116, 88
+  offset: 0, 0
+  index: -1
+eye_fountain_particle_3
+  rotate: false
+  xy: 1826, 706
+  size: 140, 96
+  orig: 140, 96
+  offset: 0, 0
+  index: -1
+frame_eye_spy
+  rotate: false
+  xy: 1, 646
+  size: 671, 742
+  orig: 671, 742
+  offset: 0, 0
+  index: -1
+frame_mad_bonuses
+  rotate: false
+  xy: 674, 757
+  size: 671, 742
+  orig: 671, 742
+  offset: 0, 0
+  index: -1
+frame_wild_eyeballs
+  rotate: false
+  xy: 1347, 1040
+  size: 671, 742
+  orig: 671, 742
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1, 1
+  size: 795, 497
+  orig: 795, 497
+  offset: 0, 0
+  index: -1
+retrigger
+  rotate: false
+  xy: 1814, 804
+  size: 229, 234
+  orig: 239, 234
+  offset: 6, 0
+  index: -1
+sticker
+  rotate: false
+  xy: 1594, 564
+  size: 230, 230
+  orig: 230, 230
+  offset: 0, 0
+  index: -1
+title_background_bonus1
+  rotate: false
+  xy: 1, 1501
+  size: 539, 265
+  orig: 539, 265
+  offset: 0, 0
+  index: -1
+title_background_bonus2
+  rotate: false
+  xy: 1, 1784
+  size: 566, 237
+  orig: 566, 237
+  offset: 0, 0
+  index: -1
+title_background_bonus3
+  rotate: false
+  xy: 798, 487
+  size: 794, 268
+  orig: 794, 268
+  offset: 0, 0
+  index: -1
+title_background_bonus3_zap_L
+  rotate: false
+  xy: 569, 1501
+  size: 496, 289
+  orig: 505, 294
+  offset: 7, 0
+  index: -1
+title_background_bonus3_zap_R
+  rotate: false
+  xy: 1595, 1
+  size: 436, 326
+  orig: 437, 327
+  offset: 1, 0
+  index: -1
+title_bonus1
+  rotate: false
+  xy: 1595, 329
+  size: 435, 146
+  orig: 435, 146
+  offset: 0, 0
+  index: -1
+title_bonus2
+  rotate: false
+  xy: 1347, 796
+  size: 465, 119
+  orig: 465, 119
+  offset: 0, 0
+  index: -1
+title_bonus3
+  rotate: false
+  xy: 1, 500
+  size: 675, 144
+  orig: 675, 144
+  offset: 0, 0
+  index: -1
+volatility
+  rotate: false
+  xy: 1595, 477
+  size: 328, 85
+  orig: 328, 85
+  offset: 0, 0
+  index: -1

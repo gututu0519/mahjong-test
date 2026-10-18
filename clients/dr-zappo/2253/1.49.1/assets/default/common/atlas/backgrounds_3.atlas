@@ -1,0 +1,33 @@
+backgrounds_3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+background_splash
+  rotate: false
+  xy: 3, 3
+  size: 1344, 717
+  orig: 1344, 717
+  offset: 0, 0
+  index: -1
+base_light
+  rotate: false
+  xy: 3, 726
+  size: 1344, 405
+  orig: 1344, 717
+  offset: 0, 312
+  index: -1
+base_sky
+  rotate: false
+  xy: 3, 1137
+  size: 807, 424
+  orig: 807, 424
+  offset: 0, 0
+  index: -1
+fs_light_zappo
+  rotate: false
+  xy: 3, 1567
+  size: 837, 288
+  orig: 1344, 717
+  offset: 207, 429
+  index: -1

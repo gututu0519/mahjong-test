@@ -1,0 +1,12 @@
+fs_attention.png
+size:1024,1024
+filter:Linear,Linear
+SYMBOLS/images/fs_attention_backplate
+bounds:2,2,254,928
+offsets:557,227,1800,1450
+SYMBOLS/images/fs_attention_item
+bounds:258,824,352,106
+offsets:501,213,1800,1450
+SYMBOLS/images/fs_attention_speed_effect
+bounds:258,662,28,160
+offsets:709,531,1800,1450

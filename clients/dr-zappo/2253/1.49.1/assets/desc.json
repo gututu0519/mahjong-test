@@ -1,0 +1,3767 @@
+{
+   "path": "assets",
+   "name": "assets",
+   "children": [
+      {
+         "path": "assets/default",
+         "name": "default",
+         "children": [
+            {
+               "path": "assets/default/common",
+               "name": "common",
+               "children": [
+                  {
+                     "path": "assets/default/common/atlas",
+                     "name": "atlas",
+                     "children": [
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_1.atlas",
+                           "name": "backgrounds_1.atlas",
+                           "size": 841,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_1.ktx2",
+                           "name": "backgrounds_1.ktx2",
+                           "size": 1605591,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_2.atlas",
+                           "name": "backgrounds_2.atlas",
+                           "size": 1199,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_2.ktx2",
+                           "name": "backgrounds_2.ktx2",
+                           "size": 1857579,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_3.atlas",
+                           "name": "backgrounds_3.atlas",
+                           "size": 512,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds_3.ktx2",
+                           "name": "backgrounds_3.ktx2",
+                           "size": 1243649,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits.atlas",
+                           "name": "digits.atlas",
+                           "size": 1345,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits.ktx2",
+                           "name": "digits.ktx2",
+                           "size": 22450,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_countup.atlas",
+                           "name": "digits_countup.atlas",
+                           "size": 1302,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_countup.ktx2",
+                           "name": "digits_countup.ktx2",
+                           "size": 52911,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_multipliers.atlas",
+                           "name": "digits_multipliers.atlas",
+                           "size": 1364,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_multipliers.ktx2",
+                           "name": "digits_multipliers.ktx2",
+                           "size": 33532,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 4822275,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/font",
+                     "name": "font",
+                     "children": [
+                        {
+                           "path": "assets/default/common/font/bangers_regular.ttf",
+                           "name": "bangers_regular.ttf",
+                           "size": 109624,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/cyrillicfb.ttf",
+                           "name": "cyrillicfb.ttf",
+                           "size": 666152,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/fontconfig.json",
+                           "name": "fontconfig.json",
+                           "size": 304,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/font/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/common/font/localized/bg-bg",
+                                 "name": "bg-bg",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/bg-bg/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 53021,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/bg-bg/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 113777,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 166798,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/cs-cz",
+                                 "name": "cs-cz",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/cs-cz/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 17719,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/cs-cz/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 157453,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175172,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/da-dk",
+                                 "name": "da-dk",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/da-dk/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15067,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/da-dk/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 126957,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 142024,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/de-de",
+                                 "name": "de-de",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/de-de/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15467,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/de-de/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 128444,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 143911,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/el-gr",
+                                 "name": "el-gr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/el-gr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 52543,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/el-gr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 122750,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175293,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/en-us",
+                                 "name": "en-us",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/en-us/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13302,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/en-us/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 110506,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 123808,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/es-es/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14898,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/es-es/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 126930,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 141828,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/fi-fi",
+                                 "name": "fi-fi",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/fi-fi/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13882,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/fi-fi/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 118532,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 132414,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/fr-fr",
+                                 "name": "fr-fr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/fr-fr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15679,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/fr-fr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 127288,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 142967,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/hr-hr",
+                                 "name": "hr-hr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/hr-hr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15448,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/hr-hr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 132827,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 148275,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/hu-hu",
+                                 "name": "hu-hu",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/hu-hu/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16505,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/hu-hu/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 137431,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 153936,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/id-id",
+                                 "name": "id-id",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/id-id/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13493,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/id-id/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 112727,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 126220,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/it-it",
+                                 "name": "it-it",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/it-it/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14295,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/it-it/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 121401,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 135696,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ja-jp",
+                                 "name": "ja-jp",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ja-jp/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 28027,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ja-jp/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 338312,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 366339,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ko-kr",
+                                 "name": "ko-kr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ko-kr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 31052,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ko-kr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 247266,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 278318,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/lt-lt",
+                                 "name": "lt-lt",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/lt-lt/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15645,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/lt-lt/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 132509,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 148154,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/lv-lv",
+                                 "name": "lv-lv",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/lv-lv/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16445,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/lv-lv/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 141681,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 158126,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/nl-nl",
+                                 "name": "nl-nl",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/nl-nl/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14478,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/nl-nl/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 119123,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 133601,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/no-no",
+                                 "name": "no-no",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/no-no/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14873,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/no-no/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 122993,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 137866,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pl-pl",
+                                 "name": "pl-pl",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pl-pl/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16468,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pl-pl/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 139778,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 156246,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pt-br",
+                                 "name": "pt-br",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-br/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16087,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-br/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 133046,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 149133,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pt-pt",
+                                 "name": "pt-pt",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-pt/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15884,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-pt/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 134644,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 150528,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ro-ro",
+                                 "name": "ro-ro",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ro-ro/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15273,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ro-ro/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 128026,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 143299,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ru-ru",
+                                 "name": "ru-ru",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ru-ru/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 64401,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ru-ru/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 125824,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 190225,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/sv-se",
+                                 "name": "sv-se",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/sv-se/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14673,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/sv-se/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 124209,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 138882,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/th-th",
+                                 "name": "th-th",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/th-th/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 34506,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/th-th/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 118120,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 152626,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/tr-tr",
+                                 "name": "tr-tr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/tr-tr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16455,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/tr-tr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 134615,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 151070,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/uk-ua",
+                                 "name": "uk-ua",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/uk-ua/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 68089,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/uk-ua/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 125926,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 194015,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/vi-vn",
+                                 "name": "vi-vn",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/vi-vn/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 239890,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/vi-vn/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 171914,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 411804,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/zh-cn",
+                                 "name": "zh-cn",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-cn/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 26920,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-cn/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 339534,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 366454,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/zh-tw",
+                                 "name": "zh-tw",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-tw/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 26737,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-tw/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 338957,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 365694,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 5700722,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/common/font/notosansblack.ttf",
+                           "name": "notosansblack.ttf",
+                           "size": 739792,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/pridi.ttf",
+                           "name": "pridi.ttf",
+                           "size": 552264,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/sourcehansans_hwj_bold.ttf",
+                           "name": "sourcehansans_hwj_bold.ttf",
+                           "size": 17945856,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/sourcehansans_hwsc_bold.ttf",
+                           "name": "sourcehansans_hwsc_bold.ttf",
+                           "size": 17857688,
+                           "type": "file",
+                           "extension": ".ttf"
+                        }
+                     ],
+                     "size": 43572402,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/sound",
+                     "name": "sound",
+                     "children": [
+                        {
+                           "path": "assets/default/common/sound/ambience.mp4",
+                           "name": "ambience.mp4",
+                           "size": 661924,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ambience.webm",
+                           "name": "ambience.webm",
+                           "size": 598435,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/betlevel.mp4",
+                           "name": "betlevel.mp4",
+                           "size": 3054,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/betlevel.webm",
+                           "name": "betlevel.webm",
+                           "size": 2245,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_1.mp4",
+                           "name": "big_zap_1.mp4",
+                           "size": 20416,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_1.webm",
+                           "name": "big_zap_1.webm",
+                           "size": 19757,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_2.mp4",
+                           "name": "big_zap_2.mp4",
+                           "size": 20669,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_2.webm",
+                           "name": "big_zap_2.webm",
+                           "size": 19770,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_3.mp4",
+                           "name": "big_zap_3.mp4",
+                           "size": 24776,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/big_zap_3.webm",
+                           "name": "big_zap_3.webm",
+                           "size": 23263,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bomb.mp4",
+                           "name": "bomb.mp4",
+                           "size": 21750,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bomb.webm",
+                           "name": "bomb.webm",
+                           "size": 19267,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_1.mp4",
+                           "name": "bonus_landed_1.mp4",
+                           "size": 11970,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_1.webm",
+                           "name": "bonus_landed_1.webm",
+                           "size": 11152,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_2.mp4",
+                           "name": "bonus_landed_2.mp4",
+                           "size": 11815,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_2.webm",
+                           "name": "bonus_landed_2.webm",
+                           "size": 10454,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_3.mp4",
+                           "name": "bonus_landed_3.mp4",
+                           "size": 11923,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_3.webm",
+                           "name": "bonus_landed_3.webm",
+                           "size": 11168,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_4.mp4",
+                           "name": "bonus_landed_4.mp4",
+                           "size": 11871,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_4.webm",
+                           "name": "bonus_landed_4.webm",
+                           "size": 11586,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_5.mp4",
+                           "name": "bonus_landed_5.mp4",
+                           "size": 11762,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_5.webm",
+                           "name": "bonus_landed_5.webm",
+                           "size": 11245,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_1.mp4",
+                           "name": "bonus_triggered_1.mp4",
+                           "size": 55841,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_1.webm",
+                           "name": "bonus_triggered_1.webm",
+                           "size": 51124,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_2.mp4",
+                           "name": "bonus_triggered_2.mp4",
+                           "size": 61847,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_2.webm",
+                           "name": "bonus_triggered_2.webm",
+                           "size": 61224,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_3.mp4",
+                           "name": "bonus_triggered_3.mp4",
+                           "size": 73972,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_triggered_3.webm",
+                           "name": "bonus_triggered_3.webm",
+                           "size": 70336,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bounce.mp4",
+                           "name": "bounce.mp4",
+                           "size": 6515,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bounce.webm",
+                           "name": "bounce.webm",
+                           "size": 7342,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bounce_zap.mp4",
+                           "name": "bounce_zap.mp4",
+                           "size": 16485,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bounce_zap.webm",
+                           "name": "bounce_zap.webm",
+                           "size": 14035,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/charge.mp4",
+                           "name": "charge.mp4",
+                           "size": 14889,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/charge.webm",
+                           "name": "charge.webm",
+                           "size": 13813,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_1.mp4",
+                           "name": "click_1.mp4",
+                           "size": 12413,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_1.webm",
+                           "name": "click_1.webm",
+                           "size": 10493,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_2.mp4",
+                           "name": "click_2.mp4",
+                           "size": 8670,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_2.webm",
+                           "name": "click_2.webm",
+                           "size": 9856,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_3.mp4",
+                           "name": "click_3.mp4",
+                           "size": 9132,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_3.webm",
+                           "name": "click_3.webm",
+                           "size": 10450,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_4.mp4",
+                           "name": "click_4.mp4",
+                           "size": 9022,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click_4.webm",
+                           "name": "click_4.webm",
+                           "size": 11960,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/device_1.mp4",
+                           "name": "device_1.mp4",
+                           "size": 8351,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/device_1.webm",
+                           "name": "device_1.webm",
+                           "size": 8961,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/device_2.mp4",
+                           "name": "device_2.mp4",
+                           "size": 7255,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/device_2.webm",
+                           "name": "device_2.webm",
+                           "size": 7504,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/digital_attention.mp4",
+                           "name": "digital_attention.mp4",
+                           "size": 10413,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/digital_attention.webm",
+                           "name": "digital_attention.webm",
+                           "size": 11643,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/digital_stop.mp4",
+                           "name": "digital_stop.mp4",
+                           "size": 29136,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/digital_stop.webm",
+                           "name": "digital_stop.webm",
+                           "size": 25978,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ding.mp4",
+                           "name": "ding.mp4",
+                           "size": 17822,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ding.webm",
+                           "name": "ding.webm",
+                           "size": 24928,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ding_2.mp4",
+                           "name": "ding_2.mp4",
+                           "size": 17807,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ding_2.webm",
+                           "name": "ding_2.webm",
+                           "size": 18692,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electric_arc.mp4",
+                           "name": "electric_arc.mp4",
+                           "size": 13963,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electric_arc.webm",
+                           "name": "electric_arc.webm",
+                           "size": 15875,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electricity_loop.mp4",
+                           "name": "electricity_loop.mp4",
+                           "size": 75706,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electricity_loop.webm",
+                           "name": "electricity_loop.webm",
+                           "size": 79956,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electricity_start.mp4",
+                           "name": "electricity_start.mp4",
+                           "size": 35355,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/electricity_start.webm",
+                           "name": "electricity_start.webm",
+                           "size": 28949,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/enter.mp4",
+                           "name": "enter.mp4",
+                           "size": 19194,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/enter.webm",
+                           "name": "enter.webm",
+                           "size": 25520,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/exit.mp4",
+                           "name": "exit.mp4",
+                           "size": 21936,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/exit.webm",
+                           "name": "exit.webm",
+                           "size": 27560,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gore_loop.mp4",
+                           "name": "gore_loop.mp4",
+                           "size": 78464,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gore_loop.webm",
+                           "name": "gore_loop.webm",
+                           "size": 116904,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gore_splash.mp4",
+                           "name": "gore_splash.mp4",
+                           "size": 19235,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gore_splash.webm",
+                           "name": "gore_splash.webm",
+                           "size": 25703,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro.mp4",
+                           "name": "intro.mp4",
+                           "size": 68144,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro.webm",
+                           "name": "intro.webm",
+                           "size": 65407,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laboratory.mp4",
+                           "name": "laboratory.mp4",
+                           "size": 466855,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laboratory.webm",
+                           "name": "laboratory.webm",
+                           "size": 424096,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laser.mp4",
+                           "name": "laser.mp4",
+                           "size": 13680,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laser.webm",
+                           "name": "laser.webm",
+                           "size": 14635,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laugh.mp4",
+                           "name": "laugh.mp4",
+                           "size": 27392,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/laugh.webm",
+                           "name": "laugh.webm",
+                           "size": 22376,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/machine_spin.mp4",
+                           "name": "machine_spin.mp4",
+                           "size": 36029,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/machine_spin.webm",
+                           "name": "machine_spin.webm",
+                           "size": 33774,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech.mp4",
+                           "name": "mech.mp4",
+                           "size": 5170,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech.webm",
+                           "name": "mech.webm",
+                           "size": 7595,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_1.mp4",
+                           "name": "mech_1.mp4",
+                           "size": 8684,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_1.webm",
+                           "name": "mech_1.webm",
+                           "size": 10554,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_2.mp4",
+                           "name": "mech_2.mp4",
+                           "size": 8437,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_2.webm",
+                           "name": "mech_2.webm",
+                           "size": 11008,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_3.mp4",
+                           "name": "mech_3.mp4",
+                           "size": 7780,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_3.webm",
+                           "name": "mech_3.webm",
+                           "size": 10036,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_4.mp4",
+                           "name": "mech_4.mp4",
+                           "size": 8637,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/mech_4.webm",
+                           "name": "mech_4.webm",
+                           "size": 11387,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_1.mp4",
+                           "name": "monkey_1.mp4",
+                           "size": 10049,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_1.webm",
+                           "name": "monkey_1.webm",
+                           "size": 11076,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_2.mp4",
+                           "name": "monkey_2.mp4",
+                           "size": 9007,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_2.webm",
+                           "name": "monkey_2.webm",
+                           "size": 10239,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_3.mp4",
+                           "name": "monkey_3.mp4",
+                           "size": 8344,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/monkey_3.webm",
+                           "name": "monkey_3.webm",
+                           "size": 9757,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_0.mp4",
+                           "name": "music_bonus_2_level_0.mp4",
+                           "size": 553445,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_0.webm",
+                           "name": "music_bonus_2_level_0.webm",
+                           "size": 585100,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_1.mp4",
+                           "name": "music_bonus_2_level_1.mp4",
+                           "size": 554118,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_1.webm",
+                           "name": "music_bonus_2_level_1.webm",
+                           "size": 564332,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_2.mp4",
+                           "name": "music_bonus_2_level_2.mp4",
+                           "size": 553806,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_2.webm",
+                           "name": "music_bonus_2_level_2.webm",
+                           "size": 562549,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_3.mp4",
+                           "name": "music_bonus_2_level_3.mp4",
+                           "size": 554747,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_3.webm",
+                           "name": "music_bonus_2_level_3.webm",
+                           "size": 562262,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_3_level_0.mp4",
+                           "name": "music_bonus_3_level_0.mp4",
+                           "size": 1085241,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_3_level_0.webm",
+                           "name": "music_bonus_3_level_0.webm",
+                           "size": 1090395,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_0.mp4",
+                           "name": "music_bonus_level_0.mp4",
+                           "size": 542885,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_0.webm",
+                           "name": "music_bonus_level_0.webm",
+                           "size": 553753,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_1.mp4",
+                           "name": "music_bonus_level_1.mp4",
+                           "size": 543508,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_1.webm",
+                           "name": "music_bonus_level_1.webm",
+                           "size": 579006,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_2.mp4",
+                           "name": "music_bonus_level_2.mp4",
+                           "size": 543435,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_2.webm",
+                           "name": "music_bonus_level_2.webm",
+                           "size": 587892,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_3.mp4",
+                           "name": "music_bonus_level_3.mp4",
+                           "size": 544088,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_3.webm",
+                           "name": "music_bonus_level_3.webm",
+                           "size": 541337,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_0.mp4",
+                           "name": "music_level_0.mp4",
+                           "size": 394722,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_0.webm",
+                           "name": "music_level_0.webm",
+                           "size": 439566,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_1.mp4",
+                           "name": "music_level_1.mp4",
+                           "size": 393746,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_1.webm",
+                           "name": "music_level_1.webm",
+                           "size": 430560,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_2.mp4",
+                           "name": "music_level_2.mp4",
+                           "size": 392309,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_2.webm",
+                           "name": "music_level_2.webm",
+                           "size": 384052,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_3.mp4",
+                           "name": "music_level_3.mp4",
+                           "size": 392392,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_3.webm",
+                           "name": "music_level_3.webm",
+                           "size": 373508,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/night_park.mp4",
+                           "name": "night_park.mp4",
+                           "size": 367332,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/night_park.webm",
+                           "name": "night_park.webm",
+                           "size": 327239,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_sparkle.mp4",
+                           "name": "pop_sparkle.mp4",
+                           "size": 13238,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_sparkle.webm",
+                           "name": "pop_sparkle.webm",
+                           "size": 13486,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/robot.mp4",
+                           "name": "robot.mp4",
+                           "size": 13111,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/robot.webm",
+                           "name": "robot.webm",
+                           "size": 13649,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_1.mp4",
+                           "name": "scifi_weapon_1.mp4",
+                           "size": 15331,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_1.webm",
+                           "name": "scifi_weapon_1.webm",
+                           "size": 14273,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_2.mp4",
+                           "name": "scifi_weapon_2.mp4",
+                           "size": 13480,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_2.webm",
+                           "name": "scifi_weapon_2.webm",
+                           "size": 14255,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_3.mp4",
+                           "name": "scifi_weapon_3.mp4",
+                           "size": 16078,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/scifi_weapon_3.webm",
+                           "name": "scifi_weapon_3.webm",
+                           "size": 16151,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ship.mp4",
+                           "name": "ship.mp4",
+                           "size": 21069,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ship.webm",
+                           "name": "ship.webm",
+                           "size": 19552,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_1.mp4",
+                           "name": "slime_move_1.mp4",
+                           "size": 15989,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_1.webm",
+                           "name": "slime_move_1.webm",
+                           "size": 16518,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_2.mp4",
+                           "name": "slime_move_2.mp4",
+                           "size": 13581,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_2.webm",
+                           "name": "slime_move_2.webm",
+                           "size": 14251,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_3.mp4",
+                           "name": "slime_move_3.mp4",
+                           "size": 13877,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_3.webm",
+                           "name": "slime_move_3.webm",
+                           "size": 14190,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_4.mp4",
+                           "name": "slime_move_4.mp4",
+                           "size": 13762,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_4.webm",
+                           "name": "slime_move_4.webm",
+                           "size": 14136,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_5.mp4",
+                           "name": "slime_move_5.mp4",
+                           "size": 15914,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/slime_move_5.webm",
+                           "name": "slime_move_5.webm",
+                           "size": 15889,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_1.mp4",
+                           "name": "splat_1.mp4",
+                           "size": 11622,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_1.webm",
+                           "name": "splat_1.webm",
+                           "size": 13231,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_2.mp4",
+                           "name": "splat_2.mp4",
+                           "size": 32467,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_2.webm",
+                           "name": "splat_2.webm",
+                           "size": 37045,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_3.mp4",
+                           "name": "splat_3.mp4",
+                           "size": 25427,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_3.webm",
+                           "name": "splat_3.webm",
+                           "size": 24844,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_4.mp4",
+                           "name": "splat_4.mp4",
+                           "size": 37180,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_4.webm",
+                           "name": "splat_4.webm",
+                           "size": 29914,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_5.mp4",
+                           "name": "splat_5.mp4",
+                           "size": 51477,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/splat_5.webm",
+                           "name": "splat_5.webm",
+                           "size": 57791,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh_1.mp4",
+                           "name": "swoosh_1.mp4",
+                           "size": 25387,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh_1.webm",
+                           "name": "swoosh_1.webm",
+                           "size": 21960,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh_2.mp4",
+                           "name": "swoosh_2.mp4",
+                           "size": 18915,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh_2.webm",
+                           "name": "swoosh_2.webm",
+                           "size": 18685,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/timpani_end.mp4",
+                           "name": "timpani_end.mp4",
+                           "size": 16852,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/timpani_end.webm",
+                           "name": "timpani_end.webm",
+                           "size": 13998,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_1.mp4",
+                           "name": "total_win_1.mp4",
+                           "size": 36140,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_1.webm",
+                           "name": "total_win_1.webm",
+                           "size": 26703,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_2.mp4",
+                           "name": "total_win_2.mp4",
+                           "size": 70252,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_2.webm",
+                           "name": "total_win_2.webm",
+                           "size": 68812,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_count.mp4",
+                           "name": "win_count.mp4",
+                           "size": 5350,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_count.webm",
+                           "name": "win_count.webm",
+                           "size": 8997,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_low.mp4",
+                           "name": "win_end_bet_low.mp4",
+                           "size": 7997,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_low.webm",
+                           "name": "win_end_bet_low.webm",
+                           "size": 7096,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_over.mp4",
+                           "name": "win_end_bet_over.mp4",
+                           "size": 10488,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_over.webm",
+                           "name": "win_end_bet_over.webm",
+                           "size": 10503,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_high.mp4",
+                           "name": "win_end_high.mp4",
+                           "size": 40858,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_high.webm",
+                           "name": "win_end_high.webm",
+                           "size": 35038,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_1.mp4",
+                           "name": "wintier_1.mp4",
+                           "size": 34963,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_1.webm",
+                           "name": "wintier_1.webm",
+                           "size": 33236,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_2.mp4",
+                           "name": "wintier_2.mp4",
+                           "size": 35089,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_2.webm",
+                           "name": "wintier_2.webm",
+                           "size": 32856,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_3.mp4",
+                           "name": "wintier_3.mp4",
+                           "size": 37705,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_3.webm",
+                           "name": "wintier_3.webm",
+                           "size": 35635,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_4.mp4",
+                           "name": "wintier_4.mp4",
+                           "size": 57065,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_4.webm",
+                           "name": "wintier_4.webm",
+                           "size": 53645,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_1.mp4",
+                           "name": "wow_1.mp4",
+                           "size": 16522,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_1.webm",
+                           "name": "wow_1.webm",
+                           "size": 16246,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_2.mp4",
+                           "name": "wow_2.mp4",
+                           "size": 16687,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_2.webm",
+                           "name": "wow_2.webm",
+                           "size": 17149,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_3.mp4",
+                           "name": "wow_3.mp4",
+                           "size": 14415,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_3.webm",
+                           "name": "wow_3.webm",
+                           "size": 15310,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_4.mp4",
+                           "name": "wow_4.mp4",
+                           "size": 22851,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wow_4.webm",
+                           "name": "wow_4.webm",
+                           "size": 21171,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap.mp4",
+                           "name": "zap.mp4",
+                           "size": 20051,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap.webm",
+                           "name": "zap.webm",
+                           "size": 17756,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_1.mp4",
+                           "name": "zap_1.mp4",
+                           "size": 8444,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_1.webm",
+                           "name": "zap_1.webm",
+                           "size": 8705,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_10.mp4",
+                           "name": "zap_10.mp4",
+                           "size": 5553,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_10.webm",
+                           "name": "zap_10.webm",
+                           "size": 7419,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_2.mp4",
+                           "name": "zap_2.mp4",
+                           "size": 5361,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_2.webm",
+                           "name": "zap_2.webm",
+                           "size": 5412,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_3.mp4",
+                           "name": "zap_3.mp4",
+                           "size": 6951,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_3.webm",
+                           "name": "zap_3.webm",
+                           "size": 7002,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_4.mp4",
+                           "name": "zap_4.mp4",
+                           "size": 6266,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_4.webm",
+                           "name": "zap_4.webm",
+                           "size": 6682,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_5.mp4",
+                           "name": "zap_5.mp4",
+                           "size": 11063,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_5.webm",
+                           "name": "zap_5.webm",
+                           "size": 11008,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_6.mp4",
+                           "name": "zap_6.mp4",
+                           "size": 6787,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_6.webm",
+                           "name": "zap_6.webm",
+                           "size": 8500,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_7.mp4",
+                           "name": "zap_7.mp4",
+                           "size": 5834,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_7.webm",
+                           "name": "zap_7.webm",
+                           "size": 6743,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_8.mp4",
+                           "name": "zap_8.mp4",
+                           "size": 6050,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_8.webm",
+                           "name": "zap_8.webm",
+                           "size": 5995,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_9.mp4",
+                           "name": "zap_9.mp4",
+                           "size": 7292,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_9.webm",
+                           "name": "zap_9.webm",
+                           "size": 7917,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_bounce.mp4",
+                           "name": "zap_bounce.mp4",
+                           "size": 25996,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_bounce.webm",
+                           "name": "zap_bounce.webm",
+                           "size": 18463,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_off.mp4",
+                           "name": "zap_off.mp4",
+                           "size": 10034,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_off.webm",
+                           "name": "zap_off.webm",
+                           "size": 10486,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_splash.mp4",
+                           "name": "zap_splash.mp4",
+                           "size": 34640,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zap_splash.webm",
+                           "name": "zap_splash.webm",
+                           "size": 29211,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_1.mp4",
+                           "name": "zappo_laugh_1.mp4",
+                           "size": 62096,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_1.webm",
+                           "name": "zappo_laugh_1.webm",
+                           "size": 34705,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_2.mp4",
+                           "name": "zappo_laugh_2.mp4",
+                           "size": 61518,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_2.webm",
+                           "name": "zappo_laugh_2.webm",
+                           "size": 34734,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_3.mp4",
+                           "name": "zappo_laugh_3.mp4",
+                           "size": 74797,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zappo_laugh_3.webm",
+                           "name": "zappo_laugh_3.webm",
+                           "size": 45056,
+                           "type": "file",
+                           "extension": ".webm"
+                        }
+                     ],
+                     "size": 21351855,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/spine",
+                     "name": "spine",
+                     "children": [
+                        {
+                           "path": "assets/default/common/spine/encoding.json",
+                           "name": "encoding.json",
+                           "size": 110,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.atlas",
+                           "name": "fs_attention.atlas",
+                           "size": 307,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.json",
+                           "name": "fs_attention.json",
+                           "size": 29272,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.ktx2",
+                           "name": "fs_attention.ktx2",
+                           "size": 82132,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_brain.atlas",
+                           "name": "mr_brain.atlas",
+                           "size": 776,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_brain.json",
+                           "name": "mr_brain.json",
+                           "size": 111613,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_brain.ktx2",
+                           "name": "mr_brain.ktx2",
+                           "size": 77481,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_eye.atlas",
+                           "name": "mr_eye.atlas",
+                           "size": 567,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_eye.json",
+                           "name": "mr_eye.json",
+                           "size": 129483,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/mr_eye.ktx2",
+                           "name": "mr_eye.ktx2",
+                           "size": 149216,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/reel.atlas",
+                           "name": "reel.atlas",
+                           "size": 2394,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/reel.json",
+                           "name": "reel.json",
+                           "size": 43969,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/reel.ktx2",
+                           "name": "reel.ktx2",
+                           "size": 326163,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/zappo_and_monkey.atlas",
+                           "name": "zappo_and_monkey.atlas",
+                           "size": 2107,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/zappo_and_monkey.json",
+                           "name": "zappo_and_monkey.json",
+                           "size": 142218,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/zappo_and_monkey.ktx2",
+                           "name": "zappo_and_monkey.ktx2",
+                           "size": 202122,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 1299930,
+                     "type": "directory"
+                  }
+               ],
+               "size": 71046462,
+               "type": "directory"
+            },
+            {
+               "path": "assets/default/hd",
+               "name": "hd",
+               "children": [
+                  {
+                     "path": "assets/default/hd/atlas",
+                     "name": "atlas",
+                     "children": [
+                        {
+                           "path": "assets/default/hd/atlas/misc.atlas",
+                           "name": "misc.atlas",
+                           "size": 2166,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/atlas/misc.ktx2",
+                           "name": "misc.ktx2",
+                           "size": 1464871,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/hd/atlas/reels_1.atlas",
+                           "name": "reels_1.atlas",
+                           "size": 293,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/atlas/reels_1.ktx2",
+                           "name": "reels_1.ktx2",
+                           "size": 882662,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/hd/atlas/reels_2.atlas",
+                           "name": "reels_2.atlas",
+                           "size": 294,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/atlas/reels_2.ktx2",
+                           "name": "reels_2.ktx2",
+                           "size": 710457,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 3060743,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/hd/spine",
+                     "name": "spine",
+                     "children": [
+                        {
+                           "path": "assets/default/hd/spine/countup_tiers.atlas",
+                           "name": "countup_tiers.atlas",
+                           "size": 5033,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/countup_tiers.json",
+                           "name": "countup_tiers.json",
+                           "size": 123362,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/countup_tiers.ktx2",
+                           "name": "countup_tiers.ktx2",
+                           "size": 1153394,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/encoding.json",
+                           "name": "encoding.json",
+                           "size": 277,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/eye.atlas",
+                           "name": "eye.atlas",
+                           "size": 3939,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/eye.json",
+                           "name": "eye.json",
+                           "size": 443920,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/eye.ktx2",
+                           "name": "eye.ktx2",
+                           "size": 485453,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/hd/spine/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/countup_tiers.atlas",
+                                       "name": "countup_tiers.atlas",
+                                       "size": 3428,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/countup_tiers.json",
+                                       "name": "countup_tiers.json",
+                                       "size": 109232,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/countup_tiers.ktx2",
+                                       "name": "countup_tiers.ktx2",
+                                       "size": 939818,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/encoding.json",
+                                       "name": "encoding.json",
+                                       "size": 145,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/total_win.atlas",
+                                       "name": "total_win.atlas",
+                                       "size": 1780,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/total_win.json",
+                                       "name": "total_win.json",
+                                       "size": 17710,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/hd/spine/localized/es-es/total_win.ktx2",
+                                       "name": "total_win.ktx2",
+                                       "size": 450541,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    }
+                                 ],
+                                 "size": 1522654,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 1522654,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/symbols.atlas",
+                           "name": "symbols.atlas",
+                           "size": 10562,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/symbols.json",
+                           "name": "symbols.json",
+                           "size": 313416,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/symbols.ktx2",
+                           "name": "symbols.ktx2",
+                           "size": 796713,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/total_win.atlas",
+                           "name": "total_win.atlas",
+                           "size": 1780,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/total_win.json",
+                           "name": "total_win.json",
+                           "size": 17724,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/hd/spine/total_win.ktx2",
+                           "name": "total_win.ktx2",
+                           "size": 450541,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 5328768,
+                     "type": "directory"
+                  }
+               ],
+               "size": 8389511,
+               "type": "directory"
+            },
+            {
+               "path": "assets/default/sd",
+               "name": "sd",
+               "children": [
+                  {
+                     "path": "assets/default/sd/atlas",
+                     "name": "atlas",
+                     "children": [
+                        {
+                           "path": "assets/default/sd/atlas/misc.atlas",
+                           "name": "misc.atlas",
+                           "size": 2166,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/atlas/misc.ktx2",
+                           "name": "misc.ktx2",
+                           "size": 1410360,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/sd/atlas/reels_1.atlas",
+                           "name": "reels_1.atlas",
+                           "size": 293,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/atlas/reels_1.ktx2",
+                           "name": "reels_1.ktx2",
+                           "size": 786278,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/sd/atlas/reels_2.atlas",
+                           "name": "reels_2.atlas",
+                           "size": 294,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/atlas/reels_2.ktx2",
+                           "name": "reels_2.ktx2",
+                           "size": 651165,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 2850556,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/sd/spine",
+                     "name": "spine",
+                     "children": [
+                        {
+                           "path": "assets/default/sd/spine/countup_tiers.atlas",
+                           "name": "countup_tiers.atlas",
+                           "size": 5033,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/countup_tiers.json",
+                           "name": "countup_tiers.json",
+                           "size": 123362,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/countup_tiers.ktx2",
+                           "name": "countup_tiers.ktx2",
+                           "size": 266532,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/encoding.json",
+                           "name": "encoding.json",
+                           "size": 190,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/eye.atlas",
+                           "name": "eye.atlas",
+                           "size": 3939,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/eye.json",
+                           "name": "eye.json",
+                           "size": 443920,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/eye.ktx2",
+                           "name": "eye.ktx2",
+                           "size": 184890,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/sd/spine/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/countup_tiers.atlas",
+                                       "name": "countup_tiers.atlas",
+                                       "size": 3428,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/countup_tiers.json",
+                                       "name": "countup_tiers.json",
+                                       "size": 109232,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/countup_tiers.ktx2",
+                                       "name": "countup_tiers.ktx2",
+                                       "size": 227032,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/encoding.json",
+                                       "name": "encoding.json",
+                                       "size": 116,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/total_win.atlas",
+                                       "name": "total_win.atlas",
+                                       "size": 1780,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/total_win.json",
+                                       "name": "total_win.json",
+                                       "size": 17710,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/sd/spine/localized/es-es/total_win.ktx2",
+                                       "name": "total_win.ktx2",
+                                       "size": 415463,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    }
+                                 ],
+                                 "size": 774761,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 774761,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/symbols.atlas",
+                           "name": "symbols.atlas",
+                           "size": 10562,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/symbols.json",
+                           "name": "symbols.json",
+                           "size": 313416,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/symbols.ktx2",
+                           "name": "symbols.ktx2",
+                           "size": 260387,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/total_win.atlas",
+                           "name": "total_win.atlas",
+                           "size": 1780,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/total_win.json",
+                           "name": "total_win.json",
+                           "size": 17724,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/sd/spine/total_win.ktx2",
+                           "name": "total_win.ktx2",
+                           "size": 415463,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 2821959,
+                     "type": "directory"
+                  }
+               ],
+               "size": 5672515,
+               "type": "directory"
+            }
+         ],
+         "size": 85108488,
+         "type": "directory"
+      },
+      {
+         "path": "assets/social",
+         "name": "social",
+         "children": [
+            {
+               "path": "assets/social/common",
+               "name": "common",
+               "children": [
+                  {
+                     "path": "assets/social/common/config",
+                     "name": "config",
+                     "children": [
+                        {
+                           "path": "assets/social/common/config/gameconfig.json",
+                           "name": "gameconfig.json",
+                           "size": 3212,
+                           "type": "file",
+                           "extension": ".json"
+                        }
+                     ],
+                     "size": 3212,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/social/common/font",
+                     "name": "font",
+                     "children": [
+                        {
+                           "path": "assets/social/common/font/bangers_regular.ttf",
+                           "name": "bangers_regular.ttf",
+                           "size": 109624,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/cyrillicfb.ttf",
+                           "name": "cyrillicfb.ttf",
+                           "size": 666152,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/fontconfig.json",
+                           "name": "fontconfig.json",
+                           "size": 304,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/social/common/font/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/social/common/font/localized/bg-bg",
+                                 "name": "bg-bg",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/bg-bg/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 53021,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/bg-bg/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 113777,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 166798,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/cs-cz",
+                                 "name": "cs-cz",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/cs-cz/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 17719,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/cs-cz/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 157453,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175172,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/da-dk",
+                                 "name": "da-dk",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/da-dk/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15067,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/da-dk/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 126957,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 142024,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/de-de",
+                                 "name": "de-de",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/de-de/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15467,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/de-de/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 128444,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 143911,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/el-gr",
+                                 "name": "el-gr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/el-gr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 52543,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/el-gr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 122750,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175293,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/en-us",
+                                 "name": "en-us",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/en-us/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13302,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/en-us/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 110506,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 123808,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/es-es/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14898,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/es-es/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 126930,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 141828,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/fi-fi",
+                                 "name": "fi-fi",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/fi-fi/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13882,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/fi-fi/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 118532,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 132414,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/fr-fr",
+                                 "name": "fr-fr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/fr-fr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15679,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/fr-fr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 127288,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 142967,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/hr-hr",
+                                 "name": "hr-hr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/hr-hr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15448,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/hr-hr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 132827,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 148275,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/hu-hu",
+                                 "name": "hu-hu",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/hu-hu/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16505,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/hu-hu/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 137431,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 153936,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/id-id",
+                                 "name": "id-id",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/id-id/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 13493,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/id-id/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 112727,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 126220,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/it-it",
+                                 "name": "it-it",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/it-it/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14295,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/it-it/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 121401,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 135696,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ja-jp",
+                                 "name": "ja-jp",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ja-jp/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 28027,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ja-jp/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 338312,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 366339,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ko-kr",
+                                 "name": "ko-kr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ko-kr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 31052,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ko-kr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 247266,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 278318,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/lt-lt",
+                                 "name": "lt-lt",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/lt-lt/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15645,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/lt-lt/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 132509,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 148154,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/lv-lv",
+                                 "name": "lv-lv",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/lv-lv/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16445,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/lv-lv/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 141681,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 158126,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/nl-nl",
+                                 "name": "nl-nl",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/nl-nl/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14478,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/nl-nl/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 119123,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 133601,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/no-no",
+                                 "name": "no-no",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/no-no/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14873,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/no-no/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 122993,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 137866,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pl-pl",
+                                 "name": "pl-pl",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pl-pl/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16468,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pl-pl/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 139778,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 156246,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pt-br",
+                                 "name": "pt-br",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-br/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16087,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-br/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 133046,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 149133,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pt-pt",
+                                 "name": "pt-pt",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-pt/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15884,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-pt/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 134644,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 150528,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ro-ro",
+                                 "name": "ro-ro",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ro-ro/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 15273,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ro-ro/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 128026,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 143299,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ru-ru",
+                                 "name": "ru-ru",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ru-ru/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 64401,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ru-ru/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 125824,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 190225,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/sv-se",
+                                 "name": "sv-se",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/sv-se/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 14673,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/sv-se/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 124209,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 138882,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/th-th",
+                                 "name": "th-th",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/th-th/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 34506,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/th-th/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 118120,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 152626,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/tr-tr",
+                                 "name": "tr-tr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/tr-tr/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 16455,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/tr-tr/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 134615,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 151070,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/uk-ua",
+                                 "name": "uk-ua",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/uk-ua/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 68089,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/uk-ua/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 125926,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 194015,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/vi-vn",
+                                 "name": "vi-vn",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/vi-vn/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 239890,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/vi-vn/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 171914,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 411804,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/zh-cn",
+                                 "name": "zh-cn",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-cn/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 26920,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-cn/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 339534,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 366454,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/zh-tw",
+                                 "name": "zh-tw",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-tw/bangers_regular.json",
+                                       "name": "bangers_regular.json",
+                                       "size": 26737,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-tw/bangers_regular.png",
+                                       "name": "bangers_regular.png",
+                                       "size": 338957,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 365694,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 5700722,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/social/common/font/notosansblack.ttf",
+                           "name": "notosansblack.ttf",
+                           "size": 739792,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/pridi.ttf",
+                           "name": "pridi.ttf",
+                           "size": 552264,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/sourcehansans_hwj_bold.ttf",
+                           "name": "sourcehansans_hwj_bold.ttf",
+                           "size": 17945856,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/sourcehansans_hwsc_bold.ttf",
+                           "name": "sourcehansans_hwsc_bold.ttf",
+                           "size": 17857688,
+                           "type": "file",
+                           "extension": ".ttf"
+                        }
+                     ],
+                     "size": 43572402,
+                     "type": "directory"
+                  }
+               ],
+               "size": 43575614,
+               "type": "directory"
+            }
+         ],
+         "size": 43575614,
+         "type": "directory"
+      }
+   ],
+   "size": 128684102,
+   "type": "directory"
+}

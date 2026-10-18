@@ -1,0 +1,75 @@
+backgrounds_2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+background_epic
+  rotate: false
+  xy: 3, 3
+  size: 1344, 717
+  orig: 1344, 717
+  offset: 0, 0
+  index: -1
+background_fs2
+  rotate: false
+  xy: 3, 726
+  size: 1344, 717
+  orig: 1344, 717
+  offset: 0, 0
+  index: -1
+epic_light_left_bot
+  rotate: false
+  xy: 1619, 291
+  size: 190, 141
+  orig: 960, 512
+  offset: 105, 49
+  index: -1
+epic_light_left_mid
+  rotate: false
+  xy: 1713, 3
+  size: 300, 282
+  orig: 960, 512
+  offset: 0, 177
+  index: -1
+epic_light_left_top
+  rotate: false
+  xy: 1353, 3
+  size: 354, 263
+  orig: 960, 512
+  offset: 114, 249
+  index: -1
+epic_light_right_bot
+  rotate: false
+  xy: 969, 1449
+  size: 960, 418
+  orig: 960, 512
+  offset: 0, 66
+  index: -1
+epic_light_right_top
+  rotate: false
+  xy: 1353, 272
+  size: 260, 211
+  orig: 960, 512
+  offset: 543, 301
+  index: -1
+fs2_lights
+  rotate: false
+  xy: 3, 1449
+  size: 960, 452
+  orig: 960, 512
+  offset: 0, 6
+  index: -1
+fs2_zap_left
+  rotate: false
+  xy: 1815, 291
+  size: 131, 448
+  orig: 960, 512
+  offset: 141, 64
+  index: -1
+fs2_zap_right
+  rotate: false
+  xy: 1619, 438
+  size: 124, 457
+  orig: 960, 512
+  offset: 700, 55
+  index: -1

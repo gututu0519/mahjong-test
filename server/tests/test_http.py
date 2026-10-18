@@ -14,6 +14,21 @@ from server.adapters.pg.protocol import field, text_field, double_field, pack, u
 
 
 class HTTPTests(unittest.TestCase):
+    def test_pg_cached_json_key_order_does_not_change_wire_response(self):
+        from server.adapters.pg.mahjong_ways2 import transaction, encode_response, idle_event
+        from server.games.mahjong_ways2.engine import MahjongWays2
+        game = MahjongWays2()
+        event = idle_event(game.initial_state('wire-order'))
+        event.update(gold_before={'9': 1, '10': 1, '3': 1}, gold_after={'9': 1, '10': 1},
+                     winning_positions={'9': [0, 7, 14], '3': [1, 8, 15]},
+                     rates={'9': 5, '3': 1}, ways={'9': 1, '3': 1},
+                     base_awards_minor={'9': 25, '3': 5})
+        cached = json.loads(json.dumps(event, sort_keys=True))
+        wallet = dict(before_minor=200000, after_minor=200000, debit_minor=0)
+        first = encode_response(transaction(event, wallet, game.config['win_thresholds']))
+        retry = encode_response(transaction(cached, wallet, game.config['win_thresholds']))
+        self.assertEqual(first, retry)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

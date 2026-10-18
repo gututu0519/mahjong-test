@@ -1,0 +1,19 @@
+reels_2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+reel_epic
+  rotate: false
+  xy: 1, 1
+  size: 1197, 1017
+  orig: 1512, 1218
+  offset: 156, 73
+  index: -1
+reel_fs2
+  rotate: false
+  xy: 1, 1020
+  size: 1197, 1017
+  orig: 1512, 1218
+  offset: 156, 73
+  index: -1
