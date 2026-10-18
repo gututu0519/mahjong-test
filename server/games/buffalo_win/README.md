@@ -1,6 +1,6 @@
 # Buffalo Win 规则引擎
 
-玩法与概率边界见 [服务说明](../../../services/buffalo-win/README.md)，原始证据见 [规则分析](../../../Buffalo%20Win/RULES_ANALYSIS.txt)。
+玩法与概率边界见 [服务说明](../../../services/buffalo-win/README.md)，原始证据见 [规则分析](../../../docs/buffalo-win-rules-analysis.txt)。
 
 `evaluate` 只评估传入的棋盘和扩展符号计数；`BuffaloWin.step` 生成每一步结果并返回整数分的扣款、派奖及新状态。HTTP、客户端协议、数据库均在引擎之外。生产运行不加载记录的旋转结果，也没有强制中奖接口。
 

@@ -13,6 +13,21 @@ from server.services.game_api import build_server
 
 
 class ServiceBoundaryTests(unittest.TestCase):
+    def test_pg_services_do_not_import_replay_or_modify_import_paths(self):
+        code = '''
+import sys
+before = tuple(sys.path)
+from server.services.local_demo import build_server as mahjong
+from server.services.buffalo_demo import build_server as buffalo
+from server.services.wild_bandito_demo import build_server as bandito
+assert tuple(sys.path) == before
+assert not any(k.startswith('tools.pg_capture.mahjong_ways2') for k in sys.modules)
+assert 'serve_local' not in sys.modules
+assert 'local_spin' not in sys.modules
+'''
+        subprocess.run([sys.executable, '-c', code], check=True,
+                       cwd=Path(__file__).resolve().parents[2], capture_output=True, text=True)
+
     def test_api_process_does_not_import_legacy_client_or_provider(self):
         code = '''
 import sys

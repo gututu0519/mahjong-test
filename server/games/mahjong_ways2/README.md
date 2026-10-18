@@ -3,7 +3,7 @@
 ID：`mahjong-ways2`；类别：转轴／连消（`slots`）；交互：请求逐步推进（`request_steps`）。
 这是转轴游戏，不是真人麻将桌或牌局规则引擎。
 规则实现在 `engine.py`，默认配置在 `config.json`，客户端字段转换在 `../../adapters/pg/`。
-规则证据见仓库 `Mahjong Ways 2/SPIN_INTERFACE_ANALYSIS.txt`；录制结果仅用于离线回归对照。
+规则证据见仓库 `docs/mahjong-ways2-spin-interface.txt`；录制结果仅用于离线回归对照。
 
 | 玩法 | 当前状态及依据 | 验证位置／尚缺验证 |
 | --- | --- | --- |

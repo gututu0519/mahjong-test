@@ -1,0 +1,624 @@
+{
+  "transaction": {
+    "nested": {
+      "CommonMarkRead": {
+        "fields": {
+          "ts": {
+            "type": "int32",
+            "id": 1
+          }
+        }
+      },
+      "Int32Nullable": {
+        "fields": {
+          "__value": {
+            "type": "int32",
+            "id": 1
+          }
+        }
+      },
+      "Int64Nullable": {
+        "fields": {
+          "__value": {
+            "type": "int64",
+            "id": 1
+          }
+        }
+      },
+      "UInt32Nullable": {
+        "fields": {
+          "__value": {
+            "type": "uint32",
+            "id": 1
+          }
+        }
+      },
+      "UInt64Nullable": {
+        "fields": {
+          "__value": {
+            "type": "uint64",
+            "id": 1
+          }
+        }
+      },
+      "BoolNullable": {
+        "fields": {
+          "__value": {
+            "type": "bool",
+            "id": 1
+          }
+        }
+      },
+      "DoubleNullable": {
+        "fields": {
+          "__value": {
+            "type": "double",
+            "id": 1
+          }
+        }
+      },
+      "Int32List": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "int32",
+            "id": 1
+          }
+        }
+      },
+      "DoubleList": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "double",
+            "id": 1
+          }
+        }
+      },
+      "BoolList": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "bool",
+            "id": 1
+          }
+        }
+      },
+      "Int32ListCollection": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "Int32List",
+            "id": 1
+          }
+        }
+      },
+      "DoubleListCollection": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "DoubleList",
+            "id": 1
+          }
+        }
+      },
+      "__root__": {
+        "fields": {
+          "sid": {
+            "type": "string",
+            "id": 1
+          },
+          "psid": {
+            "type": "string",
+            "id": 2
+          },
+          "st": {
+            "type": "int32",
+            "id": 3
+          },
+          "nst": {
+            "type": "int32",
+            "id": 4
+          },
+          "pf": {
+            "type": "int32",
+            "id": 5
+          },
+          "aw": {
+            "type": "double",
+            "id": 6
+          },
+          "tb": {
+            "type": "double",
+            "id": 15
+          },
+          "tbb": {
+            "type": "double",
+            "id": 16
+          },
+          "tw": {
+            "type": "double",
+            "id": 17
+          },
+          "np": {
+            "type": "double",
+            "id": 18
+          },
+          "ocr": {
+            "type": "string",
+            "id": 19
+          },
+          "mr": {
+            "type": "CommonMarkRead",
+            "id": 20
+          },
+          "ge": {
+            "rule": "repeated",
+            "type": "int32",
+            "id": 21
+          },
+          "pmt": {
+            "type": "bytes",
+            "id": 72
+          },
+          "ml": {
+            "type": "int32",
+            "id": 51
+          },
+          "cs": {
+            "type": "double",
+            "id": 52
+          },
+          "rl": {
+            "rule": "repeated",
+            "type": "int32",
+            "id": 53
+          },
+          "ctw": {
+            "type": "double",
+            "id": 54
+          },
+          "cwc": {
+            "type": "int32",
+            "id": 55
+          },
+          "fstc": {
+            "keyType": "int32",
+            "type": "int32",
+            "id": 56
+          },
+          "pcwc": {
+            "type": "int32",
+            "id": 57
+          },
+          "rwsp": {
+            "type": "string",
+            "id": 58
+          },
+          "hashr": {
+            "type": "string",
+            "id": 59
+          },
+          "fb": {
+            "type": "Int32Nullable",
+            "id": 60
+          },
+          "gwt": {
+            "type": "int32",
+            "id": 71
+          },
+          "wp": {
+            "id": 101,
+            "type": "Int32List",
+            "keyType": "int32"
+          },
+          "lw": {
+            "id": 102,
+            "type": "double",
+            "keyType": "int32"
+          },
+          "sc": {
+            "id": 103,
+            "type": "int32"
+          },
+          "orl": {
+            "id": 104,
+            "type": "int32",
+            "rule": "repeated"
+          },
+          "gm": {
+            "id": 105,
+            "type": "int32"
+          },
+          "ssb": {
+            "id": 106,
+            "type": "int32",
+            "keyType": "int32"
+          },
+          "ss": {
+            "id": 107,
+            "type": "int32",
+            "keyType": "int32"
+          },
+          "ptbr": {
+            "id": 108,
+            "type": "int32",
+            "rule": "repeated"
+          },
+          "snww": {
+            "id": 109,
+            "type": "int32",
+            "keyType": "int32"
+          },
+          "ssaw": {
+            "id": 110,
+            "type": "double"
+          },
+          "rs": {
+            "id": 111,
+            "type": "WildBanditoRespin"
+          },
+          "fs": {
+            "id": 112,
+            "type": "WildBanditoFreeSpin"
+          }
+        }
+      },
+      "WildBanditoFreeSpin": {
+        "fields": {
+          "aw": {
+            "id": 1,
+            "type": "double"
+          },
+          "s": {
+            "id": 2,
+            "type": "int32"
+          },
+          "gm": {
+            "id": 3,
+            "type": "int32"
+          },
+          "ts": {
+            "id": 4,
+            "type": "int32"
+          },
+          "nosa": {
+            "id": 5,
+            "type": "int32"
+          }
+        }
+      },
+      "WildBanditoRespin": {
+        "fields": {
+          "rns": {
+            "id": 2,
+            "type": "Int32List",
+            "rule": "repeated"
+          },
+          "rnss": {
+            "id": 3,
+            "type": "Int32List",
+            "rule": "repeated"
+          },
+          "bsb": {
+            "id": 4,
+            "type": "int32",
+            "rule": "repeated"
+          }
+        }
+      }
+    }
+  },
+  "wallet": {
+    "nested": {
+      "Bonus": {
+        "fields": {
+          "k": {
+            "type": "string",
+            "id": 1
+          },
+          "ks": {
+            "rule": "repeated",
+            "type": "string",
+            "id": 2
+          },
+          "n": {
+            "type": "string",
+            "id": 3
+          },
+          "bid": {
+            "type": "uint32",
+            "id": 4
+          },
+          "baid": {
+            "type": "uint32",
+            "id": 5
+          },
+          "bt": {
+            "type": "int32",
+            "id": 6
+          },
+          "gids": {
+            "rule": "repeated",
+            "type": "uint32",
+            "id": 7
+          },
+          "gidl": {
+            "type": "UInt32Nullable",
+            "id": 8
+          },
+          "ba": {
+            "type": "double",
+            "id": 9
+          },
+          "ibra": {
+            "type": "double",
+            "id": 10
+          },
+          "minca": {
+            "type": "DoubleNullable",
+            "id": 11
+          },
+          "mca": {
+            "type": "DoubleNullable",
+            "id": 12
+          },
+          "bra": {
+            "type": "double",
+            "id": 13
+          },
+          "s": {
+            "type": "int32",
+            "id": 14
+          },
+          "ck": {
+            "type": "string",
+            "id": 15
+          },
+          "bca": {
+            "type": "DoubleNullable",
+            "id": 16
+          },
+          "ca": {
+            "type": "DoubleNullable",
+            "id": 17
+          },
+          "cgid": {
+            "type": "UInt32Nullable",
+            "id": 18
+          },
+          "cd": {
+            "type": "int64",
+            "id": 19
+          },
+          "ed": {
+            "type": "Int64Nullable",
+            "id": 20
+          },
+          "isd": {
+            "type": "bool",
+            "id": 21
+          }
+        }
+      },
+      "FreeGame": {
+        "fields": {
+          "k": {
+            "type": "string",
+            "id": 1
+          },
+          "n": {
+            "type": "string",
+            "id": 2
+          },
+          "fgid": {
+            "type": "uint32",
+            "id": 3
+          },
+          "baid": {
+            "type": "uint32",
+            "id": 4
+          },
+          "gids": {
+            "rule": "repeated",
+            "type": "uint32",
+            "id": 5
+          },
+          "gidl": {
+            "type": "UInt32Nullable",
+            "id": 6
+          },
+          "gc": {
+            "type": "int32",
+            "id": 7
+          },
+          "tg": {
+            "type": "int32",
+            "id": 8
+          },
+          "ba": {
+            "type": "double",
+            "id": 9
+          },
+          "minca": {
+            "type": "DoubleNullable",
+            "id": 10
+          },
+          "mca": {
+            "type": "DoubleNullable",
+            "id": 11
+          },
+          "m": {
+            "type": "int32",
+            "id": 12
+          },
+          "cs": {
+            "type": "double",
+            "id": 13
+          },
+          "ck": {
+            "type": "string",
+            "id": 14
+          },
+          "bca": {
+            "type": "DoubleNullable",
+            "id": 15
+          },
+          "ca": {
+            "type": "DoubleNullable",
+            "id": 16
+          },
+          "cgid": {
+            "type": "UInt32Nullable",
+            "id": 17
+          },
+          "ed": {
+            "type": "Int64Nullable",
+            "id": 18
+          },
+          "s": {
+            "type": "int32",
+            "id": 19
+          },
+          "ct": {
+            "type": "string",
+            "id": 20
+          },
+          "isd": {
+            "type": "bool",
+            "id": 21
+          }
+        }
+      },
+      "Int32Nullable": {
+        "fields": {
+          "__value": {
+            "type": "int32",
+            "id": 1
+          }
+        }
+      },
+      "Int64Nullable": {
+        "fields": {
+          "__value": {
+            "type": "int64",
+            "id": 1
+          }
+        }
+      },
+      "UInt32Nullable": {
+        "fields": {
+          "__value": {
+            "type": "uint32",
+            "id": 1
+          }
+        }
+      },
+      "UInt64Nullable": {
+        "fields": {
+          "__value": {
+            "type": "uint64",
+            "id": 1
+          }
+        }
+      },
+      "BoolNullable": {
+        "fields": {
+          "__value": {
+            "type": "bool",
+            "id": 1
+          }
+        }
+      },
+      "DoubleNullable": {
+        "fields": {
+          "__value": {
+            "type": "double",
+            "id": 1
+          }
+        }
+      },
+      "Int32List": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "int32",
+            "id": 1
+          }
+        }
+      },
+      "DoubleList": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "double",
+            "id": 1
+          }
+        }
+      },
+      "BoolList": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "bool",
+            "id": 1
+          }
+        }
+      },
+      "Int32ListCollection": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "Int32List",
+            "id": 1
+          }
+        }
+      },
+      "DoubleListCollection": {
+        "fields": {
+          "__value": {
+            "rule": "repeated",
+            "type": "DoubleList",
+            "id": 1
+          }
+        }
+      },
+      "__root__": {
+        "fields": {
+          "wid": {
+            "type": "uint32",
+            "id": 7
+          },
+          "wt": {
+            "type": "string",
+            "id": 8
+          },
+          "wk": {
+            "type": "string",
+            "id": 9
+          },
+          "wbn": {
+            "type": "Bonus",
+            "id": 10
+          },
+          "wfg": {
+            "type": "FreeGame",
+            "id": 11
+          },
+          "blb": {
+            "type": "double",
+            "id": 12
+          },
+          "blab": {
+            "type": "double",
+            "id": 13
+          },
+          "bl": {
+            "type": "double",
+            "id": 14
+          }
+        }
+      }
+    }
+  }
+}

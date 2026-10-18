@@ -1,6 +1,6 @@
 """Generated Buffalo Win demo. Integer-credit settlement; no captured outcome replay.
 
-Captured rules: see Buffalo Win/RULES_ANALYSIS.txt. Probability parameters are
+Captured rules: see docs/buffalo-win-rules-analysis.txt. Probability parameters are
 local configuration, not the original provider RNG.
 """
 import copy

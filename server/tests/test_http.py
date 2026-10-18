@@ -72,7 +72,7 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.post_json('/api/v1/sessions', {}, {'Origin': 'https://other.example'})[0], 403)
 
     def test_legacy_protocol_generated_without_replay(self):
-        with patch('local_spin.LocalSpin.__init__', side_effect=AssertionError('Replay must not run')):
+        with patch('tools.pg_capture.mahjong_ways2.local_spin.LocalSpin.__init__', side_effect=AssertionError('Replay must not run')):
             info_body = urlencode({'atk': 'local-demo-session', 'btt': 1, 'pf': 1}).encode()
             status, body, _ = self.request('/game-api/74/v4/GameInfo/Get', info_body)
             self.assertEqual(status, 200, body)

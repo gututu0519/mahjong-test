@@ -48,9 +48,9 @@ server/
 钱包金额只能由公共结算事务更新，游戏返回结算结果。公共代码已拆为 `storage.py`、`sessions.py`、`queries.py`、`settlement.py`；
 `core/service.py` 只组装组件。切换数据库时调整存储边界，无需每个游戏复制一套钱包。
 
-原客户端资源和采集工具保留原目录，避免破坏资源路径和现有启动脚本。
-`Mahjong Ways 2/` 属于客户端、规则分析与旧回放工具；`response-capture/` 属于开发采集服务。
-后续新客户端按 `clients/<game_id>/`、新独立开发工具按 `tools/<tool_id>/` 归档；现有目录是兼容保留项。
+客户端资源统一放在 `clients/<game_id>/`，服务继续提供原有 HTTP 资源路径和启动入口。
+`clients/` 仅保存各游戏的客户端资源和脱敏证据；规则文档归入 `docs/`，PG 导入、分析、旧回放和诊断工具归入 `tools/pg_capture/`。共享模块修复器位于 `server/adapters/pg/client_modules.py`，麻将资源处理器与旧回放服务分离；生产服务不修改 `sys.path`、不导入回放引擎。`response-capture/` 属于开发采集服务。
+后续新客户端按 `clients/<game_id>/`、新独立开发工具按 `tools/<tool_id>/` 归档。
 
 ## 服务目录与启动
 

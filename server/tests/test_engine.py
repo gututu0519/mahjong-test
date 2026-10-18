@@ -25,7 +25,7 @@ class Scripted(MahjongWays2):
 
 class RuleTests(unittest.TestCase):
     def test_existing_captures_are_only_an_offline_oracle(self):
-        source = Path(__file__).parents[2] / 'Mahjong Ways 2/fixtures/spin-rounds.json'
+        source = Path(__file__).parents[2] / 'clients/mahjong-ways2/fixtures/spin-rounds.json'
         rounds = json.loads(source.read_text(encoding='utf-8'))['rounds']
         checked = 0
         for captured_round in rounds:

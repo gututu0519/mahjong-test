@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'wild-bandito': {
+        'factory': 'server.games.wild_bandito:WildBandito',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['ways', 'cascades', 'gold_to_wild', 'increasing_multiplier', 'free_spins', 'free_retrigger'],
+    },
     'tower-run-treasure-steps': {
         'factory': 'server.games.tower_run_treasure_steps:TowerRunTreasureSteps',
         'category': 'slots', 'interaction': 'request_steps',

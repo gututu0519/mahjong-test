@@ -36,7 +36,7 @@ class BuffaloHTTPTests(unittest.TestCase):
                 form_headers={'Content-Type':'application/x-www-form-urlencoded','X-Local-Game-Session':token}
                 # Original help assets and metadata must be served byte-for-byte;
                 # opening help must not mutate the wallet or round state.
-                client = Path(__file__).resolve().parents[2] / 'Buffalo Win'
+                client = Path(__file__).resolve().parents[2] / 'clients/buffalo-win'
                 restored = json.loads((client / 'fixtures/restored-original-help-assets.json').read_text(encoding='utf-8'))
                 for asset in restored['assets']:
                     status, content = request('/' + asset['path'])

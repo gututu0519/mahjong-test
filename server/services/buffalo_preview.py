@@ -4,7 +4,6 @@ import copy
 import json
 import logging
 import secrets
-import sys
 import time
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -13,9 +12,8 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
-CLIENT = ROOT / 'Buffalo Win'
-sys.path.insert(0, str(ROOT / 'Mahjong Ways 2'))
-from local_modules import prepare_module
+CLIENT = ROOT / 'clients/buffalo-win'
+from server.adapters.pg.client_modules import prepare_module
 from server.core.contracts import ServiceError
 from server.transport.http import PlatformRoutes
 

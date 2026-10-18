@@ -8,8 +8,7 @@
 中奖、连消、金牌、免费旋转由规则引擎计算，不读取 `spin-rounds.json` 或抓取响应来决定结果。
 抓取样本仅在离线回归测试中作为算奖的对照数据。
 
-已接入一款游戏：`mahjong-ways2`。扩展接口、钱包和状态隔离已用第二个测试游戏验证；
-这不表示已经实现了第二款正式游戏，也不表示已经完成大规模吞吐验证。
+本文介绍 `mahjong-ways2` 的服务端结构；当前已接入的其他游戏及独立服务见 [服务目录说明](../services/README.md)。
 
 ## 启动
 
@@ -21,7 +20,7 @@
 python -m server.app
 ```
 
-也可双击根目录 `start-server.bat`，或者游戏目录的 `start.bat`。
+也可双击根目录 `start-server.bat`，或者 `services/mahjong-ways2/start.bat`。
 
 - 游戏：<http://localhost:8080/?mock=1>
 - 健康检查：<http://localhost:8080/health>
@@ -29,7 +28,7 @@ python -m server.app
 - 数据库：`services/mahjong-ways2/data/games.sqlite3`，目录已加入 Git 忽略。
 
 启动器固定监听 `127.0.0.1`。`mock=1` 保留为原客户端的本地登录开关；新服务下它不表示样本回放。
-页面会显示“本地独立引擎 · 虚拟余额”。中文版不显示货币符号。
+中文版不显示货币符号。
 
 如 8080 已有旧服务，先停止旧进程。隔离验证可以运行：
 
@@ -37,7 +36,7 @@ python -m server.app
 python -m server.run --service-dir services/game-api --port 8081
 ```
 
-旧回放服务保留在 `Mahjong Ways 2/serve_local.py`，仅供对照；旧 JSON 钱包不被修改或自动迁移。
+旧回放服务保留在 `tools/pg_capture/mahjong_ways2/serve_local.py`，仅供对照；旧 JSON 钱包位于 `diagnostics/mahjong-ways2/local-spin-state.json`，内容保留，不自动导入新数据库。
 新数据库首次为本地演示账号发放 2000 虚拟积分。以后重启保留余额与未完成回合。
 
 分类、独立服务入口、目录归属及新游戏接入规范见 [多游戏、多服务架构](ARCHITECTURE.md)。

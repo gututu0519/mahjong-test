@@ -1,0 +1,11 @@
+{
+  "coin_sizes_minor": [3, 10, 30, 90],
+  "bet_levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "base_bet_factor": 20,
+  "symbol_weights": {"1": 1, "2": 8, "3": 10, "4": 12, "5": 15, "6": 18, "7": 18, "8": 20, "9": 24, "10": 24},
+  "gold_probability": 0.18,
+  "free_trigger": 3,
+  "free_base_spins": 12,
+  "free_extra_per_scatter": 2,
+  "win_thresholds": {"mw": 3, "bw": 5, "mgw": 15, "smgw": 35}
+}

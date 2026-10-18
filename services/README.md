@@ -1,5 +1,7 @@
 # 独立服务目录
 
+全部 17 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
+
 Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `python -m server.run --service-dir services/great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
 
 Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `python -m server.run --service-dir services/dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。

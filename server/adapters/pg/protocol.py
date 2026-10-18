@@ -8,8 +8,8 @@ import struct
 GAME_SALT = 11  # sum of digits of game index 74
 
 
-def swaps(length, seed):
-    a, b = seed + GAME_SALT, seed + GAME_SALT + 1
+def swaps(length, seed, salt=GAME_SALT):
+    a, b = seed + salt, seed + salt + 1
     for i in range(length - 1, 0, -1):
         x, y = a, b
         a = y
@@ -21,25 +21,25 @@ def swaps(length, seed):
         yield i, (x + y) % (i + 1)
 
 
-def unpack(data, seed=None):
+def unpack(data, seed=None, salt=GAME_SALT):
     if not 2 <= len(data) <= 16384:
         raise ValueError('Invalid binary message length')
-    pos = GAME_SALT % (len(data) - 1)
+    pos = salt % (len(data) - 1)
     if seed is None:
         seed = data[pos]
     raw = bytearray(data[:pos] + data[pos + 1:])
-    for i, j in reversed(list(swaps(len(raw), seed))):
+    for i, j in reversed(list(swaps(len(raw), seed, salt))):
         raw[i], raw[j] = raw[j], raw[i]
     return bytes(raw), seed
 
 
-def pack(raw, seed):
+def pack(raw, seed, salt=GAME_SALT):
     if not raw or not 0 <= seed <= 255:
         raise ValueError('Invalid binary message')
     data = bytearray(raw)
-    for i, j in swaps(len(data), seed):
+    for i, j in swaps(len(data), seed, salt):
         data[i], data[j] = data[j], data[i]
-    data.insert(GAME_SALT % len(data), seed)
+    data.insert(salt % len(data), seed)
     return bytes(data)
 
 

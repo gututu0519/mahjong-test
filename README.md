@@ -13,13 +13,18 @@ Wicked Grin（Hacksaw Gaming）独立服务启动：`python -m server.run --serv
 本仓库包含本地多游戏服务端、麻将客户端资源，以及浏览器请求抓取工具。
 
 ```text
-server/              # 多游戏平台，内部按公共核心、游戏、协议、服务入口分类
-Mahjong Ways 2/      # 原客户端资源、协议分析与旧样本回放工具
-response-capture/   # 浏览器请求与响应抓取工具
-start-server.bat    # 新服务端启动入口
+clients/           # 所有原客户端资源和脱敏 fixtures，按游戏 slug 分类
+server/            # 公共核心、游戏引擎、协议适配和服务入口
+tools/pg_capture/  # PG 离线导入、规则分析、旧样本回放及诊断工具
+docs/              # 接入、规则分析和资源缺失记录
+response-capture/  # 浏览器请求与响应抓取工具
+services/          # 各游戏独立启动器、配置、数据库和日志
+start-server.bat   # 麻将服务启动入口
 ```
 
 目录归属、服务分类和后续接入约定见 [多游戏、多服务架构](server/ARCHITECTURE.md)。
+
+各款仍缺的原版证据、本地验收、资源与补抓操作统一见 [各游戏待验证与资源缺口](docs/game-validation-and-resource-gaps.md)，覆盖全部 17 款游戏。
 
 ## 启动独立服务端
 
@@ -75,15 +80,15 @@ python -m unittest discover -s server/tests -v
 
 ## 规则分析与旧回放工具
 
-`Mahjong Ways 2/SPIN_INTERFACE_ANALYSIS.txt` 和 `analyze_spin.py` 保存了协议与规则分析。
-旧的 `serve_local.py` 仍可手动启动，专用于抓取样本回放对照：
+`docs/mahjong-ways2-spin-interface.txt` 和 `tools/pg_capture/mahjong_ways2/analyze_spin.py` 保存了协议与规则分析。
+旧的回放服务仍可手动启动，专用于抓取样本回放对照：
 
 ```powershell
-python ".\Mahjong Ways 2\serve_local.py" --port 8081
+python -m tools.pg_capture.mahjong_ways2.serve_local --port 8081
 ```
 
-旧钱包仍保存在 `Mahjong Ways 2/diagnostics/local-spin-state.json`，不会被新服务自动迁移或覆盖。
-原始规则面板与资源来源说明保留在游戏目录的 `fixtures/` 中。
+旧回放钱包和诊断文件已随目录整理迁至 `diagnostics/mahjong-ways2/`，默认钱包仍为其中的 `local-spin-state.json`，文件内容不变；与正式服务 SQLite 钱包隔离。
+原始规则面板与资源来源说明保留在各客户端目录的 `fixtures/` 中。共享模块修复器及校验脚本位于 `server/adapters/pg/`，游戏服务不再通过修改 `sys.path` 引用客户端中的 Python 文件。
 
 ## Buffalo Win 独立游戏服务
 

@@ -33,8 +33,8 @@ class Scripted(BuffaloWin):
 
 class BuffaloRulesTests(unittest.TestCase):
     def test_offline_capture_oracle(self):
-        cases = json.loads((Path(__file__).parents[2] / 'Buffalo Win/fixtures/rule-cases.json').read_bytes())
-        english = json.loads((Path(__file__).parents[2] / 'Buffalo Win/fixtures/rule-cases-en.json').read_bytes())
+        cases = json.loads((Path(__file__).parents[2] / 'clients/buffalo-win/fixtures/rule-cases.json').read_bytes())
+        english = json.loads((Path(__file__).parents[2] / 'clients/buffalo-win/fixtures/rule-cases-en.json').read_bytes())
         self.assertEqual(len(english), 386)
         cases.extend(english)
         self.assertGreaterEqual(len(cases), 789)

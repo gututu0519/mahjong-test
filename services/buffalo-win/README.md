@@ -19,13 +19,13 @@ python -m server.services.buffalo_demo
 - 重复请求幂等、并发重复请求只结算一次、过期状态拒绝、余额不足回滚、回合内锁定投注。
 - 大厅从后端取得游戏链接，再在 iframe 内运行。
 
-目前中文客户端资源可用。英文接入进行中：原版启动页、主游戏英文资源和英文赔付表资源已从会话 `8a704656ec204d4899533712d6a8d7b1` 导入，英文规则和免费功能仍待补齐验证；按用户要求，大厅已开放英文测试入口；交互及免费功能验证仍在进行。进度见 `Buffalo Win/fixtures/english-capture-status.json`。可运行 `python "Buffalo Win/import_capture.py" <会话ID>` 从正在抓取的会话增量导入静态资源，脚本保留既有资源并在版本冲突时停止。原版赔付表、规则面板及 GameRule 接口已从抓取会话 `09637ea7151b461fbc04eee29b8678d5` 恢复；19 个静态资源的来源、响应行号与 SHA-256 见 `Buffalo Win/fixtures/restored-original-help-assets.json`。保留原版 UI、图片和文字，没有自制帮助面板。历史面板尚未接入；服务端 JSON 历史接口可用。
+目前中文客户端资源可用。英文接入进行中：原版启动页、主游戏英文资源和英文赔付表资源已从会话 `8a704656ec204d4899533712d6a8d7b1` 导入，英文规则和免费功能仍待补齐验证；按用户要求，大厅已开放英文测试入口；交互及免费功能验证仍在进行。进度见 `clients/buffalo-win/fixtures/english-capture-status.json`。可运行 `python -m tools.pg_capture.buffalo_win.import_capture <会话ID>` 从正在抓取的会话增量导入静态资源，脚本保留既有资源并在版本冲突时停止。原版赔付表、规则面板及 GameRule 接口已从抓取会话 `09637ea7151b461fbc04eee29b8678d5` 恢复；19 个静态资源的来源、响应行号与 SHA-256 见 `clients/buffalo-win/fixtures/restored-original-help-assets.json`。保留原版 UI、图片和文字，没有自制帮助面板。历史面板尚未接入；服务端 JSON 历史接口可用。
 
-引擎 1.1.0 已按抓取的原版中英文说明对齐上述规则。来源为 `Buffalo Win/89240957a6.15d79.json`、`Buffalo Win/cbff7a4b9e.67a15.json`，客户端继续使用原版面板。GameRule 中的 96.75% 是捕获的原版元数据，不是本地引擎的理论 RTP；客户端保持不显示 RTP 的配置。
+引擎 1.1.0 已按抓取的原版中英文说明对齐上述规则。来源为 `clients/buffalo-win/89240957a6.15d79.json`、`clients/buffalo-win/cbff7a4b9e.67a15.json`，客户端继续使用原版面板。GameRule 中的 96.75% 是捕获的原版元数据，不是本地引擎的理论 RTP；客户端保持不显示 RTP 的配置。
 
 ## 规则与本地参数
 
-确定性结算参见 `Buffalo Win/RULES_ANALYSIS.txt`。引擎的中奖位置、加权符号数、续列判断和派奖与 789 条离线响应一致（中文 403 条、英文 386 条）。英文脱敏用例 `rule-cases-en.json` 来自会话 `8a704656ec204d4899533712d6a8d7b1`，保留响应行号以追溯。运行服务不会读取这些旋转样本，每一步都由新随机种子生成结果。
+确定性结算参见 `docs/buffalo-win-rules-analysis.txt`。引擎的中奖位置、加权符号数、续列判断和派奖与 789 条离线响应一致（中文 403 条、英文 386 条）。英文脱敏用例 `rule-cases-en.json` 来自会话 `8a704656ec204d4899533712d6a8d7b1`，保留响应行号以追溯。运行服务不会读取这些旋转样本，每一步都由新随机种子生成结果。
 
 本服务配置：`config/buffalo-win.json`。随机权重、堆叠概率、扩展块概率和合法范围内的大小分布仍为本地演示设定，不能代表原厂概率或理论 RTP。只要最右列继续中奖或含免费符号就新增卷轴；每次请求只推进一步，不强制插入中性列。
 
@@ -45,7 +45,7 @@ python -m server.services.buffalo_demo
 
 客户端的请求仅指向本地服务；原版公开 API 域名描述符只用于旧客户端初始化。认证模板已清理原始用户和令牌。采集原文、分析脚本与 fixtures 均不对 HTTP 开放。
 
-前端资源来自本机捕获会话 ae59ed3f3b5044a0ac6ab404a23a724d，来源及 SHA-256 见 `Buffalo Win/fixtures/asset-sources.json`。大厅封面来自 `Buffalo Win/2d6aa03a40.9854e.jpg`。
+前端资源来自本机捕获会话 ae59ed3f3b5044a0ac6ab404a23a724d，来源及 SHA-256 见 `clients/buffalo-win/fixtures/asset-sources.json`。大厅封面来自 `clients/buffalo-win/2d6aa03a40.9854e.jpg`。
 
 旧命令 `python -m server.services.buffalo_preview` 仅保留为无结算的前端排查工具，与正式服务使用同一端口，不能同时启动。
 
