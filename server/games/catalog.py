@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'great-game-serengeti': {
+        'factory': 'server.games.great_game_serengeti:GreatGameSerengeti',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'hunt', 'collectors', 'multiplicative_wilds', 'stampede', 'free_spins', 'free_retrigger', 'lion_bar', 'buy_bonus'],
+    },
     'dr-zappo': {
         'factory': 'server.games.dr_zappo:DrZappo',
         'category': 'slots', 'interaction': 'request_steps',

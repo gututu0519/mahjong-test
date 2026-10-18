@@ -1,0 +1,17 @@
+progressBar.png
+size:1024,1024
+filter:Linear,Linear
+RockyParticles-01
+bounds:645,822,155,168
+rotate:90
+RockyParticles-02
+bounds:178,690,189,190
+rotate:90
+RockyParticles-03
+bounds:815,820,162,157
+RockyParticles-04
+bounds:2,715,164,174
+rotate:90
+bonus_bar
+bounds:2,881,96,641
+rotate:90

@@ -1,0 +1,4013 @@
+{
+   "path": "assets",
+   "name": "assets",
+   "children": [
+      {
+         "path": "assets/default",
+         "name": "default",
+         "children": [
+            {
+               "path": "assets/default/common",
+               "name": "common",
+               "children": [
+                  {
+                     "path": "assets/default/common/atlas",
+                     "name": "atlas",
+                     "children": [
+                        {
+                           "path": "assets/default/common/atlas/backgrounds.atlas",
+                           "name": "backgrounds.atlas",
+                           "size": 287,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/backgrounds.ktx2",
+                           "name": "backgrounds.ktx2",
+                           "size": 2730264,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/bonus_backgrounds.atlas",
+                           "name": "bonus_backgrounds.atlas",
+                           "size": 304,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/bonus_backgrounds.ktx2",
+                           "name": "bonus_backgrounds.ktx2",
+                           "size": 2870253,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/bronze_digits.atlas",
+                           "name": "bronze_digits.atlas",
+                           "size": 1331,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/bronze_digits.ktx2",
+                           "name": "bronze_digits.ktx2",
+                           "size": 16690,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/countup_particle.atlas",
+                           "name": "countup_particle.atlas",
+                           "size": 2482,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/countup_particle.ktx2",
+                           "name": "countup_particle.ktx2",
+                           "size": 48627,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/diamond_digits.atlas",
+                           "name": "diamond_digits.atlas",
+                           "size": 1332,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/diamond_digits.ktx2",
+                           "name": "diamond_digits.ktx2",
+                           "size": 16332,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits.atlas",
+                           "name": "digits.atlas",
+                           "size": 1466,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits.ktx2",
+                           "name": "digits.ktx2",
+                           "size": 16943,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_countup.atlas",
+                           "name": "digits_countup.atlas",
+                           "size": 1301,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/digits_countup.ktx2",
+                           "name": "digits_countup.ktx2",
+                           "size": 53218,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/gold_digits.atlas",
+                           "name": "gold_digits.atlas",
+                           "size": 1327,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/gold_digits.ktx2",
+                           "name": "gold_digits.ktx2",
+                           "size": 15801,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/common/atlas/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/atlas/localized/es-es/splash.atlas",
+                                       "name": "splash.atlas",
+                                       "size": 771,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/common/atlas/localized/es-es/splash.ktx2",
+                                       "name": "splash.ktx2",
+                                       "size": 763468,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    }
+                                 ],
+                                 "size": 764239,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 764239,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/misc.atlas",
+                           "name": "misc.atlas",
+                           "size": 1192,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/misc.ktx2",
+                           "name": "misc.ktx2",
+                           "size": 1181686,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/multiplier_digits.atlas",
+                           "name": "multiplier_digits.atlas",
+                           "size": 1335,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/multiplier_digits.ktx2",
+                           "name": "multiplier_digits.ktx2",
+                           "size": 18394,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/silver_digits.atlas",
+                           "name": "silver_digits.atlas",
+                           "size": 1331,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/silver_digits.ktx2",
+                           "name": "silver_digits.ktx2",
+                           "size": 15348,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/splash.atlas",
+                           "name": "splash.atlas",
+                           "size": 825,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/splash.ktx2",
+                           "name": "splash.ktx2",
+                           "size": 971297,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/stampede_misc.atlas",
+                           "name": "stampede_misc.atlas",
+                           "size": 296,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/atlas/stampede_misc.ktx2",
+                           "name": "stampede_misc.ktx2",
+                           "size": 1245300,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 9979201,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/font",
+                     "name": "font",
+                     "children": [
+                        {
+                           "path": "assets/default/common/font/cyrillicfb.ttf",
+                           "name": "cyrillicfb.ttf",
+                           "size": 666152,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/fontconfig.json",
+                           "name": "fontconfig.json",
+                           "size": 482,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/font/garnick.ttf",
+                           "name": "garnick.ttf",
+                           "size": 48592,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/common/font/localized/bg-bg",
+                                 "name": "bg-bg",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/bg-bg/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 56263,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/bg-bg/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 115853,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 172116,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/cs-cz",
+                                 "name": "cs-cz",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/cs-cz/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 126637,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/cs-cz/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 116560,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 243197,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/da-dk",
+                                 "name": "da-dk",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/da-dk/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14828,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/da-dk/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91485,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106313,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/de-de",
+                                 "name": "de-de",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/de-de/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15025,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/de-de/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91216,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106241,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/el-gr",
+                                 "name": "el-gr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/el-gr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 59861,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/el-gr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 129976,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 189837,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/en-us",
+                                 "name": "en-us",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/en-us/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13644,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/en-us/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 82507,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 96151,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/es-es/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15222,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/es-es/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91116,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106338,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/fi-fi",
+                                 "name": "fi-fi",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/fi-fi/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13649,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/fi-fi/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 82225,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 95874,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/fr-fr",
+                                 "name": "fr-fr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/fr-fr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15602,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/fr-fr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 94295,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 109897,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/hr-hr",
+                                 "name": "hr-hr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/hr-hr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 48376,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/hr-hr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 92371,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 140747,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/hu-hu",
+                                 "name": "hu-hu",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/hu-hu/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 69015,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/hu-hu/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 108548,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 177563,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/id-id",
+                                 "name": "id-id",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/id-id/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13636,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/id-id/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 81949,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 95585,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/it-it",
+                                 "name": "it-it",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/it-it/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14223,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/it-it/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 85635,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 99858,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ja-jp",
+                                 "name": "ja-jp",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ja-jp/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 28811,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ja-jp/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 339610,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 368421,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ko-kr",
+                                 "name": "ko-kr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ko-kr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 29693,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ko-kr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 246516,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 276209,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/lt-lt",
+                                 "name": "lt-lt",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/lt-lt/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 57789,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/lt-lt/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 106131,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 163920,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/lv-lv",
+                                 "name": "lv-lv",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/lv-lv/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 58849,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/lv-lv/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 106255,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 165104,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/nl-nl",
+                                 "name": "nl-nl",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/nl-nl/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14433,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/nl-nl/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 87049,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 101482,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/no-no",
+                                 "name": "no-no",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/no-no/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14437,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/no-no/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 89409,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 103846,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pl-pl",
+                                 "name": "pl-pl",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pl-pl/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 65467,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pl-pl/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 109932,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175399,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pt-br",
+                                 "name": "pt-br",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-br/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 16183,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-br/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 100637,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 116820,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/pt-pt",
+                                 "name": "pt-pt",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-pt/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15592,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/pt-pt/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 97438,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 113030,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ro-ro",
+                                 "name": "ro-ro",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ro-ro/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 56150,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ro-ro/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 97547,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 153697,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/ru-ru",
+                                 "name": "ru-ru",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/ru-ru/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 64708,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/ru-ru/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 126452,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 191160,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/sv-se",
+                                 "name": "sv-se",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/sv-se/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15025,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/sv-se/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91820,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106845,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/th-th",
+                                 "name": "th-th",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/th-th/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 36297,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/th-th/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 121460,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 157757,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/tr-tr",
+                                 "name": "tr-tr",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/tr-tr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 62259,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/tr-tr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 103915,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 166174,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/uk-ua",
+                                 "name": "uk-ua",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/uk-ua/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 64922,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/uk-ua/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 125677,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 190599,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/vi-vn",
+                                 "name": "vi-vn",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/vi-vn/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 205960,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/vi-vn/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 165681,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 371641,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/zh-cn",
+                                 "name": "zh-cn",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-cn/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 26694,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-cn/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 350871,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 377565,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/default/common/font/localized/zh-tw",
+                                 "name": "zh-tw",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-tw/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 26777,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/font/localized/zh-tw/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 353176,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 379953,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 5419339,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/common/font/pridi.ttf",
+                           "name": "pridi.ttf",
+                           "size": 552264,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/rubik_black.ttf",
+                           "name": "rubik_black.ttf",
+                           "size": 266268,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/sourcehansans_hwj_bold.ttf",
+                           "name": "sourcehansans_hwj_bold.ttf",
+                           "size": 17945856,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/default/common/font/sourcehansans_hwsc_bold.ttf",
+                           "name": "sourcehansans_hwsc_bold.ttf",
+                           "size": 17857688,
+                           "type": "file",
+                           "extension": ".ttf"
+                        }
+                     ],
+                     "size": 42756641,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/sound",
+                     "name": "sound",
+                     "children": [
+                        {
+                           "path": "assets/default/common/sound/african_reload_1.mp4",
+                           "name": "african_reload_1.mp4",
+                           "size": 50373,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/african_reload_1.webm",
+                           "name": "african_reload_1.webm",
+                           "size": 45278,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/african_reload_2.mp4",
+                           "name": "african_reload_2.mp4",
+                           "size": 49918,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/african_reload_2.webm",
+                           "name": "african_reload_2.webm",
+                           "size": 35674,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/african_reload_3.mp4",
+                           "name": "african_reload_3.mp4",
+                           "size": 51009,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/african_reload_3.webm",
+                           "name": "african_reload_3.webm",
+                           "size": 37729,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/alright.mp4",
+                           "name": "alright.mp4",
+                           "size": 30304,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/alright.webm",
+                           "name": "alright.webm",
+                           "size": 38199,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ambience.mp4",
+                           "name": "ambience.mp4",
+                           "size": 367629,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ambience.webm",
+                           "name": "ambience.webm",
+                           "size": 419953,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/beartrap.mp4",
+                           "name": "beartrap.mp4",
+                           "size": 18663,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/beartrap.webm",
+                           "name": "beartrap.webm",
+                           "size": 15296,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/betlevel.mp4",
+                           "name": "betlevel.mp4",
+                           "size": 4471,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/betlevel.webm",
+                           "name": "betlevel.webm",
+                           "size": 3559,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite.mp4",
+                           "name": "bite.mp4",
+                           "size": 15539,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite.webm",
+                           "name": "bite.webm",
+                           "size": 13836,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_1.mp4",
+                           "name": "bite_pling_1.mp4",
+                           "size": 24381,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_1.webm",
+                           "name": "bite_pling_1.webm",
+                           "size": 20744,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_2.mp4",
+                           "name": "bite_pling_2.mp4",
+                           "size": 30319,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_2.webm",
+                           "name": "bite_pling_2.webm",
+                           "size": 26585,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_3.mp4",
+                           "name": "bite_pling_3.mp4",
+                           "size": 30494,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_3.webm",
+                           "name": "bite_pling_3.webm",
+                           "size": 28144,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_4.mp4",
+                           "name": "bite_pling_4.mp4",
+                           "size": 44508,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bite_pling_4.webm",
+                           "name": "bite_pling_4.webm",
+                           "size": 34387,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_1.mp4",
+                           "name": "boing_1.mp4",
+                           "size": 9433,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_1.webm",
+                           "name": "boing_1.webm",
+                           "size": 10422,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_2.mp4",
+                           "name": "boing_2.mp4",
+                           "size": 9468,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_2.webm",
+                           "name": "boing_2.webm",
+                           "size": 10173,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_3.mp4",
+                           "name": "boing_3.mp4",
+                           "size": 9484,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/boing_3.webm",
+                           "name": "boing_3.webm",
+                           "size": 10336,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_1.mp4",
+                           "name": "bonus_landed_1.mp4",
+                           "size": 32303,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_1.webm",
+                           "name": "bonus_landed_1.webm",
+                           "size": 26444,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_2.mp4",
+                           "name": "bonus_landed_2.mp4",
+                           "size": 31419,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_2.webm",
+                           "name": "bonus_landed_2.webm",
+                           "size": 25750,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_3.mp4",
+                           "name": "bonus_landed_3.mp4",
+                           "size": 31429,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_3.webm",
+                           "name": "bonus_landed_3.webm",
+                           "size": 29296,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_4.mp4",
+                           "name": "bonus_landed_4.mp4",
+                           "size": 31413,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_4.webm",
+                           "name": "bonus_landed_4.webm",
+                           "size": 28517,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_5.mp4",
+                           "name": "bonus_landed_5.mp4",
+                           "size": 31402,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bonus_landed_5.webm",
+                           "name": "bonus_landed_5.webm",
+                           "size": 28621,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/breath.mp4",
+                           "name": "breath.mp4",
+                           "size": 14603,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/breath.webm",
+                           "name": "breath.webm",
+                           "size": 16766,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bronze.mp4",
+                           "name": "bronze.mp4",
+                           "size": 5877,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/bronze.webm",
+                           "name": "bronze.webm",
+                           "size": 7026,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/calm.mp4",
+                           "name": "calm.mp4",
+                           "size": 13556,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/calm.webm",
+                           "name": "calm.webm",
+                           "size": 13872,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click.mp4",
+                           "name": "click.mp4",
+                           "size": 12867,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/click.webm",
+                           "name": "click.webm",
+                           "size": 8838,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coin_burst.mp4",
+                           "name": "coin_burst.mp4",
+                           "size": 47165,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coin_burst.webm",
+                           "name": "coin_burst.webm",
+                           "size": 43719,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coins.mp4",
+                           "name": "coins.mp4",
+                           "size": 49436,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coins.webm",
+                           "name": "coins.webm",
+                           "size": 47545,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coming.mp4",
+                           "name": "coming.mp4",
+                           "size": 23728,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/coming.webm",
+                           "name": "coming.webm",
+                           "size": 23210,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/diamond.mp4",
+                           "name": "diamond.mp4",
+                           "size": 21144,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/diamond.webm",
+                           "name": "diamond.webm",
+                           "size": 26155,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/dropgrid_out.mp4",
+                           "name": "dropgrid_out.mp4",
+                           "size": 21275,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/dropgrid_out.webm",
+                           "name": "dropgrid_out.webm",
+                           "size": 17539,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/enter.mp4",
+                           "name": "enter.mp4",
+                           "size": 116963,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/enter.webm",
+                           "name": "enter.webm",
+                           "size": 83347,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/exit.mp4",
+                           "name": "exit.mp4",
+                           "size": 109990,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/exit.webm",
+                           "name": "exit.webm",
+                           "size": 80027,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_1.mp4",
+                           "name": "fail_1.mp4",
+                           "size": 20605,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_1.webm",
+                           "name": "fail_1.webm",
+                           "size": 27565,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_3.mp4",
+                           "name": "fail_3.mp4",
+                           "size": 50608,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_3.webm",
+                           "name": "fail_3.webm",
+                           "size": 66190,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_4.mp4",
+                           "name": "fail_4.mp4",
+                           "size": 46393,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_4.webm",
+                           "name": "fail_4.webm",
+                           "size": 62584,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_5.mp4",
+                           "name": "fail_5.mp4",
+                           "size": 52355,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_5.webm",
+                           "name": "fail_5.webm",
+                           "size": 77515,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_6.mp4",
+                           "name": "fail_6.mp4",
+                           "size": 49445,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_6.webm",
+                           "name": "fail_6.webm",
+                           "size": 68201,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_7.mp4",
+                           "name": "fail_7.mp4",
+                           "size": 41510,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_7.webm",
+                           "name": "fail_7.webm",
+                           "size": 47305,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_8.mp4",
+                           "name": "fail_8.mp4",
+                           "size": 36071,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_8.webm",
+                           "name": "fail_8.webm",
+                           "size": 43375,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_9.mp4",
+                           "name": "fail_9.mp4",
+                           "size": 48393,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fail_9.webm",
+                           "name": "fail_9.webm",
+                           "size": 62497,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fire_sweep.mp4",
+                           "name": "fire_sweep.mp4",
+                           "size": 15774,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/fire_sweep.webm",
+                           "name": "fire_sweep.webm",
+                           "size": 15079,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gem_xp_hit.mp4",
+                           "name": "gem_xp_hit.mp4",
+                           "size": 2501,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gem_xp_hit.webm",
+                           "name": "gem_xp_hit.webm",
+                           "size": 3649,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/giraffe.mp4",
+                           "name": "giraffe.mp4",
+                           "size": 19067,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/giraffe.webm",
+                           "name": "giraffe.webm",
+                           "size": 20095,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gold.mp4",
+                           "name": "gold.mp4",
+                           "size": 15417,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gold.webm",
+                           "name": "gold.webm",
+                           "size": 15586,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_1.mp4",
+                           "name": "gun_handle_1.mp4",
+                           "size": 7882,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_1.webm",
+                           "name": "gun_handle_1.webm",
+                           "size": 9534,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_2.mp4",
+                           "name": "gun_handle_2.mp4",
+                           "size": 5434,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_2.webm",
+                           "name": "gun_handle_2.webm",
+                           "size": 7435,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_3.mp4",
+                           "name": "gun_handle_3.mp4",
+                           "size": 8106,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_3.webm",
+                           "name": "gun_handle_3.webm",
+                           "size": 10299,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_4.mp4",
+                           "name": "gun_handle_4.mp4",
+                           "size": 9363,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_handle_4.webm",
+                           "name": "gun_handle_4.webm",
+                           "size": 11664,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_mech.mp4",
+                           "name": "gun_mech.mp4",
+                           "size": 8491,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_mech.webm",
+                           "name": "gun_mech.webm",
+                           "size": 8700,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_1.mp4",
+                           "name": "gun_win_1.mp4",
+                           "size": 24001,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_1.webm",
+                           "name": "gun_win_1.webm",
+                           "size": 13234,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_2.mp4",
+                           "name": "gun_win_2.mp4",
+                           "size": 32792,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_2.webm",
+                           "name": "gun_win_2.webm",
+                           "size": 28311,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_3.mp4",
+                           "name": "gun_win_3.mp4",
+                           "size": 37862,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gun_win_3.webm",
+                           "name": "gun_win_3.webm",
+                           "size": 33016,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gunshot_win_1.mp4",
+                           "name": "gunshot_win_1.mp4",
+                           "size": 14258,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gunshot_win_1.webm",
+                           "name": "gunshot_win_1.webm",
+                           "size": 13986,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gunshot_win_2.mp4",
+                           "name": "gunshot_win_2.mp4",
+                           "size": 30358,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/gunshot_win_2.webm",
+                           "name": "gunshot_win_2.webm",
+                           "size": 20720,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_1.mp4",
+                           "name": "high_success_1.mp4",
+                           "size": 30662,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_1.webm",
+                           "name": "high_success_1.webm",
+                           "size": 32181,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_2.mp4",
+                           "name": "high_success_2.mp4",
+                           "size": 35621,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_2.webm",
+                           "name": "high_success_2.webm",
+                           "size": 43965,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_3.mp4",
+                           "name": "high_success_3.mp4",
+                           "size": 44793,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_3.webm",
+                           "name": "high_success_3.webm",
+                           "size": 64187,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_4.mp4",
+                           "name": "high_success_4.mp4",
+                           "size": 49336,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/high_success_4.webm",
+                           "name": "high_success_4.webm",
+                           "size": 77102,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_1.mp4",
+                           "name": "hit_1.mp4",
+                           "size": 25219,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_1.webm",
+                           "name": "hit_1.webm",
+                           "size": 24710,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_2.mp4",
+                           "name": "hit_2.mp4",
+                           "size": 24033,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_2.webm",
+                           "name": "hit_2.webm",
+                           "size": 19561,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_3.mp4",
+                           "name": "hit_3.mp4",
+                           "size": 27092,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_3.webm",
+                           "name": "hit_3.webm",
+                           "size": 24300,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_4.mp4",
+                           "name": "hit_4.mp4",
+                           "size": 26287,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/hit_4.webm",
+                           "name": "hit_4.webm",
+                           "size": 20886,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/huntin.mp4",
+                           "name": "huntin.mp4",
+                           "size": 14531,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/huntin.webm",
+                           "name": "huntin.webm",
+                           "size": 13396,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro.mp4",
+                           "name": "intro.mp4",
+                           "size": 148325,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro.webm",
+                           "name": "intro.webm",
+                           "size": 108567,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro_2.mp4",
+                           "name": "intro_2.mp4",
+                           "size": 166366,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/intro_2.webm",
+                           "name": "intro_2.webm",
+                           "size": 106444,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/larva.mp4",
+                           "name": "larva.mp4",
+                           "size": 23972,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/larva.webm",
+                           "name": "larva.webm",
+                           "size": 19122,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/lion.mp4",
+                           "name": "lion.mp4",
+                           "size": 29551,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/lion.webm",
+                           "name": "lion.webm",
+                           "size": 24221,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_1.mp4",
+                           "name": "miss_1.mp4",
+                           "size": 23305,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_1.webm",
+                           "name": "miss_1.webm",
+                           "size": 20936,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_2.mp4",
+                           "name": "miss_2.mp4",
+                           "size": 19265,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_2.webm",
+                           "name": "miss_2.webm",
+                           "size": 17041,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_3.mp4",
+                           "name": "miss_3.mp4",
+                           "size": 22102,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_3.webm",
+                           "name": "miss_3.webm",
+                           "size": 18162,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_4.mp4",
+                           "name": "miss_4.mp4",
+                           "size": 25919,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/miss_4.webm",
+                           "name": "miss_4.webm",
+                           "size": 23293,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_bronze.mp4",
+                           "name": "multi_bronze.mp4",
+                           "size": 27269,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_bronze.webm",
+                           "name": "multi_bronze.webm",
+                           "size": 28471,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_diamond.mp4",
+                           "name": "multi_diamond.mp4",
+                           "size": 19212,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_diamond.webm",
+                           "name": "multi_diamond.webm",
+                           "size": 20099,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_diamond_plus.mp4",
+                           "name": "multi_diamond_plus.mp4",
+                           "size": 48938,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_diamond_plus.webm",
+                           "name": "multi_diamond_plus.webm",
+                           "size": 38118,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_gold.mp4",
+                           "name": "multi_gold.mp4",
+                           "size": 13176,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_gold.webm",
+                           "name": "multi_gold.webm",
+                           "size": 16926,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_silver.mp4",
+                           "name": "multi_silver.mp4",
+                           "size": 13015,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/multi_silver.webm",
+                           "name": "multi_silver.webm",
+                           "size": 18844,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_0.mp4",
+                           "name": "music_bonus_2_level_0.mp4",
+                           "size": 343276,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_0.webm",
+                           "name": "music_bonus_2_level_0.webm",
+                           "size": 319816,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_1.mp4",
+                           "name": "music_bonus_2_level_1.mp4",
+                           "size": 343849,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_1.webm",
+                           "name": "music_bonus_2_level_1.webm",
+                           "size": 365385,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_2.mp4",
+                           "name": "music_bonus_2_level_2.mp4",
+                           "size": 343527,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_2.webm",
+                           "name": "music_bonus_2_level_2.webm",
+                           "size": 337378,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_3.mp4",
+                           "name": "music_bonus_2_level_3.mp4",
+                           "size": 343264,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_2_level_3.webm",
+                           "name": "music_bonus_2_level_3.webm",
+                           "size": 322983,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_0.mp4",
+                           "name": "music_bonus_level_0.mp4",
+                           "size": 747445,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_0.webm",
+                           "name": "music_bonus_level_0.webm",
+                           "size": 780622,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_1.mp4",
+                           "name": "music_bonus_level_1.mp4",
+                           "size": 749229,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_1.webm",
+                           "name": "music_bonus_level_1.webm",
+                           "size": 807484,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_2.mp4",
+                           "name": "music_bonus_level_2.mp4",
+                           "size": 746543,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_2.webm",
+                           "name": "music_bonus_level_2.webm",
+                           "size": 731287,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_3.mp4",
+                           "name": "music_bonus_level_3.mp4",
+                           "size": 746333,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_bonus_level_3.webm",
+                           "name": "music_bonus_level_3.webm",
+                           "size": 727221,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_epic_level_0.mp4",
+                           "name": "music_epic_level_0.mp4",
+                           "size": 1190764,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_epic_level_0.webm",
+                           "name": "music_epic_level_0.webm",
+                           "size": 1161823,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_0.mp4",
+                           "name": "music_level_0.mp4",
+                           "size": 413573,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_0.webm",
+                           "name": "music_level_0.webm",
+                           "size": 445324,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_1.mp4",
+                           "name": "music_level_1.mp4",
+                           "size": 413296,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_1.webm",
+                           "name": "music_level_1.webm",
+                           "size": 421572,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_2.mp4",
+                           "name": "music_level_2.mp4",
+                           "size": 412918,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_2.webm",
+                           "name": "music_level_2.webm",
+                           "size": 394722,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_3.mp4",
+                           "name": "music_level_3.mp4",
+                           "size": 412543,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/music_level_3.webm",
+                           "name": "music_level_3.webm",
+                           "size": 395636,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ostrich.mp4",
+                           "name": "ostrich.mp4",
+                           "size": 16436,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/ostrich.webm",
+                           "name": "ostrich.webm",
+                           "size": 17084,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_1.mp4",
+                           "name": "percussion_vignette_1.mp4",
+                           "size": 87555,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_1.webm",
+                           "name": "percussion_vignette_1.webm",
+                           "size": 83722,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_2.mp4",
+                           "name": "percussion_vignette_2.mp4",
+                           "size": 44765,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_2.webm",
+                           "name": "percussion_vignette_2.webm",
+                           "size": 41556,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_3.mp4",
+                           "name": "percussion_vignette_3.mp4",
+                           "size": 53308,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/percussion_vignette_3.webm",
+                           "name": "percussion_vignette_3.webm",
+                           "size": 61986,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/poof.mp4",
+                           "name": "poof.mp4",
+                           "size": 10548,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/poof.webm",
+                           "name": "poof.webm",
+                           "size": 8270,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_1.mp4",
+                           "name": "pop_pling_1.mp4",
+                           "size": 30102,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_1.webm",
+                           "name": "pop_pling_1.webm",
+                           "size": 29669,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_2.mp4",
+                           "name": "pop_pling_2.mp4",
+                           "size": 28716,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_2.webm",
+                           "name": "pop_pling_2.webm",
+                           "size": 30504,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_3.mp4",
+                           "name": "pop_pling_3.mp4",
+                           "size": 30093,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_3.webm",
+                           "name": "pop_pling_3.webm",
+                           "size": 30408,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_4.mp4",
+                           "name": "pop_pling_4.mp4",
+                           "size": 28894,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/pop_pling_4.webm",
+                           "name": "pop_pling_4.webm",
+                           "size": 31731,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/reel_stop.mp4",
+                           "name": "reel_stop.mp4",
+                           "size": 13667,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/reel_stop.webm",
+                           "name": "reel_stop.webm",
+                           "size": 11919,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/reeldrop_1.mp4",
+                           "name": "reeldrop_1.mp4",
+                           "size": 20775,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/reeldrop_1.webm",
+                           "name": "reeldrop_1.webm",
+                           "size": 18901,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/rhino.mp4",
+                           "name": "rhino.mp4",
+                           "size": 25452,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/rhino.webm",
+                           "name": "rhino.webm",
+                           "size": 19451,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/rock.mp4",
+                           "name": "rock.mp4",
+                           "size": 10667,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/rock.webm",
+                           "name": "rock.webm",
+                           "size": 11097,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_1.mp4",
+                           "name": "shot_1.mp4",
+                           "size": 42566,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_1.webm",
+                           "name": "shot_1.webm",
+                           "size": 33635,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_2.mp4",
+                           "name": "shot_2.mp4",
+                           "size": 42728,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_2.webm",
+                           "name": "shot_2.webm",
+                           "size": 30584,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_3.mp4",
+                           "name": "shot_3.mp4",
+                           "size": 45712,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_3.webm",
+                           "name": "shot_3.webm",
+                           "size": 37870,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_4.mp4",
+                           "name": "shot_4.mp4",
+                           "size": 42514,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/shot_4.webm",
+                           "name": "shot_4.webm",
+                           "size": 30960,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/silver.mp4",
+                           "name": "silver.mp4",
+                           "size": 17966,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/silver.webm",
+                           "name": "silver.webm",
+                           "size": 18252,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/snare_roll.mp4",
+                           "name": "snare_roll.mp4",
+                           "size": 92089,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/snare_roll.webm",
+                           "name": "snare_roll.webm",
+                           "size": 87934,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/snare_roll_end.mp4",
+                           "name": "snare_roll_end.mp4",
+                           "size": 81127,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/snare_roll_end.webm",
+                           "name": "snare_roll_end.webm",
+                           "size": 69698,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/sparkle.mp4",
+                           "name": "sparkle.mp4",
+                           "size": 21912,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/sparkle.webm",
+                           "name": "sparkle.webm",
+                           "size": 21584,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/sparkle_ding.mp4",
+                           "name": "sparkle_ding.mp4",
+                           "size": 48000,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/sparkle_ding.webm",
+                           "name": "sparkle_ding.webm",
+                           "size": 40544,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stampede.mp4",
+                           "name": "stampede.mp4",
+                           "size": 58874,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stampede.webm",
+                           "name": "stampede.webm",
+                           "size": 55872,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_1.mp4",
+                           "name": "stone_1.mp4",
+                           "size": 3709,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_1.webm",
+                           "name": "stone_1.webm",
+                           "size": 4904,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_2.mp4",
+                           "name": "stone_2.mp4",
+                           "size": 3541,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_2.webm",
+                           "name": "stone_2.webm",
+                           "size": 4733,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_3.mp4",
+                           "name": "stone_3.mp4",
+                           "size": 4114,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_3.webm",
+                           "name": "stone_3.webm",
+                           "size": 5308,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_4.mp4",
+                           "name": "stone_4.mp4",
+                           "size": 2589,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_4.webm",
+                           "name": "stone_4.webm",
+                           "size": 5755,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_impact.mp4",
+                           "name": "stone_impact.mp4",
+                           "size": 10556,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/stone_impact.webm",
+                           "name": "stone_impact.webm",
+                           "size": 11946,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_3.mp4",
+                           "name": "success_3.mp4",
+                           "size": 23983,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_3.webm",
+                           "name": "success_3.webm",
+                           "size": 28371,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_4.mp4",
+                           "name": "success_4.mp4",
+                           "size": 13048,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_4.webm",
+                           "name": "success_4.webm",
+                           "size": 15627,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_5.mp4",
+                           "name": "success_5.mp4",
+                           "size": 15750,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_5.webm",
+                           "name": "success_5.webm",
+                           "size": 19134,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_6.mp4",
+                           "name": "success_6.mp4",
+                           "size": 19522,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/success_6.webm",
+                           "name": "success_6.webm",
+                           "size": 25157,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh.mp4",
+                           "name": "swoosh.mp4",
+                           "size": 18806,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/swoosh.webm",
+                           "name": "swoosh.webm",
+                           "size": 10315,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/target_rise.mp4",
+                           "name": "target_rise.mp4",
+                           "size": 28843,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/target_rise.webm",
+                           "name": "target_rise.webm",
+                           "size": 33424,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_1.mp4",
+                           "name": "tom_loop_1.mp4",
+                           "size": 44995,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_1.webm",
+                           "name": "tom_loop_1.webm",
+                           "size": 51316,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_2.mp4",
+                           "name": "tom_loop_2.mp4",
+                           "size": 44902,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_2.webm",
+                           "name": "tom_loop_2.webm",
+                           "size": 52429,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_3.mp4",
+                           "name": "tom_loop_3.mp4",
+                           "size": 45009,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_loop_3.webm",
+                           "name": "tom_loop_3.webm",
+                           "size": 47572,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_1.mp4",
+                           "name": "tom_stop_1.mp4",
+                           "size": 33190,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_1.webm",
+                           "name": "tom_stop_1.webm",
+                           "size": 27357,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_2.mp4",
+                           "name": "tom_stop_2.mp4",
+                           "size": 33026,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_2.webm",
+                           "name": "tom_stop_2.webm",
+                           "size": 27866,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_3.mp4",
+                           "name": "tom_stop_3.mp4",
+                           "size": 32815,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/tom_stop_3.webm",
+                           "name": "tom_stop_3.webm",
+                           "size": 26037,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_1.mp4",
+                           "name": "total_win_1.mp4",
+                           "size": 91720,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_1.webm",
+                           "name": "total_win_1.webm",
+                           "size": 88384,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_2.mp4",
+                           "name": "total_win_2.mp4",
+                           "size": 118877,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/total_win_2.webm",
+                           "name": "total_win_2.webm",
+                           "size": 125701,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wheel_spin.mp4",
+                           "name": "wheel_spin.mp4",
+                           "size": 71970,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wheel_spin.webm",
+                           "name": "wheel_spin.webm",
+                           "size": 55834,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_count.mp4",
+                           "name": "win_count.mp4",
+                           "size": 4646,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_count.webm",
+                           "name": "win_count.webm",
+                           "size": 6118,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_low.mp4",
+                           "name": "win_end_bet_low.mp4",
+                           "size": 14557,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_low.webm",
+                           "name": "win_end_bet_low.webm",
+                           "size": 16719,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_over.mp4",
+                           "name": "win_end_bet_over.mp4",
+                           "size": 19344,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_bet_over.webm",
+                           "name": "win_end_bet_over.webm",
+                           "size": 23932,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_high.mp4",
+                           "name": "win_end_high.mp4",
+                           "size": 40858,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/win_end_high.webm",
+                           "name": "win_end_high.webm",
+                           "size": 35038,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_1.mp4",
+                           "name": "wintier_1.mp4",
+                           "size": 37095,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_1.webm",
+                           "name": "wintier_1.webm",
+                           "size": 30386,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_2.mp4",
+                           "name": "wintier_2.mp4",
+                           "size": 40161,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_2.webm",
+                           "name": "wintier_2.webm",
+                           "size": 33986,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_3.mp4",
+                           "name": "wintier_3.mp4",
+                           "size": 61327,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_3.webm",
+                           "name": "wintier_3.webm",
+                           "size": 55937,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_4.mp4",
+                           "name": "wintier_4.mp4",
+                           "size": 86095,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/wintier_4.webm",
+                           "name": "wintier_4.webm",
+                           "size": 81825,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/world.mp4",
+                           "name": "world.mp4",
+                           "size": 35104,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/world.webm",
+                           "name": "world.webm",
+                           "size": 50791,
+                           "type": "file",
+                           "extension": ".webm"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zebra.mp4",
+                           "name": "zebra.mp4",
+                           "size": 21191,
+                           "type": "file",
+                           "extension": ".mp4"
+                        },
+                        {
+                           "path": "assets/default/common/sound/zebra.webm",
+                           "name": "zebra.webm",
+                           "size": 18783,
+                           "type": "file",
+                           "extension": ".webm"
+                        }
+                     ],
+                     "size": 23656835,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/default/common/spine",
+                     "name": "spine",
+                     "children": [
+                        {
+                           "path": "assets/default/common/spine/character.atlas",
+                           "name": "character.atlas",
+                           "size": 767,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/character.json",
+                           "name": "character.json",
+                           "size": 124186,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/character.ktx2",
+                           "name": "character.ktx2",
+                           "size": 141479,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/countup_tiers.atlas",
+                           "name": "countup_tiers.atlas",
+                           "size": 312,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/countup_tiers.json",
+                           "name": "countup_tiers.json",
+                           "size": 6016,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/countup_tiers.ktx2",
+                           "name": "countup_tiers.ktx2",
+                           "size": 167025,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/encoding.json",
+                           "name": "encoding.json",
+                           "size": 136,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fps.atlas",
+                           "name": "fps.atlas",
+                           "size": 729,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fps.json",
+                           "name": "fps.json",
+                           "size": 101480,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fps.ktx2",
+                           "name": "fps.ktx2",
+                           "size": 119956,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.atlas",
+                           "name": "fs_attention.atlas",
+                           "size": 329,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.json",
+                           "name": "fs_attention.json",
+                           "size": 36627,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/fs_attention.ktx2",
+                           "name": "fs_attention.ktx2",
+                           "size": 181085,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/default/common/spine/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/countup_tiers.atlas",
+                                       "name": "countup_tiers.atlas",
+                                       "size": 288,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/countup_tiers.json",
+                                       "name": "countup_tiers.json",
+                                       "size": 5813,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/countup_tiers.ktx2",
+                                       "name": "countup_tiers.ktx2",
+                                       "size": 108319,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    },
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/stampede.atlas",
+                                       "name": "stampede.atlas",
+                                       "size": 455,
+                                       "type": "file",
+                                       "extension": ".atlas"
+                                    },
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/stampede.json",
+                                       "name": "stampede.json",
+                                       "size": 21386,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/default/common/spine/localized/es-es/stampede.ktx2",
+                                       "name": "stampede.ktx2",
+                                       "size": 113597,
+                                       "type": "file",
+                                       "extension": ".ktx2"
+                                    }
+                                 ],
+                                 "size": 249858,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 249858,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/default/common/spine/progressBar.atlas",
+                           "name": "progressBar.atlas",
+                           "size": 284,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/progressBar.json",
+                           "name": "progressBar.json",
+                           "size": 26077,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/progressBar.ktx2",
+                           "name": "progressBar.ktx2",
+                           "size": 13229,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede.atlas",
+                           "name": "stampede.atlas",
+                           "size": 457,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede.json",
+                           "name": "stampede.json",
+                           "size": 21432,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede.ktx2",
+                           "name": "stampede.ktx2",
+                           "size": 111715,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede_bg.atlas",
+                           "name": "stampede_bg.atlas",
+                           "size": 1045,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede_bg.json",
+                           "name": "stampede_bg.json",
+                           "size": 8447,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/stampede_bg.ktx2",
+                           "name": "stampede_bg.ktx2",
+                           "size": 87594,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/symbols.atlas",
+                           "name": "symbols.atlas",
+                           "size": 5497,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/symbols.json",
+                           "name": "symbols.json",
+                           "size": 279469,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/symbols.ktx2",
+                           "name": "symbols.ktx2",
+                           "size": 1448376,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        },
+                        {
+                           "path": "assets/default/common/spine/target.atlas",
+                           "name": "target.atlas",
+                           "size": 160,
+                           "type": "file",
+                           "extension": ".atlas"
+                        },
+                        {
+                           "path": "assets/default/common/spine/target.json",
+                           "name": "target.json",
+                           "size": 41657,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/default/common/spine/target.ktx2",
+                           "name": "target.ktx2",
+                           "size": 23097,
+                           "type": "file",
+                           "extension": ".ktx2"
+                        }
+                     ],
+                     "size": 3198521,
+                     "type": "directory"
+                  }
+               ],
+               "size": 79591198,
+               "type": "directory"
+            }
+         ],
+         "size": 79591198,
+         "type": "directory"
+      },
+      {
+         "path": "assets/social",
+         "name": "social",
+         "children": [
+            {
+               "path": "assets/social/common",
+               "name": "common",
+               "children": [
+                  {
+                     "path": "assets/social/common/config",
+                     "name": "config",
+                     "children": [
+                        {
+                           "path": "assets/social/common/config/gameconfig.json",
+                           "name": "gameconfig.json",
+                           "size": 2274,
+                           "type": "file",
+                           "extension": ".json"
+                        }
+                     ],
+                     "size": 2274,
+                     "type": "directory"
+                  },
+                  {
+                     "path": "assets/social/common/font",
+                     "name": "font",
+                     "children": [
+                        {
+                           "path": "assets/social/common/font/cyrillicfb.ttf",
+                           "name": "cyrillicfb.ttf",
+                           "size": 666152,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/fontconfig.json",
+                           "name": "fontconfig.json",
+                           "size": 482,
+                           "type": "file",
+                           "extension": ".json"
+                        },
+                        {
+                           "path": "assets/social/common/font/garnick.ttf",
+                           "name": "garnick.ttf",
+                           "size": 48592,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/localized",
+                           "name": "localized",
+                           "children": [
+                              {
+                                 "path": "assets/social/common/font/localized/bg-bg",
+                                 "name": "bg-bg",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/bg-bg/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 56263,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/bg-bg/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 115853,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 172116,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/cs-cz",
+                                 "name": "cs-cz",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/cs-cz/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 126637,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/cs-cz/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 116560,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 243197,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/da-dk",
+                                 "name": "da-dk",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/da-dk/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14828,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/da-dk/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91485,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106313,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/de-de",
+                                 "name": "de-de",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/de-de/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15025,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/de-de/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91216,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106241,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/el-gr",
+                                 "name": "el-gr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/el-gr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 59861,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/el-gr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 129976,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 189837,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/en-us",
+                                 "name": "en-us",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/en-us/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13644,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/en-us/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 82507,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 96151,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/es-es",
+                                 "name": "es-es",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/es-es/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15222,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/es-es/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91116,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106338,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/fi-fi",
+                                 "name": "fi-fi",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/fi-fi/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13649,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/fi-fi/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 82225,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 95874,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/fr-fr",
+                                 "name": "fr-fr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/fr-fr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15602,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/fr-fr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 94295,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 109897,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/hr-hr",
+                                 "name": "hr-hr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/hr-hr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 48376,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/hr-hr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 92371,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 140747,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/hu-hu",
+                                 "name": "hu-hu",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/hu-hu/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 69015,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/hu-hu/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 108548,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 177563,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/id-id",
+                                 "name": "id-id",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/id-id/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 13636,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/id-id/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 81949,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 95585,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/it-it",
+                                 "name": "it-it",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/it-it/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14223,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/it-it/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 85635,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 99858,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ja-jp",
+                                 "name": "ja-jp",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ja-jp/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 28811,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ja-jp/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 339610,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 368421,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ko-kr",
+                                 "name": "ko-kr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ko-kr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 29693,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ko-kr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 246516,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 276209,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/lt-lt",
+                                 "name": "lt-lt",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/lt-lt/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 57789,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/lt-lt/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 106131,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 163920,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/lv-lv",
+                                 "name": "lv-lv",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/lv-lv/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 58849,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/lv-lv/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 106255,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 165104,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/nl-nl",
+                                 "name": "nl-nl",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/nl-nl/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14433,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/nl-nl/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 87049,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 101482,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/no-no",
+                                 "name": "no-no",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/no-no/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 14437,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/no-no/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 89409,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 103846,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pl-pl",
+                                 "name": "pl-pl",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pl-pl/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 65467,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pl-pl/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 109932,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 175399,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pt-br",
+                                 "name": "pt-br",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-br/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 16183,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-br/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 100637,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 116820,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/pt-pt",
+                                 "name": "pt-pt",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-pt/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15592,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/pt-pt/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 97438,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 113030,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ro-ro",
+                                 "name": "ro-ro",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ro-ro/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 56150,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ro-ro/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 97547,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 153697,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/ru-ru",
+                                 "name": "ru-ru",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/ru-ru/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 64708,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/ru-ru/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 126452,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 191160,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/sv-se",
+                                 "name": "sv-se",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/sv-se/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 15025,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/sv-se/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 91820,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 106845,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/th-th",
+                                 "name": "th-th",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/th-th/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 36297,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/th-th/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 121460,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 157757,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/tr-tr",
+                                 "name": "tr-tr",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/tr-tr/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 62259,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/tr-tr/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 103915,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 166174,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/uk-ua",
+                                 "name": "uk-ua",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/uk-ua/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 64922,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/uk-ua/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 125677,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 190599,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/vi-vn",
+                                 "name": "vi-vn",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/vi-vn/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 205960,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/vi-vn/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 165681,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 371641,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/zh-cn",
+                                 "name": "zh-cn",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-cn/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 26694,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-cn/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 350871,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 377565,
+                                 "type": "directory"
+                              },
+                              {
+                                 "path": "assets/social/common/font/localized/zh-tw",
+                                 "name": "zh-tw",
+                                 "children": [
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-tw/garnick.json",
+                                       "name": "garnick.json",
+                                       "size": 26777,
+                                       "type": "file",
+                                       "extension": ".json"
+                                    },
+                                    {
+                                       "path": "assets/social/common/font/localized/zh-tw/garnick.png",
+                                       "name": "garnick.png",
+                                       "size": 353176,
+                                       "type": "file",
+                                       "extension": ".png"
+                                    }
+                                 ],
+                                 "size": 379953,
+                                 "type": "directory"
+                              }
+                           ],
+                           "size": 5419339,
+                           "type": "directory"
+                        },
+                        {
+                           "path": "assets/social/common/font/pridi.ttf",
+                           "name": "pridi.ttf",
+                           "size": 552264,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/rubik_black.ttf",
+                           "name": "rubik_black.ttf",
+                           "size": 266268,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/sourcehansans_hwj_bold.ttf",
+                           "name": "sourcehansans_hwj_bold.ttf",
+                           "size": 17945856,
+                           "type": "file",
+                           "extension": ".ttf"
+                        },
+                        {
+                           "path": "assets/social/common/font/sourcehansans_hwsc_bold.ttf",
+                           "name": "sourcehansans_hwsc_bold.ttf",
+                           "size": 17857688,
+                           "type": "file",
+                           "extension": ".ttf"
+                        }
+                     ],
+                     "size": 42756641,
+                     "type": "directory"
+                  }
+               ],
+               "size": 42758915,
+               "type": "directory"
+            }
+         ],
+         "size": 42758915,
+         "type": "directory"
+      }
+   ],
+   "size": 122350113,
+   "type": "directory"
+}

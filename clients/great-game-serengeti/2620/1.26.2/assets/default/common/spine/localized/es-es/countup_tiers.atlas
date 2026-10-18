@@ -1,0 +1,15 @@
+wintiers.png
+size:2048,2048
+filter:Linear,Linear
+es_gran_premio
+bounds:2,966,1124,193
+offsets:1,1,1126,195
+es_mega premio
+bounds:2,771,1135,193
+offsets:1,1,1137,195
+es_premio_epico
+bounds:2,547,1157,222
+offsets:1,1,1159,224
+es_super_mega premio
+bounds:2,138,1135,407
+offsets:1,1,1137,409

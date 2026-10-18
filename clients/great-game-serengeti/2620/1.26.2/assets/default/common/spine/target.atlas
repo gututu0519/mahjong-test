@@ -1,0 +1,10 @@
+target.png
+size:512,512
+filter:Linear,Linear
+shot_spark_1
+bounds:2,2,212,352
+rotate:90
+shot_spark_2
+bounds:2,216,327,293
+target_serengeti
+bounds:331,355,87,154

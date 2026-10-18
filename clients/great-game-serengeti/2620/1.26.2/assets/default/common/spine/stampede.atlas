@@ -1,0 +1,23 @@
+stampede.png
+size:2048,2048
+filter:Linear,Linear
+RockyParticles-01
+bounds:2,1776,155,168
+rotate:90
+RockyParticles-02
+bounds:512,1742,189,190
+rotate:90
+RockyParticles-03
+bounds:172,1774,162,157
+RockyParticles-04
+bounds:336,1767,164,174
+rotate:90
+crack-texture-png-free-thumb22 copy 2
+bounds:704,1661,1227,270
+offsets:344,388,1920,1020
+st_backplate
+bounds:2,972,1872,379
+offsets:19,318,1920,1020
+stampede_text
+bounds:2,1353,1236,306
+offsets:338,359,1920,1020

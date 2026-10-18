@@ -1,0 +1,34 @@
+{
+  "session": "a4524d81cba2483ab71d0b7038f4a24e",
+  "capture_state": "recording",
+  "responses": 548,
+  "last_request": 1124,
+  "modes": {
+    "base": 219,
+    "mod_bonus": 50,
+    "mod_hunt": 50,
+    "mod_stampede": 38,
+    "fs": 2,
+    "fs_2": 1
+  },
+  "events": {
+    "reveal": 360,
+    "feature_enter": 6,
+    "fs_reveal": 44,
+    "feature_exit": 6,
+    "fs_2_reveal": 10,
+    "fs_2_respin": 1
+  },
+  "actions": {
+    "gridwin": 246,
+    "hunt": 109,
+    "cashWin": 109,
+    "mult": 76,
+    "collectorValues": 38,
+    "collect": 42,
+    "bonusfeaturewon": 6,
+    "stampede": 42,
+    "retrigger": 1,
+    "ProgressBar": 2
+  }
+}

@@ -1,5 +1,7 @@
 # Mahjong Test
 
+Great Game Serengeti（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8098。启动：`python -m server.run --service-dir services/great-game-serengeti`。规则、证据和验证范围见 [接入记录](services/great-game-serengeti/README.md)。
+
 Dr Zappo（Hacksaw Gaming）独立服务：`python -m server.run --service-dir services/dr-zappo`，端口 8097，原版中英文客户端及大厅入口。规则、证据与验收范围见 [接入记录](services/dr-zappo/README.md)。
 
 Le Vampire（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8096。启动：`python -m server.run --service-dir services/le-vampire`。玩法、验收及证据边界见 [接入记录](services/le-vampire/README.md)。

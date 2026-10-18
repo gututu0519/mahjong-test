@@ -1,0 +1,82 @@
+misc.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bar
+  rotate: false
+  xy: 1916, 789
+  size: 96, 641
+  orig: 96, 641
+  offset: 0, 0
+  index: -1
+base_reel
+  rotate: false
+  xy: 209, 803
+  size: 1081, 697
+  orig: 1081, 697
+  offset: 0, 0
+  index: -1
+crosshair
+  rotate: false
+  xy: 1, 803
+  size: 147, 134
+  orig: 147, 134
+  offset: 0, 0
+  index: -1
+epic_logo
+  rotate: false
+  xy: 1320, 789
+  size: 594, 141
+  orig: 594, 141
+  offset: 0, 0
+  index: -1
+fs_2_logo
+  rotate: false
+  xy: 1320, 671
+  size: 693, 116
+  orig: 693, 116
+  offset: 0, 0
+  index: -1
+fs_logo
+  rotate: false
+  xy: 1292, 932
+  size: 594, 114
+  orig: 594, 114
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1292, 1048
+  size: 540, 265
+  orig: 540, 265
+  offset: 0, 0
+  index: -1
+pod
+  rotate: false
+  xy: 1, 1
+  size: 1317, 800
+  orig: 1317, 800
+  offset: 0, 0
+  index: -1
+reel_highlight
+  rotate: false
+  xy: 1, 1432
+  size: 206, 590
+  orig: 206, 590
+  offset: 0, 0
+  index: -1
+retrigger_2
+  rotate: false
+  xy: 1320, 1
+  size: 694, 333
+  orig: 694, 333
+  offset: 0, 0
+  index: -1
+retrigger_4
+  rotate: false
+  xy: 1320, 336
+  size: 694, 333
+  orig: 694, 333
+  offset: 0, 0
+  index: -1

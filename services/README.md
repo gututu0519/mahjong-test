@@ -1,5 +1,7 @@
 # 独立服务目录
 
+Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `python -m server.run --service-dir services/great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
+
 Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `python -m server.run --service-dir services/dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
 
 Le Vampire（Hacksaw Gaming）：端口 8096，`le_vampire_client`，独立钱包、原版中英文客户端及大厅入口。实现和验证范围见 [接入记录](le-vampire/README.md)。

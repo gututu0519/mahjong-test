@@ -1,0 +1,47 @@
+stampede_bg.png
+size:2048,2048
+filter:Linear,Linear
+beige_gradient
+bounds:2,308,1920,1020
+cracks/Sequence 01012
+bounds:2,1888,51,51
+offsets:414,205,512,288
+cracks/Sequence 01019
+bounds:55,1866,146,73
+offsets:319,183,512,288
+cracks/Sequence 01026
+bounds:749,1809,228,130
+offsets:237,125,512,288
+cracks/Sequence 01033
+bounds:491,1590,313,217
+offsets:152,38,512,288
+cracks/Sequence 01047
+bounds:806,1551,426,239
+offsets:39,16,512,288
+cracks/Sequence 01082
+bounds:203,1863,118,76
+offsets:380,180,512,288
+cracks/Sequence 01096
+bounds:548,1852,199,87
+offsets:299,180,512,288
+cracks/Sequence 01103
+bounds:979,1792,342,147
+offsets:156,119,512,288
+cracks/Sequence 01110
+bounds:1234,1520,447,258
+offsets:51,8,512,288
+cracks/Sequence 01117
+bounds:2,1330,495,258
+offsets:3,8,512,288
+cracks/Sequence 01129
+bounds:323,1861,223,78
+offsets:275,67,512,288
+cracks/Sequence 01143
+bounds:1323,1780,268,159
+offsets:230,42,512,288
+cracks/Sequence 01150
+bounds:1593,1780,346,159
+offsets:152,42,512,288
+cracks/Sequence 01157
+bounds:2,1700,487,159
+offsets:11,42,512,288

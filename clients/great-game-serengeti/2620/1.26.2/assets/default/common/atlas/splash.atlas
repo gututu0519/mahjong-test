@@ -1,0 +1,54 @@
+splash.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+a
+  rotate: false
+  xy: 1215, 295
+  size: 514, 686
+  orig: 514, 686
+  offset: 0, 0
+  index: -1
+b
+  rotate: false
+  xy: 1, 983
+  size: 514, 686
+  orig: 514, 686
+  offset: 0, 0
+  index: -1
+c
+  rotate: false
+  xy: 517, 613
+  size: 514, 671
+  orig: 514, 686
+  offset: 0, 0
+  index: -1
+hidden_epic_sticker 
+  rotate: false
+  xy: 1731, 295
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1215, 1
+  size: 594, 292
+  orig: 594, 292
+  offset: 0, 0
+  index: -1
+total_win
+  rotate: false
+  xy: 1, 1
+  size: 1212, 610
+  orig: 1212, 610
+  offset: 0, 0
+  index: -1
+volatility
+  rotate: false
+  xy: 1, 613
+  size: 357, 98
+  orig: 357, 98
+  offset: 0, 0
+  index: -1
