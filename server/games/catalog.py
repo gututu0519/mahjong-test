@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'fortune-rabbit': {
+        'factory': 'server.games.fortune_rabbit:FortuneRabbit',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'wild', 'cash_prizes', 'fortune_spins', 'max_win_cap'],
+    },
     'wild-bandito': {
         'factory': 'server.games.wild_bandito:WildBandito',
         'category': 'slots', 'interaction': 'request_steps',

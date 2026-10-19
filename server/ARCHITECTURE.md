@@ -57,6 +57,7 @@ server/
 | 服务 | 状态 | 默认端口 | 启动命令 | 默认数据 |
 | --- | --- | --- | --- | --- |
 | 麻将本地演示 | 已实现 | 8080 | `python -m server.run --service-dir services/mahjong-ways2`，原 `python -m server.app` 仍可用 | `services/mahjong-ways2/data/games.sqlite3`，保留现有存档 |
+| Fortune Rabbit | 英文客户端、普通旋转、奖金支付及 8 次福兔功能 | 8101 | `python -m server.run --service-dir services/fortune-rabbit` | `services/fortune-rabbit/data/games.sqlite3`，独立钱包与会话 |
 | 通用游戏 API | 已实现 | 8082 | `python -m server.run --service-dir services/game-api` | `services/game-api/data/games.sqlite3` |
 | 美洲野牛本地演示 | 已实现，中文 | 8083 | `python -m server.run --service-dir services/buffalo-win` | `services/buffalo-win/data/games.sqlite3`，独立钱包与会话 |
 | 请求采集工具 | 已有独立工具 | 8090 | `response-capture/start.bat` | 由工具自身管理 |

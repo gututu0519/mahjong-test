@@ -1,0 +1,8 @@
+{
+  "id": "fortune-rabbit",
+  "entry": "fortune_rabbit_client",
+  "port": 8101,
+  "games": [
+    "fortune-rabbit"
+  ]
+}

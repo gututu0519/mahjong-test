@@ -1,5 +1,7 @@
 # Mahjong Test
 
+Fortune Rabbit（PG Soft，1543462）英文客户端已接入独立服务 8101 和大厅：`python -m server.run --service-dir services/fortune-rabbit`。普通旋转、奖金符号、完整 8 次福兔功能、规则和历史已接入并核对原版样本；验证范围见 [规则记录](docs/fortune-rabbit-rules.md)。
+
 Great Game Serengeti（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8098。启动：`python -m server.run --service-dir services/great-game-serengeti`。规则、证据和验证范围见 [接入记录](services/great-game-serengeti/README.md)。
 
 Dr Zappo（Hacksaw Gaming）独立服务：`python -m server.run --service-dir services/dr-zappo`，端口 8097，原版中英文客户端及大厅入口。规则、证据与验收范围见 [接入记录](services/dr-zappo/README.md)。
@@ -24,7 +26,7 @@ start-server.bat   # 麻将服务启动入口
 
 目录归属、服务分类和后续接入约定见 [多游戏、多服务架构](server/ARCHITECTURE.md)。
 
-各款仍缺的原版证据、本地验收、资源与补抓操作统一见 [各游戏待验证与资源缺口](docs/game-validation-and-resource-gaps.md)，覆盖全部 17 款游戏。
+各款仍缺的原版证据、本地验收、资源与补抓操作统一见 [各游戏待验证与资源缺口](docs/game-validation-and-resource-gaps.md)，覆盖全部 18 款游戏。
 
 ## 启动独立服务端
 

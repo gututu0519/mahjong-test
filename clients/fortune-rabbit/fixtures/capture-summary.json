@@ -1,0 +1,55 @@
+{
+  "session": "fc6521853b25479dbd9ceb207c3c3e2c",
+  "state": "completed",
+  "total_requests": 1380,
+  "spin_responses": 640,
+  "states": {
+    "1->1": 600,
+    "1->2": 5,
+    "2->2": 30,
+    "2->1": 5
+  },
+  "feature_endings": [
+    {
+      "request": 925,
+      "win": 0,
+      "total": 117.0,
+      "fs_aw": 117.0
+    },
+    {
+      "request": 1024,
+      "win": 0,
+      "total": 309.0,
+      "fs_aw": 309.0
+    },
+    {
+      "request": 1095,
+      "win": 0,
+      "total": 210.0,
+      "fs_aw": 210.0
+    },
+    {
+      "request": 1214,
+      "win": 0,
+      "total": 168.0,
+      "fs_aw": 168.0
+    },
+    {
+      "request": 1256,
+      "win": 21.0,
+      "total": 195.0,
+      "fs_aw": 174.0
+    }
+  ],
+  "endpoint_requests": {
+    "game_info": [
+      300
+    ],
+    "history_summary": [
+      666
+    ],
+    "history_list": [
+      672
+    ]
+  }
+}

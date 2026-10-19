@@ -100,6 +100,7 @@
   }
 
   function updatePlayerCopy() {
+    const rabbit = activeGame === 'fortune-rabbit';
     const bandito = activeGame === 'wild-bandito';
     const buffalo = activeGame === 'buffalo-win';
     const olympus = activeGame === 'gates-of-olympus';
@@ -116,8 +117,8 @@
     const vaults = activeGame === '3-billion-vaults';
     const joker = activeGame === 'jokers-fortune-winx';
     const gems = activeGame === 'fortune-gems2';
-    setText('player-title', bandito ? 'Wild Bandito' : tower ? 'Tower Run Treasure Steps' : serengeti ? 'Great Game Serengeti' : zappo ? 'Dr Zappo' : vampire ? 'Le Vampire' : wicked ? 'Wicked Grin' : roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
-    frame.title = bandito ? 'Wild Bandito' : tower ? 'Tower Run Treasure Steps' : serengeti ? 'Great Game Serengeti' : zappo ? 'Dr Zappo' : vampire ? 'Le Vampire' : wicked ? 'Wicked Grin' : roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
+    setText('player-title', rabbit ? 'Fortune Rabbit' : bandito ? 'Wild Bandito' : tower ? 'Tower Run Treasure Steps' : serengeti ? 'Great Game Serengeti' : zappo ? 'Dr Zappo' : vampire ? 'Le Vampire' : wicked ? 'Wicked Grin' : roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus' : buffalo ? '美洲野牛' : '麻将胡了 2');
+    frame.title = rabbit ? 'Fortune Rabbit' : bandito ? 'Wild Bandito' : tower ? 'Tower Run Treasure Steps' : serengeti ? 'Great Game Serengeti' : zappo ? 'Dr Zappo' : vampire ? 'Le Vampire' : wicked ? 'Wicked Grin' : roma ? 'Roma X 10000' : moneyPot ? 'Money Pot DELUXE' : vaults ? '3 Billion Vaults' : joker ? "Joker’s Fortune WinX" : gems ? 'Fortune Gems 2' : ace ? 'Super Ace' : bass ? 'Big Bass Bonanza' : sweet ? 'Sweet Bonanza POP' : olympus ? 'Gates of Olympus demo' : window.SpinLabI18n.t(buffalo ? '美洲野牛试玩' : '麻将胡了 2 试玩');
     setText('player-mode', '虚拟积分试玩');
   }
 
@@ -173,7 +174,7 @@
       });
       if (version !== requestVersion || !dialog.open) return;
       const url = new URL(data.launch_url, location.origin);
-      const expectedOrigin = activeGame === 'wild-bandito' ? 'http://127.0.0.1:8100' : activeGame === 'tower-run-treasure-steps' ? 'http://127.0.0.1:8099' : activeGame === 'great-game-serengeti' ? 'http://127.0.0.1:8098' : activeGame === 'dr-zappo' ? 'http://127.0.0.1:8097' : activeGame === 'le-vampire' ? 'http://127.0.0.1:8096' : activeGame === 'wicked-grin' ? 'http://127.0.0.1:8095' : activeGame === 'roma-x-10000' ? 'http://127.0.0.1:8094' : activeGame === 'money-pot-deluxe' ? 'http://127.0.0.1:8093' : activeGame === '3-billion-vaults' ? 'http://127.0.0.1:8092' : activeGame === 'jokers-fortune-winx' ? 'http://127.0.0.1:8091' : activeGame === 'fortune-gems2' ? 'http://127.0.0.1:8089' : activeGame === 'super-ace' ? 'http://127.0.0.1:8088' : activeGame === 'big-bass-bonanza' ? 'http://127.0.0.1:8087' : activeGame === 'sweet-bonanza-pop' ? 'http://127.0.0.1:8086' : activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
+      const expectedOrigin = activeGame === 'fortune-rabbit' ? 'http://127.0.0.1:8101' : activeGame === 'wild-bandito' ? 'http://127.0.0.1:8100' : activeGame === 'tower-run-treasure-steps' ? 'http://127.0.0.1:8099' : activeGame === 'great-game-serengeti' ? 'http://127.0.0.1:8098' : activeGame === 'dr-zappo' ? 'http://127.0.0.1:8097' : activeGame === 'le-vampire' ? 'http://127.0.0.1:8096' : activeGame === 'wicked-grin' ? 'http://127.0.0.1:8095' : activeGame === 'roma-x-10000' ? 'http://127.0.0.1:8094' : activeGame === 'money-pot-deluxe' ? 'http://127.0.0.1:8093' : activeGame === '3-billion-vaults' ? 'http://127.0.0.1:8092' : activeGame === 'jokers-fortune-winx' ? 'http://127.0.0.1:8091' : activeGame === 'fortune-gems2' ? 'http://127.0.0.1:8089' : activeGame === 'super-ace' ? 'http://127.0.0.1:8088' : activeGame === 'big-bass-bonanza' ? 'http://127.0.0.1:8087' : activeGame === 'sweet-bonanza-pop' ? 'http://127.0.0.1:8086' : activeGame === 'gates-of-olympus' ? 'http://127.0.0.1:8085' : activeGame === 'buffalo-win' ? 'http://127.0.0.1:8083' : location.origin;
       if (url.origin !== expectedOrigin || url.pathname !== '/' || url.searchParams.get('mock') !== '1' || !url.searchParams.get('ops')) throw new Error('无效的游戏链接');
       launchURL = url;
       $('reload-game').disabled = false;

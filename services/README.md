@@ -1,6 +1,8 @@
 # 独立服务目录
 
-全部 17 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
+Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `python -m server.run --service-dir services/fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
+
+全部 18 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
 
 Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `python -m server.run --service-dir services/great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
 
