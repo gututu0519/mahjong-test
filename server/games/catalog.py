@@ -4,6 +4,11 @@ from server.core.contracts import Registry
 
 
 GAMES = {
+    'captains-bounty': {
+        'factory': 'server.games.captains_bounty:CaptainsBounty',
+        'category': 'slots', 'interaction': 'request_steps',
+        'features': ['paylines', 'cascades', 'increasing_multiplier', 'free_spins', 'free_retrigger'],
+    },
     'fortune-rabbit': {
         'factory': 'server.games.fortune_rabbit:FortuneRabbit',
         'category': 'slots', 'interaction': 'request_steps',

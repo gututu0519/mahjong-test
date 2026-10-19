@@ -1,5 +1,7 @@
 # 独立服务目录
 
+Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `python -m server.run --service-dir services/captains-bounty`，见 [接入记录](captains-bounty/README.md)。
+
 Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `python -m server.run --service-dir services/fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
 
 全部 18 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。

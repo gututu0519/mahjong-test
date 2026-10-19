@@ -1,5 +1,7 @@
 # Mahjong Test
 
+Captain's Bounty（PG Soft，54）英文客户端和独立 8102 服务已接入，本轮按 447 条旋转、2 轮完整免费数据收尾。启动 `python -m server.run --service-dir services/captains-bounty`；实现及验收范围见 [规则记录](docs/captains-bounty-rules.md)。
+
 Fortune Rabbit（PG Soft，1543462）英文客户端已接入独立服务 8101 和大厅：`python -m server.run --service-dir services/fortune-rabbit`。普通旋转、奖金符号、完整 8 次福兔功能、规则和历史已接入并核对原版样本；验证范围见 [规则记录](docs/fortune-rabbit-rules.md)。
 
 Great Game Serengeti（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8098。启动：`python -m server.run --service-dir services/great-game-serengeti`。规则、证据和验证范围见 [接入记录](services/great-game-serengeti/README.md)。
@@ -26,7 +28,7 @@ start-server.bat   # 麻将服务启动入口
 
 目录归属、服务分类和后续接入约定见 [多游戏、多服务架构](server/ARCHITECTURE.md)。
 
-各款仍缺的原版证据、本地验收、资源与补抓操作统一见 [各游戏待验证与资源缺口](docs/game-validation-and-resource-gaps.md)，覆盖全部 18 款游戏。
+各款仍缺的原版证据、本地验收、资源与补抓操作统一见 [各游戏待验证与资源缺口](docs/game-validation-and-resource-gaps.md)，覆盖全部 19 款游戏。
 
 ## 启动独立服务端
 

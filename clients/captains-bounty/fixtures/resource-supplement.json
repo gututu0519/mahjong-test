@@ -1,0 +1,31 @@
+{
+  "resources": [
+    {
+      "path": "favicon/favicon.ico",
+      "source": "https://m.eajzzxhro.com/favicon/favicon.ico",
+      "request": null,
+      "acquired": "direct-public-cdn",
+      "acquired_at": "2026-10-19T16:14:05.723492+00:00",
+      "size": 1150,
+      "sha256": "61039867382791c7832498eb7431a9bbd1cfd424c695a7e77f840090861ac809"
+    },
+    {
+      "path": "favicon/favicon-48.png",
+      "source": "https://m.eajzzxhro.com/favicon/favicon-48.png",
+      "request": null,
+      "acquired": "direct-public-cdn",
+      "acquired_at": "2026-10-19T16:14:10.195465+00:00",
+      "size": 1874,
+      "sha256": "8ffc4203a4d6f7c01c330b756f1142f88d7b40fe28a1cf097fff6740a163009b"
+    },
+    {
+      "path": "shared/service-worker/sw.js",
+      "source": "https://m.eajzzxhro.com/shared/service-worker/sw.js",
+      "request": null,
+      "acquired": "direct-public-cdn",
+      "acquired_at": "2026-10-19T16:14:13.161196+00:00",
+      "size": 11228,
+      "sha256": "d22a1c9af193e73cfd57e16fb84bb716e0780b21302b5a1883432589488ef3b5"
+    }
+  ]
+}

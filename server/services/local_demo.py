@@ -24,6 +24,7 @@ class Handler(PlatformRoutes, MahjongAssetHandler):
             return self._json(200, {'games': [
                 {'id': 'mahjong-ways2', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'wild-bandito', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
+                {'id': 'captains-bounty', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
                 {'id': 'fortune-rabbit', 'mode': 'playable', 'languages': ['zh', 'en'], 'client_language': 'en'},
                 {'id': 'buffalo-win', 'mode': 'playable', 'languages': ['zh', 'en']},
                 {'id': 'gates-of-olympus', 'mode': 'playable', 'languages': ['zh', 'en']},
@@ -56,6 +57,7 @@ class Handler(PlatformRoutes, MahjongAssetHandler):
                       '/demo/sweet-pop-cover.webp': ('sweet-pop-cover.webp', 'image/webp'),
                       '/demo/money-pot-deluxe-cover.png': ('money-pot-deluxe-cover.png', 'image/png'),
                       '/demo/wild-bandito-cover.webp': ('wild-bandito-cover.webp', 'image/webp'),
+                      '/demo/captains-bounty-cover.webp': ('captains-bounty-cover.webp', 'image/webp'),
                       '/demo/fortune-rabbit-cover.webp': ('fortune-rabbit-cover.webp', 'image/webp'),
                       '/demo/tower-run-cover.webp': ('tower-run-cover.webp', 'image/webp'),
                       '/demo/great-game-serengeti-cover.jpg': ('great-game-serengeti-cover.jpg', 'image/jpeg'),
@@ -75,10 +77,10 @@ class Handler(PlatformRoutes, MahjongAssetHandler):
         MahjongAssetHandler.do_GET(self)
 
     def launch_game(self, game_id, language='zh'):
-        if game_id in ('fortune-rabbit', 'wild-bandito', 'buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza', 'super-ace', 'fortune-gems2', 'jokers-fortune-winx', '3-billion-vaults', 'money-pot-deluxe', 'roma-x-10000', 'wicked-grin', 'le-vampire', 'dr-zappo', 'great-game-serengeti', 'tower-run-treasure-steps'):
+        if game_id in ('captains-bounty', 'fortune-rabbit', 'wild-bandito', 'buffalo-win', 'gates-of-olympus', 'sweet-bonanza-pop', 'big-bass-bonanza', 'super-ace', 'fortune-gems2', 'jokers-fortune-winx', '3-billion-vaults', 'money-pot-deluxe', 'roma-x-10000', 'wicked-grin', 'le-vampire', 'dr-zappo', 'great-game-serengeti', 'tower-run-treasure-steps'):
             if language not in ('zh', 'en'):
                 raise ServiceError('LANGUAGE_INVALID', 'Supported languages: zh, en.')
-            origin = 'http://127.0.0.1:' + {'fortune-rabbit': '8101', 'wild-bandito': '8100', 'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087', 'super-ace': '8088', 'fortune-gems2': '8089', 'jokers-fortune-winx': '8091', '3-billion-vaults': '8092', 'money-pot-deluxe': '8093', 'roma-x-10000': '8094', 'wicked-grin': '8095', 'le-vampire': '8096', 'dr-zappo': '8097', 'great-game-serengeti': '8098', 'tower-run-treasure-steps': '8099'}[game_id]
+            origin = 'http://127.0.0.1:' + {'captains-bounty': '8102', 'fortune-rabbit': '8101', 'wild-bandito': '8100', 'buffalo-win': '8083', 'gates-of-olympus': '8085', 'sweet-bonanza-pop': '8086', 'big-bass-bonanza': '8087', 'super-ace': '8088', 'fortune-gems2': '8089', 'jokers-fortune-winx': '8091', '3-billion-vaults': '8092', 'money-pot-deluxe': '8093', 'roma-x-10000': '8094', 'wicked-grin': '8095', 'le-vampire': '8096', 'dr-zappo': '8097', 'great-game-serengeti': '8098', 'tower-run-treasure-steps': '8099'}[game_id]
             request = Request(origin + '/api/v1/games/' + game_id + '/launch',
                               data=json.dumps({'language': language}).encode(),
                               headers={'Content-Type': 'application/json'}, method='POST')

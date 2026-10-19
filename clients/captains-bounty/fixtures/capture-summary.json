@@ -1,0 +1,54 @@
+{
+  "session": "3e6ba8e92c174e61b849c9b0d5e2db7b",
+  "state": "completed",
+  "total_requests": 971,
+  "spin_responses": 447,
+  "states": {
+    "1->1": 228,
+    "1->21": 1,
+    "21->21": 12,
+    "21->22": 7,
+    "22->21": 6,
+    "21->1": 1,
+    "1->4": 83,
+    "4->4": 23,
+    "4->1": 82,
+    "4->21": 1,
+    "22->22": 2,
+    "22->1": 1
+  },
+  "feature_endings": [
+    {
+      "request": 538,
+      "win": 0,
+      "total": 10.8,
+      "fs_aw": 10.8
+    },
+    {
+      "request": 830,
+      "win": 0,
+      "total": 42.0,
+      "fs_aw": 40.8
+    }
+  ],
+  "response_errors": [
+    {
+      "request": 970,
+      "status": 401,
+      "reason": "jwt_verification_failed"
+    }
+  ],
+  "endpoint_requests": {
+    "game_info": [
+      291
+    ],
+    "history_summary": [
+      496,
+      507
+    ],
+    "history_list": [
+      502,
+      508
+    ]
+  }
+}

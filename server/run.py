@@ -11,12 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def load_profile(directory):
     directory = Path(directory).resolve()
     spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
+    if spec['entry'] == 'captains_bounty_client' and spec['games'] != ['captains-bounty']:
+        raise ValueError('Captain\'s Bounty service must isolate its game.')
     if spec['entry'] == 'fortune_rabbit_client':
         if spec['games'] != ['fortune-rabbit']:
             raise ValueError('Fortune Rabbit service must isolate its game.')
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
         raise ValueError('Invalid service ID')
-    if spec['entry'] not in ('fortune_rabbit_client', 'mahjong_client', 'buffalo_client', 'wild_bandito_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client', 'wicked_grin_client', 'le_vampire_client', 'dr_zappo_client', 'great_game_serengeti_client', 'tower_run_treasure_steps_client'):
+    if spec['entry'] not in ('captains_bounty_client', 'fortune_rabbit_client', 'mahjong_client', 'buffalo_client', 'wild_bandito_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client', 'wicked_grin_client', 'le_vampire_client', 'dr_zappo_client', 'great_game_serengeti_client', 'tower_run_treasure_steps_client'):
         raise ValueError('Unknown service entry')
     if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
         raise ValueError('Invalid service port')
@@ -76,7 +78,10 @@ def build_from_directory(directory, port=None):
     database = directory / 'data' / 'games.sqlite3'
     # The directory owns all runtime state; no shared/default database fallback.
     actual_port = spec['port'] if port is None else port
-    if spec['entry'] == 'fortune_rabbit_client':
+    if spec['entry'] == 'captains_bounty_client':
+        from server.services.captains_bounty_demo import build_server
+        http = build_server(actual_port, database, configs['captains-bounty'])
+    elif spec['entry'] == 'fortune_rabbit_client':
         from server.services.fortune_rabbit_demo import build_server
         http = build_server(actual_port, database, configs['fortune-rabbit'])
     elif spec['entry'] == 'wild_bandito_client':

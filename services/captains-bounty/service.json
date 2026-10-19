@@ -1,0 +1,8 @@
+{
+  "id": "captains-bounty",
+  "entry": "captains_bounty_client",
+  "port": 8102,
+  "games": [
+    "captains-bounty"
+  ]
+}
