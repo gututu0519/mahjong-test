@@ -1,6 +1,7 @@
 """Authoritative platform wallet, isolated from every game-service database."""
 import json
 import time
+from decimal import Decimal, InvalidOperation
 
 from server.core.contracts import ServiceError
 from .common import Database, amount, encode, identifier, limit
@@ -10,6 +11,10 @@ class MockWallet(Database):
     def __init__(self, path, merchants):
         super().__init__(path)
         self.merchants = merchants
+        with self.connection(True) as db:
+            for old, new in (('fp_players', 'prebet_players'), ('fp_policies', 'prebet_policies'), ('fp_decisions', 'prebet_decisions')):
+                if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (old,)).fetchone():
+                    db.execute('ALTER TABLE ' + old + ' RENAME TO ' + new)
         with self.connection() as db:
             db.executescript('''
                 CREATE TABLE IF NOT EXISTS accounts (
@@ -25,7 +30,61 @@ class MockWallet(Database):
                     PRIMARY KEY(merchant_id,transaction_id));
                 CREATE UNIQUE INDEX IF NOT EXISTS refund_once ON transactions(merchant_id,reference_id)
                     WHERE kind='refund' AND error_code IS NULL;
+                CREATE TABLE IF NOT EXISTS prebet_players (
+                    merchant_id TEXT NOT NULL,player_name TEXT NOT NULL,player_id TEXT NOT NULL,
+                    PRIMARY KEY(merchant_id,player_name));
+                CREATE TABLE IF NOT EXISTS prebet_policies (merchant_id TEXT PRIMARY KEY,range_json TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS prebet_decisions (
+                    merchant_id TEXT NOT NULL,player_name TEXT NOT NULL,timestamp INTEGER NOT NULL,
+                    bet_amount_minor INTEGER NOT NULL,type TEXT NOT NULL,response_json TEXT NOT NULL,
+                    PRIMARY KEY(merchant_id,player_name,timestamp,bet_amount_minor,type));
             ''')
+
+    def bind_prebet_player(self, merchant_id, player_id, player_name):
+        from .prebet import external_username
+        external_username(player_name)
+        with self.connection(True) as db:
+            db.execute('INSERT OR REPLACE INTO prebet_players VALUES (?,?,?)', (merchant_id, player_name, player_id))
+
+    def prebet_policy(self, merchant_id, value=None):
+        from .prebet import multiplier_range
+        if value is not None:
+            multiplier_range(value)
+            with self.connection(True) as db:
+                db.execute('INSERT OR REPLACE INTO prebet_policies VALUES (?,?)', (merchant_id, encode(value)))
+        with self.connection() as db:
+            row = db.execute('SELECT range_json FROM prebet_policies WHERE merchant_id=?', (merchant_id,)).fetchone()
+            return json.loads(row[0]) if row else [-1, 0]
+
+    def prebet_decision(self, merchant_id, payload):
+        def failure(code, message):
+            return {'code': code, 'data': None, 'msg': message}
+        name, timestamp, kind = payload.get('player_name'), payload.get('timestamp'), payload.get('type')
+        try:
+            raw = payload.get('bet_amount')
+            if type(raw) not in (str, int, float):
+                raise ValueError()
+            amount_decimal = Decimal(str(raw)) * 100
+            if not amount_decimal.is_finite() or amount_decimal != amount_decimal.to_integral_value():
+                raise ValueError()
+            bet = amount(int(amount_decimal))
+            if type(timestamp) is not int or timestamp <= 0 or kind not in ('NORMAL', 'SURE_WIN', 'FREE_SPIN', 'BUY_FREE_SPIN') or not isinstance(name, str):
+                raise ValueError()
+        except (ValueError, InvalidOperation):
+            return failure(3001, 'Invalid preBetDecision parameters')
+        policy = self.prebet_policy(merchant_id)
+        with self.connection(True) as db:
+            old = db.execute('SELECT response_json FROM prebet_decisions WHERE merchant_id=? AND player_name=? AND timestamp=? AND bet_amount_minor=? AND type=?',
+                             (merchant_id, name, timestamp, bet, kind)).fetchone()
+            if old:
+                return json.loads(old[0])
+            player = db.execute('SELECT player_id FROM prebet_players WHERE merchant_id=? AND player_name=?', (merchant_id, name)).fetchone()
+            account = db.execute('SELECT balance_minor FROM accounts WHERE merchant_id=? AND player_id=?', (merchant_id, player[0])).fetchone() if player else None
+            if not account:
+                return failure(3004, 'Player does not exist or wallet unavailable')
+            result = failure(3202, 'Insufficient available balance') if bet > account[0] else {'code': 0, 'data': {'maxWinMulti': policy}, 'msg': None}
+            db.execute('INSERT INTO prebet_decisions VALUES (?,?,?,?,?,?)', (merchant_id, name, timestamp, bet, kind, encode(result)))
+            return result
 
     def seed(self, merchant_id, player_id, balance_minor):
         identifier(player_id, 'player_id')

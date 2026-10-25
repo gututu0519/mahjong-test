@@ -46,12 +46,19 @@ class AdminApplication:
         with self.provider.connection() as db:
             rows = db.execute('SELECT * FROM game_operations' + where + ' ORDER BY seq DESC LIMIT ?',
                               (*params, 1 if detail else limit(payload.get('limit', 25)))).fetchall()
+        # Merchant currencies are immutable. Keep legacy records in their
+        # original currency instead of relabelling historical amounts as USD.
+        with self.control.connection() as db:
+            currencies = {row['id']: (row['currency'], row['minor_unit'])
+                          for row in db.execute('SELECT id,currency,minor_unit FROM merchants')}
         entries = []
         for row in rows:
             candidate = json.loads(row['candidate_json'])
+            currency, minor_unit = currencies.get(row['merchant_id'], (None, None))
             value = {key: row[key] for key in ('seq', 'id', 'merchant_id', 'player_id', 'game_id', 'status', 'error_code', 'created_at')}
             value.update(debit_minor=candidate['debit_minor'], credit_minor=candidate['credit_minor'],
-                         round_id=candidate['event']['round_id'], ruleset_id=candidate['ruleset_id'])
+                         round_id=candidate['event']['round_id'], ruleset_id=candidate['ruleset_id'],
+                         currency=currency, minor_unit=minor_unit)
             if detail:
                 value.update(request=json.loads(row['request_json']),
                              result=json.loads(row['response_json']) if row['response_json'] else None)
@@ -70,6 +77,21 @@ class AdminApplication:
                 'games': len(self.games()), 'settled': counts.get('settled', 0),
                 'pending': counts.get('prepared', 0) + counts.get('debited', 0),
                 'rejected': counts.get('rejected', 0), 'recent': self.transactions({'limit': 5})}
+
+    def prebet_decisions(self, payload):
+        clauses, params = [], []
+        for field in ('merchant_id', 'player_id'):
+            if payload.get(field):
+                clauses.append(field + '=?')
+                params.append(identifier(payload[field], field))
+        where = ' WHERE ' + ' AND '.join(clauses) if clauses else ''
+        with self.provider.connection() as db:
+            rows = db.execute('SELECT id,merchant_id,player_id,game_id,prebet_request_json,policy_json,plan_json IS NOT NULL AS planned,error_code,created_at FROM prebet_rounds'
+                              + where + ' ORDER BY created_at DESC,rowid DESC LIMIT ?', (*params, limit(payload.get('limit', 25)))).fetchall()
+        return [{**{key: row[key] for key in ('id', 'merchant_id', 'player_id', 'game_id', 'error_code', 'created_at')},
+                 'request': json.loads(row['prebet_request_json']),
+                 'policy': json.loads(row['policy_json']) if row['policy_json'] else None,
+                 'status': 'rejected' if row['error_code'] else 'planned' if row['planned'] else 'pending'} for row in rows]
 
     def retry(self, actor, payload):
         merchant_id = identifier(payload.get('merchant_id'), 'merchant_id')
@@ -172,6 +194,7 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
             '/api/admin/merchants/rotate': 'keys.rotate', '/api/admin/games': 'games.read',
             '/api/admin/transactions/list': 'transactions.read', '/api/admin/transactions/detail': 'transactions.read',
             '/api/admin/transactions/retry': 'transactions.retry', '/api/admin/audit': 'audit.read',
+            '/api/admin/prebet/list': 'transactions.read',
             '/api/admin/users/list': 'users.manage', '/api/admin/users/create': 'users.manage',
             '/api/admin/users/update': 'users.manage', '/api/admin/users/reset': 'users.manage',
             '/api/admin/password': None, '/api/admin/logout': None,
@@ -191,6 +214,8 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
             result = {'changed': True}
         elif path == '/api/admin/overview':
             result = app.overview()
+        elif path == '/api/admin/prebet/list':
+            result = {'decisions': app.prebet_decisions(payload)}
         elif path == '/api/admin/merchants/list':
             result = {'merchants': control.merchants()}
         elif path in ('/api/admin/merchants/create', '/api/admin/merchants/update'):

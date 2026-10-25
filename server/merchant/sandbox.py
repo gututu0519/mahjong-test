@@ -41,10 +41,12 @@ def initialize(path):
     if path.exists():
         raise ValueError('Configuration already exists; preserving merchants and keys: ' + str(path))
     config = {'gateway_origin': 'http://127.0.0.1:8110', 'sandbox_merchant': 'demo-platform',
-              'sandbox_player': 'demo-player', 'sandbox_balance_minor': 200000,
+              'sandbox_player': 'demo-player', 'sandbox_external_username': 'demo-platform-player', 'sandbox_balance_minor': 200000,
               'merchants': {'demo-platform': {'enabled': True, 'api_secret': secrets.token_hex(32),
                   'wallet_secret': secrets.token_hex(32), 'wallet_url': 'http://127.0.0.1:8111',
-                  'currency': 'DEMO', 'minor_unit': 100, 'games': ['buffalo-win']}}}
+                  'currency': 'USD', 'minor_unit': 100, 'games': ['buffalo-win'],
+                  'pre_payout': {'enabled': True, 'url': 'http://127.0.0.1:8111/api/v1/callbacks/gtt/preBetDecision',
+                                 'operator_token': secrets.token_hex(16), 'secret_key': secrets.token_hex(32)}}}}
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open('x', encoding='utf-8', newline='\n') as stream:
         json.dump(config, stream, ensure_ascii=False, indent=2)
@@ -80,7 +82,8 @@ def main():
     if args.action in ('launch', 'transactions', 'retry'):
         if args.action == 'launch':
             data = post_gateway(config, '/gtt/v1/games/launch', {'player_id': config['sandbox_player'],
-                                'game_id': 'buffalo-win', 'language': args.language})
+                                'game_id': 'buffalo-win', 'language': args.language,
+                                **({'external_username': config['sandbox_external_username']} if config.get('sandbox_external_username') else {})})
             print(config['gateway_origin'] + data['launch_url'])
         elif args.action == 'transactions':
             print(encode(post_gateway(config, '/gtt/v1/transactions/list', {'limit': 100})))

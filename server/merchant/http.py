@@ -1,5 +1,6 @@
 import json
 import logging
+import hmac
 import re
 from functools import partial
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -136,6 +137,8 @@ class MockHandler(JSONRoutes, BaseHTTPRequestHandler):
             payload = {'player_id': config['sandbox_player'], 'currency': config['merchants'][merchant_id]['currency'], 'minor_unit': 100}
             result = self.server.wallet.call(merchant_id, 'transactions/list', payload)
             return self.json_response(200, {'merchant_id': merchant_id, **result})
+        if path == '/sandbox/prebet-policy':
+            return self.json_response(200, {'maxWinMulti': self.server.wallet.prebet_policy(self.server.config['sandbox_merchant'])})
         if path != '/':
             raise ServiceError('NOT_FOUND', 'Unknown endpoint.', 404)
         from pathlib import Path
@@ -154,11 +157,37 @@ class MockHandler(JSONRoutes, BaseHTTPRequestHandler):
         body = self.read_body()
         path = urlsplit(self.path).path
         config = self.server.config
+        if path == '/api/v1/callbacks/gtt/preBetDecision':
+            payload = read_object(body)
+            merchant_id = None
+            for key, merchant in config['merchants'].items():
+                settings = merchant.get('pre_payout', {})
+                token, secret = payload.get('operator_token'), payload.get('secret_key')
+                if (isinstance(token, str) and isinstance(secret, str) and settings.get('operator_token')
+                        and hmac.compare_digest(token.encode(), settings['operator_token'].encode())
+                        and hmac.compare_digest(secret.encode(), settings['secret_key'].encode())):
+                    merchant_id = key
+                    break
+            if merchant_id is None:
+                result = {'code': 1204, 'data': None, 'msg': 'Invalid operator credentials'}
+            else:
+                result = self.server.wallet.prebet_decision(merchant_id, payload)
+            raw = encode(result).encode()
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(raw)))
+            self.send_header('Cache-Control', 'no-store')
+            self.end_headers()
+            return self.wfile.write(raw)
+        if path == '/sandbox/prebet-policy':
+            value = self.server.wallet.prebet_policy(config['sandbox_merchant'], read_object(body).get('maxWinMulti'))
+            return self.json_response(200, {'maxWinMulti': value})
         if path == '/sandbox/launch':
             payload = read_object(body)
             result = post_gateway(config, '/gtt/v1/games/launch', {
                 'player_id': config['sandbox_player'], 'game_id': 'buffalo-win',
-                'language': payload.get('language', 'en')})
+                'language': payload.get('language', 'en'),
+                **({'external_username': config['sandbox_external_username']} if config.get('sandbox_external_username') else {})})
             result['launch_url'] = config['gateway_origin'] + result['launch_url']
             return self.json_response(201, result)
         if not path.startswith('/wallet/v1/'):
@@ -175,4 +204,6 @@ def build_platform(port, database, config):
     http.wallet = MockWallet(database, config['merchants'])
     http.config = config
     http.wallet.seed(config['sandbox_merchant'], config['sandbox_player'], config['sandbox_balance_minor'])
+    if config.get('sandbox_external_username'):
+        http.wallet.bind_prebet_player(config['sandbox_merchant'], config['sandbox_player'], config['sandbox_external_username'])
     return http

@@ -1,5 +1,7 @@
+import concurrent.futures
 import hashlib
 import json
+import secrets
 import tempfile
 import threading
 import time
@@ -15,7 +17,7 @@ from server.merchant.admin import build_admin
 from server.merchant.common import encode, signed_headers
 from server.merchant.control import ControlStore, MerchantDirectory
 from server.merchant.http import build_gateway, build_platform
-from server.merchant.sandbox import load_config
+from server.merchant.sandbox import initialize, load_config
 from server.tests.test_buffalo_engine import Scripted
 from server.tests.test_gtt_merchant import configuration, wallet_payload
 
@@ -150,6 +152,7 @@ class GTTAdminTests(unittest.TestCase):
             self.post('merchants/list', user=name)
             self.post('games', user=name)
             self.post('transactions/list', user=name)
+            self.post('prebet/list', user=name)
             self.post('audit', user=name)
             for path in ('merchants/create', 'merchants/update', 'merchants/rotate', 'users/create', 'users/list', 'users/update', 'users/reset'):
                 self.assertEqual(self.post(path, user=name, expected=403)['code'], 'FORBIDDEN')
@@ -158,33 +161,81 @@ class GTTAdminTests(unittest.TestCase):
         self.assertTrue(any(row['action'] == 'permission.denied' for row in self.control.audits({})))
 
     def test_merchant_create_live_authorization_rotation_and_no_secret_leaks(self):
-        result = self.post('merchants/create', {'id': 'new-platform', 'name': 'New Platform', 'enabled': True,
-                           'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'DEMO', 'games': ['buffalo-win']}, expected=201)
+        result = self.post('merchants/create', {'name': 'New Platform', 'enabled': True,
+                           'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD', 'games': ['buffalo-win']}, expected=201)
+        merchant_id = result['merchant']['id']
+        self.assertRegex(merchant_id, r'^GTT[0-9A-F]{16}$')
         secret = result['keys']['api_secret']
         self.assertNotEqual(secret, result['keys']['wallet_secret'])
-        self.platform.wallet.seed('new-platform', 'new-player', 10000)
-        self.assertEqual(self.gateway_request(merchant='new-platform')[0], 200)
+        self.platform.wallet.seed(merchant_id, 'new-player', 10000)
+        self.assertEqual(self.gateway_request(merchant=merchant_id)[0], 200)
         # A second process/store connection sees updates without a service restart.
         second = MerchantDirectory(ControlStore(self.control.path))
-        self.assertEqual(second['new-platform']['api_secret'], secret)
-        self.assertEqual(self.service.launch('new-platform', {'player_id': 'new-player'})['balance_minor'], 10000)
+        self.assertEqual(second[merchant_id]['api_secret'], secret)
+        launched = self.service.launch(merchant_id, {'player_id': 'new-player'})
+        self.assertEqual((launched['balance_minor'], launched['currency'], launched['minor_unit']), (10000, 'USD', 100))
+        token = parse_qs(urlsplit(launched['launch_url']).query)['ops'][0]
+        self.assertEqual(self.service.spin(token, 'buffalo-win', 'usd-paid', '0', {})['wallet']['after_minor'], 9400)
+        self.assertEqual(self.service.wallet(token)['currency'], 'USD')
         merchant = result['merchant']
         updated = self.post('merchants/update', {**merchant, 'games': []})['merchant']
-        self.assertEqual(self.gateway_request(merchant='new-platform')[1]['data']['games'], [])
+        self.assertEqual(self.gateway_request(merchant=merchant_id)[1]['data']['games'], [])
         with self.assertRaises(ServiceError) as denied:
-            self.service.launch('new-platform', {'player_id': 'new-player'})
+            self.service.launch(merchant_id, {'player_id': 'new-player'})
         self.assertEqual(denied.exception.code, 'GAME_FORBIDDEN')
         self.assertEqual(self.post('merchants/update', merchant, expected=409)['code'], 'VERSION_CONFLICT')
         rotated = self.post('merchants/rotate', {'id': merchant['id'], 'version': updated['version'], 'reason': 'rotation test'})
-        self.assertEqual(self.gateway_request(secret, 'new-platform')[0], 401)
-        self.assertEqual(self.gateway_request(rotated['keys']['api_secret'], 'new-platform')[0], 200)
+        self.assertEqual(self.gateway_request(secret, merchant_id)[0], 401)
+        self.assertEqual(self.gateway_request(rotated['keys']['api_secret'], merchant_id)[0], 200)
         disabled = self.post('merchants/update', {**rotated['merchant'], 'enabled': False})['merchant']
-        self.assertEqual(self.gateway_request(merchant='new-platform')[0], 401)
-        self.assertFalse(second['new-platform']['enabled'])
+        self.assertEqual(self.gateway_request(merchant=merchant_id)[0], 401)
+        self.assertFalse(second[merchant_id]['enabled'])
         public = encode(self.post('merchants/list')) + encode(self.post('audit'))
         for value in [*result['keys'].values(), *rotated['keys'].values(), PASSWORD]:
             self.assertNotIn(value, public)
         self.assertEqual(disabled['key_version'], 2)
+
+    def test_new_merchants_only_accept_usd_and_default_to_usd(self):
+        payload = {'name': 'USD Only', 'enabled': True,
+                   'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'games': ['buffalo-win']}
+        for currency in ('DEMO', 'EUR', 'CNY', 'usd', '', None, 123):
+            with self.subTest(currency=currency):
+                error = self.post('merchants/create', {**payload, 'currency': currency}, expected=400)
+                self.assertEqual(error['code'], 'CURRENCY_INVALID')
+                self.assertEqual(len(self.control.merchants()), 2)
+        created = self.post('merchants/create', payload, expected=201)['merchant']
+        self.assertEqual((created['currency'], created['minor_unit']), ('USD', 100))
+        self.assertEqual(self.post('merchants/update', {**created, 'currency': 'EUR'}, expected=400)['code'], 'CURRENCY_IMMUTABLE')
+
+    def test_automatic_merchant_ids_handle_collisions_concurrency_and_legacy_records(self):
+        payload = {'name': 'Automatic ID', 'enabled': False, 'wallet_url': 'https://wallet.example.com', 'currency': 'USD', 'games': []}
+        for requested_id in ('alpha', 'custom-id', '', None):
+            error = self.post('merchants/create', {**payload, 'id': requested_id}, expected=400)
+            self.assertEqual(error['code'], 'MERCHANT_ID_AUTOMATIC')
+        first = self.post('merchants/create', payload, expected=201)['merchant']
+        random_hex = secrets.token_hex
+        candidates = iter([first['id'][3:].lower(), '0' * 16])
+
+        def collide_once(size):
+            return next(candidates) if size == 8 else random_hex(size)
+
+        with patch('server.merchant.control.secrets.token_hex', side_effect=collide_once):
+            second = self.post('merchants/create', payload, expected=201)['merchant']
+        self.assertNotEqual(first['id'], second['id'])
+        self.assertEqual(self.control.merchant(first['id']), first)
+        # A persistent collision fails cleanly rather than overwriting records.
+        with patch('server.merchant.control.secrets.token_hex', return_value='0' * 16):
+            self.post('merchants/create', payload, expected=503)
+        self.assertEqual(len(self.control.merchants()), 4)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+            generated = list(pool.map(lambda index: self.control.save_merchant(
+                'admin', {**payload, 'name': 'Concurrent ' + str(index)}, {'buffalo-win'}, create=True)['merchant'], range(12)))
+        ids = [first['id'], second['id'], *(merchant['id'] for merchant in generated)]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertTrue(all(self.control.merchant(merchant_id) for merchant_id in ids))
+        self.assertEqual(self.control.merchant('alpha')['id'], 'alpha')
+        self.assertEqual(self.control.merchant('alpha')['currency'], 'DEMO')
+        self.assertEqual({row['target'] for row in self.control.audits({'action': 'merchant.create'})}, set(ids))
 
     def test_validation_currency_conflicts_and_invalid_inputs(self):
         merchant = self.control.merchant('alpha')
@@ -257,6 +308,46 @@ class GTTAdminTests(unittest.TestCase):
         audit2 = self.control.audits({'limit': 3, 'before_seq': audit1[-1]['seq']})
         self.assertFalse({r['seq'] for r in audit1} & {r['seq'] for r in audit2})
 
+    def test_transaction_currency_matches_merchant_and_wallet_payout_without_conversion(self):
+        merchant = self.post('merchants/create', {'name': 'USD Settlement', 'enabled': True,
+            'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD',
+            'games': ['buffalo-win']}, expected=201)['merchant']
+        merchant_id = merchant['id']
+        self.platform.wallet.seed(merchant_id, 'usd-player', 200000)
+        game = self.service.registry.get('buffalo-win')
+        game.boards = [([3,3,3,3,2,0,2,3,0,0,2,7], 3, {'1': [0,1,2,3]}, {'1': 8})]
+        game.columns = [[3,3,2,5], [0,0,2,3], [2,8,8,2]]
+        launched = self.service.launch(merchant_id, {'player_id': 'usd-player'})
+        token = parse_qs(urlsplit(launched['launch_url']).query)['ops'][0]
+        sid = '0'
+        for index in range(4):
+            result = self.service.spin(token, 'buffalo-win', 'usd-' + str(index), sid, {})
+            sid = result['sid']
+        self.assertEqual(result['wallet']['credit_minor'], 20400)
+        self.assertEqual(self.service.wallet(token)['balance_minor'], 219800)
+        with self.platform.wallet.connection() as db:
+            payout = db.execute("SELECT request_json,response_json FROM transactions WHERE merchant_id=? AND kind='credit'",
+                                (merchant_id,)).fetchone()
+        self.assertEqual(json.loads(payout['request_json'])['amount_minor'], 20400)
+        self.assertEqual(json.loads(payout['response_json'])['applied_minor'], 20400)
+        self.pending()  # Include an existing DEMO merchant in the same response.
+        rows = self.post('transactions/list')['transactions']
+        self.assertEqual(len(rows), 5)
+        for row in rows:
+            self.assertEqual(row['currency'], 'USD' if row['merchant_id'] == merchant_id else 'DEMO')
+            self.assertEqual(row['minor_unit'], 100)
+        detail = self.post('transactions/detail', {'operation_id': sid})
+        self.assertEqual((detail['credit_minor'], detail['currency'], detail['minor_unit']), (20400, 'USD', 100))
+        self.assertEqual(detail['result'], result)
+        self.assertEqual({row['currency'] for row in self.post('overview')['recent']}, {'USD', 'DEMO'})
+        # Never relabel a historical operation as USD if its merchant is missing.
+        with self.control.connection(True) as db:
+            db.execute('DELETE FROM merchants WHERE id=?', (merchant_id,))
+        unknown = self.post('transactions/detail', {'operation_id': sid})
+        self.assertIsNone(unknown['currency'])
+        self.assertIsNone(unknown['minor_unit'])
+        self.assertEqual(unknown['credit_minor'], 20400)
+
     def test_users_passwords_revocation_and_last_admin(self):
         self.login('operator')
         self.post('users/update', {'username': 'admin', 'role': 'viewer', 'enabled': True}, expected=409)
@@ -288,6 +379,21 @@ class GTTAdminTests(unittest.TestCase):
 
 
 class GTTMigrationTests(unittest.TestCase):
+    def test_fresh_sandbox_uses_usd(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'sandbox.json'
+            with patch('builtins.print'):
+                initialize(path)
+            loaded, store = load_config(path)
+            self.assertEqual(loaded['merchants']['demo-platform']['currency'], 'USD')
+            platform = build_platform(0, Path(directory) / 'wallet.sqlite3', loaded)
+            try:
+                account = platform.wallet.call('demo-platform', 'balance', {
+                    'player_id': 'demo-player', 'currency': 'USD', 'minor_unit': 100})
+                self.assertEqual((account['balance_minor'], account['currency']), (200000, 'USD'))
+            finally:
+                platform.server_close()
+
     def test_legacy_configuration_migrates_once_without_overwriting_live_changes(self):
         with tempfile.TemporaryDirectory(dir='.') as directory:
             path = Path(directory) / 'sandbox.json'  # Exercise relative --config as well.
@@ -302,6 +408,7 @@ class GTTMigrationTests(unittest.TestCase):
             loaded2, store2 = load_config(path)
             self.assertFalse(loaded2['merchants']['alpha']['enabled'])
             self.assertEqual(store2.merchant('alpha')['name'], 'Changed live')
+            self.assertEqual(loaded2['merchants']['alpha']['currency'], 'DEMO')
             # Re-importing an old backup never replaces rotated keys/live settings.
             store2.migrate(original['merchants'])
             self.assertEqual(store2.merchant('alpha')['name'], 'Changed live')

@@ -1,5 +1,7 @@
 # GTT 商户与平台钱包接口 v1
 
+GTT `preBetDecision` 回调、`external_username` 启动字段及整局派彩区间见 [预派彩接口说明](gtt-prebet.md)。由合作平台实现并向 GTT 返回区间；它不直接入账，实际钱包使用下述 GTT 签名接口。
+
 本规范对应 `server/merchant/` 的可运行实现，首款接入 Buffalo Win。GTT 生成游戏结果，合作平台拥有玩家账户和余额。平台钱包、GTT 游戏记录、原本的 8083 试玩服务使用三个独立数据库；GTT 商户服务不创建本地积分钱包。
 
 ## 本机启动和验收
@@ -10,7 +12,7 @@
 python -m server.merchant.sandbox init
 ```
 
-此命令创建 `services/gtt-gateway/data/sandbox.json`，生成独立的接口密钥和钱包密钥，不覆盖已存在的配置。该文件被 Git 忽略。默认商户 `demo-platform`、玩家 `demo-player`、DEMO 币种和 2000 初始积分。平台启动时只补建不存在的测试账户，重启不重置余额。
+此命令创建 `services/gtt-gateway/data/sandbox.json`，生成独立的接口密钥和钱包密钥，不覆盖已存在的配置。该文件被 Git 忽略。新环境默认商户 `demo-platform`、玩家 `demo-player`、USD 币种和 200000 最小单位测试余额。平台启动时只补建不存在的测试账户，重启不重置余额；既有 DEMO 商户及流水保留，不自动转换为 USD。
 
 分别在两个终端启动：
 
@@ -41,7 +43,7 @@ python -m server.merchant.sandbox retry --operation-id <操作ID>
 
 商户、玩家、操作、交易、回合标识使用 1–128 位 ASCII 字母、数字和 `_ . : -`。同一 `player_id` 在不同商户下是不同玩家；玩家标识由平台给出，不接收密码、真实姓名或其他非必要个人资料。
 
-金额一律为整数 `amount_minor`，当前 `minor_unit=100`，示例 1500 表示 15.00。币种必须与商户配置一致。模拟平台只提供 DEMO 积分。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
+金额一律为整数 `amount_minor`，当前 `minor_unit=100`，USD 使用美分，示例 1500 表示 15.00 USD。创建商户当前仅支持美元 USD。币种必须与商户配置一致；模拟平台按商户币种提供测试余额，兼容既有 DEMO 账户。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
 
 平台 → GTT 使用 `api_secret`；GTT → 平台钱包使用另一把 `wallet_secret`。两种请求均使用 POST、`Content-Type: application/json`，无 URL 查询参数。JSON 不允许重复字段、NaN 或 Infinity；请求体最多 16 KiB。
 
@@ -103,13 +105,13 @@ GTT 继续兼容原版 Buffalo GameInfo / Spin 协议，购买仍使用 `fb=2`�
 例如基础投注 0.20、75 倍购买的扣款请求：
 
 ```json
-{"player_id":"demo-player","currency":"DEMO","minor_unit":100,"transaction_id":"<operation_id>:debit","round_id":"<round_id>","amount_minor":1500}
+{"player_id":"demo-player","currency":"USD","minor_unit":100,"transaction_id":"<operation_id>:debit","round_id":"<round_id>","amount_minor":1500}
 ```
 
 成功余额对象：
 
 ```json
-{"data":{"player_id":"demo-player","currency":"DEMO","minor_unit":100,"balance_minor":198500},"error":null}
+{"data":{"player_id":"demo-player","currency":"USD","minor_unit":100,"balance_minor":198500},"error":null}
 ```
 
 成功变动对象额外返回 `transaction_id`、`status:"applied"`、`amount_minor`、`applied_minor`、`balance_before_minor`。`balance_minor = balance_before_minor ± applied_minor` 必须成立。扣款和派奖的 `applied_minor` 必须等于请求金额；退款可能为 0，表示没有找到已成功扣款，但已阻止原交易迟到扣款。错误、畸形或不一致的成功响应被视为结果未知，不能据此再次生成结果或换交易号重扣。

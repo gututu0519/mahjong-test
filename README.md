@@ -1,5 +1,7 @@
 # GTT
 
+GTT 预下注决策支持按商户调用合作平台接口、整局派彩区间、固定时间戳重试与原客户端逐步展示；接入约定和本机模拟见 [GTT 预派彩说明](docs/gtt-prebet.md)。FP 仅为设计参考，不是对接依赖。
+
 管理后台已提供首版：<http://127.0.0.1:8112/>。首次执行 `python -m server.merchant.sandbox admin-init` 生成私有登录凭据，再运行 `python -m server.merchant.sandbox admin`。支持三类角色、商户配置、游戏授权、密钥轮换、交易查询与恢复、操作审计，配置修改即时生效。详见 [管理后台说明](docs/gtt-admin.md)。
 
 GTT 商户接入与模拟平台已提供首版：签名启动 Buffalo Win，平台持有玩家余额，支持购买免费、扣款／派奖去重和故障恢复。首次执行 `python -m server.merchant.sandbox init`，再分别运行 `python -m server.merchant.sandbox platform` 和 `python -m server.merchant.sandbox gateway`，打开 <http://127.0.0.1:8111/> 联调。完整约定见 [商户与钱包接口 v1](docs/gtt-merchant-wallet-v1.md)。

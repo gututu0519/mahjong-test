@@ -29,6 +29,12 @@ const badge = (label, kind = '') => el('span', {class: 'badge ' + kind}, label);
 const status = value => badge(statusNames[value] || value, value === 'settled' ? 'good' : value === 'rejected' ? 'bad' : 'pending');
 const time = timestamp => new Date(timestamp * 1000).toLocaleString('zh-CN', {hour12: false});
 const amount = number => number.toLocaleString('zh-CN');
+function money(minor, row) {
+  if (!row.currency || row.minor_unit !== 100) return amount(minor) + ' 最小单位（币种未确认）';
+  // Integer arithmetic preserves every cent, including near the balance limit.
+  const units = BigInt(minor);
+  return (units / 100n).toLocaleString('en-US') + '.' + (units % 100n).toString().padStart(2, '0') + ' ' + row.currency;
+}
 const field = (label, node) => el('label', {}, label, node);
 const input = (name, value = '', attrs = {}) => el('input', {name, value, ...attrs});
 function select(name, options, selected = '') {
@@ -85,15 +91,19 @@ function reveal(title, values) {
     el('div', {class: 'modal-actions'}, button('已保存，关闭', closeModal, 'primary'))]);
 }
 function detail(title, value) { modal(title, el('pre', {class: 'details'}, JSON.stringify(value, null, 2))); }
+function transactionDetail(row) {
+  modal('交易详情', [el('p', {class: 'cell-title'}, '扣款 ' + money(row.debit_minor, row) + ' / 派彩 ' + money(row.credit_minor, row)),
+    el('pre', {class: 'details'}, JSON.stringify(row, null, 2))]);
+}
 function merchantOptions() { return [['', '全部商户'], ...merchants.map(m => [m.id, m.name + ' · ' + m.id])]; }
 function txRows(rows) {
   return rows.map(row => [el('div', {}, el('div', {class: 'cell-title mono'}, row.id.slice(0, 20) + '…'), el('div', {class: 'subtext'}, time(row.created_at))),
     el('div', {}, el('div', {class: 'cell-title'}, row.merchant_id), el('div', {class: 'subtext'}, row.player_id)),
-    row.game_id, el('span', {class: 'mono'}, '−' + amount(row.debit_minor) + ' / +' + amount(row.credit_minor)), status(row.status),
-    el('div', {}, button('详情', () => run(async () => detail('交易详情', await api('transactions/detail', {operation_id: row.id, merchant_id: row.merchant_id})))),
+    row.game_id, el('span', {class: 'mono'}, '−' + money(row.debit_minor, row)), el('span', {class: 'mono'}, '+' + money(row.credit_minor, row)), status(row.status),
+    el('div', {}, button('详情', () => run(async () => transactionDetail(await api('transactions/detail', {operation_id: row.id, merchant_id: row.merchant_id})))),
       can('transactions.retry') && ['prepared', 'debited'].includes(row.status) ? button('恢复', () => recover(row)) : null)]);
 }
-function txTable(rows) { return table(['操作 / 时间', '商户 / 玩家', '游戏', '扣款 / 派彩', '状态', '操作'], txRows(rows)); }
+function txTable(rows) { return table(['操作 / 时间', '商户 / 玩家', '游戏', '扣款', '派彩', '状态', '操作'], txRows(rows)); }
 async function overview() {
   const data = await api('overview');
   const stats = el('div', {class: 'stats'}, [
@@ -112,19 +122,32 @@ async function overview() {
 }
 function merchantEditor(merchant = null) {
   const editing = !!merchant, writable = can('merchants.write');
-  const value = merchant || {id: '', name: '', wallet_url: '', currency: 'DEMO', games: [], enabled: true};
-  const nodes = [el('div', {class: 'form-grid'}, field('商户号', input('id', value.id, {required: true, maxlength: 128, pattern: '[A-Za-z0-9_.:\\-]+', disabled: editing})), field('商户名称', input('name', value.name, {required: true, maxlength: 80})), field('钱包服务地址', input('wallet_url', value.wallet_url, {required: true, type: 'url', placeholder: 'https://wallet.example.com', maxlength: 512})), field('币种', input('currency', value.currency, {required: true, pattern: '[A-Z]{3,8}', disabled: editing}))),
+  const value = merchant || {id: '', name: '', wallet_url: '', currency: 'USD', games: [], enabled: true};
+  const currency = select('currency', editing && value.currency !== 'USD' ? [[value.currency, value.currency]] : [['USD', '美元（USD）']], value.currency);
+  const prebet = value.pre_payout || {};
+  currency.required = true;
+  currency.disabled = editing;
+  const nodes = [el('div', {class: 'form-grid'}, field('商户号', input('id', value.id, {disabled: true, placeholder: '保存后自动生成'})), field('商户名称', input('name', value.name, {required: true, maxlength: 80})), field('钱包服务地址', input('wallet_url', value.wallet_url, {required: true, type: 'url', placeholder: 'https://wallet.example.com', maxlength: 512})), field('币种', currency)),
     el('p', {class: 'hint'}, '钱包地址填写 origin，不带路径。金额精度为 100；创建后币种不可更改。'),
     el('label', {class: 'check-label'}, input('enabled', 'yes', {type: 'checkbox', checked: value.enabled}), '启用商户'),
     el('h3', {}, '游戏授权'), ...games.map(game => el('label', {class: 'check-label'}, input('games', game.id, {type: 'checkbox', checked: value.games.includes(game.id)}), game.title || game.id)),
+    el('h3', {}, '平台预派彩'),
+    el('label', {class: 'check-label'}, input('prebet_enabled', 'yes', {type: 'checkbox', checked: prebet.enabled}), '开奖前向平台获取整局派彩倍数区间'),
+    field('preBetDecision 接口地址', input('prebet_url', prebet.url || '', {type: 'url', autocomplete: 'off', maxlength: 1024, placeholder: '填写合作平台的预下注决策接口地址'})),
+    el('div', {class: 'form-grid'}, field('平台 operator_token', input('prebet_operator_token', '', {type: 'password', autocomplete: 'new-password', maxlength: 1024, placeholder: prebet.credentials_configured ? '留空保留现有 Token' : '填写平台运营商 Token'})),
+      field('平台 secret_key', input('prebet_secret_key', '', {type: 'password', autocomplete: 'new-password', maxlength: 1024, placeholder: prebet.credentials_configured ? '留空保留现有密钥' : '填写平台密钥'}))),
+    el('p', {class: 'hint'}, '倍数以整局实际扣款为基数，包含续列和免费旋转。平台凭据只保存在服务端；启动请求需提供 external_username。'),
     el('p', {class: 'hint'}, '停用或移除授权会阻止后续游戏请求；已受理的待处理交易仍可由运营人员恢复。')];
   if (!writable) { detail('商户配置', value); return; }
   formModal(editing ? '编辑商户' : '创建商户', nodes, '保存商户', async form => {
-    const payload = {id: editing ? value.id : form.get('id'), name: form.get('name'), wallet_url: form.get('wallet_url'), currency: value.currency,
+    const payload = {name: form.get('name'), wallet_url: form.get('wallet_url'), currency: editing ? value.currency : form.get('currency'),
       enabled: form.get('enabled') === 'yes', games: form.getAll('games')};
-    if (editing) payload.version = value.version; else payload.currency = form.get('currency');
+    if (editing) Object.assign(payload, {id: value.id, version: value.version});
+    payload.pre_payout = {enabled: form.get('prebet_enabled') === 'yes', url: form.get('prebet_url').trim()};
+    if (form.get('prebet_operator_token')) payload.pre_payout.operator_token = form.get('prebet_operator_token');
+    if (form.get('prebet_secret_key')) payload.pre_payout.secret_key = form.get('prebet_secret_key');
     const result = await api('merchants/' + (editing ? 'update' : 'create'), payload);
-    closeModal(); await loadView(); notice('商户配置已保存。');
+    closeModal(); await loadView(); notice(editing ? '商户配置已保存。' : '商户已创建，商户号：' + result.merchant.id);
     if (result.keys) reveal('商户已创建 · 保存接入密钥', {merchant_id: result.merchant.id, ...result.keys});
   });
 }
@@ -160,13 +183,14 @@ function filterForm(fields, filters) {
 }
 async function transactionPage() {
   const rows = (await api('transactions/list', {...transactionFilters, limit: 25})).transactions;
-  return panel('交易记录', '扣款与派彩金额均为整数最小单位', el('div', {}, filterForm([
+  return panel('交易记录', '扣款与派彩按商户币种显示，1:1 对应平台钱包', el('div', {}, filterForm([
     field('商户', select('merchant_id', merchantOptions(), transactionFilters.merchant_id)), field('玩家', input('player_id', transactionFilters.player_id || '')),
     field('状态', select('status', [['', '全部状态'], ...Object.entries(statusNames)], transactionFilters.status)), field('操作 ID', input('operation_id', transactionFilters.operation_id || '')),
-  ], transactionFilters), txTable(rows), pager(rows, transactionFilters, loadView)));
+  ], transactionFilters), txTable(rows), pager(rows, transactionFilters, loadView)),
+    button('预下注决策', () => run(async () => detail('最近预下注决策', await api('prebet/list', {merchant_id: transactionFilters.merchant_id || '', limit: 25}))), 'secondary'));
 }
 function recover(row) {
-  formModal('恢复待处理交易', [el('p', {class: 'hint'}, row.merchant_id + ' / ' + row.player_id), el('pre', {class: 'details'}, row.id + '\n扣款 ' + amount(row.debit_minor) + ' / 派彩 ' + amount(row.credit_minor)), el('p', {class: 'hint'}, '系统使用原交易 ID 重试钱包请求，不重新生成游戏结果。'), field('恢复原因', input('reason', '', {required: true, minlength: 4, maxlength: 300}))], '确认恢复', async form => {
+  formModal('恢复待处理交易', [el('p', {class: 'hint'}, row.merchant_id + ' / ' + row.player_id), el('pre', {class: 'details'}, row.id + '\n扣款 ' + money(row.debit_minor, row) + ' / 派彩 ' + money(row.credit_minor, row)), el('p', {class: 'hint'}, '系统使用原交易 ID 重试钱包请求，不重新生成游戏结果。'), field('恢复原因', input('reason', '', {required: true, minlength: 4, maxlength: 300}))], '确认恢复', async form => {
     await api('transactions/retry', {merchant_id: row.merchant_id, operation_id: row.id, reason: form.get('reason')}); closeModal(); await loadView(); notice('交易已恢复完成。');
   });
 }

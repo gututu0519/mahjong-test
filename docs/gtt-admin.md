@@ -32,7 +32,9 @@ python -m server.merchant.sandbox admin
 
 ## 商户维护与迁移
 
-可设置唯一商户号、展示名称、启用状态、钱包 origin、币种及游戏授权。钱包地址要求 HTTPS，loopback 联调可用 HTTP；不接受路径、查询、fragment、用户名密码。金额精度固定为 100，币种创建后不可改变。
+创建商户时，商户号由系统自动生成，无需填写；保存后在商户列表及接入凭据弹窗中显示。格式为 `GTT` 加 16 位大写十六进制字符，由后端在写事务中分配并检查唯一性，碰撞时重试，数据库主键同时保证唯一。创建 API 不接受客户端指定 `id`；修改商户时仍使用已有 `id`，商户号不可变。旧商户号、会话及历史交易保持不变。
+
+可设置展示名称、启用状态、钱包 origin、币种及游戏授权。创建商户的币种使用下拉框，目前仅提供美元（USD），默认选中 USD；后端也仅允许新建 USD 商户，API 省略币种时默认 USD。金额精度固定为 100（美分），创建后币种不可改变。旧 DEMO 商户保留原币种、余额及流水，不自动换算或改写。钱包地址要求 HTTPS，loopback 联调可用 HTTP；不接受路径、查询、fragment、用户名密码。
 
 创建商户和轮换密钥后，仅该次响应返回 `api_secret` / `wallet_secret`，关闭弹窗后清除凭据内容。普通查询和审计只显示密钥版本及指纹。轮换同时更换两种密钥，要求填写原因；旧密钥立即失效，合作平台需同步更新。此版没有旧密钥过渡窗口。编辑和轮换必须携带当前 `version`，避免覆盖其他操作者刚保存的设置。
 
@@ -44,7 +46,9 @@ python -m server.merchant.sandbox admin
 
 ## 交易查询与恢复
 
-按商户、玩家、游戏、状态、操作 ID 查询，以 `seq` 降序游标分页；界面每页 25 条，API 上限 100。扣款／派彩显示最小货币单位。详情仅返回标准请求、已提交结果与元信息，不暴露内部随机种子、候选下一步状态或密钥。操作 ID 输入支持 `:debit` / `:credit` 后缀。
+平台预派彩可在商户编辑中配置；交易中心提供“预下注决策”查询。GTT 接入方向、区间、购买免费基数和重试规则见 [GTT 预下注决策](gtt-prebet.md)。
+
+按商户、玩家、游戏、状态、操作 ID 查询，以 `seq` 降序游标分页；界面每页 25 条，API 上限 100。扣款与派彩分别按商户币种显示，两位小数、与平台钱包 1:1 对应，无汇率、兑换比例或额外派彩系数。例如 `1500` 最小单位显示 `15.00 USD`，平台入账同为 `15.00 USD`。概览最近交易、交易详情摘要和恢复确认页使用同一金额格式，采用整数运算避免大额分币误差。旧 DEMO 交易继续标记 DEMO，不改写为 USD。内部流水和钱包协议仍使用整数最小单位，后台 API 补充 `currency` / `minor_unit`；若商户记录缺失则返回 null，页面明确显示原始最小单位，不猜测币种。详情仅返回标准请求、已提交结果与元信息，不暴露内部随机种子、候选下一步状态或密钥。操作 ID 输入支持 `:debit` / `:credit` 后缀。
 
 只允许恢复 `prepared` / `debited`，须填写 4–300 字原因。后台先持久化申请审计，再调用原 `MerchantService.retry`，最后记录成功或失败。复用候选结果、操作 ID 和钱包交易 ID，不重新抽取结果、不手工改余额。已完成／已拒绝的交易返回 `NOT_PENDING`，不能通过恢复变更终态。
 
@@ -60,13 +64,14 @@ python -m server.merchant.sandbox admin
 | GET `me` | 无 | 会话 |
 | POST `overview` | 无 | merchants.read |
 | POST `merchants/list` | 无 | merchants.read |
-| POST `merchants/create` | id, name, enabled, wallet_url, currency, games | merchants.write |
-| POST `merchants/update` | 同上及 version；已有币种不可改变 | merchants.write |
+| POST `merchants/create` | name, enabled, wallet_url, currency, games，可选 pre_payout；返回 merchant.id，不接受指定 id | merchants.write |
+| POST `merchants/update` | id, name, enabled, wallet_url, currency, games, version，可选 pre_payout；已有币种不可改变 | merchants.write |
 | POST `merchants/rotate` | id, version, reason | keys.rotate |
 | POST `games` | 无 | games.read |
 | POST `transactions/list` | 可选 merchant_id, player_id, game_id, status, operation_id, before_seq, limit | transactions.read |
 | POST `transactions/detail` | operation_id，可选 merchant_id | transactions.read |
 | POST `transactions/retry` | merchant_id, operation_id, reason | transactions.retry |
+| POST `prebet/list` | 可选 merchant_id, player_id, limit；只读预下注决策，不返回未来结果 | transactions.read |
 | POST `audit` | 可选 actor, action, target, before_seq, limit；精确匹配 | audit.read |
 | POST `users/list` | 无 | users.manage |
 | POST `users/create` | username, role | users.manage |
@@ -98,3 +103,11 @@ python -m unittest discover -s server/tests -v
 后台专项覆盖登录锁定、会话过期／撤销、密码哈希、Cookie／CSRF／Origin／Host、三类角色越权、一次性密钥、运行中授权更新、密钥轮换、版本冲突、参数验证、停用商户后的幂等恢复、失败审计、交易隔离与分页、末名管理员保护、静态文件访问范围和旧配置迁移。
 
 2026-10-25：后台与商户专项 18 项通过，全项目 205 项通过。浏览器验收与截图记录在 `diagnostics/`。
+
+2026-10-25 USD 币种调整：后台与商户专项 20 项通过，覆盖新建商户仅接受 USD、默认 USD、USD 钱包启动及扣款、旧 DEMO 数据兼容和新环境初始化。浏览器已确认创建表单仅有“美元（USD）”选项，截图 `diagnostics/gtt-merchant-usd.png`。
+
+2026-10-25 商户号自动生成：后台与商户专项 21 项通过，包括后端分配商户号、拒绝指定 ID、碰撞重试及耗尽回滚、并发唯一性、审计目标一致性和生成商户的钱包全流程。浏览器已确认商户号字段不可填写、显示“保存后自动生成”，截图 `diagnostics/gtt-merchant-auto-id.png`。
+
+2026-10-25 商户币种金额显示：后台与商户专项 22 项通过，验证 USD 派彩 `20400` 美分与平台实际入账相等（204.00 USD）、混合 USD / DEMO 查询及详情、概览币种一致，以及缺失商户记录时不猜测币种。另通过 10 项前端金额校验，覆盖 0、1 分、99 分、整元、普通派彩和金额上限附近，均无浮点分币误差。浏览器已验收交易列表和详情摘要，截图 `diagnostics/gtt-transactions-currency.png`。
+
+2026-10-25 按用户明确要求，将本机 `demo-platform` 从 DEMO 一次性迁移为 USD，金额按 1:1 保留：玩家余额为 `167720` 美分，即 `1677.20 USD`。同步更新该商户 1 个平台账户、5 笔钱包交易的请求／回执币种，以及 2 个游戏扣款回执；20 条游戏记录、局面、交易号、密钥和金额保持不变。普通后台编辑的币种不可变约束仍保留，此次不开放通用换币功能。迁移前的三个数据库备份位于私有忽略目录 `services/gtt-gateway/data/before-usd-20261025T150837127229Z/`，审计操作为 `merchant.currency.migrate`。已在副本验证迁移幂等、5 笔钱包交易重试不重复扣款／派彩、20 条已结算游戏操作重试结果一致，并通过真实服务余额查询及签名启动验证。此前关于旧 DEMO 数据不自动转换的规则仍适用于其他未明确迁移的历史商户。

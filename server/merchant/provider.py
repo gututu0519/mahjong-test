@@ -6,10 +6,11 @@ import time
 import uuid
 from urllib.parse import urlencode
 
-from server.core.contracts import Registry, ServiceError
+from server.core.contracts import Outcome, Registry, ServiceError
 from server.games.buffalo_win.engine import BuffaloWin
 from .common import Database, encode, identifier, limit
 from .wallet import WalletClient
+from .prebet import RoundPlanner
 
 
 class MerchantService(Database):
@@ -36,6 +37,7 @@ class MerchantService(Database):
                 CREATE UNIQUE INDEX IF NOT EXISTS one_pending_game_operation
                     ON game_operations(merchant_id,player_id,game_id) WHERE status IN ('prepared','debited');
             ''')
+        self.prebet = RoundPlanner(self)
 
     def merchant(self, merchant_id, game_id=None, allow_disabled=False):
         merchant = self.merchants.get(merchant_id)
@@ -61,7 +63,15 @@ class MerchantService(Database):
     def launch(self, merchant_id, payload):
         player_id = identifier(payload.get('player_id'), 'player_id')
         game_id = payload.get('game_id', 'buffalo-win')
-        self.merchant(merchant_id, game_id)
+        merchant = self.merchant(merchant_id, game_id)
+        if 'prebet_type' in payload and 'external_username' not in payload:
+            raise ServiceError('PREBET_PLAYER_REQUIRED', '设置 prebet_type 时请同时提供 external_username。')
+        if 'external_username' in payload:
+            self.prebet.bind_player(merchant_id, player_id, payload['external_username'], payload.get('prebet_type', 'NORMAL'))
+        if merchant.get('pre_payout', {}).get('enabled'):
+            with self.connection() as db:
+                if not db.execute('SELECT 1 FROM merchant_players WHERE merchant_id=? AND player_id=?', (merchant_id, player_id)).fetchone():
+                    raise ServiceError('PREBET_PLAYER_REQUIRED', '启动请求须提供平台 external_username，不能用平台用户 ID 代替。')
         language = payload.get('language', 'en')
         if language not in ('zh', 'en'):
             raise ServiceError('LANGUAGE_INVALID', 'Supported languages: zh, en.')
@@ -128,6 +138,7 @@ class MerchantService(Database):
         game = self.registry.get(game_id)
         bet = game.normalize_bet(bet_payload)
         canonical = encode({'previous_sid': previous_sid, 'bet': bet})
+        operation_id = None
         with self.connection(True) as db:
             existing = db.execute('SELECT * FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND request_key=?',
                                   (merchant_id, player_id, game_id, request_key)).fetchone()
@@ -143,8 +154,29 @@ class MerchantService(Database):
                 state = self._state(db, merchant_id, player_id, game_id)
                 if state['sid'] != previous_sid:
                     raise ServiceError('STALE_STATE', 'Refresh game state before continuing.', 409)
-                operation_id = uuid.uuid4().hex
-                outcome = game.step(state, bet, secrets.token_hex(32), operation_id)
+        if operation_id is not None:
+            return self.retry(merchant_id, operation_id)
+        # Reserve/persist the platform decision timestamp before contacting the platform. No
+        # game-operation debit can occur until the full valid plan is committed.
+        planned = self.prebet.candidate(merchant_id, player_id, game, state, bet, canonical)
+        with self.connection(True) as db:
+            existing = db.execute('SELECT * FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND request_key=?',
+                                  (merchant_id, player_id, game_id, request_key)).fetchone()
+            if existing:
+                if existing['request_json'] != canonical:
+                    raise ServiceError('IDEMPOTENCY_CONFLICT', 'This key was used with different parameters.', 409)
+                operation_id = existing['id']
+            else:
+                current = self._state(db, merchant_id, player_id, game_id)
+                if current['sid'] != previous_sid:
+                    raise ServiceError('STALE_STATE', 'Refresh game state before continuing.', 409)
+                if db.execute("SELECT 1 FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND status IN ('prepared','debited')",
+                              (merchant_id, player_id, game_id)).fetchone():
+                    raise ServiceError('OPERATION_PENDING', 'Recover the existing wallet operation.', 409)
+                operation_id = planned['state']['sid'] if planned else uuid.uuid4().hex
+                outcome = None if planned else game.step(current, bet, secrets.token_hex(32), operation_id)
+                if planned:
+                    outcome = Outcome(planned['state'], planned['event'], planned['debit_minor'], planned['credit_minor'])
                 if (type(outcome.debit_minor) is not int or type(outcome.credit_minor) is not int
                         or min(outcome.debit_minor, outcome.credit_minor) < 0):
                     raise RuntimeError('Game returned invalid wallet amounts')
@@ -183,6 +215,7 @@ class MerchantService(Database):
                     with self.connection(True) as db:
                         db.execute("UPDATE game_operations SET status='rejected',error_code=? WHERE id=? AND status='prepared'",
                                    (error.code, operation_id))
+                        db.execute('UPDATE prebet_rounds SET error_code=? WHERE id=?', (error.code, event['round_id']))
                     raise
                 raise ServiceError('WALLET_UNCERTAIN', 'Retry operation ' + operation_id + '; debit outcome is unknown.', 503) from None
             with self.connection(True) as db:
