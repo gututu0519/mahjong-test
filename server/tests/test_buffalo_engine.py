@@ -209,7 +209,7 @@ class BuffaloRulesTests(unittest.TestCase):
 
     def test_invalid_bets_and_changed_ruleset(self):
         game=BuffaloWin()
-        for payload in ({'cs':'nan'},{'cs':'0.031'},{'coin_minor':True},{'ml':True},{'cs':0.2},{'level':11}):
+        for payload in ({'cs':'nan'},{'cs':'0.031'},{'coin_minor':True},{'ml':True},{'cs':0.04},{'level':11}):
             with self.assertRaises(ServiceError):game.normalize_bet(payload)
         state=game.initial_state('x');state.update(phase='paid_extension',ruleset_id='old')
         with self.assertRaises(ServiceError) as error:game.step(state,state['bet'],'x','1')

@@ -1,9 +1,12 @@
 {
   "coin_sizes_minor": [
+    2,
     3,
     10,
+    20,
     30,
-    90
+    90,
+    200
   ],
   "bet_levels": [
     1,
@@ -48,5 +51,17 @@
     "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
     "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
   },
-  "free_extra_spins": 2
+  "free_extra_spins": 2,
+  "feature_buy": {
+    "t": 0.5,
+    "bms": null,
+    "is": true,
+    "bm": 75
+  },
+  "feature_buy_game_config": {
+    "t": 40.0,
+    "bms": null,
+    "is": true,
+    "bm": 75
+  }
 }

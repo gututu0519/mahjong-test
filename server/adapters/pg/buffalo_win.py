@@ -34,7 +34,7 @@ def transaction(e, wallet, thresholds):
         new_blocks = e.get('new_blocks') or {}
         winning_new_blocks = {k: cells for k, cells in blocks.items() if k in new_blocks}
         rs = {'ecrl': e['board'][-4:], 'oecrl': e.get('original_column') or e['board'][-4:], 'pr': None,
-              'sr': int(next(iter(e['previous_positions']), '3')), 'ewp': new_wins or None,
+              'sr': int(next(iter(sorted(e['previous_positions'])), '3')), 'ewp': new_wins or None,
               'ebwp': winning_new_blocks or None,
               'ebwsc': {k: e['block_counts'][k] for k in winning_new_blocks} or None,
               'nes': new_blocks or None}
@@ -49,7 +49,8 @@ def transaction(e, wallet, thresholds):
             gwt = index
     grid = '#'.join(';'.join(str(e['board'][col * 4 + row]) for col in range(3)) for row in range(4))
     hash_text = f"{e['extension_index']}:{grid}"
-    for symbol, cells in wp.items():
+    for symbol in sorted(wp):
+        cells = wp[symbol]
         hash_text += '#R#' + symbol + '#' + ''.join(f'{p // 4}{p % 4}' for p in cells)
     hash_text += f"#MV#{amount(e['debit_minor'])}#MT#1#MG#{amount(e['win_minor'])}#"
     return {
@@ -66,13 +67,14 @@ def transaction(e, wallet, thresholds):
         'twbm': amount(e['base_minor']) if settled else 0.0,
         'acw': amount(e['accumulated_minor']), 'ctw': amount(e['display_delta_minor']),
         'tw': amount(e['win_minor']), 'aw': amount(e['round_award_minor']),
-        'tb': amount(e['debit_minor']), 'tbb': amount(e['base_bet_minor']),
+        'tb': amount(e['debit_minor']), 'tbb': amount(e['debit_minor']),
         'np': amount(e['win_minor'] - e['debit_minor']), 'gwt': gwt,
         'cwc': int(e['win_minor'] > 0), 'pcwc': 0,
         'fstc': {str(PHASES[k]): v for k, v in e['phase_counts'].items()} or None,
         'rwsp': None, 'hashr': hash_text, 'fb': None, 'pmt': None, 'ab': None,
         'wid': 0, 'wt': 'C', 'wk': '0_C', 'wbn': None, 'wfg': None, 'ocr': None, 'mr': None,
-        'ge': [2 if free else (3 if e['base_bet_minor'] and e['win_minor'] >= e['base_bet_minor'] * 3 else 1), 11],
+        'ge': [3 if e['extend'] and wp else (2 if free and free['remaining'] > 0 else
+               (3 if e['base_bet_minor'] and e['win_minor'] >= e['base_bet_minor'] * 3 else 1)), 11],
         'blb': amount(wallet['before_minor']), 'blab': amount(wallet['before_minor'] - wallet['debit_minor']),
         'bl': amount(wallet['after_minor']),
     }
@@ -102,13 +104,16 @@ class PGAdapter:
         request = {k: v[0] for k, v in form.items()}
         if request.get('wk') != '0_C' or request.get('btt') != '2' or request.get('pf') != '1':
             raise ServiceError('SPIN_INVALID', 'Only the local virtual wallet is supported.')
-        if any(request.get(k, '0') not in ('', '0', 'false') for k in ('fb', 'ab')):
-            raise ServiceError('FEATURE_UNAVAILABLE', 'Feature buys are not implemented.')
+        feature = request.get('fb', '0')
+        if feature not in ('', '0', 'false', '2'):
+            raise ServiceError('BET_INVALID', 'Unsupported feature-buy option.')
+        if request.get('ab', '0') not in ('', '0', 'false'):
+            raise ServiceError('BET_INVALID', 'Ante bet is not supported by this game.')
         try:
             level = int(request.get('ml', ''))
         except ValueError:
             raise ServiceError('BET_INVALID', 'Invalid level.') from None
-        bet = self.game.normalize_bet({'cs': request.get('cs'), 'ml': level})
+        bet = self.game.normalize_bet({'cs': request.get('cs'), 'ml': level, 'buy_free': feature == '2'})
         previous = request.get('id')
         # Identity excludes rotating trace IDs and transport authentication.
         identity = json.dumps({'previous': previous, 'bet': bet}, sort_keys=True)
@@ -125,7 +130,8 @@ class PGAdapter:
         tx = transaction(event, wallet, self.game.config['win_thresholds'])
         c = self.game.config
         return {'dt': {'cs': [v / 100 for v in c['coin_sizes_minor']], 'ml': c['bet_levels'],
-                       'mxl': 10, 'maxwm': None, 'wt': c['win_thresholds'], 'fb': None, 'gcs': {},
+                       'mxl': 10, 'maxwm': None, 'wt': c['win_thresholds'],
+                       'fb': dict(c['feature_buy']), 'gcs': {'bf': dict(c['feature_buy_game_config'])},
                        'bl': balance / 100, 'inwe': False, 'iuwe': False, 'ls': {'si': tx}, 'cc': 'PGC'},
                 'err': None}
 

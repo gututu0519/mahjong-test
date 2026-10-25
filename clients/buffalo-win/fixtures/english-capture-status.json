@@ -11,11 +11,14 @@
     "Generated service accepts English launch URLs",
     "English game rules and common rules text are included in the captured payout localization files; all 34 imported English assets return HTTP 200 with original SHA-256",
     "English lobby entry opened for user testing on explicit request; gameplay and feature verification remain pending",
-    "User confirmed local interaction works; English free_spin_game atlas captured and imported; latest capture game asset paths checked"
+    "User confirmed local interaction works; English free_spin_game atlas captured and imported; latest capture game asset paths checked",
+    "2026-10-25: Local original English feature-buy popup, 75x debit, complete 10-free-spin flow, expanding reels, multiplier carry, final award and return to base verified in browser with engine 1.2.0."
   ],
   "pending": [
-    "English free-spin feature assets and complete feature flow not verified"
+    "Original free-spin retrigger response and purchase boundary/reload captures remain unverified."
   ],
-  "next_step": "Run python -m tools.pg_capture.buffalo_win.import_capture 8a704656ec204d4899533712d6a8d7b1, inspect new captures and verify original local English UI. Do not stop external capture.",
-  "last_checked_at": "2026-10-14T15:52:30Z"
+  "next_step": "Capture original retrigger, another purchase bet level and mid-purchase reload; keep unknown animation hints documented.",
+  "last_checked_at": "2026-10-14T15:52:30Z",
+  "feature_buy_capture": "1979cf39544d4c4c8b86d6e3ac0e036f",
+  "local_feature_flow_verified_on": "2026-10-25"
 }

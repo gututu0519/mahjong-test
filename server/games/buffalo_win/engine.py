@@ -44,14 +44,16 @@ def evaluate(board, expanded, block_counts, coin_minor, level):
 class BuffaloWin:
     game_id = 'buffalo-win'
     title = '美洲野牛'
-    version = '1.1.0'
+    version = '1.2.0'
 
     def __init__(self, config_path=None):
         self.config = json.loads(Path(config_path or Path(__file__).with_name('config.json')).read_text(encoding='utf-8'))
         c = self.config
-        if (c['coin_sizes_minor'] != [3, 10, 30, 90] or c['bet_levels'] != list(range(1, 11))
+        if (c['coin_sizes_minor'] != [2, 3, 10, 20, 30, 90, 200] or c['bet_levels'] != list(range(1, 11))
                 or c['base_bet_factor'] != 10 or c['free_trigger'] != 3 or c['free_spins'] != 10
-                or c['free_extra_spins'] != 2 or c['free_retrigger'] is not True):
+                or c['free_extra_spins'] != 2 or c['free_retrigger'] is not True
+                or c['feature_buy'] != {'t': 0.5, 'bms': None, 'is': True, 'bm': 75}
+                or c['feature_buy_game_config'] != {'t': 40.0, 'bms': None, 'is': True, 'bm': 75}):
             raise ValueError('Unsupported documented rule constants')
         if (set(c['symbol_weights']) != set(map(str, range(13)))
                 or any(type(v) is not int or not 0 <= v <= 10000 for v in c['symbol_weights'].values())
@@ -62,10 +64,21 @@ class BuffaloWin:
             raise ValueError('Invalid local generation configuration')
         digest = hashlib.sha256(json.dumps(c, sort_keys=True).encode()).hexdigest()[:16]
         self.ruleset_id = f'{self.version}:{digest}'
+        # The 1.1 rules for natural rounds are unchanged. Recognize that exact
+        # configuration so a pre-upgrade feature can finish without losing progress.
+        legacy = copy.deepcopy(c)
+        legacy['coin_sizes_minor'] = [3, 10, 30, 90]
+        for key in ('feature_buy', 'feature_buy_game_config'):
+            legacy.pop(key)
+        self.compatible_ruleset_id = '1.1.0:' + hashlib.sha256(
+            json.dumps(legacy, sort_keys=True).encode()).hexdigest()[:16]
 
     def normalize_bet(self, payload):
-        if not isinstance(payload, dict) or set(payload) - {'coin_minor', 'level', 'cs', 'ml'}:
+        if not isinstance(payload, dict) or set(payload) - {'coin_minor', 'level', 'cs', 'ml', 'buy_free'}:
             raise ServiceError('BET_INVALID', 'Unsupported bet fields.')
+        buy = payload.get('buy_free', False)
+        if type(buy) is not bool:
+            raise ServiceError('BET_INVALID', 'buy_free must be a boolean.')
         try:
             coin = payload.get('coin_minor')
             if coin is None:
@@ -79,7 +92,27 @@ class BuffaloWin:
                 raise ValueError()
         except (ValueError, InvalidOperation, TypeError, OverflowError):
             raise ServiceError('BET_INVALID', 'Unsupported coin size or bet level.') from None
-        return {'coin_minor': coin, 'level': level}
+        return {'coin_minor': coin, 'level': level, **({'buy_free': True} if buy else {})}
+
+    def _buy_board(self, rng):
+        """Generate a purchase trigger, rather than replaying the captured board.
+
+        Local distribution: two scatters initially (one on the last reel), then
+        a third on the first extension. The ordinary extension rules still apply.
+        """
+        board = [symbol for col in range(3) for symbol in self._column(rng, first=col == 0)]
+        board = [2 if symbol == 1 else symbol for symbol in board]
+        for position in (rng.randrange(8), rng.randrange(8, 12)):
+            board[position] = 1
+        special = rng.randint(3, 12)
+        expanded, counts = self._new_blocks(board, rng)
+        return board, special, expanded, counts
+
+    def _buy_column(self, rng, needs_scatter):
+        column = [2 if symbol == 1 else symbol for symbol in self._column(rng)]
+        if needs_scatter:
+            column[rng.randrange(4)] = 1
+        return column
 
     def _column(self, rng, first=False):
         result = []
@@ -133,15 +166,20 @@ class BuffaloWin:
         state = copy.deepcopy(state)
         phase = state['phase']
         start = phase == 'ready'
+        buy = bet.get('buy_free', False)
+        if buy and not start:
+            raise ServiceError('FEATURE_LOCKED', 'Finish this round before buying free spins.', 409)
+        bet = {key: bet[key] for key in ('coin_minor', 'level')}
         free_mode = phase in ('free_start', 'free_extension')
         extension = phase in ('paid_extension', 'free_extension')
-        if not start and state['ruleset_id'] != self.ruleset_id:
+        if not start and state['ruleset_id'] not in (self.ruleset_id, self.compatible_ruleset_id):
             raise ServiceError('RULESET_CHANGED', 'Finish this round with its original ruleset.', 409)
         if not start and bet != state['bet']:
             raise ServiceError('BET_LOCKED', 'Finish this round before changing your bet.', 409)
         if start:
             state.update(round_id=sid, bet=bet, ruleset_id=self.ruleset_id, multiplier=1,
-                         free=None, counts={}, round_award_minor=0, base_minor=0)
+                         free=None, counts={}, round_award_minor=0, base_minor=0,
+                         bought_feature=buy)
         rng = random.Random(seed)
         prior_base = state['base_minor']
         previous_board = state['board'][:]
@@ -151,7 +189,8 @@ class BuffaloWin:
         if free_mode:
             state['free']['added'] = 0
         if extension:
-            column = self._column(rng)
+            column = (self._buy_column(rng, previous_board.count(1) < self.config['free_trigger'])
+                      if not free_mode and state.get('bought_feature') else self._column(rng))
             original_column = column[:]
             new_blocks, new_counts = self._new_blocks(column, rng, len(previous_board),
                                                       max(map(int, state['expanded']), default=0) + 1)
@@ -164,7 +203,8 @@ class BuffaloWin:
             if free_mode:
                 state['free']['rc'] += 1
         else:
-            original, special, state['expanded'], state['block_counts'] = self._start_board(rng, free_mode)
+            original, special, state['expanded'], state['block_counts'] = (
+                self._buy_board(rng) if buy else self._start_board(rng, free_mode))
             if not free_mode:
                 state['special'] = special
             state['board'] = original[:]
@@ -183,6 +223,8 @@ class BuffaloWin:
         multiplier = state['multiplier']
         base = result['base_minor']
         debit = bet['coin_minor'] * bet['level'] * 10 if start else 0
+        if buy:
+            debit *= self.config['feature_buy']['bm']
         credit = 0 if result['extend'] else base * multiplier
         state['round_award_minor'] += credit
         if free_mode:
@@ -210,6 +252,7 @@ class BuffaloWin:
         state['base_minor'] = accumulated
         event = {'sid': sid, 'round_id': state['round_id'], 'phase': phase, 'next_phase': next_phase,
                  'bet': bet, 'base_bet_minor': bet['coin_minor'] * bet['level'] * 10,
+                 'bought_feature': state.get('bought_feature', False),
                  'debit_minor': debit, 'win_minor': credit, 'round_award_minor': state['round_award_minor'],
                  'board': board[:], 'original': original, 'expanded': copy.deepcopy(state['expanded']),
                  'block_counts': dict(state['block_counts']), 'special': state['special'],

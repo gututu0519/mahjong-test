@@ -2266,5 +2266,77 @@
     "bytes": 80905,
     "session": "8a704656ec204d4899533712d6a8d7b1",
     "requestId": 809
+  },
+  {
+    "path": "assets/resources/import/77/779b319b-1800-44da-a2e0-ad902a5dd834.94286.json",
+    "source": "https://s5.mmga1.com/108/assets/resources/import/77/779b319b-1800-44da-a2e0-ad902a5dd834.94286.json",
+    "sha256": "dc373f2c5b30be3bd245d6dd21f10560f4651456975ebaf76bf891698693f510",
+    "bytes": 127,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 533
+  },
+  {
+    "path": "assets/resources/native/77/779b319b-1800-44da-a2e0-ad902a5dd834.066dd.mp3",
+    "source": "https://s5.mmga1.com/108/assets/resources/native/77/779b319b-1800-44da-a2e0-ad902a5dd834.066dd.mp3",
+    "sha256": "e49aeabf79e452a6944073a0b3b7cafa8ab3a7c4cd54d4affc88b8eba25a7e20",
+    "bytes": 96813,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 539
+  },
+  {
+    "path": "assets/resources/import/01/0121d2cfb.e6745.json",
+    "source": "https://s5.mmga1.com/108/assets/resources/import/01/0121d2cfb.e6745.json",
+    "sha256": "94be9b768b3fee32e9966275a23595ec47b7af7e98350ec35febf06272da0427",
+    "bytes": 1518,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 570
+  },
+  {
+    "path": "assets/resources/import/07/07ea622d2.c9258.json",
+    "source": "https://s5.mmga1.com/108/assets/resources/import/07/07ea622d2.c9258.json",
+    "sha256": "1aa0dd85d9991c58497138036fcafe9c7d1dd6dc556a9e06da4e515f05085501",
+    "bytes": 7925,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 571
+  },
+  {
+    "path": "assets/resources/native/19/19d4445b-eabb-401e-aebe-d9fd4f04aa4a.154d0.png",
+    "source": "https://s5.mmga1.com/108/assets/resources/native/19/19d4445b-eabb-401e-aebe-d9fd4f04aa4a.154d0.png",
+    "sha256": "62a4a3f39b292f0e5312e47f25a897f4cbedcc64b481bd560b60c1963f770c0b",
+    "bytes": 41601,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 574
+  },
+  {
+    "path": "assets/resources/native/0a/0a7b98e4-516b-460f-a51d-a0896d8b3425.99ab7.png",
+    "source": "https://s5.mmga1.com/108/assets/resources/native/0a/0a7b98e4-516b-460f-a51d-a0896d8b3425.99ab7.png",
+    "sha256": "5289770534bda78f263203bd84e577b8ffc7a82f1f380389afcb5fa6efad71e9",
+    "bytes": 77772,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 577
+  },
+  {
+    "path": "assets/resources/native/8f/8f4d9229-c2ac-48bf-9a2c-8666117bbf6a.811db.jpg",
+    "source": "https://s5.mmga1.com/108/assets/resources/native/8f/8f4d9229-c2ac-48bf-9a2c-8666117bbf6a.811db.jpg",
+    "sha256": "cac3008e827714be8e5859cba93f67cb478995b4e1c7452799e75a220f82782c",
+    "bytes": 11736,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "requestId": 594
+  },
+  {
+    "path": "assets/resources/import/06/06db6786c.5bb7b.json",
+    "source": "https://s5.mmga1.com/108/assets/resources/import/06/06db6786c.5bb7b.json",
+    "sha256": "1a0483d67a6259d781b68969f60554a35a2f116215d5db290e8d8cb1209836af",
+    "bytes": 1539,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "evidence": "Original Chinese feature-buy dependency, path/version from current client config and local request; public CDN request with observed User-Agent and Referer, without credentials."
+  },
+  {
+    "path": "assets/resources/native/be/be90a46b-95ec-49d5-a3ff-966cdc067b45.fba48.png",
+    "source": "https://s5.mmga1.com/108/assets/resources/native/be/be90a46b-95ec-49d5-a3ff-966cdc067b45.fba48.png",
+    "sha256": "b3021f75e5e85fc61c1f7fac84e2d232f7da520a170bf4b1752863f49775a035",
+    "bytes": 39372,
+    "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+    "evidence": "Original Chinese feature-buy atlas texture, referenced by resources config and imported 06db6786c.5bb7b.json; public CDN request with observed User-Agent and Referer, without credentials."
   }
 ]

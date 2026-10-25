@@ -93,7 +93,7 @@ GAMES = {
         'factory': 'server.games.buffalo_win:BuffaloWin',
         'category': 'slots',
         'interaction': 'request_steps',
-        'features': ['expanding_reels', 'expanded_symbols', 'free_spins', 'persistent_free_multiplier'],
+        'features': ['expanding_reels', 'expanded_symbols', 'free_spins', 'persistent_free_multiplier', 'buy_bonus'],
     },
     'mahjong-ways2': {
         'factory': 'server.games.mahjong_ways2:MahjongWays2',

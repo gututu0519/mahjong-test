@@ -31,8 +31,8 @@
     '界面预览 · 旋转暂未接入': 'UI preview · Spins not connected',
     '麻将胡了 2 可试玩；美洲野牛提供中文界面预览，旋转暂未接入。其余主题为概念预告。': 'Mahjong Ways 2 is playable. Buffalo Win has a Chinese UI preview; spins are not connected. Other themes are concepts.',
 
-    'SPINLAB · Slot 游戏试玩': 'SPINLAB · Free Slot Demos',
-    'SPINLAB 首页': 'SPINLAB home',
+    'GTT · Slot 游戏试玩': 'GTT · Free Slot Demos',
+    'GTT 首页': 'GTT home',
     '主导航': 'Main navigation',
     '界面语言': 'Interface language',
     '游戏大厅': 'Game lobby',

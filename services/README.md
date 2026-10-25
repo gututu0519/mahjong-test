@@ -1,5 +1,9 @@
 # 独立服务目录
 
+GTT 管理后台：`gtt-admin`（8112），启动 `python -m server.merchant.sandbox admin`，首次先执行 `admin-init`。与商户网关共用数据库商户配置，提供登录、权限、授权、密钥及交易恢复，详见 [后台说明](gtt-admin/README.md)。
+
+GTT 商户接入新增两个独立服务：`gtt-gateway`（8110，商户 API、Buffalo 原客户端、游戏操作记录）和 `gtt-mock-platform`（8111，模拟合作平台钱包及联调页面）。它们使用 `python -m server.merchant.sandbox gateway/platform` 独立入口，首次先执行 `python -m server.merchant.sandbox init`；配置和数据归属见 [GTT 商户接口](../docs/gtt-merchant-wallet-v1.md)。现有游戏试玩入口继续保留。
+
 Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `python -m server.run --service-dir services/captains-bounty`，见 [接入记录](captains-bounty/README.md)。
 
 Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `python -m server.run --service-dir services/fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。

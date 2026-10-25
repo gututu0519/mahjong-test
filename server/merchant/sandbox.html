@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GTT · 平台钱包联调</title>
+<style>
+:root{color-scheme:dark;font:15px/1.6 system-ui;background:#111018;color:#f5f3fc}body{max-width:1000px;margin:48px auto;padding:0 24px}h1{font-size:30px}h1 span{color:#b58bff}section{padding:24px;background:#1c1926;border:1px solid #383043;border-radius:12px;margin:20px 0}button,select,a{font:inherit}button{background:#9c6cf1;color:#fff;border:0;border-radius:6px;padding:10px 18px;cursor:pointer}select{padding:10px;background:#292332;color:white;border:1px solid #635473;border-radius:6px}a{color:#ceacff}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:10px 6px;border-bottom:1px solid #383043;overflow-wrap:anywhere}small,p{color:#b7adca}#balance{font-size:32px;color:#d4bbff}#error{color:#ffbba8}#open{margin-left:12px}code{font-size:12px}button:disabled{opacity:.5}
+</style></head><body>
+<h1><span>GTT</span> 平台钱包联调</h1><p>模拟合作平台持有玩家余额，GTT 通过签名接口处理游戏交易。</p>
+<section><div id="account">正在读取平台账户…</div><div id="balance">—</div><small>余额来源：模拟平台独立数据库 · 币种 DEMO · 100 最小单位 = 1 积分</small></section>
+<section><h2>Buffalo Win 接入验证</h2><p>启动后打开 GTT 游戏页面，进行普通旋转或购买免费；返回这里刷新余额和交易。</p><select id="language" aria-label="游戏语言"><option value="en">English</option><option value="zh">中文</option></select> <button id="launch">创建游戏会话</button><a id="open" hidden target="_blank" rel="noopener">打开 Buffalo Win ↗</a><p id="error" role="status"></p></section>
+<section><h2>平台钱包交易 <button id="refresh">刷新</button></h2><table><thead><tr><th>交易号</th><th>类型</th><th>状态</th><th>金额</th><th>余额</th></tr></thead><tbody id="transactions"></tbody></table></section>
+<script>
+async function api(path,payload){const response=await fetch(path,payload===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const result=await response.json();if(!response.ok)throw Error(result.error?.message||'请求失败');return result.data;}
+async function refresh(){try{const data=await api('/sandbox/status');document.getElementById('account').textContent=`商户 ${data.merchant_id} / 玩家 ${data.player_id}`;document.getElementById('balance').textContent=(data.balance_minor/100).toFixed(2)+' '+data.currency;const table=document.getElementById('transactions');table.replaceChildren();for(const tx of data.transactions){const tr=document.createElement('tr');for(const value of [tx.transaction_id,tx.kind,tx.status,tx.data?(tx.data.applied_minor/100).toFixed(2):'—',tx.data?(tx.data.balance_minor/100).toFixed(2):'—']){const td=document.createElement('td');td.textContent=value;tr.append(td);}table.append(tr);}document.getElementById('error').textContent='';}catch(error){document.getElementById('error').textContent=error.message;}}
+document.getElementById('refresh').onclick=refresh;
+document.getElementById('launch').onclick=async function(){this.disabled=true;try{const data=await api('/sandbox/launch',{language:document.getElementById('language').value});const link=document.getElementById('open');link.href=data.launch_url;link.hidden=false;await refresh();}catch(error){document.getElementById('error').textContent=error.message;}finally{this.disabled=false;}};
+refresh();
+</script></body></html>

@@ -1,4 +1,8 @@
-# Mahjong Test
+# GTT
+
+管理后台已提供首版：<http://127.0.0.1:8112/>。首次执行 `python -m server.merchant.sandbox admin-init` 生成私有登录凭据，再运行 `python -m server.merchant.sandbox admin`。支持三类角色、商户配置、游戏授权、密钥轮换、交易查询与恢复、操作审计，配置修改即时生效。详见 [管理后台说明](docs/gtt-admin.md)。
+
+GTT 商户接入与模拟平台已提供首版：签名启动 Buffalo Win，平台持有玩家余额，支持购买免费、扣款／派奖去重和故障恢复。首次执行 `python -m server.merchant.sandbox init`，再分别运行 `python -m server.merchant.sandbox platform` 和 `python -m server.merchant.sandbox gateway`，打开 <http://127.0.0.1:8111/> 联调。完整约定见 [商户与钱包接口 v1](docs/gtt-merchant-wallet-v1.md)。
 
 Captain's Bounty（PG Soft，54）英文客户端和独立 8102 服务已接入，本轮按 447 条旋转、2 轮完整免费数据收尾。启动 `python -m server.run --service-dir services/captains-bounty`；实现及验收范围见 [规则记录](docs/captains-bounty-rules.md)。
 
@@ -46,7 +50,7 @@ python -m server.app
 
 ## 演示站
 
-同一个麻将服务启动后，访问 <http://localhost:8080/demo/> 打开 SPINLAB Slot 试玩大厅。
+同一个麻将服务启动后，访问 <http://localhost:8080/demo/> 打开 GTT Slot 试玩大厅。
 大厅提供游戏搜索、状态及厂商筛选，数量按游戏卡片自动统计。当前接入进度和未完成的验收项见 [阶段记录](DEVELOPMENT_HANDOFF.md)。
 前端位于 `demo/`，无需安装依赖或构建。点击「试玩」请求
 `POST /api/v1/games/mahjong-ways2/launch`（JSON `{"language":"zh"}` 或 `{"language":"en"}`，省略默认中文），后端创建独立会话，

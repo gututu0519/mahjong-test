@@ -39,6 +39,7 @@ class Handler(AssetHandler):
             data = copy.deepcopy(self.server.auth)
             data.update(tk=token, pid=wallet['player_id'], pcd=wallet['player_id'], nkn='Local demo',
                         ioph='local-demo', oj={'jid': 1}, bl=wallet['balance_minor'] / 100)
+            data['uiogc']['bf'] = 1
             return self._json(200, {'dt': data, 'err': None})
         if path == '/game-api/buffalo-win/v2/GameInfo/Get':
             return self._json(200, self.server.pg.game_info(token))
