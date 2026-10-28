@@ -42,11 +42,9 @@ def initialize(path):
         raise ValueError('Configuration already exists; preserving merchants and keys: ' + str(path))
     config = {'gateway_origin': 'http://127.0.0.1:8110', 'sandbox_merchant': 'demo-platform',
               'sandbox_player': 'demo-player', 'sandbox_external_username': 'demo-platform-player', 'sandbox_balance_minor': 200000,
-              'merchants': {'demo-platform': {'enabled': True, 'api_secret': secrets.token_hex(32),
-                  'wallet_secret': secrets.token_hex(32), 'wallet_url': 'http://127.0.0.1:8111',
+              'merchants': {'demo-platform': {'enabled': True, 'merchant_secret': secrets.token_hex(32), 'wallet_url': 'http://127.0.0.1:8111',
                   'currency': 'USD', 'minor_unit': 100, 'games': ['buffalo-win'],
-                  'pre_payout': {'enabled': True, 'url': 'http://127.0.0.1:8111/api/v1/callbacks/gtt/preBetDecision',
-                                 'operator_token': secrets.token_hex(16), 'secret_key': secrets.token_hex(32)}}}}
+                  'pre_payout': {'enabled': True, 'url': 'http://127.0.0.1:8111/api/v1/callbacks/gtt/preBetDecision'}}}}
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open('x', encoding='utf-8', newline='\n') as stream:
         json.dump(config, stream, ensure_ascii=False, indent=2)

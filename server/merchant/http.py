@@ -1,6 +1,5 @@
 import json
 import logging
-import hmac
 import re
 from functools import partial
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -18,7 +17,7 @@ from .wallet import NoRedirect
 
 def post_gateway(config, path, payload):
     merchant_id = config['sandbox_merchant']
-    secret = config['merchants'][merchant_id]['api_secret']
+    secret = config['merchants'][merchant_id]['merchant_secret']
     body = encode(payload).encode()
     request = Request(config['gateway_origin'] + path, data=body,
                       headers=signed_headers(merchant_id, secret, path, body), method='POST')
@@ -86,7 +85,7 @@ class GatewayHandler(JSONRoutes, BuffaloHandler):
         path = urlsplit(self.path).path
         body = self.read_body()
         service = self.server.service
-        merchant_id, _ = service.authenticate(self.headers, path, body, service.merchants, 'api_secret')
+        merchant_id, _ = service.authenticate(self.headers, path, body, service.merchants)
         payload = read_object(body)
         if path == '/gtt/v1/games/list':
             self.json_response(200, service.catalog(merchant_id))
@@ -159,19 +158,8 @@ class MockHandler(JSONRoutes, BaseHTTPRequestHandler):
         config = self.server.config
         if path == '/api/v1/callbacks/gtt/preBetDecision':
             payload = read_object(body)
-            merchant_id = None
-            for key, merchant in config['merchants'].items():
-                settings = merchant.get('pre_payout', {})
-                token, secret = payload.get('operator_token'), payload.get('secret_key')
-                if (isinstance(token, str) and isinstance(secret, str) and settings.get('operator_token')
-                        and hmac.compare_digest(token.encode(), settings['operator_token'].encode())
-                        and hmac.compare_digest(secret.encode(), settings['secret_key'].encode())):
-                    merchant_id = key
-                    break
-            if merchant_id is None:
-                result = {'code': 1204, 'data': None, 'msg': 'Invalid operator credentials'}
-            else:
-                result = self.server.wallet.prebet_decision(merchant_id, payload)
+            merchant_id, _ = self.server.wallet.authenticate(self.headers, path, body, config['merchants'], allow_disabled=True)
+            result = self.server.wallet.prebet_decision(merchant_id, payload)
             raw = encode(result).encode()
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -194,7 +182,7 @@ class MockHandler(JSONRoutes, BaseHTTPRequestHandler):
             raise ServiceError('NOT_FOUND', 'Unknown endpoint.', 404)
         # Disabling a merchant stops new GTT play. Previously accepted wallet
         # operations can still be settled by an authorized administrator.
-        merchant_id, _ = self.server.wallet.authenticate(self.headers, path, body, config['merchants'], 'wallet_secret', allow_disabled=True)
+        merchant_id, _ = self.server.wallet.authenticate(self.headers, path, body, config['merchants'], allow_disabled=True)
         self.json_response(200, self.server.wallet.call(merchant_id, path.removeprefix('/wallet/v1/'), read_object(body)))
 
 

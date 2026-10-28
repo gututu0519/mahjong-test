@@ -75,7 +75,7 @@ class Database:
         finally:
             db.close()
 
-    def authenticate(self, headers, path, body, merchants, secret_field, allow_disabled=False):
+    def authenticate(self, headers, path, body, merchants, allow_disabled=False):
         merchant_id = headers.get('X-GTT-Merchant', '')
         merchant = merchants.get(merchant_id)
         if not merchant or (not merchant.get('enabled') and not allow_disabled):
@@ -85,9 +85,10 @@ class Database:
         if (not re.fullmatch(r'[0-9]{10}', timestamp) or abs(now - int(timestamp)) > 300
                 or not re.fullmatch(r'[A-Za-z0-9_-]{16,64}', nonce)):
             raise ServiceError('AUTH_INVALID', 'Invalid timestamp or nonce.', 401)
-        expected = signature(merchant[secret_field], 'POST', path, timestamp, nonce, body)
         supplied = headers.get('X-GTT-Signature', '')
-        if not re.fullmatch(r'[0-9a-f]{64}', supplied) or not hmac.compare_digest(expected, supplied):
+        secret = merchant.get('merchant_secret')
+        matches = isinstance(secret, str) and bool(secret) and hmac.compare_digest(signature(secret, 'POST', path, timestamp, nonce, body), supplied)
+        if not re.fullmatch(r'[0-9a-f]{64}', supplied) or not matches:
             raise ServiceError('AUTH_INVALID', 'Invalid signature.', 401)
         with self.connection(True) as db:
             db.execute('DELETE FROM request_nonces WHERE expires_at<?', (now,))

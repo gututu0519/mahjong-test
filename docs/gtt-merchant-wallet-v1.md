@@ -4,6 +4,16 @@ GTT `preBetDecision` 回调、`external_username` 启动字段及整局派彩区
 
 本规范对应 `server/merchant/` 的可运行实现，首款接入 Buffalo Win。GTT 生成游戏结果，合作平台拥有玩家账户和余额。平台钱包、GTT 游戏记录、原本的 8083 试玩服务使用三个独立数据库；GTT 商户服务不创建本地积分钱包。
 
+## 统一接入密钥
+
+所有商户只使用 **商户号 + `merchant_secret`**。密钥由 GTT 用密码学安全随机数独立生成（32 字节，64 位十六进制），不接受商户自行指定。新建时自动生成，已有本机商户已全部统一；没有领取、签名激活或旧版认证流程。
+
+管理员可在商户列表／商户工作台反复查看、显示／隐藏或复制当前密钥。普通商户查询只返回指纹及版本，只有授权的密钥查看接口返回明文，查看不会改变密钥或配置版本。重置时由 GTT 生成新值，旧值立即失效；商户同步更新自己的服务端。
+
+游戏启动／交易查询、钱包回调、预派彩回调，全部使用同一把密钥与以下 `X-GTT-*` HMAC-SHA256 规则。每个 HTTP 请求使用新的时间戳、nonce 和签名，重试仍使用原业务交易号。预派彩请求体只含业务字段，商户号由 `X-GTT-Merchant` 识别，密钥不随请求传输。
+
+预派彩是否启用仍由商户决定，自动生成密钥不改变开关。启用时只需配置接口 URL 与玩家映射，不需要另外填写 Token 或密钥。
+
 ## 本机启动和验收
 
 在项目根目录首次执行：
@@ -45,7 +55,7 @@ python -m server.merchant.sandbox retry --operation-id <操作ID>
 
 金额一律为整数 `amount_minor`，当前 `minor_unit=100`，USD 使用美分，示例 1500 表示 15.00 USD。创建商户当前仅支持美元 USD。币种必须与商户配置一致；模拟平台按商户币种提供测试余额，兼容既有 DEMO 账户。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
 
-平台 → GTT 使用 `api_secret`；GTT → 平台钱包使用另一把 `wallet_secret`。两种请求均使用 POST、`Content-Type: application/json`，无 URL 查询参数。JSON 不允许重复字段、NaN 或 Infinity；请求体最多 16 KiB。
+全部请求使用 `merchant_secret`。请求均使用 POST、`Content-Type: application/json`，无 URL 查询参数。JSON 不允许重复字段、NaN 或 Infinity；请求体最多 16 KiB。
 
 签名头：
 
@@ -68,7 +78,7 @@ POST
 
 对该原文的 UTF-8 字节使用对应方向密钥计算 HMAC-SHA256。请求方可任意排版 JSON，但签名必须使用实际发送的原始字节。接收方使用恒定时间签名比较，并将已使用 nonce 持久化；nonce 重用返回 `AUTH_REPLAY`。交易重试使用**新时间戳、新 nonce、新签名、相同交易号及相同业务参数**，不能重复发送同一份签名头。
 
-Python 参考代码可复用 `server.merchant.common.signed_headers`；生产平台应按规范独立实现。密钥仅在服务端保存，不放入浏览器、游戏链接、日志或仓库。钱包回调只允许 HTTPS，或本机联调的 loopback HTTP；不跟随重定向。
+Python 参考代码可复用 `server.merchant.common.signed_headers`；生产平台应按规范独立实现。密钥保存在服务端，仅可通过授权后台查看；不进入玩家浏览器、游戏链接、日志或仓库。钱包回调只允许 HTTPS，或本机联调的 loopback HTTP；不跟随重定向。
 
 ## 平台 → GTT
 
@@ -91,7 +101,7 @@ GTT 继续兼容原版 Buffalo GameInfo / Spin 协议，购买仍使用 `fb=2`�
 
 ## GTT → 平台钱包
 
-以下接口是平台应实现的契约，模拟平台已实现；全部要求对应商户的 `wallet_secret` 签名。共同字段是 `player_id`、`currency`、`minor_unit`。
+以下接口是平台应实现的契约，模拟平台已实现；全部使用 `merchant_secret` 签名。共同字段是 `player_id`、`currency`、`minor_unit`。
 
 | 路径 | 追加字段 | 含义 |
 | --- | --- | --- |

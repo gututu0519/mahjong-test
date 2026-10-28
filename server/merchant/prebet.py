@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 from urllib.request import Request, build_opener
 
 from server.core.contracts import ServiceError
-from .common import encode, read_object
+from .common import encode, read_object, signed_headers
 from .control import wallet_origin
 from .wallet import NoRedirect
 
@@ -52,11 +52,13 @@ class PreBetClient:
         self.timeout = timeout
         self.opener = build_opener(NoRedirect)
 
-    def decision(self, settings, payload):
+    def decision(self, settings, payload, merchant):
         # Authentication is inserted only for transmission, never persisted in
         # decision records, browser responses, error messages or request logs.
-        body = encode({**payload, 'operator_token': settings['operator_token'], 'secret_key': settings['secret_key']}).encode()
-        request = Request(prebet_url(settings['url']), data=body, headers={'Content-Type': 'application/json'}, method='POST')
+        url = prebet_url(settings['url'])
+        body = encode(payload).encode()
+        headers = signed_headers(merchant['id'], merchant['merchant_secret'], urlsplit(url).path, body)
+        request = Request(url, data=body, headers=headers, method='POST')
         try:
             try:
                 response = self.opener.open(request, timeout=self.timeout)
@@ -123,7 +125,8 @@ class RoundPlanner:
 
     def candidate(self, merchant_id, player_id, game, state, bet, canonical):
         service = self.provider
-        settings = service.merchants[merchant_id].get('pre_payout', {})
+        merchant = {**service.merchants[merchant_id], 'id': merchant_id}
+        settings = merchant.get('pre_payout', {})
         with service.connection(True) as db:
             if state['phase'] == 'ready':
                 row = db.execute('SELECT * FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND game_id=? AND initial_sid=? AND error_code IS NULL',
@@ -154,10 +157,9 @@ class RoundPlanner:
                     raise ServiceError('BET_LOCKED', '请使用本局原投注继续。', 409)
             row = dict(row)
         if not row['policy_json']:
-            if not settings.get('operator_token') or not settings.get('secret_key'):
-                raise ServiceError('PREBET_CONFIG_INVALID', '请配置平台运营商 Token 和密钥。', 503)
             try:
-                policy = self.client.decision(settings, json.loads(row['prebet_request_json']))
+                payload = json.loads(row['prebet_request_json'])
+                policy = self.client.decision(settings, payload, merchant)
             except ServiceError as error:
                 if error.code == 'PREBET_3202':
                     # A definite rejected decision has no wallet side effects.

@@ -1,5 +1,9 @@
 # GTT
 
+平台控制台：<http://127.0.0.1:8112/>；商户专属工作台：<http://127.0.0.1:8112/merchant/>。平台管理员在“账户与权限”中创建商户角色并绑定商户，商户即可管理自己的接入资料、密钥、团队及交易。商户数据由服务端隔离；使用说明见 [平台与商户后台](docs/gtt-admin.md)。
+
+新商户接入仅需商户号与 GTT 自动生成的 `merchant_secret`，游戏 API、钱包和预派彩共用统一 HMAC 签名。全部本机商户已统一，密钥无需领取，可在后台随时查看／复制。见 [统一接入密钥](docs/gtt-merchant-wallet-v1.md)。
+
 GTT 预下注决策支持按商户调用合作平台接口、整局派彩区间、固定时间戳重试与原客户端逐步展示；接入约定和本机模拟见 [GTT 预派彩说明](docs/gtt-prebet.md)。FP 仅为设计参考，不是对接依赖。
 
 管理后台已提供首版：<http://127.0.0.1:8112/>。首次执行 `python -m server.merchant.sandbox admin-init` 生成私有登录凭据，再运行 `python -m server.merchant.sandbox admin`。支持三类角色、商户配置、游戏授权、密钥轮换、交易查询与恢复、操作审计，配置修改即时生效。详见 [管理后台说明](docs/gtt-admin.md)。

@@ -4,9 +4,9 @@
 
 ## 商户配置和玩家身份
 
-后台“商户管理 → 编辑 → 平台预派彩”可配置启用状态、完整接口 URL、`operator_token` 与 `secret_key`。URL 由每家合作平台提供并按商户配置；页面不预填第三方平台地址。建议路径为 `/api/v1/callbacks/gtt/preBetDecision`，示例域名 `platform.example` 仅为占位符。两个凭据仅保存在私有商户数据库，查询、审计及页面只返回已配置标记和指纹；编辑留空保留原凭据。不放入游戏链接、不返回浏览器、不记录请求体或远程错误原文。接口只接受 HTTPS，模拟平台允许 loopback HTTP，禁止跳转和 URL 查询参数。
+所有商户统一使用 GTT 自动生成的 `merchant_secret`，与游戏 API 和钱包共用。预派彩请求通过 `X-GTT-Merchant`、`X-GTT-Timestamp`、`X-GTT-Nonce`、`X-GTT-Signature` 验证 HMAC-SHA256，签名路径为配置 URL 的实际路径。签名与 nonce 去重见 [商户与钱包接口](gtt-merchant-wallet-v1.md)。请求体不传 Token 或密钥。
 
-后台商户 create／update JSON 可携带 `pre_payout: {"enabled":true,"url":"https://platform.example/api/v1/callbacks/gtt/preBetDecision","operator_token":"<server-only>","secret_key":"<server-only>"}`；更新时省略或留空凭据保留已有值。普通商户查询不返回它们的明文。
+后台只配置预派彩开关与完整接口 URL，是否使用由商户决定；生成密钥不会自动启用预派彩。接口必须为 HTTPS，loopback 联调允许 HTTP，禁止查询参数和重定向。建议路径 `/api/v1/callbacks/gtt/preBetDecision`。密钥可由有权限的管理员在后台随时查看／复制，普通配置查询与审计只显示指纹。
 
 启用后，签名启动请求须提供 `external_username`，即玩家在合作平台的账号；不把 GTT `player_id` 当作合作平台账号。该映射保存到游戏数据库，重复绑定须保持一致，一个合作平台账号不能绑定该商户下另一个玩家。可用启动字段 `prebet_type: "SURE_WIN"` 指定普通付费回合的类型，默认 `NORMAL`；该字段需要与 `external_username` 一起提供，只有持商户签名的服务端可设置。
 
@@ -19,10 +19,10 @@
 每个付费整局开始前调用一次逻辑决策，实际 HTTP 可因丢包或并发重试多次，但始终使用同一组去重值：
 
 ```json
-{"operator_token":"<server-only>","secret_key":"<server-only>","player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.00","type":"NORMAL"}
+{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.00","type":"NORMAL"}
 ```
 
-合作平台返回 HTTP 200，并用 `code` 表示业务结果。成功响应：
+统一模式的业务请求体为 `{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.00","type":"NORMAL"}`，通过请求头验签；其中业务毫秒时间戳在重试时固定，签名头秒级时间戳和 nonce 每次重新生成。合作平台返回 HTTP 200，并用 `code` 表示业务结果。成功响应：
 
 ```json
 {"code":0,"data":{"maxWinMulti":[3,5]},"msg":null}
@@ -33,8 +33,6 @@
 ```json
 {"code":3202,"data":null,"msg":"Insufficient available balance"}
 ```
-
-`operator_token` 和 `secret_key` 是该合作平台为 GTT 回调配置的服务端凭据；它们与 GTT 游戏启动签名密钥分别管理。
 
 `bet_amount` 使用商户主币种，两位小数字符串；`200` 美分传 `"2.00"`，不传 `200`。时间戳为正整数毫秒，在发请求前持久化，并在本机数据库内单调分配，确保新下注不会复用上一笔的去重键。同一局重试／服务重启固定 `player_name + timestamp + bet_amount + type`，鉴权参数只在发出请求时装配，不写入预下注记录。
 
@@ -71,7 +69,7 @@
 
 模拟平台在 8111 提供相同路径 `/api/v1/callbacks/gtt/preBetDecision`，使用体内 Token／密钥鉴权、相同 code／data／msg 信封和去重规则。它拥有独立的合作平台玩家映射、区间策略和决策表，只做决策、不改变玩家余额。默认 `[-1,0]` 不限制；联调页提供 `[0,0]`、`[-1,10]`、`[5,10]`、`[10,10]` 等区间选择，仅影响新决策。
 
-新建模拟环境的 `init` 生成本机独立平台凭据和 `sandbox_external_username: "demo-platform-player"`。已有环境需要配置商户预派彩及这个明确的测试账号映射。不能把本机凭据填给生产合作平台服务。
+新建模拟环境的 `init` 生成本机商户密钥和 `sandbox_external_username: "demo-platform-player"`。已有环境保留自己的预派彩开关及玩家映射，直接使用商户统一密钥。
 
 交易中心“预下注决策”可查看最近 25 条决策及错误，支持当前商户筛选；管理员、运营和只读具有与交易读取相同的权限。接口 `POST /api/admin/prebet/list` 接受 `merchant_id`、`player_id`、`limit`，输出请求的业务字段、已取得区间与 pending／planned／rejected 状态，排除鉴权凭据、未来牌面和计划总派彩。
 
@@ -81,7 +79,7 @@
 
 合作平台用 GTT 商户签名调用游戏启动接口并提供玩家身份。GTT 在每个付费整局开奖前调用该商户配置的平台预派彩 URL，收到允许的倍数区间后规划完整游戏结果，扣款和派彩继续走现有 GTT 钱包 `debit` / `credit` 回调。预派彩本身不入账。
 
-这里沿用参考示例的字段名、响应结构、业务码和去重语义，作为 GTT 接入约定；这不表示合作平台已经实现该接口。生产联调仍需合作平台提供回调 URL、服务端凭据、玩家账号映射，并共同验证失败及重试场景。无需接入 FP 或提供 FP 的结算协议。
+这里沿用参考示例的字段名、响应结构、业务码和去重语义，作为 GTT 接入约定；这不表示合作平台已经实现该接口。生产联调需合作平台提供回调 URL、玩家账号映射，配置 GTT 生成的 merchant_secret 并实现统一验签，共同测试失败及重试场景。无需接入 FP 或提供 FP 的结算协议。
 
 ## 早期草稿迁移
 
@@ -97,3 +95,5 @@ python -m unittest discover -s server/tests -v
 验证覆盖三个原始区间、固定 10 倍、小数区间、`[-1,0]` 特殊无限制、完整购买免费、服务重启、并发重试、预派彩响应丢失、钱包响应丢失、业务错误、玩家映射、凭据脱敏及无效／不可达区间不扣款。生产合作平台接口仍需独立联调。
 
 2026-10-25 更名后验收：全项目 224 项测试通过，包含旧草稿数据库迁移后继续使用原决策去重值的恢复场景。本机 GTT 回调返回 `[-1,0]`，余额保持 `1677.20 USD`、原钱包交易 5 笔。后台配置与新建表单已检查；截图见 `diagnostics/gtt-platform-prebet-settings.png` 和 `diagnostics/gtt-platform-prebet-create.png`。
+
+2026-10-28：按用户确认取消领取与旧版认证，全部本机商户直接使用同一套商户签名。预派彩业务区间、固定时间戳去重、原客户端展示和钱包恢复机制保持原有契约。当前验证覆盖统一签名、重放／篡改拒绝、密钥查看／重置隔离，以及完整回合与丢失响应恢复。

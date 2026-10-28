@@ -87,7 +87,7 @@ class GTTAdminTests(unittest.TestCase):
     def gateway_request(self, secret=None, merchant='alpha'):
         path = '/gtt/v1/games/list'
         body = encode({}).encode()
-        fields = signed_headers(merchant, secret or self.config['merchants'][merchant]['api_secret'], path, body)
+        fields = signed_headers(merchant, secret or self.config['merchants'][merchant]['merchant_secret'], path, body)
         return self.request(path, {}, None, fields, port=self.gateway.server_port)
 
     def launch(self):
@@ -165,13 +165,14 @@ class GTTAdminTests(unittest.TestCase):
                            'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD', 'games': ['buffalo-win']}, expected=201)
         merchant_id = result['merchant']['id']
         self.assertRegex(merchant_id, r'^GTT[0-9A-F]{16}$')
-        secret = result['keys']['api_secret']
-        self.assertNotEqual(secret, result['keys']['wallet_secret'])
+        secret = result['keys']['merchant_secret']
+        self.assertEqual(set(result['keys']), {'merchant_secret'})
+        self.assertEqual(result['merchant']['signing_mode'], 'unified')
         self.platform.wallet.seed(merchant_id, 'new-player', 10000)
         self.assertEqual(self.gateway_request(merchant=merchant_id)[0], 200)
         # A second process/store connection sees updates without a service restart.
         second = MerchantDirectory(ControlStore(self.control.path))
-        self.assertEqual(second[merchant_id]['api_secret'], secret)
+        self.assertEqual(second[merchant_id]['merchant_secret'], secret)
         launched = self.service.launch(merchant_id, {'player_id': 'new-player'})
         self.assertEqual((launched['balance_minor'], launched['currency'], launched['minor_unit']), (10000, 'USD', 100))
         token = parse_qs(urlsplit(launched['launch_url']).query)['ops'][0]
@@ -186,14 +187,14 @@ class GTTAdminTests(unittest.TestCase):
         self.assertEqual(self.post('merchants/update', merchant, expected=409)['code'], 'VERSION_CONFLICT')
         rotated = self.post('merchants/rotate', {'id': merchant['id'], 'version': updated['version'], 'reason': 'rotation test'})
         self.assertEqual(self.gateway_request(secret, merchant_id)[0], 401)
-        self.assertEqual(self.gateway_request(rotated['keys']['api_secret'], merchant_id)[0], 200)
+        self.assertEqual(self.gateway_request(rotated['keys']['merchant_secret'], merchant_id)[0], 200)
         disabled = self.post('merchants/update', {**rotated['merchant'], 'enabled': False})['merchant']
         self.assertEqual(self.gateway_request(merchant=merchant_id)[0], 401)
         self.assertFalse(second[merchant_id]['enabled'])
         public = encode(self.post('merchants/list')) + encode(self.post('audit'))
         for value in [*result['keys'].values(), *rotated['keys'].values(), PASSWORD]:
             self.assertNotIn(value, public)
-        self.assertEqual(disabled['key_version'], 2)
+        self.assertEqual(disabled['merchant_key_version'], 2)
 
     def test_new_merchants_only_accept_usd_and_default_to_usd(self):
         payload = {'name': 'USD Only', 'enabled': True,
@@ -378,7 +379,320 @@ class GTTAdminTests(unittest.TestCase):
             self.assertIn(self.request(path, method='GET', user=None)[0], (400, 404))
 
 
+
+
+
+
+    def unified_merchant(self, prebet=False):
+        return self.post('merchants/create', {'name': 'Unified Partner', 'enabled': True,
+            'wallet_url': f'http://127.0.0.1:{self.platform.server_port}', 'games': ['buffalo-win'],
+            'pre_payout': {'enabled': prebet, 'url': f'http://127.0.0.1:{self.platform.server_port}/api/v1/callbacks/gtt/preBetDecision' if prebet else ''}}, expected=201)
+
+    def test_merchant_secret_can_be_viewed_repeatedly_without_claiming_or_rotating(self):
+        self.tenant_accounts()
+        original = self.control.merchant('alpha', private=True)
+        for _ in range(3):
+            viewed = self.post('merchants/signing/view', {'id': 'alpha'}, user='alpha-owner')
+            self.assertEqual(viewed['keys'], {'merchant_secret': original['merchant_secret']})
+            self.assertEqual(viewed['merchant']['version'], original['version'])
+            self.assertNotIn('merchant_key_ready', viewed['merchant'])
+            self.assertEqual(viewed['merchant']['signing_mode'], 'unified')
+        self.assertEqual(self.gateway_request(original['merchant_secret'])[0], 200)
+        self.assertEqual(ControlStore(self.control.path).merchant('alpha', private=True)['merchant_secret'], original['merchant_secret'])
+        for route in ('merchants/list', 'audit', 'overview'):
+            self.assertNotIn(original['merchant_secret'], encode(self.post(route, user='alpha-owner')))
+
+    def test_merchant_secret_view_is_scoped_and_old_flows_do_not_exist(self):
+        self.tenant_accounts()
+        for action in ('view', 'rotate'):
+            payload = {'id': 'alpha', 'version': self.control.merchant('alpha')['version'], 'reason': 'key administration'}
+            for user in ('viewer', 'operator', 'alpha-read', 'alpha-ops'):
+                self.post('merchants/signing/' + action, payload, user=user, expected=403)
+            self.post('merchants/signing/' + action, {**payload, 'id': 'beta'}, user='alpha-owner', expected=403)
+        self.post('merchants/signing/view', {'id': 'missing'}, expected=404)
+        for route in ('merchants/signing/claim', 'merchants/signing/activate', 'merchants/prebet-credentials', 'merchants/prebet-credentials/claim'):
+            self.post(route, {}, expected=404)
+        self.post('merchants/create', {'merchant_secret': 'user-selected'}, expected=400)
+        self.assertEqual(self.post('merchants/create', {'signing_mode': 'legacy'}, expected=400)['code'], 'SIGNING_MODE_INVALID')
+        m = self.control.merchant('alpha')
+        self.post('merchants/profile', {'version': m['version'], 'pre_payout': {'enabled': False, 'url': '', 'operator_token': 'unused'}}, user='alpha-owner', expected=400)
+
+    def test_reset_secret_is_immediately_available_for_repeated_view(self):
+        self.tenant_accounts()
+        before = self.control.merchant('alpha', private=True)
+        changed = self.post('merchants/signing/rotate', {'id': 'alpha', 'version': before['version'], 'reason': 'scheduled reset'}, user='alpha-owner')
+        self.assertNotEqual(changed['keys']['merchant_secret'], before['merchant_secret'])
+        self.assertEqual(self.post('merchants/signing/view', {'id': 'alpha'}, user='alpha-owner')['keys'], changed['keys'])
+        self.assertEqual(self.gateway_request(before['merchant_secret'])[0], 401)
+        self.assertEqual(self.gateway_request(changed['keys']['merchant_secret'])[0], 200)
+        self.post('merchants/signing/rotate', {'id': 'alpha', 'version': before['version'], 'reason': 'stale reset'}, user='alpha-owner', expected=409)
+
+    def test_unified_key_signs_api_wallet_and_prebet_without_transmitting_the_secret(self):
+        from server.merchant.common import signature
+        created = self.unified_merchant(prebet=True)
+        merchant_id, secret = created['merchant']['id'], created['keys']['merchant_secret']
+        self.assertRegex(secret, r'^[0-9a-f]{64}$')
+        self.assertNotIn('prebet_credentials', created)
+        self.assertEqual(self.gateway_request(secret, merchant_id)[0], 200)
+        self.platform.wallet.seed(merchant_id, 'unified-player', 200000)
+        self.platform.wallet.bind_prebet_player(merchant_id, 'unified-player', 'unified-external')
+        calls = []
+        wallet_open = self.service.wallet_client.opener.open
+        prebet_open = self.service.prebet.client.opener.open
+        def capture(delegate):
+            def opened(request, **kwargs):
+                fields = {k.lower(): v for k, v in request.header_items()}
+                path = urlsplit(request.full_url).path
+                self.assertEqual(fields['x-gtt-signature'], signature(secret, 'POST', path, fields['x-gtt-timestamp'], fields['x-gtt-nonce'], request.data))
+                self.assertNotIn(secret.encode(), request.data)
+                self.assertNotIn(b'operator_token', request.data)
+                self.assertNotIn(b'secret_key', request.data)
+                calls.append((path, fields['x-gtt-nonce']))
+                return delegate(request, **kwargs)
+            return opened
+        with patch.object(self.service.wallet_client.opener, 'open', side_effect=capture(wallet_open)), patch.object(self.service.prebet.client.opener, 'open', side_effect=capture(prebet_open)):
+            launched = self.service.launch(merchant_id, {'player_id': 'unified-player', 'external_username': 'unified-external'})
+            token = parse_qs(urlsplit(launched['launch_url']).query)['ops'][0]
+            result = self.service.spin(token, 'buffalo-win', 'unified-spin', '0', {})
+            self.assertEqual(result, self.service.spin(token, 'buffalo-win', 'unified-spin', '0', {}))
+        self.assertTrue(any(path.endswith('preBetDecision') for path, _ in calls))
+        self.assertTrue(any(path == '/wallet/v1/balance' for path, _ in calls))
+        self.assertTrue(any(path == '/wallet/v1/debit' for path, _ in calls))
+        self.assertEqual(len(calls), len({nonce for _, nonce in calls}))
+        public = encode(self.post('merchants/list')) + encode(self.post('audit')) + encode(self.post('prebet/list'))
+        self.assertNotIn(secret, public)
+        with self.service.connection() as db:
+            records = encode([dict(r) for r in db.execute('SELECT * FROM prebet_rounds WHERE merchant_id=?', (merchant_id,))])
+        self.assertNotIn(secret, records)
+
+
+    def test_unified_key_replay_tampering_rotation_and_legacy_downgrade_rejection(self):
+        created = self.unified_merchant()
+        merchant_id, secret = created['merchant']['id'], created['keys']['merchant_secret']
+        self.platform.wallet.seed(merchant_id, 'unified-player', 200000)
+        path = '/wallet/v1/balance'
+        payload = {'player_id': 'unified-player', 'currency': 'USD', 'minor_unit': 100}
+        fields = signed_headers(merchant_id, secret, path, encode(payload).encode())
+        self.assertEqual(self.request(path, payload, None, fields, port=self.platform.server_port)[0], 200)
+        self.assertEqual(self.request(path, payload, None, fields, port=self.platform.server_port)[0], 409)
+        fields = signed_headers(merchant_id, secret, path, encode(payload).encode())
+        self.assertEqual(self.request(path, {**payload, 'player_id': 'tampered'}, None, fields, port=self.platform.server_port)[0], 401)
+        with self.control.connection(True) as db:
+            db.execute('UPDATE merchants SET api_secret=?,wallet_secret=? WHERE id=?', ('old-api', 'old-wallet', merchant_id))
+        self.assertEqual(self.gateway_request('old-api', merchant_id)[0], 401)
+        old_wallet = signed_headers(merchant_id, 'old-wallet', path, encode(payload).encode())
+        self.assertEqual(self.request(path, payload, None, old_wallet, port=self.platform.server_port)[0], 401)
+        rotated = self.post('merchants/signing/rotate', {'id': merchant_id, 'version': created['merchant']['version'], 'reason': 'scheduled rotation'})
+        self.assertNotEqual(secret, rotated['keys']['merchant_secret'])
+        self.assertEqual(self.gateway_request(secret, merchant_id)[0], 401)
+        self.assertEqual(self.gateway_request(rotated['keys']['merchant_secret'], merchant_id)[0], 200)
+        old_style = self.request('/api/v1/callbacks/gtt/preBetDecision', {'operator_token': 'unused', 'secret_key': secret}, user=None, port=self.platform.server_port)
+        self.assertEqual(old_style[0], 401)
+
+
+    def tenant_accounts(self):
+        for name, role, merchant in [('alpha-owner', 'merchant_admin', 'alpha'),
+                                     ('beta-owner', 'merchant_admin', 'beta'),
+                                     ('alpha-read', 'merchant_viewer', 'alpha'),
+                                     ('alpha-ops', 'merchant_operator', 'alpha')]:
+            self.control.create_user('admin', name, role, PASSWORD, merchant_id=merchant)
+
+
+    def test_merchant_scope_lists_overview_games_audit_and_direct_object_access(self):
+        self.tenant_accounts()
+        self.platform.wallet.seed('beta', 'same-player', 200000)
+        for merchant in ('alpha', 'beta'):
+            token = parse_qs(urlsplit(self.service.launch(merchant, {'player_id': 'same-player'})['launch_url']).query)['ops'][0]
+            self.service.spin(token, 'buffalo-win', merchant + '-spin', '0', {})
+        own = self.post('transactions/list', user='alpha-owner')['transactions']
+        self.assertEqual({row['merchant_id'] for row in own}, {'alpha'})
+        other = self.post('transactions/list', user='beta-owner')['transactions'][0]
+        self.post('transactions/detail', {'operation_id': other['id']}, user='alpha-owner', expected=404)
+        self.post('transactions/retry', {'operation_id': other['id'], 'reason': 'cross tenant'}, user='alpha-owner', expected=404)
+        for route in ('overview', 'merchants/list', 'games', 'transactions/list', 'transactions/detail', 'prebet/list', 'audit', 'users/list'):
+            self.post(route, {'merchant_id': 'beta'}, user='alpha-owner', expected=403)
+        self.assertEqual([m['id'] for m in self.post('merchants/list', user='alpha-owner')['merchants']], ['alpha'])
+        summary = self.post('overview', user='alpha-owner')
+        self.assertEqual((summary['merchants'], summary['settled'], summary['players']), (1, 1, 1))
+        self.assertEqual(sum(day['settled'] for day in summary['daily']), 1)
+        self.assertEqual(summary['totals'][0]['debit_minor'], own[0]['debit_minor'])
+        self.assertEqual(summary['totals'][0]['credit_minor'], own[0]['credit_minor'])
+        self.assertNotIn('beta', encode(self.post('audit', user='alpha-owner')))
+        merchant = self.control.merchant('alpha')
+        self.control.save_merchant('admin', {**merchant, 'games': []}, {'buffalo-win'})
+        self.assertEqual(self.post('games', user='alpha-owner')['games'], [])
+        self.assertEqual(self.post('overview', user='alpha-owner')['games'], 0)
+
+    def test_merchant_profile_and_rotation_cannot_change_authorization_or_other_tenant(self):
+        self.tenant_accounts()
+        m = self.control.merchant('alpha')
+        self.post('merchants/profile', {'version': m['version'], 'enabled': False}, user='alpha-owner', expected=403)
+        self.post('merchants/profile', {'id': 'beta', 'version': 1}, user='alpha-owner', expected=403)
+        self.post('merchants/update', {**m, 'games': []}, user='alpha-owner', expected=403)
+        self.post('merchants/create', user='alpha-owner', expected=403)
+        result = self.post('merchants/profile', {'id': 'alpha', 'version': m['version'], 'name': 'Alpha partner',
+                           'wallet_url': m['wallet_url'], 'pre_payout': {'enabled': False, 'url': ''}}, user='alpha-owner')
+        self.assertEqual(result['merchant']['name'], 'Alpha partner')
+        self.assertEqual(result['merchant']['games'], m['games'])
+        self.post('merchants/profile', {'version': m['version'], 'name': 'Stale'}, user='alpha-owner', expected=409)
+        self.post('merchants/rotate', {'id': 'beta', 'version': 1, 'reason': 'key rotation'}, user='alpha-owner', expected=403)
+        other_secret = self.config['merchants']['beta']['merchant_secret']
+        rotated = self.post('merchants/rotate', {'id': 'alpha', 'version': result['merchant']['version'], 'reason': 'key rotation'}, user='alpha-owner')
+        self.assertNotIn(rotated['keys']['merchant_secret'], encode(self.post('audit', user='alpha-owner')))
+        self.assertEqual(other_secret, self.config['merchants']['beta']['merchant_secret'])
+
+    def test_merchant_team_no_escalation_cross_tenant_reset_or_rebinding(self):
+        self.tenant_accounts()
+        self.assertEqual({u['username'] for u in self.post('users/list', user='alpha-owner')['users']}, {'alpha-owner', 'alpha-read', 'alpha-ops'})
+        created = self.post('users/create', {'username': 'new-staff', 'role': 'merchant_viewer'}, user='alpha-owner', expected=201)
+        self.assertEqual(created['user']['merchant_id'], 'alpha')
+        self.post('users/create', {'username': 'bad-staff', 'role': 'admin'}, user='alpha-owner', expected=400)
+        self.post('users/create', {'username': 'bad-staff', 'role': 'merchant_admin', 'merchant_id': 'beta'}, user='alpha-owner', expected=403)
+        for target in ('admin', 'beta-owner'):
+            self.post('users/reset', {'username': target}, user='alpha-owner', expected=404)
+            self.post('users/update', {'username': target, 'role': 'merchant_viewer', 'enabled': True}, user='alpha-owner', expected=404)
+        self.post('users/update', {'username': 'alpha-read', 'role': 'admin', 'enabled': True}, user='alpha-owner', expected=400)
+        self.post('users/update', {'username': 'alpha-read', 'role': 'merchant_admin', 'enabled': True, 'merchant_id': 'beta'}, user='alpha-owner', expected=403)
+        self.post('users/update', {'username': 'alpha-owner', 'role': 'merchant_viewer', 'enabled': True}, user='alpha-owner', expected=409)
+        self.login('alpha-read')
+        self.post('users/update', {'username': 'alpha-read', 'role': 'merchant_operator', 'enabled': True}, user='alpha-owner')
+        self.assertEqual(self.request('/api/admin/me', user='alpha-read', method='GET')[0], 401)
+
+    def test_platform_admin_can_provision_bound_merchant_accounts(self):
+        created = self.post('users/create', {'username': 'merchant-owner', 'role': 'merchant_admin', 'merchant_id': 'alpha'}, expected=201)
+        self.assertEqual(created['user']['merchant_id'], 'alpha')
+        self.post('users/create', {'username': 'missing-binding', 'role': 'merchant_admin'}, expected=400)
+        self.post('users/create', {'username': 'wrong-binding', 'role': 'admin', 'merchant_id': 'alpha'}, expected=400)
+        self.post('users/create', {'username': 'bad-binding', 'role': 'merchant_admin', 'merchant_id': 'missing'}, expected=404)
+
+    def test_merchant_read_only_and_operator_permissions(self):
+        self.tenant_accounts()
+        for user in ('alpha-read', 'alpha-ops'):
+            for route in ('overview', 'merchants/list', 'transactions/list', 'prebet/list', 'audit', 'games'):
+                self.post(route, user=user)
+            for route in ('merchants/profile', 'merchants/rotate', 'merchants/update', 'users/create', 'users/list', 'users/reset'):
+                self.post(route, user=user, expected=403)
+        self.post('transactions/retry', user='alpha-read', expected=403)
+        pending = self.pending()
+        self.post('transactions/retry', {'operation_id': pending['id'], 'reason': 'wallet recovered'}, user='alpha-ops')
+        self.assertEqual(self.post('transactions/detail', {'operation_id': pending['id']}, user='alpha-read')['status'], 'settled')
+
+    def test_merchant_audit_stays_attributed_after_user_rebinding(self):
+        self.tenant_accounts()
+        # A username matching another merchant ID must not change audit tenancy.
+        self.post('users/create', {'username': 'beta', 'role': 'merchant_viewer'}, user='alpha-owner', expected=201)
+        self.post('users/create', {'username': 'moving-staff', 'role': 'merchant_viewer'}, user='alpha-owner', expected=201)
+        self.post('users/update', {'username': 'moving-staff', 'role': 'merchant_viewer', 'enabled': True, 'merchant_id': 'beta'})
+        alpha = self.post('audit', user='alpha-owner')['audit']
+        beta = self.post('audit', user='beta-owner')['audit']
+        self.assertTrue(any(a['action'] == 'user.create' and a['target'] == 'moving-staff' for a in alpha))
+        self.assertFalse(any(a['action'] == 'user.create' and a['target'] == 'moving-staff' for a in beta))
+        self.assertTrue(any(a['action'] == 'user.create' and a['target'] == 'beta' for a in alpha))
+        self.assertFalse(any(a['action'] == 'user.create' and a['target'] == 'beta' for a in beta))
+
+    def test_merchant_prebet_rows_are_scoped_and_do_not_expose_future_results(self):
+        self.tenant_accounts()
+        for merchant in ('alpha', 'beta'):
+            record = self.control.merchant(merchant)
+            settings = {'enabled': True, 'url': f'http://127.0.0.1:{self.platform.server_port}/api/v1/callbacks/gtt/preBetDecision',
+                        }
+            self.control.save_merchant('admin', {**record, 'pre_payout': settings}, {'buffalo-win'})
+            self.platform.wallet.seed(merchant, 'prebet-player', 200000)
+            self.platform.wallet.bind_prebet_player(merchant, 'prebet-player', merchant + '-external')
+            token = parse_qs(urlsplit(self.service.launch(merchant, {'player_id': 'prebet-player', 'external_username': merchant + '-external'})['launch_url']).query)['ops'][0]
+            self.service.spin(token, 'buffalo-win', 'tenant-prebet', '0', {})
+        own = self.post('prebet/list', user='alpha-owner')['decisions']
+        self.assertEqual(len(own), 1)
+        self.assertEqual(own[0]['merchant_id'], 'alpha')
+        self.assertEqual(own[0]['request']['player_name'], 'alpha-external')
+        text = encode(own)
+        for hidden in ('beta-external', 'alpha-secret', 'alpha-token', 'plan_json', 'total_credit_minor', 'initial_state_json'):
+            self.assertNotIn(hidden, text)
+
+    def test_merchant_portal_has_independent_cookie_and_csrf_namespace(self):
+        self.tenant_accounts()
+        self.login('admin')
+        self.assertEqual(self.request('/api/merchant/me', method='GET')[0], 401)
+        code, body, fields = self.request('/api/merchant/login', {'username': 'alpha-owner', 'password': PASSWORD}, user=None)
+        self.assertEqual(code, 200, body)
+        cookie = fields['Set-Cookie'].split(';', 1)[0]
+        self.assertTrue(cookie.startswith('gtt_merchant_session='))
+        headers = {'Cookie': cookie, 'X-GTT-CSRF': body['data']['csrf_token']}
+        self.assertEqual(self.request('/api/merchant/me', user=None, headers=headers, method='GET')[1]['data']['user']['merchant_id'], 'alpha')
+        self.assertEqual(self.request('/api/merchant/overview', user=None, headers=headers)[1]['data']['merchants'], 1)
+        self.assertEqual(self.request('/api/admin/me', user=None, headers=headers, method='GET')[0], 401)
+        self.assertEqual(self.request('/api/merchant/overview', user=None, headers={**headers, 'X-GTT-CSRF': ''})[0], 403)
+        self.assertEqual(self.request('/api/merchant/logout', user=None, headers=headers)[0], 200)
+        self.assertEqual(self.request('/api/admin/me', method='GET')[0], 200)
+        self.assertEqual(self.request('/api/merchant/me', user=None, headers=headers, method='GET')[0], 401)
+        self.assertEqual(self.request('/api/merchant/login', {'username': 'admin', 'password': PASSWORD}, user=None)[0], 403)
+
+
 class GTTMigrationTests(unittest.TestCase):
+    def test_existing_local_merchants_automatically_use_single_secret_without_delivery_state(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'merchants.sqlite3'
+            store = ControlStore(path)
+            store.migrate(configuration()['merchants'])
+            before = store.merchant('alpha', private=True)
+            with store.connection(True) as db:
+                db.execute("UPDATE merchant_signing_credentials SET mode='legacy',ready=1 WHERE merchant_id='alpha'")
+                db.execute("UPDATE merchants SET api_secret='obsolete-api',wallet_secret='obsolete-wallet' WHERE id='alpha'")
+                db.execute("INSERT INTO merchant_prebet_settings VALUES ('alpha',1,'https://platform.example/callback','obsolete-token','obsolete-secret')")
+                db.execute('CREATE TABLE merchant_prebet_deliveries (merchant_id TEXT PRIMARY KEY,fingerprint TEXT)')
+                db.execute("INSERT INTO merchant_prebet_deliveries VALUES ('alpha','obsolete')")
+            upgraded = ControlStore(path)
+            after = upgraded.merchant('alpha', private=True)
+            self.assertEqual(after['merchant_secret'], before['merchant_secret'])
+            self.assertEqual(after['signing_mode'], 'unified')
+            self.assertNotIn('merchant_key_ready', after)
+            self.assertEqual(after['pre_payout'], {'enabled': True, 'url': 'https://platform.example/callback'})
+            for field in ('enabled', 'currency', 'wallet_url', 'games'):
+                self.assertEqual(after[field], before[field])
+            with upgraded.connection() as db:
+                self.assertEqual(tuple(db.execute("SELECT mode,ready FROM merchant_signing_credentials WHERE merchant_id='alpha'").fetchone()), ('unified', 0))
+                self.assertEqual(tuple(db.execute("SELECT operator_token,secret_key FROM merchant_prebet_settings WHERE merchant_id='alpha'").fetchone()), ('', ''))
+                self.assertEqual(db.execute('SELECT COUNT(*) FROM merchant_prebet_deliveries').fetchone()[0], 0)
+            audit = upgraded.audits({})
+            again = ControlStore(path)
+            self.assertEqual(again.merchant('alpha', private=True), after)
+            self.assertEqual(again.audits({}), audit)
+
+    def test_missing_merchant_secret_is_automatically_created_and_immediately_usable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'merchants.sqlite3'
+            store = ControlStore(path)
+            store.migrate(configuration()['merchants'])
+            beta = store.merchant('beta', private=True)
+            with store.connection(True) as db:
+                db.execute("DELETE FROM merchant_signing_credentials WHERE merchant_id='alpha'")
+            upgraded = ControlStore(path)
+            alpha = upgraded.merchant('alpha', private=True)
+            self.assertRegex(alpha['merchant_secret'], r'^[0-9a-f]{64}$')
+            self.assertNotEqual(alpha['merchant_secret'], beta['merchant_secret'])
+            self.assertEqual(upgraded.merchant('beta', private=True), beta)
+            self.assertEqual(alpha['pre_payout'], {'enabled': False, 'url': ''})
+
+
+    def test_legacy_admin_schema_upgrade_preserves_accounts_sessions_and_audit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'legacy.sqlite3'
+            store = ControlStore(path)
+            store.migrate(configuration()['merchants'])
+            store.create_user('system', 'original-admin', 'admin', PASSWORD)
+            token, original = store.login('original-admin', PASSWORD, '127.0.0.1')
+            with store.connection(True) as db:
+                before = db.execute('SELECT COUNT(*) FROM admin_audit').fetchone()[0]
+                db.execute('DROP INDEX audit_merchant_seq')
+                db.execute('ALTER TABLE admin_users DROP COLUMN merchant_id')
+                db.execute('ALTER TABLE admin_audit DROP COLUMN merchant_id')
+            upgraded = ControlStore(path)
+            self.assertEqual(upgraded.session(token)['user']['username'], original['user']['username'])
+            self.assertIsNone(upgraded.session(token)['user']['merchant_id'])
+            self.assertEqual(len(upgraded.audits({})), before)
+            self.assertEqual(len(upgraded.merchants()), 2)
+            self.assertEqual(len(upgraded.audits({}, 'alpha')), 1)
+
     def test_fresh_sandbox_uses_usd(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'sandbox.json'

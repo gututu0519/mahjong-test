@@ -17,6 +17,10 @@ PERMISSIONS = {
               'transactions.retry', 'audit.read', 'users.manage'),
     'operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read'),
     'viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read'),
+    'merchant_admin': ('merchants.read', 'profile.write', 'keys.rotate', 'games.read', 'transactions.read',
+                       'transactions.retry', 'audit.read', 'users.manage'),
+    'merchant_operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read'),
+    'merchant_viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read'),
 }
 
 
@@ -89,14 +93,34 @@ class ControlStore(Database):
                 CREATE TABLE IF NOT EXISTS merchant_prebet_settings (
                     merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,
                     enabled INTEGER NOT NULL,url TEXT NOT NULL,operator_token TEXT NOT NULL,secret_key TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS merchant_signing_credentials (
+                    merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,
+                    secret TEXT NOT NULL,mode TEXT NOT NULL,version INTEGER NOT NULL,ready INTEGER NOT NULL);
             ''')
+        with self.connection(True) as db:
+            if 'merchant_id' not in {r['name'] for r in db.execute('PRAGMA table_info(admin_users)')}:
+                db.execute('ALTER TABLE admin_users ADD COLUMN merchant_id TEXT REFERENCES merchants(id)')
+            if 'merchant_id' not in {r['name'] for r in db.execute('PRAGMA table_info(admin_audit)')}:
+                db.execute('ALTER TABLE admin_audit ADD COLUMN merchant_id TEXT')
+                db.execute("UPDATE admin_audit SET merchant_id=target WHERE action LIKE 'merchant.%' AND target IN (SELECT id FROM merchants)")
+                db.execute("UPDATE admin_audit SET merchant_id=json_extract(details_json,'$.merchant_id') WHERE merchant_id IS NULL")
+            db.execute('CREATE INDEX IF NOT EXISTS audit_merchant_seq ON admin_audit(merchant_id,seq)')
+            self.ensure_signing_credentials(db)
         # Used for a comparable password-check cost for unknown usernames.
         self.dummy_hash = password_hash('not-a-real-admin-password', '0' * 32)
 
     @staticmethod
     def audit(db, actor, action, target, outcome='success', details=None):
-        db.execute('INSERT INTO admin_audit(created_at,actor,action,target,outcome,details_json) VALUES (?,?,?,?,?,?)',
-                   (int(time.time()), actor, action, target, outcome, encode(details or {})))
+        details = details or {}
+        scope = details.get('merchant_id')
+        if not scope and action.startswith('merchant.'):
+            row = db.execute('SELECT id FROM merchants WHERE id=?', (target,)).fetchone()
+            scope = row['id'] if row else None
+        if not scope:
+            row = db.execute('SELECT merchant_id FROM admin_users WHERE username=?', (target if action.startswith('user.') else actor,)).fetchone()
+            scope = row['merchant_id'] if row else None
+        db.execute('INSERT INTO admin_audit(created_at,actor,action,target,outcome,details_json,merchant_id) VALUES (?,?,?,?,?,?,?)',
+                   (int(time.time()), actor, action, target, outcome, encode(details), scope))
 
     @staticmethod
     def merchant_value(row, private=False):
@@ -105,17 +129,11 @@ class ControlStore(Database):
         value = {key: row[key] for key in ('id', 'name', 'wallet_url', 'currency', 'minor_unit',
                                           'version', 'key_version', 'created_at', 'updated_at')}
         value.update(enabled=bool(row['enabled']), games=json.loads(row['games_json']))
-        prebet = {'enabled': bool(row['prebet_enabled']), 'url': row['prebet_url'] or '',
-              'credentials_configured': bool(row['prebet_operator_token'] and row['prebet_secret_key'])}
-        prebet['credentials_fingerprint'] = hashlib.sha256((row['prebet_operator_token'] + '\0' + row['prebet_secret_key']).encode()).hexdigest()[:12] if prebet['credentials_configured'] else None
+        value.update(signing_mode='unified', merchant_key_version=row['signing_version'] or 0,
+                     merchant_key_fingerprint=hashlib.sha256(row['signing_secret'].encode()).hexdigest()[:12] if row['signing_secret'] else None)
+        value['pre_payout'] = {'enabled': bool(row['prebet_enabled']), 'url': row['prebet_url'] or ''}
         if private:
-            prebet.update(operator_token=row['prebet_operator_token'] or '', secret_key=row['prebet_secret_key'] or '')
-        value['pre_payout'] = prebet
-        if private:
-            value.update(api_secret=row['api_secret'], wallet_secret=row['wallet_secret'])
-        else:
-            value['api_key_fingerprint'] = hashlib.sha256(row['api_secret'].encode()).hexdigest()[:12]
-            value['wallet_key_fingerprint'] = hashlib.sha256(row['wallet_secret'].encode()).hexdigest()[:12]
+            value['merchant_secret'] = row['signing_secret']
         return value
 
     def migrate(self, merchants):
@@ -123,14 +141,33 @@ class ControlStore(Database):
             for merchant_id, merchant in merchants.items():
                 identifier(merchant_id, 'merchant_id')
                 now = int(time.time())
+                secret = merchant.get('merchant_secret') or secrets.token_hex(32)
+                if not isinstance(secret, str) or not re.fullmatch(r'[0-9a-f]{64}', secret):
+                    raise ServiceError('MERCHANT_SECRET_INVALID', '配置中的商户密钥无效。')
                 result = db.execute('INSERT OR IGNORE INTO merchants VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     (merchant_id, merchant.get('name', merchant_id), bool(merchant['enabled']),
                      wallet_origin(merchant['wallet_url']), merchant['currency'], merchant['minor_unit'],
-                     encode(merchant['games']), merchant['api_secret'], merchant['wallet_secret'], 1, 1, now, now))
+                     encode(merchant['games']), secret, secret, 1, 1, now, now))
                 if result.rowcount:
+                    db.execute('INSERT INTO merchant_signing_credentials VALUES (?,?,?,?,?)', (merchant_id, secret, 'unified', 1, 0))
                     if 'pre_payout' in merchant:
-                        self.save_prebet(db, merchant_id, merchant['pre_payout'])
+                        settings = merchant['pre_payout']
+                        self.save_prebet(db, merchant_id, {'enabled': settings['enabled'], 'url': settings.get('url', '')})
                     self.audit(db, 'system', 'merchant.migrate', merchant_id)
+            self.ensure_signing_credentials(db)
+
+    def ensure_signing_credentials(self, db):
+        # Normalize old local storage once; the runtime has only one signing mode.
+        rows = db.execute("SELECT m.id,s.secret,s.version FROM merchants m LEFT JOIN merchant_signing_credentials s ON m.id=s.merchant_id WHERE s.merchant_id IS NULL OR s.secret='' OR s.mode<>'unified' OR s.ready<>0").fetchall()
+        for row in rows:
+            secret = row['secret'] or secrets.token_hex(32)
+            db.execute('INSERT INTO merchant_signing_credentials VALUES (?,?,?,?,?) ON CONFLICT(merchant_id) DO UPDATE SET secret=excluded.secret,mode=excluded.mode,ready=0',
+                       (row['id'], secret, 'unified', row['version'] or 1, 0))
+            db.execute('UPDATE merchants SET api_secret=?,wallet_secret=?,version=version+1,updated_at=? WHERE id=?', (secret, secret, int(time.time()), row['id']))
+            self.audit(db, 'system', 'merchant.signing.initialize', row['id'], details={'fingerprint': hashlib.sha256(secret.encode()).hexdigest()[:12]})
+        db.execute("UPDATE merchant_prebet_settings SET operator_token='',secret_key='' WHERE operator_token<>'' OR secret_key<>''")
+        if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='merchant_prebet_deliveries'").fetchone():
+            db.execute('DELETE FROM merchant_prebet_deliveries')
 
     def merchants(self):
         with self.connection() as db:
@@ -138,8 +175,10 @@ class ControlStore(Database):
 
     @staticmethod
     def merchant_query():
-        return '''SELECT m.*,f.enabled AS prebet_enabled,f.url AS prebet_url,f.operator_token AS prebet_operator_token,
-                  f.secret_key AS prebet_secret_key FROM merchants m LEFT JOIN merchant_prebet_settings f ON m.id=f.merchant_id'''
+        return """SELECT m.*,f.enabled AS prebet_enabled,f.url AS prebet_url,
+                  s.secret AS signing_secret,s.version AS signing_version
+                  FROM merchants m LEFT JOIN merchant_prebet_settings f ON m.id=f.merchant_id
+                  LEFT JOIN merchant_signing_credentials s ON m.id=s.merchant_id"""
 
     def merchant_row(self, db, merchant_id):
         return db.execute(self.merchant_query() + ' WHERE m.id=?', (merchant_id,)).fetchone()
@@ -151,19 +190,23 @@ class ControlStore(Database):
     def save_prebet(self, db, merchant_id, value):
         if not isinstance(value, dict) or type(value.get('enabled')) is not bool:
             raise ServiceError('PREBET_CONFIG_INVALID', '请核对平台预派彩设置。')
+        if 'operator_token' in value or 'secret_key' in value:
+            raise ServiceError('UNIFIED_SIGNING', '预派彩统一使用 merchant_secret，只需配置接口地址。')
         from .prebet import prebet_url
-        previous = db.execute('SELECT * FROM merchant_prebet_settings WHERE merchant_id=?', (merchant_id,)).fetchone()
-        token = value.get('operator_token') or (previous['operator_token'] if previous else '')
-        secret = value.get('secret_key') or (previous['secret_key'] if previous else '')
         url = value.get('url', '')
+        if not isinstance(url, str):
+            raise ServiceError('PREBET_CONFIG_INVALID', '请输入有效的接口地址。')
         if url:
             prebet_url(url)
-        if (not isinstance(token, str) or not isinstance(secret, str) or max(len(token), len(secret)) > 1024
-                or (value['enabled'] and not (token and secret and url))):
-            raise ServiceError('PREBET_CONFIG_INVALID', '启用预派彩需要 平台接口地址、运营商 Token 和密钥。')
-        db.execute('INSERT OR REPLACE INTO merchant_prebet_settings VALUES (?,?,?,?,?)', (merchant_id, value['enabled'], url, token, secret))
+        if value['enabled'] and not url:
+            raise ServiceError('PREBET_CONFIG_INVALID', '启用预派彩需要填写接口地址。')
+        db.execute('INSERT OR REPLACE INTO merchant_prebet_settings VALUES (?,?,?,?,?)', (merchant_id, value['enabled'], url, '', ''))
 
     def save_merchant(self, actor, payload, games, create=False):
+        if payload.get('signing_mode', 'unified') != 'unified':
+            raise ServiceError('SIGNING_MODE_INVALID', '当前仅使用统一签名。')
+        if 'merchant_secret' in payload:
+            raise ServiceError('MERCHANT_SECRET_AUTOMATIC', 'merchant_secret 由 GTT 自动生成，无需填写。')
         if create and 'id' in payload:
             raise ServiceError('MERCHANT_ID_AUTOMATIC', '商户号由系统自动生成，无需填写。')
         merchant_id = None if create else identifier(payload.get('id'), 'merchant_id')
@@ -193,10 +236,12 @@ class ControlStore(Database):
                         break
                 else:
                     raise ServiceError('MERCHANT_ID_UNAVAILABLE', '商户号生成失败，请重试。', 503)
-                keys = {'api_secret': secrets.token_hex(32), 'wallet_secret': secrets.token_hex(32)}
+                merchant_secret = secrets.token_hex(32)
+                keys = {'merchant_secret': merchant_secret}
                 db.execute('INSERT INTO merchants VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     (merchant_id, name.strip(), enabled, origin, currency, 100, encode(selected),
-                     keys['api_secret'], keys['wallet_secret'], 1, 1, now, now))
+                     merchant_secret, merchant_secret, 1, 1, now, now))
+                db.execute('INSERT INTO merchant_signing_credentials VALUES (?,?,?,?,?)', (merchant_id, merchant_secret, 'unified', 1, 0))
             else:
                 old = self.merchant_row(db, merchant_id)
                 if old is None:
@@ -206,8 +251,8 @@ class ControlStore(Database):
                     raise ServiceError('CURRENCY_IMMUTABLE', '已有商户的币种不可变更。')
                 db.execute('UPDATE merchants SET name=?,enabled=?,wallet_url=?,games_json=?,version=version+1,updated_at=? WHERE id=?',
                            (name.strip(), enabled, origin, encode(selected), now, merchant_id))
-            if 'pre_payout' in payload:
-                self.save_prebet(db, merchant_id, payload['pre_payout'])
+            if create or 'pre_payout' in payload:
+                self.save_prebet(db, merchant_id, payload.get('pre_payout', {'enabled': False, 'url': ''}))
             new = self.merchant_row(db, merchant_id)
             result = self.merchant_value(new)
             self.audit(db, actor, 'merchant.create' if create else 'merchant.update', merchant_id,
@@ -220,20 +265,51 @@ class ControlStore(Database):
             raise ServiceError('VERSION_CONFLICT', '配置已被修改，请刷新后重试。', 409)
 
     def rotate_keys(self, actor, payload):
+        return self.manage_signing(actor, payload, 'rotate')
+
+    def save_profile(self, actor, merchant_id, payload):
+        # Authorization fields are owned by GTT, even for a merchant administrator.
+        if set(payload) - {'id', 'version', 'name', 'wallet_url', 'pre_payout'}:
+            raise ServiceError('FORBIDDEN', '商户只能修改自己的接入资料，不能变更平台授权。', 403)
+        if payload.get('id', merchant_id) != merchant_id:
+            raise ServiceError('FORBIDDEN', '不能访问其他商户。', 403)
+        with self.connection(True) as db:
+            old = self.merchant_row(db, merchant_id)
+            if old is None:
+                raise ServiceError('NOT_FOUND', '商户不存在。', 404)
+            self.check_version(payload, old)
+            name = payload.get('name', old['name'])
+            if not isinstance(name, str) or not 1 <= len(name.strip()) <= 80 or any(ord(c) < 32 for c in name):
+                raise ServiceError('NAME_INVALID', '商户名称须为 1–80 个可见字符。')
+            origin = wallet_origin(payload.get('wallet_url', old['wallet_url']))
+            db.execute('UPDATE merchants SET name=?,wallet_url=?,version=version+1,updated_at=? WHERE id=?',
+                       (name.strip(), origin, int(time.time()), merchant_id))
+            if 'pre_payout' in payload:
+                self.save_prebet(db, merchant_id, payload['pre_payout'])
+            result = self.merchant_value(self.merchant_row(db, merchant_id))
+            self.audit(db, actor, 'merchant.profile.update', merchant_id,
+                       details={'before': self.merchant_value(old), 'after': result})
+        return {'merchant': result}
+
+    def manage_signing(self, actor, payload, action):
         merchant_id = identifier(payload.get('id'), 'merchant_id')
-        reason = self.reason(payload)
-        keys = {'api_secret': secrets.token_hex(32), 'wallet_secret': secrets.token_hex(32)}
+        if action not in ('view', 'rotate'):
+            raise ServiceError('NOT_FOUND', '接口不存在。', 404)
+        reason = self.reason(payload) if action == 'rotate' else None
         with self.connection(True) as db:
             row = self.merchant_row(db, merchant_id)
             if row is None:
                 raise ServiceError('NOT_FOUND', '商户不存在。', 404)
-            self.check_version(payload, row)
-            db.execute('UPDATE merchants SET api_secret=?,wallet_secret=?,version=version+1,key_version=key_version+1,updated_at=? WHERE id=?',
-                       (keys['api_secret'], keys['wallet_secret'], int(time.time()), merchant_id))
-            self.audit(db, actor, 'merchant.keys.rotate', merchant_id,
-                       details={'reason': reason, 'key_version': row['key_version'] + 1})
+            secret = row['signing_secret']
+            if action == 'rotate':
+                self.check_version(payload, row)
+                secret = secrets.token_hex(32)
+                db.execute('UPDATE merchant_signing_credentials SET secret=?,version=version+1 WHERE merchant_id=?', (secret, merchant_id))
+                db.execute('UPDATE merchants SET api_secret=?,wallet_secret=?,key_version=key_version+1,version=version+1,updated_at=? WHERE id=?', (secret, secret, int(time.time()), merchant_id))
             result = self.merchant_value(self.merchant_row(db, merchant_id))
-        return {'merchant': result, 'keys': keys}
+            self.audit(db, actor, 'merchant.signing.' + action, merchant_id,
+                       details={'reason': reason, 'fingerprint': result['merchant_key_fingerprint']})
+        return {'merchant': result, 'keys': {'merchant_secret': secret}}
 
     @staticmethod
     def reason(payload):
@@ -245,27 +321,38 @@ class ControlStore(Database):
     @staticmethod
     def user_value(row):
         return {key: (bool(row[key]) if key == 'enabled' else row[key])
-                for key in ('id', 'username', 'role', 'enabled', 'created_at')}
+                for key in ('id', 'username', 'role', 'enabled', 'created_at', 'merchant_id')}
 
-    def create_user(self, actor, name, role, password=None):
+    def create_user(self, actor, name, role, password=None, merchant_id=None, scope=None):
         name = username(name)
         if role not in PERMISSIONS:
             raise ServiceError('ROLE_INVALID', '管理员角色无效。')
         password = password or secrets.token_urlsafe(24)
         hashed = password_hash(password)
         with self.connection(True) as db:
+            self.validate_user_scope(db, role, merchant_id, scope)
             try:
-                db.execute('INSERT INTO admin_users VALUES (?,?,?,?,?,?,?)',
-                           (secrets.token_hex(16), name, hashed, role, 1, 1, int(time.time())))
+                db.execute('INSERT INTO admin_users(id,username,password_hash,role,enabled,auth_version,created_at,merchant_id) VALUES (?,?,?,?,?,?,?,?)',
+                           (secrets.token_hex(16), name, hashed, role, 1, 1, int(time.time()), merchant_id))
             except sqlite3.IntegrityError:
                 raise ServiceError('USER_EXISTS', '用户名已存在。', 409) from None
             self.audit(db, actor, 'user.create', name, details={'role': role})
             result = self.user_value(db.execute('SELECT * FROM admin_users WHERE username=?', (name,)).fetchone())
         return {'user': result, 'temporary_password': password}
 
-    def users(self):
+    @staticmethod
+    def validate_user_scope(db, role, merchant_id, scope=None):
+        if role not in PERMISSIONS or bool(merchant_id) != role.startswith('merchant_'):
+            raise ServiceError('ROLE_INVALID', '商户角色必须绑定商户，平台角色不能绑定商户。')
+        if scope and (merchant_id != scope or not role.startswith('merchant_')):
+            raise ServiceError('FORBIDDEN', '只能管理本商户的团队账号。', 403)
+        if merchant_id and not db.execute('SELECT 1 FROM merchants WHERE id=?', (merchant_id,)).fetchone():
+            raise ServiceError('NOT_FOUND', '商户不存在。', 404)
+
+    def users(self, merchant_id=None):
         with self.connection() as db:
-            return [self.user_value(row) for row in db.execute('SELECT * FROM admin_users ORDER BY created_at,username')]
+            return [self.user_value(row) for row in db.execute('SELECT * FROM admin_users' + (' WHERE merchant_id=?' if merchant_id else '')
+                    + ' ORDER BY created_at,username', (merchant_id,) if merchant_id else ())]
 
     def login(self, name, password, remote):
         # Do not echo the supplied username/password in responses or logs.
@@ -278,6 +365,8 @@ class ControlStore(Database):
                 raise ServiceError('LOGIN_THROTTLED', '尝试次数过多，请稍后再试。', 429)
             user = db.execute('SELECT * FROM admin_users WHERE username=?', (safe_name,)).fetchone()
             valid = password_matches(password, user['password_hash'] if user else self.dummy_hash)
+            if user and user['role'].startswith('merchant_') and not user['merchant_id']:
+                valid = False
             if not user or not user['enabled'] or not valid:
                 failures = throttle['failures'] + 1 if throttle and throttle['until_at'] > now else 1
                 db.execute('INSERT OR REPLACE INTO admin_login_limits VALUES (?,?,?)', (bucket, failures, now + 900))
@@ -305,7 +394,8 @@ class ControlStore(Database):
             row = db.execute('''SELECT u.*,s.csrf_token,s.expires_at,s.last_seen,s.auth_version AS session_version
                 FROM admin_sessions s JOIN admin_users u ON s.user_id=u.id WHERE s.token_hash=?''', (hashed,)).fetchone()
             if (not row or not row['enabled'] or row['expires_at'] <= now or row['last_seen'] <= now - 1800
-                    or row['auth_version'] != row['session_version']):
+                    or row['auth_version'] != row['session_version']
+                    or (row['role'].startswith('merchant_') and not row['merchant_id'])):
                 raise ServiceError('LOGIN_REQUIRED', '登录已过期，请重新登录。', 401)
             if csrf is not None and (not isinstance(csrf, str) or not hmac.compare_digest(csrf, row['csrf_token'])):
                 raise ServiceError('CSRF_INVALID', '请求校验失败，请刷新页面。', 403)
@@ -334,11 +424,13 @@ class ControlStore(Database):
             db.execute('UPDATE admin_users SET password_hash=?,auth_version=auth_version+1 WHERE id=?', (hashed, row['id']))
             self.audit(db, actor, 'user.password.change', actor)
 
-    def update_user(self, actor, payload, reset=False):
+    def update_user(self, actor, payload, reset=False, scope=None):
         name = username(payload.get('username'))
         with self.connection(True) as db:
             row = db.execute('SELECT * FROM admin_users WHERE username=?', (name,)).fetchone()
             if row is None:
+                raise ServiceError('NOT_FOUND', '用户不存在。', 404)
+            if scope and row['merchant_id'] != scope:
                 raise ServiceError('NOT_FOUND', '用户不存在。', 404)
             if reset:
                 password = secrets.token_urlsafe(24)
@@ -349,21 +441,29 @@ class ControlStore(Database):
                 role, enabled = payload.get('role'), payload.get('enabled')
                 if role not in PERMISSIONS or type(enabled) is not bool:
                     raise ServiceError('ROLE_INVALID', '请核对角色和账户状态。')
+                merchant_id = payload.get('merchant_id', row['merchant_id']) or None
+                self.validate_user_scope(db, role, merchant_id, scope)
+                if row['role'] == 'merchant_admin' and row['enabled'] and (role != 'merchant_admin' or not enabled or merchant_id != row['merchant_id']):
+                    if db.execute("SELECT COUNT(*) FROM admin_users WHERE role='merchant_admin' AND enabled=1 AND merchant_id=?", (row['merchant_id'],)).fetchone()[0] <= 1:
+                        raise ServiceError('LAST_ADMIN', '至少保留一名启用的商户管理员。', 409)
                 if row['role'] == 'admin' and row['enabled'] and (role != 'admin' or not enabled):
                     if db.execute("SELECT COUNT(*) FROM admin_users WHERE role='admin' AND enabled=1").fetchone()[0] <= 1:
                         raise ServiceError('LAST_ADMIN', '至少保留一名启用的管理员。', 409)
-                db.execute('UPDATE admin_users SET role=?,enabled=?,auth_version=auth_version+1 WHERE id=?',
-                           (role, enabled, row['id']))
-                action, details = 'user.update', {'role': role, 'enabled': enabled}
+                db.execute('UPDATE admin_users SET role=?,enabled=?,merchant_id=?,auth_version=auth_version+1 WHERE id=?',
+                           (role, enabled, merchant_id, row['id']))
+                action, details = 'user.update', {'role': role, 'enabled': enabled, 'merchant_id': row['merchant_id']}
             self.audit(db, actor, action, name, details=details)
         return {'temporary_password': password} if reset else {'updated': True}
 
-    def audits(self, payload):
+    def audits(self, payload, merchant_id=None):
         count = limit(payload.get('limit', 50))
         before = payload.get('before_seq', 0)
         if type(before) is not int or not 0 <= before <= 9_000_000_000_000_000:
             raise ServiceError('INVALID_ARGUMENT', 'before_seq 无效。')
         clauses, params = [], []
+        if merchant_id:
+            clauses.append('merchant_id=?')
+            params.append(merchant_id)
         for field in ('actor', 'action', 'target'):
             value = payload.get(field, '')
             if not isinstance(value, str) or len(value) > 128:

@@ -1,6 +1,9 @@
 'use strict';
 const $ = selector => document.querySelector(selector);
-const roles = {admin: '管理员', operator: '运营', viewer: '只读'};
+const roles = {admin: '平台管理员', operator: '平台运营', viewer: '平台只读', merchant_admin: '商户管理员', merchant_operator: '商户运营', merchant_viewer: '商户只读'};
+const tenant = () => !!session?.user.merchant_id;
+const portal = location.pathname.startsWith('/merchant');
+const apiRoot = portal ? '/api/merchant/' : '/api/admin/';
 const statusNames = {settled: '已完成', prepared: '待确认扣款', debited: '待确认派彩', rejected: '已拒绝'};
 const pages = {
   overview: ['运营概览', '关注商户接入、交易处理与日常运营。'],
@@ -43,17 +46,21 @@ function select(name, options, selected = '') {
 function notice(message, error = false) { $('#notice').textContent = message; $('#notice').className = error ? 'error' : ''; $('#notice').hidden = false; }
 function showLogin() {
   session = null; generation++; closeModal(); $('#content').replaceChildren(); $('#app').hidden = true; $('#login').hidden = false;
+  transactionFilters = {}; auditFilters = {}; merchants = []; games = [];
   $('#login-form').elements.password.value = '';
 }
 function showApp(result) {
   session = result; $('#login').hidden = true; $('#app').hidden = false;
   $('#identity').textContent = result.user.username + ' · ' + roles[result.user.role];
+  $('#profile-avatar').textContent = result.user.username.slice(0, 1).toUpperCase();
+  $('#merchant-nav-label').textContent = tenant() ? '我的商户' : '商户管理';
+  $('#workspace-kind').textContent = tenant() ? '商户专属空间' : '运营管理空间';
   document.querySelectorAll('[data-permission]').forEach(node => { node.hidden = !can(node.dataset.permission); });
   if (view === 'users' && !can('users.manage')) view = 'overview';
   return loadView();
 }
 async function api(path, payload = {}) {
-  const response = await fetch('/api/admin/' + path, {method: 'POST', credentials: 'same-origin', headers: {'Content-Type': 'application/json', 'X-GTT-CSRF': session?.csrf_token || ''}, body: JSON.stringify(payload)});
+  const response = await fetch(apiRoot + path, {method: 'POST', credentials: 'same-origin', headers: {'Content-Type': 'application/json', 'X-GTT-CSRF': session?.csrf_token || ''}, body: JSON.stringify(payload)});
   const result = await response.json();
   if (!response.ok) {
     if (response.status === 401 && path !== 'login') showLogin();
@@ -86,7 +93,7 @@ function formModal(title, nodes, submitLabel, action) {
   modal(title, form);
 }
 function reveal(title, values) {
-  modal(title, [el('p', {class: 'hint'}, '以下凭据仅在本次操作后展示。请妥善保存；关闭窗口后无法再次读取。'),
+  modal(title, [el('p', {class: 'hint'}, values.merchant_secret ? '商户密钥由 GTT 自动生成，可在商户详情随时查看或复制。' : '以下凭据仅在本次操作后展示。请妥善保存；关闭窗口后无法再次读取。'),
     ...Object.entries(values).map(([name, value]) => el('div', {}, el('p', {class: 'small muted'}, name), el('pre', {class: 'secret'}, value))),
     el('div', {class: 'modal-actions'}, button('已保存，关闭', closeModal, 'primary'))]);
 }
@@ -106,37 +113,62 @@ function txRows(rows) {
 function txTable(rows) { return table(['操作 / 时间', '商户 / 玩家', '游戏', '扣款', '派彩', '状态', '操作'], txRows(rows)); }
 async function overview() {
   const data = await api('overview');
+  const own = merchants[0];
+  const welcome = el('section', {class: 'welcome-strip'}, el('div', {}, el('p', {class: 'eyebrow'}, tenant() ? 'YOUR PARTNERSHIP, AT A GLANCE' : 'A CLEAR VIEW OF YOUR OPERATIONS'),
+    el('h2', {}, tenant() ? (own?.name || '商户') + '，欢迎回来。' : '每一份合作，都有新的可能。'),
+    el('p', {}, tenant() ? '从接入配置到每一笔交易，你的业务尽在这里。' : '在一个工作空间，连接合作伙伴、游戏与交易。')),
+    button(tenant() ? '管理我的商户 ↗' : '管理合作商户 ↗', () => navigate('merchants'), 'welcome-action'));
   const stats = el('div', {class: 'stats'}, [
-    ['合作商户', data.merchants, data.active_merchants + ' 个商户已启用', '▦'],
-    ['网关游戏', data.games, '可分配给合作商户', '◇'],
+    [tenant() ? '已结算玩家' : '合作商户', tenant() ? data.players : data.merchants, tenant() ? '按商户与玩家身份去重' : data.active_merchants + ' 个商户已启用', '▦'],
+    ['已接入游戏', data.games, tenant() ? '本商户已获授权' : '商户钱包链路已接通', '◇'],
     ['已完成交易', data.settled, '已确认钱包处理结果', '↗'],
     ['待处理交易', data.pending, data.rejected + ' 笔交易已拒绝', '⇄'],
   ].map(([label, number, foot, icon]) => el('div', {class: 'stat'}, el('div', {class: 'stat-icon'}, icon), el('div', {class: 'stat-label'}, label), el('div', {class: 'stat-number'}, amount(number)), el('div', {class: 'stat-foot'}, foot))));
-  const guide = el('div', {class: 'panel-body'}, [
-    ['01', '建立合作商户', '配置钱包服务地址、币种与接入密钥。'],
-    ['02', '分配游戏授权', '启用所需游戏，通过签名接口创建玩家会话。'],
-    ['03', '跟踪交易结果', '查看扣款与派彩状态，按原因恢复待处理交易。'],
-  ].map(([n, title, description]) => el('div', {class: 'guide'}, el('span', {class: 'guide-number'}, n), el('div', {}, el('h3', {}, title), el('p', {}, description)))));
-  return el('div', {}, stats, panel('最近交易', 'LATEST ACTIVITY · 最近 5 笔操作', txTable(data.recent), button('查看全部 →', () => navigate('transactions'))),
-    el('div', {class: 'two-column'}, panel('商户接入流程', '从合作平台到游戏会话', guide), panel('运营工作台', '按角色提供操作入口', el('div', {class: 'panel-body'}, el('h3', {}, '每一次配置变更都有记录'), el('p', {class: 'muted'}, '商户授权即时生效。交易恢复沿用原操作 ID，避免重复扣款或派彩。'), button('查看操作审计 →', () => navigate('audit'), 'secondary')))));
+  const totals = el('div', {class: 'settlement-list'}, data.totals.length ? data.totals.map(row => el('div', {class: 'settlement-currency'},
+    badge(row.currency), el('div', {class: 'settlement-row'}, el('span', {}, '累计投注'), el('strong', {}, money(row.debit_minor, row))),
+    el('div', {class: 'settlement-row'}, el('span', {}, '累计派彩'), el('strong', {}, money(row.credit_minor, row))))) : el('div', {class: 'empty'}, '完成首笔交易后，将在这里展示结算金额。'));
+  const chart = settlementChart(data.daily);
+  return el('div', {}, welcome, stats, el('div', {class: 'two-column'}, panel('交易脉搏', '最近 7 天 · UTC · 已完成游戏操作', chart, badge('7 DAYS')), panel('资金概览', '累计已结算金额 · 按币种独立统计', totals)),
+    panel('最近交易', 'LATEST ACTIVITY / 最近 5 笔游戏操作', txTable(data.recent), button('查看全部 →', () => navigate('transactions'))));
+}
+function settlementChart(days) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 640 170'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', days.map(d => d.date + ': ' + d.settled + ' 笔').join('，'));
+  const maximum = Math.max(1, ...days.map(d => d.settled));
+  function shape(tag, attrs) { const node = document.createElementNS(svg.namespaceURI, tag); for (const [k,v] of Object.entries(attrs)) node.setAttribute(k,v); svg.append(node); return node; }
+  function draw(width) {
+    svg.replaceChildren(); svg.setAttribute('viewBox', '0 0 ' + width + ' 170');
+    const step = (width - 24) / 7, barWidth = Math.min(32, step * .42);
+    for (let i = 0; i < 4; i++) { const y = 15 + i * 43; shape('line', {x1: 10, x2: width - 10, y1: y, y2: y, class: 'chart-grid'}); }
+    days.forEach((d, i) => { const x = 12 + step * (i + .5) - barWidth / 2, height = d.settled / maximum * 113;
+    const bar = shape('rect', {x, y: 144 - Math.max(2, height), width: barWidth, height: Math.max(2, height), rx: 3, class: 'chart-bar'});
+    const title = document.createElementNS(svg.namespaceURI,'title'); title.textContent = d.date + ' · ' + d.settled + ' 笔'; bar.append(title);
+    const label = shape('text', {x: x + barWidth / 2, y: 165, 'text-anchor': 'middle', class: 'chart-label'}); label.textContent = d.date.slice(5);
+    const count = shape('text', {x: x + barWidth / 2, y: Math.max(12, 137 - height), 'text-anchor': 'middle', class: 'chart-value'}); count.textContent = d.settled;
+    });
+  }
+  draw(640);
+  const observer = new ResizeObserver(() => { if (!svg.isConnected) { observer.disconnect(); return; } draw(Math.max(220, svg.clientWidth)); });
+  observer.observe(svg);
+  return el('div', {class: 'chart-body'}, svg);
 }
 function merchantEditor(merchant = null) {
-  const editing = !!merchant, writable = can('merchants.write');
+  const editing = !!merchant, writable = can('merchants.write') || can('profile.write');
   const value = merchant || {id: '', name: '', wallet_url: '', currency: 'USD', games: [], enabled: true};
   const currency = select('currency', editing && value.currency !== 'USD' ? [[value.currency, value.currency]] : [['USD', '美元（USD）']], value.currency);
   const prebet = value.pre_payout || {};
   currency.required = true;
   currency.disabled = editing;
   const nodes = [el('div', {class: 'form-grid'}, field('商户号', input('id', value.id, {disabled: true, placeholder: '保存后自动生成'})), field('商户名称', input('name', value.name, {required: true, maxlength: 80})), field('钱包服务地址', input('wallet_url', value.wallet_url, {required: true, type: 'url', placeholder: 'https://wallet.example.com', maxlength: 512})), field('币种', currency)),
+    el('p', {class: 'hint'}, 'merchant_secret 由 GTT 自动生成。统一签名使用同一把密钥处理游戏接入、钱包和预派彩请求。创建后即可查看、复制和使用。'),
     el('p', {class: 'hint'}, '钱包地址填写 origin，不带路径。金额精度为 100；创建后币种不可更改。'),
-    el('label', {class: 'check-label'}, input('enabled', 'yes', {type: 'checkbox', checked: value.enabled}), '启用商户'),
-    el('h3', {}, '游戏授权'), ...games.map(game => el('label', {class: 'check-label'}, input('games', game.id, {type: 'checkbox', checked: value.games.includes(game.id)}), game.title || game.id)),
+    tenant() ? el('p', {class: 'hint'}, '商户启用状态与游戏授权由 GTT 平台维护。') : el('label', {class: 'check-label'}, input('enabled', 'yes', {type: 'checkbox', checked: value.enabled}), '启用商户'),
+    el('h3', {}, '游戏授权'), ...games.map(game => el('label', {class: 'check-label'}, input('games', game.id, {type: 'checkbox', checked: value.games.includes(game.id), disabled: tenant()}), game.title || game.id)),
     el('h3', {}, '平台预派彩'),
     el('label', {class: 'check-label'}, input('prebet_enabled', 'yes', {type: 'checkbox', checked: prebet.enabled}), '开奖前向平台获取整局派彩倍数区间'),
     field('preBetDecision 接口地址', input('prebet_url', prebet.url || '', {type: 'url', autocomplete: 'off', maxlength: 1024, placeholder: '填写合作平台的预下注决策接口地址'})),
-    el('div', {class: 'form-grid'}, field('平台 operator_token', input('prebet_operator_token', '', {type: 'password', autocomplete: 'new-password', maxlength: 1024, placeholder: prebet.credentials_configured ? '留空保留现有 Token' : '填写平台运营商 Token'})),
-      field('平台 secret_key', input('prebet_secret_key', '', {type: 'password', autocomplete: 'new-password', maxlength: 1024, placeholder: prebet.credentials_configured ? '留空保留现有密钥' : '填写平台密钥'}))),
-    el('p', {class: 'hint'}, '倍数以整局实际扣款为基数，包含续列和免费旋转。平台凭据只保存在服务端；启动请求需提供 external_username。'),
+    el('p', {class: 'hint'}, '统一签名复用 merchant_secret，预派彩无需另配凭据；是否启用由商户决定。'),
+    el('p', {class: 'hint'}, '倍数以整局实际扣款为基数，包含续列和免费旋转。启动请求需提供 external_username。'),
     el('p', {class: 'hint'}, '停用或移除授权会阻止后续游戏请求；已受理的待处理交易仍可由运营人员恢复。')];
   if (!writable) { detail('商户配置', value); return; }
   formModal(editing ? '编辑商户' : '创建商户', nodes, '保存商户', async form => {
@@ -144,29 +176,54 @@ function merchantEditor(merchant = null) {
       enabled: form.get('enabled') === 'yes', games: form.getAll('games')};
     if (editing) Object.assign(payload, {id: value.id, version: value.version});
     payload.pre_payout = {enabled: form.get('prebet_enabled') === 'yes', url: form.get('prebet_url').trim()};
-    if (form.get('prebet_operator_token')) payload.pre_payout.operator_token = form.get('prebet_operator_token');
-    if (form.get('prebet_secret_key')) payload.pre_payout.secret_key = form.get('prebet_secret_key');
-    const result = await api('merchants/' + (editing ? 'update' : 'create'), payload);
+    if (tenant()) { delete payload.enabled; delete payload.games; delete payload.currency; }
+    const result = await api('merchants/' + (tenant() ? 'profile' : editing ? 'update' : 'create'), payload);
     closeModal(); await loadView(); notice(editing ? '商户配置已保存。' : '商户已创建，商户号：' + result.merchant.id);
-    if (result.keys) reveal('商户已创建 · 保存接入密钥', {merchant_id: result.merchant.id, ...result.keys});
+    if (result.keys) showMerchantSecret(result.merchant.id, result.keys.merchant_secret);
   });
 }
+function showMerchantSecret(merchantId, secret) {
+  const secretInput = input('merchant_secret', secret, {type: 'password', readonly: true, autocomplete: 'off'});
+  const message = el('p', {class: 'hint', role: 'status'}, '密钥由 GTT 自动生成，可随时在后台查看或复制。');
+  const toggle = button('显示密钥', () => { const show = secretInput.type === 'password'; secretInput.type = show ? 'text' : 'password'; toggle.textContent = show ? '隐藏密钥' : '显示密钥'; }, 'secondary');
+  const copy = button('复制密钥', async () => {
+    try { await navigator.clipboard.writeText(secret); message.textContent = '密钥已复制。'; }
+    catch { secretInput.type = 'text'; toggle.textContent = '隐藏密钥'; secretInput.select(); message.textContent = '已选中密钥，可按 Ctrl+C 复制。'; }
+  }, 'primary');
+  modal('商户密钥', [field('商户号', input('merchant_id', merchantId, {readonly: true})), field('merchant_secret', secretInput), message,
+    el('div', {class: 'modal-actions'}, toggle, copy, button('关闭', closeModal, 'secondary'))]);
+}
+function merchantSecret(merchant) {
+  run(async () => { const result = await api('merchants/signing/view', {id: merchant.id}); showMerchantSecret(merchant.id, result.keys.merchant_secret); });
+}
 function rotate(merchant) {
-  formModal('轮换商户密钥', [el('p', {class: 'hint'}, '商户：' + merchant.name + '。API 与钱包签名密钥将同时更新，旧密钥立即失效。请同步更新合作平台配置。'), field('操作原因', input('reason', '', {required: true, minlength: 4, maxlength: 300}))], '轮换并显示新密钥', async form => {
-    const result = await api('merchants/rotate', {id: merchant.id, version: merchant.version, reason: form.get('reason')});
-    closeModal(); await loadView(); reveal('密钥已轮换 · 请保存', result.keys);
+  formModal('重置商户密钥', [el('p', {class: 'hint'}, 'GTT 将生成一把新密钥，原密钥立即失效。重置后请同步更新商户服务端配置。'),
+    field('操作原因', input('reason', '', {required: true, minlength: 4, maxlength: 300}))], '重置密钥', async form => {
+    const result = await api('merchants/signing/rotate', {id: merchant.id, version: merchant.version, reason: form.get('reason')});
+    closeModal(); await loadView(); showMerchantSecret(merchant.id, result.keys.merchant_secret);
   });
 }
 async function merchantPage() {
+  if (tenant()) return merchantProfile();
   return panel('全部商户', merchants.length + ' 个合作平台', table(['商户', '状态', '钱包 / 币种', '授权游戏', '密钥版本', '操作'], merchants.map(m => [
     el('div', {}, el('div', {class: 'cell-title'}, m.name), el('div', {class: 'subtext mono'}, m.id)), badge(m.enabled ? '已启用' : '已停用', m.enabled ? 'good' : ''),
     el('div', {}, el('div', {class: 'cell-title'}, m.currency + ' · 精度 ' + m.minor_unit), el('div', {class: 'subtext'}, m.wallet_url)),
-    m.games.length ? m.games.join(', ') : '未授权', el('div', {}, 'v' + m.key_version, el('div', {class: 'subtext mono'}, m.api_key_fingerprint)),
-    el('div', {}, button(can('merchants.write') ? '编辑' : '查看', () => merchantEditor(m)), can('keys.rotate') ? button('轮换密钥', () => rotate(m)) : null),
+    m.games.length ? m.games.join(', ') : '未授权', el('div', {}, 'v' + m.merchant_key_version, el('div', {class: 'subtext mono'}, m.merchant_key_fingerprint)),
+    el('div', {}, button(can('merchants.write') ? '编辑' : '查看', () => merchantEditor(m)), can('users.manage') ? button('开通后台', () => userEditor(null, m)) : null, can('keys.rotate') ? [button('查看密钥', () => merchantSecret(m)), button('重置密钥', () => rotate(m))] : null),
   ])), can('merchants.write') ? button('+ 创建商户', () => merchantEditor(), 'primary') : null);
 }
+function merchantProfile() {
+  const m = merchants[0];
+  const property = (label, value) => el('div', {class: 'property'}, el('span', {}, label), el('strong', {}, value));
+  return el('div', {}, el('section', {class: 'merchant-banner'}, el('span', {class: 'merchant-avatar'}, m.name.slice(0,1)), el('div', {}, el('p', {class: 'eyebrow'}, 'MERCHANT PROFILE'), el('h2', {}, m.name), el('span', {class: 'mono'}, m.id)), badge(m.enabled ? '合作已启用' : '合作已停用', m.enabled ? 'good' : 'bad')),
+    el('div', {class: 'two-column'}, panel('接入配置', '管理你的平台连接', el('div', {class: 'panel-body'}, property('钱包地址', m.wallet_url), property('结算币种', m.currency), property('已授权游戏', m.games.join(', ') || '暂无授权'), property('平台预派彩', m.pre_payout.enabled ? '已启用' : '未启用'), property('决策接口', m.pre_payout.url || '未配置')), can('profile.write') ? button('编辑接入配置 ↗', () => merchantEditor(m), 'secondary') : null),
+    panel('统一接入密钥', 'GTT 自动签发 · 游戏、钱包、预派彩共用', el('div', {class: 'panel-body'}, property('签名模式', 'HMAC-SHA256'), property('密钥版本', 'v' + m.merchant_key_version), property('密钥指纹', m.merchant_key_fingerprint),
+      el('p', {class: 'hint'}, '只需保存商户号和一把 merchant_secret。每次请求使用新的时间戳、随机数和签名，密钥不放入请求体或游戏链接。'),
+      can('keys.rotate') ? [button('查看 / 复制密钥', () => merchantSecret(m), 'secondary'), button('重置密钥', () => rotate(m), 'secondary')] : null))),
+    panel('接入路径', '从玩家登录到钱包结算', el('div', {class: 'integration-flow'}, ...[['01', '签名启动', '由你的服务端调用 /gtt/v1/games/launch'], ['02', '打开游戏', '使用 GTT 域名拼接返回的 launch_url'], ['03', '钱包结算', '处理 GTT 的扣款和派奖签名回调']].map(([n,title,desc]) => el('div', {class: 'guide'}, el('span', {class: 'guide-number'}, n), el('div', {}, el('h3', {}, title), el('p', {}, desc)))))));
+}
 async function gamePage() {
-  return el('div', {}, el('div', {class: 'game-grid'}, games.map(game => el('article', {class: 'game-card'}, el('div', {class: 'game-monogram'}, 'BW'), el('h2', {}, game.title || game.id), el('p', {class: 'muted mono'}, game.id), badge('商户网关已接入', 'good'),
+  return el('div', {}, !games.length ? panel('暂无已授权游戏', '联系 GTT 平台开通游戏授权', el('p', {class: 'panel-body muted'}, '游戏开通后将在这里显示，已有商户资料及交易记录可继续查看。')) : null, el('div', {class: 'game-grid'}, games.map(game => el('article', {class: 'game-card'}, el('div', {class: 'game-monogram'}, 'BW'), el('h2', {}, game.title || game.id), el('p', {class: 'muted mono'}, game.id), badge('商户网关已接入', 'good'),
     ...Object.entries({'规则版本': game.ruleset_id || game.version || '—', '已授权商户': merchants.filter(m => m.games.includes(game.id)).length, '目标 RTP': '尚未标定'}).map(([key, value]) => el('div', {class: 'game-info'}, el('span', {class: 'muted'}, key), el('span', {}, value))),
     el('p', {class: 'hint'}, '游戏授权在商户配置中维护。目标 RTP 需完成数学模型标定后开放设置。')))),
     el('p', {class: 'hint'}, '此处列出已接入商户钱包链路的游戏。其他游戏的原有大厅入口继续保留。'));
@@ -200,12 +257,15 @@ async function auditPage() {
     field('操作人', input('actor', auditFilters.actor || '')), field('操作类型', input('action', auditFilters.action || '', {placeholder: '如 merchant.update'})), field('目标', input('target', auditFilters.target || '')),
   ], auditFilters), table(['时间', '操作人', '操作类型', '目标', '结果', '详情'], rows.map(row => [time(row.created_at), row.actor, el('span', {class: 'mono'}, row.action), el('span', {class: 'mono'}, row.target || '—'), badge(row.outcome, row.outcome === 'success' ? 'good' : 'bad'), button('查看', () => detail('审计详情 #' + row.seq, row))])), pager(rows, auditFilters, loadView)));
 }
-function userEditor(user = null) {
+function userEditor(user = null, merchant = null) {
   const editing = !!user;
+  const roleOptions = Object.entries(roles).filter(([role]) => !tenant() || role.startsWith('merchant_'));
   formModal(editing ? '编辑账户权限' : '创建管理账户', [field('用户名', input('username', user?.username || '', {required: true, minlength: 3, maxlength: 40, pattern: '[A-Za-z0-9_.\\-]+', disabled: editing})),
-    field('角色', select('role', Object.entries(roles), user?.role || 'viewer')), el('p', {class: 'hint'}, '管理员：维护商户、密钥和账户；运营：查询与恢复交易；只读：查看商户、交易和审计。'),
+    field('角色', select('role', roleOptions, user?.role || (merchant ? 'merchant_admin' : tenant() ? 'merchant_viewer' : 'viewer'))),
+    !tenant() ? field('绑定商户', select('merchant_id', [['', '平台账号（不绑定商户）'], ...merchants.map(m => [m.id, m.name + ' · ' + m.id])], user?.merchant_id || merchant?.id || '')) : null,
+    el('p', {class: 'hint'}, tenant() ? '商户管理员管理本商户接入与团队；运营可查询和恢复交易；只读仅可查看。' : '商户角色须选择绑定商户；平台角色不绑定商户。商户账号仅能访问本商户的数据。'),
     editing ? el('label', {class: 'check-label'}, input('enabled', 'yes', {type: 'checkbox', checked: user.enabled}), '启用账户') : el('p', {class: 'hint'}, '创建后会生成一次性展示的初始密码。')], '保存账户', async form => {
-    const result = await api('users/' + (editing ? 'update' : 'create'), {username: user?.username || form.get('username'), role: form.get('role'), enabled: editing ? form.get('enabled') === 'yes' : true});
+    const result = await api('users/' + (editing ? 'update' : 'create'), {username: user?.username || form.get('username'), role: form.get('role'), merchant_id: tenant() ? session.user.merchant_id : form.get('merchant_id') || null, enabled: editing ? form.get('enabled') === 'yes' : true});
     closeModal();
     if (editing && user.username === session?.user.username) { showLogin(); return; }
     await loadView(); notice('账户已保存。'); if (result.temporary_password) reveal('账户已创建', {username: result.user.username, temporary_password: result.temporary_password});
@@ -220,7 +280,7 @@ function resetPassword(user) {
 }
 async function userPage() {
   const users = (await api('users/list')).users;
-  return panel('管理账户', '权限变更与停用会立即撤销已有会话', table(['用户名', '角色', '状态', '创建时间', '操作'], users.map(user => [user.username, badge(roles[user.role], 'purple'), badge(user.enabled ? '已启用' : '已停用', user.enabled ? 'good' : ''), time(user.created_at), el('div', {}, button('编辑权限', () => userEditor(user)), button('重置密码', () => resetPassword(user)))])), button('+ 创建账户', () => userEditor(), 'primary'));
+  return panel(tenant() ? '商户团队' : '管理账户', '权限变更与停用会立即撤销已有会话', table(['用户名', '角色', '所属商户', '状态', '创建时间', '操作'], users.map(user => [user.username, badge(roles[user.role], 'purple'), user.merchant_id || 'GTT 平台', badge(user.enabled ? '已启用' : '已停用', user.enabled ? 'good' : ''), time(user.created_at), el('div', {}, button('编辑权限', () => userEditor(user)), button('重置密码', () => resetPassword(user)))])), button('+ 创建账户', () => userEditor(), 'primary'));
 }
 async function run(action) { try { await action(); } catch (error) { if (session) notice(error.message, true); else $('#login-error').textContent = error.message; } }
 function navigate(next) { view = next; $('#notice').hidden = true; loadView(); }
@@ -228,12 +288,17 @@ async function loadView() {
   if (!session) return;
   const current = ++generation;
   $('#page-title').textContent = $('#breadcrumb').textContent = pages[view][0]; $('#page-description').textContent = pages[view][1];
-  document.querySelectorAll('[data-view]').forEach(node => node.classList.toggle('active', node.dataset.view === view));
+  if (tenant() && view === 'merchants') { $('#page-title').textContent = $('#breadcrumb').textContent = '我的商户'; $('#page-description').textContent = '管理商户资料、平台连接与接入凭据。'; }
+  $('#page-eyebrow').textContent = (tenant() ? 'PARTNER' : 'PLATFORM') + ' / ' + view.toUpperCase();
+  $('#workspace-date').textContent = new Date().toLocaleDateString('zh-CN', {year:'numeric',month:'long',day:'numeric'});
+  document.querySelectorAll('[data-view]').forEach(node => { const active = node.dataset.view === view; node.classList.toggle('active', active); node.setAttribute('aria-label', tenant() && node.dataset.view === 'merchants' ? '我的商户' : pages[node.dataset.view][0]); if (active) node.setAttribute('aria-current', 'page'); else node.removeAttribute('aria-current'); });
   $('#refresh-button').disabled = true;
   try {
     const results = await Promise.all([api('merchants/list'), api('games')]);
     if (!session || generation !== current) return;
     merchants = results[0].merchants; games = results[1].games;
+    $('#workspace-name').textContent = tenant() ? merchants[0]?.name || '我的商户' : 'GTT 平台';
+    $('#workspace-avatar').textContent = tenant() ? (merchants[0]?.name || 'M').slice(0,1) : 'G';
     const result = await ({overview, merchants: merchantPage, games: gamePage, transactions: transactionPage, audit: auditPage, users: userPage})[view]();
     if (generation === current && session) $('#content').replaceChildren(result);
   } catch (error) { if (session && generation === current) notice(error.message, true); }
@@ -252,4 +317,5 @@ $('#password-button').addEventListener('click', () => formModal('修改登录密
   if (form.get('new_password') !== form.get('confirm_password')) throw new Error('两次输入的新密码不一致。');
   await api('password', {current_password: form.get('current_password'), new_password: form.get('new_password')}); showLogin();
 }));
-(async () => { try { const response = await fetch('/api/admin/me', {credentials: 'same-origin'}); if (!response.ok) { showLogin(); return; } await showApp((await response.json()).data); } catch { showLogin(); $('#login-error').textContent = '连接失败，请检查后台服务。'; } })();
+if (portal) { document.title = 'GTT · 商户工作台'; $('#login-title').textContent = '登录商户工作台'; $('#login-description').textContent = '使用你的商户账号，进入专属运营空间。'; $('#portal-switch').textContent = '平台控制台 ↗'; $('#portal-switch').href = '/'; }
+(async () => { try { const response = await fetch(apiRoot + 'me', {credentials: 'same-origin'}); if (!response.ok) { showLogin(); return; } await showApp((await response.json()).data); } catch { showLogin(); $('#login-error').textContent = '连接失败，请检查后台服务。'; } })();

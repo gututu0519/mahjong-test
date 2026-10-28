@@ -1,6 +1,7 @@
 """GTT management API and static UI. Credentials never reach public merchant views."""
 import json
 import logging
+from datetime import datetime, timedelta, timezone
 from http.cookies import CookieError, SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -69,14 +70,37 @@ class AdminApplication:
             return entries[0]
         return entries
 
-    def overview(self):
-        merchants = self.control.merchants()
+    def overview(self, merchant_id=None):
+        merchants = [self.control.merchant(merchant_id)] if merchant_id else self.control.merchants()
+        where, params = (' WHERE merchant_id=?', (merchant_id,)) if merchant_id else ('', ())
+        today = datetime.now(timezone.utc).date()
+        days = {str(today - timedelta(days=i)): {'date': str(today - timedelta(days=i)), 'settled': 0} for i in reversed(range(7))}
         with self.provider.connection() as db:
-            counts = dict(db.execute('SELECT status,COUNT(*) FROM game_operations GROUP BY status').fetchall())
+            counts = dict(db.execute('SELECT status,COUNT(*) FROM game_operations' + where + ' GROUP BY status', params).fetchall())
+            totals = db.execute("SELECT merchant_id,SUM(json_extract(candidate_json,'$.debit_minor')) AS debit,"
+                               "SUM(json_extract(candidate_json,'$.credit_minor')) AS credit,COUNT(DISTINCT player_id) AS players "
+                               "FROM game_operations" + where + (' AND' if where else ' WHERE') + " status='settled' GROUP BY merchant_id", params).fetchall()
+            recent_days = db.execute("SELECT date(created_at,'unixepoch') AS day,COUNT(*) AS count FROM game_operations" + where
+                                    + (' AND' if where else ' WHERE') + " status='settled' AND created_at>=? GROUP BY day",
+                                    (*params, int(datetime.combine(today - timedelta(days=6), datetime.min.time(), timezone.utc).timestamp()))).fetchall()
+        currencies, players = {}, 0
+        by_id = {m['id']: m for m in merchants}
+        for row in totals:
+            merchant = by_id.get(row['merchant_id'])
+            if not merchant:
+                continue
+            bucket = currencies.setdefault(merchant['currency'], {'currency': merchant['currency'], 'minor_unit': merchant['minor_unit'], 'debit_minor': 0, 'credit_minor': 0})
+            bucket['debit_minor'] += row['debit']
+            bucket['credit_minor'] += row['credit']
+            players += row['players']
+        for row in recent_days:
+            if row['day'] in days:
+                days[row['day']]['settled'] = row['count']
         return {'merchants': len(merchants), 'active_merchants': sum(m['enabled'] for m in merchants),
-                'games': len(self.games()), 'settled': counts.get('settled', 0),
+                'games': len([g for g in self.games() if not merchant_id or g['id'] in merchants[0]['games']]), 'settled': counts.get('settled', 0),
                 'pending': counts.get('prepared', 0) + counts.get('debited', 0),
-                'rejected': counts.get('rejected', 0), 'recent': self.transactions({'limit': 5})}
+                'rejected': counts.get('rejected', 0), 'players': players, 'totals': list(currencies.values()),
+                'daily': list(days.values()), 'recent': self.transactions({'limit': 5, **({'merchant_id': merchant_id} if merchant_id else {})})}
 
     def prebet_decisions(self, payload):
         clauses, params = [], []
@@ -123,6 +147,16 @@ class AdminApplication:
 class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
     server_version = 'GTTAdmin/1.0'
 
+    @property
+    def cookie_name(self):
+        return 'gtt_merchant_session' if self.path.startswith('/api/merchant/') else 'gtt_admin_session'
+
+    def authenticate_session(self, permission=None, csrf=None):
+        result = self.server.app.control.session(self.token(), permission, csrf)
+        if self.cookie_name == 'gtt_merchant_session' and not result['user']['merchant_id']:
+            raise ServiceError('MERCHANT_LOGIN_REQUIRED', '请使用绑定商户的账号登录商户工作台。', 403)
+        return result
+
     def log_message(self, format, *args):
         # Only method and path are logged; request bodies/cookies are never logged.
         logging.info('GTT admin %s %s', self.command, self.path.split('?', 1)[0])
@@ -148,7 +182,7 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
     def token(self):
         try:
             cookies = SimpleCookie(self.headers.get('Cookie', ''))
-            return cookies['gtt_admin_session'].value if 'gtt_admin_session' in cookies else ''
+            return cookies[self.cookie_name].value if self.cookie_name in cookies else ''
         except CookieError:
             return ''
 
@@ -162,10 +196,10 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
         app = self.server.app
         if self.path == '/health':
             return self.json_response(200, {'status': 'ok', 'service_id': 'gtt-admin'})
-        if self.path == '/api/admin/me':
-            return self.json_response(200, app.control.session(self.token()))
+        if self.path in ('/api/admin/me', '/api/merchant/me'):
+            return self.json_response(200, self.authenticate_session())
         files = {'/': ('admin.html', 'text/html; charset=utf-8'), '/admin.js': ('admin.js', 'application/javascript; charset=utf-8'),
-                 '/admin.css': ('admin.css', 'text/css; charset=utf-8')}
+                 '/admin.css': ('admin.css', 'text/css; charset=utf-8'), '/merchant/': ('admin.html', 'text/html; charset=utf-8')}
         if self.path not in files:
             raise ServiceError('NOT_FOUND', '页面不存在。', 404)
         name, content_type = files[self.path]
@@ -183,10 +217,15 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
     def post(self):
         payload = read_object(self.read_body())
         app, path = self.server.app, self.path
+        if path.startswith('/api/merchant/'):
+            path = '/api/admin/' + path.removeprefix('/api/merchant/')
         control = app.control
         if path == '/api/admin/login':
             token, result = control.login(payload.get('username'), payload.get('password'), self.client_address[0])
-            self.session_cookie = 'gtt_admin_session=' + token + '; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800'
+            if self.cookie_name == 'gtt_merchant_session' and not result['user']['merchant_id']:
+                control.logout(token, result['user']['username'])
+                raise ServiceError('MERCHANT_LOGIN_REQUIRED', '请使用绑定商户的账号登录商户工作台。', 403)
+            self.session_cookie = self.cookie_name + '=' + token + '; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800'
             return self.json_response(200, result)
         routes = {
             '/api/admin/overview': 'merchants.read', '/api/admin/merchants/list': 'merchants.read',
@@ -195,35 +234,54 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
             '/api/admin/transactions/list': 'transactions.read', '/api/admin/transactions/detail': 'transactions.read',
             '/api/admin/transactions/retry': 'transactions.retry', '/api/admin/audit': 'audit.read',
             '/api/admin/prebet/list': 'transactions.read',
+            '/api/admin/merchants/profile': 'profile.write',
+            '/api/admin/merchants/signing/view': 'keys.rotate',
+            '/api/admin/merchants/signing/rotate': 'keys.rotate',
             '/api/admin/users/list': 'users.manage', '/api/admin/users/create': 'users.manage',
             '/api/admin/users/update': 'users.manage', '/api/admin/users/reset': 'users.manage',
             '/api/admin/password': None, '/api/admin/logout': None,
         }
         if path not in routes:
             raise ServiceError('NOT_FOUND', '接口不存在。', 404)
-        session = control.session(self.token(), routes[path], self.headers.get('X-GTT-CSRF', ''))
+        session = self.authenticate_session(routes[path], self.headers.get('X-GTT-CSRF', ''))
         actor = session['user']['username']
+        scope = session['user']['merchant_id']
+        # Derive tenancy from the authenticated database session on every request.
+        # A missing client-side filter must never widen the merchant's access.
+        if scope:
+            if payload.get('merchant_id') not in (None, '', scope):
+                raise ServiceError('FORBIDDEN', '不能访问其他商户。', 403)
+            if path in ('/api/admin/merchants/profile', '/api/admin/merchants/rotate') or path.startswith('/api/admin/merchants/signing/'):
+                if payload.get('id', scope) != scope:
+                    raise ServiceError('FORBIDDEN', '不能访问其他商户。', 403)
+                payload['id'] = scope
+            payload['merchant_id'] = scope
         games = {game['id'] for game in app.games()}
         if path == '/api/admin/logout':
             control.logout(self.token(), actor)
-            self.session_cookie = 'gtt_admin_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
+            self.session_cookie = self.cookie_name + '=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
             result = {'logged_out': True}
         elif path == '/api/admin/password':
             control.change_password(actor, payload.get('current_password'), payload.get('new_password'))
-            self.session_cookie = 'gtt_admin_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
+            self.session_cookie = self.cookie_name + '=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
             result = {'changed': True}
         elif path == '/api/admin/overview':
-            result = app.overview()
+            result = app.overview(scope)
         elif path == '/api/admin/prebet/list':
             result = {'decisions': app.prebet_decisions(payload)}
         elif path == '/api/admin/merchants/list':
-            result = {'merchants': control.merchants()}
+            result = {'merchants': [control.merchant(scope)] if scope else control.merchants()}
+        elif path == '/api/admin/merchants/profile':
+            profile = {k: v for k, v in payload.items() if k != 'merchant_id'}
+            result = control.save_profile(actor, scope, profile)
         elif path in ('/api/admin/merchants/create', '/api/admin/merchants/update'):
             result = control.save_merchant(actor, payload, games, create=path.endswith('/create'))
         elif path == '/api/admin/merchants/rotate':
             result = control.rotate_keys(actor, payload)
+        elif path.startswith('/api/admin/merchants/signing/'):
+            result = control.manage_signing(actor, payload, path.rsplit('/', 1)[-1])
         elif path == '/api/admin/games':
-            result = {'games': app.games()}
+            result = {'games': [g for g in app.games() if not scope or g['id'] in control.merchant(scope)['games']]}
         elif path == '/api/admin/transactions/list':
             result = {'transactions': app.transactions(payload)}
         elif path == '/api/admin/transactions/detail':
@@ -231,15 +289,15 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
         elif path == '/api/admin/transactions/retry':
             result = app.retry(actor, payload)
         elif path == '/api/admin/audit':
-            result = {'audit': control.audits(payload)}
+            result = {'audit': control.audits(payload, scope)}
         elif path == '/api/admin/users/list':
-            result = {'users': control.users()}
+            result = {'users': control.users(scope)}
         elif path == '/api/admin/users/create':
-            result = control.create_user(actor, payload.get('username'), payload.get('role'))
+            result = control.create_user(actor, payload.get('username'), payload.get('role'), merchant_id=payload.get('merchant_id') or None, scope=scope)
         elif path == '/api/admin/users/update':
-            result = control.update_user(actor, payload)
+            result = control.update_user(actor, payload, scope=scope)
         else:
-            result = control.update_user(actor, payload, reset=True)
+            result = control.update_user(actor, payload, reset=True, scope=scope)
         self.json_response(201 if path.endswith('/create') else 200, result)
 
 

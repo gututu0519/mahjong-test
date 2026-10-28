@@ -33,10 +33,10 @@ class GTTPreBetTests(unittest.TestCase):
         config['merchants'] = MerchantDirectory(self.control)
         self.config = config
         self.platform = build_platform(0, self.root / 'wallet.sqlite3', config)
-        self.settings = {'enabled': True, 'url': f'http://127.0.0.1:{self.platform.server_port}/api/v1/callbacks/gtt/preBetDecision',
-                         'operator_token': 'test-platform-operator', 'secret_key': 'test-platform-secret-' + 'a' * 40}
+        self.settings = {'enabled': True, 'url': f'http://127.0.0.1:{self.platform.server_port}/api/v1/callbacks/gtt/preBetDecision'}
         self.control.save_merchant('system', {**self.control.merchant('alpha'),
             'wallet_url': f'http://127.0.0.1:{self.platform.server_port}', 'pre_payout': self.settings}, {'buffalo-win'})
+        self.merchant = self.control.merchant('alpha', private=True)
         self.platform.wallet.bind_prebet_player('alpha', 'same-player', 'external-platform-alice')
         self.gateway = build_gateway(0, self.root / 'game.sqlite3', config, BuffaloWin())
         self.service = self.gateway.service
@@ -86,7 +86,7 @@ class GTTPreBetTests(unittest.TestCase):
         plan = json.loads(record['plan_json'])
         self.assertEqual(plan['total_credit_minor'], total)
         self.assertEqual(plan['basis_minor'], debit)
-        self.assertNotIn(self.settings['secret_key'], record['prebet_request_json'])
+        self.assertNotIn(self.merchant['merchant_secret'], record['prebet_request_json'])
         self.assertNotIn('plan_json', encode(self.service.state(token, 'buffalo-win')))
         return total, debit, plan
 
@@ -136,19 +136,19 @@ class GTTPreBetTests(unittest.TestCase):
         self.assertGreaterEqual(total * 10, debit * 9)
         self.assertLessEqual(total * 10, debit * 11)
 
-    def test_prebet_settings_validation_retains_private_credentials(self):
+    def test_prebet_settings_only_require_url_and_preserve_merchant_secret(self):
         before = self.control.merchant('alpha')
+        secret = self.control.merchant('alpha', private=True)['merchant_secret']
         for url in ('http://remote.example/preBetDecision', 'https://user:key@example.com/api', 'https://example.com/api?secret=x'):
             with self.assertRaises(ServiceError):
                 self.control.save_merchant('system', {**before, 'pre_payout': {**before['pre_payout'], 'url': url}}, {'buffalo-win'})
         self.assertEqual(self.control.merchant('alpha')['version'], before['version'])
         saved = self.control.save_merchant('system', before, {'buffalo-win'})['merchant']
-        self.assertTrue(saved['pre_payout']['credentials_configured'])
-        private = self.control.merchant('alpha', private=True)['pre_payout']
-        self.assertEqual(private['operator_token'], self.settings['operator_token'])
-        self.assertEqual(private['secret_key'], self.settings['secret_key'])
+        self.assertEqual(saved['pre_payout'], self.settings)
+        self.assertEqual(self.control.merchant('alpha', private=True)['merchant_secret'], secret)
+        self.control.save_merchant('system', {**self.control.merchant('beta'), 'pre_payout': self.settings}, {'buffalo-win'})
         with self.assertRaises(ServiceError) as error:
-            self.control.save_merchant('system', {**self.control.merchant('beta'), 'pre_payout': {'enabled': True, 'url': self.settings['url']}}, {'buffalo-win'})
+            self.control.save_merchant('system', {**self.control.merchant('beta'), 'pre_payout': {'enabled': True, 'url': ''}}, {'buffalo-win'})
         self.assertEqual(error.exception.code, 'PREBET_CONFIG_INVALID')
 
     def test_lost_decision_reply_survives_draft_schema_migration_and_restart(self):
@@ -180,9 +180,7 @@ class GTTPreBetTests(unittest.TestCase):
             db.execute('ALTER TABLE prebet_rounds RENAME COLUMN prebet_request_json TO fp_request_json')
         self.control = ControlStore(self.root / 'control.sqlite3')
         self.config['merchants'] = MerchantDirectory(self.control)
-        self.assertEqual(self.control.merchant('alpha', private=True)['pre_payout'], self.settings | {
-            'credentials_configured': True,
-            'credentials_fingerprint': self.control.merchant('alpha')['pre_payout']['credentials_fingerprint']})
+        self.assertEqual(self.control.merchant('alpha', private=True)['pre_payout'], self.settings)
         self.platform.wallet = MockWallet(self.root / 'wallet.sqlite3', self.config['merchants'])
         self.service = MerchantService(self.root / 'game.sqlite3', self.config['merchants'], BuffaloWin())
         next_open = self.service.prebet.client.opener.open
@@ -269,15 +267,15 @@ class GTTPreBetTests(unittest.TestCase):
         token = self.launch(prebet_type='SURE_WIN')
         payload = {'player_name': 'external-platform-alice', 'timestamp': 1792886400000, 'bet_amount': '1.00', 'type': 'NORMAL'}
         with self.assertRaises(ServiceError) as invalid:
-            PreBetClient().decision({**self.settings, 'secret_key': 'wrong'}, payload)
-        self.assertEqual(invalid.exception.code, 'PREBET_1204')
+            PreBetClient().decision(self.settings, payload, {**self.merchant, 'merchant_secret': 'wrong'})
+        self.assertEqual(invalid.exception.code, 'PREBET_UNCERTAIN')
         self.assertNotIn('wrong', str(invalid.exception))
         # The callback uses main currency units, never cents.
-        with patch.object(self.platform.wallet, 'prebet_decision', return_value={'code': 3202, 'data': None, 'msg': self.settings['secret_key']}):
+        with patch.object(self.platform.wallet, 'prebet_decision', return_value={'code': 3202, 'data': None, 'msg': self.merchant['merchant_secret']}):
             with self.assertRaises(ServiceError) as rejected:
                 self.service.spin(token, 'buffalo-win', 'rejected', '0', {'coin_minor': 2, 'level': 1})
         self.assertEqual(rejected.exception.code, 'PREBET_3202')
-        self.assertNotIn(self.settings['secret_key'], str(rejected.exception))
+        self.assertNotIn(self.merchant['merchant_secret'], str(rejected.exception))
         self.service.spin(token, 'buffalo-win', 'affordable', '0', {'coin_minor': 2, 'level': 1})
         with self.service.connection() as db:
             rows = db.execute('SELECT prebet_request_json FROM prebet_rounds ORDER BY rowid').fetchall()
@@ -285,8 +283,7 @@ class GTTPreBetTests(unittest.TestCase):
         self.assertGreater(json.loads(rows[1][0])['timestamp'], json.loads(rows[0][0])['timestamp'])
         self.assertEqual(json.loads(rows[1][0])['type'], 'SURE_WIN')
         public = encode(self.control.merchants()) + encode(self.control.audits({})) + encode(self.admin.app.prebet_decisions({}))
-        self.assertNotIn(self.settings['operator_token'], public)
-        self.assertNotIn(self.settings['secret_key'], public)
+        self.assertNotIn(self.merchant['merchant_secret'], public)
         self.assertNotIn('candidate', public)
 
 

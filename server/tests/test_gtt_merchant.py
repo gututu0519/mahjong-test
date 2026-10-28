@@ -21,10 +21,10 @@ from server.tests.test_buffalo_engine import Scripted
 
 
 def configuration():
-    merchant = {'enabled': True, 'api_secret': 'a' * 64, 'wallet_secret': 'w' * 64,
+    merchant = {'enabled': True, 'merchant_secret': 'a' * 64,
                 'wallet_url': 'http://127.0.0.1:8111', 'currency': 'DEMO', 'minor_unit': 100,
                 'games': ['buffalo-win']}
-    return {'merchants': {'alpha': merchant, 'beta': {**merchant, 'api_secret': 'b' * 64, 'wallet_secret': 'v' * 64}},
+    return {'merchants': {'alpha': merchant, 'beta': {**merchant, 'merchant_secret': 'b' * 64}},
             'gateway_origin': '', 'sandbox_merchant': 'alpha', 'sandbox_player': 'same-player',
             'sandbox_balance_minor': 200000}
 
@@ -109,7 +109,7 @@ class GTTHTTPTests(unittest.TestCase):
         body = raw if raw is not None else encode(payload or {}).encode()
         port = self.gateway.server_port if port is None else port
         if headers is None:
-            headers = signed_headers(merchant, self.config['merchants'][merchant]['api_secret'], path, body)
+            headers = signed_headers(merchant, self.config['merchants'][merchant]['merchant_secret'], path, body)
         request = Request(f'http://127.0.0.1:{port}' + path, data=body, headers=headers)
         try:
             response = urlopen(request, timeout=5)
@@ -121,11 +121,11 @@ class GTTHTTPTests(unittest.TestCase):
     def test_auth_tampering_replay_disabled_access_and_json_validation(self):
         path = '/gtt/v1/games/list'
         body = b'{}'
-        headers = signed_headers('alpha', self.config['merchants']['alpha']['api_secret'], path, body)
+        headers = signed_headers('alpha', self.config['merchants']['alpha']['merchant_secret'], path, body)
         self.assertEqual(self.request(path, raw=b'{"changed":1}', headers=headers)[0], 401)
         self.assertEqual(self.request(path, raw=body, headers=headers)[0], 200)
         self.assertEqual(self.request(path, raw=body, headers=headers)[1]['error']['code'], 'AUTH_REPLAY')
-        expired = signed_headers('alpha', self.config['merchants']['alpha']['api_secret'], path, body, timestamp=1000000000)
+        expired = signed_headers('alpha', self.config['merchants']['alpha']['merchant_secret'], path, body, timestamp=1000000000)
         self.assertEqual(self.request(path, headers=expired)[0], 401)
         self.assertEqual(self.request(path, raw=b'{"x":1,"x":2}')[0], 400)
         self.assertEqual(self.request(path, raw=b'{"x":NaN}')[0], 400)

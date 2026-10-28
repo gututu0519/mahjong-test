@@ -28,7 +28,7 @@ class WalletClient:
             raise ServiceError('WALLET_CONFIG_INVALID', 'Use HTTPS, or a loopback HTTP wallet origin.', 503)
         path = '/wallet/v1/' + action
         body = encode(payload).encode()
-        headers = signed_headers(merchant_id, merchant['wallet_secret'], path, body)
+        headers = signed_headers(merchant_id, merchant['merchant_secret'], path, body)
         request = Request(base.rstrip('/') + path, data=body, headers=headers, method='POST')
         try:
             try:
