@@ -1,7 +1,6 @@
 import concurrent.futures
 import hashlib
 import json
-import secrets
 import tempfile
 import threading
 import time
@@ -26,6 +25,64 @@ PASSWORD = 'A-test-password-only-123!'
 
 
 class GTTAdminTests(unittest.TestCase):
+    def test_published_signing_example_calls_game_api(self):
+        from server.merchant.integration_docs import PYTHON_EXAMPLE
+        namespace = {}
+        exec(PYTHON_EXAMPLE, namespace)
+        origin = 'http://127.0.0.1:' + str(self.gateway.server_port)
+        secret = self.control.merchant('alpha', private=True)['merchant_secret']
+        catalog = namespace['post'](origin, 'alpha', secret, '/gtt/v1/games/list', {})
+        self.assertEqual(catalog['data']['games'][0]['id'], 1)
+        self.platform.wallet.seed('alpha', 'player-10001', 200000)
+        result = namespace['post'](origin, 'alpha', secret, '/gtt/v1/games/launch',
+                                   {'player_id': 'player-10001', 'game_id': 1, 'language': 'en'})
+        self.assertEqual(result['data']['balance_minor'], 200000)
+        self.assertTrue(result['data']['launch_url'].startswith('/?'))
+
+    def test_integration_documents_are_authenticated_and_secret_free(self):
+        from server.merchant.integration_docs import ENDPOINTS
+        self.admin.app.gateway_origin = 'http://127.0.0.1:' + str(self.gateway.server_port)
+        paths = ['/api/admin/integration/guide.md', '/api/admin/integration/openapi.json']
+        for path in paths:
+            self.assertEqual(self.request(path, method='GET', user=None)[0], 401)
+        self.assertEqual(self.request('/api/admin/integration/docs', user=None)[0], 401)
+        self.login('viewer')
+        guide = self.post('integration/docs', user='viewer')
+        self.assertEqual(guide['gateway_origin'], self.admin.app.gateway_origin)
+        self.assertEqual(len(guide['sections']), 9)
+        self.assertEqual(len(guide['endpoints']), len(ENDPOINTS))
+        self.assertEqual(self.request('/api/admin/integration/docs', user='viewer', headers={'X-GTT-CSRF': ''})[0], 403)
+        for path in paths:
+            code, data, headers = self.request(path, method='GET', user='viewer')
+            self.assertEqual(code, 200)
+            self.assertEqual(headers['Cache-Control'], 'no-store')
+            self.assertIn('attachment;', headers['Content-Disposition'])
+            content = data.decode() if isinstance(data, bytes) else json.dumps(data)
+            for merchant in self.control.merchants():
+                self.assertNotIn(self.control.merchant(merchant['id'], private=True)['merchant_secret'], content)
+            if path.endswith('.json'):
+                self.assertEqual(data['openapi'], '3.1.0')
+                self.assertEqual(len(data['paths']), len(ENDPOINTS))
+            else:
+                self.assertIn('响应字段', content)
+                self.assertIn('transaction_id', content)
+        for path in ('/api/admin/integration/../control.py', '/api/admin/integration/docs.py'):
+            self.assertEqual(self.request(path, method='GET', user='viewer')[0], 404)
+
+    def test_merchant_reader_can_read_documents_without_key_permission(self):
+        self.tenant_accounts()
+        code, result, headers = self.request('/api/merchant/login', {'username': 'alpha-read', 'password': PASSWORD}, user=None)
+        self.assertEqual(code, 200)
+        self.sessions['alpha-read'] = (headers['Set-Cookie'].split(';', 1)[0], result['data'])
+        code, result, _ = self.request('/api/merchant/integration/docs', user='alpha-read')
+        self.assertEqual(code, 200)
+        self.assertEqual(self.request('/api/merchant/merchants/signing/view', {'id': 'alpha'}, user='alpha-read')[0], 403)
+        for path in ('guide.md', 'openapi.json'):
+            self.assertEqual(self.request('/api/merchant/integration/' + path, method='GET', user='alpha-read')[0], 200)
+        self.assertEqual(self.request('/api/merchant/integration/docs', {'merchant_id': 'beta'}, user='alpha-read')[0], 403)
+        self.login('admin')
+        self.assertEqual(self.request('/api/merchant/integration/guide.md', method='GET', user='admin')[0], 401)
+
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.root = Path(self.directory.name)
@@ -72,7 +129,9 @@ class GTTAdminTests(unittest.TestCase):
             return response.status, json.loads(body) if 'application/json' in response.headers.get('Content-Type', '') else body, response.headers
 
     def login(self, name='admin'):
-        code, result, headers = self.request('/api/admin/login', {'username': name, 'password': PASSWORD}, user=None)
+        account = next((user for user in self.control.users() if user['username'] == name), None)
+        login_name = account['login_name'] if account else name
+        code, result, headers = self.request('/api/admin/login', {'username': login_name, 'password': PASSWORD}, user=None)
         self.assertEqual(code, 200, result)
         self.sessions[name] = (headers['Set-Cookie'].split(';', 1)[0], result['data'])
         return result['data']
@@ -162,9 +221,9 @@ class GTTAdminTests(unittest.TestCase):
 
     def test_merchant_create_live_authorization_rotation_and_no_secret_leaks(self):
         result = self.post('merchants/create', {'name': 'New Platform', 'enabled': True,
-                           'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD', 'games': ['buffalo-win']}, expected=201)
+                           'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD', 'games': [1]}, expected=201)
         merchant_id = result['merchant']['id']
-        self.assertRegex(merchant_id, r'^GTT[0-9A-F]{16}$')
+        self.assertRegex(merchant_id, r'^GTT[0-9]{6}$')
         secret = result['keys']['merchant_secret']
         self.assertEqual(set(result['keys']), {'merchant_secret'})
         self.assertEqual(result['merchant']['signing_mode'], 'unified')
@@ -198,7 +257,7 @@ class GTTAdminTests(unittest.TestCase):
 
     def test_new_merchants_only_accept_usd_and_default_to_usd(self):
         payload = {'name': 'USD Only', 'enabled': True,
-                   'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'games': ['buffalo-win']}
+                   'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'games': [1]}
         for currency in ('DEMO', 'EUR', 'CNY', 'usd', '', None, 123):
             with self.subTest(currency=currency):
                 error = self.post('merchants/create', {**payload, 'currency': currency}, expected=400)
@@ -208,34 +267,25 @@ class GTTAdminTests(unittest.TestCase):
         self.assertEqual((created['currency'], created['minor_unit']), ('USD', 100))
         self.assertEqual(self.post('merchants/update', {**created, 'currency': 'EUR'}, expected=400)['code'], 'CURRENCY_IMMUTABLE')
 
-    def test_automatic_merchant_ids_handle_collisions_concurrency_and_legacy_records(self):
+    def test_sequential_merchant_ids_are_serialized_and_names_are_unique(self):
         payload = {'name': 'Automatic ID', 'enabled': False, 'wallet_url': 'https://wallet.example.com', 'currency': 'USD', 'games': []}
         for requested_id in ('alpha', 'custom-id', '', None):
             error = self.post('merchants/create', {**payload, 'id': requested_id}, expected=400)
             self.assertEqual(error['code'], 'MERCHANT_ID_AUTOMATIC')
         first = self.post('merchants/create', payload, expected=201)['merchant']
-        random_hex = secrets.token_hex
-        candidates = iter([first['id'][3:].lower(), '0' * 16])
-
-        def collide_once(size):
-            return next(candidates) if size == 8 else random_hex(size)
-
-        with patch('server.merchant.control.secrets.token_hex', side_effect=collide_once):
-            second = self.post('merchants/create', payload, expected=201)['merchant']
-        self.assertNotEqual(first['id'], second['id'])
-        self.assertEqual(self.control.merchant(first['id']), first)
-        # A persistent collision fails cleanly rather than overwriting records.
-        with patch('server.merchant.control.secrets.token_hex', return_value='0' * 16):
-            self.post('merchants/create', payload, expected=503)
-        self.assertEqual(len(self.control.merchants()), 4)
+        self.assertEqual(first['id'], 'GTT000001')
+        self.assertEqual(self.post('merchants/create', payload, expected=409)['code'], 'MERCHANT_NAME_CONFLICT')
+        second = self.post('merchants/create', {**payload, 'name': 'Automatic ID 2'}, expected=201)['merchant']
+        self.assertEqual(second['id'], 'GTT000002')
         with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
             generated = list(pool.map(lambda index: self.control.save_merchant(
-                'admin', {**payload, 'name': 'Concurrent ' + str(index)}, {'buffalo-win'}, create=True)['merchant'], range(12)))
+                'admin', {**payload, 'name': 'Concurrent ' + str(index)}, {1}, create=True)['merchant'], range(12)))
         ids = [first['id'], second['id'], *(merchant['id'] for merchant in generated)]
-        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(set(ids), {f'GTT{number:06d}' for number in range(1, 15)})
         self.assertTrue(all(self.control.merchant(merchant_id) for merchant_id in ids))
-        self.assertEqual(self.control.merchant('alpha')['id'], 'alpha')
-        self.assertEqual(self.control.merchant('alpha')['currency'], 'DEMO')
+        with self.control.connection(True) as db:
+            db.execute("UPDATE control_counters SET value=999999 WHERE name='merchant'")
+        self.assertEqual(self.post('merchants/create', {**payload, 'name': 'Exhausted'}, expected=409)['code'], 'MERCHANT_ID_EXHAUSTED')
         self.assertEqual({row['target'] for row in self.control.audits({'action': 'merchant.create'})}, set(ids))
 
     def test_validation_currency_conflicts_and_invalid_inputs(self):
@@ -312,7 +362,7 @@ class GTTAdminTests(unittest.TestCase):
     def test_transaction_currency_matches_merchant_and_wallet_payout_without_conversion(self):
         merchant = self.post('merchants/create', {'name': 'USD Settlement', 'enabled': True,
             'wallet_url': 'http://127.0.0.1:' + str(self.platform.server_port), 'currency': 'USD',
-            'games': ['buffalo-win']}, expected=201)['merchant']
+            'games': [1]}, expected=201)['merchant']
         merchant_id = merchant['id']
         self.platform.wallet.seed(merchant_id, 'usd-player', 200000)
         game = self.service.registry.get('buffalo-win')
@@ -343,6 +393,7 @@ class GTTAdminTests(unittest.TestCase):
         self.assertEqual({row['currency'] for row in self.post('overview')['recent']}, {'USD', 'DEMO'})
         # Never relabel a historical operation as USD if its merchant is missing.
         with self.control.connection(True) as db:
+            db.execute('DELETE FROM admin_users WHERE merchant_id=?', (merchant_id,))
             db.execute('DELETE FROM merchants WHERE id=?', (merchant_id,))
         unknown = self.post('transactions/detail', {'operation_id': sid})
         self.assertIsNone(unknown['currency'])
@@ -385,7 +436,7 @@ class GTTAdminTests(unittest.TestCase):
 
     def unified_merchant(self, prebet=False):
         return self.post('merchants/create', {'name': 'Unified Partner', 'enabled': True,
-            'wallet_url': f'http://127.0.0.1:{self.platform.server_port}', 'games': ['buffalo-win'],
+            'wallet_url': f'http://127.0.0.1:{self.platform.server_port}', 'games': [1],
             'pre_payout': {'enabled': prebet, 'url': f'http://127.0.0.1:{self.platform.server_port}/api/v1/callbacks/gtt/preBetDecision' if prebet else ''}}, expected=201)
 
     def test_merchant_secret_can_be_viewed_repeatedly_without_claiming_or_rotating(self):
@@ -579,6 +630,8 @@ class GTTAdminTests(unittest.TestCase):
 
     def test_merchant_audit_stays_attributed_after_user_rebinding(self):
         self.tenant_accounts()
+        merchant = self.control.merchant('beta')
+        self.control.save_profile('beta-owner', 'beta', {'id': 'beta', 'version': merchant['version'], 'name': 'Beta Merchant'})
         # A username matching another merchant ID must not change audit tenancy.
         self.post('users/create', {'username': 'beta', 'role': 'merchant_viewer'}, user='alpha-owner', expected=201)
         self.post('users/create', {'username': 'moving-staff', 'role': 'merchant_viewer'}, user='alpha-owner', expected=201)
@@ -613,7 +666,7 @@ class GTTAdminTests(unittest.TestCase):
         self.tenant_accounts()
         self.login('admin')
         self.assertEqual(self.request('/api/merchant/me', method='GET')[0], 401)
-        code, body, fields = self.request('/api/merchant/login', {'username': 'alpha-owner', 'password': PASSWORD}, user=None)
+        code, body, fields = self.request('/api/merchant/login', {'username': 'alpha', 'password': PASSWORD}, user=None)
         self.assertEqual(code, 200, body)
         cookie = fields['Set-Cookie'].split(';', 1)[0]
         self.assertTrue(cookie.startswith('gtt_merchant_session='))
@@ -625,7 +678,7 @@ class GTTAdminTests(unittest.TestCase):
         self.assertEqual(self.request('/api/merchant/logout', user=None, headers=headers)[0], 200)
         self.assertEqual(self.request('/api/admin/me', method='GET')[0], 200)
         self.assertEqual(self.request('/api/merchant/me', user=None, headers=headers, method='GET')[0], 401)
-        self.assertEqual(self.request('/api/merchant/login', {'username': 'admin', 'password': PASSWORD}, user=None)[0], 403)
+        self.assertEqual(self.request('/api/merchant/login', {'username': 'admin', 'password': PASSWORD}, user=None)[0], 401)
 
 
 class GTTMigrationTests(unittest.TestCase):
@@ -699,10 +752,10 @@ class GTTMigrationTests(unittest.TestCase):
             with patch('builtins.print'):
                 initialize(path)
             loaded, store = load_config(path)
-            self.assertEqual(loaded['merchants']['demo-platform']['currency'], 'USD')
+            self.assertEqual(loaded['merchants']['GTT000001']['currency'], 'USD')
             platform = build_platform(0, Path(directory) / 'wallet.sqlite3', loaded)
             try:
-                account = platform.wallet.call('demo-platform', 'balance', {
+                account = platform.wallet.call('GTT000001', 'balance', {
                     'player_id': 'demo-player', 'currency': 'USD', 'minor_unit': 100})
                 self.assertEqual((account['balance_minor'], account['currency']), (200000, 'USD'))
             finally:

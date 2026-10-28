@@ -46,8 +46,8 @@ class BuffaloWin:
     title = '美洲野牛'
     version = '1.2.0'
 
-    def __init__(self, config_path=None):
-        self.config = json.loads(Path(config_path or Path(__file__).with_name('config.json')).read_text(encoding='utf-8'))
+    def __init__(self, config_path=None, configuration=None):
+        self.config = copy.deepcopy(configuration) if configuration is not None else json.loads(Path(config_path or Path(__file__).with_name('config.json')).read_text(encoding='utf-8'))
         c = self.config
         if (c['coin_sizes_minor'] != [2, 3, 10, 20, 30, 90, 200] or c['bet_levels'] != list(range(1, 11))
                 or c['base_bet_factor'] != 10 or c['free_trigger'] != 3 or c['free_spins'] != 10

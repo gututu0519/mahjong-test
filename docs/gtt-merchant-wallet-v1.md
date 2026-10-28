@@ -22,7 +22,7 @@ GTT `preBetDecision` 回调、`external_username` 启动字段及整局派彩区
 python -m server.merchant.sandbox init
 ```
 
-此命令创建 `services/gtt-gateway/data/sandbox.json`，生成独立的接口密钥和钱包密钥，不覆盖已存在的配置。该文件被 Git 忽略。新环境默认商户 `demo-platform`、玩家 `demo-player`、USD 币种和 200000 最小单位测试余额。平台启动时只补建不存在的测试账户，重启不重置余额；既有 DEMO 商户及流水保留，不自动转换为 USD。
+此命令创建 `services/gtt-gateway/data/sandbox.json`，生成统一的 merchant_secret，不覆盖已存在的配置。该文件被 Git 忽略。新环境默认商户号 `GTT000001`、商户名称 `Demo Merchant`、玩家 `demo-player`、USD 币种和 200000 最小单位测试余额。平台启动时只补建不存在的测试账户，重启不重置余额；既有 DEMO 商户及流水保留，不自动转换为 USD。
 
 分别在两个终端启动：
 
@@ -51,7 +51,7 @@ python -m server.merchant.sandbox retry --operation-id <操作ID>
 
 ## 身份、金额及签名
 
-商户、玩家、操作、交易、回合标识使用 1–128 位 ASCII 字母、数字和 `_ . : -`。同一 `player_id` 在不同商户下是不同玩家；玩家标识由平台给出，不接收密码、真实姓名或其他非必要个人资料。
+商户号使用 `GTT` 加六位数字，如 `GTT000001`；游戏对接 ID 使用 JSON 正整数，Buffalo Win 为 `1`。玩家、操作、交易、回合标识使用 1–128 位 ASCII 字母、数字和 `_ . : -`。同一 `player_id` 在不同商户下是不同玩家；玩家标识由平台给出，不接收密码、真实姓名或其他非必要个人资料。
 
 金额一律为整数 `amount_minor`，当前 `minor_unit=100`，USD 使用美分，示例 1500 表示 15.00 USD。创建商户当前仅支持美元 USD。币种必须与商户配置一致；模拟平台按商户币种提供测试余额，兼容既有 DEMO 账户。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
 
@@ -87,13 +87,13 @@ Python 参考代码可复用 `server.merchant.common.signed_headers`；生产平
 | 路径 | 请求 JSON | 成功结果 |
 | --- | --- | --- |
 | `/gtt/v1/games/list` | `{}` | 本商户已启用游戏、引擎和规则版本 |
-| `/gtt/v1/games/launch` | `{"player_id":"demo-player","game_id":"buffalo-win","language":"en"}` | 游戏链接、到期时间、平台余额、币种 |
+| `/gtt/v1/games/launch` | `{"player_id":"demo-player","game_id":1,"language":"en"}` | 游戏链接、到期时间、平台余额、币种 |
 | `/gtt/v1/transactions/list` | `{"after_seq":0,"limit":100}` | 本商户游戏操作，含状态、对应钱包交易号和已结算结果 |
 | `/gtt/v1/transactions/retry` | `{"operation_id":"..."}` | 恢复同一操作或返回已保存结果 |
 
 列表 `limit` 为 1–100，按 `seq` 升序，以末条 `seq` 作为下一页 `after_seq`；不同商户互不可见。恢复接口返回 404 时，不披露另一个商户是否存在该操作。
 
-启动前 GTT 向平台查询玩家余额，平台不存在的账户不能启动游戏。`launch_url` 为 GTT 服务上的相对地址，平台拼接可信的 GTT origin；不要对外分享链接中的短期会话凭据。会话有效期 24 小时，绑定商户、玩家和游戏，同一身份的多次进入恢复同一游戏状态。
+启动前 GTT 向平台查询玩家余额，平台不存在的账户不能启动游戏。`launch_url` 在生产配置下为 `play` 域名的完整 HTTPS 地址，平台直接打开；本机配置仍返回相对地址，使用本机 GTT origin 拼接；不要对外分享链接中的短期会话凭据。会话有效期 24 小时，绑定商户、玩家和游戏，同一身份的多次进入恢复同一游戏状态。
 
 GTT 继续兼容原版 Buffalo GameInfo / Spin 协议，购买仍使用 `fb=2`。浏览器只持有游戏会话，不能调用签名商户接口或直接修改平台钱包。通用 Spin 也可使用 Bearer 游戏会话请求 `/api/v1/games/buffalo-win/spin`，携带 `Idempotency-Key` 和 `{"previous_sid":"0","bet":{"coin_minor":2,"level":1,"buy_free":true}}`。
 
@@ -155,7 +155,7 @@ GTT 操作状态为 `prepared → debited → settled`，无扣款步骤可直�
 
 ## RTP 配置与本阶段范围
 
-游戏目录返回 `target_rtp:null, rtp_status:"not_calibrated"`。当前配置沿用已有 Buffalo 本地权重，尚未标定 RTP，不提供一个未经验证的百分比。后续商户可绑定经过计算、仿真和版本验证的游戏配置；总体实际 RTP 需要按已结算投注与派奖统计，并明确未结束回合的口径。
+游戏目录返回商户默认 `target_rtp` 与 `rtp_status`：已配置标定模型为 `active`，平台预派彩为 `prebet`，未配置模型为 `not_calibrated`。后两种状态目标为 null。会话状态／新操作响应含 `rtp` 上下文，记录玩家实际采用的模型、来源、目标和模式；进行中整局沿用开始时的版本。旧操作原始响应保持不变。完整统计、商户自主配置、模型验证与运行方式见 [RTP 模块](gtt-rtp.md)。
 
 本阶段已实现数据库多商户配置、密钥、授权和隔离，签名协议，平台钱包联调，Buffalo 原客户端启动及交易恢复。管理后台已实现登录及三类角色、商户维护、游戏授权、密钥轮换、交易查询／恢复和审计，端口 8112，见 [管理后台说明](gtt-admin.md)。停用商户及撤销游戏授权会阻止后续游戏请求；管理员／运营仍可恢复已受理的待处理交易，模拟钱包接受其有效签名。接入费计费、自动对账差异报表、后台重试线程及其他游戏的商户接入仍属后续工作；本机服务固定监听 loopback。
 
@@ -168,3 +168,5 @@ python -m unittest server.tests.test_gtt_merchant -v
 覆盖签名篡改、nonce 重放、过期签名、商户禁用与游戏权限、JSON 参数检查、同名玩家跨商户隔离、并发钱包重试、退款及迟到扣款、完整 25 步购买免费回合、双方账单金额核对，以及“平台已扣／已派，但响应丢失或畸形”后的重启恢复。固定抓取牌面仅在离线测试中注入；运行服务使用随机生成引擎。
 
 2026-10-25 验收：全项目 193 项回归通过，补充后的商户专项 7 项通过，包括 GTT 并发重试只生成一次结果、余额不足不推进以及启动凭据日志脱敏。浏览器从模拟平台签名创建会话后，原版英文客户端完成一次购买免费：平台初始 2000.00，购买扣款 450.00，10 次免费累计派奖 133.20，游戏及平台最终余额均为 1683.20。GTT 保存 19 步已结算游戏操作；平台账本为 1 笔扣款、3 笔派奖，金额一致。该本地随机回合仅用于接口联调，不能用于推断 RTP。验收截图为忽略目录 `diagnostics/gtt-platform-wallet.png`。
+
+生产域名与部署配置见 [gttgames.com 部署说明](../deploy/gttgames/README.md)。接入 API 与玩家页面分别使用 `api.gttgames.com` 和 `play.gttgames.com`，启动接口返回配置的 play 地址，不从客户端 Host 推导跳转域名。

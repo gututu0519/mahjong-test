@@ -9,20 +9,34 @@ from pathlib import Path
 from server.core.contracts import ServiceError
 from .common import encode, identifier, limit, read_object
 from .http import JSONRoutes
+from . import integration_docs
+from .identifiers import game_code, game_number, public_result
+from .deployment import Deployment
 
 
 class AdminApplication:
-    def __init__(self, control, provider):
+    def __init__(self, control, provider, gateway_origin=None, play_origin=None):
         self.control, self.provider = control, provider
+        self.gateway_origin = gateway_origin
+        self.play_origin = play_origin
 
-    def games(self):
-        return [{**game, 'target_rtp': None, 'rtp_status': 'not_calibrated'} for game in self.provider.registry.catalog()]
+    def games(self, merchant_id=None):
+        merchant = self.provider.merchant(merchant_id, allow_disabled=True) if merchant_id else None
+        with self.provider.connection() as db:
+            policy = self.provider.rtp.resolve(db, merchant_id or '')
+            mode = self.provider.rtp.mode(db, merchant_id)[0] if merchant_id else 'rtp'
+        target = policy['target_bp'] / 100 if mode == 'rtp' and policy.get('target_bp') is not None else None
+        return [{**game, 'id': game_number(game['id']), 'target_rtp': target,
+                 'rtp_status': 'active' if target is not None else 'prebet' if mode == 'prebet' else 'not_calibrated'}
+                for game in self.provider.registry.catalog() if merchant is None or game['id'] in merchant['games']]
 
     def transactions(self, payload, detail=False):
         clauses, params = [], []
         for field in ('merchant_id', 'player_id', 'game_id', 'status'):
             value = payload.get(field, '')
             if value:
+                if field == 'game_id':
+                    value = game_code(value)
                 identifier(value, field)
                 if field == 'status' and value not in ('prepared', 'debited', 'settled', 'rejected'):
                     raise ServiceError('INVALID_ARGUMENT', '交易状态无效。')
@@ -60,9 +74,10 @@ class AdminApplication:
             value.update(debit_minor=candidate['debit_minor'], credit_minor=candidate['credit_minor'],
                          round_id=candidate['event']['round_id'], ruleset_id=candidate['ruleset_id'],
                          currency=currency, minor_unit=minor_unit)
+            value['game_id'] = game_number(row['game_id'])
             if detail:
                 value.update(request=json.loads(row['request_json']),
-                             result=json.loads(row['response_json']) if row['response_json'] else None)
+                             result=public_result(json.loads(row['response_json'])) if row['response_json'] else None)
             entries.append(value)
         if detail:
             if not entries:
@@ -112,7 +127,7 @@ class AdminApplication:
         with self.provider.connection() as db:
             rows = db.execute('SELECT id,merchant_id,player_id,game_id,prebet_request_json,policy_json,plan_json IS NOT NULL AS planned,error_code,created_at FROM prebet_rounds'
                               + where + ' ORDER BY created_at DESC,rowid DESC LIMIT ?', (*params, limit(payload.get('limit', 25)))).fetchall()
-        return [{**{key: row[key] for key in ('id', 'merchant_id', 'player_id', 'game_id', 'error_code', 'created_at')},
+        return [{**{key: row[key] for key in ('id', 'merchant_id', 'player_id', 'game_id', 'error_code', 'created_at')}, 'game_id': game_number(row['game_id']),
                  'request': json.loads(row['prebet_request_json']),
                  'policy': json.loads(row['policy_json']) if row['policy_json'] else None,
                  'status': 'rejected' if row['error_code'] else 'planned' if row['planned'] else 'pending'} for row in rows]
@@ -149,11 +164,20 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
 
     @property
     def cookie_name(self):
-        return 'gtt_merchant_session' if self.path.startswith('/api/merchant/') else 'gtt_admin_session'
+        name = 'gtt_merchant_session' if self.path.startswith('/api/merchant/') else 'gtt_admin_session'
+        return '__Host-' + name if self.server.deployment.production else name
+
+    @property
+    def merchant_api(self):
+        return self.path.startswith('/api/merchant/')
+
+    def cookie(self, token, max_age=28800):
+        secure = '; Secure' if self.server.deployment.production else ''
+        return self.cookie_name + '=' + token + '; HttpOnly; SameSite=Strict; Path=/; Max-Age=' + str(max_age) + secure
 
     def authenticate_session(self, permission=None, csrf=None):
         result = self.server.app.control.session(self.token(), permission, csrf)
-        if self.cookie_name == 'gtt_merchant_session' and not result['user']['merchant_id']:
+        if self.merchant_api and not result['user']['merchant_id']:
             raise ServiceError('MERCHANT_LOGIN_REQUIRED', '请使用绑定商户的账号登录商户工作台。', 403)
         return result
 
@@ -198,6 +222,34 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
             return self.json_response(200, {'status': 'ok', 'service_id': 'gtt-admin'})
         if self.path in ('/api/admin/me', '/api/merchant/me'):
             return self.json_response(200, self.authenticate_session())
+        if self.path == '/deployment.json':
+            return self.json_response(200, self.server.deployment.browser_config(self))
+        if self.server.deployment.production and self.path == '/merchant/':
+            self.send_response(308)
+            self.send_header('Location', self.server.deployment.origins['merchant'] + '/')
+            self.send_header('Content-Length', '0')
+            self.security_headers()
+            self.end_headers()
+            return
+        downloads = {
+            prefix + suffix: (kind, content_type, filename)
+            for prefix in ('/api/admin/integration/', '/api/merchant/integration/')
+            for suffix, kind, content_type, filename in (
+                ('guide.md', 'markdown', 'text/markdown; charset=utf-8', 'GTT-Integration-v1.md'),
+                ('openapi.json', 'openapi', 'application/json; charset=utf-8', 'GTT-OpenAPI-v1.json'))
+        }
+        if self.path in downloads:
+            self.authenticate_session('merchants.read')
+            kind, content_type, filename = downloads[self.path]
+            value = getattr(integration_docs, kind)(app.gateway_origin, app.play_origin)
+            data = (value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, indent=2)).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', content_type)
+            self.send_header('Content-Disposition', 'attachment; filename="' + filename + '"')
+            self.send_header('Content-Length', str(len(data)))
+            self.security_headers()
+            self.end_headers()
+            return self.wfile.write(data)
         files = {'/': ('admin.html', 'text/html; charset=utf-8'), '/admin.js': ('admin.js', 'application/javascript; charset=utf-8'),
                  '/admin.css': ('admin.css', 'text/css; charset=utf-8'), '/merchant/': ('admin.html', 'text/html; charset=utf-8')}
         if self.path not in files:
@@ -221,13 +273,16 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
             path = '/api/admin/' + path.removeprefix('/api/merchant/')
         control = app.control
         if path == '/api/admin/login':
-            token, result = control.login(payload.get('username'), payload.get('password'), self.client_address[0])
-            if self.cookie_name == 'gtt_merchant_session' and not result['user']['merchant_id']:
+            token, result = control.login(payload.get('username'), payload.get('password'), self.server.deployment.remote(self), merchant_login=self.merchant_api)
+            if self.merchant_api and not result['user']['merchant_id']:
                 control.logout(token, result['user']['username'])
                 raise ServiceError('MERCHANT_LOGIN_REQUIRED', '请使用绑定商户的账号登录商户工作台。', 403)
-            self.session_cookie = self.cookie_name + '=' + token + '; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800'
+            self.session_cookie = self.cookie(token)
             return self.json_response(200, result)
         routes = {
+            '/api/admin/rtp/read': 'rtp.read', '/api/admin/rtp/policy': 'rtp.write', '/api/admin/rtp/mode': 'rtp.write',
+            '/api/admin/rtp/job': 'rtp.manage', '/api/admin/rtp/publish': 'rtp.manage',
+            '/api/admin/integration/docs': 'merchants.read',
             '/api/admin/overview': 'merchants.read', '/api/admin/merchants/list': 'merchants.read',
             '/api/admin/merchants/create': 'merchants.write', '/api/admin/merchants/update': 'merchants.write',
             '/api/admin/merchants/rotate': 'keys.rotate', '/api/admin/games': 'games.read',
@@ -259,12 +314,26 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
         games = {game['id'] for game in app.games()}
         if path == '/api/admin/logout':
             control.logout(self.token(), actor)
-            self.session_cookie = self.cookie_name + '=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
+            self.session_cookie = self.cookie('', 0)
             result = {'logged_out': True}
         elif path == '/api/admin/password':
             control.change_password(actor, payload.get('current_password'), payload.get('new_password'))
-            self.session_cookie = self.cookie_name + '=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'
+            self.session_cookie = self.cookie('', 0)
             result = {'changed': True}
+        elif path.startswith('/api/admin/rtp/'):
+            action = path.rsplit('/', 1)[-1]
+            if action == 'read':
+                result = app.provider.rtp.snapshot(payload, scope)
+            elif action == 'policy':
+                result = app.provider.rtp.policy(actor, payload, platform='rtp.manage' in session['permissions'])
+            elif action == 'mode':
+                result = app.provider.rtp.set_mode(actor, payload)
+            elif action == 'job':
+                result = app.provider.rtp.create_job(actor, payload)
+            else:
+                result = app.provider.rtp.publish_model(actor, payload)
+        elif path == '/api/admin/integration/docs':
+            result = integration_docs.document(app.gateway_origin, app.play_origin)
         elif path == '/api/admin/overview':
             result = app.overview(scope)
         elif path == '/api/admin/prebet/list':
@@ -281,7 +350,7 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
         elif path.startswith('/api/admin/merchants/signing/'):
             result = control.manage_signing(actor, payload, path.rsplit('/', 1)[-1])
         elif path == '/api/admin/games':
-            result = {'games': [g for g in app.games() if not scope or g['id'] in control.merchant(scope)['games']]}
+            result = {'games': app.games(scope)}
         elif path == '/api/admin/transactions/list':
             result = {'transactions': app.transactions(payload)}
         elif path == '/api/admin/transactions/detail':
@@ -301,8 +370,10 @@ class AdminHandler(JSONRoutes, BaseHTTPRequestHandler):
         self.json_response(201 if path.endswith('/create') else 200, result)
 
 
-def build_admin(port, control, provider):
+def build_admin(port, control, provider, gateway_origin=None, config=None):
+    deployment = Deployment(config)
     http = ThreadingHTTPServer(('127.0.0.1', port), AdminHandler)
     http.daemon_threads = True
-    http.app = AdminApplication(control, provider)
+    http.deployment = deployment
+    http.app = AdminApplication(control, provider, deployment.origins.get('api', gateway_origin), deployment.origins.get('play'))
     return http

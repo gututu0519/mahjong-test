@@ -123,10 +123,10 @@ class RoundPlanner:
             db.execute('INSERT OR IGNORE INTO merchant_players VALUES (?,?,?,?)', (merchant_id, player_id, name, kind))
             db.execute('UPDATE merchant_players SET prebet_type=? WHERE merchant_id=? AND player_id=?', (kind, merchant_id, player_id))
 
-    def candidate(self, merchant_id, player_id, game, state, bet, canonical):
+    def candidate(self, merchant_id, player_id, game, state, bet, canonical, settings_override=None):
         service = self.provider
         merchant = {**service.merchants[merchant_id], 'id': merchant_id}
-        settings = merchant.get('pre_payout', {})
+        settings = settings_override if settings_override is not None else merchant.get('pre_payout', {})
         with service.connection(True) as db:
             if state['phase'] == 'ready':
                 row = db.execute('SELECT * FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND game_id=? AND initial_sid=? AND error_code IS NULL',

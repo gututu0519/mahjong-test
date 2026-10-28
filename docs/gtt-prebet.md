@@ -11,7 +11,7 @@
 启用后，签名启动请求须提供 `external_username`，即玩家在合作平台的账号；不把 GTT `player_id` 当作合作平台账号。该映射保存到游戏数据库，重复绑定须保持一致，一个合作平台账号不能绑定该商户下另一个玩家。可用启动字段 `prebet_type: "SURE_WIN"` 指定普通付费回合的类型，默认 `NORMAL`；该字段需要与 `external_username` 一起提供，只有持商户签名的服务端可设置。
 
 ```json
-{"player_id":"platform-user-123","external_username":"platform-alice","game_id":"buffalo-win","language":"en"}
+{"player_id":"platform-user-123","external_username":"platform-alice","game_id":1,"language":"en"}
 ```
 
 ## 请求、金额与倍数含义
@@ -67,7 +67,7 @@
 
 ## 本机模拟与后台查看
 
-模拟平台在 8111 提供相同路径 `/api/v1/callbacks/gtt/preBetDecision`，使用体内 Token／密钥鉴权、相同 code／data／msg 信封和去重规则。它拥有独立的合作平台玩家映射、区间策略和决策表，只做决策、不改变玩家余额。默认 `[-1,0]` 不限制；联调页提供 `[0,0]`、`[-1,10]`、`[5,10]`、`[10,10]` 等区间选择，仅影响新决策。
+模拟平台在 8111 提供相同路径 `/api/v1/callbacks/gtt/preBetDecision`，使用统一 merchant_secret 的四个 HMAC 请求头鉴权、相同 code／data／msg 信封和去重规则，请求体不传 Token 或密钥。它拥有独立的合作平台玩家映射、区间策略和决策表，只做决策、不改变玩家余额。默认 `[-1,0]` 不限制；联调页提供 `[0,0]`、`[-1,10]`、`[5,10]`、`[10,10]` 等区间选择，仅影响新决策。
 
 新建模拟环境的 `init` 生成本机商户密钥和 `sandbox_external_username: "demo-platform-player"`。已有环境保留自己的预派彩开关及玩家映射，直接使用商户统一密钥。
 
@@ -97,3 +97,7 @@ python -m unittest discover -s server/tests -v
 2026-10-25 更名后验收：全项目 224 项测试通过，包含旧草稿数据库迁移后继续使用原决策去重值的恢复场景。本机 GTT 回调返回 `[-1,0]`，余额保持 `1677.20 USD`、原钱包交易 5 笔。后台配置与新建表单已检查；截图见 `diagnostics/gtt-platform-prebet-settings.png` 和 `diagnostics/gtt-platform-prebet-create.png`。
 
 2026-10-28：按用户确认取消领取与旧版认证，全部本机商户直接使用同一套商户签名。预派彩业务区间、固定时间戳去重、原客户端展示和钱包恢复机制保持原有契约。当前验证覆盖统一签名、重放／篡改拒绝、密钥查看／重置隔离，以及完整回合与丢失响应恢复。
+
+## 与 RTP 中心的关系
+
+原预派彩配置入口保留。RTP 模型与平台预派彩互斥，通过 RTP 中心明确切换；配置的目标在预派彩模式暂停应用。已开始的预派彩整局继续使用原计划、URL 与版本，切换仅影响新付费整局。未切换过的已有商户按原开关运行，安装模块不改变原开关或目标。详见 [RTP 模块](gtt-rtp.md)。

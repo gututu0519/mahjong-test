@@ -1,0 +1,15 @@
+{
+  "environment": "production",
+  "public_origins": {
+    "site": "https://gttgames.com",
+    "api": "https://api.gttgames.com",
+    "play": "https://play.gttgames.com",
+    "merchant": "https://merchant.gttgames.com",
+    "admin": "https://admin.gttgames.com"
+  },
+  "trusted_proxy_ips": ["127.0.0.1", "::1"],
+  "merchant_database": "/var/lib/gtt/merchants.sqlite3",
+  "game_database": "/var/lib/gtt/gtt.sqlite3",
+  "bootstrap_directory": "/var/lib/gtt",
+  "log_directory": "/var/log/gtt"
+}

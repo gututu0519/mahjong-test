@@ -1,0 +1,7 @@
+Type,Name,Value,TTL,Notes
+A,@,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Primary site
+CNAME,www,gttgames.com,300,Canonical redirect to primary site
+A,api,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Merchant signed API
+A,play,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Player game pages and game API
+A,merchant,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Merchant console and integration documents
+A,admin,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,GTT administration console

@@ -83,6 +83,12 @@ class GTTWalletTests(unittest.TestCase):
 
 
 class GTTHTTPTests(unittest.TestCase):
+    def test_sandbox_launch_uses_numeric_game_id(self):
+        code, result = self.request('/sandbox/launch', {'language': 'en'}, port=self.platform.server_port)
+        self.assertEqual(code, 201)
+        self.assertEqual(result['data']['game_id'], 1)
+        self.assertTrue(result['data']['launch_url'].startswith(self.config['gateway_origin'] + '/?'))
+
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.root = Path(self.directory.name)

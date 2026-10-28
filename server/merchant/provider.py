@@ -11,12 +11,15 @@ from server.games.buffalo_win.engine import BuffaloWin
 from .common import Database, encode, identifier, limit
 from .wallet import WalletClient
 from .prebet import RoundPlanner
+from .identifiers import game_code, game_number, public_result
+from .rtp import RTPStore
 
 
 class MerchantService(Database):
-    def __init__(self, path, merchants, game=None, wallet=None):
+    def __init__(self, path, merchants, game=None, wallet=None, play_origin=None):
         super().__init__(path)
         self.merchants = merchants
+        self.play_origin = play_origin or ''
         self.registry = Registry([game or BuffaloWin()])
         self.wallet_client = wallet or WalletClient(merchants)
         with self.connection() as db:
@@ -38,6 +41,7 @@ class MerchantService(Database):
                     ON game_operations(merchant_id,player_id,game_id) WHERE status IN ('prepared','debited');
             ''')
         self.prebet = RoundPlanner(self)
+        self.rtp = RTPStore(self)
 
     def merchant(self, merchant_id, game_id=None, allow_disabled=False):
         merchant = self.merchants.get(merchant_id)
@@ -57,12 +61,16 @@ class MerchantService(Database):
 
     def catalog(self, merchant_id):
         merchant = self.merchant(merchant_id)
-        return {'games': [{**game, 'target_rtp': None, 'rtp_status': 'not_calibrated'}
+        with self.connection() as db:
+            policy = self.rtp.resolve(db, merchant_id)
+            mode, _ = self.rtp.mode(db, merchant_id)
+        target = policy['target_bp'] / 100 if mode == 'rtp' and policy.get('target_bp') is not None else None
+        return {'games': [{**game, 'id': game_number(game['id']), 'target_rtp': target, 'rtp_status': 'active' if target is not None else 'prebet' if mode == 'prebet' else 'not_calibrated'}
                           for game in self.registry.catalog() if game['id'] in merchant['games']]}
 
     def launch(self, merchant_id, payload):
         player_id = identifier(payload.get('player_id'), 'player_id')
-        game_id = payload.get('game_id', 'buffalo-win')
+        game_id = game_code(payload.get('game_id', 1))
         merchant = self.merchant(merchant_id, game_id)
         if 'prebet_type' in payload and 'external_username' not in payload:
             raise ServiceError('PREBET_PLAYER_REQUIRED', '设置 prebet_type 时请同时提供 external_username。')
@@ -81,7 +89,7 @@ class MerchantService(Database):
             db.execute('INSERT INTO merchant_sessions VALUES (?,?,?,?,?)',
                        (hashlib.sha256(token.encode()).hexdigest(), merchant_id, player_id, game_id, expiry))
             self._state(db, merchant_id, player_id, game_id)
-        return {'game_id': game_id, 'launch_url': '/?' + urlencode({'mock': 1, 'l': language, 'ops': token, 'btt': 2}),
+        return {'game_id': game_number(game_id), 'launch_url': self.play_origin + '/?' + urlencode({'mock': 1, 'l': language, 'ops': token, 'btt': 2}),
                 'expires_at': expiry, 'balance_minor': balance['balance_minor'],
                 'currency': balance['currency'], 'minor_unit': 100}
 
@@ -125,8 +133,9 @@ class MerchantService(Database):
         with self.connection(True) as db:
             state = self._state(db, merchant_id, player_id, game_id)
         game = self.registry.get(game_id)
-        return {'game_id': game_id, 'balance_minor': balance['balance_minor'],
-                'engine_version': game.version, 'ruleset_id': game.ruleset_id, 'state': game.public_state(state)}
+        return {'game_id': game_number(game_id), 'balance_minor': balance['balance_minor'],
+                'engine_version': game.version, 'ruleset_id': state['ruleset_id'], 'state': game.public_state(state),
+                'rtp': self.rtp.public_context(merchant_id, player_id, game_id, state)}
 
     def spin(self, token, game_id, request_key, previous_sid, bet_payload):
         session = self._session(token, game_id)
@@ -139,7 +148,7 @@ class MerchantService(Database):
         bet = game.normalize_bet(bet_payload)
         canonical = encode({'previous_sid': previous_sid, 'bet': bet})
         operation_id = None
-        with self.connection(True) as db:
+        with self.rtp.write() as db:
             existing = db.execute('SELECT * FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND request_key=?',
                                   (merchant_id, player_id, game_id, request_key)).fetchone()
             if existing:
@@ -154,11 +163,21 @@ class MerchantService(Database):
                 state = self._state(db, merchant_id, player_id, game_id)
                 if state['sid'] != previous_sid:
                     raise ServiceError('STALE_STATE', 'Refresh game state before continuing.', 409)
+                binding = self.rtp.bind(db, merchant_id, player_id, game, state, bet)
         if operation_id is not None:
             return self.retry(merchant_id, operation_id)
+        game = self.rtp.engine(binding, game)
         # Reserve/persist the platform decision timestamp before contacting the platform. No
         # game-operation debit can occur until the full valid plan is committed.
-        planned = self.prebet.candidate(merchant_id, player_id, game, state, bet, canonical)
+        try:
+            planned = self.prebet.candidate(merchant_id, player_id, game, state, bet, canonical,
+                                           settings_override=json.loads(binding['settings_json']))
+        except ServiceError as error:
+            if error.code == 'PREBET_3202':
+                with self.connection(True) as db:
+                    db.execute('DELETE FROM rtp_bindings WHERE merchant_id=? AND player_id=? AND game_id=? AND initial_sid=? AND round_id IS NULL',
+                               (merchant_id, player_id, game_id, binding['initial_sid']))
+            raise
         with self.connection(True) as db:
             existing = db.execute('SELECT * FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND request_key=?',
                                   (merchant_id, player_id, game_id, request_key)).fetchone()
@@ -180,8 +199,13 @@ class MerchantService(Database):
                 if (type(outcome.debit_minor) is not int or type(outcome.credit_minor) is not int
                         or min(outcome.debit_minor, outcome.credit_minor) < 0):
                     raise RuntimeError('Game returned invalid wallet amounts')
+                target = db.execute('SELECT target_bp FROM rtp_models WHERE id=?', (binding['model_id'],)).fetchone()[0]
                 candidate = {'state': outcome.state, 'event': outcome.event, 'debit_minor': outcome.debit_minor,
-                             'credit_minor': outcome.credit_minor, 'engine_version': game.version, 'ruleset_id': game.ruleset_id}
+                             'credit_minor': outcome.credit_minor, 'engine_version': game.version, 'ruleset_id': game.ruleset_id,
+                             'rtp': {'model_id': binding['model_id'], 'mode': binding['mode'], 'source': binding['source'], 'revision': binding['revision'],
+                                     'target_rtp': target / 100 if binding['mode'] == 'rtp' and target is not None else None}}
+                db.execute('UPDATE rtp_bindings SET round_id=? WHERE merchant_id=? AND player_id=? AND game_id=? AND initial_sid=?',
+                           (outcome.event['round_id'], merchant_id, player_id, game_id, binding['initial_sid']))
                 # Commit the generated result BEFORE contacting the platform.
                 db.execute('INSERT INTO game_operations(id,merchant_id,player_id,game_id,request_key,request_json,status,candidate_json,created_at) VALUES (?,?,?,?,?,?,?, ?,?)',
                            (operation_id, merchant_id, player_id, game_id, request_key, canonical, 'prepared',
@@ -199,7 +223,7 @@ class MerchantService(Database):
         # A permission change must not cancel an already accepted wallet operation.
         # New launches/spins check current game permissions before preparing work.
         if operation['status'] == 'settled':
-            return json.loads(operation['response_json'])
+            return public_result(json.loads(operation['response_json']))
         if operation['status'] == 'rejected':
             raise ServiceError(operation['error_code'], 'Stored wallet rejection; game state was not advanced.', 409)
         candidate = json.loads(operation['candidate_json'])
@@ -216,6 +240,8 @@ class MerchantService(Database):
                         db.execute("UPDATE game_operations SET status='rejected',error_code=? WHERE id=? AND status='prepared'",
                                    (error.code, operation_id))
                         db.execute('UPDATE prebet_rounds SET error_code=? WHERE id=?', (error.code, event['round_id']))
+                        db.execute('DELETE FROM rtp_bindings WHERE merchant_id=? AND player_id=? AND game_id=? AND round_id=?',
+                                   (merchant_id, operation['player_id'], operation['game_id'], event['round_id']))
                     raise
                 raise ServiceError('WALLET_UNCERTAIN', 'Retry operation ' + operation_id + '; debit outcome is unknown.', 503) from None
             with self.connection(True) as db:
@@ -233,19 +259,22 @@ class MerchantService(Database):
             raise ServiceError('WALLET_UNCERTAIN', 'Retry operation ' + operation_id + '; settlement is pending.', 503) from None
         after = final_wallet['balance_minor']
         before = debit_result['balance_before_minor'] if debit_result else final_wallet.get('balance_before_minor', after)
-        response = {'game_id': operation['game_id'], 'sid': operation_id, 'round_id': event['round_id'],
+        response = {'game_id': game_number(operation['game_id']), 'sid': operation_id, 'round_id': event['round_id'],
                     'engine_version': candidate['engine_version'], 'ruleset_id': candidate['ruleset_id'],
                     'wallet': {'before_minor': before, 'debit_minor': debit, 'credit_minor': credit, 'after_minor': after},
                     'outcome': event}
+        if candidate.get('rtp'):
+            response['rtp'] = candidate['rtp']
         with self.connection(True) as db:
             current = db.execute('SELECT status,response_json FROM game_operations WHERE id=?', (operation_id,)).fetchone()
             if current['status'] == 'settled':
-                return json.loads(current['response_json'])
+                return public_result(json.loads(current['response_json']))
             if current['status'] == 'rejected':
                 raise ServiceError('OPERATION_REJECTED', 'Operation has been rejected.', 409)
             db.execute('UPDATE merchant_states SET state_json=? WHERE merchant_id=? AND player_id=? AND game_id=?',
                        (encode(candidate['state']), merchant_id, operation['player_id'], operation['game_id']))
-            db.execute("UPDATE game_operations SET status='settled',response_json=? WHERE id=?", (encode(response), operation_id))
+            db.execute("UPDATE game_operations SET status='settled',response_json=?,settled_at=? WHERE id=?", (encode(response), int(time.time()), operation_id))
+            self.rtp.record(db, db.execute('SELECT * FROM game_operations WHERE id=?', (operation_id,)).fetchone())
         return response
 
     def operations(self, merchant_id, payload):
@@ -255,10 +284,10 @@ class MerchantService(Database):
             rows = db.execute('SELECT * FROM game_operations WHERE merchant_id=? AND seq>? ORDER BY seq LIMIT ?',
                               (merchant_id, amount_cursor(payload.get('after_seq', 0)), count)).fetchall()
         return {'operations': [{'seq': row['seq'], 'operation_id': row['id'], 'player_id': row['player_id'],
-                                'game_id': row['game_id'], 'status': row['status'], 'error_code': row['error_code'],
+                                'game_id': game_number(row['game_id']), 'status': row['status'], 'error_code': row['error_code'],
                                 'debit_transaction_id': row['id'] + ':debit' if json.loads(row['candidate_json'])['debit_minor'] else None,
                                 'credit_transaction_id': row['id'] + ':credit' if json.loads(row['candidate_json'])['credit_minor'] else None,
-                                'result': json.loads(row['response_json']) if row['response_json'] else None}
+                                'result': public_result(json.loads(row['response_json'])) if row['response_json'] else None}
                                for row in rows]}
 
     def history(self, token, count=20):
@@ -266,7 +295,7 @@ class MerchantService(Database):
         with self.connection() as db:
             rows = db.execute("SELECT response_json FROM game_operations WHERE merchant_id=? AND player_id=? AND status='settled' ORDER BY seq DESC LIMIT ?",
                               (session['merchant_id'], session['player_id'], limit(count))).fetchall()
-        return [json.loads(row[0]) for row in rows]
+        return [public_result(json.loads(row[0])) for row in rows]
 
 
 def amount_cursor(value):

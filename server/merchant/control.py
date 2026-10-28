@@ -6,21 +6,23 @@ import re
 import secrets
 import sqlite3
 import time
+from pathlib import Path
 from collections.abc import Mapping
 from urllib.parse import urlsplit
 
 from server.core.contracts import ServiceError
 from .common import Database, encode, identifier, limit
+from .identifiers import game_code, game_number
 
 PERMISSIONS = {
     'admin': ('merchants.read', 'merchants.write', 'keys.rotate', 'games.read', 'transactions.read',
-              'transactions.retry', 'audit.read', 'users.manage'),
-    'operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read'),
-    'viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read'),
+              'transactions.retry', 'audit.read', 'users.manage', 'rtp.read', 'rtp.write', 'rtp.manage'),
+    'operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read', 'rtp.read'),
+    'viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read', 'rtp.read'),
     'merchant_admin': ('merchants.read', 'profile.write', 'keys.rotate', 'games.read', 'transactions.read',
-                       'transactions.retry', 'audit.read', 'users.manage'),
-    'merchant_operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read'),
-    'merchant_viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read'),
+                       'transactions.retry', 'audit.read', 'users.manage', 'rtp.read', 'rtp.write'),
+    'merchant_operator': ('merchants.read', 'games.read', 'transactions.read', 'transactions.retry', 'audit.read', 'rtp.read'),
+    'merchant_viewer': ('merchants.read', 'games.read', 'transactions.read', 'audit.read', 'rtp.read'),
 }
 
 
@@ -96,6 +98,7 @@ class ControlStore(Database):
                 CREATE TABLE IF NOT EXISTS merchant_signing_credentials (
                     merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,
                     secret TEXT NOT NULL,mode TEXT NOT NULL,version INTEGER NOT NULL,ready INTEGER NOT NULL);
+                CREATE TABLE IF NOT EXISTS control_counters (name TEXT PRIMARY KEY,value INTEGER NOT NULL);
             ''')
         with self.connection(True) as db:
             if 'merchant_id' not in {r['name'] for r in db.execute('PRAGMA table_info(admin_users)')}:
@@ -105,6 +108,14 @@ class ControlStore(Database):
                 db.execute("UPDATE admin_audit SET merchant_id=target WHERE action LIKE 'merchant.%' AND target IN (SELECT id FROM merchants)")
                 db.execute("UPDATE admin_audit SET merchant_id=json_extract(details_json,'$.merchant_id') WHERE merchant_id IS NULL")
             db.execute('CREATE INDEX IF NOT EXISTS audit_merchant_seq ON admin_audit(merchant_id,seq)')
+            if 'login_user_id' not in {r['name'] for r in db.execute('PRAGMA table_info(merchants)')}:
+                db.execute('ALTER TABLE merchants ADD COLUMN login_user_id TEXT')
+            # Fail visibly on ambiguous names instead of authenticating another tenant.
+            duplicates = db.execute('SELECT name FROM merchants GROUP BY lower(name) HAVING COUNT(*)>1').fetchall()
+            if duplicates:
+                raise ServiceError('MERCHANT_NAME_CONFLICT', '已有商户名称重复，请先为商户设置唯一登录名称。', 409)
+            db.execute('CREATE UNIQUE INDEX IF NOT EXISTS merchant_login_name ON merchants(lower(name))')
+            db.execute("UPDATE merchants SET login_user_id=(SELECT id FROM admin_users WHERE merchant_id=merchants.id AND role='merchant_admin' AND enabled=1 ORDER BY created_at,id LIMIT 1) WHERE login_user_id IS NULL")
             self.ensure_signing_credentials(db)
         # Used for a comparable password-check cost for unknown usernames.
         self.dummy_hash = password_hash('not-a-real-admin-password', '0' * 32)
@@ -128,7 +139,8 @@ class ControlStore(Database):
             return None
         value = {key: row[key] for key in ('id', 'name', 'wallet_url', 'currency', 'minor_unit',
                                           'version', 'key_version', 'created_at', 'updated_at')}
-        value.update(enabled=bool(row['enabled']), games=json.loads(row['games_json']))
+        codes = json.loads(row['games_json'])
+        value.update(enabled=bool(row['enabled']), games=codes if private else [game_number(code) for code in codes], login_username=row['login_username'])
         value.update(signing_mode='unified', merchant_key_version=row['signing_version'] or 0,
                      merchant_key_fingerprint=hashlib.sha256(row['signing_secret'].encode()).hexdigest()[:12] if row['signing_secret'] else None)
         value['pre_payout'] = {'enabled': bool(row['prebet_enabled']), 'url': row['prebet_url'] or ''}
@@ -144,7 +156,7 @@ class ControlStore(Database):
                 secret = merchant.get('merchant_secret') or secrets.token_hex(32)
                 if not isinstance(secret, str) or not re.fullmatch(r'[0-9a-f]{64}', secret):
                     raise ServiceError('MERCHANT_SECRET_INVALID', '配置中的商户密钥无效。')
-                result = db.execute('INSERT OR IGNORE INTO merchants VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                result = db.execute('INSERT OR IGNORE INTO merchants(id,name,enabled,wallet_url,currency,minor_unit,games_json,api_secret,wallet_secret,version,key_version,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     (merchant_id, merchant.get('name', merchant_id), bool(merchant['enabled']),
                      wallet_origin(merchant['wallet_url']), merchant['currency'], merchant['minor_unit'],
                      encode(merchant['games']), secret, secret, 1, 1, now, now))
@@ -176,9 +188,27 @@ class ControlStore(Database):
     @staticmethod
     def merchant_query():
         return """SELECT m.*,f.enabled AS prebet_enabled,f.url AS prebet_url,
-                  s.secret AS signing_secret,s.version AS signing_version
+                  s.secret AS signing_secret,s.version AS signing_version,u.username AS login_username
                   FROM merchants m LEFT JOIN merchant_prebet_settings f ON m.id=f.merchant_id
-                  LEFT JOIN merchant_signing_credentials s ON m.id=s.merchant_id"""
+                  LEFT JOIN merchant_signing_credentials s ON m.id=s.merchant_id
+                  LEFT JOIN admin_users u ON m.login_user_id=u.id"""
+
+    @staticmethod
+    def allocate_merchant_id(db):
+        last = db.execute("SELECT COALESCE(MAX(CAST(substr(id,4) AS INTEGER)),0) FROM merchants WHERE id GLOB 'GTT[0-9][0-9][0-9][0-9][0-9][0-9]'").fetchone()[0]
+        counter = db.execute("SELECT value FROM control_counters WHERE name='merchant'").fetchone()
+        number = max(last, counter[0] if counter else 0) + 1
+        if number > 999999:
+            raise ServiceError('MERCHANT_ID_EXHAUSTED', '六位商户编号已分配完毕。', 409)
+        db.execute("INSERT INTO control_counters VALUES ('merchant',?) ON CONFLICT(name) DO UPDATE SET value=excluded.value", (number,))
+        return f'GTT{number:06d}'
+
+    @staticmethod
+    def unique_name(db, name, merchant_id=None):
+        if db.execute('SELECT 1 FROM merchants WHERE lower(name)=lower(?) AND id<>?', (name, merchant_id or '')).fetchone():
+            raise ServiceError('MERCHANT_NAME_CONFLICT', '商户名称已被使用，请使用唯一的登录名称。', 409)
+        if db.execute("SELECT 1 FROM admin_users WHERE lower(username)=lower(?) AND role LIKE 'merchant_%' AND id<>COALESCE((SELECT login_user_id FROM merchants WHERE id=?),'')", (name, merchant_id or '')).fetchone():
+            raise ServiceError('MERCHANT_NAME_CONFLICT', '商户名称与团队登录名冲突，请使用其他名称。', 409)
 
     def merchant_row(self, db, merchant_id):
         return db.execute(self.merchant_query() + ' WHERE m.id=?', (merchant_id,)).fetchone()
@@ -187,7 +217,7 @@ class ControlStore(Database):
         with self.connection() as db:
             return self.merchant_value(self.merchant_row(db, merchant_id), private)
 
-    def save_prebet(self, db, merchant_id, value):
+    def save_prebet(self, db, merchant_id, value, allow_rtp_transition=False):
         if not isinstance(value, dict) or type(value.get('enabled')) is not bool:
             raise ServiceError('PREBET_CONFIG_INVALID', '请核对平台预派彩设置。')
         if 'operator_token' in value or 'secret_key' in value:
@@ -200,6 +230,17 @@ class ControlStore(Database):
             prebet_url(url)
         if value['enabled'] and not url:
             raise ServiceError('PREBET_CONFIG_INVALID', '启用预派彩需要填写接口地址。')
+        rtp_path = getattr(self, 'rtp_database', None)
+        if value['enabled'] and rtp_path and not allow_rtp_transition:
+            read = sqlite3.connect(Path(rtp_path).resolve().as_uri() + '?mode=ro', uri=True)
+            try:
+                mode = read.execute('SELECT mode FROM rtp_modes WHERE merchant_id=?', (merchant_id,)).fetchone()
+                old = db.execute('SELECT enabled FROM merchant_prebet_settings WHERE merchant_id=?', (merchant_id,)).fetchone()
+                targets = read.execute("SELECT 1 FROM rtp_policies WHERE model_id IS NOT NULL AND (merchant_id=? OR scope='platform') LIMIT 1", (merchant_id,)).fetchone()
+                if mode and mode[0] == 'rtp' or not mode and targets and not (old and old[0]):
+                    raise ServiceError('RTP_MODE_CONFLICT', '已有 RTP 配置，请在 RTP 中心明确切换到平台预派彩模式。', 409)
+            finally:
+                read.close()
         db.execute('INSERT OR REPLACE INTO merchant_prebet_settings VALUES (?,?,?,?,?)', (merchant_id, value['enabled'], url, '', ''))
 
     def save_merchant(self, actor, payload, games, create=False):
@@ -216,13 +257,18 @@ class ControlStore(Database):
         enabled = payload.get('enabled')
         selected = payload.get('games')
         if (type(enabled) is not bool or not isinstance(selected, list)
-                or any(not isinstance(value, str) or value not in games for value in selected)
+                or any(type(value) is not int for value in selected)
                 or len(selected) != len(set(selected))):
             raise ServiceError('MERCHANT_INVALID', '请核对商户状态与游戏授权。')
+        selected = [game_code(value) for value in selected]
+        allowed = {game_code(value) if type(value) is int else value for value in games}
+        if set(selected) - allowed:
+            raise ServiceError('MERCHANT_INVALID', '游戏尚未接入商户网关。')
         origin = wallet_origin(payload.get('wallet_url'))
         now = int(time.time())
         keys = None
         with self.connection(True) as db:
+            self.unique_name(db, name.strip(), merchant_id)
             old = None
             if create:
                 currency = payload.get('currency', 'USD')
@@ -230,18 +276,19 @@ class ControlStore(Database):
                     raise ServiceError('CURRENCY_INVALID', '目前仅支持美元（USD）。')
                 # The write transaction serializes ID allocation and insertion.
                 # Existing legacy/generated IDs are never reused or overwritten.
-                for _ in range(8):
-                    merchant_id = 'GTT' + secrets.token_hex(8).upper()
-                    if db.execute('SELECT 1 FROM merchants WHERE id=?', (merchant_id,)).fetchone() is None:
-                        break
-                else:
-                    raise ServiceError('MERCHANT_ID_UNAVAILABLE', '商户号生成失败，请重试。', 503)
+                merchant_id = self.allocate_merchant_id(db)
                 merchant_secret = secrets.token_hex(32)
                 keys = {'merchant_secret': merchant_secret}
-                db.execute('INSERT INTO merchants VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                db.execute('INSERT INTO merchants(id,name,enabled,wallet_url,currency,minor_unit,games_json,api_secret,wallet_secret,version,key_version,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     (merchant_id, name.strip(), enabled, origin, currency, 100, encode(selected),
                      merchant_secret, merchant_secret, 1, 1, now, now))
                 db.execute('INSERT INTO merchant_signing_credentials VALUES (?,?,?,?,?)', (merchant_id, merchant_secret, 'unified', 1, 0))
+                password = secrets.token_urlsafe(24)
+                user_id = secrets.token_hex(16)
+                account = 'owner_' + user_id
+                db.execute('INSERT INTO admin_users(id,username,password_hash,role,enabled,auth_version,created_at,merchant_id) VALUES (?,?,?,?,?,?,?,?)',
+                           (user_id, account, password_hash(password), 'merchant_admin', 1, 1, now, merchant_id))
+                db.execute('UPDATE merchants SET login_user_id=? WHERE id=?', (user_id, merchant_id))
             else:
                 old = self.merchant_row(db, merchant_id)
                 if old is None:
@@ -257,7 +304,7 @@ class ControlStore(Database):
             result = self.merchant_value(new)
             self.audit(db, actor, 'merchant.create' if create else 'merchant.update', merchant_id,
                        details={'before': self.merchant_value(old), 'after': result})
-        return {'merchant': result, **({'keys': keys} if keys else {})}
+        return {'merchant': result, **({'keys': keys, 'login': {'name': name.strip(), 'temporary_password': password}} if keys else {})}
 
     @staticmethod
     def check_version(payload, row):
@@ -281,6 +328,7 @@ class ControlStore(Database):
             name = payload.get('name', old['name'])
             if not isinstance(name, str) or not 1 <= len(name.strip()) <= 80 or any(ord(c) < 32 for c in name):
                 raise ServiceError('NAME_INVALID', '商户名称须为 1–80 个可见字符。')
+            self.unique_name(db, name.strip(), merchant_id)
             origin = wallet_origin(payload.get('wallet_url', old['wallet_url']))
             db.execute('UPDATE merchants SET name=?,wallet_url=?,version=version+1,updated_at=? WHERE id=?',
                        (name.strip(), origin, int(time.time()), merchant_id))
@@ -318,10 +366,14 @@ class ControlStore(Database):
             raise ServiceError('REASON_REQUIRED', '请输入 4–300 个字符的操作原因。')
         return reason.strip()
 
-    @staticmethod
-    def user_value(row):
-        return {key: (bool(row[key]) if key == 'enabled' else row[key])
-                for key in ('id', 'username', 'role', 'enabled', 'created_at', 'merchant_id')}
+    def user_value(self, row, db=None):
+        if db is None:
+            with self.connection() as connection:
+                return self.user_value(row, connection)
+        value = {key: (bool(row[key]) if key == 'enabled' else row[key])
+                 for key in ('id', 'username', 'role', 'enabled', 'created_at', 'merchant_id')}
+        merchant = db.execute('SELECT name FROM merchants WHERE login_user_id=?', (row['id'],)).fetchone()
+        return {**value, 'primary': bool(merchant), 'login_name': merchant['name'] if merchant else row['username']}
 
     def create_user(self, actor, name, role, password=None, merchant_id=None, scope=None):
         name = username(name)
@@ -331,13 +383,17 @@ class ControlStore(Database):
         hashed = password_hash(password)
         with self.connection(True) as db:
             self.validate_user_scope(db, role, merchant_id, scope)
+            if role.startswith('merchant_') and db.execute('SELECT 1 FROM merchants WHERE lower(name)=lower(?)', (name,)).fetchone():
+                raise ServiceError('USER_EXISTS', '团队账号不能与商户登录名称相同。', 409)
             try:
                 db.execute('INSERT INTO admin_users(id,username,password_hash,role,enabled,auth_version,created_at,merchant_id) VALUES (?,?,?,?,?,?,?,?)',
                            (secrets.token_hex(16), name, hashed, role, 1, 1, int(time.time()), merchant_id))
             except sqlite3.IntegrityError:
                 raise ServiceError('USER_EXISTS', '用户名已存在。', 409) from None
+            if role == 'merchant_admin':
+                db.execute('UPDATE merchants SET login_user_id=(SELECT id FROM admin_users WHERE username=?) WHERE id=? AND login_user_id IS NULL', (name, merchant_id))
             self.audit(db, actor, 'user.create', name, details={'role': role})
-            result = self.user_value(db.execute('SELECT * FROM admin_users WHERE username=?', (name,)).fetchone())
+            result = self.user_value(db.execute('SELECT * FROM admin_users WHERE username=?', (name,)).fetchone(), db)
         return {'user': result, 'temporary_password': password}
 
     @staticmethod
@@ -351,19 +407,23 @@ class ControlStore(Database):
 
     def users(self, merchant_id=None):
         with self.connection() as db:
-            return [self.user_value(row) for row in db.execute('SELECT * FROM admin_users' + (' WHERE merchant_id=?' if merchant_id else '')
+            return [self.user_value(row, db) for row in db.execute('SELECT * FROM admin_users' + (' WHERE merchant_id=?' if merchant_id else '')
                     + ' ORDER BY created_at,username', (merchant_id,) if merchant_id else ())]
 
-    def login(self, name, password, remote):
+    def login(self, name, password, remote, merchant_login=False):
         # Do not echo the supplied username/password in responses or logs.
-        safe_name = name.lower() if isinstance(name, str) and len(name) <= 40 else ''
+        safe_name = name.lower() if isinstance(name, str) and 1 <= len(name) <= 80 else ''
         bucket = hashlib.sha256((remote + ':' + safe_name).encode()).hexdigest()
         now = int(time.time())
         with self.connection(True) as db:
             throttle = db.execute('SELECT * FROM admin_login_limits WHERE bucket=?', (bucket,)).fetchone()
             if throttle and throttle['failures'] >= 5 and throttle['until_at'] > now:
                 raise ServiceError('LOGIN_THROTTLED', '尝试次数过多，请稍后再试。', 429)
-            user = db.execute('SELECT * FROM admin_users WHERE username=?', (safe_name,)).fetchone()
+            user = None if merchant_login else db.execute("SELECT * FROM admin_users WHERE username=? AND role NOT LIKE 'merchant_%'", (safe_name,)).fetchone()
+            if user is None:
+                user = db.execute('SELECT u.* FROM merchants m JOIN admin_users u ON m.login_user_id=u.id WHERE lower(m.name)=lower(?)', (name if safe_name else '',)).fetchone()
+                if user is None:
+                    user = db.execute("SELECT u.* FROM admin_users u JOIN merchants m ON m.id=u.merchant_id WHERE u.username=? AND u.id<>COALESCE(m.login_user_id,'') AND u.role LIKE 'merchant_%'", (safe_name,)).fetchone()
             valid = password_matches(password, user['password_hash'] if user else self.dummy_hash)
             if user and user['role'].startswith('merchant_') and not user['merchant_id']:
                 valid = False
@@ -379,7 +439,7 @@ class ControlStore(Database):
                 db.execute('INSERT INTO admin_sessions VALUES (?,?,?,?,?,?)',
                            (hashlib.sha256(token.encode()).hexdigest(), user['id'], user['auth_version'], csrf, now + 28800, now))
                 self.audit(db, user['username'], 'auth.login', '', details={'remote': remote})
-                result = {'user': self.user_value(user), 'permissions': PERMISSIONS[user['role']], 'csrf_token': csrf}
+                result = {'user': self.user_value(user, db), 'permissions': PERMISSIONS[user['role']], 'csrf_token': csrf}
                 rejection = False
         if rejection:
             raise ServiceError('LOGIN_INVALID', '用户名或密码不正确，或账户已停用。', 401)
@@ -405,7 +465,7 @@ class ControlStore(Database):
             else:
                 db.execute('UPDATE admin_sessions SET last_seen=? WHERE token_hash=?', (now, hashed))
                 denied = False
-                result = {'user': self.user_value(row), 'permissions': PERMISSIONS[row['role']], 'csrf_token': row['csrf_token']}
+                result = {'user': self.user_value(row, db), 'permissions': PERMISSIONS[row['role']], 'csrf_token': row['csrf_token']}
         if denied:
             raise ServiceError('FORBIDDEN', '当前角色没有此操作权限。', 403)
         return result
@@ -451,6 +511,8 @@ class ControlStore(Database):
                         raise ServiceError('LAST_ADMIN', '至少保留一名启用的管理员。', 409)
                 db.execute('UPDATE admin_users SET role=?,enabled=?,merchant_id=?,auth_version=auth_version+1 WHERE id=?',
                            (role, enabled, merchant_id, row['id']))
+                if row['merchant_id'] and (role != 'merchant_admin' or not enabled or merchant_id != row['merchant_id']):
+                    db.execute("UPDATE merchants SET login_user_id=(SELECT id FROM admin_users WHERE merchant_id=? AND role='merchant_admin' AND enabled=1 ORDER BY created_at,id LIMIT 1) WHERE id=? AND login_user_id=?", (row['merchant_id'], row['merchant_id'], row['id']))
                 action, details = 'user.update', {'role': role, 'enabled': enabled, 'merchant_id': row['merchant_id']}
             self.audit(db, actor, action, name, details=details)
         return {'temporary_password': password} if reset else {'updated': True}

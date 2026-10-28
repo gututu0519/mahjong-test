@@ -1,0 +1,469 @@
+{
+  "models": [
+    {
+      "format": 1,
+      "game_id": 1,
+      "engine_version": "1.2.0",
+      "target_bp": 9000,
+      "method": "complete-round Monte Carlo; 99% normal approximation; up to four independent validations per mode",
+      "certified_theoretical": false,
+      "created_at": 1793212548,
+      "seconds": 279.67,
+      "modes": {
+        "normal": {
+          "config": {
+            "coin_sizes_minor": [
+              2,
+              3,
+              10,
+              20,
+              30,
+              90,
+              200
+            ],
+            "bet_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "base_bet_factor": 10,
+            "symbol_weights": {
+              "0": 150,
+              "1": 200,
+              "2": 1638,
+              "3": 200,
+              "4": 250,
+              "5": 350,
+              "6": 350,
+              "7": 500,
+              "8": 500,
+              "9": 500,
+              "10": 650,
+              "11": 650,
+              "12": 650
+            },
+            "stack_probability": 0.38,
+            "expanded_probability": 0.3,
+            "free_trigger": 3,
+            "free_spins": 10,
+            "free_retrigger": true,
+            "win_thresholds": {
+              "mw": 3,
+              "bw": 5,
+              "mgw": 15,
+              "smgw": 35
+            },
+            "provenance": {
+              "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
+              "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
+            },
+            "free_extra_spins": 2,
+            "feature_buy": {
+              "t": 0.5,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            },
+            "feature_buy_game_config": {
+              "t": 40.0,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            }
+          },
+          "validation": {
+            "rounds": 2000000,
+            "cost": 20,
+            "credit": 36068232,
+            "credit_squared": 33903137512,
+            "steps": 2851411,
+            "largest_credit": 21834,
+            "rtp": 0.9017058,
+            "ci_low": 0.8899622528767093,
+            "ci_high": 0.9134493471232907,
+            "ci_half": 0.011743547123290751,
+            "confidence": 0.99,
+            "seed": 901683202,
+            "unfinished_rounds": 0
+          },
+          "attempts": [
+            {
+              "filler": 32.76447504351962,
+              "report": {
+                "rounds": 2000000,
+                "cost": 20,
+                "credit": 36068232,
+                "credit_squared": 33903137512,
+                "steps": 2851411,
+                "largest_credit": 21834,
+                "rtp": 0.9017058,
+                "ci_low": 0.8899622528767093,
+                "ci_high": 0.9134493471232907,
+                "ci_half": 0.011743547123290751,
+                "confidence": 0.99,
+                "seed": 901683202,
+                "unfinished_rounds": 0
+              },
+              "passed": true
+            }
+          ]
+        },
+        "buy_free": {
+          "config": {
+            "coin_sizes_minor": [
+              2,
+              3,
+              10,
+              20,
+              30,
+              90,
+              200
+            ],
+            "bet_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "base_bet_factor": 10,
+            "symbol_weights": {
+              "0": 150,
+              "1": 200,
+              "2": 1013,
+              "3": 200,
+              "4": 250,
+              "5": 350,
+              "6": 350,
+              "7": 500,
+              "8": 500,
+              "9": 500,
+              "10": 650,
+              "11": 650,
+              "12": 650
+            },
+            "stack_probability": 0.38,
+            "expanded_probability": 0.3,
+            "free_trigger": 3,
+            "free_spins": 10,
+            "free_retrigger": true,
+            "win_thresholds": {
+              "mw": 3,
+              "bw": 5,
+              "mgw": 15,
+              "smgw": 35
+            },
+            "provenance": {
+              "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
+              "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
+            },
+            "free_extra_spins": 2,
+            "feature_buy": {
+              "t": 0.5,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            },
+            "feature_buy_game_config": {
+              "t": 40.0,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            }
+          },
+          "validation": {
+            "rounds": 200000,
+            "cost": 1500,
+            "credit": 272163164,
+            "credit_squared": 1077632116272,
+            "steps": 4429079,
+            "largest_credit": 54858,
+            "rtp": 0.9072105466666667,
+            "ci_low": 0.899989207408367,
+            "ci_high": 0.9144318859249664,
+            "ci_half": 0.00722133925829975,
+            "confidence": 0.99,
+            "seed": 901683221,
+            "unfinished_rounds": 0
+          },
+          "attempts": [
+            {
+              "filler": 20.2658256630965,
+              "report": {
+                "rounds": 200000,
+                "cost": 1500,
+                "credit": 272163164,
+                "credit_squared": 1077632116272,
+                "steps": 4429079,
+                "largest_credit": 54858,
+                "rtp": 0.9072105466666667,
+                "ci_low": 0.899989207408367,
+                "ci_high": 0.9144318859249664,
+                "ci_half": 0.00722133925829975,
+                "confidence": 0.99,
+                "seed": 901683221,
+                "unfinished_rounds": 0
+              },
+              "passed": true
+            }
+          ]
+        }
+      },
+      "model_hash": "73c06272a73671c16511527f63af43fdd3e3854379da1dc1be9049c438fa65dd"
+    },
+    {
+      "format": 1,
+      "game_id": 1,
+      "engine_version": "1.2.0",
+      "target_bp": 9600,
+      "method": "complete-round Monte Carlo; 99% normal approximation; up to four independent validations per mode",
+      "certified_theoretical": false,
+      "created_at": 1793212984,
+      "seconds": 436.5,
+      "modes": {
+        "normal": {
+          "config": {
+            "coin_sizes_minor": [
+              2,
+              3,
+              10,
+              20,
+              30,
+              90,
+              200
+            ],
+            "bet_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "base_bet_factor": 10,
+            "symbol_weights": {
+              "0": 150,
+              "1": 200,
+              "2": 1520,
+              "3": 200,
+              "4": 250,
+              "5": 350,
+              "6": 350,
+              "7": 500,
+              "8": 500,
+              "9": 500,
+              "10": 650,
+              "11": 650,
+              "12": 650
+            },
+            "stack_probability": 0.38,
+            "expanded_probability": 0.3,
+            "free_trigger": 3,
+            "free_spins": 10,
+            "free_retrigger": true,
+            "win_thresholds": {
+              "mw": 3,
+              "bw": 5,
+              "mgw": 15,
+              "smgw": 35
+            },
+            "provenance": {
+              "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
+              "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
+            },
+            "free_extra_spins": 2,
+            "feature_buy": {
+              "t": 0.5,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            },
+            "feature_buy_game_config": {
+              "t": 40.0,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            }
+          },
+          "validation": {
+            "rounds": 2000000,
+            "cost": 20,
+            "credit": 38223162,
+            "credit_squared": 38568027628,
+            "steps": 2883713,
+            "largest_credit": 25778,
+            "rtp": 0.95557905,
+            "ci_low": 0.9430520429322877,
+            "ci_high": 0.9681060570677122,
+            "ci_half": 0.012527007067712237,
+            "confidence": 0.99,
+            "seed": 901743202,
+            "unfinished_rounds": 0
+          },
+          "attempts": [
+            {
+              "filler": 30.400299339254275,
+              "report": {
+                "rounds": 2000000,
+                "cost": 20,
+                "credit": 38223162,
+                "credit_squared": 38568027628,
+                "steps": 2883713,
+                "largest_credit": 25778,
+                "rtp": 0.95557905,
+                "ci_low": 0.9430520429322877,
+                "ci_high": 0.9681060570677122,
+                "ci_half": 0.012527007067712237,
+                "confidence": 0.99,
+                "seed": 901743202,
+                "unfinished_rounds": 0
+              },
+              "passed": true
+            }
+          ]
+        },
+        "buy_free": {
+          "config": {
+            "coin_sizes_minor": [
+              2,
+              3,
+              10,
+              20,
+              30,
+              90,
+              200
+            ],
+            "bet_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "base_bet_factor": 10,
+            "symbol_weights": {
+              "0": 150,
+              "1": 200,
+              "2": 926,
+              "3": 200,
+              "4": 250,
+              "5": 350,
+              "6": 350,
+              "7": 500,
+              "8": 500,
+              "9": 500,
+              "10": 650,
+              "11": 650,
+              "12": 650
+            },
+            "stack_probability": 0.38,
+            "expanded_probability": 0.3,
+            "free_trigger": 3,
+            "free_spins": 10,
+            "free_retrigger": true,
+            "win_thresholds": {
+              "mw": 3,
+              "bw": 5,
+              "mgw": 15,
+              "smgw": 35
+            },
+            "provenance": {
+              "observed": "Captured English/Chinese original help: 3 scatters award 10 free spins, +2 per extra scatter, retriggers; no natural Wild on reel 1; size 2/3/4 stacks expand to 3-4/4-6/5-8. Captured spins verify additive paytable, continuation and multiplier carry.",
+              "local_choices": "Symbol weights, stack selection and expansion-count probabilities. Retriggers apply the documented scatter award at spin settlement; no full retrigger response captured. Not original RNG or certified RTP."
+            },
+            "free_extra_spins": 2,
+            "feature_buy": {
+              "t": 0.5,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            },
+            "feature_buy_game_config": {
+              "t": 40.0,
+              "bms": null,
+              "is": true,
+              "bm": 75
+            }
+          },
+          "validation": {
+            "rounds": 200000,
+            "cost": 1500,
+            "credit": 287769614,
+            "credit_squared": 1241556787500,
+            "steps": 4484870,
+            "largest_credit": 85342,
+            "rtp": 0.9592320466666666,
+            "ci_low": 0.9514209915950289,
+            "ci_high": 0.9670431017383043,
+            "ci_half": 0.007811055071637695,
+            "confidence": 0.99,
+            "seed": 1401743224,
+            "unfinished_rounds": 0
+          },
+          "attempts": [
+            {
+              "filler": 18.757680933287237,
+              "report": {
+                "rounds": 200000,
+                "cost": 1500,
+                "credit": 285471634,
+                "credit_squared": 1226878966596,
+                "steps": 4476188,
+                "largest_credit": 82670,
+                "rtp": 0.9515721133333334,
+                "ci_low": 0.9437993405145773,
+                "ci_high": 0.9593448861520895,
+                "ci_half": 0.00777277281875612,
+                "confidence": 0.99,
+                "seed": 901743221,
+                "unfinished_rounds": 0
+              },
+              "passed": false
+            },
+            {
+              "filler": 18.523937220942678,
+              "report": {
+                "rounds": 200000,
+                "cost": 1500,
+                "credit": 287769614,
+                "credit_squared": 1241556787500,
+                "steps": 4484870,
+                "largest_credit": 85342,
+                "rtp": 0.9592320466666666,
+                "ci_low": 0.9514209915950289,
+                "ci_high": 0.9670431017383043,
+                "ci_half": 0.007811055071637695,
+                "confidence": 0.99,
+                "seed": 1401743224,
+                "unfinished_rounds": 0
+              },
+              "passed": true
+            }
+          ]
+        }
+      },
+      "model_hash": "8575bb5ed98b7f9fe4819fc02604cf9393a18f2b11ecf8f6a9de3a6235cb4c92"
+    }
+  ]
+}

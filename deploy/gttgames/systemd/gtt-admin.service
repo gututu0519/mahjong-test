@@ -1,0 +1,29 @@
+[Unit]
+Description=GTT platform and merchant consoles
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=gtt
+Group=gtt
+WorkingDirectory=/opt/gtt/current
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m server.merchant.sandbox admin --config /etc/gtt/production.json
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=100
+UMask=0077
+StateDirectory=gtt
+StateDirectoryMode=0700
+LogsDirectory=gtt
+LogsDirectoryMode=0750
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/gtt /var/log/gtt
+
+[Install]
+WantedBy=multi-user.target

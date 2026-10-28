@@ -1,0 +1,32 @@
+[Unit]
+Description=GTT offline full-round RTP calibration worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=gtt
+Group=gtt
+WorkingDirectory=/opt/gtt/current
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m server.merchant.rtp_worker --config /etc/gtt/production.json --workers 2
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillMode=control-group
+Nice=10
+CPUQuota=150%
+UMask=0077
+StateDirectory=gtt
+StateDirectoryMode=0700
+LogsDirectory=gtt
+LogsDirectoryMode=0750
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/gtt /var/log/gtt
+
+[Install]
+WantedBy=multi-user.target

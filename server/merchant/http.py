@@ -1,9 +1,10 @@
 import json
+import copy
 import logging
 import re
 from functools import partial
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urljoin, urlsplit
 from urllib.request import Request, build_opener
 
 from server.core.contracts import ServiceError
@@ -13,6 +14,7 @@ from .common import encode, read_object, signed_headers
 from .mock_wallet import MockWallet
 from .provider import MerchantService
 from .wallet import NoRedirect
+from .deployment import Deployment
 
 
 def post_gateway(config, path, payload):
@@ -36,12 +38,8 @@ class JSONRoutes:
         self.wfile.write(body)
 
     def guard(self):
-        allowed = {f'127.0.0.1:{self.server.server_port}', f'localhost:{self.server.server_port}'}
-        host = self.headers.get('Host', '')
-        if host not in allowed:
-            raise ServiceError('HOST_REJECTED', 'Unexpected Host header.', 403)
-        if self.headers.get('Origin') not in (None, 'http://' + host):
-            raise ServiceError('ORIGIN_REJECTED', 'Cross-origin requests are not enabled.', 403)
+        deployment = getattr(self.server, 'deployment', None) or Deployment()
+        deployment.guard(self, 'gateway' if getattr(self.server, 'service_id', '') == 'gtt-gateway' else 'admin')
 
     def read_body(self):
         self.guard()
@@ -70,6 +68,18 @@ class JSONRoutes:
 
 class GatewayHandler(JSONRoutes, BuffaloHandler):
     server_version = 'GTTGateway/1.0'
+
+    def _get(self):
+        self.guard()
+        return super()._get()
+
+    def _guard_origin(self):
+        self.guard()
+
+    def end_headers(self):
+        self.send_header('Referrer-Policy', 'no-referrer')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        super().end_headers()
 
     def log_message(self, format, *args):
         message = re.sub(r'([?&](?:ops|atk|tk|token)=)[^&\s"]*', r'\1[redacted]', format % args)
@@ -101,14 +111,33 @@ class GatewayHandler(JSONRoutes, BuffaloHandler):
     def launch_game(self, game_id, language='zh'):
         raise ServiceError('MERCHANT_AUTH_REQUIRED', 'Use the signed GTT launch endpoint.', 401)
 
+    def compatibility_post(self, path, body):
+        if path == '/web-api/game-proxy/v2/GameRule/Get':
+            form = parse_qs(body.decode('utf-8'), keep_blank_values=True)
+            token = self.headers.get('X-Local-Game-Session') or form.get('atk', [None])[0]
+            snapshot = self.server.service.state(token, 'buffalo-win')
+            if form.get('gid', ['108'])[0] != '108':
+                raise ServiceError('GAME_NOT_FOUND', 'Unknown game.', 404)
+            rule = copy.deepcopy(self.server.game_rule)
+            target = snapshot['rtp']['target_rtp']
+            if target is not None:
+                rule['dt']['rtp']['Default'].update(min=target, max=target)
+                for group in rule['dt'].get('grtpi', []):
+                    for value in group.get('grtps', []):
+                        value['rtp'] = target
+            return self._json(200, rule)
+        return super().compatibility_post(path, body)
+
 
 def build_gateway(port, database, config, game=None):
-    service = MerchantService(database, config['merchants'], game)
+    deployment = Deployment(config)
+    service = MerchantService(database, config['merchants'], game, play_origin=deployment.origins.get('play'))
     handler = partial(GatewayHandler, directory=str(CLIENT))
     http = ThreadingHTTPServer(('127.0.0.1', port), handler)
     http.daemon_threads = True
     http.service = service
     http.service_id = 'gtt-gateway'
+    http.deployment = deployment
     from server.adapters.pg.buffalo_win import PGAdapter
     http.pg = PGAdapter(service)
     http.auth = json.loads((CLIENT / 'fixtures/auth-metadata.json').read_bytes())
@@ -173,10 +202,10 @@ class MockHandler(JSONRoutes, BaseHTTPRequestHandler):
         if path == '/sandbox/launch':
             payload = read_object(body)
             result = post_gateway(config, '/gtt/v1/games/launch', {
-                'player_id': config['sandbox_player'], 'game_id': 'buffalo-win',
+                'player_id': config['sandbox_player'], 'game_id': 1,
                 'language': payload.get('language', 'en'),
                 **({'external_username': config['sandbox_external_username']} if config.get('sandbox_external_username') else {})})
-            result['launch_url'] = config['gateway_origin'] + result['launch_url']
+            result['launch_url'] = urljoin(config['gateway_origin'], result['launch_url'])
             return self.json_response(201, result)
         if not path.startswith('/wallet/v1/'):
             raise ServiceError('NOT_FOUND', 'Unknown endpoint.', 404)
