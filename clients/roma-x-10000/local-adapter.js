@@ -4,7 +4,7 @@
   // The captured bundles validate their original host before module execution.
   // Keep their source bytes intact (they also verify source offsets), and adapt
   // only the two version-specific host predicates on the loopback deployment.
-  if (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)) {
+  if ((['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname) || /^g(?:[1-9]|1[0-9])\.localhost$/.test(location.hostname))) {
     for (const [owner, property] of [['M98th', 'f3e'], ['V7$ve', 'W1gf']]) {
       Object.defineProperty(Function.prototype, property, {configurable: true, set(value) {
         Object.defineProperty(this, property, {value, writable: true, configurable: true, enumerable: true});

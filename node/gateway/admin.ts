@@ -9,6 +9,7 @@ import {
   now,
   ServiceError,
 } from "../shared/core.js";
+import {gameCode,gameNumber} from "./catalog.js";
 import { reason } from "./control.js";
 import { Deployment } from "./deployment.js";
 import type { Provider } from "./provider.js";
@@ -19,8 +20,7 @@ export function transactions(p: Provider, q: any, detail = false) {
     if (q[k]) {
       let v = q[k];
       if (k === "game_id") {
-        check(v === 1, "GAME_ID_INVALID");
-        v = "buffalo-win";
+        v = gameCode(v);
       }
       identifier(v);
       if (k === "status")
@@ -56,12 +56,12 @@ export function transactions(p: Provider, q: any, detail = false) {
       id: r.id,
       merchant_id: r.merchant_id,
       player_id: r.player_id,
-      game_id: 1,
+      game_id: gameNumber(r.game_id),
       status: r.status,
       error_code: r.error_code,
       created_at: r.created_at,
-      debit_minor: c.debit_minor,
-      credit_minor: c.credit_minor,
+      debit_minor: c.wallet_debit_minor ?? c.debit_minor,
+      credit_minor: c.wallet_credit_minor ?? c.credit_minor,
       round_id: c.event.round_id,
       ruleset_id: c.ruleset_id,
       currency: m?.currency ?? null,
@@ -101,14 +101,14 @@ function overview(p: Provider, mid?: string) {
     const m = p.control.merchant(r.merchant_id);
     if (!m) continue;
     const c = JSON.parse(r.candidate_json),
-      t = (totals[m.currency] ??= {
+      t = (totals[m.currency + ":" + m.minor_unit] ??= {
         currency: m.currency,
-        minor_unit: 100,
+        minor_unit: m.minor_unit,
         debit_minor: 0,
         credit_minor: 0,
       });
-    t.debit_minor += c.debit_minor;
-    t.credit_minor += c.credit_minor;
+    t.debit_minor += c.wallet_debit_minor ?? c.debit_minor;
+    t.credit_minor += c.wallet_credit_minor ?? c.credit_minor;
     players.add(r.merchant_id + ":" + r.player_id);
     const day = daily.find(
       (d) =>
@@ -119,7 +119,7 @@ function overview(p: Provider, mid?: string) {
   return {
     merchants: merchants.length,
     active_merchants: merchants.filter((m) => m.enabled).length,
-    games: mid ? p.catalog(mid).length : 1,
+    games: p.catalog(mid).length,
     settled: counts.settled ?? 0,
     pending: (counts.prepared ?? 0) + (counts.debited ?? 0),
     rejected: counts.rejected ?? 0,
@@ -149,11 +149,12 @@ function prebetDecisions(p: Provider, q: any) {
       id: r.id,
       merchant_id: r.merchant_id,
       player_id: r.player_id,
-      game_id: 1,
+      game_id: gameNumber(r.game_id),
       error_code: r.error_code,
       created_at: r.created_at,
       request: JSON.parse(r.prebet_request_json),
       policy: r.policy_json ? JSON.parse(r.policy_json) : null,
+      resolution:r.plan_json?JSON.parse(r.plan_json).resolution??null:null,
       status: r.error_code ? "rejected" : r.plan_json ? "planned" : "pending",
     }));
 }

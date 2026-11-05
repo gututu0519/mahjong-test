@@ -48,7 +48,7 @@ export class Wallet {
         d &&
           d.player_id === p.player_id &&
           d.currency === m.currency &&
-          d.minor_unit === 100,
+          d.minor_unit === p.minor_unit,
         "WALLET_UNCERTAIN",
       );
       amount(d.balance_minor);

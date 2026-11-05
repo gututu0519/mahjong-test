@@ -20,7 +20,13 @@ import { Wallet } from "./wallet.js";
 import { GameClient } from "./game-client.js";
 import { fetchBounded } from "../shared/http.js";
 import { RTP } from "./rtp.js";
+import { MerchantGames } from "./merchant-games.js";
+import { gameNumber } from "./catalog.js";
 export class Provider extends DB {
+  multi?: MerchantGames;
+  enableGames(config: any) {
+    return (this.multi ??= new MerchantGames(this, config));
+  }
   walletClient: Wallet;
   serial = new Serial();
   rtp: RTP;
@@ -62,10 +68,36 @@ export class Provider extends DB {
       "Game unavailable",
       403,
     );
-    check(m.minor_unit === 100, "MERCHANT_CONFIG_INVALID");
+    check([100, 10000].includes(m.minor_unit), "MERCHANT_CONFIG_INVALID");
     return m;
   }
   catalog(mid?: string) {
+    if (this.multi) {
+      const m = mid ? this.merchant(mid, false) : null;
+      return [...this.multi.engines.keys()]
+        .filter((code) => !m || m.games.includes(code))
+        .map((code) => ({
+          ...this.multi!.descriptor(code),
+          ...(code === "buffalo-win"
+            ? {
+                target_rtp:
+                  this.rtp.mode(mid ?? "").mode === "rtp"
+                    ? (this.rtp.resolve(mid ?? "").target_bp ?? 0) / 100 || null
+                    : null,
+                rtp_status:
+                  this.rtp.mode(mid ?? "").mode === "prebet"
+                    ? "prebet"
+                    : this.rtp.resolve(mid ?? "").target_bp != null
+                      ? "active"
+                      : "not_calibrated",
+              }
+            : m?.pre_payout.enabled
+              ? { rtp_status: "prebet" }
+              : {}),
+          wallet_compatible:
+            !m || m.minor_unit >= this.multi!.descriptor(code).minor_unit,
+        }));
+    }
     if (mid) this.merchant(mid, false);
     const p = this.rtp.resolve(mid ?? ""),
       mode = mid ? this.rtp.mode(mid).mode : "rtp";
@@ -119,6 +151,12 @@ export class Provider extends DB {
     return JSON.parse(r.state_json);
   }
   async launch(mid: string, p: any) {
+    if (
+      this.multi &&
+      ((p.game_id ?? 1) !== 1 ||
+        this.control.merchant(mid, true)?.minor_unit !== 100)
+    )
+      return this.multi.launch(mid, p);
     check((p.game_id ?? 1) === 1, "GAME_ID_INVALID");
     const pid = identifier(p.player_id),
       m = this.merchant(mid);
@@ -219,18 +257,26 @@ export class Provider extends DB {
       now(),
     );
     check(s, "SESSION_INVALID", "Session expired", 401);
-    this.merchant(s.merchant_id);
+    const m = this.merchant(s.merchant_id, false);
+    check(
+      m.games.includes(s.game_id),
+      "GAME_FORBIDDEN",
+      "Game not authorized",
+      403,
+    );
     return s;
   }
   async wallet(tok: string) {
     const s = this.session(tok);
+    if (this.multi?.generic(s)) return this.multi.wallet(tok);
     return this.walletClient.call(
       s.merchant_id,
       "balance",
       this.base(s.merchant_id, s.player_id),
     );
   }
-  async state(tok: string) {
+  async state(tok: string): Promise<any> {
+    if (this.multi?.generic(this.session(tok))) return this.multi.state(tok);
     const s = this.session(tok),
       pending = this.get(
         "SELECT id FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id='buffalo-win' AND status IN ('prepared','debited')",
@@ -251,6 +297,7 @@ export class Provider extends DB {
   }
   async spin(tok: string, key: string, previous: string, p: any) {
     const s = this.session(tok);
+    if (this.multi?.generic(s)) return this.multi.spin(tok, key, previous, p);
     check(
       typeof key === "string" &&
         key.length >= 1 &&
@@ -334,7 +381,7 @@ export class Provider extends DB {
           created_at: now(),
         };
         this.run(
-          "INSERT INTO node_calculations VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+          "INSERT INTO node_calculations(id,merchant_id,player_id,game_id,request_key,request_json,state_json,bet_json,seed,status,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
           ...Object.values(row),
         );
         return row;
@@ -434,6 +481,13 @@ export class Provider extends DB {
   }
   async retry(mid: string, id: string, disabled = false) {
     identifier(id);
+    const generic = this.get(
+      "SELECT candidate_json FROM game_operations WHERE merchant_id=? AND id=?",
+      mid,
+      id,
+    );
+    if (this.multi && generic && JSON.parse(generic.candidate_json).multigame)
+      return this.multi.retry(mid, id, disabled);
     return this.serial.run("operation:" + mid + ":" + id, async () => {
       let o = this.get(
         "SELECT * FROM game_operations WHERE id=? AND merchant_id=?",
@@ -574,7 +628,7 @@ export class Provider extends DB {
         seq: r.seq,
         operation_id: r.id,
         player_id: r.player_id,
-        game_id: 1,
+        game_id: gameNumber(r.game_id),
         status: r.status,
         error_code: r.error_code,
         debit_transaction_id: JSON.parse(r.candidate_json).debit_minor
@@ -599,8 +653,8 @@ export class Provider extends DB {
     const settings = JSON.parse(binding.settings_json);
     let r = this.get(
       state.phase === "ready"
-        ? "SELECT * FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND initial_sid=? AND error_code IS NULL"
-        : "SELECT * FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND id=?",
+        ? "SELECT * FROM prebet_rounds WHERE game_id='buffalo-win' AND merchant_id=? AND player_id=? AND initial_sid=? AND error_code IS NULL"
+        : "SELECT * FROM prebet_rounds WHERE game_id='buffalo-win' AND merchant_id=? AND player_id=? AND id=?",
       mid,
       pid,
       state.phase === "ready" ? state.sid : state.round_id,
@@ -609,7 +663,7 @@ export class Provider extends DB {
     if (!r)
       r = this.tx(() => {
         const old = this.get(
-          "SELECT * FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND initial_sid=? AND error_code IS NULL",
+          "SELECT * FROM prebet_rounds WHERE game_id='buffalo-win' AND merchant_id=? AND player_id=? AND initial_sid=? AND error_code IS NULL",
           mid,
           pid,
           state.sid,

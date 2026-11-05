@@ -13,11 +13,13 @@ export function websocket(
   req: IncomingMessage,
   socket: Duplex,
   head: Buffer,
+  authenticate?: (token: string) => Promise<unknown>,
+  expectedOrigin?: string,
 ) {
   const signalr = kind.endsWith("player_events"),
     key = String(req.headers["sec-websocket-key"] ?? "");
   check(
-    req.headers.origin === "http://" + req.headers.host &&
+    req.headers.origin === (expectedOrigin ?? "http://" + req.headers.host) &&
       req.headers.upgrade?.toLowerCase() === "websocket" &&
       req.headers["sec-websocket-version"] === "13" &&
       /^[A-Za-z0-9+/]{22}==$/.test(key) &&
@@ -55,7 +57,7 @@ export function websocket(
     send(8, data);
     socket.end();
   };
-  const handle = (opcode: number, data: Buffer) => {
+  const handle = async (opcode: number, data: Buffer) => {
     if (opcode === 8) {
       send(8, data);
       closed = true;
@@ -106,16 +108,18 @@ export function websocket(
         p.dict(),
       ]);
       token = p.item(info, "token");
-      p.call(p.attr(handler.server.service, "wallet"), [token]);
+      if (authenticate) await authenticate(token!);
+      else p.call(p.attr(handler.server.service, "wallet"), [token]);
       send(1, Buffer.from('{"error":0}'));
     } else {
-      p.call(p.attr(handler.server.service, "wallet"), [token]);
+      if (authenticate) await authenticate(token!);
+      else p.call(p.attr(handler.server.service, "wallet"), [token]);
       check(opcode === 1, "PROTOCOL_INVALID");
       const msg = JSON.parse(data.toString());
       check(msg && msg.cmdType === -1, "PROTOCOL_INVALID");
     }
   };
-  const receive = (chunk: Buffer) => {
+  const receive = async (chunk: Buffer) => {
     if (closed) return;
     buffer = Buffer.concat([buffer, chunk]);
     try {
@@ -146,7 +150,7 @@ export function websocket(
           data = Buffer.from(buffer.subarray(offset + 4, offset + 4 + length));
         buffer = buffer.subarray(offset + 4 + length);
         for (let i = 0; i < data.length; i++) data[i] ^= mask[i % 4];
-        handle(opcode, data);
+        await handle(opcode, data);
         if (closed) return;
       }
     } catch {
@@ -154,12 +158,13 @@ export function websocket(
     }
   };
   const timer = setTimeout(() => socket.destroy(), 90000);
+  let queue = Promise.resolve();
   socket.on("data", (chunk) => {
     timer.refresh();
-    receive(chunk);
+    queue = queue.then(() => receive(chunk));
   });
   socket.on("end", () => socket.destroy());
   socket.on("error", () => socket.destroy());
   socket.on("close", () => clearTimeout(timer));
-  if (head.length) receive(head);
+  if (head.length) queue = queue.then(() => receive(head));
 }

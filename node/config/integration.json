@@ -1,7 +1,7 @@
 {
   "title": "GTT 商户接入规范",
-  "version": "1.2.0",
-  "updated": "2026-10-28",
+  "version": "1.3.0",
+  "updated": "2026-11-05",
   "gateway_origin": "https://api.gttgames.com",
   "play_origin": "https://play.gttgames.com",
   "environment": "以 GTT 提供的接入环境为准",
@@ -24,11 +24,11 @@
           "rows": [
             [
               "接口版本",
-              "v1；当前商户钱包链路接入 Buffalo Win，数字游戏 ID 为 1；后续编号按顺序追加且不重排。授权与游戏信息以 games/list 为准。"
+              "v1；19 款游戏统一使用数字 ID 1–19；编号不重排。授权、游戏原生精度与 wallet_compatible 以 games/list 为准。"
             ],
             [
               "结算币种",
-              "新商户仅 USD；minor_unit 固定 100，200000 表示 2000.00 USD。"
+              "新商户仅 USD；钱包 minor_unit 创建时选择 100 或 10000，之后不可更改。接入全部游戏请选择 10000（20000000 = 2000.0000 USD）；六款 JILI/TaDa 游戏要求 10000。其余游戏按原生 100 精度计算，回调金额精确转换为商户钱包单位。"
             ],
             [
               "地址与环境",
@@ -274,7 +274,7 @@
             ],
             [
               "[10,10]",
-              "恰好 10 倍"
+              "优先 10 倍，未命中时向下取档"
             ],
             [
               "[0.9,1.1]",
@@ -282,7 +282,7 @@
             ],
             [
               "[-1,0]",
-              "特殊约定：不限制派彩，并非最高 0 倍"
+              "必输：上限为 0 倍，整局总派彩必须为 0（包含免费与续列）"
             ]
           ]
         },
@@ -296,7 +296,7 @@
         },
         {
           "type": "paragraph",
-          "text": "响应超时、非 200 或无效区间时不自动退回无约束开奖。GTT 无法在现有规则内找到满足区间的合法回合时返回 PREBET_RANGE_UNREACHABLE，不扣款、不截断中奖、不擅自放宽区间。业务 code 3202 表示明确余额不足且未扣款；重新尝试可使用新业务时间戳，其他不确定决策保持原去重参数恢复。"
+          "text": "响应超时、非 200 或无效区间时不自动退回无约束开奖。GTT 优先匹配原区间；最多搜索 3000 个合法整局候选，未命中时选择不超过上限且派彩最高的完整候选，允许向下低于原下限，禁止向上取档或截断中奖。最近仅指已搜索候选；只有达到金额精度允许的上限时可证明金额上不存在更近档位。没有任何不超过上限的合法整局才返回 PREBET_RANGE_UNREACHABLE，不扣款。原请求和实际取档写入决策 resolution，重试复用冻结计划。业务 code 3202 表示明确余额不足且未扣款；重新尝试可使用新业务时间戳，其他不确定决策保持原去重参数恢复。"
         }
       ]
     },
@@ -412,7 +412,7 @@
             ],
             [
               "503 / PREBET_RANGE_UNREACHABLE",
-              "当前区间无法生成合法回合，未扣款；与平台协商可实现区间。"
+              "没有找到不超过上限的完整合法回合，未扣款；重试原请求或核对游戏规则。"
             ],
             [
               "413 / BODY_TOO_LARGE；415 / CONTENT_TYPE",
@@ -494,7 +494,7 @@
       "direction": "商户 → GTT",
       "method": "POST",
       "path": "/gtt/v1/games/list",
-      "description": "只返回当前商户获准接入的游戏。当前商户钱包链路支持 Buffalo Win，新增游戏以该接口的实际返回为准。",
+      "description": "只返回当前商户获准接入的游戏。当前商户钱包链路支持全部 19 款游戏，列表仅返回本商户获授权的游戏。",
       "request_schema": {
         "type": "object",
         "properties": {},
@@ -563,8 +563,8 @@
           "game_id": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9000000000000000,
-            "description": "已授权的 GTT 数字游戏 ID，Buffalo Win 为 1",
+            "maximum": 19,
+            "description": "已授权的 GTT 数字游戏 ID 1–19；Buffalo Win 为 1",
             "default": 1
           },
           "language": {
@@ -660,9 +660,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           }
         },
         "required": [
@@ -729,9 +731,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           },
           "transaction_id": {
             "type": "string",
@@ -832,9 +836,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           },
           "transaction_id": {
             "type": "string",
@@ -944,9 +950,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           },
           "transaction_id": {
             "type": "string",
@@ -1056,9 +1064,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           },
           "transaction_id": {
             "type": "string",
@@ -1142,9 +1152,11 @@
           },
           "minor_unit": {
             "type": "integer",
-            "minimum": 100,
-            "maximum": 100,
-            "description": "固定为 100"
+            "description": "必须等于商户配置的 100 或 10000",
+            "enum": [
+              100,
+              10000
+            ]
           },
           "limit": {
             "type": "integer",
@@ -1448,7 +1460,7 @@
       "status": 200,
       "notes": [
         "成功必须 HTTP 200 且 code 为整数 0；此接口使用 code/data/msg 信封，不使用钱包的 data/error 信封。",
-        "当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；非特殊无限制区间要求上限不小于下限。",
+        "当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；下限非负时要求上限不小于下限；[-1,0] 为整局零派彩。",
         "业务毫秒 timestamp 与签名头的秒级时间戳不同；业务去重参数固定，HTTP 签名头每次更新。"
       ]
     }
@@ -1499,9 +1511,11 @@
         },
         "minor_unit": {
           "type": "integer",
-          "minimum": 100,
-          "maximum": 100,
-          "description": "金额精度，固定为 100"
+          "description": "金额精度，必须等于商户配置的 100 或 10000",
+          "enum": [
+            100,
+            10000
+          ]
         },
         "balance_minor": {
           "type": "integer",
@@ -1533,9 +1547,11 @@
         },
         "minor_unit": {
           "type": "integer",
-          "minimum": 100,
-          "maximum": 100,
-          "description": "固定为 100"
+          "description": "必须等于商户配置的 100 或 10000",
+          "enum": [
+            100,
+            10000
+          ]
         },
         "balance_minor": {
           "type": "integer",
@@ -1594,7 +1610,7 @@
         "game_id": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 9000000000000000,
+          "maximum": 19,
           "description": "GTT 数字游戏 ID"
         },
         "launch_url": {
@@ -1619,9 +1635,11 @@
         },
         "minor_unit": {
           "type": "integer",
-          "minimum": 100,
-          "maximum": 100,
-          "description": "固定为 100"
+          "description": "必须等于商户配置的 100 或 10000",
+          "enum": [
+            100,
+            10000
+          ]
         }
       },
       "required": [
@@ -1676,7 +1694,7 @@
         "game_id": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 9000000000000000,
+          "maximum": 19,
           "description": "GTT 数字游戏 ID"
         },
         "sid": {
@@ -1775,7 +1793,7 @@
         "game_id": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 9000000000000000,
+          "maximum": 19,
           "description": "GTT 数字游戏 ID"
         },
         "status": {
@@ -1897,9 +1915,11 @@
         },
         "minor_unit": {
           "type": "integer",
-          "minimum": 100,
-          "maximum": 100,
-          "description": "金额精度，固定为 100"
+          "description": "金额精度，必须等于商户配置的 100 或 10000",
+          "enum": [
+            100,
+            10000
+          ]
         },
         "balance_minor": {
           "type": "integer",

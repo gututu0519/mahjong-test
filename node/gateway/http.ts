@@ -6,7 +6,9 @@ import type { Provider } from "./provider.js";
 import { PG } from "./pg.js";
 import { Deployment } from "./deployment.js";
 import { asset } from "./assets.js";
+import { ProtocolPool } from "./protocol-pool.js";
 export function gatewayServer(p: Provider, config: any, clientRoot: string) {
+  const pool = new ProtocolPool(p.enableGames(config), config);
   const deployment = new Deployment(config),
     pg = new PG(p),
     auth = JSON.parse(
@@ -15,10 +17,12 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
     rule = JSON.parse(
       readFileSync(join(clientRoot, "fixtures/game-rule.json"), "utf8"),
     );
-  return server(async (req, res) => {
+  const http = server(async (req, res) => {
     const url = new URL(req.url!, "http://local"),
       path = url.pathname;
     try {
+      const game = pool.host(req);
+      if (game) return await pool.handle(game, req, res);
       deployment.guard(req, "gateway");
       if (req.method === "GET") {
         const tok = String(req.headers.authorization ?? "").replace(
@@ -36,16 +40,24 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
           return send(res, 200, { games: p.catalog() });
         if (path === "/api/v1/wallet")
           return send(res, 200, await p.wallet(tok));
-        if (path === "/api/v1/games/buffalo-win/state")
+        if (/^\/api\/v1\/games\/[^/]+\/state$/.test(path)) {
+          check(
+            p.session(tok).game_id === path.split("/")[4],
+            "SESSION_GAME_MISMATCH",
+            "Session belongs to another game",
+            403,
+          );
           return send(res, 200, await p.state(tok));
+        }
         if (path === "/api/v1/history") {
           const s = p.session(tok);
           return send(res, 200, {
             spins: p
               .all(
-                "SELECT response_json FROM game_operations WHERE merchant_id=? AND player_id=? AND status='settled' ORDER BY seq DESC LIMIT ?",
+                "SELECT response_json FROM game_operations WHERE merchant_id=? AND player_id=? AND game_id=? AND status='settled' ORDER BY seq DESC LIMIT ?",
                 s.merchant_id,
                 s.player_id,
+                s.game_id,
                 limit(Number(url.searchParams.get("limit") ?? 20)),
               )
               .map((r) => JSON.parse(r.response_json)),
@@ -98,7 +110,13 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
         );
         const q = object(utf8(raw)),
           tok = String(req.headers.authorization ?? "").replace(/^Bearer /, "");
-        if (path === "/api/v1/games/buffalo-win/spin")
+        if (/^\/api\/v1\/games\/[^/]+\/spin$/.test(path)) {
+          check(
+            p.session(tok).game_id === path.split("/")[4],
+            "SESSION_GAME_MISMATCH",
+            "Session belongs to another game",
+            403,
+          );
           return send(
             res,
             200,
@@ -109,6 +127,7 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
               q.bet ?? {},
             ),
           );
+        }
         if (path === "/api/v1/sessions" || path.endsWith("/launch"))
           throw new ServiceError(
             "MERCHANT_AUTH_REQUIRED",
@@ -121,6 +140,12 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
         tok = String(
           req.headers["x-local-game-session"] ?? form.get("atk") ?? "",
         );
+      check(
+        p.session(tok).game_id === "buffalo-win",
+        "SESSION_GAME_MISMATCH",
+        "Session belongs to another game",
+        403,
+      );
       const wallet = await p.wallet(tok);
       let result: any;
       if (
@@ -182,4 +207,20 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
       throw e;
     }
   });
+  http.on("upgrade", (req, socket, head) => {
+    const code = pool.host(req);
+    if (!code) {
+      socket.end("HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n");
+      return;
+    }
+    void pool
+      .upgrade(code, req, socket, head)
+      .catch(() =>
+        socket.end("HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\n\r\n"),
+      );
+  });
+  http.once("close", () => {
+    void pool.close();
+  });
+  return Object.assign(http, { protocolPool: pool });
 }

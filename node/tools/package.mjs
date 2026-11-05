@@ -231,9 +231,17 @@ write(
   resolve(all, "ASSETS.md"),
   "# Client resources\n\nThis package contains runtime bootstrap metadata, not the full game assets. Mount the matching complete resource tree with GTT_RESOURCE_ROOT, or merge the existing clients/ assets into resources/clients/. Do not publish private fixtures. Existing Buffalo S3 deployment continues to use gateway.tar.gz and the bound asset manifest. Other games require their own verified CDN routing before production publication.\n",
 );
+// Unified gateway loads all engines and protocol workers. Keep its artifact self-contained.
+for (const name of ["compat", "migrated", "services"])
+  copy(resolve(root, "dist", name), resolve(gateway, "dist", name), (p) =>
+    p.endsWith(".js"),
+  );
+copy(resources, resolve(gateway, "resources"));
+copy(resolve(root, "frontend/platform"), resolve(gateway, "frontend/platform"));
 copy(resolve(root, "deploy"), resolve(output, "infra"));
 copy(resolve(root, "README.md"), resolve(output, "README.md"));
 copy(resolve(repo, "docs/node-migration.md"), resolve(output, "MIGRATION.md"));
+copy(resolve(repo, "docs/unified-merchant-games.md"), resolve(output, "UNIFIED-MERCHANT.md"));
 copy(resolve(manifestPath), resolve(output, "assets-manifest.json"));
 const git = (...params) =>
   execFileSync("git", params, { cwd: repo, encoding: "utf8" }).trim();

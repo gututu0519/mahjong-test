@@ -10,7 +10,7 @@ const pages = {
   merchants: ['商户管理', '维护合作平台、钱包连接和游戏授权。'],
   integration: ['接入中心', '从身份凭证到结算规范，一站完成 GTT 服务端接入。'],
   games: ['游戏目录', '查看已接入商户网关的游戏与规则版本。'],
-  rtp: ['RTP 设置', '一个商户，一个默认 RTP。修改后从下一付费整局生效。'],
+  rtp: ['美洲野牛 RTP 设置', '一个商户，一个默认 RTP。修改后从下一付费整局生效。'],
   transactions: ['交易中心', '查询游戏交易，恢复已受理但尚未完成的操作。'],
   audit: ['操作审计', '追踪账户、商户配置及交易恢复的操作记录。'],
   users: ['账户与权限', '为团队分配管理员、运营或只读权限。'],
@@ -37,10 +37,10 @@ const status = value => badge(statusNames[value] || value, value === 'settled' ?
 const time = timestamp => new Date(timestamp * 1000).toLocaleString('zh-CN', {hour12: false});
 const amount = number => number.toLocaleString('zh-CN');
 function money(minor, row) {
-  if (!row.currency || row.minor_unit !== 100) return amount(minor) + ' 最小单位（币种未确认）';
+  if (!row.currency || ![100,10000].includes(row.minor_unit)) return amount(minor) + ' 最小单位（币种未确认）';
   // Integer arithmetic preserves every cent, including near the balance limit.
   const units = BigInt(minor);
-  return (units / 100n).toLocaleString('en-US') + '.' + (units % 100n).toString().padStart(2, '0') + ' ' + row.currency;
+  return (units / BigInt(row.minor_unit)).toLocaleString('en-US') + '.' + (units % BigInt(row.minor_unit)).toString().padStart(row.minor_unit===10000?4:2, '0') + ' ' + row.currency;
 }
 const field = (label, node) => el('label', {}, label, node);
 const input = (name, value = '', attrs = {}) => el('input', {name, value, ...attrs});
@@ -198,15 +198,16 @@ function settlementChart(days) {
 }
 function merchantEditor(merchant = null) {
   const editing = !!merchant, writable = can('merchants.write') || can('profile.write');
-  const value = merchant || {id: '', name: '', wallet_url: '', currency: 'USD', games: [], enabled: true};
+  const value = merchant || {id: '', name: '', wallet_url: '', currency: 'USD', minor_unit:10000, games: [], enabled: true};
   const currency = select('currency', editing && value.currency !== 'USD' ? [[value.currency, value.currency]] : [['USD', '美元（USD）']], value.currency);
+  const precision=select('minor_unit',[[10000,'10000（四位小数，全部游戏）'],[100,'100（两位小数）']],value.minor_unit);precision.disabled=editing;
   const prebet = value.pre_payout || {};
   currency.required = true;
   currency.disabled = editing;
-  const nodes = [el('div', {class: 'form-grid'}, field('商户号（接口对接）', input('id', value.id, {disabled: true, placeholder: '自动分配，如 GTT000001'})), field('商户名称（主账号登录）', input('name', value.name, {required: true, maxlength: 80})), field('钱包服务地址', input('wallet_url', value.wallet_url, {required: true, type: 'url', placeholder: 'https://wallet.example.com', maxlength: 512})), field('币种', currency)),
+  const nodes = [el('div', {class: 'form-grid'}, field('商户号（接口对接）', input('id', value.id, {disabled: true, placeholder: '自动分配，如 GTT000001'})), field('商户名称（主账号登录）', input('name', value.name, {required: true, maxlength: 80})), field('钱包服务地址', input('wallet_url', value.wallet_url, {required: true, type: 'url', placeholder: 'https://wallet.example.com', maxlength: 512})), field('币种', currency),field('钱包金额精度',precision)),
     el('p', {class: 'hint'}, '商户名称须唯一，用于主账号登录；改名后使用新名称和原密码。商户号由 GTT 按顺序分配，仅用于接口对接。创建商户时自动开通主账号。'),
     el('p', {class: 'hint'}, 'merchant_secret 由 GTT 自动生成。统一签名使用同一把密钥处理游戏接入、钱包和预派彩请求。创建后即可查看、复制和使用。'),
-    el('p', {class: 'hint'}, '钱包地址填写 origin，不带路径。金额精度为 100；创建后币种不可更改。'),
+    el('p', {class: 'hint'}, '钱包地址填写 origin，不带路径。六款 JILI/TaDa 游戏需要精度 10000；创建后币种和精度不可更改。'),
     tenant() ? el('p', {class: 'hint'}, '商户启用状态与游戏授权由 GTT 平台维护。') : el('label', {class: 'check-label'}, input('enabled', 'yes', {type: 'checkbox', checked: value.enabled}), '启用商户'),
     el('h3', {}, '游戏授权'), ...games.map(game => el('label', {class: 'check-label'}, input('games', game.id, {type: 'checkbox', checked: value.games.includes(game.id), disabled: tenant()}), (game.title || 'Game') + ' · ID ' + game.id)),
     el('h3', {}, '平台预派彩'),
@@ -217,11 +218,11 @@ function merchantEditor(merchant = null) {
     el('p', {class: 'hint'}, '停用或移除授权会阻止后续游戏请求；已受理的待处理交易仍可由运营人员恢复。')];
   if (!writable) { detail('商户配置', value); return; }
   formModal(editing ? '编辑商户' : '创建商户', nodes, '保存商户', async form => {
-    const payload = {name: form.get('name'), wallet_url: form.get('wallet_url'), currency: editing ? value.currency : form.get('currency'),
+    const payload = {name: form.get('name'), wallet_url: form.get('wallet_url'), currency: editing ? value.currency : form.get('currency'), minor_unit:editing?value.minor_unit:Number(form.get('minor_unit')),
       enabled: form.get('enabled') === 'yes', games: form.getAll('games').map(Number)};
     if (editing) Object.assign(payload, {id: value.id, version: value.version});
     payload.pre_payout = {enabled: form.get('prebet_enabled') === 'yes', url: form.get('prebet_url').trim()};
-    if (tenant()) { delete payload.enabled; delete payload.games; delete payload.currency; }
+    if (tenant()) { delete payload.enabled; delete payload.games; delete payload.currency;delete payload.minor_unit; }
     const result = await api('merchants/' + (tenant() ? 'profile' : editing ? 'update' : 'create'), payload);
     closeModal(); await loadView(); notice(editing ? '商户配置已保存。' : '商户已创建，商户号：' + result.merchant.id);
     if (result.keys) showMerchantSecret(result.merchant.id, result.keys.merchant_secret, result.login);
@@ -337,8 +338,8 @@ async function merchantProfile() {
     panel('接入路径', '从玩家登录到钱包结算', el('div', {class: 'integration-flow'}, ...[['01', '签名启动', '由你的服务端调用 /gtt/v1/games/launch'], ['02', '打开游戏', '直接打开返回的完整 launch_url；本机相对地址拼接本机 GTT 域名'], ['03', '钱包结算', '处理 GTT 的扣款和派奖签名回调']].map(([n,title,desc]) => el('div', {class: 'guide'}, el('span', {class: 'guide-number'}, n), el('div', {}, el('h3', {}, title), el('p', {}, desc)))))));
 }
 async function gamePage() {
-  return el('div', {}, !games.length ? panel('暂无已授权游戏', '联系 GTT 平台开通游戏授权', el('p', {class: 'panel-body muted'}, '游戏开通后将在这里显示，已有商户资料及交易记录可继续查看。')) : null, el('div', {class: 'game-grid'}, games.map(game => el('article', {class: 'game-card'}, el('div', {class: 'game-monogram'}, 'BW'), el('h2', {}, game.title || game.id), el('p', {class: 'muted mono'}, '游戏 ID · ' + game.id), badge('商户网关已接入', 'good'),
-    ...Object.entries({'规则版本': game.ruleset_id || game.version || '—', '已授权商户': merchants.filter(m => m.games.includes(game.id)).length, '目标 RTP': game.target_rtp == null ? '尚未设置 / 预派彩模式' : game.target_rtp.toFixed(2) + '%'}).map(([key, value]) => el('div', {class: 'game-info'}, el('span', {class: 'muted'}, key), el('span', {}, value))),
+  return el('div', {}, !games.length ? panel('暂无已授权游戏', '联系 GTT 平台开通游戏授权', el('p', {class: 'panel-body muted'}, '游戏开通后将在这里显示，已有商户资料及交易记录可继续查看。')) : null, el('div', {class: 'game-grid'}, games.map(game => el('article', {class: 'game-card'}, el('div', {class: 'game-monogram'}, String(game.id).padStart(2,'0')), el('h2', {}, game.title || game.id), el('p', {class: 'muted mono'}, '游戏 ID · ' + game.id), badge('商户网关已接入', 'good'),
+    ...Object.entries({'原生金额精度':game.minor_unit, '钱包兼容':game.wallet_compatible?'支持':'需要精度 10000', '规则版本': game.ruleset_id || game.version || '—', '已授权商户': merchants.filter(m => m.games.includes(game.id)).length, '目标 RTP': game.target_rtp == null ? '尚未设置 / 预派彩模式' : game.target_rtp.toFixed(2) + '%'}).map(([key, value]) => el('div', {class: 'game-info'}, el('span', {class: 'muted'}, key), el('span', {}, value))),
     button('进入 RTP 中心 ↗', () => navigate('rtp'), 'secondary')))),
     el('p', {class: 'hint'}, '此处列出已接入商户钱包链路的游戏。其他游戏的原有大厅入口继续保留。'));
 }

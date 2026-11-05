@@ -32,6 +32,7 @@ export async function components(c: any) {
       resolve(ROOT, "config/rtp-models.json"),
     );
   await provider.initialize();
+  provider.enableGames(c);
   return { control, provider, game };
 }
 export async function main(args = process.argv.slice(2)) {
@@ -195,7 +196,7 @@ export async function main(args = process.argv.slice(2)) {
         action === "launch"
           ? {
               player_id: c.sandbox_player,
-              game_id: 1,
+              game_id: Number(arg("--game-id", "1")),
               language: arg("--language", "en"),
               ...(c.sandbox_external_username
                 ? { external_username: c.sandbox_external_username }
@@ -274,7 +275,8 @@ export async function main(args = process.argv.slice(2)) {
           name: "Node Demo Merchant",
           enabled: true,
           wallet_url: `http://127.0.0.1:${port}`,
-          games: [1],
+          games: Array.from({ length: 19 }, (_, i) => i + 1),
+          minor_unit: 10000,
           pre_payout: {
             enabled: true,
             url: `http://127.0.0.1:${port}/api/v1/callbacks/gtt/preBetDecision`,
@@ -286,7 +288,7 @@ export async function main(args = process.argv.slice(2)) {
         sandbox_merchant: created.merchant.id,
         sandbox_player: "demo-player",
         sandbox_external_username: "demo-platform-player",
-        sandbox_balance_minor: 200000,
+        sandbox_balance_minor: 20000000,
         platform_database: resolve(dirname(path), "platform.sqlite3"),
       });
       c.ports = { ...c.ports, platform: port };

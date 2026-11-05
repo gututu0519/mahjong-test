@@ -28,6 +28,14 @@ export function platformServer(config: any, control: Control) {
       ),
     );
   const wallet = p.call(MockWallet, [config.platform_database, directory()]);
+  wallet.snapshot = p.native(([row]) =>
+    p.from({
+      player_id: p.item(row, "player_id"),
+      currency: p.item(row, "currency"),
+      balance_minor: p.item(row, "balance_minor"),
+      minor_unit: control.merchant(p.item(row, "merchant_id"), true).minor_unit,
+    }),
+  );
   const auth = new DB(config.platform_database);
   method(wallet, "seed", mid, player, config.sandbox_balance_minor ?? 200000);
   if (config.sandbox_external_username)
@@ -85,7 +93,10 @@ export function platformServer(config: any, control: Control) {
         return send(
           res,
           200,
-          readFileSync(p.sourcePath("server/merchant/sandbox.html"), "utf8"),
+          readFileSync(
+            new URL("../../frontend/platform/index.html", import.meta.url),
+            "utf8",
+          ),
           { "Content-Type": "text/html; charset=utf-8" },
         );
       if (path === "/sandbox/status" || path === "/sandbox/snapshot") {
@@ -101,12 +112,14 @@ export function platformServer(config: any, control: Control) {
               p.from({
                 player_id: player,
                 currency: merchant.currency,
-                minor_unit: 100,
+                minor_unit: merchant.minor_unit,
               }),
             ),
           ),
         });
       }
+      if (path === "/sandbox/games")
+        return success(res, await postGateway("/gtt/v1/games/list", {}));
       if (path === "/sandbox/prebet-policy")
         return success(res, {
           maxWinMulti: p.plain(method(wallet, "prebet_policy", mid)),

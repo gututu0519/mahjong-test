@@ -1,6 +1,6 @@
 # GTT 商户接入规范
 
-版本 1.2.0 · 更新 2026-10-28 · API origin：https://api.gttgames.com · Play origin：https://play.gttgames.com
+版本 1.3.0 · 更新 2026-11-05 · API origin：https://api.gttgames.com · Play origin：https://play.gttgames.com
 
 > 本文档不包含任何商户真实密钥；所有标识、金额和签名向量均为示例。
 
@@ -12,8 +12,8 @@
 
 | 事项 | 接入约定 |
 | --- | --- |
-| 接口版本 | v1；当前商户钱包链路接入 Buffalo Win，数字游戏 ID 为 1；后续编号按顺序追加且不重排。授权与游戏信息以 games/list 为准。 |
-| 结算币种 | 新商户仅 USD；minor_unit 固定 100，200000 表示 2000.00 USD。 |
+| 接口版本 | v1；19 款游戏统一使用数字 ID 1–19；编号不重排。授权、游戏原生精度与 wallet_compatible 以 games/list 为准。 |
+| 结算币种 | 新商户仅 USD；钱包 minor_unit 创建时选择 100 或 10000，之后不可更改。接入全部游戏请选择 10000（20000000 = 2000.0000 USD）；六款 JILI/TaDa 游戏要求 10000。其余游戏按原生 100 精度计算，回调金额精确转换为商户钱包单位。 |
 | 地址与环境 | 下方显示当前配置的 API origin 和游戏 play origin。服务后端监听本机地址；生产配置通过 HTTPS 反向代理按域名分流，域名访问、证书与回调可达性应在联合验收时确认。示例域名不是真实服务地址。 |
 | 商户准备 | 后台中的商户号（如 GTT000001）与 64 字符 merchant_secret；钱包 HTTPS origin；预先建立的玩家账户；已启用游戏授权。 |
 | 可选预派彩 | 只有启用时才提供决策 URL 与 external_username 映射，不另发 Token 或第二把密钥。 |
@@ -159,7 +159,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 
 **POST /gtt/v1/games/list** · 商户 → GTT
 
-只返回当前商户获准接入的游戏。当前商户钱包链路支持 Buffalo Win，新增游戏以该接口的实际返回为准。
+只返回当前商户获准接入的游戏。当前商户钱包链路支持全部 19 款游戏，列表仅返回本商户获授权的游戏。
 
 请求体：空 JSON 对象 `{}`。
 
@@ -207,7 +207,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | 请求字段 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 平台玩家唯一标识；不同商户可使用相同玩家号；最长：128 |
-| game_id | integer | 可选 | 已授权的 GTT 数字游戏 ID，Buffalo Win 为 1；默认：1；最小：1；最大：9000000000000000 |
+| game_id | integer | 可选 | 已授权的 GTT 数字游戏 ID 1–19；Buffalo Win 为 1；默认：1；最小：1；最大：9000000000000000 |
 | language | string | 可选 | 客户端语言；允许值：zh / en；默认：en |
 | external_username | string | 可选 | 预派彩平台账号；首次启用预派彩时需要，与 player_id 分开绑定；最长：128 |
 | prebet_type | string | 可选 | 普通付费回合类型；提供时也必须提供 external_username；允许值：NORMAL / SURE_WIN；默认：NORMAL |
@@ -245,7 +245,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data.expires_at | integer | 必填 | 会话到期时间，Unix 秒；最小：0；最大：9000000000000000 |
 | data.balance_minor | integer | 必填 | 启动时平台余额快照；最小：0；最大：9000000000000000 |
 | data.currency | string | 必填 | 商户币种 |
-| data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | error | null | 必填 | — |
 
 - 会话当前有效期为 24 小时。相同商户、玩家和游戏再次进入会恢复原有游戏状态。
@@ -268,7 +268,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 
 请求示例：
 ```json
@@ -298,7 +298,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | Balance | 必填 | — |
 | data.player_id | string | 必填 | 商户平台玩家唯一标识；最长：128 |
 | data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
-| data.minor_unit | integer | 必填 | 金额精度，固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 金额精度，必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 钱包余额，整数美分；最小：0；最大：9000000000000000 |
 | error | null | 必填 | — |
 
@@ -312,7 +312,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最长：128 |
 | round_id | string | 必填 | 付费整局 ID；最长：128 |
 | amount_minor | integer | 必填 | 非负整数美分，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
@@ -353,7 +353,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | Mutation | 必填 | — |
 | data.player_id | string | 必填 | 玩家标识；最长：128 |
 | data.currency | string | 必填 | 商户币种 |
-| data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
 | data.transaction_id | string | 必填 | 原样返回请求交易号；最长：128 |
 | data.status | string | 必填 | 成功入账状态；允许值：applied |
@@ -375,7 +375,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最长：128 |
 | round_id | string | 必填 | 付费整局 ID；最长：128 |
 | amount_minor | integer | 必填 | 非负整数美分，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
@@ -418,7 +418,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | Mutation | 必填 | — |
 | data.player_id | string | 必填 | 玩家标识；最长：128 |
 | data.currency | string | 必填 | 商户币种 |
-| data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
 | data.transaction_id | string | 必填 | 原样返回请求交易号；最长：128 |
 | data.status | string | 必填 | 成功入账状态；允许值：applied |
@@ -440,7 +440,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最长：128 |
 | round_id | string | 必填 | 付费整局 ID；最长：128 |
 | amount_minor | integer | 必填 | 非负整数美分，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
@@ -483,7 +483,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | Mutation | 必填 | — |
 | data.player_id | string | 必填 | 玩家标识；最长：128 |
 | data.currency | string | 必填 | 商户币种 |
-| data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
 | data.transaction_id | string | 必填 | 原样返回请求交易号；最长：128 |
 | data.status | string | 必填 | 成功入账状态；允许值：applied |
@@ -505,7 +505,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | transaction_id | string | 必填 | 需查询的钱包交易号；最长：128 |
 | limit | integer | 可选 | 最多返回记录数，按 seq 降序；默认 20；默认：20；最小：1；最大：100 |
 
@@ -539,7 +539,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | WalletHistory | 必填 | — |
 | data.player_id | string | 必填 | 商户平台玩家唯一标识；最长：128 |
 | data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
-| data.minor_unit | integer | 必填 | 金额精度，固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 金额精度，必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 钱包余额，整数美分；最小：0；最大：9000000000000000 |
 | data.transactions | array | 必填 | — |
 | data.transactions[].transaction_id | string | 必填 | 钱包交易号；最长：128 |
@@ -549,7 +549,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data.transactions[].data | object | 必填 | — |
 | data.transactions[].data.player_id | string | 必填 | 玩家标识；最长：128 |
 | data.transactions[].data.currency | string | 必填 | 商户币种 |
-| data.transactions[].data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.transactions[].data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | data.transactions[].data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
 | data.transactions[].data.transaction_id | string | 必填 | 原样返回请求交易号；最长：128 |
 | data.transactions[].data.status | string | 必填 | 成功入账状态；允许值：applied |
@@ -568,7 +568,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | --- | --- | --- | --- |
 | player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最长：128 |
 | currency | string | 必填 | 必须与商户币种一致 |
-| minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | limit | integer | 可选 | 最多返回记录数，按 seq 降序；默认 20；默认：20；最小：1；最大：100 |
 
 请求示例：
@@ -601,7 +601,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data | WalletHistory | 必填 | — |
 | data.player_id | string | 必填 | 商户平台玩家唯一标识；最长：128 |
 | data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
-| data.minor_unit | integer | 必填 | 金额精度，固定为 100；最小：100；最大：100 |
+| data.minor_unit | integer | 必填 | 金额精度，必须等于商户配置的 100 或 10000 |
 | data.balance_minor | integer | 必填 | 钱包余额，整数美分；最小：0；最大：9000000000000000 |
 | data.transactions | array | 必填 | — |
 | data.transactions[].transaction_id | string | 必填 | 钱包交易号；最长：128 |
@@ -611,7 +611,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | data.transactions[].data | object | 必填 | — |
 | data.transactions[].data.player_id | string | 必填 | 玩家标识；最长：128 |
 | data.transactions[].data.currency | string | 必填 | 商户币种 |
-| data.transactions[].data.minor_unit | integer | 必填 | 固定为 100；最小：100；最大：100 |
+| data.transactions[].data.minor_unit | integer | 必填 | 必须等于商户配置的 100 或 10000 |
 | data.transactions[].data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
 | data.transactions[].data.transaction_id | string | 必填 | 原样返回请求交易号；最长：128 |
 | data.transactions[].data.status | string | 必填 | 成功入账状态；允许值：applied |
@@ -685,7 +685,7 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | msg | string / null | 必填 | — |
 
 - 成功必须 HTTP 200 且 code 为整数 0；此接口使用 code/data/msg 信封，不使用钱包的 data/error 信封。
-- 当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；非特殊无限制区间要求上限不小于下限。
+- 当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；下限非负时要求上限不小于下限；[-1,0] 为整局零派彩。
 - 业务毫秒 timestamp 与签名头的秒级时间戳不同；业务去重参数固定，HTTP 签名头每次更新。
 
 | maxWinMulti | 整局总派彩含义 |
@@ -693,15 +693,15 @@ export async function post(origin, merchantId, merchantSecret, path, payload) {
 | [0,0] | 整局总派彩为 0 |
 | [-1,10] | 不指定下限，不超过实际扣款 10 倍 |
 | [5,10] | 实际扣款的 5～10 倍，包含边界 |
-| [10,10] | 恰好 10 倍 |
+| [10,10] | 优先 10 倍，未命中时向下取档 |
 | [0.9,1.1] | 0.9～1.1 倍 |
-| [-1,0] | 特殊约定：不限制派彩，并非最高 0 倍 |
+| [-1,0] | 必输：上限为 0 倍，整局总派彩必须为 0（包含免费与续列） |
 
 倍数基数为本局实际扣款，购买免费以购买费用为基数；总派彩包含全部续列、免费旋转及追加，是总派彩而非净盈利。投注 2.00 USD 返回 [3,5] 表示整局总派彩为 6.00～10.00 USD。
 
 同一逻辑决策使用固定 player_name + timestamp + bet_amount + type 去重；超时重试返回原决策，不重新抽取区间。NORMAL／SURE_WIN 用于普通付费，BUY_FREE_SPIN 用于购买免费，免费与续列沿用整局决策，不单独发送零金额 FREE_SPIN 请求。
 
-响应超时、非 200 或无效区间时不自动退回无约束开奖。GTT 无法在现有规则内找到满足区间的合法回合时返回 PREBET_RANGE_UNREACHABLE，不扣款、不截断中奖、不擅自放宽区间。业务 code 3202 表示明确余额不足且未扣款；重新尝试可使用新业务时间戳，其他不确定决策保持原去重参数恢复。
+响应超时、非 200 或无效区间时不自动退回无约束开奖。GTT 优先匹配原区间；最多搜索 3000 个合法整局候选，未命中时选择不超过上限且派彩最高的完整候选，允许向下低于原下限，禁止向上取档或截断中奖。最近仅指已搜索候选；只有达到金额精度允许的上限时可证明金额上不存在更近档位。没有任何不超过上限的合法整局才返回 PREBET_RANGE_UNREACHABLE，不扣款。原请求和实际取档写入决策 resolution，重试复用冻结计划。业务 code 3202 表示明确余额不足且未扣款；重新尝试可使用新业务时间戳，其他不确定决策保持原去重参数恢复。
 
 ## 07 · 操作查询与恢复
 
@@ -871,7 +871,7 @@ GTT／钱包错误信封；预派彩使用独立 code/data/msg
 | 409 / PREBET_3202；503 / PREBET_<业务码> | 平台业务拒绝；3202 为余额不足，其他业务码按平台原因修复后以原参数恢复。 |
 | 503 / WALLET_UNCERTAIN | 保留原 operation_id／transaction_id，查询或恢复原操作。 |
 | 503 / PREBET_UNCERTAIN、PREBET_RANGE_INVALID | 保持原逻辑决策去重参数，修复回调／区间后恢复。 |
-| 503 / PREBET_RANGE_UNREACHABLE | 当前区间无法生成合法回合，未扣款；与平台协商可实现区间。 |
+| 503 / PREBET_RANGE_UNREACHABLE | 没有找到不超过上限的完整合法回合，未扣款；重试原请求或核对游戏规则。 |
 | 413 / BODY_TOO_LARGE；415 / CONTENT_TYPE | 缩小 JSON 请求体或设置 application/json。 |
 
 ## 09 · 联调验收清单

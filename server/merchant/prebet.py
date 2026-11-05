@@ -188,12 +188,20 @@ class RoundPlanner:
     def generate(self, game, row):
         policy = json.loads(row['policy_json'])
         low, high = map(Decimal, policy['maxWinMulti'])
-        unlimited = low == -1 and high == 0
         initial = json.loads(row['initial_state_json'])
         bet = json.loads(row['bet_json'])
         basis = int(Decimal(json.loads(row['prebet_request_json'])['bet_amount']) * 100)
-        if not unlimited and (max(low, Decimal(0)) * basis).to_integral_value(rounding=ROUND_CEILING) > (high * basis).to_integral_value(rounding=ROUND_FLOOR):
-            raise ServiceError('PREBET_RANGE_UNREACHABLE', '平台区间无法表示为整数美分；未扣款。', 503)
+        ceiling = int((high * basis).to_integral_value(rounding=ROUND_FLOOR))
+        best = None
+        def resolved(candidate, attempts):
+            matched = Decimal(candidate['total_credit_minor']) >= max(low, Decimal(0)) * basis
+            return {**candidate, 'attempts': attempts, 'resolution': {
+                'requested_range': policy['maxWinMulti'], 'basis_minor': basis,
+                'actual_credit_minor': candidate['total_credit_minor'],
+                'actual_multiplier': {'numerator': candidate['total_credit_minor'], 'denominator': basis},
+                'selection': 'within_range' if matched else 'nearest_lower_candidate',
+                'nearest_scope': 'requested_range' if matched else ('monetary_ceiling' if candidate['total_credit_minor'] == ceiling else 'searched_candidates'),
+                'search_attempts': attempts, 'selected_attempt': candidate['attempts'], 'search_limit': self.max_attempts}}
         for attempt in range(self.max_attempts):
             state, total, steps = copy.deepcopy(initial), 0, []
             seed = secrets.token_hex(32)
@@ -202,15 +210,19 @@ class RoundPlanner:
                 outcome = game.step(state, bet if index == 0 else {k: bet[k] for k in ('coin_minor', 'level')},
                                     hashlib.sha256((seed + ':' + str(index)).encode()).hexdigest(), sid)
                 total += outcome.credit_minor
-                if not unlimited and Decimal(total) > high * basis:
+                if Decimal(total) > high * basis:
                     break
                 candidate = {'state': outcome.state, 'event': outcome.event, 'debit_minor': outcome.debit_minor,
                              'credit_minor': outcome.credit_minor, 'engine_version': game.version, 'ruleset_id': game.ruleset_id}
                 steps.append({'previous_sid': state['sid'], 'candidate': candidate})
                 state = outcome.state
                 if state['phase'] == 'ready':
-                    if unlimited or Decimal(total) >= max(low, Decimal(0)) * basis:
-                        assert sum(step['candidate']['debit_minor'] for step in steps) == basis
-                        return {'steps': steps, 'total_credit_minor': total, 'basis_minor': basis, 'attempts': attempt + 1}
+                    assert sum(step['candidate']['debit_minor'] for step in steps) == basis
+                    if best is None or total > best['total_credit_minor']:
+                        best = {'steps': steps, 'total_credit_minor': total, 'basis_minor': basis, 'attempts': attempt + 1}
+                    if Decimal(total) >= max(low, Decimal(0)) * basis or total == ceiling:
+                        return resolved(best, attempt + 1)
                     break
-        raise ServiceError('PREBET_RANGE_UNREACHABLE', '未生成满足平台区间的完整合法回合；未扣款，请重试或核对区间。', 503)
+        if best is not None:
+            return resolved(best, self.max_attempts)
+        raise ServiceError('PREBET_RANGE_UNREACHABLE', '未生成不超过派彩上限的完整合法回合；未扣款。', 503)

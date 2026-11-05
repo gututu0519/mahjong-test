@@ -174,7 +174,7 @@ export class RTP {
       let { mode } = this.mode(mid);
       if (
         this.p.get(
-          "SELECT 1 FROM prebet_rounds WHERE merchant_id=? AND player_id=? AND error_code IS NULL AND " +
+          "SELECT 1 FROM prebet_rounds WHERE game_id='buffalo-win' AND merchant_id=? AND player_id=? AND error_code IS NULL AND " +
             (legacy ? "id=?" : "initial_sid=?"),
           mid,
           pid,
@@ -431,6 +431,7 @@ export class RTP {
     });
   }
   record(o: any) {
+    if (o.game_id !== "buffalo-win") return;
     if (o.status !== "settled" || !o.response_json) return;
     if (
       !this.p.run("INSERT OR IGNORE INTO rtp_accounted_ops VALUES(?)", o.id)

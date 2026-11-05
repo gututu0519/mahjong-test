@@ -1,7 +1,7 @@
 /* Local protocol boundary. Original Cocos UI and animation code remain intact. */
 (() => {
   'use strict';
-  if (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)) {
+  if ((['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname) || /^g(?:[1-9]|1[0-9])\.localhost$/.test(location.hostname))) {
     for (const [owner, property] of [['h2eSW', 'm_4'], ['R7xpx', 'C3jL']]) Object.defineProperty(Function.prototype, property, {
       configurable: true,
       set(value) {

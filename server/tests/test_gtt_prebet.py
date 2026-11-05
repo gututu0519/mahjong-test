@@ -116,12 +116,10 @@ class GTTPreBetTests(unittest.TestCase):
         total, debit, _ = self.round([5, 10], buy=True, restart=True)
         self.assertLessEqual(5 * debit, total); self.assertLessEqual(total, 10 * debit)
 
-    def test_unlimited_sentinel_is_not_zero_cap(self):
-        original = secrets.token_hex
-        with patch('server.merchant.prebet.secrets.token_hex', side_effect=lambda size: ('1' * 64) if size == 32 else original(size)):
-            total, _, plan = self.round([-1, 0], buy=True)
-        self.assertGreater(total, 0)
-        self.assertEqual(plan['attempts'], 1)
+    def test_negative_lower_bound_with_zero_upper_is_zero_payout(self):
+        total, _, plan = self.round([-1, 0])
+        self.assertEqual(total, 0)
+        self.assertEqual(plan['total_credit_minor'], 0)
 
     def test_exact_range_and_fractional_precision(self):
         # Pin planning seeds so an exact range cannot make this test probabilistic.
@@ -245,7 +243,7 @@ class GTTPreBetTests(unittest.TestCase):
             self.assertEqual(db.execute('SELECT COUNT(*) FROM prebet_decisions').fetchone()[0], 1)
             self.assertEqual(db.execute("SELECT COUNT(*) FROM transactions WHERE kind='debit'").fetchone()[0], 1)
 
-    def test_invalid_response_and_unreachable_range_never_debit(self):
+    def test_invalid_response_never_debits_and_fractional_target_rounds_down(self):
         token = self.launch()
         for bounds in ([True, 10], [2, 1], [-2, 10], [0], [0, 'NaN']):
             with patch.object(self.platform.wallet, 'prebet_decision', return_value={'code': 0, 'data': {'maxWinMulti': bounds}, 'msg': None}):
@@ -253,12 +251,12 @@ class GTTPreBetTests(unittest.TestCase):
                     self.service.spin(token, 'buffalo-win', 'invalid', '0', {'coin_minor': 2, 'level': 1})
                 self.assertEqual(error.exception.code, 'PREBET_RANGE_INVALID')
         self.platform.wallet.prebet_policy('alpha', [.001, .001])
-        with self.assertRaises(ServiceError) as error:
-            self.service.spin(token, 'buffalo-win', 'invalid', '0', {'coin_minor': 2, 'level': 1})
-        self.assertEqual(error.exception.code, 'PREBET_RANGE_UNREACHABLE')
-        self.assertEqual(self.service.wallet(token)['balance_minor'], 200000)
+        result = self.service.spin(token, 'buffalo-win', 'invalid', '0', {'coin_minor': 2, 'level': 1})
+        self.assertEqual(result['wallet']['credit_minor'], 0)
+        self.assertEqual(self.service.wallet(token)['balance_minor'], 199980)
         with self.service.connection() as db:
-            self.assertEqual(db.execute('SELECT COUNT(*) FROM game_operations').fetchone()[0], 0)
+            plan = json.loads(db.execute('SELECT plan_json FROM prebet_rounds').fetchone()[0])
+        self.assertEqual(plan['resolution']['selection'], 'nearest_lower_candidate')
 
     def test_business_codes_credentials_alias_and_no_secret_disclosure(self):
         with self.assertRaises(ServiceError) as error:

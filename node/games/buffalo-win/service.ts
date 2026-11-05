@@ -1,3 +1,4 @@
+import { RoundChoice } from "../../shared/prebet.js";
 import { BuffaloWin } from "./engine.js";
 import { server, jsonBody, success } from "../../shared/http.js";
 import {
@@ -93,15 +94,12 @@ export function plan(game: BuffaloWin, p: any) {
       h <= 1000000n * hd,
     "PREBET_RANGE_INVALID",
   );
-  const unlimited = l === -ld && h === 0n,
-    basis = BigInt(
-      p.bet.coin_minor * p.bet.level * 10 * (p.bet.buy_free ? 75 : 1),
-    ),
-    low = l < 0n ? 0n : l;
-  check(
-    unlimited || (low * basis + ld - 1n) / ld <= (h * basis) / hd,
-    "PREBET_RANGE_UNREACHABLE",
-  );
+  const basis = p.bet.coin_minor * p.bet.level * 10 * (p.bet.buy_free ? 75 : 1);
+  const choice = new RoundChoice<{
+    steps: any[];
+    total_credit_minor: number;
+    basis_minor: number;
+  }>(p.range, basis, { n: l, d: ld }, { n: h, d: hd });
   for (let a = 0; a < 3000; a++) {
     let state = clone(p.state),
       total = 0;
@@ -115,7 +113,7 @@ export function plan(game: BuffaloWin, p: any) {
             : { coin_minor: p.bet.coin_minor, level: p.bet.level };
       const out = game.step(state, bet, sha(seed + ":" + i), sid);
       total += out.credit_minor;
-      if (!unlimited && BigInt(total) * hd > h * basis) break;
+      if (choice.above(total)) break;
       steps.push({
         previous_sid: state.sid,
         candidate: {
@@ -126,20 +124,17 @@ export function plan(game: BuffaloWin, p: any) {
       });
       state = out.state;
       if (state.phase === "ready") {
-        if (unlimited || BigInt(total) * ld >= low * basis)
-          return {
-            steps,
-            total_credit_minor: total,
-            basis_minor: Number(basis),
-            attempts: a + 1,
-          };
+        if (
+          choice.consider(
+            { steps, total_credit_minor: total, basis_minor: basis },
+            total,
+            a + 1,
+          )
+        )
+          return choice.finish(a + 1);
         break;
       }
     }
   }
-  throw new ServiceError(
-    "PREBET_RANGE_UNREACHABLE",
-    "No complete legal round within requested range; no debit",
-    503,
-  );
+  return choice.finish(3000);
 }

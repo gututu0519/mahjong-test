@@ -1,3 +1,4 @@
+import { gameCode, gameNumber } from "./catalog.js";
 import { pbkdf2Sync } from "node:crypto";
 import { readFileSync } from "node:fs";
 import {
@@ -150,8 +151,8 @@ const username = (v: any) => {
   return v.toLowerCase();
 };
 const publicGame = (v: any) => {
-  check(v === 1 || v === "buffalo-win", "GAME_ID_INVALID");
-  return typeof v === "number" ? "buffalo-win" : 1;
+  check(typeof v === "number" || typeof v === "string", "GAME_ID_INVALID");
+  return typeof v === "number" ? gameCode(v) : gameNumber(v);
 };
 export class Control extends DB {
   rtpDB?: DB;
@@ -389,7 +390,7 @@ export class Control extends DB {
     check(
       typeof p.enabled === "boolean" &&
         Array.isArray(p.games) &&
-        p.games.every((v) => v === 1) &&
+        p.games.every((v) => Number.isInteger(v) && v >= 1 && v <= 19) &&
         new Set(p.games).size === p.games.length,
       "MERCHANT_INVALID",
     );
@@ -405,6 +406,13 @@ export class Control extends DB {
           "CURRENCY_IMMUTABLE",
         );
       }
+      check(
+        create
+          ? [100, 10000].includes(p.minor_unit ?? 100)
+          : (p.minor_unit ?? old.minor_unit) === old.minor_unit,
+        "PRECISION_IMMUTABLE",
+        "Wallet precision is set when creating a merchant.",
+      );
       const name = this.name(p.name, id);
       let keys: any, login: any;
       if (create) {
@@ -435,7 +443,7 @@ export class Control extends DB {
           p.enabled,
           origin,
           "USD",
-          100,
+          p.minor_unit ?? 100,
           encode(p.games.map(publicGame)),
           secret,
           secret,

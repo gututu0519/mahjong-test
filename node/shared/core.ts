@@ -203,7 +203,7 @@ export class DB {
     mkdirSync(dirname(this.path), { recursive: true });
     this.db = new DatabaseSync(this.path);
     this.db.exec(
-      "PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; PRAGMA synchronous=FULL; PRAGMA busy_timeout=15000; CREATE TABLE IF NOT EXISTS request_nonces(merchant_id TEXT NOT NULL,nonce TEXT NOT NULL,expires_at INTEGER NOT NULL,PRIMARY KEY(merchant_id,nonce));",
+      "PRAGMA busy_timeout=15000; PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; PRAGMA synchronous=FULL; CREATE TABLE IF NOT EXISTS request_nonces(merchant_id TEXT NOT NULL,nonce TEXT NOT NULL,expires_at INTEGER NOT NULL,PRIMARY KEY(merchant_id,nonce));",
     );
   }
   run(sql: string, ...args: any[]) {

@@ -514,7 +514,7 @@ test("prebet full-round planning, RTP mode switch and round-bound model configur
     },
   });
   const tok = await c.launch({ external_username: "platform-player" });
-  c.range = [0, 0];
+  c.range = [-1, 0];
   const r = await c.provider.spin(tok, "prebet", "0", {
     coin_minor: 2,
     level: 1,
