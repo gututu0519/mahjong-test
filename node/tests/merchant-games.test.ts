@@ -145,6 +145,59 @@ async function setup(t: any) {
   return { dir, p, control, config, mid, mock, wp, signed, host, gateway };
 }
 
+test("merchant launch honors documented default game and prebet player type updates", async (t) => {
+  const { p, mid, signed, control, config } = await setup(t);
+  const docs = JSON.parse(readFileSync("config/integration.json", "utf8"));
+  const snippet = docs.sections
+    .find((s: any) => s.id === "authentication")
+    .blocks.find((b: any) => b.language === "javascript").code;
+  const sample = await import(
+    "data:text/javascript;base64," + Buffer.from(snippet).toString("base64")
+  );
+  const first = (
+    await sample.post(
+      config.gateway_origin,
+      mid,
+      control.merchant(mid, true).merchant_secret,
+      "/gtt/v1/games/launch",
+      {
+        player_id: "p1",
+        external_username: "external-p1",
+        prebet_type: "NORMAL",
+      },
+    )
+  ).data;
+  assert.equal(first.game_id, 1);
+  assert.equal(new URL(first.launch_url).hostname, "g1.localhost");
+  await signed("/gtt/v1/games/launch", {
+    game_id: 3,
+    player_id: "p1",
+    external_username: "external-p1",
+    prebet_type: "SURE_WIN",
+  });
+  assert.equal(
+    p.get(
+      "SELECT prebet_type FROM merchant_players WHERE merchant_id=? AND player_id=?",
+      mid,
+      "p1",
+    ).prebet_type,
+    "SURE_WIN",
+  );
+  await assert.rejects(
+    p.launch(mid, { game_id: 3, player_id: "p1", prebet_type: "NORMAL" }),
+    { code: "PREBET_PLAYER_REQUIRED" },
+  );
+  await signed("/gtt/v1/games/launch", { game_id: 3, player_id: "p1" });
+  assert.equal(
+    p.get(
+      "SELECT prebet_type FROM merchant_players WHERE merchant_id=? AND player_id=?",
+      mid,
+      "p1",
+    ).prebet_type,
+    "SURE_WIN",
+  );
+});
+
 test("19 games: signed catalog, original client entry, wallet, settlement, idempotency and scoped admin records", async (t) => {
   const f = await setup(t),
     { p, mid, signed, host } = f;
@@ -582,18 +635,48 @@ for (const bounds of [
       });
   });
 
-test('real game 0.56x search freezes the selected lower seed and reuses its wallet settlement',async t=>{
- const f=await setup(t),{p,mid,control,mock}=f;
- control.saveMerchant('test',{...control.merchant(mid),pre_payout:{enabled:true,url:`http://127.0.0.1:${f.wp}/api/v1/callbacks/gtt/preBetDecision`}});
- method(mock,'prebet_policy',mid,py.from(['0.56','0.56']));
- const launched=await p.launch(mid,{game_id:3,player_id:'p1',external_username:'external-p1'}),token=new URL(launched.launch_url).searchParams.get('ops')!;
- const start=await p.state(token),first=await p.spin(token,'fractional-target',start.state.sid,{});
- let total=first.wallet.credit_minor,index=0;
- while(p.multi!.initial(mid,'p1','fortune-rabbit').phase!=='ready'){
-  const state=p.multi!.initial(mid,'p1','fortune-rabbit');const r=await p.spin(token,'continue-'+(++index),state.sid,{});total+=r.wallet.credit_minor;assert.ok(index<4096);
- }
- const row=p.get('SELECT * FROM prebet_rounds WHERE merchant_id=?',mid),planned=JSON.parse(row.plan_json);
- assert.equal(total,planned.total_credit_minor);assert.ok(BigInt(total)*100n<=BigInt(planned.basis_minor)*56n);assert.equal(planned.resolution.actual_credit_minor,total);
- const before=await p.wallet(token);assert.deepEqual(await p.spin(token,'fractional-target',start.state.sid,{}),first);assert.deepEqual(await p.wallet(token),before);
- assert.equal(JSON.parse(p.get('SELECT plan_json FROM prebet_rounds WHERE id=?',row.id).plan_json).seed,planned.seed);
+test("real game 0.56x search freezes the selected lower seed and reuses its wallet settlement", async (t) => {
+  const f = await setup(t),
+    { p, mid, control, mock } = f;
+  control.saveMerchant("test", {
+    ...control.merchant(mid),
+    pre_payout: {
+      enabled: true,
+      url: `http://127.0.0.1:${f.wp}/api/v1/callbacks/gtt/preBetDecision`,
+    },
+  });
+  method(mock, "prebet_policy", mid, py.from(["0.56", "0.56"]));
+  const launched = await p.launch(mid, {
+      game_id: 3,
+      player_id: "p1",
+      external_username: "external-p1",
+    }),
+    token = new URL(launched.launch_url).searchParams.get("ops")!;
+  const start = await p.state(token),
+    first = await p.spin(token, "fractional-target", start.state.sid, {});
+  let total = first.wallet.credit_minor,
+    index = 0;
+  while (p.multi!.initial(mid, "p1", "fortune-rabbit").phase !== "ready") {
+    const state = p.multi!.initial(mid, "p1", "fortune-rabbit");
+    const r = await p.spin(token, "continue-" + ++index, state.sid, {});
+    total += r.wallet.credit_minor;
+    assert.ok(index < 4096);
+  }
+  const row = p.get("SELECT * FROM prebet_rounds WHERE merchant_id=?", mid),
+    planned = JSON.parse(row.plan_json);
+  assert.equal(total, planned.total_credit_minor);
+  assert.ok(BigInt(total) * 100n <= BigInt(planned.basis_minor) * 56n);
+  assert.equal(planned.resolution.actual_credit_minor, total);
+  const before = await p.wallet(token);
+  assert.deepEqual(
+    await p.spin(token, "fractional-target", start.state.sid, {}),
+    first,
+  );
+  assert.deepEqual(await p.wallet(token), before);
+  assert.equal(
+    JSON.parse(
+      p.get("SELECT plan_json FROM prebet_rounds WHERE id=?", row.id).plan_json,
+    ).seed,
+    planned.seed,
+  );
 });

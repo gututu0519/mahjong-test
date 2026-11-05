@@ -845,6 +845,8 @@ dialog::backdrop {
   gap:23px;
   margin-bottom:24px
 }
+.game-catalog th, .game-catalog td { padding:14px 16px }
+.game-catalog .game-rule-version { display:block; max-width:170px; white-space:normal; overflow-wrap:anywhere }
 .game-card {
   padding:28px;
   border:1px solid var(--line);

@@ -281,7 +281,7 @@ async function integrationPage() {
     if (schema.$ref) schema = docs.schemas[schema.$ref.split('/').at(-1)];
     return Object.entries(schema.properties || {}).flatMap(([name, prop]) => {
       const type = prop.type || (prop.$ref ? prop.$ref.split('/').at(-1) : 'object');
-      const description = [prop.description, prop.enum ? '允许值：' + prop.enum.join(' / ') : '', prop.default !== undefined ? '默认：' + prop.default : '', prop.minimum !== undefined ? '最小：' + prop.minimum : '', prop.maximum !== undefined ? '最大：' + prop.maximum : '', prop.maxLength ? '最长：' + prop.maxLength : ''].filter(Boolean).join('；');
+      const description = [prop.description, prop.enum ? '允许值：' + prop.enum.join(' / ') : '', prop.default !== undefined ? '默认：' + prop.default : '', prop.minimum !== undefined ? '最小：' + prop.minimum : '', prop.maximum !== undefined ? '最大：' + prop.maximum : '', prop.maxLength ? '最长：' + prop.maxLength : '', prop.pattern ? '格式：' + prop.pattern : ''].filter(Boolean).join('；');
       const rows = [[el('code', {}, prefix + name), Array.isArray(type) ? type.join(' / ') : type, (schema.required || []).includes(name) ? '必填' : '可选', description || '—']];
       let nested = prop.items || prop;
       if (nested.anyOf) nested = nested.anyOf.find(option => option.type !== 'null') || {};
@@ -324,7 +324,8 @@ async function integrationPage() {
       el('p', {}, '使用一把 merchant_secret 完成游戏调用、钱包回调与预派彩验签。按同一份规范开发、联调与验收。'),
       el('div', {class: 'doc-context'}, badge(docs.environment), el('span', {}, '规范 v' + docs.version)),
       el('label', {class: 'doc-origin'}, 'GTT API ORIGIN', el('code', {}, docs.gateway_origin)),
-      el('label', {class: 'doc-origin doc-play-origin'}, 'GAME PLAY ORIGIN', el('code', {}, docs.play_origin)),
+      el('label', {class: 'doc-origin doc-play-origin'}, '默认 PLAY ORIGIN · 实际地址以 launch_url 为准', el('code', {}, docs.play_origin)),
+      el('p', {class: 'hint'}, '当前商户钱包精度：' + merchants[0].minor_unit + '（1 USD = ' + merchants[0].minor_unit + ' 金额单位）。接入全部游戏需要 10000；游戏授权以游戏目录为准。'),
       el('div', {class: 'doc-downloads'}, el('a', {class: 'primary', href: apiRoot + 'integration/guide.md', download: 'GTT-Integration-v1.md'}, '下载接入指南 ↓'),
         el('a', {class: 'secondary', href: apiRoot + 'integration/openapi.json', download: 'GTT-OpenAPI-v1.json'}, 'OpenAPI 3.1 ↓'))), credentials),
     el('div', {class: 'doc-layout'}, toc, el('div', {class: 'doc-content'}, chapters)));
@@ -338,10 +339,18 @@ async function merchantProfile() {
     panel('接入路径', '从玩家登录到钱包结算', el('div', {class: 'integration-flow'}, ...[['01', '签名启动', '由你的服务端调用 /gtt/v1/games/launch'], ['02', '打开游戏', '直接打开返回的完整 launch_url；本机相对地址拼接本机 GTT 域名'], ['03', '钱包结算', '处理 GTT 的扣款和派奖签名回调']].map(([n,title,desc]) => el('div', {class: 'guide'}, el('span', {class: 'guide-number'}, n), el('div', {}, el('h3', {}, title), el('p', {}, desc)))))));
 }
 async function gamePage() {
-  return el('div', {}, !games.length ? panel('暂无已授权游戏', '联系 GTT 平台开通游戏授权', el('p', {class: 'panel-body muted'}, '游戏开通后将在这里显示，已有商户资料及交易记录可继续查看。')) : null, el('div', {class: 'game-grid'}, games.map(game => el('article', {class: 'game-card'}, el('div', {class: 'game-monogram'}, String(game.id).padStart(2,'0')), el('h2', {}, game.title || game.id), el('p', {class: 'muted mono'}, '游戏 ID · ' + game.id), badge('商户网关已接入', 'good'),
-    ...Object.entries({'原生金额精度':game.minor_unit, '钱包兼容':game.wallet_compatible?'支持':'需要精度 10000', '规则版本': game.ruleset_id || game.version || '—', '已授权商户': merchants.filter(m => m.games.includes(game.id)).length, '目标 RTP': game.target_rtp == null ? '尚未设置 / 预派彩模式' : game.target_rtp.toFixed(2) + '%'}).map(([key, value]) => el('div', {class: 'game-info'}, el('span', {class: 'muted'}, key), el('span', {}, value))),
-    button('进入 RTP 中心 ↗', () => navigate('rtp'), 'secondary')))),
-    el('p', {class: 'hint'}, '此处列出已接入商户钱包链路的游戏。其他游戏的原有大厅入口继续保留。'));
+  if (!games.length) return panel('暂无已授权游戏', '联系 GTT 平台开通游戏授权', el('p', {class: 'panel-body muted'}, '游戏开通后将在这里显示，已有商户资料及交易记录可继续查看。'));
+  return el('div', {class: 'game-catalog'}, panel('游戏目录', '共 ' + games.length + ' 款游戏 · 已接入统一商户网关',
+    table(['游戏 ID', '游戏名称', '原生金额精度', '钱包兼容', '规则版本', '已授权商户', '目标 RTP', '操作'], games.map(game => [
+      el('span', {class: 'mono'}, String(game.id).padStart(2, '0')),
+      el('div', {}, el('div', {class: 'cell-title'}, game.title || game.id), badge('商户网关已接入', 'good')),
+      game.minor_unit,
+      badge(game.wallet_compatible ? '支持' : '需要精度 10000', game.wallet_compatible ? 'good' : 'warn'),
+      el('span', {class: 'mono game-rule-version'}, game.ruleset_id || game.version || '—'),
+      merchants.filter(m => m.games.includes(game.id)).length,
+      game.target_rtp == null ? '尚未设置 / 预派彩模式' : game.target_rtp.toFixed(2) + '%',
+      button('进入 RTP 中心 ↗', () => navigate('rtp'), 'quiet'),
+    ]))), el('p', {class: 'hint'}, '此处列出已接入商户钱包链路的游戏。各游戏原有大厅入口继续保留。'));
 }
 function pager(rows, filters, reload) {
   return el('div', {class: 'pagination'}, el('span', {}, '当前 ' + rows.length + ' 条 · 每页 25 条'), el('div', {},

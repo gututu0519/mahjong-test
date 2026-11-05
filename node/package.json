@@ -8,6 +8,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "docs:build": "node tools/render-integration.mjs",
+    "docs:check": "node tools/render-integration.mjs --check",
     "test": "npm run build && node --test --test-concurrency=1 dist/tests/*.test.js",
     "init": "node dist/cli.js init",
     "gateway": "node dist/cli.js gateway",

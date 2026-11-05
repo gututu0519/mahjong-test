@@ -4,6 +4,8 @@
 
 ## 目录与职责
 
+接入中心规范以 `config/integration.json` 为源文件。修改后执行 `npm run docs:build` 同步下载指南与 OpenAPI，执行 `npm run docs:check` 检查三份内容一致；历史 Python 文档不作为 Node 接入规范生成源。
+
 | 业务块 | 位置 | 职责 |
 | --- | --- | --- |
 | 前端 | 仓库 `clients/`、`demo/`；`frontend/admin/` | 原游戏、大厅、平台和商户后台；游戏素材按 S3 构建规则发布 |

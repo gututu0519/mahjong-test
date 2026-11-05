@@ -139,7 +139,7 @@ export class MerchantGames {
     return JSON.parse(row.state_json);
   }
   async launch(mid: string, q: any) {
-    const code = gameCode(q.game_id),
+    const code = gameCode(q.game_id ?? 1),
       m = this.merchant(mid, code),
       pid = identifier(q.player_id);
     check(["en", "zh"].includes(q.language ?? "en"), "LANGUAGE_INVALID");
@@ -180,8 +180,14 @@ export class MerchantGames {
           name,
           q.prebet_type ?? "NORMAL",
         );
+        this.p.run(
+          "UPDATE merchant_players SET prebet_type=? WHERE merchant_id=? AND player_id=?",
+          q.prebet_type ?? "NORMAL",
+          mid,
+          pid,
+        );
       });
-    }
+    } else check(q.prebet_type === undefined, "PREBET_PLAYER_REQUIRED");
     check(
       !m.pre_payout.enabled ||
         this.p.get(
@@ -208,7 +214,7 @@ export class MerchantGames {
       expiry,
     );
     return {
-      game_id: q.game_id,
+      game_id: gameNumber(code),
       launch_url:
         this.origin(code) +
         "/?" +
