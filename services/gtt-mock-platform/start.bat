@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.merchant.sandbox platform
+node node\tools\start.mjs mock %*
 pause

@@ -1,6 +1,6 @@
 # Gates of Olympus 独立试玩服务
 
-运行 `python -m server.run --service-dir services/gates-of-olympus`，默认监听 `127.0.0.1:8085`。
+运行 `node node/tools/start.mjs gates-of-olympus`，默认监听 `127.0.0.1:8085`。
 从麻将服务的 `/demo/` 大厅点击宙斯「试玩」，或直接打开 `http://127.0.0.1:8085/`。
 大厅在 8080 或 8081 时均可内嵌。每次从大厅进入创建独立的 2,000 虚拟积分会话，有效期 24 小时；刷新保留进度。
 

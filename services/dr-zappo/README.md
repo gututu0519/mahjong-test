@@ -3,7 +3,7 @@
 Hacksaw Gaming，游戏 ID `2253`，原客户端 `1.49.1`，独立服务 **8097**。数据库 `services/dr-zappo/data/games.sqlite3`；初始余额 2000，钱包、配置和会话与其他游戏隔离。原版中英文客户端、横竖屏和大厅入口均保留，不添加技术说明浮层。
 
 ```powershell
-python -m server.run --service-dir services/dr-zappo
+node node/tools/start.mjs dr-zappo
 # http://127.0.0.1:8097/?lang=zh
 python -m unittest server.tests.test_dr_zappo -v
 python tools/hacksaw_capture/import_dr_zappo.py --audit

@@ -1,0 +1,20 @@
+[Unit]
+Description=GTT Node Buffalo calculation service
+After=network.target
+
+[Service]
+Type=simple
+User=gtt-node
+Group=gtt-node
+WorkingDirectory=/opt/gtt-node/current/buffalo-win
+ExecStart=/usr/bin/node dist/cli.js buffalo --config /etc/gtt-node/production.json
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

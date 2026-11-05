@@ -1,18 +1,20 @@
 # 独立服务目录
 
-GTT 管理后台：`gtt-admin`（8112），启动 `python -m server.merchant.sandbox admin`，首次先执行 `admin-init`。与商户网关共用数据库商户配置，提供登录、权限、授权、密钥及交易恢复，详见 [后台说明](gtt-admin/README.md)。
+2026-11-05：本目录全部 `start.bat` 默认启动 Node，原端口、配置与数据库路径保留；回退脚本为同目录 `start-python.bat`。首次在 `node/` 安装依赖。既有商户环境自动使用原私有配置的 Node 配套文件；新建商户环境、启动顺序与构建见 [Node 使用说明](../node/README.md)。以下历史初始化命令仅供旧 Python 回退参考。
 
-GTT 商户接入新增两个独立服务：`gtt-gateway`（8110，商户 API、Buffalo 原客户端、游戏操作记录）和 `gtt-mock-platform`（8111，模拟合作平台钱包及联调页面）。它们使用 `python -m server.merchant.sandbox gateway/platform` 独立入口，首次先执行 `python -m server.merchant.sandbox init`；配置和数据归属见 [GTT 商户接口](../docs/gtt-merchant-wallet-v1.md)。现有游戏试玩入口继续保留。
+GTT 管理后台：`gtt-admin`（8112），启动 `node node/tools/start.mjs admin`，首次先执行 `admin-init`。与商户网关共用数据库商户配置，提供登录、权限、授权、密钥及交易恢复，详见 [后台说明](gtt-admin/README.md)。
 
-Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `python -m server.run --service-dir services/captains-bounty`，见 [接入记录](captains-bounty/README.md)。
+GTT 商户接入新增两个独立服务：`gtt-gateway`（8110，商户 API、Buffalo 原客户端、游戏操作记录）和 `gtt-mock-platform`（8111，模拟合作平台钱包及联调页面）。它们使用 `node node/tools/start.mjs gateway/platform` 独立入口，首次先执行 `python -m server.merchant.sandbox init`；配置和数据归属见 [GTT 商户接口](../docs/gtt-merchant-wallet-v1.md)。现有游戏试玩入口继续保留。
 
-Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `python -m server.run --service-dir services/fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
+Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `node node/tools/start.mjs captains-bounty`，见 [接入记录](captains-bounty/README.md)。
 
-全部 18 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
+Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `node node/tools/start.mjs fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
 
-Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `python -m server.run --service-dir services/great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
+全部 19 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
 
-Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `python -m server.run --service-dir services/dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
+Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `node node/tools/start.mjs great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
+
+Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `node node/tools/start.mjs dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
 
 Le Vampire（Hacksaw Gaming）：端口 8096，`le_vampire_client`，独立钱包、原版中英文客户端及大厅入口。实现和验证范围见 [接入记录](le-vampire/README.md)。
 
@@ -37,13 +39,13 @@ services/
 双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
 
 ```powershell
-python -m server.run --service-dir services/mahjong-ways2
-python -m server.run --service-dir services/game-api
-python -m server.run --service-dir services/buffalo-win
+node node/tools/start.mjs mahjong-ways2
+node node/tools/start.mjs game-api
+node node/tools/start.mjs buffalo-win
 ```
 
 每条命令运行一个进程。Ctrl+C 只停止所在终端的服务；后台进程按对应 PID 停止。
-根目录 `start-server.bat`、原游戏启动脚本及 `python -m server.app` 只启动麻将服务。
+根目录 `start-server.bat`、原游戏启动脚本及 `node node/tools/start.mjs mahjong-ways2` 只启动麻将服务。
 `GET /health` 返回 `service_id`，可确认当前访问的是哪个服务。
 
 ## 隔离约定
@@ -88,7 +90,7 @@ JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不
 
 ## Big Bass Bonanza
 
-已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `node node/tools/start.mjs big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
 
 JILIUS Joker’s Fortune WinX：端口 8091，`jokers_fortune_winx_client`，已接入大厅。实现及补抓项见 [接入记录](jokers-fortune-winx/README.md)。
 

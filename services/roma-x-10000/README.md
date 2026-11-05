@@ -129,7 +129,7 @@ python tools/jili_capture/import_roma_x_10000.py ca118facf745438086269f8c58ce2bc
 启动和定向验证：
 
 ```powershell
-python -m server.run --service-dir services/roma-x-10000
+node node/tools/start.mjs roma-x-10000
 python -m unittest server.tests.test_roma_x_10000 -v
 python response-capture/test_roma_decoded.py -v
 ```

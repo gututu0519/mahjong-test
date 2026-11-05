@@ -1,0 +1,17 @@
+{
+  "environment": "production",
+  "merchant_database": "/var/lib/gtt-node/merchants.sqlite3",
+  "game_database": "/var/lib/gtt-node/gtt.sqlite3",
+  "client_root": "/opt/gtt-node/current/gateway/clients/buffalo-win",
+  "game_origin": "http://127.0.0.1:8213",
+  "internal_secret": "",
+  "public_origins": {
+    "site": "https://www.example.com",
+    "api": "https://api.example.com",
+    "play": "https://play.example.com",
+    "admin": "https://admin.example.com",
+    "merchant": "https://merchant.example.com"
+  },
+  "trusted_proxy_ips": ["127.0.0.1", "::1"],
+  "ports": { "gateway": 8210, "admin": 8212, "buffalo": 8213 }
+}

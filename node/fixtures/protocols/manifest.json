@@ -1,0 +1,97 @@
+[
+  {
+    "id": "3-billion-vaults",
+    "file": "3-billion-vaults.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "big-bass-bonanza",
+    "file": "big-bass-bonanza.json.gz",
+    "calls": 13
+  },
+  {
+    "id": "buffalo-win",
+    "file": "buffalo-win.json.gz",
+    "calls": 12
+  },
+  {
+    "id": "captains-bounty",
+    "file": "captains-bounty.json.gz",
+    "calls": 12
+  },
+  {
+    "id": "dr-zappo",
+    "file": "dr-zappo.json.gz",
+    "calls": 14
+  },
+  {
+    "id": "fortune-gems2",
+    "file": "fortune-gems2.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "fortune-rabbit",
+    "file": "fortune-rabbit.json.gz",
+    "calls": 12
+  },
+  {
+    "id": "gates-of-olympus",
+    "file": "gates-of-olympus.json.gz",
+    "calls": 13
+  },
+  {
+    "id": "great-game-serengeti",
+    "file": "great-game-serengeti.json.gz",
+    "calls": 14
+  },
+  {
+    "id": "jokers-fortune-winx",
+    "file": "jokers-fortune-winx.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "le-vampire",
+    "file": "le-vampire.json.gz",
+    "calls": 14
+  },
+  {
+    "id": "mahjong-ways2",
+    "file": "mahjong-ways2.json.gz",
+    "calls": 12
+  },
+  {
+    "id": "money-pot-deluxe",
+    "file": "money-pot-deluxe.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "roma-x-10000",
+    "file": "roma-x-10000.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "super-ace",
+    "file": "super-ace.json.gz",
+    "calls": 10
+  },
+  {
+    "id": "sweet-bonanza-pop",
+    "file": "sweet-bonanza-pop.json.gz",
+    "calls": 13
+  },
+  {
+    "id": "tower-run-treasure-steps",
+    "file": "tower-run-treasure-steps.json.gz",
+    "calls": 11
+  },
+  {
+    "id": "wicked-grin",
+    "file": "wicked-grin.json.gz",
+    "calls": 14
+  },
+  {
+    "id": "wild-bandito",
+    "file": "wild-bandito.json.gz",
+    "calls": 12
+  }
+]

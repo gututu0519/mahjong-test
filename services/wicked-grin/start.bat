@@ -1,4 +1,4 @@
 @echo off
-cd /d "%~dp0../.."
-python -m server.run --service-dir services/wicked-grin
+cd /d "%~dp0..\.."
+node node\tools\start.mjs wicked-grin %*
 pause

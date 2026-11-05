@@ -1,6 +1,6 @@
 # Sweet Bonanza POP 独立服务
 
-运行 `python -m server.run --service-dir services/sweet-bonanza-pop`，或双击本目录 `start.bat`。
+运行 `node node/tools/start.mjs sweet-bonanza-pop`，或双击本目录 `start.bat`。
 访问 <http://127.0.0.1:8086/>，也可从麻将服务 `/demo/` 大厅进入。
 
 - 入口：`sweet_bonanza_pop_client`，只装载 `sweet-bonanza-pop`。

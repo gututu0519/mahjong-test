@@ -13,11 +13,11 @@ JILI Super Ace（gameId 49 / fullhouse）保留原版 HTML、Cocos 界面、素�
 ```powershell
 git pull
 python -m unittest discover -s server/tests -q
-python -m server.run --service-dir services/super-ace
+node node/tools/start.mjs super-ace
 ```
 
 访问 `http://127.0.0.1:8088/`。也可双击本目录 `start.bat`。
-大厅沿用麻将服务：`python -m server.run --service-dir services/mahjong-ways2`，访问 `http://127.0.0.1:8080/demo/`。
+大厅沿用麻将服务：`node node/tools/start.mjs mahjong-ways2`，访问 `http://127.0.0.1:8080/demo/`。
 抓取工具的 `8090` 是抓取管理页面，不是新游戏端口。
 服务代码只需 Python 标准库。浏览器诊断另外安装 `playwright` 并准备 Edge；可用现有 `response-capture/.venv/Scripts/python.exe`，新电脑须自行创建虚拟环境。
 

@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/fortune-rabbit
+node node\tools\start.mjs fortune-rabbit %*
 pause

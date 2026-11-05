@@ -1,0 +1,116 @@
+[
+  {
+    "id": "captains-bounty",
+    "file": "captains-bounty.json.gz",
+    "steps": 24,
+    "variants": 1
+  },
+  {
+    "id": "fortune-rabbit",
+    "file": "fortune-rabbit.json.gz",
+    "steps": 16,
+    "variants": 1
+  },
+  {
+    "id": "wild-bandito",
+    "file": "wild-bandito.json.gz",
+    "steps": 31,
+    "variants": 1
+  },
+  {
+    "id": "tower-run-treasure-steps",
+    "file": "tower-run-treasure-steps.json.gz",
+    "steps": 45,
+    "variants": 2
+  },
+  {
+    "id": "great-game-serengeti",
+    "file": "great-game-serengeti.json.gz",
+    "steps": 49,
+    "variants": 6
+  },
+  {
+    "id": "dr-zappo",
+    "file": "dr-zappo.json.gz",
+    "steps": 45,
+    "variants": 5
+  },
+  {
+    "id": "le-vampire",
+    "file": "le-vampire.json.gz",
+    "steps": 49,
+    "variants": 6
+  },
+  {
+    "id": "wicked-grin",
+    "file": "wicked-grin.json.gz",
+    "steps": 47,
+    "variants": 5
+  },
+  {
+    "id": "roma-x-10000",
+    "file": "roma-x-10000.json.gz",
+    "steps": 22,
+    "variants": 3
+  },
+  {
+    "id": "money-pot-deluxe",
+    "file": "money-pot-deluxe.json.gz",
+    "steps": 25,
+    "variants": 4
+  },
+  {
+    "id": "3-billion-vaults",
+    "file": "3-billion-vaults.json.gz",
+    "steps": 28,
+    "variants": 5
+  },
+  {
+    "id": "jokers-fortune-winx",
+    "file": "jokers-fortune-winx.json.gz",
+    "steps": 19,
+    "variants": 2
+  },
+  {
+    "id": "fortune-gems2",
+    "file": "fortune-gems2.json.gz",
+    "steps": 19,
+    "variants": 2
+  },
+  {
+    "id": "super-ace",
+    "file": "super-ace.json.gz",
+    "steps": 19,
+    "variants": 2
+  },
+  {
+    "id": "big-bass-bonanza",
+    "file": "big-bass-bonanza.json.gz",
+    "steps": 18,
+    "variants": 1
+  },
+  {
+    "id": "sweet-bonanza-pop",
+    "file": "sweet-bonanza-pop.json.gz",
+    "steps": 68,
+    "variants": 1
+  },
+  {
+    "id": "gates-of-olympus",
+    "file": "gates-of-olympus.json.gz",
+    "steps": 185,
+    "variants": 3
+  },
+  {
+    "id": "buffalo-win",
+    "file": "buffalo-win.json.gz",
+    "steps": 77,
+    "variants": 2
+  },
+  {
+    "id": "mahjong-ways2",
+    "file": "mahjong-ways2.json.gz",
+    "steps": 33,
+    "variants": 1
+  }
+]

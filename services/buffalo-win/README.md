@@ -6,7 +6,7 @@
 python -m server.services.buffalo_demo
 ```
 
-也可以双击本目录 `start.bat`，或者运行 `python -m server.run --service-dir services/buffalo-win`。
+也可以双击本目录 `start.bat`，或者运行 `node node/tools/start.mjs buffalo-win`。
 服务监听 127.0.0.1:8083；主大厅依旧由 8080 的麻将服务提供。启动两项服务后，访问 <http://localhost:8080/demo/?lang=zh#games>，选择「美洲野牛 → 试玩」。
 
 ## 已实现

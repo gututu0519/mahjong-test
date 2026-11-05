@@ -1,4 +1,4 @@
 @echo off
-cd /d "%~dp0\..\.."
-python -m server.run --service-dir services/great-game-serengeti
+cd /d "%~dp0..\.."
+node node\tools\start.mjs great-game-serengeti %*
 pause

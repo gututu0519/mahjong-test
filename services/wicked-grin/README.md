@@ -3,7 +3,7 @@
 Hacksaw Gaming，游戏 ID `2347`，原版客户端 `1.43.1`，本地引擎 `1.1.0`。独立服务 **8095**，数据库 `services/wicked-grin/data/games.sqlite3`，默认余额 2000；钱包、配置与会话均与其他游戏隔离。大厅有 Hacksaw Gaming 筛选及本款入口。
 
 ```powershell
-python -m server.run --service-dir services/wicked-grin
+node node/tools/start.mjs wicked-grin
 # http://127.0.0.1:8095/?lang=zh
 python -m unittest server.tests.test_wicked_grin -v
 python -m unittest discover -s server/tests

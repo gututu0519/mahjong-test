@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/captains-bounty
+node node\tools\start.mjs captains-bounty %*
 pause

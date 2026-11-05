@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/roma-x-10000
+node node\tools\start.mjs roma-x-10000 %*
 pause

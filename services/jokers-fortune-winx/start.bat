@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/jokers-fortune-winx
+node node\tools\start.mjs jokers-fortune-winx %*
 pause

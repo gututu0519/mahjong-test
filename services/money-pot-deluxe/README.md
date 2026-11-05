@@ -1,6 +1,6 @@
 # Money Pot DELUXE
 
-游戏 ID 541，原版路径 `/mpt2/`，astarte2 3.6。独立服务端口 8093；启动 `services/money-pot-deluxe/start.bat`，或在项目根目录运行 `python -m server.run --service-dir services/money-pot-deluxe`。从 8080 `/demo/?lang=zh` 大厅进入，原版客户端为英文。
+游戏 ID 541，原版路径 `/mpt2/`，astarte2 3.6。独立服务端口 8093；启动 `services/money-pot-deluxe/start.bat`，或在项目根目录运行 `node node/tools/start.mjs money-pot-deluxe`。从 8080 `/demo/?lang=zh` 大厅进入，原版客户端为英文。
 
 ## 已接入
 

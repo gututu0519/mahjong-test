@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/money-pot-deluxe
+node node\tools\start.mjs money-pot-deluxe %*
 pause

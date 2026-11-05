@@ -107,7 +107,7 @@
 在仓库根目录执行：
 
 ```powershell
-python -m server.run --service-dir services/fortune-gems2
+node node/tools/start.mjs fortune-gems2
 ```
 
 访问 `http://127.0.0.1:8089/`。大厅 8080、游戏 API 8082、其他独立游戏 8083/8085/8086/8087/8088、抓取工具 8090 沿用现有服务。明天先检查 `/health` 和监听端口，避免重复启动。不要覆盖 `services/*/data/`。

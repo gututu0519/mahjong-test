@@ -4,7 +4,7 @@
 
 ## 启动
 
-在项目根目录执行 `python -m server.run --service-dir services/jokers-fortune-winx`，或运行本目录 `start.bat`。大厅为 http://127.0.0.1:8080/demo/ ，独立入口 http://127.0.0.1:8091/ 。配置位于 `config/jokers-fortune-winx.json`，钱包数据库在本服务 `data/`，与其他游戏独立。
+在项目根目录执行 `node node/tools/start.mjs jokers-fortune-winx`，或运行本目录 `start.bat`。大厅为 http://127.0.0.1:8080/demo/ ，独立入口 http://127.0.0.1:8091/ 。配置位于 `config/jokers-fortune-winx.json`，钱包数据库在本服务 `data/`，与其他游戏独立。
 
 ## 证据和实现
 

@@ -3,7 +3,7 @@
 Hacksaw Gaming，ID `2620`，原客户端 `1.26.2`。独立端口 **8098**，数据库 `services/great-game-serengeti/data/games.sqlite3`，默认余额 2000，与其他游戏的钱包、配置和会话隔离。原版中英文客户端、所有五个增强／购买入口、隐藏免费与大厅入口保留，画面没有新增技术说明浮层。
 
 ```powershell
-python -m server.run --service-dir services/great-game-serengeti
+node node/tools/start.mjs great-game-serengeti
 # http://127.0.0.1:8098/?lang=zh
 python -m unittest server.tests.test_great_game_serengeti -v
 python -m tools.hacksaw_capture.import_great_game_serengeti --audit

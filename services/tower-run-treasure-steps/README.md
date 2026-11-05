@@ -1,6 +1,6 @@
 # Tower Run Treasure Steps
 
-启动：`python -m server.run --service-dir services/tower-run-treasure-steps`，或双击 `start.bat`。
+启动：`node node/tools/start.mjs tower-run-treasure-steps`，或双击 `start.bat`。
 
 中英文原版客户端：<http://127.0.0.1:8099/?lang=zh>、<http://127.0.0.1:8099/?lang=en>。大厅位于 <http://127.0.0.1:8080/demo/?lang=zh>，提供 Play’n GO 筛选和试玩入口。
 

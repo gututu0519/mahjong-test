@@ -1,26 +1,30 @@
 # GTT
 
+Node 全量运行时位于 [node/](node/README.md)：19 款游戏、通用 API、商户网关、模拟平台、管理后台和 RTP worker 均已迁移，原启动脚本默认 Node，原功能和入口保留。首次在 `node/` 执行 `npm ci`；抓包解包继续使用 Python。启动、构建、旧库接续和回退见 [Node 迁移实施](docs/node-migration.md)。当前尚未切换线上流量。
+
+构建与发布遵循 [构建与发布规则](docs/build-and-release.md)：应用、游戏 S3 素材与基础设施分别管理；现有脚本的行为和待调整项在文档中列明。
+
 平台控制台：<http://127.0.0.1:8112/>；商户专属工作台：<http://127.0.0.1:8112/merchant/>。平台管理员在“账户与权限”中创建商户角色并绑定商户，商户即可管理自己的接入资料、密钥、团队及交易。商户数据由服务端隔离；使用说明见 [平台与商户后台](docs/gtt-admin.md)。
 
 新商户接入仅需商户号与 GTT 自动生成的 `merchant_secret`，游戏 API、钱包和预派彩共用统一 HMAC 签名。全部本机商户已统一，密钥无需领取，可在后台随时查看／复制。见 [统一接入密钥](docs/gtt-merchant-wallet-v1.md)。
 
 GTT 预下注决策支持按商户调用合作平台接口、整局派彩区间、固定时间戳重试与原客户端逐步展示；接入约定和本机模拟见 [GTT 预派彩说明](docs/gtt-prebet.md)。FP 仅为设计参考，不是对接依赖。
 
-管理后台已提供首版：<http://127.0.0.1:8112/>。首次执行 `python -m server.merchant.sandbox admin-init` 生成私有登录凭据，再运行 `python -m server.merchant.sandbox admin`。支持三类角色、商户配置、游戏授权、密钥轮换、交易查询与恢复、操作审计，配置修改即时生效。详见 [管理后台说明](docs/gtt-admin.md)。
+管理后台：既有环境 <http://127.0.0.1:8112/>，运行 `node node/tools/start.mjs admin`（先启动网关计算服务）。缺少管理员时用同一入口的 `admin-init`；已有账号不重新初始化。支持角色、商户配置、授权、密钥、交易恢复和审计。详见 [管理后台说明](docs/gtt-admin.md)。
 
-GTT 商户接入与模拟平台已提供首版：签名启动 Buffalo Win，平台持有玩家余额，支持购买免费、扣款／派奖去重和故障恢复。首次执行 `python -m server.merchant.sandbox init`，再分别运行 `python -m server.merchant.sandbox platform` 和 `python -m server.merchant.sandbox gateway`，打开 <http://127.0.0.1:8111/> 联调。完整约定见 [商户与钱包接口 v1](docs/gtt-merchant-wallet-v1.md)。
+GTT 商户接入与模拟平台：签名启动 Buffalo Win，平台持有玩家余额，支持购买免费、扣款／派奖去重和故障恢复。既有环境分别运行 `node node/tools/start.mjs gateway` 和 `node node/tools/start.mjs mock`，打开 <http://127.0.0.1:8111/> 联调。新环境用 [Node 初始化命令](node/README.md)，默认隔离端口 8210–8213。完整约定见 [商户与钱包接口 v1](docs/gtt-merchant-wallet-v1.md)。
 
-Captain's Bounty（PG Soft，54）英文客户端和独立 8102 服务已接入，本轮按 447 条旋转、2 轮完整免费数据收尾。启动 `python -m server.run --service-dir services/captains-bounty`；实现及验收范围见 [规则记录](docs/captains-bounty-rules.md)。
+Captain's Bounty（PG Soft，54）英文客户端和独立 8102 服务已接入，本轮按 447 条旋转、2 轮完整免费数据收尾。启动 `node node/tools/start.mjs captains-bounty`；实现及验收范围见 [规则记录](docs/captains-bounty-rules.md)。
 
-Fortune Rabbit（PG Soft，1543462）英文客户端已接入独立服务 8101 和大厅：`python -m server.run --service-dir services/fortune-rabbit`。普通旋转、奖金符号、完整 8 次福兔功能、规则和历史已接入并核对原版样本；验证范围见 [规则记录](docs/fortune-rabbit-rules.md)。
+Fortune Rabbit（PG Soft，1543462）英文客户端已接入独立服务 8101 和大厅：`node node/tools/start.mjs fortune-rabbit`。普通旋转、奖金符号、完整 8 次福兔功能、规则和历史已接入并核对原版样本；验证范围见 [规则记录](docs/fortune-rabbit-rules.md)。
 
-Great Game Serengeti（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8098。启动：`python -m server.run --service-dir services/great-game-serengeti`。规则、证据和验证范围见 [接入记录](services/great-game-serengeti/README.md)。
+Great Game Serengeti（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8098。启动：`node node/tools/start.mjs great-game-serengeti`。规则、证据和验证范围见 [接入记录](services/great-game-serengeti/README.md)。
 
-Dr Zappo（Hacksaw Gaming）独立服务：`python -m server.run --service-dir services/dr-zappo`，端口 8097，原版中英文客户端及大厅入口。规则、证据与验收范围见 [接入记录](services/dr-zappo/README.md)。
+Dr Zappo（Hacksaw Gaming）独立服务：`node node/tools/start.mjs dr-zappo`，端口 8097，原版中英文客户端及大厅入口。规则、证据与验收范围见 [接入记录](services/dr-zappo/README.md)。
 
-Le Vampire（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8096。启动：`python -m server.run --service-dir services/le-vampire`。玩法、验收及证据边界见 [接入记录](services/le-vampire/README.md)。
+Le Vampire（Hacksaw Gaming）已接入原版中英文客户端及大厅，独立端口 8096。启动：`node node/tools/start.mjs le-vampire`。玩法、验收及证据边界见 [接入记录](services/le-vampire/README.md)。
 
-Wicked Grin（Hacksaw Gaming）独立服务启动：`python -m server.run --service-dir services/wicked-grin`，端口 8095。实现、抓取证据及未完成验收见 [接入记录](services/wicked-grin/README.md)。
+Wicked Grin（Hacksaw Gaming）独立服务启动：`node node/tools/start.mjs wicked-grin`，端口 8095。实现、抓取证据及未完成验收见 [接入记录](services/wicked-grin/README.md)。
 
 独立服务的入口、配置、数据与进程隔离以 [服务目录说明](services/README.md) 为准。
 
@@ -28,7 +32,8 @@ Wicked Grin（Hacksaw Gaming）独立服务启动：`python -m server.run --serv
 
 ```text
 clients/           # 所有原客户端资源和脱敏 fixtures，按游戏 slug 分类
-server/            # 公共核心、游戏引擎、协议适配和服务入口
+node/              # 当前 Node 网关、游戏引擎、协议适配及服务入口
+server/            # 原 Python 实现、对照测试和回退源码
 tools/pg_capture/  # PG 离线导入、规则分析、旧样本回放及诊断工具
 docs/              # 接入、规则分析和资源缺失记录
 response-capture/  # 浏览器请求与响应抓取工具
@@ -45,7 +50,7 @@ start-server.bat   # 麻将服务启动入口
 双击 `start-server.bat`，或在仓库根目录执行：
 
 ```powershell
-python -m server.app
+node node/tools/start.mjs mahjong-ways2
 ```
 
 访问 <http://localhost:8080/?mock=1> 直接打开游戏。
@@ -81,7 +86,7 @@ python -m server.app
 独立通用 API 服务可同时运行，默认端口 8082、独立数据库，无客户端资源依赖：
 
 ```powershell
-python -m server.run --service-dir services/game-api
+node node/tools/start.mjs game-api
 ```
 
 运行后端测试：
@@ -110,9 +115,9 @@ python -m tools.pg_capture.mahjong_ways2.serve_local --port 8081
 
 ## 抓取工具
 
-Sweet Bonanza POP 已接入独立英文服务：运行 `python -m server.run --service-dir services/sweet-bonanza-pop`，访问 <http://127.0.0.1:8086/> 或从大厅进入。普通旋转、连消、免费、倍率与追加已有样本验证；POP 专用动画协议及其他补抓项见 [服务说明](services/sweet-bonanza-pop/README.md)。
+Sweet Bonanza POP 已接入独立英文服务：运行 `node node/tools/start.mjs sweet-bonanza-pop`，访问 <http://127.0.0.1:8086/> 或从大厅进入。普通旋转、连消、免费、倍率与追加已有样本验证；POP 专用动画协议及其他补抓项见 [服务说明](services/sweet-bonanza-pop/README.md)。
 
-Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `python -m server.run --service-dir services/gates-of-olympus`，
+Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `node node/tools/start.mjs gates-of-olympus`，
 访问 <http://127.0.0.1:8085/> 或在大厅选择对应试玩卡片。已接入生成旋转、连消、倍率球、免费回合、免费购买及独立虚拟钱包。功能保留和补抓约定见 [AGENTS.md](AGENTS.md)。
 资源及本地适配说明见 [PP 独立试玩服务](services/gates-of-olympus/README.md)。
 
@@ -123,8 +128,8 @@ Gates of Olympus（PP）已提供中英文横竖屏本地试玩：运行 `python
 
 ## Big Bass Bonanza
 
-已接入中英文横竖屏原客户端与独立生成引擎；启动 `python -m server.run --service-dir services/big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](services/big-bass-bonanza/README.md)。
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `node node/tools/start.mjs big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](services/big-bass-bonanza/README.md)。
 
 ## Tower Run Treasure Steps
 
-Tower Run Treasure Steps（Play’n GO，1098）已接入中英文原版客户端和独立生成服务 8099；启动 `python -m server.run --service-dir services/tower-run-treasure-steps`，可从大厅进入。规则、证据范围及补抓项见 [接入文档](docs/tower-run-treasure-steps-rules.md)。
+Tower Run Treasure Steps（Play’n GO，1098）已接入中英文原版客户端和独立生成服务 8099；启动 `node node/tools/start.mjs tower-run-treasure-steps`，可从大厅进入。规则、证据范围及补抓项见 [接入文档](docs/tower-run-treasure-steps-rules.md)。

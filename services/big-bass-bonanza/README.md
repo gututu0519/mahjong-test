@@ -1,6 +1,6 @@
 # Big Bass Bonanza 独立服务
 
-运行 `python -m server.run --service-dir services/big-bass-bonanza` 或双击 `start.bat`。
+运行 `node node/tools/start.mjs big-bass-bonanza` 或双击 `start.bat`。
 访问 <http://127.0.0.1:8087/>，或从 <http://localhost:8081/demo/?lang=zh> 的 Big Bass Bonanza 卡片进入。
 
 - 服务入口 `big_bass_bonanza_client`，只装载 `big-bass-bonanza`。

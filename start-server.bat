@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-python -m server.app
+node node\tools\start.mjs mahjong-ways2 %*
 pause
