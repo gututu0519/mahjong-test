@@ -2,10 +2,12 @@
 (() => {
   'use strict';
   const launch = new URL(location.href);
-  const token = launch.searchParams.get('ops') || 'local-demo-session';
+  const merchant = window.__GTT_MERCHANT__;
+  const token = merchant?.token || launch.searchParams.get('ops') || 'local-demo-session';
   launch.searchParams.set('l', 'en');
-  launch.searchParams.set('btt', '2');
-  launch.searchParams.set('ot', 'local-demo');
+  launch.searchParams.set('btt', merchant ? '1' : '2');
+  if (merchant) launch.searchParams.delete('mock');
+  launch.searchParams.set('ot', merchant ? merchant.operator : 'local-demo');
   launch.searchParams.set('ops', token);
   // This older client requires the captured public API-host descriptor to initialize.
   // Actual API requests are always rewritten to this local preview service below.

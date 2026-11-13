@@ -1,6 +1,6 @@
 # Money Pot DELUXE
 
-游戏 ID 541，原版路径 `/mpt2/`，astarte2 3.6。独立服务端口 8093；启动 `services/money-pot-deluxe/start.bat`，或在项目根目录运行 `node node/tools/start.mjs money-pot-deluxe`。从 8080 `/demo/?lang=zh` 大厅进入，原版客户端为英文。
+游戏 ID 541，原版路径 `/mpt2/`，astarte2 3.6。独立服务端口 8093；启动 `services/money-pot-deluxe/start.bat`，或在项目根目录运行 `node server/tools/start.mjs money-pot-deluxe`。从 8080 `/demo/?lang=zh` 大厅进入，原版客户端为英文。
 
 ## 已接入
 
@@ -14,7 +14,7 @@
 
 - 规则文字取自用户抓取请求 981（官方语言接口），保存在 rules-evidence.json。六线均为水平线，左侧 1–3 从左向右，右侧 4–6 从右向左，至少连续三格非空，符号可以不同；五格全中只付一次，奖金为各格倍率之和乘以基础下注。
 - GameInfoAck 的 extraInfo 是 mpt2Proto.GameInfoData，Mul = [1, 1.5, 3, 6]。SpinReq.extraSpin.Index = 0 / 1 / 2 对应三档 EX；不传为普通模式。SpinAck.GameType 为当前档位，不能据游戏画面或 HTTP 数量推断中奖。
-- 使用另一独立公开试玩会话取得 94 条已解码旋转，覆盖普通与三档 EX，其中两组完整重转（17 / 8 个画面）。脱敏样本在 `server/tests/fixtures/money-pot-deluxe-spins.json`，仅含下注和游戏回包，不含登录令牌或账号。
+- 使用另一独立公开试玩会话取得 94 条已解码旋转，覆盖普通与三档 EX，其中两组完整重转（17 / 8 个画面）。脱敏样本在 `py/tests/fixtures/money-pot-deluxe-spins.json`，仅含下注和游戏回包，不含登录令牌或账号。
 - 普通连线的方向、行号、长度、逐线 Win 和 RoundWin 与全部样本逐项一致。财神收集全部 Yuanbao（不含 Jackpot、不含尚未揭晓的 Mystery），CPos / Mul / SymbolMul 与最终倍率一致；普通 EX 4x / 8x 档的财神倍率为 2。
 - 进入重转时原有财神变成 BG_CAISHEN（7），保留已收集数值。锁定已有符号，新符号重置剩余次数为 3；新增 BG 财神按当时全部 Yuanbao 乘以自己的 SymbolMul，原先已锁定财神不重复收集。神秘符号到最后揭晓，AwardData.Atype = 3 按位置结算，RoundWin 与 TotalWin 对照一致。
 - 原版 PotType=1 的投掷元宝，以及 PotType=3 将财神投掷到中央并触发重转，均有样本。完整填满 15 格支付 Grand 5000 倍、替代盘面其他奖励，来自规则和客户端常量，尚无原版满屏回包。

@@ -10,7 +10,7 @@ Group=gtt
 WorkingDirectory=/opt/gtt/current
 Environment=PYTHONUNBUFFERED=1
 Environment=PYTHONDONTWRITEBYTECODE=1
-ExecStart=/usr/bin/python3 -m server.merchant.rtp_worker --config /etc/gtt/production.json --workers 2
+ExecStart=/usr/bin/python3 -m py.merchant.rtp_worker --config /etc/gtt/production.json --workers 2
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=30

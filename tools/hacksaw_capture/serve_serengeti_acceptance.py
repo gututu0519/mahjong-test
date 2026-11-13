@@ -7,7 +7,7 @@ import random
 import sqlite3
 import threading
 
-from server.services.great_game_serengeti_demo import build_server
+from py.services.great_game_serengeti_demo import build_server
 
 SCENARIOS = {
     'hidden': dict(port=18100, seed=0, mode='base', hidden=True),

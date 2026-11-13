@@ -11,11 +11,11 @@ import json
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
-from server.paths import MAHJONG_CLIENT
-from server.services.mahjong_assets import MahjongAssetHandler
-from server.adapters.pg.mahjong_metadata import (AUTH_PATH, GAME_NAME_PATH, GAME_INFO_PATH, GAME_RULE_PATH,
+from py.paths import MAHJONG_CLIENT
+from py.services.mahjong_assets import MahjongAssetHandler
+from py.adapters.pg.mahjong_metadata import (AUTH_PATH, GAME_NAME_PATH, GAME_INFO_PATH, GAME_RULE_PATH,
                         get_game_names, get_game_info, get_game_rule, verify_operator_session)
-from server.adapters.pg.mahjong_metadata import SESSION_TOKEN
+from py.adapters.pg.mahjong_metadata import SESSION_TOKEN
 from .local_spin import LocalSpin, SpinError
 
 SPIN_PATHS = ('/game-api/74/v4/Spin', '/game-api/mahjong-ways2/v4/Spin')

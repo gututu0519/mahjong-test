@@ -46,7 +46,7 @@
 3. 普通旋转打通后验证 Extra Bet、普通轮盘和额外倍率轮盘。优先查最新抓取中的规则和额外轮盘证据，补齐 `MultShowArray`、`LightOnPos`，核实 symbol 0 / wild 赔率。
 4. 添加专项后端测试：真实样本逐线结算、protobuf 编解码、钱包扣款/中奖、相同 key 重试、非法下注、round-end 不重复扣款。然后做原客户端端到端验收。
 5. 用 390×844、横屏和运行中旋转方向检查布局、开始按钮、下注、Extra Bet、自动旋转、中奖/轮盘动画、规则、记录、关闭返回、同会话刷新及余额一致性。用户已补抓竖版，必须查最新会话，不能按旧快照判断缺少素材。
-6. 验收后接入大厅 TaDa 厂商筛选、第七张卡片及封面，补 `server/services/local_demo.py` 的 catalog、launch 和封面白名单。目前大厅仍是原来的六款。
+6. 验收后接入大厅 TaDa 厂商筛选、第七张卡片及封面，补 `py/services/local_demo.py` 的 catalog、launch 和封面白名单。目前大厅仍是原来的六款。
 
 ## 当前卡点及排障证据
 
@@ -75,11 +75,11 @@
 
 - `clients/fortune-gems2/`：164 个原版静态文件、素材来源索引、去标识化 login/info fixtures、本地适配脚本和简版规则页。
 - `tools/tada_capture/import_capture.py`：从抓取导入静态 allowlist；正在录制、没有 manifest 时读取 8090 snapshot。只导入静态文件，来源 URL 去 query。
-- `server/adapters/tada/fortune_gems2_schema.json`：从原客户端提取的公共及游戏 protobuf 定义。
-- `server/adapters/tada/fortune_gems2.py`：W 登录、ack 1 info、2 notice、0 spin、4/36 查询最后回合；复用现有 protobuf codec 和事务钱包。
-- `server/games/fortune_gems2/`：3×3 五线、wild、第四倍率列、Extra Bet 与轮盘的本地生成引擎草稿；不是原版数学模型。
-- `server/services/fortune_gems2_demo.py`、`services/fortune-gems2/`：8089 独立服务、独立配置和数据库；已登记 catalog 和启动入口。
-- `server/tests/fixtures/fortune-gems2-spins.json`：60 个去标识化真实公共 trial 样本，25 普通、35 Extra Bet，含一个普通轮盘样本，没有额外倍率轮盘样本。
+- `py/adapters/tada/fortune_gems2_schema.json`：从原客户端提取的公共及游戏 protobuf 定义。
+- `py/adapters/tada/fortune_gems2.py`：W 登录、ack 1 info、2 notice、0 spin、4/36 查询最后回合；复用现有 protobuf codec 和事务钱包。
+- `py/games/fortune_gems2/`：3×3 五线、wild、第四倍率列、Extra Bet 与轮盘的本地生成引擎草稿；不是原版数学模型。
+- `py/services/fortune_gems2_demo.py`、`services/fortune-gems2/`：8089 独立服务、独立配置和数据库；已登记 catalog 和启动入口。
+- `py/tests/fixtures/fortune-gems2-spins.json`：60 个去标识化真实公共 trial 样本，25 普通、35 Extra Bet，含一个普通轮盘样本，没有额外倍率轮盘样本。
 
 ## 已核实协议与未核实规则
 
@@ -107,7 +107,7 @@
 在仓库根目录执行：
 
 ```powershell
-node node/tools/start.mjs fortune-gems2
+node server/tools/start.mjs fortune-gems2
 ```
 
 访问 `http://127.0.0.1:8089/`。大厅 8080、游戏 API 8082、其他独立游戏 8083/8085/8086/8087/8088、抓取工具 8090 沿用现有服务。明天先检查 `/health` 和监听端口，避免重复启动。不要覆盖 `services/*/data/`。
@@ -128,4 +128,4 @@ node node/tools/start.mjs fortune-gems2
 
 Super Ace 核心试玩与启动修复已完成，浏览器验证和剩余平台功能见 [Super Ace 文档](../super-ace/README.md)。按用户要求，大厅“星际宝石”“幸运七号”占位卡片及对应筛选/样式已移除。这些改动与本 TaDa 开发检查点一同保存。
 
-提交前运行 `python -m unittest discover -s server/tests -q`：**75 项全部通过**（40.089 秒）。另按来源索引核对 164 个静态文件与抓取响应逐字节一致。Fortune Gems 2 尚无专项测试，既有测试通过不能代替该游戏验收。
+提交前运行 `python -m unittest discover -s py/tests -q`：**75 项全部通过**（40.089 秒）。另按来源索引核对 164 个静态文件与抓取响应逐字节一致。Fortune Gems 2 尚无专项测试，既有测试通过不能代替该游戏验收。

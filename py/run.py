@@ -1,0 +1,170 @@
+"""Start exactly one service from its own directory and configuration."""
+import argparse
+import json
+import logging
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_profile(directory):
+    directory = Path(directory).resolve()
+    spec = json.loads((directory / 'service.json').read_text(encoding='utf-8'))
+    if spec['entry'] == 'captains_bounty_client' and spec['games'] != ['captains-bounty']:
+        raise ValueError('Captain\'s Bounty service must isolate its game.')
+    if spec['entry'] == 'fortune_rabbit_client':
+        if spec['games'] != ['fortune-rabbit']:
+            raise ValueError('Fortune Rabbit service must isolate its game.')
+    if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', spec['id']):
+        raise ValueError('Invalid service ID')
+    if spec['entry'] not in ('captains_bounty_client', 'fortune_rabbit_client', 'mahjong_client', 'buffalo_client', 'wild_bandito_client', 'json_api', 'olympus_preview', 'olympus_client', 'sweet_bonanza_pop_client', 'big_bass_bonanza_client', 'super_ace_client', 'fortune_gems2_client', 'jokers_fortune_winx_client', 'three_billion_vaults_client', 'money_pot_deluxe_client', 'roma_x_10000_client', 'wicked_grin_client', 'le_vampire_client', 'dr_zappo_client', 'great_game_serengeti_client', 'tower_run_treasure_steps_client'):
+        raise ValueError('Unknown service entry')
+    if type(spec['port']) is not int or not 1 <= spec['port'] <= 65535:
+        raise ValueError('Invalid service port')
+    games = spec['games']
+    if spec['entry'] == 'wild_bandito_client' and games != ['wild-bandito']:
+        raise ValueError('Wild Bandito service must isolate its game.')
+    if spec['entry'] == 'tower_run_treasure_steps_client' and games != ['tower-run-treasure-steps']:
+        raise ValueError('Tower Run service must isolate its game.')
+    if spec['entry'] == 'great_game_serengeti_client' and games != ['great-game-serengeti']:
+        raise ValueError('Great Game Serengeti service must isolate its game.')
+    if spec['entry'] == 'dr_zappo_client' and games != ['dr-zappo']:
+        raise ValueError('Dr Zappo service must isolate its game.')
+    if spec['entry'] == 'le_vampire_client' and games != ['le-vampire']:
+        raise ValueError('Le Vampire service must isolate its game.')
+    if spec['entry'] == 'wicked_grin_client' and games != ['wicked-grin']:
+        raise ValueError('Wicked Grin service must isolate its game.')
+    if spec['entry'] == 'three_billion_vaults_client' and games != ['3-billion-vaults']:
+        raise ValueError('Vaults service must isolate its game.')
+    if spec['entry'] == 'jokers_fortune_winx_client' and games != ['jokers-fortune-winx']:
+        raise ValueError('Joker service only supports its own game')
+    if spec['entry'] == 'roma_x_10000_client' and games != ['roma-x-10000']:
+        raise ValueError('Roma X 10000 client service only supports its own game')
+    if spec['entry'] == 'money_pot_deluxe_client' and games != ['money-pot-deluxe']:
+        raise ValueError('Money Pot DELUXE client service only supports its own game')
+    if spec['entry'] == 'olympus_preview':
+        if games != []:
+            raise ValueError('Frontend preview must not load game engines')
+        return spec, {}
+    if not isinstance(games, list) or not games or len(set(games)) != len(games):
+        raise ValueError('Explicit nonempty game selection required')
+    if spec['entry'] == 'mahjong_client' and games != ['mahjong-ways2']:
+        raise ValueError('Mahjong client service only supports its own game')
+    if spec['entry'] == 'buffalo_client' and games != ['buffalo-win']:
+        raise ValueError('Buffalo client service only supports its own game')
+    if spec['entry'] == 'olympus_client' and games != ['gates-of-olympus']:
+        raise ValueError('Olympus client service only supports its own game')
+    if spec['entry'] == 'big_bass_bonanza_client' and games != ['big-bass-bonanza']:
+        raise ValueError('Big Bass service only supports its own game')
+    if spec['entry'] == 'fortune_gems2_client' and games != ['fortune-gems2']:
+        raise ValueError('Fortune Gems 2 service only supports its own game')
+    configs = {}
+    if spec['entry'] == 'super_ace_client' and games != ['super-ace']:
+        raise ValueError('Super Ace service only supports its own game')
+    if spec['entry'] == 'sweet_bonanza_pop_client' and games != ['sweet-bonanza-pop']:
+        raise ValueError('Sweet Bonanza POP service only supports its own game')
+    for game_id in games:
+        path = (directory / 'config' / (game_id + '.json')).resolve()
+        if not path.is_relative_to(directory / 'config') or not path.is_file():
+            raise ValueError('Each selected game needs a service-owned configuration')
+        configs[game_id] = path
+    return spec, configs
+
+
+def build_from_directory(directory, port=None):
+    directory = Path(directory).resolve()
+    spec, configs = load_profile(directory)
+    database = directory / 'data' / 'games.sqlite3'
+    # The directory owns all runtime state; no shared/default database fallback.
+    actual_port = spec['port'] if port is None else port
+    if spec['entry'] == 'captains_bounty_client':
+        from py.services.captains_bounty_demo import build_server
+        http = build_server(actual_port, database, configs['captains-bounty'])
+    elif spec['entry'] == 'fortune_rabbit_client':
+        from py.services.fortune_rabbit_demo import build_server
+        http = build_server(actual_port, database, configs['fortune-rabbit'])
+    elif spec['entry'] == 'wild_bandito_client':
+        from py.services.wild_bandito_demo import build_server
+        http = build_server(actual_port, database, configs['wild-bandito'])
+    elif spec['entry'] == 'tower_run_treasure_steps_client':
+        from py.services.tower_run_treasure_steps_demo import build_server
+        http = build_server(actual_port, database, configs['tower-run-treasure-steps'])
+    elif spec['entry'] == 'great_game_serengeti_client':
+        from py.services.great_game_serengeti_demo import build_server
+        http = build_server(actual_port, database, configs['great-game-serengeti'])
+    elif spec['entry'] == 'dr_zappo_client':
+        from py.services.dr_zappo_demo import build_server
+        http = build_server(actual_port, database, configs['dr-zappo'])
+    elif spec['entry'] == 'le_vampire_client':
+        from py.services.le_vampire_demo import build_server
+        http = build_server(actual_port, database, configs['le-vampire'])
+    elif spec['entry'] == 'wicked_grin_client':
+        from py.services.wicked_grin_demo import build_server
+        http = build_server(actual_port, database, configs['wicked-grin'])
+    elif spec['entry'] == 'roma_x_10000_client':
+        from py.services.roma_x_10000_demo import build_server
+        http = build_server(actual_port, database, configs['roma-x-10000'])
+    elif spec['entry'] == 'money_pot_deluxe_client':
+        from py.services.money_pot_deluxe_demo import build_server
+        http = build_server(actual_port, database, configs['money-pot-deluxe'])
+    elif spec['entry'] == 'olympus_preview':
+        from py.services.olympus_preview import build_server
+        http = build_server(actual_port)
+    elif spec['entry'] == 'three_billion_vaults_client':
+        from py.services.three_billion_vaults_demo import build_server
+        http = build_server(actual_port, database, configs['3-billion-vaults'])
+    elif spec['entry'] == 'jokers_fortune_winx_client':
+        from py.services.jokers_fortune_winx_demo import build_server
+        http = build_server(actual_port, database, configs['jokers-fortune-winx'])
+    elif spec['entry'] == 'fortune_gems2_client':
+        from py.services.fortune_gems2_demo import build_server
+        http = build_server(actual_port, database, configs['fortune-gems2'])
+    elif spec['entry'] == 'super_ace_client':
+        from py.services.super_ace_demo import build_server
+        http = build_server(actual_port, database, configs['super-ace'])
+    elif spec['entry'] == 'big_bass_bonanza_client':
+        from py.services.big_bass_bonanza_demo import build_server
+        http = build_server(actual_port, database, configs['big-bass-bonanza'])
+    elif spec['entry'] == 'sweet_bonanza_pop_client':
+        from py.services.sweet_bonanza_pop_demo import build_server
+        http = build_server(actual_port, database, configs['sweet-bonanza-pop'])
+    elif spec['entry'] == 'olympus_client':
+        from py.services.olympus_demo import build_server
+        http = build_server(actual_port, database, configs['gates-of-olympus'])
+    elif spec['entry'] == 'mahjong_client':
+        from py.services.local_demo import build_server
+        http = build_server(actual_port, database, configs['mahjong-ways2'])
+    elif spec['entry'] == 'buffalo_client':
+        from py.services.buffalo_demo import build_server
+        http = build_server(actual_port, database, configs['buffalo-win'])
+    else:
+        from py.services.game_api import build_server
+        http = build_server(actual_port, database, spec['games'], configs)
+    http.service_id = spec['id']
+    return http
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Run one isolated local service')
+    parser.add_argument('--service-dir', type=Path, required=True)
+    parser.add_argument('--port', type=int, help='Optional port override; data stays in this service directory')
+    args = parser.parse_args(argv)
+    directory = args.service_dir.resolve()
+    spec, _ = load_profile(directory)
+    logs = directory / 'logs'
+    logs.mkdir(parents=True, exist_ok=True)
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s',
+                        handlers=[logging.FileHandler(logs / 'service.log', encoding='utf-8'),
+                                  logging.StreamHandler()])
+    with build_from_directory(directory, args.port) as http:
+        logging.info('Service %s listening on http://localhost:%s; data=%s',
+                     spec['id'], http.server_port, directory / 'data')
+        try:
+            http.serve_forever()
+        except KeyboardInterrupt:
+            logging.info('Service %s stopped', spec['id'])
+
+
+if __name__ == '__main__':
+    main()

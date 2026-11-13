@@ -10,8 +10,8 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 from urllib.request import urlopen
 
-from server.adapters.pg.protocol import unpack
-from server.adapters.pg.wire import decode
+from py.adapters.pg.protocol import unpack
+from py.adapters.pg.wire import decode
 
 ROOT = Path(__file__).resolve().parents[2]
 CLIENT = ROOT / 'clients/captains-bounty'
@@ -82,7 +82,7 @@ def run(session):
                          request=row['id'], size=len(content), sha256=hashlib.sha256(content).hexdigest())
     (fixtures / 'resource-index.json').write_text(json.dumps(dict(session=session,
         last_request=len(data['rows']), resources=list(index.values()), lobby_cover=cover), indent=2), encoding='utf-8')
-    schema_path = ROOT / 'server/adapters/pg/captains_bounty_schema.json'
+    schema_path = ROOT / 'py/adapters/pg/captains_bounty_schema.json'
     if not schema_path.exists():
         print(json.dumps(dict(resources=len(index), bytes=sum(r['size'] for r in index.values()), state=data['state'], stage='assets; schema pending')))
         return

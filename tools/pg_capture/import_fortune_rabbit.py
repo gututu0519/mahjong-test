@@ -10,8 +10,8 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from urllib.request import urlopen
 
-from server.adapters.pg.protocol import unpack
-from server.adapters.pg.wire import decode
+from py.adapters.pg.protocol import unpack
+from py.adapters.pg.wire import decode
 
 ROOT = Path(__file__).resolve().parents[2]
 CLIENT = ROOT / 'clients/fortune-rabbit'
@@ -66,7 +66,7 @@ def run(session):
                          request=row['id'], size=len(content), sha256=hashlib.sha256(content).hexdigest())
     (fixtures / 'resource-index.json').write_text(json.dumps(dict(session=session,
         last_request=len(data['rows']), resources=list(index.values()), lobby_cover=cover), indent=2), encoding='utf-8')
-    schema = json.loads((ROOT / 'server/adapters/pg/fortune_rabbit_schema.json').read_text(encoding='utf-8'))
+    schema = json.loads((ROOT / 'py/adapters/pg/fortune_rabbit_schema.json').read_text(encoding='utf-8'))
     spins = []
     for row in data['rows']:
         if '/fortune-rabbit/v4/Spin' not in row['url'] or not row.get('body') or row.get('status') != 200:

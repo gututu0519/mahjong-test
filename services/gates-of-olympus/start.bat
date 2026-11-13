@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-node node\tools\start.mjs gates-of-olympus %*
+node server\tools\start.mjs gates-of-olympus %*
 pause

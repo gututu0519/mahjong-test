@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-python -m server.app
+python -m py.app
 pause

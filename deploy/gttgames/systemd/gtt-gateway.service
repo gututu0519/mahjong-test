@@ -10,7 +10,7 @@ Group=gtt
 WorkingDirectory=/opt/gtt/current
 Environment=PYTHONUNBUFFERED=1
 Environment=PYTHONDONTWRITEBYTECODE=1
-ExecStart=/usr/bin/python3 -m server.merchant.sandbox gateway --config /etc/gtt/production.json
+ExecStart=/usr/bin/python3 -m py.merchant.sandbox gateway --config /etc/gtt/production.json
 Restart=on-failure
 RestartSec=3
 TimeoutStopSec=100

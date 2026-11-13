@@ -3,7 +3,7 @@ import argparse
 import json
 import logging
 from pathlib import Path
-from server.services.wild_bandito_demo import build_server
+from py.services.wild_bandito_demo import build_server
 
 
 def losing_board():

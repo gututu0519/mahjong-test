@@ -1,0 +1,154 @@
+// Migrated from py/games/wicked_grin/engine.py. Runtime is Node.js only.
+import * as __rt from "../../../../compat/runtime.js";
+const __file__=__rt.sourcePath("py/games/wicked_grin/engine.py");
+export let COINS:any,Outcome:any,Path:any,ServiceError:any,WickedGrin:any,action:any,copy:any,decode_grid:any,encode_grid:any,hashlib:any,json:any,mask:any,random:any;
+
+copy=__rt.modules["copy"];
+hashlib=__rt.modules["hashlib"];
+json=__rt.modules["json"];
+Path=__rt.attr(__rt.modules["pathlib"],"Path");
+random=__rt.modules["random"];
+Outcome=__rt.attr(__rt.modules["py.core.contracts"],"Outcome");
+ServiceError=__rt.attr(__rt.modules["py.core.contracts"],"ServiceError");
+COINS=[1,2,3,4,5,6,7,8,9,10,20,30,40,50,100,150,250,500];
+encode_grid=__rt.fn("encode_grid",{names:["grid"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(grid){return __rt.bin("Add","--",__rt.call(__rt.attr("","join"),[(function*(){let value;for(const __t1 of __rt.iter(grid)){value=__t1;yield __rt.call(__rt.b["chr"],[__rt.bin("Add",__rt.call(__rt.b["int"],[value],__rt.kw([])),40)],__rt.kw([]));}})()],__rt.kw([])));return null;});
+decode_grid=__rt.fn("decode_grid",{names:["value"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(value){if(__rt.truth(__rt.or_(()=>__rt.unary("Not",__rt.call(__rt.b["isinstance"],[value,__rt.b["str"]],__rt.kw([]))),()=>__rt.compare(["NotEq"],[()=>__rt.call(__rt.b["len"],[value],__rt.kw([])),()=>27]),()=>__rt.compare(["NotEq"],[()=>__rt.item(value,__rt.slice(null,2,null)),()=>"--"])))){throw __rt.call(__rt.b["ValueError"],["Expected a 5 by 5 encoded grid"],__rt.kw([]));}
+return (()=>{let char;const __out:any[]=[];for(const __t2 of __rt.iter(__rt.item(value,__rt.slice(2,null,null)))){char=__t2;__out.push(__rt.bin("Sub",__rt.call(__rt.b["ord"],[char],__rt.kw([])),40));}return __out;})();return null;});
+mask=__rt.fn("mask",{names:["positions"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(positions){positions=__rt.call(__rt.b["set"],[positions],__rt.kw([]));
+return __rt.call(__rt.attr("","join"),[(function*(){let i;for(const __t3 of __rt.iter(__rt.call(__rt.b["range"],[25],__rt.kw([])))){i=__t3;yield (__rt.truth(__rt.compare(["In"],[()=>i,()=>positions]))?"1":"0");}})()],__rt.kw([]));return null;});
+action=__rt.fn("action",{names:["name"],kwonly:[],defaults:{},vararg:null,kwarg:"data"},function(name,data){return __rt.dict([["at",name],["data",data]]);return null;});
+WickedGrin=__rt.cls("WickedGrin",[],{"game_id":"wicked-grin","title":"Wicked Grin","version":"1.1.0","minor_unit":100,"__init__":__rt.fn("__init__",{names:["self", "config"],kwonly:[],defaults:{"config":null},vararg:null,kwarg:null},function(self,config){__rt.setattr(self,"config",__rt.call(__rt.attr(json,"loads"),[__rt.call(__rt.attr(__rt.call(Path,[__rt.or_(()=>config,()=>__rt.call(__rt.attr(__rt.call(Path,[__file__],__rt.kw([])),"with_name"),["config.json"],__rt.kw([])))],__rt.kw([])),"read_text"),[],__rt.kw([["encoding","utf-8"]]))],__rt.kw([])));
+__rt.setattr(self,"ruleset_id",__rt.item(__rt.call(__rt.attr(__rt.call(__rt.attr(hashlib,"sha256"),[__rt.call(__rt.attr(__rt.call(__rt.attr(json,"dumps"),[__rt.dict([["engine",__rt.attr(self,"version")],["config",__rt.attr(self,"config")]])],__rt.kw([["sort_keys",true]])),"encode"),[],__rt.kw([]))],__rt.kw([])),"hexdigest"),[],__rt.kw([])),__rt.slice(null,20,null)));return null;}),"initial_state":__rt.fn("initial_state",{names:["self", "seed"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,seed){return __rt.dict([["sid","0"],["phase","ready"],["pending",null],["last_round",null],["last_bet_minor",__rt.item(__rt.attr(self,"config"),"default_bet_minor")]]);return null;}),"public_state":__rt.fn("public_state",{names:["self", "state"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,state){return __rt.call(__rt.attr(copy,"deepcopy"),[state],__rt.kw([]));return null;}),"normalize_bet":__rt.fn("normalize_bet",{names:["self", "payload"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,payload){let amount,mode;if(__rt.truth(__rt.unary("Not",__rt.call(__rt.b["isinstance"],[payload,__rt.b["dict"]],__rt.kw([]))))){throw __rt.call(ServiceError,["BET_INVALID","Expected an object."],__rt.kw([]));}
+if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.call(__rt.attr(payload,"get"),["action"],__rt.kw([])),()=>"confirm"]))){if(__rt.truth(__rt.or_(()=>__rt.compare(["NotEq"],[()=>__rt.call(__rt.b["set"],[payload],__rt.kw([])),()=>__rt.set(["action","round_id"])]),()=>__rt.unary("Not",__rt.call(__rt.b["isinstance"],[__rt.item(payload,"round_id"),__rt.b["str"]],__rt.kw([])))))){throw __rt.call(ServiceError,["BET_INVALID","Invalid round confirmation."],__rt.kw([]));}
+return __rt.call(__rt.b["dict"],[],__rt.kw([["action","confirm"],["round_id",__rt.item(payload,"round_id")]]));}
+if(__rt.truth(__rt.bin("Sub",__rt.call(__rt.b["set"],[payload],__rt.kw([])),__rt.set(["bet_minor","mode"])))){throw __rt.call(ServiceError,["BET_INVALID","Unknown bet field."],__rt.kw([]));}
+{const __t4=Array.from(__rt.iter(__rt.tuple([__rt.call(__rt.attr(payload,"get"),["bet_minor"],__rt.kw([])),__rt.call(__rt.attr(payload,"get"),["mode","base"],__rt.kw([]))])));amount=__t4[0];mode=__t4[1];}
+if(__rt.truth(__rt.or_(()=>__rt.compare(["IsNot"],[()=>__rt.call(__rt.b["type"],[amount],__rt.kw([])),()=>__rt.b["int"]]),()=>__rt.compare(["NotIn"],[()=>amount,()=>__rt.item(__rt.attr(self,"config"),"bets_minor")]),()=>__rt.compare(["NotIn"],[()=>mode,()=>__rt.item(__rt.attr(self,"config"),"costs")])))){throw __rt.call(ServiceError,["BET_INVALID","Invalid bet amount or feature."],__rt.kw([]));}
+return __rt.call(__rt.b["dict"],[],__rt.kw([["bet_minor",amount],["mode",mode]]));return null;}),"evaluate":__rt.fn("evaluate",{names:["self", "grid", "bet"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,grid,bet){let amount,count,positions,symbol,tier,wins;wins=[];
+for(const __t5 of __rt.iter(__rt.call(__rt.b["range"],[1,10],__rt.kw([])))){symbol=__t5;positions=(()=>{let i,value;const __out:any[]=[];for(const __t6 of __rt.iter(__rt.call(__rt.b["enumerate"],[grid],__rt.kw([])))){{const __t7=Array.from(__rt.iter(__t6));i=__t7[0];value=__t7[1];}if(__rt.truth(__rt.compare(["Eq"],[()=>value,()=>symbol]))){__out.push(i);}}return __out;})();
+count=__rt.call(__rt.b["len"],[positions],__rt.kw([]));
+if(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>6]))){continue;}
+tier=(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>8]))?0:(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>10]))?1:(__rt.truth(__rt.compare(["Eq"],[()=>count,()=>10]))?2:(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>13]))?3:(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>15]))?4:(__rt.truth(__rt.compare(["Lt"],[()=>count,()=>17]))?5:6))))));
+amount=__rt.bin("FloorDiv",__rt.bin("Mult",bet,__rt.item(__rt.item(__rt.item(__rt.attr(self,"config"),"payouts"),__rt.call(__rt.b["str"],[symbol],__rt.kw([]))),tier)),10);
+__rt.call(__rt.attr(wins,"append"),[__rt.call(action,["gridwin"],__rt.kw([["winAmount",__rt.call(__rt.b["str"],[amount],__rt.kw([]))],["symbol",__rt.call(__rt.b["str"],[symbol],__rt.kw([]))],["mask",__rt.call(mask,[positions],__rt.kw([]))],["count",__rt.call(__rt.b["str"],[count],__rt.kw([]))]]))],__rt.kw([]));}
+return wins;return null;}),"free_award":__rt.fn("free_award",{names:["self", "grid", "rng", "game_mode"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,grid,rng,game_mode){let actions,count,feature,positions,scatters,values;
+scatters=(()=>{let i;const __out:any[]=[];for(const __t8 of __rt.iter(__rt.call(__rt.b["range"],[20,25],__rt.kw([])))){i=__t8;if(__rt.truth(__rt.compare(["In"],[()=>__rt.item(grid,i),()=>__rt.tuple([12,13])]))){__out.push(i);}}return __out;})();
+if(__rt.truth(__rt.unary("Not",scatters))){return __rt.tuple([[],0,null]);}
+feature=(__rt.truth(__rt.compare(["Eq"],[()=>__rt.item(grid,__rt.item(scatters,0)),()=>13]))?"fs_2":"fs");
+if(__rt.truth(__rt.and_(()=>__rt.compare(["NotEq"],[()=>game_mode,()=>"base"]),()=>__rt.compare(["NotEq"],[()=>feature,()=>game_mode])))){throw __rt.call(__rt.b["ValueError"],["A free-spin mode cannot award the other feature"],__rt.kw([]));}
+positions=(()=>{let p,row;const __out:any[]=[];for(const __t9 of __rt.iter(scatters)){p=__t9;for(const __t10 of __rt.iter(__rt.call(__rt.b["range"],[5],__rt.kw([])))){row=__t10;__out.push(__rt.bin("Add",__rt.bin("Mult",row,5),__rt.bin("Mod",p,5)));}}return __out;})();
+values=__rt.call(__rt.attr(rng,"choices"),[[1,2,3]],__rt.kw([["weights",[8,2,1]],["k",__rt.call(__rt.b["len"],[positions],__rt.kw([]))]]));
+count=__rt.call(__rt.b["sum"],[values],__rt.kw([]));
+actions=[__rt.call(action,["FsExpand"],__rt.kw([["p",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],positions],__rt.kw([]))],__rt.kw([]))],["s",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],values],__rt.kw([]))],__rt.kw([]))]]))];
+__rt.call(__rt.attr(actions,"append"),[(__rt.truth(__rt.compare(["Eq"],[()=>game_mode,()=>"base"]))?__rt.call(action,["bonusfeaturewon"],__rt.kw([["bfw",feature],["bfc",__rt.call(__rt.b["str"],[count],__rt.kw([]))]])):__rt.call(action,["retrigger"],__rt.kw([["p",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],positions],__rt.kw([]))],__rt.kw([]))],["s",__rt.call(__rt.b["str"],[count],__rt.kw([]))]])))],__rt.kw([]));
+return __rt.tuple([actions,count,feature]);return null;}),"expand_coins":__rt.fn("expand_coins",{names:["self", "grid", "rng", "amount", "game_mode", "stash", "collectors", "win_limit"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,grid,rng,amount,game_mode,stash,collectors,win_limit){let actions,bars,coin,col,columns,converted,details,epic,grins,hits,i,increase,multiplier,p,positions,row,triggers,values,win;
+grins=(()=>{let i,v;const __out:any[]=[];for(const __t11 of __rt.iter(__rt.call(__rt.b["enumerate"],[grid],__rt.kw([])))){{const __t12=Array.from(__rt.iter(__t11));i=__t12[0];v=__t12[1];}if(__rt.truth(__rt.compare(["In"],[()=>v,()=>__rt.tuple([14,15])]))){__out.push(i);}}return __out;})();
+triggers=(()=>{let i;const __out:any[]=[];for(const __t13 of __rt.iter(grins)){i=__t13;if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.bin("FloorDiv",i,5),()=>4]))){__out.push(i);}}return __out;})();
+if(__rt.truth(__rt.unary("Not",triggers))){return __rt.tuple([[],0]);}
+epic=__rt.call(__rt.b["next"],[(function*(){let p;for(const __t14 of __rt.iter(triggers)){p=__t14;if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.item(grid,p),()=>15]))){yield p;}}})(),null],__rt.kw([]));
+positions=(__rt.truth(__rt.compare(["IsNot"],[()=>epic,()=>null]))?__rt.bin("Add",[epic],__rt.call(__rt.b["sorted"],[(function*(){let p;for(const __t15 of __rt.iter(grins)){p=__t15;if(__rt.truth(__rt.compare(["NotEq"],[()=>p,()=>epic]))){yield p;}}})()],__rt.kw([["key",__rt.fn("<lambda>",{names:["p"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(p){return __rt.bin("Mod",p,5);return null;})]]))):triggers);
+{const __t16=Array.from(__rt.iter(__rt.tuple([__rt.call(__rt.b["list"],[grid],__rt.kw([])),__rt.dict([])])));converted=__t16[0];values=__t16[1];}
+for(const __t17 of __rt.iter(positions)){p=__t17;for(const __t18 of __rt.iter(__rt.call(__rt.b["range"],[__rt.bin("Add",__rt.bin("FloorDiv",p,5),1)],__rt.kw([])))){row=__t18;i=__rt.bin("Add",__rt.bin("Mult",row,5),__rt.bin("Mod",p,5));
+if(__rt.truth(__rt.and_(()=>row,()=>__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.item(__rt.attr(self,"config"),"multiplier_probability")])))){__rt.setitem(converted,i,16);}else{coin=__rt.item(__rt.call(__rt.attr(rng,"choices"),[__rt.call(__rt.b["range"],[__rt.call(__rt.b["len"],[COINS],__rt.kw([]))],__rt.kw([]))],__rt.kw([["weights",__rt.item(__rt.attr(self,"config"),"coin_weights")]])),0);
+{const __t19=Array.from(__rt.iter(__rt.tuple([__rt.bin("Add",21,coin),__rt.item(COINS,coin)])));__rt.setitem(converted,i,__t19[0]);__rt.setitem(values,i,__t19[1]);}}}}
+details=__rt.call(__rt.b["dict"],[],__rt.kw([["p",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],positions],__rt.kw([]))],__rt.kw([]))],["g",__rt.call(encode_grid,[converted],__rt.kw([]))]]));
+if(__rt.truth(__rt.compare(["IsNot"],[()=>epic,()=>null]))){__rt.setitem(details,"epicPos",__rt.call(__rt.b["str"],[epic],__rt.kw([])));}
+actions=[__rt.call(action,[(__rt.truth(__rt.compare(["IsNot"],[()=>epic,()=>null]))?"epicSpreads":"coinSpreads")],__rt.kw([[null,details]]))];
+for(const __t20 of __rt.iter(__rt.call(__rt.b["sorted"],[(function*(){let i,v;for(const __t21 of __rt.iter(__rt.call(__rt.b["enumerate"],[converted],__rt.kw([])))){{const __t22=Array.from(__rt.iter(__t21));i=__t22[0];v=__t22[1];}if(__rt.truth(__rt.compare(["Eq"],[()=>v,()=>16]))){yield i;}}})()],__rt.kw([["key",__rt.fn("<lambda>",{names:["i"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(i){return __rt.tuple([__rt.bin("Mod",i,5),__rt.bin("FloorDiv",i,5)]);return null;})]])))){p=__t20;multiplier=__rt.item(__rt.call(__rt.attr(rng,"choices"),[[2,3,4,5,10,20]],__rt.kw([["weights",[60,25,10,4,1,1]]])),0);
+hits=__rt.call(__rt.b["sorted"],[(function*(){let i;for(const __t23 of __rt.iter(values)){i=__t23;if(__rt.truth(__rt.and_(()=>__rt.compare(["Lt"],[()=>__rt.bin("FloorDiv",i,5),()=>__rt.bin("FloorDiv",p,5)]),()=>__rt.compare(["LtE"],[()=>__rt.call(__rt.b["abs"],[__rt.bin("Sub",__rt.bin("Mod",i,5),__rt.bin("Mod",p,5))],__rt.kw([])),()=>1])))){yield i;}}})()],__rt.kw([["key",__rt.fn("<lambda>",{names:["i"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(i){return __rt.tuple([__rt.bin("Mod",i,5),__rt.unary("USub",__rt.bin("FloorDiv",i,5))]);return null;})]]));
+for(const __t24 of __rt.iter(hits)){i=__t24;__rt.setitem(values,i,__rt.bin("Mult",__rt.item(values,i),multiplier));}
+bars=__rt.dict([]);
+if(__rt.truth(__rt.compare(["Eq"],[()=>game_mode,()=>"fs_2"]))){columns=(()=>{let c;const __out:any[]=[];for(const __t25 of __rt.iter(__rt.call(__rt.b["range"],[5],__rt.kw([])))){c=__t25;if(__rt.truth(__rt.compare(["LtE"],[()=>__rt.call(__rt.b["abs"],[__rt.bin("Sub",c,__rt.bin("Mod",p,5))],__rt.kw([])),()=>1]))){__out.push(c);}}return __out;})();
+for(const __t26 of __rt.iter(columns)){col=__t26;__rt.setitem(collectors,col,__rt.bin("Mult",__rt.item(collectors,col),multiplier));}
+bars=__rt.call(__rt.b["dict"],[],__rt.kw([["barHits",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],columns],__rt.kw([]))],__rt.kw([]))],["barValues",(()=>{let c;const __out:any[]=[];for(const __t27 of __rt.iter(columns)){c=__t27;__out.push(__rt.call(__rt.b["str"],[__rt.item(collectors,c)],__rt.kw([])));}return __out;})()]]));}
+__rt.call(__rt.attr(actions,"append"),[__rt.call(action,["mult"],__rt.kw([["p",__rt.call(__rt.b["str"],[p],__rt.kw([]))],["m",__rt.call(__rt.b["str"],[multiplier],__rt.kw([]))],["hits",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],hits],__rt.kw([]))],__rt.kw([]))],["v",(()=>{let i;const __out:any[]=[];for(const __t28 of __rt.iter(hits)){i=__t28;__out.push(__rt.call(__rt.b["str"],[__rt.item(values,i)],__rt.kw([])));}return __out;})()],[null,bars]]))],__rt.kw([]));}
+columns=__rt.call(__rt.b["sorted"],[__rt.call(__rt.b["set"],[(function*(){let i;for(const __t29 of __rt.iter(values)){i=__t29;yield __rt.bin("Mod",i,5);}})()],__rt.kw([]))],__rt.kw([]));
+if(__rt.truth(__rt.compare(["Eq"],[()=>game_mode,()=>"fs"]))){for(const __t30 of __rt.iter(columns)){col=__t30;hits=__rt.call(__rt.b["sorted"],[(function*(){let i;for(const __t31 of __rt.iter(values)){i=__t31;if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.bin("Mod",i,5),()=>col]))){yield i;}}})()],__rt.kw([]));
+for(const __t32 of __rt.iter(hits)){i=__t32;__rt.setitem(values,i,__rt.bin("Mult",__rt.item(values,i),__rt.item(stash,col)));}
+__rt.setitem(stash,col,__rt.bin("Add",__rt.item(stash,col),1));
+__rt.call(__rt.attr(actions,"append"),[__rt.call(action,["columnMult"],__rt.kw([["c",__rt.call(__rt.b["str"],[col],__rt.kw([]))],["m",__rt.call(__rt.b["str"],[__rt.item(stash,col)],__rt.kw([]))],["hits",__rt.call(__rt.b["list"],[__rt.call(__rt.b["map"],[__rt.b["str"],hits],__rt.kw([]))],__rt.kw([]))],["v",(()=>{let i;const __out:any[]=[];for(const __t33 of __rt.iter(hits)){i=__t33;__out.push(__rt.call(__rt.b["str"],[__rt.item(values,i)],__rt.kw([])));}return __out;})()]]))],__rt.kw([]));}}
+if(__rt.truth(__rt.compare(["Eq"],[()=>game_mode,()=>"fs_2"]))){for(const __t34 of __rt.iter(columns)){col=__t34;hits=(()=>{let i;const __out:any[]=[];for(const __t35 of __rt.iter(values)){i=__t35;if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.bin("Mod",i,5),()=>col]))){__out.push(i);}}return __out;})();
+increase=__rt.call(__rt.b["sum"],[(function*(){let i;for(const __t36 of __rt.iter(hits)){i=__t36;yield __rt.item(values,i);}})()],__rt.kw([]));
+__rt.setitem(collectors,col,__rt.bin("Add",__rt.item(collectors,col),increase));
+__rt.call(__rt.attr(actions,"append"),[__rt.call(action,["totalBarAdd"],__rt.kw([["c",__rt.call(__rt.b["str"],[col],__rt.kw([]))],["h",__rt.call(mask,[hits],__rt.kw([]))],["increase",__rt.call(__rt.b["str"],[increase],__rt.kw([]))],["total",__rt.call(__rt.b["str"],[__rt.item(collectors,col)],__rt.kw([]))]]))],__rt.kw([]));}
+if(__rt.truth(__rt.compare(["GtE"],[()=>__rt.bin("Mult",amount,__rt.call(__rt.b["sum"],[collectors],__rt.kw([]))),()=>win_limit]))){__rt.call(__rt.attr(actions,"append"),[__rt.call(action,["finalWin"],__rt.kw([["winAmount",__rt.call(__rt.b["str"],[win_limit],__rt.kw([]))]]))],__rt.kw([]));
+return __rt.tuple([actions,win_limit]);}
+return __rt.tuple([actions,0]);}
+win=__rt.call(__rt.b["min"],[__rt.bin("Mult",amount,__rt.call(__rt.b["sum"],[__rt.call(__rt.attr(values,"values"),[],__rt.kw([]))],__rt.kw([]))),win_limit],__rt.kw([]));
+__rt.call(__rt.attr(actions,"append"),[__rt.call(action,["cashWin"],__rt.kw([["h",__rt.call(mask,[values],__rt.kw([]))],["w",__rt.call(__rt.b["str"],[win],__rt.kw([]))]]))],__rt.kw([]));
+return __rt.tuple([actions,win]);return null;}),"step":__rt.fn("step",{names:["self", "state", "bet", "seed", "sid"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,state,bet,seed,sid){let amount,event,events,free_count,free_mode,mode,pending,rng,round_data,total;state=__rt.call(__rt.attr(copy,"deepcopy"),[state],__rt.kw([]));
+if(__rt.truth(__rt.compare(["Eq"],[()=>__rt.call(__rt.attr(bet,"get"),["action"],__rt.kw([])),()=>"confirm"]))){pending=__rt.item(state,"pending");
+if(__rt.truth(__rt.or_(()=>__rt.unary("Not",pending),()=>__rt.compare(["NotEq"],[()=>__rt.item(bet,"round_id"),()=>__rt.item(pending,"round_id")])))){throw __rt.call(ServiceError,["ROUND_INVALID","No matching pending round.",409],__rt.kw([]));}
+__rt.call(__rt.attr(state,"update"),[],__rt.kw([["sid",sid],["phase","ready"],["pending",null]]));
+event=__rt.dict([["round_id",__rt.item(pending,"round_id")],["next_phase","ready"],["confirm",true],["round",__rt.call(__rt.b["dict"],[],__rt.kw([["roundId",__rt.item(pending,"round_id")],["status","completed"],["possibleActions",[]],["events",[]]]))]]);
+return __rt.call(Outcome,[state,event,0,__rt.item(pending,"win_minor")],__rt.kw([]));}
+if(__rt.truth(__rt.item(state,"pending"))){throw __rt.call(ServiceError,["ROUND_PENDING","Complete the previous round presentation first.",409],__rt.kw([]));}
+rng=__rt.call(__rt.attr(random,"Random"),[__rt.call(__rt.b["str"],[seed],__rt.kw([]))],__rt.kw([]));
+{const __t37=Array.from(__rt.iter(__rt.tuple([__rt.item(bet,"bet_minor"),__rt.item(bet,"mode")])));amount=__t37[0];mode=__t37[1];}
+{const __t38=Array.from(__rt.iter(__rt.call(__rt.attr(self,"generate"),[rng,amount,mode],__rt.kw([]))));events=__t38[0];total=__t38[1];free_count=__t38[2];free_mode=__t38[3];}
+round_data=__rt.call(__rt.b["dict"],[],__rt.kw([["roundId",sid],["status",(__rt.truth(total)?"wfwpc":"completed")],["possibleActions",[]],["events",events]]));
+__rt.call(__rt.attr(state,"update"),[],__rt.kw([["sid",sid],["last_bet_minor",amount],["last_round",round_data],["phase",(__rt.truth(total)?"pending":"ready")],["pending",(__rt.truth(total)?__rt.dict([["round_id",sid],["win_minor",total],["bet_minor",amount],["mode",mode]]):null)]]));
+event=__rt.dict([["round_id",sid],["next_phase",__rt.item(state,"phase")],["round",round_data],["bet_minor",amount],["mode",mode],["total_minor",total],["free_spins",free_count],["free_mode",free_mode]]);
+return __rt.call(Outcome,[state,event,__rt.bin("Mult",amount,__rt.item(__rt.item(__rt.attr(self,"config"),"costs"),mode)),0],__rt.kw([]));return null;}),"generate":__rt.fn("generate",{names:["self", "rng", "amount", "mode"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(self,rng,amount,mode){let _,cap,collectors,draw,emit,events,extra,free_count,free_mode,granted_total,play,played,remaining,stash,total,win;{const __t39=Array.from(__rt.iter(__rt.tuple([[],0])));events=__t39[0];total=__t39[1];}
+cap=__rt.bin("Mult",amount,__rt.item(__rt.attr(self,"config"),"maximum_win_multiplier"));
+{const __t40=Array.from(__rt.iter(__rt.tuple([__rt.bin("Mult",[1],5),__rt.bin("Mult",[1],5)])));stash=__t40[0];collectors=__t40[1];}
+emit=__rt.fn("emit",{names:["kind", "data", "win"],kwonly:[],defaults:{"win":0},vararg:null,kwarg:null},function(kind,data,win){
+win=__rt.call(__rt.b["min"],[win,__rt.bin("Sub",cap,total)],__rt.kw([]));
+total=__rt.bin("Add",total,win);
+__rt.call(__rt.attr(events,"append"),[__rt.call(__rt.b["dict"],[],__rt.kw([["et",2],["etn",kind],["en","0"],["ba","0"],["bc","0"],["wa",__rt.call(__rt.b["str"],[win],__rt.kw([]))],["wc","0"],["awa",__rt.call(__rt.b["str"],[total],__rt.kw([]))],["awc","0"],["c",data]]))],__rt.kw([]));return null;});
+draw=__rt.fn("draw",{names:["reel"],kwonly:[],defaults:{},vararg:null,kwarg:null},function(reel){return __rt.call(__rt.attr(rng,"choice"),[__rt.item(__rt.item(__rt.attr(self,"config"),"reels"),reel)],__rt.kw([]));return null;});
+play=__rt.fn("play",{names:["game_mode", "forced"],kwonly:[],defaults:{"forced":null},vararg:null,kwarg:null},function(game_mode,forced){let actions,cascade,cells,col,collected,columns,data,fs_mode,granted,grid,item,kept,other,paid,prefix,remaining,removed,row,special,symbol,win,wins;
+grid=(()=>{let i;const __out:any[]=[];for(const __t41 of __rt.iter(__rt.call(__rt.b["range"],[25],__rt.kw([])))){i=__t41;__out.push(__rt.call(draw,[__rt.bin("Mod",i,5)],__rt.kw([])));}return __out;})();
+special=null;
+if(__rt.truth(__rt.compare(["In"],[()=>forced,()=>__rt.tuple(["fs","fs_2"])]))){special=(__rt.truth(__rt.compare(["Eq"],[()=>forced,()=>"fs"]))?12:13);}else{if(__rt.truth(__rt.compare(["Eq"],[()=>forced,()=>"mod_spread"]))){special=(__rt.truth(__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.item(__rt.attr(self,"config"),"epic_fraction")]))?15:14);}else{if(__rt.truth(__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.bin("Mult",__rt.item(__rt.attr(self,"config"),"free_symbol_probability"),(__rt.truth(__rt.and_(()=>__rt.compare(["Eq"],[()=>mode,()=>"mod_bonus"]),()=>__rt.compare(["Eq"],[()=>game_mode,()=>"base"])))?5:1))]))){special=(__rt.truth(__rt.or_(()=>__rt.compare(["Eq"],[()=>game_mode,()=>"fs_2"]),()=>__rt.and_(()=>__rt.compare(["Eq"],[()=>game_mode,()=>"base"]),()=>__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.float(0.25)]))))?13:12);}else{if(__rt.truth(__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.item(__rt.attr(self,"config"),"grin_probability")]))){special=(__rt.truth(__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.item(__rt.attr(self,"config"),"epic_fraction")]))?15:14);}}}}
+if(__rt.truth(special)){columns=__rt.call(__rt.attr(rng,"sample"),[__rt.call(__rt.b["range"],[5],__rt.kw([])),(__rt.truth(__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.float(0.15)]))?2:1)],__rt.kw([]));
+for(const __t42 of __rt.iter(columns)){col=__t42;row=(__rt.truth(forced)?4:__rt.call(__rt.attr(rng,"randrange"),[5],__rt.kw([])));
+__rt.setitem(grid,__rt.bin("Add",__rt.bin("Mult",row,5),col),special);}
+if(__rt.truth(__rt.and_(()=>__rt.compare(["Eq"],[()=>special,()=>15]),()=>__rt.compare(["Lt"],[()=>__rt.call(__rt.attr(rng,"random"),[],__rt.kw([])),()=>__rt.float(0.5)])))){other=__rt.call(__rt.attr(rng,"choice"),[(()=>{let c;const __out:any[]=[];for(const __t43 of __rt.iter(__rt.call(__rt.b["range"],[5],__rt.kw([])))){c=__t43;if(__rt.truth(__rt.compare(["NotIn"],[()=>c,()=>columns]))){__out.push(c);}}return __out;})()],__rt.kw([]));
+__rt.setitem(grid,__rt.bin("Add",__rt.bin("Mult",__rt.call(__rt.attr(rng,"randrange"),[5],__rt.kw([])),5),other),14);}}
+prefix=(__rt.truth(__rt.compare(["Eq"],[()=>game_mode,()=>"base"]))?"":__rt.bin("Add",game_mode,"_"));
+let __t44=true;for(const __t45 of __rt.iter(__rt.call(__rt.b["range"],[1000],__rt.kw([])))){cascade=__t45;wins=__rt.call(__rt.attr(self,"evaluate"),[grid,amount],__rt.kw([]));
+win=__rt.call(__rt.b["sum"],[(function*(){let w;for(const __t46 of __rt.iter(wins)){w=__t46;yield __rt.call(__rt.b["int"],[__rt.item(__rt.item(w,"data"),"winAmount")],__rt.kw([]));}})()],__rt.kw([]));
+remaining=__rt.bin("Sub",cap,total);
+for(const __t47 of __rt.iter(wins)){item=__t47;paid=__rt.call(__rt.b["min"],[__rt.call(__rt.b["int"],[__rt.item(__rt.item(item,"data"),"winAmount")],__rt.kw([])),remaining],__rt.kw([]));
+__rt.setitem(__rt.item(item,"data"),"winAmount",__rt.call(__rt.b["str"],[paid],__rt.kw([])));
+remaining=__rt.bin("Sub",remaining,paid);}
+removed=(()=>{let i,value,w;const __out:any[]=[];for(const __t48 of __rt.iter(wins)){w=__t48;for(const __t49 of __rt.iter(__rt.call(__rt.b["enumerate"],[__rt.item(__rt.item(w,"data"),"mask")],__rt.kw([])))){{const __t50=Array.from(__rt.iter(__t49));i=__t50[0];value=__t50[1];}if(__rt.truth(__rt.compare(["Eq"],[()=>value,()=>"1"]))){__out.push(i);}}}return __rt.set(__out);})();
+data=__rt.dict([["reelSet","default"],["grid",__rt.call(encode_grid,[grid],__rt.kw([]))]]);
+if(__rt.truth(wins)){__rt.setitem(data,"actions",__rt.bin("Add",wins,[__rt.call(action,["remove"],__rt.kw([["mask",__rt.call(mask,[removed],__rt.kw([]))]]))]));}
+__rt.call(emit,[__rt.bin("Add",prefix,(__rt.truth(__rt.compare(["Eq"],[()=>cascade,()=>0]))?"reveal":"collapse")),data,win],__rt.kw([]));
+if(__rt.truth(__rt.and_(()=>__rt.compare(["Eq"],[()=>game_mode,()=>"fs_2"]),()=>__rt.compare(["Lt"],[()=>total,()=>cap]),()=>__rt.compare(["GtE"],[()=>__rt.bin("Add",total,__rt.bin("Mult",amount,__rt.call(__rt.b["sum"],[collectors],__rt.kw([])))),()=>cap])))){collected=__rt.bin("Sub",cap,total);
+__rt.call(__rt.attr(__rt.call(__rt.attr(data,"setdefault"),["actions",[]],__rt.kw([])),"append"),[__rt.call(action,["finalWin"],__rt.kw([["winAmount",__rt.call(__rt.b["str"],[collected],__rt.kw([]))]]))],__rt.kw([]));
+__rt.setitem(__rt.item(events,__rt.unary("USub",1)),"wa",__rt.call(__rt.b["str"],[__rt.bin("Add",__rt.call(__rt.b["int"],[__rt.item(__rt.item(events,__rt.unary("USub",1)),"wa")],__rt.kw([])),collected)],__rt.kw([])));
+total=cap;
+__rt.setitem(__rt.item(events,__rt.unary("USub",1)),"awa",__rt.call(__rt.b["str"],[total],__rt.kw([])));}
+if(__rt.truth(__rt.compare(["GtE"],[()=>total,()=>cap]))){return __rt.tuple([0,null]);}
+if(__rt.truth(__rt.unary("Not",wins))){__t44=false;break;}
+for(const __t51 of __rt.iter(__rt.call(__rt.b["range"],[5],__rt.kw([])))){col=__t51;kept=(()=>{let row;const __out:any[]=[];for(const __t52 of __rt.iter(__rt.call(__rt.b["range"],[5],__rt.kw([])))){row=__t52;if(__rt.truth(__rt.compare(["NotIn"],[()=>__rt.bin("Add",__rt.bin("Mult",row,5),col),()=>removed]))){__out.push(__rt.item(grid,__rt.bin("Add",__rt.bin("Mult",row,5),col)));}}return __out;})();
+cells=__rt.bin("Add",(()=>{let _;const __out:any[]=[];for(const __t53 of __rt.iter(__rt.call(__rt.b["range"],[__rt.bin("Sub",5,__rt.call(__rt.b["len"],[kept],__rt.kw([])))],__rt.kw([])))){_=__t53;__out.push(__rt.call(draw,[col],__rt.kw([])));}return __out;})(),kept);
+for(const __t54 of __rt.iter(__rt.call(__rt.b["enumerate"],[cells],__rt.kw([])))){{const __t55=Array.from(__rt.iter(__t54));row=__t55[0];symbol=__t55[1];}__rt.setitem(grid,__rt.bin("Add",__rt.bin("Mult",row,5),col),symbol);}}}if(__t44){throw __rt.call(__rt.b["RuntimeError"],["Generated cascade exceeds sanity limit"],__rt.kw([]));}
+{const __t56=Array.from(__rt.iter(__rt.call(__rt.attr(self,"free_award"),[grid,rng,game_mode],__rt.kw([]))));actions=__t56[0];granted=__t56[1];fs_mode=__t56[2];}
+if(__rt.truth(granted)){__rt.setitem(data,"actions",actions);
+return __rt.tuple([granted,fs_mode]);}
+{const __t57=Array.from(__rt.iter(__rt.call(__rt.attr(self,"expand_coins"),[grid,rng,amount,game_mode,stash,collectors,__rt.bin("Sub",cap,total)],__rt.kw([]))));actions=__t57[0];win=__t57[1];}
+if(__rt.truth(actions)){__rt.setitem(data,"actions",actions);}
+__rt.setitem(__rt.item(events,__rt.unary("USub",1)),"wa",__rt.call(__rt.b["str"],[win],__rt.kw([])));
+total=__rt.bin("Add",total,win);
+__rt.setitem(__rt.item(events,__rt.unary("USub",1)),"awa",__rt.call(__rt.b["str"],[total],__rt.kw([])));
+return __rt.tuple([0,null]);return null;});
+{const __t58=Array.from(__rt.iter(__rt.call(play,["base",(__rt.truth(__rt.compare(["In"],[()=>mode,()=>__rt.tuple(["fs","fs_2","mod_spread"])]))?mode:null)],__rt.kw([]))));free_count=__t58[0];free_mode=__t58[1];}
+granted_total=free_count;
+if(__rt.truth(__rt.and_(()=>free_count,()=>__rt.compare(["Lt"],[()=>total,()=>cap])))){__rt.call(emit,["feature_enter",__rt.dict([["bonusFeatureWon",free_mode],["bonusFeatureCount",__rt.call(__rt.b["str"],[free_count],__rt.kw([]))]])],__rt.kw([]));
+remaining=free_count;
+played=0;
+while(__rt.truth(__rt.and_(()=>__rt.compare(["Gt"],[()=>remaining,()=>0]),()=>__rt.compare(["Lt"],[()=>total,()=>cap])))){remaining=__rt.bin("Sub",remaining,1);
+{const __t59=Array.from(__rt.iter(__rt.call(play,[free_mode],__rt.kw([]))));extra=__t59[0];_=__t59[1];}
+remaining=__rt.bin("Add",remaining,extra);
+granted_total=__rt.bin("Add",granted_total,extra);
+played=__rt.bin("Add",played,1);
+if(__rt.truth(__rt.compare(["Gt"],[()=>played,()=>1000]))){throw __rt.call(__rt.b["RuntimeError"],["Generated bonus exceeds sanity limit"],__rt.kw([]));}}
+if(__rt.truth(__rt.and_(()=>__rt.compare(["Eq"],[()=>free_mode,()=>"fs_2"]),()=>__rt.compare(["Lt"],[()=>total,()=>cap])))){win=__rt.call(__rt.b["min"],[__rt.bin("Mult",amount,__rt.call(__rt.b["sum"],[collectors],__rt.kw([]))),__rt.bin("Sub",cap,total)],__rt.kw([]));
+__rt.call(emit,["fs_2_collapse",__rt.call(__rt.b["dict"],[],__rt.kw([["grid",__rt.item(__rt.item(__rt.item(events,__rt.unary("USub",1)),"c"),"grid")],["reelSet","default"],["actions",[__rt.call(action,["finalWin"],__rt.kw([["winAmount",__rt.call(__rt.b["str"],[win],__rt.kw([]))]]))]]])),win],__rt.kw([]));}
+if(__rt.truth(__rt.compare(["Lt"],[()=>total,()=>cap]))){__rt.call(emit,["feature_exit",__rt.dict([])],__rt.kw([]));}}
+if(__rt.truth(__rt.compare(["GtE"],[()=>total,()=>cap]))){__rt.call(emit,["max_win_reached",__rt.dict([])],__rt.kw([]));}
+return __rt.tuple([events,total,granted_total,free_mode]);return null;})});

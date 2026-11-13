@@ -1,0 +1,62 @@
+{
+  "source": "local response capture",
+  "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+  "assets": [
+    {
+      "path": "shared/2fd142260e/233f8e0f49.a48e7.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/233f8e0f49.a48e7.png",
+      "sha256": "c2ee9c4253b9ed8d143fad8f8fb0b60f88b2920f486719abc70076617f988487",
+      "bytes": 4709,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 513
+    },
+    {
+      "path": "shared/2fd142260e/265deb234f.015a5.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/265deb234f.015a5.png",
+      "sha256": "4de691a5522f5dc2da9f08bd453af015e32fa475b98ce086103c23e6996f728f",
+      "bytes": 5047,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 514
+    },
+    {
+      "path": "shared/2fd142260e/3aef3b3a97.4330e.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/3aef3b3a97.4330e.png",
+      "sha256": "06c1a8e3cfd0d4ad5b4608b4758de3ec1b8e489676313dc3e6f0c43e92a48815",
+      "bytes": 178352,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 515
+    },
+    {
+      "path": "shared/2fd142260e/44b04b1575.75b47.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/44b04b1575.75b47.png",
+      "sha256": "20edfad9acc27a2b46b213552bdcaa29d133bc5a5cea9b66ba073cebc5e29722",
+      "bytes": 2400,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 516
+    },
+    {
+      "path": "shared/2fd142260e/c83021c02d.a3176.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/c83021c02d.a3176.png",
+      "sha256": "249cf945a9b99864aa2ca5d47ecbfbd9e136605765b465d13cddc5c8c3fbb31a",
+      "bytes": 2713,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 517
+    },
+    {
+      "path": "shared/2fd142260e/7ebaa57986.3c6ee.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/7ebaa57986.3c6ee.png",
+      "sha256": "46733ece2e5866e17c4f58083dc92ed1ae94e47dfb1203383d4482249e184286",
+      "bytes": 11036,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 518
+    },
+    {
+      "path": "shared/2fd142260e/d8f5797fc7.a0df6.png",
+      "source": "https://s5.mmga1.com/shared/2fd142260e/d8f5797fc7.a0df6.png",
+      "sha256": "5682e728eefc3ddd7c5afc1195a172f30f474940cc6d5a12206f77d152cf0872",
+      "bytes": 10774,
+      "session": "1979cf39544d4c4c8b86d6e3ac0e036f",
+      "requestId": 519
+    }
+  ]
+}

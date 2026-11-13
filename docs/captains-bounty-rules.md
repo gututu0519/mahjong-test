@@ -64,6 +64,6 @@
 
 ```powershell
 python -m tools.pg_capture.import_captains_bounty --session 3e6ba8e92c174e61b849c9b0d5e2db7b
-python -m unittest server.tests.test_captains_bounty -v
-python -m server.run --service-dir services/captains-bounty
+python -m unittest py.tests.test_captains_bounty -v
+python -m py.run --service-dir services/captains-bounty
 ```

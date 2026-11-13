@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.merchant.sandbox admin
+python -m py.merchant.sandbox admin
 pause

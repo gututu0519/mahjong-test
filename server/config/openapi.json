@@ -1,0 +1,2749 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GTT Merchant Integration API",
+    "version": "1.14.0",
+    "description": "统一 merchant_secret / HMAC-SHA256。四个请求头必须同时提供，签名算法见配套指南。商户钱包和预派彩 operation 的 server 为占位符。"
+  },
+  "servers": [
+    {
+      "url": "https://api.gttgames.com",
+      "description": "GTT 接入地址，以交付环境为准"
+    }
+  ],
+  "security": [
+    {
+      "Merchant": [],
+      "Timestamp": [],
+      "Nonce": [],
+      "Signature": []
+    }
+  ],
+  "paths": {
+    "/gtt/v1/games/list": {
+      "post": {
+        "operationId": "games_list",
+        "summary": "获取已授权游戏",
+        "description": "返回本商户已授权且当前可接入的游戏，不包含未开放或钱包不兼容的游戏。\n\n新商户默认授权全部游戏。平台运营可自主开放任何游戏，特殊玩法收集状态与缺失项仅供内部参考，不限制开放或接入。商户目录、games/list 及导出仅返回已授权、已开放且钱包兼容的游戏，不含内部审核资料。关闭游戏后停止新接入和新整局，已开始回合仍可恢复结算。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "games": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Game"
+                          }
+                        }
+                      },
+                      "required": [
+                        "games"
+                      ]
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "games": []
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gtt/v1/games/launch": {
+      "post": {
+        "operationId": "games_launch",
+        "summary": "创建玩家游戏会话",
+        "description": "由商户服务端调用。GTT 先校验授权、平台开放状态和钱包兼容性，再查询商户钱包并返回绑定会话。新接入被拒绝时不会调用钱包。\n\n会话当前有效期为 24 小时。相同商户、玩家和游戏再次进入会恢复原有游戏状态。\n\n直接打开完整 launch_url；19 款游戏可使用不同 origin。本机统一入口使用 g1.localhost 至 g19.localhost，旧美洲野牛入口可能返回相对地址。不要替换域名，不要在日志或第三方统计中记录会话凭据。\n\n玩家账户必须已存在于商户钱包。配置预派彩 URL 后首次启动提供 external_username，后续沿用已保存映射。\n\nHTTP 403 / GAME_CLOSED：平台未开放此游戏。已有未结算操作或已开始回合允许重建恢复会话，但不能开始新整局。\n\n商户入口使用已验证的商户会话和账号模式，不使用 mock / demo / trial / practice 启动配置。请原样打开返回链接，不自行追加或替换模式参数。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "平台玩家唯一标识；不同商户可使用相同玩家号",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "已授权的 GTT 数字游戏 ID 1–19；Buffalo Win 为 1",
+                    "default": 1
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "客户端语言",
+                    "enum": [
+                      "zh",
+                      "en"
+                    ],
+                    "default": "en"
+                  },
+                  "external_username": {
+                    "type": "string",
+                    "description": "预派彩平台账号；配置预派彩 URL 后首次启动时需要，与 player_id 分开绑定",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "prebet_type": {
+                    "type": "string",
+                    "description": "普通付费回合类型；提供时也必须提供 external_username",
+                    "enum": [
+                      "NORMAL",
+                      "SURE_WIN"
+                    ],
+                    "default": "NORMAL"
+                  }
+                },
+                "required": [
+                  "player_id"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "game_id": 1,
+                "language": "en"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Launch"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "game_id": 1,
+                    "launch_url": "https://play.gttgames.com/?ops=SESSION_TOKEN&l=en&lang=en&btt=1&ot=GTT000001",
+                    "expires_at": 1793275200,
+                    "balance_minor": 20000000,
+                    "currency": "USD",
+                    "minor_unit": 10000
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/v1/balance": {
+      "post": {
+        "operationId": "wallet_balance",
+        "summary": "查询玩家余额",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。在创建游戏会话、读取游戏状态等场景调用。平台钱包是玩家余额的真实来源。\n\n请求可能附带 round_id 等上下文字段；余额仍以商户和 player_id 为账户维度。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+                  },
+                  "decision_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "固定游戏接入 ID"
+                  },
+                  "round_end": {
+                    "type": "boolean",
+                    "description": "当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。"
+                  },
+                  "decision_status": {
+                    "type": "string",
+                    "enum": [
+                      "not_requested",
+                      "pending",
+                      "accepted",
+                      "fallback"
+                    ],
+                    "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+                  },
+                  "fallback_reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "预派彩调用或格式失败原因；未回退时为 null。"
+                  },
+                  "requested_range": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "number"
+                      ]
+                    },
+                    "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+                  },
+                  "resolution": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/DecisionResolution"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+                  },
+                  "resolution_minor_unit": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+                    "enum": [
+                      10000,
+                      null
+                    ],
+                    "readOnly": true
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Balance"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "balance_minor": 20000000
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/wallet/v1/debit": {
+      "post": {
+        "operationId": "wallet_debit",
+        "summary": "扣除投注费用",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。一次付费投注或购买免费对应一笔扣款。余额不足必须持久化拒绝结果。\n\n相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。\n\n响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。\n\n主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "transaction_id": {
+                    "type": "string",
+                    "description": "商户范围全局唯一的钱包交易号",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+                  },
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9000000000000000,
+                    "description": "非负整数，固定为 1/10000 USD，不接受浮点数或布尔值"
+                  },
+                  "decision_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "固定游戏接入 ID"
+                  },
+                  "round_end": {
+                    "type": "boolean",
+                    "description": "当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。"
+                  },
+                  "decision_status": {
+                    "type": "string",
+                    "enum": [
+                      "not_requested",
+                      "pending",
+                      "accepted",
+                      "fallback"
+                    ],
+                    "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+                  },
+                  "fallback_reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "预派彩调用或格式失败原因；未回退时为 null。"
+                  },
+                  "requested_range": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "number"
+                      ]
+                    },
+                    "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+                  },
+                  "resolution": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/DecisionResolution"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+                  },
+                  "resolution_minor_unit": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+                    "enum": [
+                      10000,
+                      null
+                    ],
+                    "readOnly": true
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency",
+                  "transaction_id",
+                  "round_id",
+                  "amount_minor"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD",
+                "transaction_id": "round-001:debit",
+                "round_id": "round-001",
+                "amount_minor": 10000
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Mutation"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "transaction_id": "round-001:debit",
+                    "status": "applied",
+                    "amount_minor": 10000,
+                    "applied_minor": 10000,
+                    "balance_before_minor": 20000000,
+                    "balance_minor": 19990000
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/wallet/v1/credit": {
+      "post": {
+        "operationId": "wallet_credit",
+        "summary": "发放游戏奖金",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。确认原扣款身份及回合后发放奖金。免费和续列可分步派彩，但不重复扣除投注。\n\n相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。\n\n响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。\n\n主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "transaction_id": {
+                    "type": "string",
+                    "description": "商户范围全局唯一的钱包交易号",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+                  },
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9000000000000000,
+                    "description": "非负整数，固定为 1/10000 USD，不接受浮点数或布尔值"
+                  },
+                  "reference_id": {
+                    "type": "string",
+                    "description": "原付费回合实际 debit 回调的 transaction_id，必须原样保存并关联；不可用 round_id 拼接推导",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "decision_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "固定游戏接入 ID"
+                  },
+                  "round_end": {
+                    "type": "boolean",
+                    "description": "当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。"
+                  },
+                  "decision_status": {
+                    "type": "string",
+                    "enum": [
+                      "not_requested",
+                      "pending",
+                      "accepted",
+                      "fallback"
+                    ],
+                    "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+                  },
+                  "fallback_reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "预派彩调用或格式失败原因；未回退时为 null。"
+                  },
+                  "requested_range": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "number"
+                      ]
+                    },
+                    "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+                  },
+                  "resolution": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/DecisionResolution"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+                  },
+                  "resolution_minor_unit": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+                    "enum": [
+                      10000,
+                      null
+                    ],
+                    "readOnly": true
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency",
+                  "transaction_id",
+                  "round_id",
+                  "amount_minor",
+                  "reference_id"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD",
+                "transaction_id": "step-002:credit",
+                "round_id": "round-001",
+                "amount_minor": 25000,
+                "reference_id": "round-001:debit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Mutation"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "transaction_id": "step-002:credit",
+                    "status": "applied",
+                    "amount_minor": 25000,
+                    "applied_minor": 25000,
+                    "balance_before_minor": 19990000,
+                    "balance_minor": 20015000
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/wallet/v1/refund": {
+      "post": {
+        "operationId": "wallet_refund",
+        "summary": "退款或登记取消",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。仅可退还尚未成功派奖的原扣款；原扣款未到达时先建立取消标记，阻止迟到扣款。当前 GTT 不因超时自动发起退款。\n\n相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。\n\n响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。\n\n主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。\n\n不支持部分退款，必须按原 debit 全额取消；同退款号同参幂等，换退款号再次引用已退扣款返回 ALREADY_REFUNDED。原扣款缺失或已拒绝时 applied_minor=0，并拦截后到扣款；已成功派彩不可退款。GTT 当前没有自动触发退款的公开接入 API。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "transaction_id": {
+                    "type": "string",
+                    "description": "商户范围全局唯一的钱包交易号",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "付费整局 ID",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9000000000000000,
+                    "description": "非负整数，固定为 1/10000 USD，不接受浮点数或布尔值"
+                  },
+                  "reference_id": {
+                    "type": "string",
+                    "description": "原付费回合实际 debit 回调的 transaction_id，必须原样保存并关联；不可用 round_id 拼接推导",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency",
+                  "transaction_id",
+                  "round_id",
+                  "amount_minor",
+                  "reference_id"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD",
+                "transaction_id": "refund-001",
+                "round_id": "round-001",
+                "amount_minor": 10000,
+                "reference_id": "round-001:debit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Mutation"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "transaction_id": "refund-001",
+                    "status": "applied",
+                    "amount_minor": 10000,
+                    "applied_minor": 10000,
+                    "balance_before_minor": 19990000,
+                    "balance_minor": 20000000
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/wallet/v1/transactions/get": {
+      "post": {
+        "operationId": "wallet_transactions_get",
+        "summary": "查询指定钱包交易",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。返回该玩家的钱包快照及交易回执。未知 transaction_id 返回空 transactions 数组，不伪造成功入账记录。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "transaction_id": {
+                    "type": "string",
+                    "description": "需查询的钱包交易号",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "description": "最多返回记录数，按 seq 降序；默认 20",
+                    "default": 20
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency",
+                  "transaction_id"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD",
+                "transaction_id": "round-001:debit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/WalletHistory"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "balance_minor": 20000000,
+                    "transactions": []
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/wallet/v1/transactions/list": {
+      "post": {
+        "operationId": "wallet_transactions_list",
+        "summary": "查询玩家钱包流水",
+        "description": "下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。按玩家返回最近钱包交易，可用于逐笔核对；此接口没有游标分页参数。\n\n自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。\n\n全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。",
+        "tags": [
+          "GTT → 商户钱包"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_id": {
+                    "type": "string",
+                    "description": "玩家标识，必须由商户预先建立账户",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "必须与商户币种一致",
+                    "examples": [
+                      "USD"
+                    ]
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "description": "最多返回记录数，按 seq 降序；默认 20",
+                    "default": 20
+                  }
+                },
+                "required": [
+                  "player_id",
+                  "currency"
+                ]
+              },
+              "example": {
+                "player_id": "player-10001",
+                "currency": "USD",
+                "limit": 20
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/WalletHistory"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "player_id": "player-10001",
+                    "currency": "USD",
+                    "balance_minor": 20000000,
+                    "transactions": []
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://wallet.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/gtt/v1/transactions/list": {
+      "post": {
+        "operationId": "operations_list",
+        "summary": "查询 GTT 游戏操作",
+        "description": "按 seq 升序查询本商户游戏操作，记录与钱包交易通过交易号关联。\n\n下一批 after_seq 使用上一批最后一条 seq，直到返回空数组。\n\n此序号适合枚举操作，不是状态变更事件游标。对已发现的 prepared／debited 操作，另行保留 operation_id 并持续恢复或复查，不要只靠递增游标发现终态。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "after_seq": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9000000000000000,
+                    "description": "返回 seq 大于此值的记录，首批传 0",
+                    "default": 0
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "description": "每批条数，默认 20",
+                    "default": 20
+                  }
+                },
+                "required": []
+              },
+              "example": {
+                "after_seq": 0,
+                "limit": 100
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "operations": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Operation"
+                          }
+                        }
+                      },
+                      "required": [
+                        "operations"
+                      ]
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "operations": [
+                      {
+                        "seq": 1,
+                        "operation_id": "round-001",
+                        "player_id": "player-10001",
+                        "game_id": 1,
+                        "status": "prepared",
+                        "error_code": null,
+                        "debit_transaction_id": "round-001:debit",
+                        "credit_transaction_id": null,
+                        "result": null
+                      }
+                    ]
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gtt/v1/transactions/retry": {
+      "post": {
+        "operationId": "operations_retry",
+        "summary": "恢复同一游戏操作",
+        "description": "继续已保存的候选结果与原钱包交易，不重抽牌面。已完成的操作返回原保存结果，明确拒绝的操作返回原拒绝错误。\n\n由服务端调度恢复，采用有限次数退避。所有重试重新生成签名头，operation_id 保持不变。\n\n商户停用后普通接入签名会被拒绝；如需恢复已受理记录，由 GTT 授权运营处理，并确保商户钱包仍接受其有效结算请求。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "operation_id": {
+                    "type": "string",
+                    "description": "待恢复的 GTT 操作 ID",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_.:-]+$"
+                  }
+                },
+                "required": [
+                  "operation_id"
+                ]
+              },
+              "example": {
+                "operation_id": "round-001"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/GameResult"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "game_id": 1,
+                    "sid": "round-001",
+                    "round_id": "round-001",
+                    "engine_version": "EXAMPLE_VERSION",
+                    "ruleset_id": "EXAMPLE_RULESET",
+                    "wallet": {
+                      "before_minor": 20000000,
+                      "debit_minor": 10000,
+                      "credit_minor": 0,
+                      "after_minor": 19990000
+                    },
+                    "outcome": {
+                      "next_phase": "ready"
+                    },
+                    "minor_unit": 10000,
+                    "settlement": {
+                      "minor_unit": 10000,
+                      "debit_minor": 10000,
+                      "credit_minor": 0,
+                      "balance_minor": 19990000
+                    }
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/callbacks/gtt/preBetDecision": {
+      "post": {
+        "operationId": "prebet_decision",
+        "summary": "整局预下注决策（可选）",
+        "description": "商户配置预派彩 URL 后自动调用，无需开关；请求失败或返回格式无效时回退 RTP。每个付费整局请求一次逻辑决策，商户返回允许的总派彩倍数区间；该接口本身不扣款或派奖。路径可按商户配置，必须按实际请求路径验签。\n\n成功必须 HTTP 200 且 code 为整数 0；此接口使用 code/data/msg 信封，不使用钱包的 data/error 信封。\n\n当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；下限非负时要求上限不小于下限；[-1,0] 为整局零派彩。\n\n业务毫秒 timestamp 与签名头的秒级时间戳不同；业务去重参数固定，HTTP 签名头每次更新。\n\nv1.11 新付费整局携带 decision_id、game_id、round_id；商户以 merchant_id + decision_id 精确去重和预占，不按玩家、金额、时间猜测关联。升级前已准备操作及原请求按原格式恢复，不能要求它们重抽决策。",
+        "tags": [
+          "GTT → 商户决策服务"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "player_name": {
+                    "type": "string",
+                    "description": "启动时绑定的 external_username，不是 GTT 玩家号",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "timestamp": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9000000000000000,
+                    "description": "业务去重时间戳，Unix 毫秒，重试时固定"
+                  },
+                  "bet_amount": {
+                    "type": "string",
+                    "description": "实际付费金额的主币种四位小数字符串；例如 20000 钱包单位对应 \"2.0000\" USD，不要用浮点数解析",
+                    "pattern": "^\\d+\\.\\d{4}$"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "付费整局类型；续列／免费不单独请求",
+                    "enum": [
+                      "NORMAL",
+                      "SURE_WIN",
+                      "BUY_FREE_SPIN"
+                    ]
+                  },
+                  "decision_id": {
+                    "type": "string",
+                    "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "固定游戏接入 ID"
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+                  }
+                },
+                "required": [
+                  "player_name",
+                  "timestamp",
+                  "bet_amount",
+                  "type",
+                  "decision_id",
+                  "game_id",
+                  "round_id"
+                ]
+              },
+              "example": {
+                "player_name": "platform-alice",
+                "timestamp": 1793188800000,
+                "bet_amount": "2.0000",
+                "type": "NORMAL",
+                "decision_id": "round-001",
+                "game_id": 1,
+                "round_id": "round-001"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "maxWinMulti": {
+                              "type": "array",
+                              "minItems": 2,
+                              "maxItems": 2,
+                              "items": {
+                                "type": [
+                                  "number",
+                                  "string"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "maxWinMulti"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "msg": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data",
+                    "msg"
+                  ]
+                },
+                "example": {
+                  "code": 0,
+                  "data": {
+                    "maxWinMulti": [
+                      3,
+                      5
+                    ]
+                  },
+                  "msg": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://decision.merchant.example",
+            "description": "商户提供的服务地址占位符，需替换为实际地址"
+          }
+        ]
+      }
+    },
+    "/gtt/v1/rounds/get": {
+      "post": {
+        "operationId": "rounds_get",
+        "summary": "查询整局与预派彩关联",
+        "description": "按 decision_id，或 game_id + round_id 查询本商户整局的当前状态及已确认账务。\n\n与其他 GTT 接口相同的商户签名。跨商户、不存在或不匹配的标识返回 404 / NOT_FOUND。\n\n取消目前仅指明确的扣款前拒绝，没有新增付费后撤销或自动退款接口。外部手工退款不自动改变 GTT 整局状态。\n\nresolution 是冻结计划的取档金额；最终实际到账以 total_credit_minor 为准，结算中不把尚未确认的金额当作已入账。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision_id": {
+                    "type": "string",
+                    "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+                  },
+                  "game_id": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 19,
+                    "description": "固定游戏接入 ID"
+                  },
+                  "round_id": {
+                    "type": "string",
+                    "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "required": [
+                      "decision_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "game_id",
+                      "round_id"
+                    ]
+                  }
+                ]
+              },
+              "example": {
+                "decision_id": "round-001"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/RoundSummary"
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "decision_id": "round-001",
+                    "decision_status": "accepted",
+                    "fallback_reason": null,
+                    "requested_range": [
+                      3,
+                      5
+                    ],
+                    "resolution": {
+                      "requested_range": [
+                        3,
+                        5
+                      ],
+                      "basis_minor": 20000,
+                      "actual_credit_minor": 60000,
+                      "actual_multiplier": {
+                        "numerator": 600,
+                        "denominator": 200
+                      },
+                      "selection": "within_range",
+                      "nearest_scope": "requested_range",
+                      "search_attempts": 1,
+                      "selected_attempt": 1,
+                      "search_limit": 3000
+                    },
+                    "resolution_minor_unit": 10000,
+                    "game_id": 1,
+                    "round_id": "round-001",
+                    "revision": 8,
+                    "player_id": "player-10001",
+                    "status": "completed",
+                    "terminal": true,
+                    "cancel_reason": null,
+                    "currency": "USD",
+                    "minor_unit": 10000,
+                    "total_debit_minor": "20000",
+                    "total_credit_minor": "60000",
+                    "execution_mode": "prebet",
+                    "operations": [
+                      {
+                        "operation_id": "round-001",
+                        "status": "settled",
+                        "error_code": null,
+                        "debit_transaction_id": "round-001:debit",
+                        "credit_transaction_id": "round-001:credit"
+                      }
+                    ]
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gtt/v1/rounds/changes": {
+      "post": {
+        "operationId": "rounds_changes",
+        "summary": "增量查询整局状态变化",
+        "description": "使用持久化 after_seq 游标拉取本商户整局变化，包含零派彩尾步、失败回退与最终结算。记录与源账务/决策在同一事务提交。\n\n先幂等处理并持久化本批数据，再保存 next_after_seq；拉到空批次后稍后轮询。允许重复读取，不按数量推测连续序号。\n\nseq 是变化游标，round 是查询时的一致状态快照，revision 是该整局最新序号。同一整局可多次出现；按 merchant_id + game_id + round_id 更新，旧 revision 不覆盖新状态。\n\nchanges 为避免重复大列表不返回 operations；需要逐笔交易时调用 rounds/get。\n\n升级后的变化会自动记录；历史没有变化的已结束整局不会全量补发，可按已有标识直接查询。记录当前不自动清理；没有新增必须配置的推送地址。",
+        "tags": [
+          "商户 → GTT"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "after_seq": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 0
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20
+                  }
+                }
+              },
+              "example": {
+                "after_seq": 0,
+                "limit": 100
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "changes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "seq": {
+                                "type": "integer"
+                              },
+                              "changed_at": {
+                                "type": "integer",
+                                "description": "Unix 秒"
+                              },
+                              "round": {
+                                "$ref": "#/components/schemas/RoundSummary"
+                              }
+                            },
+                            "required": [
+                              "seq",
+                              "changed_at",
+                              "round"
+                            ]
+                          }
+                        },
+                        "next_after_seq": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "changes",
+                        "next_after_seq"
+                      ]
+                    },
+                    "error": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "error"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "changes": [
+                      {
+                        "seq": 8,
+                        "changed_at": 1793923200,
+                        "round": {
+                          "decision_id": "round-001",
+                          "decision_status": "accepted",
+                          "fallback_reason": null,
+                          "requested_range": [
+                            3,
+                            5
+                          ],
+                          "resolution": {
+                            "requested_range": [
+                              3,
+                              5
+                            ],
+                            "basis_minor": 20000,
+                            "actual_credit_minor": 60000,
+                            "actual_multiplier": {
+                              "numerator": 600,
+                              "denominator": 200
+                            },
+                            "selection": "within_range",
+                            "nearest_scope": "requested_range",
+                            "search_attempts": 1,
+                            "selected_attempt": 1,
+                            "search_limit": 3000
+                          },
+                          "resolution_minor_unit": 10000,
+                          "game_id": 1,
+                          "round_id": "round-001",
+                          "revision": 8,
+                          "player_id": "player-10001",
+                          "status": "completed",
+                          "terminal": true,
+                          "cancel_reason": null,
+                          "currency": "USD",
+                          "minor_unit": 10000,
+                          "total_debit_minor": "20000",
+                          "total_credit_minor": "60000",
+                          "execution_mode": "prebet"
+                        }
+                      }
+                    ],
+                    "next_after_seq": 8
+                  },
+                  "error": null
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "鉴权、参数错误或未完成的结果，按错误码处理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Merchant": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-GTT-Merchant"
+      },
+      "Timestamp": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-GTT-Timestamp"
+      },
+      "Nonce": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-GTT-Nonce"
+      },
+      "Signature": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-GTT-Signature"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "null"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "稳定的业务错误码"
+              },
+              "message": {
+                "type": "string",
+                "description": "错误说明，不应作为程序分支判断依据"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "error"
+        ]
+      },
+      "Balance": {
+        "type": "object",
+        "properties": {
+          "player_id": {
+            "type": "string",
+            "description": "商户平台玩家唯一标识",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "currency": {
+            "type": "string",
+            "description": "商户结算币种，目前新商户为 USD"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "description": "兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。",
+            "enum": [
+              10000
+            ],
+            "deprecated": true
+          },
+          "balance_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "钱包余额，以商户 minor_unit 为单位的整数"
+          }
+        },
+        "required": [
+          "player_id",
+          "currency",
+          "balance_minor"
+        ]
+      },
+      "Mutation": {
+        "type": "object",
+        "properties": {
+          "player_id": {
+            "type": "string",
+            "description": "玩家标识",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "currency": {
+            "type": "string",
+            "description": "商户币种"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "description": "兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。",
+            "enum": [
+              10000
+            ],
+            "deprecated": true
+          },
+          "balance_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "处理后的余额"
+          },
+          "transaction_id": {
+            "type": "string",
+            "description": "原样返回请求交易号",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "status": {
+            "type": "string",
+            "description": "成功入账状态",
+            "enum": [
+              "applied"
+            ]
+          },
+          "amount_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "原请求金额"
+          },
+          "applied_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "实际变动金额；退款允许为 0"
+          },
+          "balance_before_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "处理前余额"
+          }
+        },
+        "required": [
+          "player_id",
+          "currency",
+          "balance_minor",
+          "transaction_id",
+          "status",
+          "amount_minor",
+          "applied_minor",
+          "balance_before_minor"
+        ]
+      },
+      "Launch": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 19,
+            "description": "GTT 数字游戏 ID"
+          },
+          "launch_url": {
+            "type": "string",
+            "description": "绑定所选游戏的完整地址，包含会话凭据；生产使用各游戏 HTTPS origin，不能自行替换域名或拼接参数"
+          },
+          "expires_at": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "会话到期时间，Unix 秒"
+          },
+          "balance_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "启动时平台余额快照"
+          },
+          "currency": {
+            "type": "string",
+            "description": "商户币种"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "description": "固定为 10000，商户钱包统一使用四位小数",
+            "enum": [
+              10000
+            ],
+            "readOnly": true
+          }
+        },
+        "required": [
+          "game_id",
+          "launch_url",
+          "expires_at",
+          "balance_minor",
+          "currency",
+          "minor_unit"
+        ]
+      },
+      "Game": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 19,
+            "description": "固定数字游戏 ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "游戏展示名称，以实际目录为准"
+          },
+          "engine_version": {
+            "type": "string",
+            "description": "引擎版本"
+          },
+          "ruleset_id": {
+            "type": "string",
+            "description": "规则版本"
+          },
+          "target_rtp": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "已生效模型的目标百分比；预派彩或模型尚未标定时为 null。实际短期 RTP 不保证等于该目标。"
+          },
+          "rtp_status": {
+            "type": "string",
+            "description": "active：已标定模型生效；prebet：已配置预派彩地址，失败时回退 RTP；not_calibrated：目标已配置但该游戏模型未通过标定。"
+          },
+          "code": {
+            "type": "string",
+            "description": "游戏标识 slug"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "enum": [
+              10000
+            ],
+            "description": "只读金额单位，固定为 10000；商户无需传入或按游戏选择",
+            "readOnly": true
+          },
+          "wallet_compatible": {
+            "type": "boolean",
+            "description": "当前商户钱包精度是否支持该游戏；false 时不能启动，需联系平台处理钱包配置"
+          },
+          "configured_target_rtp": {
+            "type": "number",
+            "description": "配置目标百分比；游戏单独配置优先，否则跟随商户，商户初始默认 96。不是标定通过或已生效的证明。"
+          },
+          "rtp_source": {
+            "type": "string",
+            "description": "目标来源：player / game / merchant / platform / default；default 为 96%"
+          },
+          "brand": {
+            "type": "string",
+            "description": "品牌名称"
+          },
+          "integration_available": {
+            "type": "boolean",
+            "description": "商户目录仅返回此字段为 true 的游戏；仍需在启动时再次校验实时开放状态。"
+          },
+          "special_features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "已支持的特殊玩法名称，不包含内部缺口与审核文档。"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "GameResult": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 19,
+            "description": "固定游戏接入 ID"
+          },
+          "sid": {
+            "type": "string",
+            "description": "游戏状态步骤 ID；与 operation_id、钱包 transaction_id 分别保存，不可互相推导",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "round_id": {
+            "type": "string",
+            "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+          },
+          "engine_version": {
+            "type": "string",
+            "description": "引擎版本"
+          },
+          "ruleset_id": {
+            "type": "string",
+            "description": "规则版本"
+          },
+          "wallet": {
+            "type": "object",
+            "properties": {
+              "before_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "本次操作的钱包前快照"
+              },
+              "debit_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "本次扣款"
+              },
+              "credit_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "本次派彩"
+              },
+              "after_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "钱包后快照"
+              }
+            },
+            "required": [
+              "before_minor",
+              "debit_minor",
+              "credit_minor",
+              "after_minor"
+            ],
+            "description": "商户侧钱包金额，统一使用 10000 单位；存在 settlement 时采用其精确余额，不截去不足一分的余额。"
+          },
+          "outcome": {
+            "type": "object",
+            "description": "已提交的游戏事件；结构按游戏规则版本扩展"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "enum": [
+              10000
+            ],
+            "description": "只读金额单位，固定为 10000；wallet、settlement 与 outcome 中的金额均使用此单位",
+            "readOnly": true
+          },
+          "settlement": {
+            "type": "object",
+            "description": "精确商户结算金额，统一使用 10000 单位；历史记录可省略此对象，wallet 仍按统一单位返回。",
+            "properties": {
+              "minor_unit": {
+                "type": "integer",
+                "enum": [
+                  10000
+                ],
+                "description": "商户钱包精度",
+                "readOnly": true
+              },
+              "debit_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "实际钱包扣款"
+              },
+              "credit_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "实际钱包派彩"
+              },
+              "balance_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "钱包回执的精确余额"
+              },
+              "before_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9000000000000000,
+                "description": "实际钱包扣款前余额，使用 10000 单位；新回执提供，历史回执可能省略"
+              }
+            },
+            "required": [
+              "minor_unit",
+              "debit_minor",
+              "credit_minor",
+              "balance_minor"
+            ]
+          },
+          "decision_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+          },
+          "round_end": {
+            "type": "boolean",
+            "description": "当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。"
+          },
+          "decision_status": {
+            "type": "string",
+            "enum": [
+              "not_requested",
+              "pending",
+              "accepted",
+              "fallback"
+            ],
+            "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+          },
+          "fallback_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "预派彩调用或格式失败原因；未回退时为 null。"
+          },
+          "requested_range": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecisionResolution"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+          },
+          "resolution_minor_unit": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+            "enum": [
+              10000,
+              null
+            ],
+            "readOnly": true
+          }
+        },
+        "required": [
+          "game_id",
+          "sid",
+          "round_id",
+          "wallet",
+          "outcome"
+        ]
+      },
+      "Operation": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "分页序号，按升序返回"
+          },
+          "operation_id": {
+            "type": "string",
+            "description": "游戏操作 ID",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "player_id": {
+            "type": "string",
+            "description": "玩家标识",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "game_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 19,
+            "description": "固定游戏接入 ID"
+          },
+          "status": {
+            "type": "string",
+            "description": "操作终态或处理中状态",
+            "enum": [
+              "prepared",
+              "debited",
+              "settled",
+              "rejected"
+            ]
+          },
+          "error_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "debit_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "有扣款时为 operation_id:debit"
+          },
+          "credit_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "有派彩时为 operation_id:credit"
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GameResult"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "已保存的游戏结果，尚未完成时可为 null"
+          },
+          "decision_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+          },
+          "round_id": {
+            "type": "string",
+            "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+          },
+          "round_end": {
+            "type": "boolean",
+            "description": "当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。"
+          },
+          "decision_status": {
+            "type": "string",
+            "enum": [
+              "not_requested",
+              "pending",
+              "accepted",
+              "fallback"
+            ],
+            "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+          },
+          "fallback_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "预派彩调用或格式失败原因；未回退时为 null。"
+          },
+          "requested_range": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecisionResolution"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+          },
+          "resolution_minor_unit": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+            "enum": [
+              10000,
+              null
+            ],
+            "readOnly": true
+          }
+        },
+        "required": [
+          "seq",
+          "operation_id",
+          "player_id",
+          "game_id",
+          "status",
+          "result"
+        ]
+      },
+      "WalletTransaction": {
+        "type": "object",
+        "properties": {
+          "transaction_id": {
+            "type": "string",
+            "description": "钱包交易号",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "kind": {
+            "type": "string",
+            "description": "交易类型",
+            "enum": [
+              "debit",
+              "credit",
+              "refund"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "处理状态",
+            "enum": [
+              "applied",
+              "rejected"
+            ]
+          },
+          "error_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Mutation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "transaction_id",
+          "kind",
+          "status",
+          "error_code",
+          "data"
+        ]
+      },
+      "WalletHistory": {
+        "type": "object",
+        "properties": {
+          "player_id": {
+            "type": "string",
+            "description": "商户平台玩家唯一标识",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "currency": {
+            "type": "string",
+            "description": "商户结算币种，目前新商户为 USD"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "description": "兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。",
+            "enum": [
+              10000
+            ],
+            "deprecated": true
+          },
+          "balance_minor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9000000000000000,
+            "description": "钱包余额，以商户 minor_unit 为单位的整数"
+          },
+          "transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WalletTransaction"
+            }
+          }
+        },
+        "required": [
+          "player_id",
+          "currency",
+          "balance_minor",
+          "transactions"
+        ]
+      },
+      "DecisionResolution": {
+        "type": "object",
+        "properties": {
+          "requested_range": {
+            "type": "array",
+            "items": {
+              "type": [
+                "number",
+                "string"
+              ]
+            }
+          },
+          "basis_minor": {
+            "type": "integer",
+            "description": "整局派彩倍率基数，使用 resolution_minor_unit"
+          },
+          "actual_credit_minor": {
+            "type": "integer",
+            "description": "选中的完整合法整局计划派彩，使用 resolution_minor_unit"
+          },
+          "actual_multiplier": {
+            "type": "object",
+            "properties": {
+              "numerator": {
+                "type": "integer"
+              },
+              "denominator": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "numerator",
+              "denominator"
+            ]
+          },
+          "selection": {
+            "type": "string",
+            "enum": [
+              "within_range",
+              "nearest_lower_candidate"
+            ]
+          },
+          "nearest_scope": {
+            "type": "string",
+            "enum": [
+              "requested_range",
+              "monetary_ceiling",
+              "searched_candidates"
+            ]
+          },
+          "search_attempts": {
+            "type": "integer"
+          },
+          "selected_attempt": {
+            "type": "integer"
+          },
+          "search_limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "requested_range",
+          "basis_minor",
+          "actual_credit_minor",
+          "actual_multiplier",
+          "selection",
+          "nearest_scope"
+        ]
+      },
+      "RoundSummary": {
+        "type": "object",
+        "properties": {
+          "decision_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。"
+          },
+          "game_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 19,
+            "description": "固定游戏接入 ID"
+          },
+          "round_id": {
+            "type": "string",
+            "description": "稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。"
+          },
+          "decision_status": {
+            "type": "string",
+            "enum": [
+              "not_requested",
+              "pending",
+              "accepted",
+              "fallback"
+            ],
+            "description": "是否请求、等待决策、有效决策已接受或已回退 RTP。"
+          },
+          "fallback_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "预派彩调用或格式失败原因；未回退时为 null。"
+          },
+          "requested_range": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "description": "有效决策的原始倍数区间；未得到有效决策时为 null。"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecisionResolution"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "已冻结的完整整局取档结果；不等于全部金额已入账。"
+          },
+          "resolution_minor_unit": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。",
+            "enum": [
+              10000,
+              null
+            ],
+            "readOnly": true
+          },
+          "revision": {
+            "type": "integer",
+            "description": "该整局最新变更序号；历史未产生变更记录时为 0。"
+          },
+          "player_id": {
+            "type": "string",
+            "description": "GTT 玩家标识"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "preparing",
+              "active",
+              "settling",
+              "completed",
+              "cancelled"
+            ],
+            "description": "准备中、进行中、钱包结算中、已完成、扣款前明确拒绝取消。"
+          },
+          "terminal": {
+            "type": "boolean",
+            "description": "仅 completed/cancelled 为 true"
+          },
+          "cancel_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "取消原因；仅在扣款前已明确拒绝且无确认入账时返回"
+          },
+          "currency": {
+            "type": "string",
+            "description": "商户钱包币种"
+          },
+          "minor_unit": {
+            "type": "integer",
+            "description": "累计账务金额的商户钱包精度",
+            "enum": [
+              10000
+            ],
+            "readOnly": true
+          },
+          "total_debit_minor": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "description": "已确认扣款累计整数金额；不含结果仍不确定的扣款。"
+          },
+          "total_credit_minor": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "description": "已确认入账派彩累计整数金额"
+          },
+          "execution_mode": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "实际执行模式 prebet/rtp/legacy；尚未生成操作时为 null"
+          },
+          "operations": {
+            "type": "array",
+            "description": "仅 rounds/get 返回该整局的操作及交易关联；changes 省略此列表。",
+            "items": {
+              "type": "object",
+              "properties": {
+                "operation_id": {
+                  "type": "string",
+                  "description": "操作 ID"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "操作状态"
+                },
+                "error_code": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "操作错误"
+                },
+                "debit_transaction_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "扣款交易号"
+                },
+                "credit_transaction_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "派彩交易号"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "decision_id",
+          "game_id",
+          "round_id",
+          "status",
+          "terminal",
+          "revision",
+          "decision_status",
+          "currency",
+          "minor_unit",
+          "total_debit_minor",
+          "total_credit_minor"
+        ]
+      }
+    }
+  },
+  "x-gtt-play-origin": "https://play.gttgames.com",
+  "x-gtt-signature": {
+    "algorithm": "HMAC-SHA256",
+    "keyEncoding": "UTF-8 text; do not hex-decode merchant_secret",
+    "canonical": "METHOD\\nPATH\\nTIMESTAMP\\nNONCE\\nSHA256(BODY)",
+    "testVector": {
+      "merchant_id": "GTT000001",
+      "merchant_secret": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "method": "POST",
+      "path": "/gtt/v1/games/launch",
+      "timestamp": "1700000000",
+      "nonce": "0123456789abcdef0123456789abcdef",
+      "body": "{\"game_id\":1,\"language\":\"en\",\"player_id\":\"player-10001\"}",
+      "body_sha256": "b1d0c6863d8b85bcc5ffbbc4e70c7040d0653d7989f535de9023e7505770758e",
+      "signature": "e8a481cb0904f9a5b872c71a98ecf531aacac3992ae81bbbf1c42a0a1a91ccec"
+    }
+  }
+}

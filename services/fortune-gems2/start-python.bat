@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-python -m server.run --service-dir services/fortune-gems2
+python -m py.run --service-dir services/fortune-gems2
 pause

@@ -43,6 +43,6 @@ if __name__ == '__main__':
     parser.add_argument('session')
     args = parser.parse_args()
     data = snapshot(args.session)
-    path = ROOT / 'server/tests/fixtures/big-bass-spins.json'
+    path = ROOT / 'py/tests/fixtures/big-bass-spins.json'
     path.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'rows': len(data['rows']), 'path': str(path)}))

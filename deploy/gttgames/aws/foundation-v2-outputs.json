@@ -1,0 +1,24 @@
+{
+  "StackName": "gtt-foundation-v2",
+  "StackStatus": "CREATE_COMPLETE",
+  "Region": "us-east-1",
+  "AccountId": "817557336527",
+  "Outputs": {
+    "WebsiteBucketDomain": "gtt-foundation-websitebucket-5q89fgxgjfpz.s3.us-east-1.amazonaws.com",
+    "ConsoleTargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:817557336527:targetgroup/gtt-fo-Conso-RMBU0D963CBT/1c93320440368bde",
+    "InstanceProfileName": "gtt-foundation-v2-InstanceProfile-YtSBp4ypOBlM",
+    "DomainName": "gttgames.com",
+    "WebsiteBucketArn": "arn:aws:s3:::gtt-foundation-websitebucket-5q89fgxgjfpz",
+    "AppLogGroupName": "/gtt/gtt-foundation-v2/application",
+    "AlbDomainName": "gtt-fo-LoadB-1UAP5uxaLR4S-2096295513.us-east-1.elb.amazonaws.com",
+    "AlbSecurityGroupId": "sg-052c0213ec35d6a83",
+    "OriginSecretArn": "arn:aws:secretsmanager:us-east-1:817557336527:secret:OriginSecret-35yAMlqJP8ij-Kthf16",
+    "GatewayTargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:817557336527:targetgroup/gtt-fo-Gatew-M0AUSGVCG6AF/cc99c7c3a282285c",
+    "WebsiteBucketName": "gtt-foundation-websitebucket-5q89fgxgjfpz",
+    "InstanceRoleName": "gtt-foundation-v2-InstanceRole-SEITTr9OZXcM",
+    "AgentParameterName": "/gtt/gtt-foundation-v2/cloudwatch-agent",
+    "BackupBucketName": "gtt-foundation-backupbucket-gkey3lhv1ajm",
+    "CertificateArn": "arn:aws:acm:us-east-1:817557336527:certificate/5d173d56-6bc3-4e29-923e-6a9c84a6091b",
+    "AlarmTopicArn": "arn:aws:sns:us-east-1:817557336527:gtt-foundation-v2-AlarmTopic-6QgQIOnGh0rc"
+  }
+}

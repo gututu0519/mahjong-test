@@ -1,6 +1,6 @@
 # Wild Bandito
 
-启动：`start.bat`，或在仓库根运行 `node node/tools/start.mjs wild-bandito`。
+启动：`start.bat`，或在仓库根运行 `node server/tools/start.mjs wild-bandito`。
 
 - 端口：8100；独立配置：`config/wild-bandito.json`；独立数据库：`data/games.sqlite3`。
 - 大厅：`http://127.0.0.1:8080/demo/?lang=zh`；通过大厅创建独立试玩会话。

@@ -1,0 +1,1125 @@
+{
+  "version": 1,
+  "policy": "special-feature-original-evidence-required",
+  "source_note": "维护表的已包含仅表示实现状态；缺口清单为文档待办快照，不代表本次重新抓取。未完成证据审核不得放行。",
+  "workbook_sha256": "240edb27f861a56845512145da382f08fc361e31c135092c611df55ea6d5441d",
+  "games": [
+    {
+      "id": 1,
+      "code": "buffalo-win",
+      "brand": "PG Soft",
+      "display_name": "美洲野牛 / Buffalo Win",
+      "collection_complete": false,
+      "blockers": [
+        "免费内重触发及最后一次免费追加缺原版逐字段证据",
+        "购买档位、初始超过 10 次免费及购买恢复分支证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "included"
+        },
+        {
+          "name": "连消倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "金牌转百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费第3列全金牌",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "扩展转轴",
+          "implementation": "included"
+        },
+        {
+          "name": "8次福兔功能",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PG Soft",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/buffalo-win/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 2,
+      "code": "captains-bounty",
+      "brand": "PG Soft",
+      "display_name": "Captain's Bounty",
+      "collection_complete": false,
+      "blockers": [
+        "免费重触发、4/5 Scatter、免费中途恢复及 30000 倍封顶缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "连消倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "金牌转百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费第3列全金牌",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "扩展转轴",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "8次福兔功能",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PG Soft",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/captains-bounty/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 3,
+      "code": "fortune-rabbit",
+      "brand": "PG Soft",
+      "display_name": "福兔 / Fortune Rabbit",
+      "collection_complete": false,
+      "blockers": [
+        "福兔功能中途原站恢复及功能历史分组证据未齐",
+        "5000 倍封顶的实际截断、余额及回包字段缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "连消倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "金牌转百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费第3列全金牌",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "扩展转轴",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "8次福兔功能",
+          "implementation": "included"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PG Soft",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/fortune-rabbit/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 4,
+      "code": "wild-bandito",
+      "brand": "PG Soft",
+      "display_name": "Wild Bandito",
+      "collection_complete": false,
+      "blockers": [
+        "完整免费及免费重触发缺原版回包证据",
+        "免费资源 4 包及历史详情包缺失，完整免费界面未验收"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "连消倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "金牌转百搭",
+          "implementation": "included"
+        },
+        {
+          "name": "免费第3列全金牌",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "扩展转轴",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "8次福兔功能",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PG Soft",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/wild-bandito/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 5,
+      "code": "tower-run-treasure-steps",
+      "brand": "Play’n GO",
+      "display_name": "Tower Run Treasure Steps",
+      "collection_complete": false,
+      "blockers": [
+        "同转多个钥匙分别开箱、倒计时与钥匙组合缺原版证据",
+        "满盘、最高赔付及多奖封顶事件顺序、原版恢复证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "Bob进度奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "充能Wild Rift",
+          "implementation": "included"
+        },
+        {
+          "name": "宝藏室",
+          "implementation": "included"
+        },
+        {
+          "name": "钥匙倒计时开箱",
+          "implementation": "included"
+        },
+        {
+          "name": "多钥匙组合",
+          "implementation": "included"
+        },
+        {
+          "name": "GO Ultra",
+          "implementation": "included"
+        },
+        {
+          "name": "满盘结束",
+          "implementation": "included"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · Play’n GO",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/tower-run-treasure-steps/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 6,
+      "code": "great-game-serengeti",
+      "brand": "Hacksaw",
+      "display_name": "Great Game Serengeti",
+      "collection_complete": false,
+      "blockers": [
+        "Lion Bar 超额结转、免费追加两次、隐藏 ZEBRAWL 缺原版证据",
+        "5000 倍封顶及同玩家待领恢复缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "增强旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "隐藏免费",
+          "implementation": "included"
+        },
+        {
+          "name": "扩列联动",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "收集器倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "血雨血格",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "四叶草倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "特殊格保留复原",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "反射激光",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Lion Bar重转",
+          "implementation": "included"
+        },
+        {
+          "name": "狩猎Stampede",
+          "implementation": "included"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · Hacksaw",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/great-game-serengeti/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 7,
+      "code": "dr-zappo",
+      "brand": "Hacksaw",
+      "display_name": "Dr Zappo",
+      "collection_complete": false,
+      "blockers": [
+        "自然五 FS 隐藏免费、五眼球及极端激光顺序缺原版证据",
+        "双发组合、追加四次、10000 倍封顶及待领恢复证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "增强旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "隐藏免费",
+          "implementation": "included"
+        },
+        {
+          "name": "扩列联动",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "收集器倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "血雨血格",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "四叶草倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "特殊格保留复原",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "反射激光",
+          "implementation": "included"
+        },
+        {
+          "name": "Lion Bar重转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "狩猎Stampede",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · Hacksaw",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/dr-zappo/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 8,
+      "code": "le-vampire",
+      "brand": "Hacksaw",
+      "display_name": "Le Vampire",
+      "collection_complete": false,
+      "blockers": [
+        "血雨血格、金四叶草全盘倍率及绿/金混合顺序缺原版证据",
+        "免费 Epic 特殊格掩码、隐藏免费、15000 倍封顶及待领恢复证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "增强旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "隐藏免费",
+          "implementation": "included"
+        },
+        {
+          "name": "扩列联动",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "收集器倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "血雨血格",
+          "implementation": "included"
+        },
+        {
+          "name": "四叶草倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "特殊格保留复原",
+          "implementation": "included"
+        },
+        {
+          "name": "反射激光",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Lion Bar重转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "狩猎Stampede",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · Hacksaw",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/le-vampire/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 9,
+      "code": "wicked-grin",
+      "brand": "Hacksaw",
+      "display_name": "Wicked Grin",
+      "collection_complete": false,
+      "blockers": [
+        "Stash 追加、10000 倍截断及同玩家待领恢复缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "增强旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "隐藏免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "扩列联动",
+          "implementation": "included"
+        },
+        {
+          "name": "收集器倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "血雨血格",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "四叶草倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "特殊格保留复原",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "反射激光",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Lion Bar重转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "狩猎Stampede",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · Hacksaw",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/wicked-grin/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 10,
+      "code": "roma-x-10000",
+      "brand": "JILI",
+      "display_name": "Roma X 10000",
+      "collection_complete": false,
+      "blockers": [
+        "免费与追加实战、转盘 ×3/×5 及罕见直奖缺原版证据",
+        "封顶与同时中奖顺序、原版中断恢复证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "EX加注",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "金框转百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "大Joker复制",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "财神收集",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "神秘揭晓",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "锁定重转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "满屏Grand",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "战斗奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "奖励转盘",
+          "implementation": "included"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · JILI",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/roma-x-10000/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 11,
+      "code": "money-pot-deluxe",
+      "brand": "JILI",
+      "display_name": "Money Pot DELUXE",
+      "collection_complete": false,
+      "blockers": [
+        "满屏 Grand、20 倍财神、多财神同轮新增缺原版证据",
+        "触发同时中奖、最高赔付及中途恢复证据未齐，Grand/Major 版本差异待核对"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "购买奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "EX加注",
+          "implementation": "included"
+        },
+        {
+          "name": "金框转百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "大Joker复制",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "财神收集",
+          "implementation": "included"
+        },
+        {
+          "name": "神秘揭晓",
+          "implementation": "included"
+        },
+        {
+          "name": "锁定重转",
+          "implementation": "included"
+        },
+        {
+          "name": "满屏Grand",
+          "implementation": "included"
+        },
+        {
+          "name": "战斗奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "奖励转盘",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · JILI",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/money-pot-deluxe/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 12,
+      "code": "3-billion-vaults",
+      "brand": "JILIUS",
+      "display_name": "3 Billion Vaults",
+      "collection_complete": false,
+      "blockers": [
+        "罕见保险库及 Jackpot 选牌升级缺原版完整样本"
+      ],
+      "special_features": [
+        {
+          "name": "Extra加注",
+          "implementation": "included"
+        },
+        {
+          "name": "Scatter奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "移动百搭",
+          "implementation": "included"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "现金袋",
+          "implementation": "included"
+        },
+        {
+          "name": "Jackpot选牌升级",
+          "implementation": "included"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · JILIUS",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/3-billion-vaults/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 13,
+      "code": "jokers-fortune-winx",
+      "brand": "JILIUS",
+      "display_name": "Joker’s Fortune WinX",
+      "collection_complete": false,
+      "blockers": [
+        "大额及最大赔付、Extra 模式上限语义、Scatter 列约束缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "Extra加注",
+          "implementation": "included"
+        },
+        {
+          "name": "Scatter奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "移动百搭",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费旋转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "购买奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "现金袋",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Jackpot选牌升级",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · JILIUS",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/jokers-fortune-winx/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 14,
+      "code": "fortune-gems2",
+      "brand": "TaDa",
+      "display_name": "Fortune Gems 2",
+      "collection_complete": false,
+      "blockers": [
+        "Extra Bet 轮盘缺原版解码响应，倍率与亮灯字段未完成对照",
+        "MaxOdd=15000 封顶语义及轮盘中断恢复未确认"
+      ],
+      "special_features": [
+        {
+          "name": "倍率列",
+          "implementation": "included"
+        },
+        {
+          "name": "普通轮盘",
+          "implementation": "included"
+        },
+        {
+          "name": "Extra Bet轮盘",
+          "implementation": "included"
+        },
+        {
+          "name": "封顶规则",
+          "implementation": "incomplete"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · TaDa",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/fortune-gems2/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 15,
+      "code": "super-ace",
+      "brand": "JILI",
+      "display_name": "Super Ace",
+      "collection_complete": false,
+      "blockers": [
+        "免费追加、封顶逐项金额及购买多份中途恢复尚待专项核对",
+        "原始完整抓取未归档到本机，特殊分支证据不可复核"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买奖励",
+          "implementation": "included"
+        },
+        {
+          "name": "EX加注",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "金框转百搭",
+          "implementation": "included"
+        },
+        {
+          "name": "大Joker复制",
+          "implementation": "included"
+        },
+        {
+          "name": "财神收集",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "神秘揭晓",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "锁定重转",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "满屏Grand",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "战斗奖励",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "奖励转盘",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · JILI",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/super-ace/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 16,
+      "code": "big-bass-bonanza",
+      "brand": "PP",
+      "display_name": "Big Bass Bonanza",
+      "collection_complete": false,
+      "blockers": [
+        "第 8/12 渔夫后的高阶收鱼、4/5 Scatter、封顶及恢复缺原版证据",
+        "炸弹补鱼专用字段和动画顺序未完成原版协议对照"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Ante加注",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "连消",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "倍率符号",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "POP奖励演出",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "渔夫收鱼",
+          "implementation": "included"
+        },
+        {
+          "name": "高阶收鱼倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "炸弹补鱼",
+          "implementation": "incomplete"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PP",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/big-bass-bonanza/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 17,
+      "code": "sweet-bonanza-pop",
+      "brand": "PP",
+      "display_name": "Sweet Bonanza POP",
+      "collection_complete": false,
+      "blockers": [
+        "POP Spark/Snap/Burst 专用事件与动画协议未完成原版对照",
+        "免费 3+ Scatter 追加、25000 倍封顶处理顺序及恢复缺原版证据"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "Ante加注",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "连消",
+          "implementation": "included"
+        },
+        {
+          "name": "倍率符号",
+          "implementation": "included"
+        },
+        {
+          "name": "POP奖励演出",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "渔夫收鱼",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "高阶收鱼倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "炸弹补鱼",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PP",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/sweet-bonanza-pop/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 18,
+      "code": "gates-of-olympus",
+      "brand": "PP",
+      "display_name": "Gates of Olympus",
+      "collection_complete": false,
+      "blockers": [
+        "免费中 3+ Scatter 追加、更多购买触发盘面缺原版证据",
+        "最高奖金的最终响应及恢复证据未齐"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "included"
+        },
+        {
+          "name": "Ante加注",
+          "implementation": "included"
+        },
+        {
+          "name": "连消",
+          "implementation": "included"
+        },
+        {
+          "name": "倍率符号",
+          "implementation": "included"
+        },
+        {
+          "name": "POP奖励演出",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "渔夫收鱼",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "高阶收鱼倍率",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "炸弹补鱼",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PP",
+        "docs/game-validation-and-resource-gaps.md",
+        "services/gates-of-olympus/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 19,
+      "code": "mahjong-ways2",
+      "brand": "PG Soft",
+      "display_name": "麻将胡了 2 / Mahjong Ways 2",
+      "collection_complete": false,
+      "blockers": [
+        "免费第 3 列全金牌规则未完整实现",
+        "5 Scatter、最高赢额、特殊字段及金额舍入分支缺原版证据",
+        "购买及特殊钱包需先确认原版开放条件并补齐协议"
+      ],
+      "special_features": [
+        {
+          "name": "免费旋转",
+          "implementation": "included"
+        },
+        {
+          "name": "免费追加",
+          "implementation": "included"
+        },
+        {
+          "name": "购买免费",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "连消倍率",
+          "implementation": "included"
+        },
+        {
+          "name": "金牌转百搭",
+          "implementation": "included"
+        },
+        {
+          "name": "免费第3列全金牌",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "扩展转轴",
+          "implementation": "not_applicable"
+        },
+        {
+          "name": "8次福兔功能",
+          "implementation": "not_applicable"
+        }
+      ],
+      "evidence": [],
+      "sources": [
+        "docs/品牌游戏与特殊玩法维护表.xlsx · PG Soft",
+        "docs/game-validation-and-resource-gaps.md",
+        "py/games/mahjong_ways2/README.md"
+      ],
+      "reviewed_at": "2026-11-06"
+    }
+  ]
+}

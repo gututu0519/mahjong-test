@@ -7,7 +7,7 @@ import random
 import sqlite3
 import threading
 
-from server.services.dr_zappo_demo import build_server
+from py.services.dr_zappo_demo import build_server
 
 SCENARIOS = {
     'no-brainer': dict(port=18097, seed=0, mode='fs_2'),

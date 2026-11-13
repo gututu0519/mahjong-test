@@ -1,0 +1,29 @@
+{
+  "checked_captures": "No matching successful response found in the 31 existing capture manifests",
+  "assets": [
+    {
+      "path": "shared/4528468aab/93111cc830.11720.png",
+      "source": "https://s5.mmga1.com/shared/4528468aab/93111cc830.11720.png",
+      "bytes": 14778,
+      "sha256": "d537e350232a33d1f172bf4594721223e7dec43e2ab52b7f7a29d476c3e7d3c4",
+      "acquired": "direct-original-cdn",
+      "acquired_at": "2026-11-07T13:04:34.471Z"
+    },
+    {
+      "path": "shared/4528468aab/9d112f7e32.69cdf.png",
+      "source": "https://s5.mmga1.com/shared/4528468aab/9d112f7e32.69cdf.png",
+      "bytes": 7262,
+      "sha256": "809e043a9d0633f5587db7921aaa8265890aa85cbb8d6c5afbd59f7630edbc37",
+      "acquired": "direct-original-cdn",
+      "acquired_at": "2026-11-07T13:04:34.473Z"
+    },
+    {
+      "path": "shared/4528468aab/28f911ed51.9a259.png",
+      "source": "https://s5.mmga1.com/shared/4528468aab/28f911ed51.9a259.png",
+      "bytes": 20058,
+      "sha256": "e3534acd31f312131c21ee3abd753fe5604f9b4a0da3c511f8a3c39ac9b4027d",
+      "acquired": "direct-original-cdn",
+      "acquired_at": "2026-11-07T13:04:34.473Z"
+    }
+  ]
+}

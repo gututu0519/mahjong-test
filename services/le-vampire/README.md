@@ -3,10 +3,10 @@
 Hacksaw Gaming，游戏 ID `2582`，原客户端 `1.36.0`，本地引擎 `1.0.0`。独立服务 **8096**，数据库 `services/le-vampire/data/games.sqlite3`，默认余额 2000。钱包、配置、会话与其他游戏隔离，大厅已加入本款入口，中英文均使用原客户端资源。
 
 ```powershell
-node node/tools/start.mjs le-vampire
+node server/tools/start.mjs le-vampire
 # http://127.0.0.1:8096/?lang=zh
-python -m unittest server.tests.test_le_vampire -v
-python -m unittest discover -s server/tests
+python -m unittest py.tests.test_le_vampire -v
+python -m unittest discover -s py/tests
 python tools/hacksaw_capture/import_le_vampire.py --audit
 ```
 

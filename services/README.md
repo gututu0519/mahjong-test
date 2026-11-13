@@ -1,20 +1,22 @@
 # 独立服务目录
 
-2026-11-05：本目录全部 `start.bat` 默认启动 Node，原端口、配置与数据库路径保留；回退脚本为同目录 `start-python.bat`。首次在 `node/` 安装依赖。既有商户环境自动使用原私有配置的 Node 配套文件；新建商户环境、启动顺序与构建见 [Node 使用说明](../node/README.md)。以下历史初始化命令仅供旧 Python 回退参考。
+商户接入当前采用独立网关和 19 个独立计算服务：先运行 `node server/tools/start.mjs games`，再分别启动网关与后台。平台后台管理游戏服务地址和整局版本，商户后台不可见；操作及新部署包见 [独立游戏服务架构](../docs/game-service-architecture.md)。下列各游戏 `start.bat` 继续保留原独立试玩入口。
 
-GTT 管理后台：`gtt-admin`（8112），启动 `node node/tools/start.mjs admin`，首次先执行 `admin-init`。与商户网关共用数据库商户配置，提供登录、权限、授权、密钥及交易恢复，详见 [后台说明](gtt-admin/README.md)。
+2026-11-05：本目录全部 `start.bat` 默认启动 Node，原端口、配置与数据库路径保留；回退脚本为同目录 `start-python.bat`。首次在 `server/` 安装依赖。既有商户环境自动使用原私有配置的 Node 配套文件；新建商户环境、启动顺序与构建见 [Node 使用说明](../server/README.md)。以下历史初始化命令仅供旧 Python 回退参考。
 
-GTT 商户接入新增两个独立服务：`gtt-gateway`（8110，商户 API、Buffalo 原客户端、游戏操作记录）和 `gtt-mock-platform`（8111，模拟合作平台钱包及联调页面）。它们使用 `node node/tools/start.mjs gateway/platform` 独立入口，首次先执行 `python -m server.merchant.sandbox init`；配置和数据归属见 [GTT 商户接口](../docs/gtt-merchant-wallet-v1.md)。现有游戏试玩入口继续保留。
+GTT 管理后台：`gtt-admin`（8112），启动 `node server/tools/start.mjs admin`，首次先执行 `admin-init`。与商户网关共用数据库商户配置，提供登录、权限、授权、密钥及交易恢复，详见 [后台说明](gtt-admin/README.md)。
 
-Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `node node/tools/start.mjs captains-bounty`，见 [接入记录](captains-bounty/README.md)。
+GTT 商户接入新增两个独立服务：`gtt-gateway`（8110，商户 API、Buffalo 原客户端、游戏操作记录）和 `gtt-mock-platform`（8111，模拟合作平台钱包及联调页面）。它们使用 `node server/tools/start.mjs gateway/platform` 独立入口，首次先执行 `python -m py.merchant.sandbox init`；配置和数据归属见 [GTT 商户接口](../docs/gtt-merchant-wallet-v1.md)。现有游戏试玩入口继续保留。
 
-Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `node node/tools/start.mjs fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
+Captain's Bounty（PG Soft，54）：英文原版客户端，端口 8102，入口 `captains_bounty_client`，独立配置与钱包。启动 `node server/tools/start.mjs captains-bounty`，见 [接入记录](captains-bounty/README.md)。
+
+Fortune Rabbit（PG Soft）：英文原版客户端，端口 8101，入口 `fortune_rabbit_client`，独立钱包和大厅入口。启动 `node server/tools/start.mjs fortune-rabbit`；原版证据与待验证项见 [接入记录](fortune-rabbit/README.md)。
 
 全部 19 款游戏当前尚缺的验证、资源与补抓操作，见 [各游戏待验证与资源缺口](../docs/game-validation-and-resource-gaps.md)。各服务的旧阶段描述以对应游戏最新接入记录为准。
 
-Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `node node/tools/start.mjs great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
+Great Game Serengeti（Hacksaw Gaming）：端口 8098，`great_game_serengeti_client`，独立钱包、原版中英文客户端与大厅入口。启动 `node server/tools/start.mjs great-game-serengeti`，见 [接入记录](great-game-serengeti/README.md)。
 
-Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `node node/tools/start.mjs dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
+Dr Zappo（Hacksaw Gaming）：端口 8097，`dr_zappo_client`，独立钱包、原版中英文客户端及大厅入口。启动 `node server/tools/start.mjs dr-zappo`，规则与证据见 [接入记录](dr-zappo/README.md)。
 
 Le Vampire（Hacksaw Gaming）：端口 8096，`le_vampire_client`，独立钱包、原版中英文客户端及大厅入口。实现和验证范围见 [接入记录](le-vampire/README.md)。
 
@@ -39,13 +41,13 @@ services/
 双击相应目录中的 `start.bat`，或在仓库根目录分别执行：
 
 ```powershell
-node node/tools/start.mjs mahjong-ways2
-node node/tools/start.mjs game-api
-node node/tools/start.mjs buffalo-win
+node server/tools/start.mjs mahjong-ways2
+node server/tools/start.mjs game-api
+node server/tools/start.mjs buffalo-win
 ```
 
 每条命令运行一个进程。Ctrl+C 只停止所在终端的服务；后台进程按对应 PID 停止。
-根目录 `start-server.bat`、原游戏启动脚本及 `node node/tools/start.mjs mahjong-ways2` 只启动麻将服务。
+根目录 `start-server.bat`、原游戏启动脚本及 `node server/tools/start.mjs mahjong-ways2` 只启动麻将服务。
 `GET /health` 返回 `service_id`，可确认当前访问的是哪个服务。
 
 ## 隔离约定
@@ -54,7 +56,7 @@ node node/tools/start.mjs buffalo-win
 - 各自配置：调整 A 的概率配置不会修改 B。修改后只重启对应服务；未结束回合的规则版本保护仍有效。
 - 各自进程和端口：一个进程停止不结束另一个；重复端口会启动失败，不会抢占已有服务。
 - 各自日志：日志归属 `logs/service.log`。目录不要设成指向另一服务的链接，也不要让不同服务复用同一目录。
-- 当前复用同一仓库的 Python 公共代码和解释器。运行隔离已经实现，**代码发布版本和 CPU／内存配额尚未隔离**。
+- 当前默认复用同一仓库 `server/` 的 Node 公共代码和运行时；Python 回退源码位于 `py/`。运行隔离已经实现，**代码发布版本和 CPU／内存配额尚未隔离**。
   修改公共代码后，下一次启动会加载新版本；正式独立部署时应为每个服务构建、固定依赖及发布版本，
   再用独立虚拟环境或容器部署，不能把共用源码目录当成独立发布隔离。
 
@@ -77,20 +79,20 @@ JSON API 使用 `entry: "json_api"`。游戏必须先在代码目录登记；不
 复制模板时只复制启动脚本和配置，不复制 `data/`、`logs/`。启动脚本中的目录名必须改为新服务名。
 全新交互类型（如实时房间）新增独立入口；当前 JSON API 仅支持逐步回合契约。
 
-现有麻将存档已从 `server/data/games.sqlite3` 使用 SQLite 备份接口复制到
+现有麻将存档已从 `py/data/games.sqlite3` 使用 SQLite 备份接口复制到
 `services/mahjong-ways2/data/games.sqlite3`。旧文件保留作迁移备份，不再是当前服务的数据库。
 重启不会自动重新导入旧库，避免覆盖新进度。
 
-公共实现仍放在 `server/` 作为代码库：
+当前公共实现位于 `server/`，职责划分见 [Node 使用说明](../server/README.md)。旧 Python 回退代码保留在 `py/`：
 `core/storage.py` 管理存储，`sessions.py` 管理身份，`queries.py` 管理查询和初始状态，
 `settlement.py` 管理单次原子结算，`service.py` 只组装这些组件。
 游戏规则和客户端协议继续分别归属于 `games/` 和 `adapters/`。
 
-双进程隔离测试：`python -m unittest server.tests.test_process_isolation -v`。
+双进程隔离测试：`python -m unittest py.tests.test_process_isolation -v`。
 
 ## Big Bass Bonanza
 
-已接入中英文横竖屏原客户端与独立生成引擎；启动 `node node/tools/start.mjs big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
+已接入中英文横竖屏原客户端与独立生成引擎；启动 `node server/tools/start.mjs big-bass-bonanza`，端口 8087，数据库 `services/big-bass-bonanza/data/games.sqlite3`，不共享其他服务账户或钱包。支持普通旋转、免费收鱼与追加，从大厅进入。抓取证据、验证范围及补抓项见 [服务说明](../services/big-bass-bonanza/README.md)。
 
 JILIUS Joker’s Fortune WinX：端口 8091，`jokers_fortune_winx_client`，已接入大厅。实现及补抓项见 [接入记录](jokers-fortune-winx/README.md)。
 

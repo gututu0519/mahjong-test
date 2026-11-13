@@ -7,7 +7,7 @@ from urllib.error import HTTPError
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from server.merchant.deployment import Deployment
+from py.merchant.deployment import Deployment
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -43,6 +43,8 @@ def check(config):
             raise RuntimeError('Console portal mismatch.')
         request(role, '/api/' + role + '/me', 401)
         request(role, '/api/' + ('admin' if role == 'merchant' else 'merchant') + '/me', 404)
+    request('site', '/', 200)
+    request('site', '/api/admin/me', 404)
     request('api', '/gtt/v1/games/list', 401, 'POST')
     request('api', '/', 404)
     request('play', '/gtt/v1/games/list', 404, 'POST')

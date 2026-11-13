@@ -1,0 +1,14 @@
+{
+  "account_id": "817557336527",
+  "region": "us-east-1",
+  "domain_name": "gttgames.com",
+  "instance_id": "i-06ce52379f43882db",
+  "instance_security_group_id": "sg-03dcece50614afd0b",
+  "vpc_id": "vpc-0e6c35caa56d37d51",
+  "alb_subnets": ["subnet-01244f025cdf9591b", "subnet-0f6a6017d1d739b27"],
+  "stacks": {
+    "certificate": "gtt-certificate",
+    "foundation": "gtt-foundation",
+    "edge": "gtt-edge"
+  }
+}

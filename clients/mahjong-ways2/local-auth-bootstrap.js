@@ -2,10 +2,12 @@
 (function () {
     'use strict';
     const launch = new URL(location.href);
-    if (launch.searchParams.get('mock') !== '1') return;
+    const merchant = window.__GTT_MERCHANT__;
+    if (!merchant && launch.searchParams.get('mock') !== '1') return;
+    if (merchant) launch.searchParams.delete('mock');
     launch.searchParams.set('btt', '1');
-    launch.searchParams.set('ot', 'local-demo');
-    const sessionToken = launch.searchParams.get('ops') || 'local-demo-session';
+    launch.searchParams.set('ot', merchant ? merchant.operator : 'local-demo');
+    const sessionToken = merchant?.token || launch.searchParams.get('ops') || 'local-demo-session';
     launch.searchParams.set('ops', sessionToken);
     // Do not carry a real game's session or signed launch settings into a mock session.
     for (const key of ['t', 'tk', 'ao', '__hv', '__sv']) launch.searchParams.delete(key);
@@ -77,5 +79,5 @@
             return () => controller.abort();
         };
     }, 5);
-    console.info('Local mock login enabled; the original client and rendering are unchanged.');
+    if (!merchant) console.info('Local mock login enabled; the original client and rendering are unchanged.');
 })();

@@ -9,12 +9,12 @@ from pathlib import Path
 import app
 
 sys.path.insert(0, str(app.ROOT.parent))
-from server.adapters.jili.roma_x_10000 import pack
+from py.adapters.jili.roma_x_10000 import pack
 
 
 class RomaCaptureTests(unittest.TestCase):
     def test_original_promise_and_decoded_bonus(self):
-        fixture = json.loads((app.ROOT.parent/'server/tests/fixtures/roma-x-10000-spins.json').read_text(encoding='utf-8'))[-1]
+        fixture = json.loads((app.ROOT.parent/'py/tests/fixtures/roma-x-10000-spins.json').read_text(encoding='utf-8'))[-1]
         response = dict(type=0, ret=0, data=pack('SpinResponse', {'data': pack('SpinAck', fixture['spin'])}))
         script = r"""
 const fs=require('fs'), vm=require('vm');const input=JSON.parse(fs.readFileSync(0,'utf8'));

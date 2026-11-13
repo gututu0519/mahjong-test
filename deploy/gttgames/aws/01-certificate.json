@@ -1,0 +1,40 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "GTT ACM public certificate. Deploy in us-east-1; validate DNS at your DNS provider.",
+  "Parameters": {
+    "DomainName": {
+      "Type": "String",
+      "AllowedPattern": "[a-z0-9][a-z0-9.-]+\\.[a-z]{2,}",
+      "Default": "gttgames.com"
+    }
+  },
+  "Resources": {
+    "Certificate": {
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": {
+          "Ref": "DomainName"
+        },
+        "SubjectAlternativeNames": [
+          {
+            "Fn::Sub": "*.${DomainName}"
+          }
+        ],
+        "ValidationMethod": "DNS",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "GTT"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "CertificateArn": {
+      "Value": {
+        "Ref": "Certificate"
+      }
+    }
+  }
+}

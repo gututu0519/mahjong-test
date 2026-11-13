@@ -22,7 +22,7 @@
 ## 协议与验证
 
 - v4 GameInfo / Spin 使用原版二进制混洗，104 的盐为数字和 **5**，响应复用请求 seed。没有改成 JSON 旋转，也没有对原版脚本中的结算函数打补丁。
-- GameInfo `900` 字段携带余额、币种、面额、档位、阈值；其余字段携带当前事务。Spin 特有字段 101–112 来自原版模型装饰器，Schema 见 `server/adapters/pg/wild_bandito_schema.json`。
+- GameInfo `900` 字段携带余额、币种、面额、档位、阈值；其余字段携带当前事务。Spin 特有字段 101–112 来自原版模型装饰器，Schema 见 `py/adapters/pg/wild_bandito_schema.json`。
 - 已抓普通流程状态为 `1→1`、`1→4`、`4→4`、`4→1`。逐条核对中奖位置、路数、支付额、金框转 Wild、删除位置和 protobuf 往返。
 - 原版历史摘要、列表和详情数据模型读取自 `shared/4528468aab/1f2f9a3fb1.45a98.js`：按付费大局合并连消/免费，返回真实账本金额、时间、各步 `gd`。保留历史、规则、赔付表、自动旋转及投注入口。
 - 请求重试复用同一状态结果，余额不会重复扣除；服务重启后从数据库恢复。测试使用独立临时数据库。
@@ -45,8 +45,8 @@
 
 ```powershell
 python -m tools.pg_capture.import_wild_bandito
-python -m unittest server.tests.test_wild_bandito -q
-python -m server.run --service-dir services/wild-bandito
+python -m unittest py.tests.test_wild_bandito -q
+python -m py.run --service-dir services/wild-bandito
 ```
 
 可选独立的确定性免费动画验收：`python -m tools.pg_capture.serve_wild_acceptance --port 18111`，使用 `diagnostics/wild-acceptance-18111.sqlite3`；**不要把验收服务配置用于 8100**。

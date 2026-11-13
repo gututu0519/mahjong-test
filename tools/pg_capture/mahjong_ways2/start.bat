@@ -4,7 +4,7 @@ cd /d "%~dp0..\..\.."
 echo Starting generated game server: http://localhost:8080/?mock=1
 echo Request logs will appear below. Press Ctrl+C to stop.
 echo.
-python -u -m server.app
+python -u -m py.app
 echo.
 echo Server stopped.
 pause

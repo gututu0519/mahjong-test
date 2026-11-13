@@ -31,7 +31,7 @@
 
 ### 新抓取证据与验证范围
 
-本轮重新检查会话 `d60bae0514304f849b8087783be82a8e`，已 completed，1712 条请求、300 帧 WebSocket，响应文件无缺失；Roma 解码 84 局、错误 0。其中第一档直接战斗、第一档转盘 ×2、第二档转盘 ×10 已形成脱敏回归夹具 `server/tests/fixtures/roma-x-10000-live-features.json`，购买倍率、战斗生命值、动作奖金与总额逐项核对通过。这次没有免费实战回包；免费规则依据官方文本和原版介绍样本，本地生成流程验收为独立证据。
+本轮重新检查会话 `d60bae0514304f849b8087783be82a8e`，已 completed，1712 条请求、300 帧 WebSocket，响应文件无缺失；Roma 解码 84 局、错误 0。其中第一档直接战斗、第一档转盘 ×2、第二档转盘 ×10 已形成脱敏回归夹具 `py/tests/fixtures/roma-x-10000-live-features.json`，购买倍率、战斗生命值、动作奖金与总额逐项核对通过。这次没有免费实战回包；免费规则依据官方文本和原版介绍样本，本地生成流程验收为独立证据。
 
 仍需补抓的原版边界证据：免费及追加实战回包、转盘 ×3／×5 与直接 1000／5000／10000 倍回包、最高赔付时同时中奖的处理顺序，以及原版中断恢复行为。所有转盘分支和最高奖已有本地生成及后端测试；不能把这些本地测试当作原版回包。
 
@@ -40,8 +40,8 @@
 ### 可重复验证
 
 ```powershell
-python -m unittest server.tests.test_roma_x_10000 -v
-python -m unittest discover -s server/tests
+python -m unittest py.tests.test_roma_x_10000 -v
+python -m unittest discover -s py/tests
 response-capture/.venv/Scripts/python.exe response-capture/test_roma_decoded.py -v
 python tools/jili_capture/import_roma_x_10000.py --audit
 python -m tools.jili_capture.serve_roma_acceptance
@@ -62,7 +62,7 @@ python -m tools.jili_capture.serve_roma_acceptance --verify
 - 导入器新增 `--references-only`，原始抓取不在当前机器时仍可从已有配置恢复资源；新增 `--audit` 离线核对完整索引。原版脚本与完整性校验逻辑保留。
 - 本轮浏览器已从介绍页进入 PLAY 和主盘面；打开购买菜单，下注 6 时价格为 300／1500；点击第一档后余额由 2000 变为 1700，并进入奖励过渡动画。尚未观察到奖励完整结束，不能宣称购买全流程验收通过。
 - 尝试新建补抓会话 `dd03484b22054cd4a1ad737e260f37d7`，浏览器工具因无法可靠识别当前网址而停止本轮操作。已通过抓取 API 正常停止并保存：142 条请求、0 帧 WebSocket、0 条 Roma 解码，没有进入 `/rx10000/`。该会话不提供新的游戏规则或奖励回包证据。
-- 本轮 `python -m unittest discover -s server/tests`：95 项通过；`response-capture/.venv/Scripts/python.exe response-capture/test_roma_decoded.py -v`：1 项通过。系统 Python 未安装 Playwright，抓取测试须使用工具自带虚拟环境。
+- 本轮 `python -m unittest discover -s py/tests`：95 项通过；`response-capture/.venv/Scripts/python.exe response-capture/test_roma_decoded.py -v`：1 项通过。系统 Python 未安装 Playwright，抓取测试须使用工具自带虚拟环境。
 
 下一步仍需在浏览器可操作时补抓直接战斗、第二档购买、各转盘结果、免费及追加、赔付边界和中断恢复；再完成本地奖励结束回到盘面、大厅 iframe、重载、横竖屏和长时间运行验收。不得把资源校验或后端测试替代这些验收。
 
@@ -90,10 +90,10 @@ python tools/jili_capture/import_roma_x_10000.py --audit
 - 请求 705：原版游戏首页；游戏资源位于 `/rx10000/`。
 - 请求 963：官方规则语言接口，摘录见 `clients/roma-x-10000/rules-evidence.json`。普通与免费中，单次旋转连续中奖 4／5／6／7 次分别触发或追加 3／5／10／20 次免费旋转。
 - 请求 966：原版规则页面代码，给出 15 线的赔率表；源码分析文件只在本地 diagnostics 保留。请求 967 提供两组规则配置的购买倍率，因此不能仅靠这个接口选择当前会话参数。
-- 从原版 `rx10000Proto` 提取 7 种消息结构，保存于 `server/adapters/jili/roma_x_10000_schema.json`。战斗回包含 Symbol、Result、Win、HealthPoint；转盘回包含 BonusWheelResult、BonusWheelMult、BonusWheelWin。
-- 原客户端 `FeaturesAck` 自带三个介绍样本，包括 21 个画面的免费流程、战斗与超级转盘。脱敏夹具见 `server/tests/fixtures/roma-x-10000-tutorial.json`。48 个连消画面的逐线符号、长度、行号、奖金及补牌已逐项对照通过；Line 为从 0 开始的索引。有中奖消除时，符号 9 也会被清除。
+- 从原版 `rx10000Proto` 提取 7 种消息结构，保存于 `py/adapters/jili/roma_x_10000_schema.json`。战斗回包含 Symbol、Result、Win、HealthPoint；转盘回包含 BonusWheelResult、BonusWheelMult、BonusWheelWin。
+- 原客户端 `FeaturesAck` 自带三个介绍样本，包括 21 个画面的免费流程、战斗与超级转盘。脱敏夹具见 `py/tests/fixtures/roma-x-10000-tutorial.json`。48 个连消画面的逐线符号、长度、行号、奖金及补牌已逐项对照通过；Line 为从 0 开始的索引。有中奖消除时，符号 9 也会被清除。
 - 另建独立公开试玩会话，取得原版解码初始化及 2 条旋转回包，没有改变用户抓取会话。初始化确认下注档为 `[1.2, 3, 6, 9, 15, 30, 45, 60, 90, 150, 210, 300, 600, 900, 1200]`；购买倍率为 50／250，购买基础下注上限为 500，最高倍数为 10000。脱敏初始化在 `clients/roma-x-10000/fixtures/info.json`。
-- 两条原版旋转夹具见 `server/tests/fixtures/roma-x-10000-spins.json`：一条基础下注 6 的普通回合；一条基础下注 1.2、购买支出 60 的第一档回合，转盘结果 6、4 条战斗记录、总奖励 21.6。这是完整协议回包证据，不能当作本地动画已经播放到结束的证据。
+- 两条原版旋转夹具见 `py/tests/fixtures/roma-x-10000-spins.json`：一条基础下注 6 的普通回合；一条基础下注 1.2、购买支出 60 的第一档回合，转盘结果 6、4 条战斗记录、总奖励 21.6。这是完整协议回包证据，不能当作本地动画已经播放到结束的证据。
 - 转盘编号 0／1／2 对应 10000／5000／1000 倍，3／4／5／6 对应战斗奖励乘 10／5／3／2，来自原客户端映射；当前只有编号 6 的独立实时回包及介绍样本，其他分支仍需实际回包核对。
 
 初始化中没有 `extraInfo`，不能因为消息定义存在 ShowExtra／Mul 就宣称当前原版开放额外下注。
@@ -129,8 +129,8 @@ python tools/jili_capture/import_roma_x_10000.py ca118facf745438086269f8c58ce2bc
 启动和定向验证：
 
 ```powershell
-node node/tools/start.mjs roma-x-10000
-python -m unittest server.tests.test_roma_x_10000 -v
+node server/tools/start.mjs roma-x-10000
+python -m unittest py.tests.test_roma_x_10000 -v
 python response-capture/test_roma_decoded.py -v
 ```
 

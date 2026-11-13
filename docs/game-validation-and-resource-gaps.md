@@ -1,5 +1,7 @@
 # 各游戏待验证与资源缺口
 
+2026-11-06 最新开放规则：用户要求运营可开放任何游戏，取代此前收集不完整禁止接入的限制。下述未关闭项仅作收集与验证记录，开放不代表已补齐证据。当前 19 款均有未完成项；逐款清单、目录导出和恢复边界见 [游戏开放规则](game-integration-readiness.md)。下文历史抓取及资源统计未在本次重新全量核验，新增抓取必须先检查再更新结论。
+
 更新日期：2026-10-25（本次更新 Buffalo Win 购买接入，其余游戏沿用最近核对记录）。覆盖当前游戏注册表中的全部 **19 款游戏**，供继续开发、补抓和验收时使用。`game-api` 是公共服务，不单列为游戏。
 
 当前最明确的界面阻塞是 Wild Bandito 免费资源包和历史详情包缺失；3 Billion Vaults 仍有外部浏览器从大厅加载失败的问题。麻将胡了 2 另有已知规则尚未实现。其余多项待办属于原版罕见回包、专用动画、恢复或平台附加功能，不能统一解释为“缺素材”。
@@ -90,9 +92,11 @@ f31e045242.0294d.png
 
 **补抓操作**：免费触发至总结算全程保留；如出现 5 Scatter、特殊方块或最高赢额，保存全部请求响应。购买或特殊钱包只在原版确实开放时记录其入口、报价、动作和结算。
 
-依据：[玩法覆盖](../server/games/mahjong_ways2/README.md)、[协议分析](mahjong-ways2-spin-interface.txt)、[历史资源清单](mahjong-ways2-capture-status/missing-resources.txt)。
+依据：[玩法覆盖](../py/games/mahjong_ways2/README.md)、[协议分析](mahjong-ways2-spin-interface.txt)、[历史资源清单](mahjong-ways2-capture-status/missing-resources.txt)。
 
 ## Buffalo Win
+
+2026-11-07 商户正式模式补充：从上述最新抓取的请求 513–519 恢复 `shared/2fd142260e/` 下另外 7 张启动依赖图片，来源、长度和 SHA-256 见 `clients/buffalo-win/fixtures/merchant-mode-assets.json`。本机 8110 已用 `btt=1` 商户会话进入原版主画面，无 Demo Mode 弹窗；未在该验收中发起投注。详见 [商户启动验收](merchant-client-launch-modes.md)。历史面板和其余原版证据缺口仍按下文记录。
 
 已验证：789 条中英文响应的确定性规则；免费次数、续列、倍率保留、重试及恢复的后端测试；中文客户端主画面。英文启动、赔付表与用户交互已有记录。
 
@@ -120,7 +124,7 @@ f31e045242.0294d.png
 
 **补抓操作**：免费中出现 3+ Scatter 后录到追加结束并领取；最高奖发生时保存结束、领取和重新进入响应。保留 ante 开启时不能购买的原版限制。
 
-依据：[引擎说明](../server/games/gates_of_olympus/README.md)、[客户端说明](../services/gates-of-olympus/README.md)。
+依据：[引擎说明](../py/games/gates_of_olympus/README.md)、[客户端说明](../services/gates-of-olympus/README.md)。
 
 ## Sweet Bonanza POP
 
@@ -134,7 +138,7 @@ f31e045242.0294d.png
 
 **补抓操作**：J 与 S 合计触发时，从奖项展示录到免费结束和领取；再补中文及手机竖屏首次加载，保留其实际静态资源。
 
-依据：[引擎说明](../server/games/sweet_bonanza_pop/README.md)、[服务说明](../services/sweet-bonanza-pop/README.md)。
+依据：[引擎说明](../py/games/sweet_bonanza_pop/README.md)、[服务说明](../services/sweet-bonanza-pop/README.md)。
 
 ## Big Bass Bonanza
 
@@ -147,7 +151,7 @@ f31e045242.0294d.png
 
 **补抓操作**：录完高阶渔夫累计及后续整批免费并领取；单渔夫补鱼从起转前录到炸弹、鱼盘变化和收取结束；在免费中重载保留恢复响应。
 
-依据：[玩法说明](../server/games/big_bass_bonanza/README.md)。
+依据：[玩法说明](../py/games/big_bass_bonanza/README.md)。
 
 ## Super Ace
 

@@ -4,7 +4,7 @@
 
 ## 启动
 
-在项目根目录执行 `node node/tools/start.mjs jokers-fortune-winx`，或运行本目录 `start.bat`。大厅为 http://127.0.0.1:8080/demo/ ，独立入口 http://127.0.0.1:8091/ 。配置位于 `config/jokers-fortune-winx.json`，钱包数据库在本服务 `data/`，与其他游戏独立。
+在项目根目录执行 `node server/tools/start.mjs jokers-fortune-winx`，或运行本目录 `start.bat`。大厅为 http://127.0.0.1:8080/demo/ ，独立入口 http://127.0.0.1:8091/ 。配置位于 `config/jokers-fortune-winx.json`，钱包数据库在本服务 `data/`，与其他游戏独立。
 
 ## 证据和实现
 
@@ -12,7 +12,7 @@
 - JILIUS 公开试玩 gameId 938，客户端 `/sss-jf2/`，框架 astarte4。没有套用 Fortune Gems 2 的启动保护修改，也没有跳过原版介绍动画。
 - 导入 231 个静态资源；`.bin`、`.zip`、`.wasm`、`.cconb` 获取原始二进制，避免 CDP 的 text/bin 转码。来源和哈希在 `clients/jokers-fortune-winx/fixtures/asset-sources.json`。
 - 大厅封面来自同一抓取请求 67：`https://wbgame.tadagaming.com/us-official-jiliusweb/production/images/games/Game938/Icon_938_big.webp`。
-- 专用 protobuf 从原版 `assets/main/index.38352.js` 的生成代码提取；公共消息复用已核对的 astarte 字段。独立公开试玩会话采集 60 个解码回合（普通及 Extra Play 各 30），去除凭据后保存在 `server/tests/fixtures/jokers-fortune-winx-spins.json`。未操作用户正在录制的页面。
+- 专用 protobuf 从原版 `assets/main/index.38352.js` 的生成代码提取；公共消息复用已核对的 astarte 字段。独立公开试玩会话采集 60 个解码回合（普通及 Extra Play 各 30），去除凭据后保存在 `py/tests/fixtures/jokers-fortune-winx-spins.json`。未操作用户正在录制的页面。
 - 5 列×3 行、5 条固定线，无 Wild；相同符号从最左列连续计奖。赔率以当前基础 play 为单位，不除以 5。60 个真实回合的逐线奖励、BaseWin 和 TotalWin 与本地算法对照一致。
 - 倍率为 1/2/3/4/5/10。普通模式只将中间水平线乘以中间倍率；Extra Play 额外消耗基础 play 的 100%，每条中奖线使用其终点行倍率。服务端返回 5 列符号，原版客户端根据 MulVec 生成第 6 列倍率。
 - Scatter 为 symbol 7，规则页明确 3/4/5 个分别支付基础 play 的 10/50/250 倍，独立累加；规则证据来自请求 612、615。Scatter 消息的具体字段及动画仍需真实中奖样本核对。

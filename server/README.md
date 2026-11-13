@@ -1,199 +1,111 @@
-# 本地多游戏服务端：首版实现与扩展规划
+# Node 运行时
 
-独立服务的入口、配置、数据与进程隔离以 [服务目录说明](../services/README.md) 为准。
+游戏客户端前端版本由构建自动编号，平台“游戏前端版本”可检查、切换新会话和回退，旧会话保持原资源。在本目录执行 `npm run frontend:stage -- --game buffalo-win` 可构建并本地安装，不自动激活；部署与验证边界见 [游戏前端版本](../docs/game-frontend-versions.md)。后端游戏包也自动读取构建发布号，平台注册不再要求手填版本。
 
-## 定位与当前状态
+当前默认拓扑为独立网关 + 每款独立游戏计算服务。平台后台提供“游戏服务与版本”，支持注册、检查、切换和回退；商户后台没有该入口和权限。新整局切换版本，进行中整局和重试保留原版本。完整操作及部署说明见 [独立游戏服务与版本切换](../docs/game-service-architecture.md)。
 
-这是可运行的本地、虚拟积分服务端。麻将的牌面和补牌由独立随机策略生成，
-中奖、连消、金牌、免费旋转由规则引擎计算，不读取 `spin-rounds.json` 或抓取响应来决定结果。
-抓取样本仅在离线回归测试中作为算奖的对照数据。
+后端目录已统一：当前 Node 实现位于 `server/`，旧 Python 实现位于 `py/`，实例配置、数据库和日志仍归根目录 `services/`。从仓库根目录使用 `node server/tools/start.mjs <服务>`；Python 回退使用 `python -m py.run` 或各服务的 `start-python.bat`。迁移生成模块位于 `migrated/py/`，资源包内使用 `resources/py/` 保存必要的协议资料，运行时不执行 Python。
 
-本文介绍 `mahjong-ways2` 的服务端结构；当前已接入的其他游戏及独立服务见 [服务目录说明](../services/README.md)。
+19 款游戏、通用游戏 API、商户网关、模拟商户平台、平台/商户管理后台和 RTP worker 均有 Node 实现。正常构建、测试、启动不调用 Python。抓包、解包工具继续保留 Python；旧后端源码与回退脚本暂留。当前完成本地迁移与自动化验证，未切换线上流量。
 
-## 启动
+## 目录与职责
 
-需要 Python 3.10+；现有客户端模块修复还需要 Node.js。新后端仅使用 Python 标准库。
+接入中心规范以 `config/integration.json` 为源文件。修改后执行 `npm run docs:build` 同步下载指南与 OpenAPI，执行 `npm run docs:check` 检查三份内容一致；历史 Python 文档不作为 Node 接入规范生成源。v1.11 新整局通过 decision_id、game_id、round_id 串联预派彩和钱包，签名 `/gtt/v1/rounds/get` 查询当前整局，`/gtt/v1/rounds/changes` 按持久化游标拉取变化；查询返回实际取档、RTP 回退及已确认累计账务。
 
-在仓库根目录运行：
+RTP 配置支持游戏覆盖、商户继承和默认 96%，保留已有玩家覆盖。配置预派彩地址后自动尝试，调用或返回格式校验失败时回退 RTP，无需开关；已有整局绑定保持不变。配置目标不代表模型已通过标定；规则、逐款任务和统计验证边界见 [RTP 继承与标定](../docs/rtp-inheritance.md)。
 
-```powershell
-python -m server.app
-```
+商户钱包六项回调支持 `wallet_endpoints` 独立完整 URL（`balance`、`debit`、`credit`、`refund`、`transactions/get`、`transactions/list`），未填写项沿用 `wallet_url` 加标准路径。全部独立配置后默认地址可留空，签名使用实际 pathname。已有数据库启动时增加独立配置表，不改原余额、密钥和入口；指南下载包含实际回调地址。
 
-也可双击根目录 `start-server.bat`，或者 `services/mahjong-ways2/start.bat`。
+运营可以开放任何游戏，`config/game-readiness.json` 的收集状态和缺失项仅供查看，不限制开放、新启动或新整局。新商户默认授权全部游戏；目录可导出 HTML/CSV/JSON。当前证据清单仍有 19 款待补，详见 [开放规则与维护流程](../docs/game-integration-readiness.md)。
 
-- 游戏：<http://localhost:8080/?mock=1>
-- 健康检查：<http://localhost:8080/health>
-- 游戏目录：<http://localhost:8080/api/v1/games>
-- 数据库：`services/mahjong-ways2/data/games.sqlite3`，目录已加入 Git 忽略。
+运营控制台显示完整目录和待补项，平台管理员/运营可管理开放开关（默认关闭、持久化、版本校验及审计）；收集状态不影响开放。商户工作台、签名目录、公共网关目录及商户导出只返回可接入游戏，不包含内部审核资料。关闭返回 `GAME_CLOSED` 并禁止新整局，已开始回合继续恢复结算。
 
-启动器固定监听 `127.0.0.1`。`mock=1` 保留为原客户端的本地登录开关；新服务下它不表示样本回放。
-中文版不显示货币符号。
-
-如 8080 已有旧服务，先停止旧进程。隔离验证可以运行：
-
-```powershell
-python -m server.run --service-dir services/game-api --port 8081
-```
-
-旧回放服务保留在 `tools/pg_capture/mahjong_ways2/serve_local.py`，仅供对照；旧 JSON 钱包位于 `diagnostics/mahjong-ways2/local-spin-state.json`，内容保留，不自动导入新数据库。
-新数据库首次为本地演示账号发放 2000 虚拟积分。以后重启保留余额与未完成回合。
-
-分类、独立服务入口、目录归属及新游戏接入规范见 [多游戏、多服务架构](ARCHITECTURE.md)。
-当前麻将特殊玩法覆盖见 [游戏模块清单](games/mahjong_ways2/README.md)。
-
-独立通用 API（默认 8082，独立数据库，不提供麻将网页）可另外启动：
-
-```powershell
-python -m server.run --service-dir services/game-api
-```
-
-## 总体结构
-
-```text
-客户端
-  ├─ 通用 JSON API /api/v1
-  └─ 现有麻将二进制接口 → adapters/pg/mahjong_ways2.py
-                          ↓
-               core/service.py 应用服务
-               会话 / 事务 / 去重 / 钱包 / 流水
-                          ↓
-                  Registry 游戏注册表
-                          ↓
-                 games/mahjong_ways2/engine.py
-                 纯规则与独立出牌策略
-                          ↓
-               SQLite 状态、规则版本、结算记录
-```
-
-| 层 | 职责 | 不应承担的内容 |
+| 业务块 | 位置 | 职责 |
 | --- | --- | --- |
-| HTTP / 协议适配 | 鉴权入口、请求校验、字段与二进制转换 | 计算中奖或直接修改余额 |
-| 应用服务 | 串行化结算、请求去重、余额和状态原子提交 | 写死麻将的中奖规则 |
-| 游戏模块 | 下注校验、出牌、算奖、状态迁移 | HTTP、数据库、跨游戏钱包 |
-| 数据存储 | 会话、状态、流水、历史响应、规则快照 | 根据客户端上报金额结算 |
+| 前端 | 仓库 `clients/`、`demo/`；`frontend/admin/` | 原游戏、大厅、平台和商户后台；游戏素材按 S3 构建规则发布 |
+| 后端网关 | `gateway/`、`shared/`、`services/` | 商户鉴权、钱包回调、结算、后台、模拟平台、HTTP/WebSocket 传输 |
+| 游戏服务 | `games/buffalo-win/`、`migrated/py/games/` | 19 款引擎；可独立运行原客户端服务或内部计算进程 |
+| 协议和通用核心 | `migrated/py/adapters/`、`migrated/py/core/` | 原 PG、PP、JILI/TaDa、Hacksaw、Play’n GO 协议和独立游戏事务存储 |
+| 语义兼容层 | `compat/` | Node SQLite、文件、二进制、随机数、整数/浮点/集合等原实现语义 |
 
-`services/local_demo.py` 暂时复用旧静态服务的模块修复和 Service Worker 处理，
-不会实例化旧 `LocalSpin`，也不会调用其回放请求处理器。后续换前端时可以替换这一资产服务层。
-玩法规则文本和名称仍可读取原有静态帮助资料，它们不参与随机结果生成。
+剩余游戏采用离线 AST 转换生成 TypeScript，并配套 Node 语义实现；生成结果已入库，运行时执行编译后的 JavaScript，不解释 Python 源码，也不代理 Python 服务。网关、后台、独立传输层及美洲野牛商户计算服务为手写 TypeScript。`tools/translate-runtime.py` 和参考导出脚本只用于迁移开发，**不属于 npm 构建依赖**。后续业务修改以 TypeScript 为准；重新生成会覆盖 `migrated/`，必须评审差异并重新验证。
 
-## 通用接口
+## 原入口启动
 
-除游戏目录和健康检查外，读取/操作玩家数据必须带 `Authorization: Bearer <token>`。
-新建会话返回一个新游客账号，不接受客户端指定任意已有玩家身份。
-每个游客会话有效期为 24 小时；首版尚无账号登录、续期或跨设备恢复功能。
-
-| 方法 | 路径 | 用途 |
-| --- | --- | --- |
-| GET | `/health` | 版本、生成模式、已注册游戏 |
-| GET | `/api/v1/games` | 游戏目录、引擎和规则版本 |
-| POST | `/api/v1/sessions` | 创建游客账号和会话，JSON `{}` |
-| GET | `/api/v1/wallet` | 当前虚拟钱包 |
-| GET | `/api/v1/games/{game_id}/state` | 恢复最近牌面与回合状态 |
-| POST | `/api/v1/games/{game_id}/spin` | 推进一次旋转或连消步骤 |
-| GET | `/api/v1/history?limit=20` | 当前账号最近结算，最多 100 条 |
-
-Spin 请求示例：
-
-```http
-POST /api/v1/games/mahjong-ways2/spin
-Authorization: Bearer <token>
-Content-Type: application/json
-Idempotency-Key: <每次新操作一个唯一标识，重试时沿用>
-
-{"previous_sid":"0","bet":{"coin_minor":1,"level":5}}
-```
-
-`previous_sid` 来自状态接口或上次响应；初始为 `"0"`。
-返回 `outcome.next_phase` 为 `ready` 表示整段付费回合结束；否则使用相同下注继续推进。
-API 不会在服务端后台自动消耗所有免费次数，客户端负责逐步请求以播放动画。
-
-所有通用 API 金额使用整数最小单位：100 = 1 虚拟积分。PG 适配层才转换成原客户端的浮点显示单位。
-`currency=DEMO` 代表虚拟积分；旧客户端兼容报文中的币种代码不是实币账户。
-
-原客户端暂用固定本地会话 `local-demo-session`，只适用于这个 loopback 演示环境。
-它和通用 API 新建的游客账号不同，多标签页使用同一本地演示钱包。
-
-## 数据一致性
-
-- `players`：账号及当前余额；每个玩家的钱包由所有游戏共享。
-- `sessions`：令牌哈希、玩家关联与过期时间。
-- `game_states`：按 `(player_id, game_id)` 保存牌面和未结束回合。
-- `rulesets`：规则配置内容及版本哈希。
-- `spins`：请求键、规范化请求、完整响应、结算后的私有状态及规则版本。
-- `ledger`：初始积分和每次旋转的借贷与前后余额。
-
-每次操作在同一个 SQLite `BEGIN IMMEDIATE` 事务中完成校验、计算、
-余额更新、流水、状态和去重响应写入。任何异常均回滚。
-相同请求键与相同参数返回持久化的旧响应，不再次扣款；同键不同参数返回 409。
-不同请求键但过期的 `previous_sid` 也返回 409，阻止两个标签页同时推进同一局面。
-请求键按玩家和游戏隔离，不依赖进程内缓存，重启仍有效。
-
-随机种子和规则版本保存在私有状态中，用于内部复算，不通过玩家 API 返回。
-初次进入回合使用系统熵生成种子；回合内按种子、步骤和规则版本确定性派生，
-与网络封包的混淆种子无关。余额、牌面、输赢都不能由客户端指定。
-
-配置变化会产生新的 `ruleset_id`。未结束回合遇到配置变化会拒绝继续，避免中途换规则；
-应先完成旧回合再变更配置。首版不提供历史引擎的自动并存与调度。
-
-## 麻将规则与概率边界
-
-已实现：
-
-1. 35 格存储牌面，可见列高 4/5/5/5/4。
-2. 从最左侧连续至少三列的 ways 算奖，百搭参与替代。
-3. 已解析赔付表；基础下注 `coin_minor × level × 20`。
-4. 金牌中奖变百搭，其他中奖位置消除，剩余牌下落，顶部独立生成补牌。
-5. 普通连消倍率 1/2/3/5，免费连消倍率 2/4/6/10。
-6. 散布符在连消结束时授予免费次数，免费旋转和连消不重复扣款。
-7. 回合累计、单次旋转累计、免费累计奖金分别记录。
-
-配置位于 `games/mahjong_ways2/config.json`。首版开放符号权重和金牌概率调整，
-下注档位、赔付规则、倍率和阈值与当前客户端适配保持固定；修改这些规则需升级引擎并补充测试。
-每列最多生成一个散布符；初始随机牌中不直接生成百搭，只由金牌转化。
-金牌只在中间三列出现。这些生成策略是本地设计，不宣称还原原版服务端。
-
-免费授予使用 `10 + 2 × (散布符数 - 3)`；其中 3/4 散布符有项目样本支持，
-5 散布符属于明确的本地扩展。没有人为安排输赢或读取预设回合。
-**权重不等于 RTP；当前没有已标定的 RTP 承诺，也没有原版随机数/转轴条带还原。**
-购买奖励、特殊钱包和最高赢额封顶未实现，不应把本首版视为原版所有边界条件的复刻。
-
-## 后续接很多游戏的工作流
-
-每款新游戏新增一个模块，遵守 `core/contracts.py` 的 `Game` 接口：
-
-1. 唯一 `game_id`、引擎版本、配置与规则版本。
-2. `initial_state(seed)`：创建合法初始状态。
-3. `normalize_bet(payload)`：校验该游戏支持的下注。
-4. `step(state, bet, seed, sid)`：只返回新状态、事件及整数借贷金额，不直接接触钱包。
-5. `public_state(state)`：过滤种子等内部状态。
-6. 在 `games/catalog.py` 的显式目录中注册并分类；通用钱包、状态、历史、事务和 API 无需复制。
-7. 如果该游戏客户端有专用协议，新增适配器；不要把该协议字段放进平台核心。
-
-平台当前契约针对“由玩家请求逐步推进的回合制游戏”。
-如果以后接入实时多人对战，需要额外的房间、时钟、消息广播层，不能只增加一个 Spin 函数。
-
-## 分阶段路线
-
-| 阶段 | 工作 | 验收条件 |
-| --- | --- | --- |
-| 首版（本次） | 平台事务、游戏注册、独立麻将、旧客户端适配、测试 | 独立生成、结算可对账、重试不多扣、重启恢复 |
-| 第二款游戏 | 按契约接入另一个真实玩法 | 核心钱包/结算代码不出现第二套副本，状态互相隔离 |
-| 概率工具 | 批量离线仿真、置信区间、波动/大奖/免费分布、配置评审 | 每个规则版本有可重复报告；不以小样本回报率冒充目标 RTP |
-| 运营开发工具 | 本地管理界面、历史搜索、内部种子复算、配置版本审批与并存 | 可定位单局、可审计变更，不能通过玩家接口强制输赢 |
-| 多进程服务 | 抽离存储层、PostgreSQL 行锁/唯一约束、迁移工具、压测 | 并发故障演练下不丢账、不重复结算 |
-| 对外环境 | 正式身份认证、会话恢复、权限、限流、部署/备份、监控与告警 | 完成专项安全、容量和恢复验收后再开放网络 |
-
-当前采用单进程多线程、SQLite 单写事务，目的是先稳定接口和游戏契约。
-游戏数量增加不意味着一开始就拆大量微服务。未来先按压测结果拆分应用进程和数据库，
-再决定哪些游戏需要独立计算进程；不要把所有游戏的概率配置或状态机塞进一个总文件。
-
-## 验证
+需要 Node.js 24.17+；本次验证版本 24.19.0。首次在 `server/` 执行：
 
 ```powershell
-python -m unittest discover -s server/tests -v
+npm ci
+npm test
 ```
 
-覆盖规则对照、金牌消除、免费授予/续次、随机结果多样性、600 步状态不变量、
-玩家/游戏隔离、重复及并发请求、重启去重、余额不足、事务失败、账本对账和 HTTP/二进制适配。
-浏览器中的登录、生成牌面、下注与旋转另外进行人工式交互验证。
+之后双击原 `start-server.bat` 或 `services/<名称>/start.bat`。这些入口已默认 Node；工具检测源码变化后编译。各游戏仍使用原 `service.json`、端口、`config/` 和 `data/games.sqlite3`。原脚本保存为同目录 `start-python.bat`。
+
+仓库根目录的命令形式：
+
+```powershell
+node server/tools/start.mjs mahjong-ways2
+node server/tools/start.mjs fortune-rabbit
+node server/tools/start.mjs game-api
+node server/tools/start.mjs games
+node server/tools/start.mjs gateway
+node server/tools/start.mjs mock
+node server/tools/start.mjs admin
+```
+
+游戏命令支持 `--port`、`--database`，不会自动启动其他游戏。大厅仍通过原端口访问各独立服务。
+
+已有 GTT 本机环境：首次启动辅助服务时，在原私有 `sandbox.json` 旁新增 `node.json`，继续使用原商户、游戏、平台三库和 8110/8111/8112 入口。不覆盖旧配置、不重新生成商户密钥、不重置余额。先停止旧进程再启动 Node，禁止 Python 与 Node 同时写同一库。默认独立服务模式先运行 `games`（8211–8229），再分别运行网关和后台；网关与后台也允许先启动后注册服务。8113 只供历史计算服务兼容，默认网关不再监督该子进程。新增配置及游戏服务密钥受现有 `services/*/data/` 忽略规则保护。
+
+辅助命令 `admin-init`、`launch --language en`、`transactions`、`retry --operation-id <ID>`、`rtp-worker --once` 也可通过 `tools/start.mjs` 执行。显式配置使用 `--config <绝对路径>`。旧商户编号离线维护工具仍作为历史工具保留，不是运行服务。
+
+## 初始化本机商户环境
+
+在 `server/` 执行：
+
+```powershell
+npm run init
+npm run sandbox-init
+npm run games
+# 另开终端，分别启动：
+npm run gateway
+npm run platform
+npm run admin
+npm run rtp-worker
+```
+
+`init` 拒绝覆盖已有配置；默认配置写入 `services/gtt-gateway/data/node.json`，首次管理员凭据写入同目录私有 `admin-bootstrap.json`。`sandbox-init` 创建模拟商户并写入私有凭据文件。端口为网关 8110、平台 8111、后台 8112，19 个内部游戏服务使用 8211–8229。已有配置不能重复初始化，启动时复用已有三库、账号和商户密钥，不创建第二套环境。平台和商户后台分别为 `/`、`/merchant/`。
+
+全部 19 款现已接入统一网关与平台/商户后台。新商户钱包统一固定精度 10000，后台不再提供选择，创建接口拒绝其他精度；新建模拟商户授权 1–19，初始余额 2000.0000 USD。商户无需传入或回传 minor_unit，钱包回调也不发送此字段；签名目录、交易结果、整局与取档金额均换算为 10000，预派彩主币种字符串固定四位小数。游戏引擎与原客户端保留原生金额单位。当前本机无真实商户，原两位精度测试数据已备份并等值换算，账号、密钥和游戏状态保留；平台管理员可编辑授权。详细编号、原生金额精度和接入流程见 [统一商户接入](../docs/unified-merchant-games.md)。本机游戏地址分别使用 `g1.localhost:8110` 至 `g19.localhost:8110`，始终打开签名启动接口返回的完整 URL。
+
+## 19 款内部计算服务
+
+每个进程选择一款游戏，独立端口、配置和内部密钥，不连接玩家数据库或商户钱包：
+
+```powershell
+node dist/cli.js game --game-id fortune-rabbit --game-config ../services/fortune-rabbit/config/fortune-rabbit.json --secret-file <内部密钥文件> --port 8214
+```
+
+密钥至少 32 字符。所有请求需 `Authorization: Bearer ...`；提供 `/health`、`POST /v1/describe`、`/v1/initial`、`/v1/normalize`、`/v1/step`。`step` 接收 `state`、原投注 `bet`、固定字符串 `seed` 和 `operation_id`；重试返回相同计算结果。它不会自动向商户网关注册游戏。现有美洲野牛商户计算服务继续使用 `buffalo` 命令，保留整局预派彩接口。
+
+## 构建和资源
+
+```powershell
+npm run package -- --build-id gtt-node-<唯一编号> --assets-manifest ../diagnostics/releases/gtt-game-assets-2e8b417be6a438768bc4/manifest.json
+node tools/smoke-release.mjs ../diagnostics/releases/<构建ID>
+```
+
+输出到 `diagnostics/releases/<构建ID>/`：
+
+- `gateway.tar.gz`：商户网关、后台、RTP worker 及必要协议/启动资料；默认经 HTTP 调用独立游戏服务。
+- `game-<游戏代码>.tar.gz`：19 款游戏分别独立打包，包含 `GAME.json` 发布身份和单款配置。新旧版本可用不同端口并行运行，后台切换新整局路由。
+- `buffalo-win.tar.gz`：历史商户美洲野牛计算服务兼容包，新拓扑使用 `game-buffalo-win.tar.gz`。
+- `all-services.tar.gz`：全部 Node 运行代码、20 份服务配置、协议 schema、私有启动资料、大厅和后台。
+- `frontend.tar.gz`、`infra.tar.gz`：后台前端及部署模板。
+- `release.json`、包内清单：来源、文件和归档 SHA-256、服务范围、现有 S3 素材绑定；`verification.json` 由成功的独立验收生成。
+
+运行包无需 npm 安装，也不含 Python、测试、数据库、密钥或抓包。`all-services` 不包含全部游戏图片、音效、脚本素材：部署独立游戏时，把原完整 `clients/` 合并/挂载到包内 `resources/clients/`；或用 `GTT_RESOURCE_ROOT` 指向与 `resources/` 同形的完整资源根目录。不能只用最小包宣称完整客户端已可游玩。
+
+现有美洲野牛 S3 素材版本与 374 个文件字节继续校验绑定。其他游戏的 Node 迁移不意味着其 S3 白名单、CDN 路由已完成；当前素材发布器仍只支持美洲野牛。构建不上传 S3、不重启线上服务。
+
+验证结果见 [VALIDATION.md](VALIDATION.md)，切换与回退见 [迁移实施](../docs/node-migration.md)。原版规则证据边界仍以各游戏文档为准；Node/Python 一致不代表新增规则得到原版抓包证明。

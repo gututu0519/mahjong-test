@@ -6,7 +6,7 @@
 
 所有商户统一使用 GTT 自动生成的 `merchant_secret`，与游戏 API 和钱包共用。预派彩请求通过 `X-GTT-Merchant`、`X-GTT-Timestamp`、`X-GTT-Nonce`、`X-GTT-Signature` 验证 HMAC-SHA256，签名路径为配置 URL 的实际路径。签名与 nonce 去重见 [商户与钱包接口](gtt-merchant-wallet-v1.md)。请求体不传 Token 或密钥。
 
-后台只配置预派彩开关与完整接口 URL，是否使用由商户决定；生成密钥不会自动启用预派彩。接口必须为 HTTPS，loopback 联调允许 HTTP，禁止查询参数和重定向。建议路径 `/api/v1/callbacks/gtt/preBetDecision`。密钥可由有权限的管理员在后台随时查看／复制，普通配置查询与审计只显示指纹。
+后台配置可选的完整预派彩接口 URL，填写后自动优先尝试预派彩，调用失败回退 RTP；留空走 RTP，无需额外开关。接口必须为 HTTPS，loopback 联调允许 HTTP，禁止查询参数和重定向。建议路径 `/api/v1/callbacks/gtt/preBetDecision`。密钥可由有权限的管理员在后台随时查看／复制，普通配置查询与审计只显示指纹。
 
 启用后，签名启动请求须提供 `external_username`，即玩家在合作平台的账号；不把 GTT `player_id` 当作合作平台账号。该映射保存到游戏数据库，重复绑定须保持一致，一个合作平台账号不能绑定该商户下另一个玩家。可用启动字段 `prebet_type: "SURE_WIN"` 指定普通付费回合的类型，默认 `NORMAL`；该字段需要与 `external_username` 一起提供，只有持商户签名的服务端可设置。
 
@@ -19,10 +19,10 @@
 每个付费整局开始前调用一次逻辑决策，实际 HTTP 可因丢包或并发重试多次，但始终使用同一组去重值：
 
 ```json
-{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.00","type":"NORMAL"}
+{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.0000","type":"NORMAL"}
 ```
 
-统一模式的业务请求体为 `{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.00","type":"NORMAL"}`，通过请求头验签；其中业务毫秒时间戳在重试时固定，签名头秒级时间戳和 nonce 每次重新生成。合作平台返回 HTTP 200，并用 `code` 表示业务结果。成功响应：
+统一模式的业务请求体为 `{"player_name":"platform-alice","timestamp":1792886400000,"bet_amount":"2.0000","type":"NORMAL"}`，通过请求头验签；其中业务毫秒时间戳在重试时固定，签名头秒级时间戳和 nonce 每次重新生成。合作平台返回 HTTP 200，并用 `code` 表示业务结果。成功响应：
 
 ```json
 {"code":0,"data":{"maxWinMulti":[3,5]},"msg":null}
@@ -34,7 +34,7 @@
 {"code":3202,"data":null,"msg":"Insufficient available balance"}
 ```
 
-`bet_amount` 使用商户主币种，两位小数字符串；`200` 美分传 `"2.00"`，不传 `200`。时间戳为正整数毫秒，在发请求前持久化，并在本机数据库内单调分配，确保新下注不会复用上一笔的去重键。同一局重试／服务重启固定 `player_name + timestamp + bet_amount + type`，鉴权参数只在发出请求时装配，不写入预下注记录。
+`bet_amount` 使用商户主币种四位小数字符串；钱包整数 `20000` 单位对应 `"2.0000"` USD，不传整数 `20000`。精度固定，商户无需传入或回传 `minor_unit`。时间戳为正整数毫秒，在发请求前持久化，并在本机数据库内单调分配，确保新下注不会复用上一笔的去重键。同一局重试／服务重启固定 `player_name + timestamp + bet_amount + type`，鉴权参数只在发出请求时装配，不写入预下注记录。
 
 倍数基数按用户确认使用**本局实际扣款**。普通旋转以实际投注为基数，购买免费以购买费用为基数；总派彩包含整条续列、自然触发或购买的免费旋转及追加。倍数是总派彩倍数，不是扣除本金后的净盈利倍数。
 
@@ -47,7 +47,7 @@
 | `[0.9,1.1]` | 整局总派彩为实际扣款的 0.9～1.1 倍 |
 | `[-1,0]` | 必输：上限为 0 倍，整局总派彩必须为 0（包含免费与续列） |
 
-例如投注 `2.00 USD` 返回 `[3,5]`，整局总派彩为 `6.00～10.00 USD`。结果区间使用 Decimal 精确比较，结算沿用整数美分，不做浮点金额运算。输入不得为布尔值、NaN、Infinity、反向区间或除 -1 外的负下限。本机防御性数值上限为 1,000,000 倍，是实现限制，不声明为合作平台规则。
+例如投注 `2.00 USD` 返回 `[3,5]`，整局总派彩为 `6.00～10.00 USD`。结果区间使用 Decimal 精确比较，结算使用 10000 四位小数整数单位，不做浮点金额运算。输入不得为布尔值、NaN、Infinity、反向区间或除 -1 外的负下限。本机防御性数值上限为 1,000,000 倍，是实现限制，不声明为合作平台规则。
 
 普通付费使用 `NORMAL` 或签名启动指定的 `SURE_WIN`；购买免费使用 `BUY_FREE_SPIN`。普通续列和免费旋转作为该付费整局的一部分，继续使用原决策，**不单独发送零下注的 `FREE_SPIN` 请求**。合作平台对独立免费旋转的零金额基数、单次／累计约束未明确，需要补充契约后才能实现独立免费活动；现有游戏免费流程不隐藏、不禁用。
 
@@ -88,8 +88,8 @@
 ## 验证命令
 
 ```powershell
-python -m unittest server.tests.test_gtt_prebet -v
-python -m unittest discover -s server/tests -v
+python -m unittest py.tests.test_gtt_prebet -v
+python -m unittest discover -s py/tests -v
 ```
 
 验证覆盖三个原始区间、固定 10 倍、小数区间、`[-1,0]` 整局零派彩（2026-11-05 按用户确认修正）、完整购买免费、服务重启、并发重试、预派彩响应丢失、钱包响应丢失、业务错误、玩家映射、凭据脱敏及无效／不可达区间不扣款。生产合作平台接口仍需独立联调。

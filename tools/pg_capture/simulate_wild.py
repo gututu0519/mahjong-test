@@ -7,9 +7,9 @@ from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from server.adapters.pg.protocol import pack, unpack, text_field, field, double_field
-from server.adapters.pg.wild_bandito import SCHEMA
-from server.adapters.pg.wire import decode
+from py.adapters.pg.protocol import pack, unpack, text_field, field, double_field
+from py.adapters.pg.wild_bandito import SCHEMA
+from py.adapters.pg.wire import decode
 from .serve_wild_acceptance import build_acceptance
 
 

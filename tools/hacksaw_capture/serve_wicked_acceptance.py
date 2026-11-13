@@ -11,7 +11,7 @@ import json
 import sqlite3
 import random
 import threading
-from server.services.wicked_grin_demo import build_server
+from py.services.wicked_grin_demo import build_server
 
 SCENARIOS = {
     'stash-retrigger': dict(port=18095,seed=38,mode='fs',win=520),

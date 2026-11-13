@@ -154,13 +154,13 @@ class Capture:
                 try:
                     sys.path.insert(0, str(ROOT.parent)) if str(ROOT.parent) not in sys.path else None
                     if path.startswith('/rx10000/'):
-                        from server.adapters.jili.roma_x_10000 import unpack
+                        from py.adapters.jili.roma_x_10000 import unpack
                     elif path.startswith('/mpt2/'):
-                        from server.adapters.jili.money_pot_deluxe import unpack
+                        from py.adapters.jili.money_pot_deluxe import unpack
                     elif path.startswith('/sss-tbv/'):
-                        from server.adapters.jili.three_billion_vaults import unpack
+                        from py.adapters.jili.three_billion_vaults import unpack
                     else:
-                        from server.adapters.jili.jokers_fortune_winx import unpack
+                        from py.adapters.jili.jokers_fortune_winx import unpack
                     response = event['response']
                     if response['ret'] != 0:
                         raise ValueError('Game response ret=' + str(response['ret']))

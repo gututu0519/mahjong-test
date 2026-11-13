@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
-from server.services.fortune_rabbit_demo import build_server
+from py.services.fortune_rabbit_demo import build_server
 
 
 def install_last_prize_scenario(game):

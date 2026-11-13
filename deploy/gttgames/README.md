@@ -1,17 +1,30 @@
 # gttgames.com 部署配置
 
-本目录准备 Linux 单机部署：Nginx 负责公网 HTTPS，两个 Python 服务只监听 loopback；Python 3.11+、Node.js 18+、systemd、Nginx、Certbot 为运行依赖。域名已写入配置，服务器公网 IP、DNS 解析和正式证书仍需在部署时配置。本目录不包含真实密码、商户密钥或生产数据库。
+2026-10-29：当前部署以 [AWS 标准化部署方案](AWS-DEPLOYMENT.md) 为准，步骤和实际输出见 [aws/README.md](aws/README.md)。基础栈、边缘栈、四个业务域名及 ALB/EC2 链路已部署并完成基本验证；美洲野牛 374 个静态文件已迁到私有 S3，通过 CloudFront 正式路径全量校验，发布和回退见 [素材迁移记录](aws/GAME-ASSETS.md)。官网成品、自动备份/恢复、告警接收和真实商户完整业务回归仍待完成。
+
+`dns-records.csv` 为当前 AWS/Cloudflare 记录参考，四个业务域名 DNS-only 指向业务 CloudFront；主域名与 www 必须等官网成品准备后才发布。
+
+## 旧版单机直回源部署（历史参考）
+
+以下说明和根目录 cloudformation.json 保留此前方案，不能用于覆盖当前 AWS 环境；当前环境不需要 origin 公网 A 记录，也不使用这里的独立 Nginx TLS/Certbot 流程。
+
+已安装宝塔的服务器按 [宝塔部署步骤](BAOTA.md) 上传文件和启动后端；网站、证书与 Nginx 配置使用宝塔入口管理。
+
+本目录按官网与游戏同时上线准备：1 台 Linux 服务器、2 个 CloudFront 分配、1 个私有 S3 备份桶。官网成品文件由 Nginx 提供，暂不需要官网素材桶。Nginx 负责回源 HTTPS，两个 Python 服务只监听 loopback；Python 3.11+、Node.js 18+、systemd、Nginx、Certbot 为运行依赖。域名已写入配置，服务器公网 IP、AWS 资源、DNS 解析和正式证书仍需在部署时配置。本目录不包含真实密码、商户密钥或生产数据库。
 
 ## 域名与服务
 
 | 域名 | 职责 | 上游 |
 | --- | --- | --- |
-| `gttgames.com` | 主站预留；官网建成前 `/` 临时跳转商户入口 | Nginx |
-| `www.gttgames.com` | 308 跳转主域名 | Nginx |
+| `gttgames.com` | 独立官网，文件在 `/var/www/gtt-site` | 官网 CloudFront → Nginx |
+| `www.gttgames.com` | 同一个官网分配，308 跳转主域名 | 官网 CloudFront → Nginx |
 | `api.gttgames.com` | 仅提供 `/gtt/v1/` 商户签名接口 | `127.0.0.1:8110` |
-| `play.gttgames.com` | 原版客户端、玩家会话和游戏接口 | `127.0.0.1:8110` |
+| `play.gttgames.com` | 原版客户端、玩家会话和游戏接口 | 游戏 CloudFront → Nginx → `127.0.0.1:8110` |
 | `merchant.gttgames.com` | 商户登录、接入中心、文档及 `/api/merchant/` | `127.0.0.1:8112` |
 | `admin.gttgames.com` | 平台登录及 `/api/admin/` | `127.0.0.1:8112` |
+| `origin.gttgames.com` | 两个 CloudFront 分配的回源 DNS，始终直接解析服务器 IP | Nginx，按转发的公开 Host 分流 |
+
+两个 CloudFront 分配与备份桶的模板、ACM 和切换顺序见 [完整 CDN 上线步骤](CLOUDFRONT.md)。`api`、`merchant`、`admin` 直接通过 HTTPS 访问服务器。
 
 启动接口在生产配置下返回 `https://play.gttgames.com/?...` 的完整地址，商户直接使用 `launch_url`。游戏 ID 保持 JSON 数字，Buffalo Win 为 `1`；商户号为 `GTT` 加六位数字。后台主账号用商户名称登录。生产配置中没有模拟商户、测试余额或 8111 钱包进程，真实商户需提供自己的 HTTPS 钱包及可选预派彩地址。
 
@@ -20,7 +33,8 @@
 ## 文件
 
 - `production.json`：公开域名、可信 loopback 代理、数据库和日志目录。
-- `dns-records.csv`：六项 DNS 记录模板，将 `REPLACE_WITH_SERVER_PUBLIC_IPV4` 替换为真实公网 IPv4 后再配置。IPv6 需在确认可达后另配 AAAA。
+- `dns-records.csv`：已更新为当前 AWS/Cloudflare 的六项记录参考，不能用来执行下述旧版七项直回源方案；官网两项尚待发布。
+- `cloudformation.json`：两个 CloudFront 分配、缓存策略与私有备份桶；只准备模板，不自动创建资源。
 - `nginx/`：域名分流、TLS、首次签发证书的 HTTP 配置、续期重载钩子。
 - `systemd/`：网关和后台进程。双方使用同一商户库与游戏库，单机各运行一个进程。
 - `preflight.py`：只读检查环境、配置及客户端素材。`--template` 可在开发机执行。
@@ -49,6 +63,8 @@ sudo ln -s /opt/gtt/releases/RELEASE_ID /opt/gtt/current
 sudo install -d -o root -g gtt -m 0750 /etc/gtt
 sudo install -d -o gtt -g gtt -m 0700 /var/lib/gtt
 sudo install -d -o gtt -g gtt -m 0750 /var/log/gtt
+sudo install -d -o root -g root -m 0755 /var/www/gtt-site
+# 将官网成品静态文件复制到该目录，必须包含 index.html；不要复制源代码或环境密钥。
 sudo install -m 0640 -o root -g gtt /opt/gtt/current/deploy/gttgames/production.json /etc/gtt/production.json
 cd /opt/gtt/current
 sudo -u gtt python3 deploy/gttgames/preflight.py --config /etc/gtt/production.json
@@ -62,7 +78,7 @@ sudo -u gtt python3 deploy/gttgames/preflight.py --config /etc/gtt/production.js
 
 ```sh
 cd /opt/gtt/current
-sudo -u gtt python3 -m server.merchant.sandbox admin-init --config /etc/gtt/production.json
+sudo -u gtt python3 -m py.merchant.sandbox admin-init --config /etc/gtt/production.json
 ```
 
 初始密码只写入 `/var/lib/gtt/admin-bootstrap.json`（目录 0700），不打印到服务日志。首次登录后可修改密码。已有账号时命令拒绝重复初始化。创建真实商户后，系统自动分配顺序商户号、统一密钥与商户主账号。
@@ -71,9 +87,9 @@ sudo -u gtt python3 -m server.merchant.sandbox admin-init --config /etc/gtt/prod
 
 ## 3. DNS 与证书
 
-先将 CSV 中的公网 IPv4 占位符替换为真实地址，在域名 DNS 控制台配置记录。此次准备工作没有修改 DNS。
+本次宝塔部署采用 DNS 验证源站证书：先将 api、merchant、admin、origin 四项 A 记录指向服务器，官网、www 和 play 在分配准备好后直接解析 CloudFront，不需要临时改成直连 IP。按 [完整 CDN 上线步骤](CLOUDFRONT.md) 配置证书和两个分配。此次准备工作没有修改 DNS。
 
-为六个明确域名签发一张 SAN 证书，使用 HTTP-01 自动续期，不依赖 DNS 厂商插件。首次签发前只加载 HTTP 引导配置，避免正式 TLS 配置引用尚不存在的证书：
+以下是独立 Nginx 部署可选的 HTTP-01 方案，本次宝塔 DNS 验证流程不执行此段命令。选用 HTTP-01 时，需要先将验证域名解析源站，签发后再切换 CDN：为六个明确域名签发一张 SAN 证书，首次签发前只加载 HTTP 引导配置，避免正式 TLS 配置引用尚不存在的证书。
 
 ```sh
 sudo install -d -m 0755 /var/www/gtt-acme
@@ -109,7 +125,7 @@ sudo install -m 0644 /opt/gtt/current/deploy/gttgames/logrotate/gtt /etc/logrota
 sudo certbot renew --dry-run
 ```
 
-首次部署前确认发行版的 Nginx 主配置会加载 `/etc/nginx/conf.d/*.conf`，且没有其他重复的 80／443 默认站点。主站当前只把 `/` 临时跳转到商户入口；官网内容上线时替换主域名的站点块，其他子域名配置保持独立。
+首次部署前确认发行版的 Nginx 主配置会加载 `/etc/nginx/conf.d/*.conf`，且没有其他重复的 80／443 默认站点。主站直接提供 `/var/www/gtt-site` 中的官网成品，不再跳转商户入口。官网文件需另行提供；服务器预检会检查 index.html，不能把部署模板检查通过当成官网已经上线。
 
 ## 5. 验证
 
@@ -149,9 +165,9 @@ sudo systemctl start gtt-gateway gtt-admin gtt-rtp-worker
 - [Let's Encrypt 验证方式](https://letsencrypt.org/docs/challenge-types/)
 - [systemd 执行环境](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html)
 
-## 本次本地验证记录
+## 原直连方案验证记录
 
-已在隔离临时数据库与测试证书下运行 Nginx 1.30.6：语法检查、TLS SNI／证书校验、域名分流、两个后台根路径登录、Secure Cookie 隔离、签名路径／body 保持、完整 play 链接、HTTPS 玩家余额和投注、原版客户端 GameInfo、访问日志无会话令牌均通过。测试浏览器的原版设备提示通过其“Continue to Game”入口继续，没有修改或隐藏提示。该验证不代表已修改公网 DNS、签发正式证书或部署目标 Linux。systemd 验证仍需在目标 Linux 上执行。
+此前直连方案已在隔离临时数据库与测试证书下运行 Nginx 1.30.6：语法检查、TLS SNI／证书校验、域名分流、两个后台根路径登录、Secure Cookie 隔离、签名路径／body 保持、完整 play 链接、HTTPS 玩家余额和投注、原版客户端 GameInfo、访问日志无会话令牌均通过。测试浏览器的原版设备提示通过其“Continue to Game”入口继续，没有修改或隐藏提示。该记录不代表新版 CloudFront 链路已在 AWS 验证，也不代表已修改公网 DNS、签发正式证书或部署目标 Linux。systemd 与 CloudFront 端到端验证仍需在目标环境执行。
 
 ## 客户端素材待补记录
 

@@ -12,12 +12,12 @@ JILI Super Ace（gameId 49 / fullhouse）保留原版 HTML、Cocos 界面、素�
 
 ```powershell
 git pull
-python -m unittest discover -s server/tests -q
-node node/tools/start.mjs super-ace
+python -m unittest discover -s py/tests -q
+node server/tools/start.mjs super-ace
 ```
 
 访问 `http://127.0.0.1:8088/`。也可双击本目录 `start.bat`。
-大厅沿用麻将服务：`node node/tools/start.mjs mahjong-ways2`，访问 `http://127.0.0.1:8080/demo/`。
+大厅沿用麻将服务：`node server/tools/start.mjs mahjong-ways2`，访问 `http://127.0.0.1:8080/demo/`。
 抓取工具的 `8090` 是抓取管理页面，不是新游戏端口。
 服务代码只需 Python 标准库。浏览器诊断另外安装 `playwright` 并准备 Edge；可用现有 `response-capture/.venv/Scripts/python.exe`，新电脑须自行创建虚拟环境。
 
@@ -37,7 +37,7 @@ node node/tools/start.mjs super-ace
 
 - 最新抓取会话共 2773 条记录，135 个 WebSocket 帧；原版入口 HTML 对应请求 709、1440。`fullhouse/req` 是 protobuf 加密传输，不能把旧密文直接回放给新会话。
 - 导入工具：`tools/jili_capture/import_capture.py`；来源索引：`clients/super-ace/fixtures/asset-sources.json`。原版文件保持原始字节，仓库 `.gitattributes` 禁止自动换行转换。
-- 使用公开 trial 启动补抓了正常旋转和购买的解码结果；去标识化样本在 `server/tests/fixtures/super-ace-spins.json`。购买样本为 0.5 基础下注、20.25 成本、23.65 总中奖，包含基础盘和 10 次免费盘。
+- 使用公开 trial 启动补抓了正常旋转和购买的解码结果；去标识化样本在 `py/tests/fixtures/super-ace-spins.json`。购买样本为 0.5 基础下注、20.25 成本、23.65 总中奖，包含基础盘和 10 次免费盘。
 - 原版内置教学数据在 `clients/super-ace/fixtures/DemoData.json`，用于确认金框转百搭、大 Joker 复制及免费流程。
 - 生成引擎：5×4、1024 ways、原位翻牌式连消、金框变百搭、大 Joker 复制、1/2/3/5 倍率、免费双倍倍率、3 scatter 触发 10 次、免费重触发加 5 次、购买 40.5 倍、10000 倍总封顶。
 - 原版符号概率、金框概率、大 Joker 复制数量分布及 RTP **未确认**；配置中的概率是本地生成参数，不是还原原版数学模型。极端封顶时逐项 award 与截断 combo 金额的一致性还需专门验证。
@@ -76,12 +76,12 @@ node node/tools/start.mjs super-ace
 
 ## 主要文件
 
-- `server/games/super_ace/engine.py`、`config.json`：生成式规则和本地参数。
-- `server/adapters/jili/wire.py`、`super_ace_schema.json`、`super_ace.py`：protobuf 和原版消息适配。
-- `server/services/super_ace_demo.py`：8088 HTTP 服务、原版资源、登录和命令路由。
+- `py/games/super_ace/engine.py`、`config.json`：生成式规则和本地参数。
+- `py/adapters/jili/wire.py`、`super_ace_schema.json`、`super_ace.py`：protobuf 和原版消息适配。
+- `py/services/super_ace_demo.py`：8088 HTTP 服务、原版资源、登录和命令路由。
 - `clients/super-ace/local-adapter.js`：客户端协议边界及本地 URL 适配。
-- `server/tests/test_super_ace.py`：后端测试。
+- `py/tests/test_super_ace.py`：后端测试。
 - `tools/jili_capture/`：素材导入、原型分析及诊断脚本。部分分析脚本固定了本次抓取 ID，属于开发工具。
-- `demo/`、`server/services/local_demo.py`：JILI 分类、Super Ace 卡片和独立服务跳转。
+- `demo/`、`py/services/local_demo.py`：JILI 分类、Super Ace 卡片和独立服务跳转。
 
 后续工作先读本文件并运行浏览器回归，再按上述补抓项继续；不要重复应用已失败的源码文本修改，也不要隐藏未实现的原版入口。

@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def package(output, root=ROOT):
     root, output = Path(root), Path(output)
     selected = []
-    for folder in ('server', 'clients/buffalo-win', 'services/gtt-gateway/config', 'deploy/gttgames'):
+    for folder in ('py', 'clients/buffalo-win', 'services/gtt-gateway/config', 'deploy/gttgames'):
         for path in (root / folder).rglob('*'):
             if not path.is_file():
                 continue
@@ -27,7 +27,7 @@ def package(output, root=ROOT):
         path = root / 'docs' / name
         if path.is_file():
             selected.append((path.relative_to(root).as_posix(), path))
-    required = ('server/merchant/sandbox.py', 'clients/buffalo-win/index.html',
+    required = ('py/merchant/sandbox.py', 'clients/buffalo-win/index.html',
                 'clients/buffalo-win/fixtures/auth-metadata.json', 'clients/buffalo-win/fixtures/game-rule.json',
                 'deploy/gttgames/production.json', 'services/gtt-gateway/config/buffalo-win.json')
     if set(required) - {name for name, _ in selected}:

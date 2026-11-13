@@ -21,7 +21,7 @@ for (const name of names) {
     const expected = modules[name];
     const filename = path.join(clientRoot, 'shared', name, 'index.js');
     const transformed = spawnSync('python', ['-c',
-        'import sys; from server.adapters.pg.client_modules import repair_source; sys.stdout.buffer.write(repair_source(sys.stdin.buffer.read().decode("utf-8-sig")).encode("utf-8"))'],
+        'import sys; from py.adapters.pg.client_modules import repair_source; sys.stdout.buffer.write(repair_source(sys.stdin.buffer.read().decode("utf-8-sig")).encode("utf-8"))'],
         { cwd: projectRoot, input: fs.readFileSync(filename), encoding: 'utf8' });
     assert.equal(transformed.status, 0, transformed.stderr);
     const source = transformed.stdout;

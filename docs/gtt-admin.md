@@ -1,6 +1,6 @@
 # GTT 平台控制台与商户工作台
 
-平台后台：<http://127.0.0.1:8112/>；商户工作台：<http://127.0.0.1:8112/merchant/>。前端无需构建，源码在 `server/merchant/admin.html`、`admin.js`、`admin.css`，接口与权限在 `admin.py`、`control.py`。
+平台后台：<http://127.0.0.1:8112/>；商户工作台：<http://127.0.0.1:8112/merchant/>。前端无需构建，源码在 `py/merchant/admin.html`、`admin.js`、`admin.css`，接口与权限在 `admin.py`、`control.py`。
 
 ## 商户接入与密钥
 
@@ -20,7 +20,7 @@
 
 品牌统一使用大写 **GTT**。商户侧栏“接入中心”（`/merchant/#integration`）上方集中展示商户号、64 字符统一密钥、当前配置的 GTT API origin，以及指南／OpenAPI 下载入口。下方提供九章在线规范：接入准备、签名与验签、游戏启动、钱包回调、幂等结算、预下注决策、操作恢复、错误处理、联调验收。
 
-文档和下载文件由 `server/merchant/integration_docs.py` 同一份结构化契约生成，包含 11 项接口的请求／响应字段、约束、JSON 示例、Python／Node.js 调用代码及固定签名测试向量。示例只使用虚构标识和专用测试密钥，不将当前商户密钥写入文档、代码块或下载文件。文档目录可键盘操作；代码支持复制；桌面采用目录与正文布局，手机使用单列和局部滚动代码／表格。
+文档和下载文件由 `py/merchant/integration_docs.py` 同一份结构化契约生成，包含 11 项接口的请求／响应字段、约束、JSON 示例、Python／Node.js 调用代码及固定签名测试向量。示例只使用虚构标识和专用测试密钥，不将当前商户密钥写入文档、代码块或下载文件。文档目录可键盘操作；代码支持复制；桌面采用目录与正文布局，手机使用单列和局部滚动代码／表格。
 
 - `POST /api/merchant/integration/docs`：在线文档，需要会话、CSRF 和 `merchants.read`。
 - `GET /api/merchant/integration/guide.md`：Markdown 指南附件。
@@ -46,7 +46,7 @@
 
 ## 登录与会话
 
-已有环境运行 `python -m server.merchant.sandbox admin`。全新环境先运行 `python -m server.merchant.sandbox init` 和 `admin-init`。初始平台管理员密码保存在私有 `services/gtt-gateway/data/admin-bootstrap.json`，不打印到日志；已有账号时不重复初始化。
+已有环境运行 `python -m py.merchant.sandbox admin`。全新环境先运行 `python -m py.merchant.sandbox init` 和 `admin-init`。初始平台管理员密码保存在私有 `services/gtt-gateway/data/admin-bootstrap.json`，不打印到日志；已有账号时不重复初始化。
 
 平台 `/api/admin/` 使用 `gtt_admin_session`，商户 `/api/merchant/` 使用 `gtt_merchant_session`，可同时登录且互不退出。商户入口只接受绑定商户的账号。两类会话共用认证存储，但每次请求仍按账号权限限定数据范围。
 
@@ -54,11 +54,11 @@
 
 ## 商户、游戏与交易
 
-商户号由系统分配，为 `GTT` 加六位数字，从 `GTT000001` 按顺序递增，编号不回收、不复用，创建 API 不接受指定 ID。名称、钱包 origin、启用状态和游戏授权可配置；新商户目前仅支持 USD、100 美分精度，已有币种不可修改。钱包地址要求 HTTPS，loopback 联调允许 HTTP；不接受路径、查询、fragment 或用户名密码。
+商户号由系统分配，为 `GTT` 加六位数字，从 `GTT000001` 按顺序递增，编号不回收、不复用，创建 API 不接受指定 ID。名称、钱包地址、启用状态和游戏授权可配置；商户钱包统一 USD、10000 四位小数单位，不提供精度选择，商户无需传入或回传 `minor_unit`，已有币种不可修改。可填写默认 HTTPS origin 或六个独立完整接口 URL，loopback 联调允许 HTTP；不接受查询、fragment 或用户名密码。
 
-商户钱包链路当前接入 Buffalo Win，其他游戏原试玩入口保留。RTP 中心支持平台默认、商户及玩家目标与实际返还率；只有通过验证并发布的模型可配置。操作与统计口径见 [RTP 模块](gtt-rtp.md)。
+商户钱包链路已接入全部 19 款游戏，原试玩入口保留。RTP 中心支持平台默认、商户及玩家目标与实际返还率；只有通过验证并发布的模型可以生效。操作与统计口径见 [RTP 模块](gtt-rtp.md)。
 
-交易中心可按商户、玩家、游戏、状态、操作 ID 分页查询。扣款、派彩使用整数美分与商户币种显示。详情只展示标准请求、已提交结果和元信息，不暴露候选状态、随机种子或未来牌面。
+交易中心可按商户、玩家、游戏、状态、操作 ID 分页查询。商户扣款、派彩和结果金额统一使用 10000 单位，显示为四位小数 USD。详情只展示标准请求、已提交结果和元信息，不暴露候选状态、随机种子或未来牌面。
 
 只允许恢复 prepared／debited 操作，必须填写原因。恢复复用原候选结果、操作及钱包交易号，不重新抽取结果。商户停用或授权撤销后，管理员／运营仍可恢复已受理的待处理操作；后续新游戏请求需有效启用状态及授权。当前没有自动重试线程或手工退款按钮。
 
@@ -97,7 +97,7 @@
 - 本机演示主账号使用商户名称 `demo-platform` 登录，登录密码保存在私有 `services/gtt-gateway/data/merchant-demo-bootstrap.json`。
 - 数据库、备份和日志保存在 Git 忽略目录，升级前使用 SQLite 备份。
 
-运行 `python -m unittest server.tests.test_gtt_admin server.tests.test_gtt_prebet server.tests.test_gtt_merchant -q`。开发浏览器验证脚本为忽略目录 `diagnostics/gtt_console_ui_qa.py`，使用临时数据库，验证反复查看／复制、重置、权限、桌面及手机布局，不对现有钱包做测试扣款。
+运行 `python -m unittest py.tests.test_gtt_admin py.tests.test_gtt_prebet py.tests.test_gtt_merchant -q`。开发浏览器验证脚本为忽略目录 `diagnostics/gtt_console_ui_qa.py`，使用临时数据库，验证反复查看／复制、重置、权限、桌面及手机布局，不对现有钱包做测试扣款。
 
 2026-10-28 验收：53 项接入专项及全项目 240 项回归通过。浏览器验证重复查看同一密钥、显示／隐藏、复制、重置后立即使用、无领取／激活／旧版配置入口、团队隔离和六个手机页面。实际 2 个本机商户已直接统一，现有统一密钥、商户配置、游戏授权和预派彩开关／URL 保留；8110／8111／8112 已更新，实测统一签名、钱包余额查询、重复查看及移除接口返回 404。截图保存在 `diagnostics/gtt-console-v2/merchant-single-key.png` 和 `merchant-single-key-mobile.png`。
 
@@ -107,11 +107,11 @@
 
 ## 顺序编号与已有商户迁移
 
-GTT 对接游戏编号在 `server/merchant/identifiers.py` 显式分配：Buffalo Win 为 1，其余已登记游戏按顺序保留编号，后续只追加、不重排。编号登记不代表已经开通钱包链路，授权目录仍只列实际接入游戏。引擎代码与原版客户端路径保留，GTT 接口与后台展示使用数字 ID；启动的 `game_id` 不接受字符串、布尔值或浮点数。
+GTT 对接游戏编号在 `py/merchant/identifiers.py` 显式分配：Buffalo Win 为 1，其余已登记游戏按顺序保留编号，后续只追加、不重排。编号登记不代表已经开通钱包链路，授权目录仍只列实际接入游戏。引擎代码与原版客户端路径保留，GTT 接口与后台展示使用数字 ID；启动的 `game_id` 不接受字符串、布尔值或浮点数。
 
 商户号为 `GTT000001` 至 `GTT999999`，由持久化计数器在写事务中顺序分配；并发创建不重复，删除后不复用。商户名称须唯一，用于商户主账号登录，商户号用于接口请求头。团队成员继续使用独立登录名。已有主账号保留密码和用户 ID；主账号角色／停用变更时仍须保留其他启用管理员。
 
-升级已有环境时先停止 8110／8111／8112，再运行 `python -m server.merchant.sandbox migrate-identifiers`。该命令备份三库及改变的私有配置，使用 SQLite 附加数据库和 DELETE 超级日志事务更新主键、外键、会话、nonce、游戏状态、操作、钱包、退款取消、预派彩、审计作用域及 JSON 中的商户元信息。不会改动玩家标识、钱包金额、业务交易号、游戏结果或 merchant_secret。提交后恢复 WAL。映射记录在 `merchant_id_migrations`，重跑不再次编号；接口不接受旧商户号作为别名。
+升级已有环境时先停止 8110／8111／8112，再运行 `python -m py.merchant.sandbox migrate-identifiers`。该命令备份三库及改变的私有配置，使用 SQLite 附加数据库和 DELETE 超级日志事务更新主键、外键、会话、nonce、游戏状态、操作、钱包、退款取消、预派彩、审计作用域及 JSON 中的商户元信息。不会改动玩家标识、钱包金额、业务交易号、游戏结果或 merchant_secret。提交后恢复 WAL。映射记录在 `merchant_id_migrations`，重跑不再次编号；接口不接受旧商户号作为别名。
 
 联调配置的 `sandbox_merchant` 和私有登录文件同步更新。此前没有管理员的商户会补建主账号，初始密码只写入私有 `merchant-GTTxxxxxx-bootstrap.json`；命令输出仅包含编号映射、备份路径和凭据文件路径，不输出密码或密钥。启动服务前可用三个数据库的 `PRAGMA foreign_key_check` 检查关联完整性。
 

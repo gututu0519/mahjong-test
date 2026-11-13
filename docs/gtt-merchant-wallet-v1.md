@@ -2,7 +2,7 @@
 
 GTT `preBetDecision` 回调、`external_username` 启动字段及整局派彩区间见 [预派彩接口说明](gtt-prebet.md)。由合作平台实现并向 GTT 返回区间；它不直接入账，实际钱包使用下述 GTT 签名接口。
 
-本规范对应 `server/merchant/` 的可运行实现，首款接入 Buffalo Win。GTT 生成游戏结果，合作平台拥有玩家账户和余额。平台钱包、GTT 游戏记录、原本的 8083 试玩服务使用三个独立数据库；GTT 商户服务不创建本地积分钱包。
+当前可运行实现位于 `server/gateway/`，全部 19 款游戏共用此商户契约。完整字段、示例和下载指南以 `server/config/integration.json` 为唯一源，生成配套 `guide.md`、`guide.html` 和 `openapi.json`。`py/merchant/` 为历史 Python 回退实现，不作为当前商户接入规范生成源。GTT 生成游戏结果，合作平台拥有玩家账户和余额。平台钱包、GTT 游戏记录、原本的 8083 试玩服务使用三个独立数据库；GTT 商户服务不创建本地积分钱包。
 
 ## 统一接入密钥
 
@@ -19,20 +19,22 @@ GTT `preBetDecision` 回调、`external_username` 启动字段及整局派彩区
 在项目根目录首次执行：
 
 ```powershell
-python -m server.merchant.sandbox init
+npm --prefix node ci
+npm --prefix node run build
 ```
 
-此命令创建 `services/gtt-gateway/data/sandbox.json`，生成统一的 merchant_secret，不覆盖已存在的配置。该文件被 Git 忽略。新环境默认商户号 `GTT000001`、商户名称 `Demo Merchant`、玩家 `demo-player`、USD 币种和 200000 最小单位测试余额。平台启动时只补建不存在的测试账户，重启不重置余额；既有 DEMO 商户及流水保留，不自动转换为 USD。
+以上安装并编译 Node 运行时，不创建或覆盖商户配置。已有环境沿用 `services/gtt-gateway/data/node.json`、原商户、账号和密钥。新建环境按 [Node 初始化说明](../server/README.md) 操作，模拟商户钱包固定为 10000 单位，初始测试余额 20000000 = 2000.0000 USD。平台启动只补建不存在的测试账户，重启不重置余额。
 
-分别在两个终端启动：
+已有本机环境按顺序在各终端启动（先网关，再后台）：
 
 ```powershell
-python -m server.merchant.sandbox platform
-python -m server.merchant.sandbox gateway
+node server/tools/start.mjs gateway
+node server/tools/start.mjs mock
+node server/tools/start.mjs admin
 ```
 
 - 模拟平台：<http://127.0.0.1:8111/>，查看平台余额、创建中英文游戏会话、查看钱包交易。
-- GTT 接入服务：`http://127.0.0.1:8110`，承载签名 API 和原版 Buffalo Win 客户端。
+- GTT 接入服务：`http://127.0.0.1:8110`，承载签名 API 和全部 19 款游戏的商户入口。
 - 原大厅和 8083 Buffalo 试玩继续使用原来的服务与钱包。
 - GTT 配置：`services/gtt-gateway/config/buffalo-win.json`，独立复制的规则配置。
 - GTT 数据：`services/gtt-gateway/data/gtt.sqlite3`。
@@ -42,18 +44,18 @@ python -m server.merchant.sandbox gateway
 可在命令行创建游戏链接、查看 GTT 操作记录或恢复一笔待处理操作：
 
 ```powershell
-python -m server.merchant.sandbox launch --language en
-python -m server.merchant.sandbox transactions
-python -m server.merchant.sandbox retry --operation-id <操作ID>
+node server/tools/start.mjs launch --game-id 1 --language en
+node server/tools/start.mjs transactions
+node server/tools/start.mjs retry --operation-id <操作ID>
 ```
 
-`--config` 可指定另一份联调配置。端口可用 `--port` 覆盖，同时应更新配置中的 `gateway_origin` 和后台商户的 `wallet_url`，两端必须一致。旧 JSON 商户配置自动迁入 `data/merchants.sqlite3`；此后通过 [GTT 管理后台](gtt-admin.md) 创建商户、分配游戏和维护密钥，运行中即时生效。玩家仍由平台账户系统建立。当前模拟页只展示指定的 `sandbox_merchant` / `sandbox_player`。
+`--config` 可指定另一份联调配置。网关、模拟平台和后台端口在该配置的 `ports` 中指定，同时保持 `gateway_origin` 和商户钱包接口 URL 一致。旧 JSON 商户配置自动迁入 `data/merchants.sqlite3`；此后通过 [GTT 管理后台](gtt-admin.md) 创建商户、分配游戏和维护密钥，运行中即时生效。玩家仍由平台账户系统建立。当前模拟页只展示指定的 `sandbox_merchant` / `sandbox_player`。
 
 ## 身份、金额及签名
 
 商户号使用 `GTT` 加六位数字，如 `GTT000001`；游戏对接 ID 使用 JSON 正整数，Buffalo Win 为 `1`。玩家、操作、交易、回合标识使用 1–128 位 ASCII 字母、数字和 `_ . : -`。同一 `player_id` 在不同商户下是不同玩家；玩家标识由平台给出，不接收密码、真实姓名或其他非必要个人资料。
 
-金额一律为整数 `amount_minor`，当前 `minor_unit=100`，USD 使用美分，示例 1500 表示 15.00 USD。创建商户当前仅支持美元 USD。币种必须与商户配置一致；模拟平台按商户币种提供测试余额，兼容既有 DEMO 账户。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
+金额一律为整数 `amount_minor`，商户钱包统一固定 `minor_unit=10000`（四位小数），示例 150000 表示 15.0000 USD；不提供两位精度创建选项。游戏原生单位与商户钱包单位分别处理。创建商户当前仅支持美元 USD。币种必须与商户配置一致；模拟平台按商户币种提供测试余额，兼容既有 DEMO 账户。禁止浮点数、布尔值、负数和超过 `9,000,000,000,000,000` 的金额。GTT 页面余额通过平台回调取得，不以浏览器上报金额为准。
 
 全部请求使用 `merchant_secret`。请求均使用 POST、`Content-Type: application/json`，无 URL 查询参数。JSON 不允许重复字段、NaN 或 Infinity；请求体最多 16 KiB。
 
@@ -78,7 +80,7 @@ POST
 
 对该原文的 UTF-8 字节使用对应方向密钥计算 HMAC-SHA256。请求方可任意排版 JSON，但签名必须使用实际发送的原始字节。接收方使用恒定时间签名比较，并将已使用 nonce 持久化；nonce 重用返回 `AUTH_REPLAY`。交易重试使用**新时间戳、新 nonce、新签名、相同交易号及相同业务参数**，不能重复发送同一份签名头。
 
-Python 参考代码可复用 `server.merchant.common.signed_headers`；生产平台应按规范独立实现。密钥保存在服务端，仅可通过授权后台查看；不进入玩家浏览器、游戏链接、日志或仓库。钱包回调只允许 HTTPS，或本机联调的 loopback HTTP；不跟随重定向。
+Node、Python、Java、PHP 的签名示例可从接入中心下载；商户按规范独立实现。密钥保存在服务端，仅可通过授权后台查看；不进入玩家浏览器、游戏链接、日志或仓库。钱包回调只允许 HTTPS，或本机联调的 loopback HTTP；不跟随重定向。
 
 ## 平台 → GTT
 
@@ -101,7 +103,7 @@ GTT 继续兼容原版 Buffalo GameInfo / Spin 协议，购买仍使用 `fb=2`�
 
 ## GTT → 平台钱包
 
-以下接口是平台应实现的契约，模拟平台已实现；全部使用 `merchant_secret` 签名。共同字段是 `player_id`、`currency`、`minor_unit`。
+以下接口是平台应实现的契约，模拟平台已实现；全部使用 `merchant_secret` 签名。共同字段是 `player_id`、`currency`。所有金额固定为 10000 单位，GTT 回调不再发送 `minor_unit`，商户响应也无需回传；兼容显式回传时只接受整数 10000，其他值会作为异常响应处理。签名始终针对实际发送的请求体。
 
 | 路径 | 追加字段 | 含义 |
 | --- | --- | --- |
@@ -115,13 +117,13 @@ GTT 继续兼容原版 Buffalo GameInfo / Spin 协议，购买仍使用 `fb=2`�
 例如基础投注 0.20、75 倍购买的扣款请求：
 
 ```json
-{"player_id":"demo-player","currency":"USD","minor_unit":100,"transaction_id":"<operation_id>:debit","round_id":"<round_id>","amount_minor":1500}
+{"player_id":"demo-player","currency":"USD","transaction_id":"<operation_id>:debit","round_id":"<round_id>","amount_minor":150000}
 ```
 
 成功余额对象：
 
 ```json
-{"data":{"player_id":"demo-player","currency":"USD","minor_unit":100,"balance_minor":198500},"error":null}
+{"data":{"player_id":"demo-player","currency":"USD","balance_minor":19850000},"error":null}
 ```
 
 成功变动对象额外返回 `transaction_id`、`status:"applied"`、`amount_minor`、`applied_minor`、`balance_before_minor`。`balance_minor = balance_before_minor ± applied_minor` 必须成立。扣款和派奖的 `applied_minor` 必须等于请求金额；退款可能为 0，表示没有找到已成功扣款，但已阻止原交易迟到扣款。错误、畸形或不一致的成功响应被视为结果未知，不能据此再次生成结果或换交易号重扣。
@@ -162,7 +164,7 @@ GTT 操作状态为 `prepared → debited → settled`，无扣款步骤可直�
 ## 验证
 
 ```powershell
-python -m unittest server.tests.test_gtt_merchant -v
+python -m unittest py.tests.test_gtt_merchant -v
 ```
 
 覆盖签名篡改、nonce 重放、过期签名、商户禁用与游戏权限、JSON 参数检查、同名玩家跨商户隔离、并发钱包重试、退款及迟到扣款、完整 25 步购买免费回合、双方账单金额核对，以及“平台已扣／已派，但响应丢失或畸形”后的重启恢复。固定抓取牌面仅在离线测试中注入；运行服务使用随机生成引擎。

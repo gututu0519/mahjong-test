@@ -7,7 +7,7 @@ import random
 import sqlite3
 import threading
 
-from server.services.tower_run_treasure_steps_demo import build_server
+from py.services.tower_run_treasure_steps_demo import build_server
 
 SCENARIOS = {'treasure': (18102, False), 'ultra': (18103, True), 'cap': (18104, False), 'empty': (18105, False)}
 RULE_SCENARIOS = {'openings': (18106, False), 'ultra-openings': (18107, True),
@@ -46,7 +46,7 @@ def main():
     servers=[]
     try:
         for name,(port,ultra) in scenarios.items():
-            config=json.loads((ROOT/'server/games/tower_run_treasure_steps/config.json').read_text())
+            config=json.loads((ROOT/'py/games/tower_run_treasure_steps/config.json').read_text())
             if name=='cap':config['symbol_weights']=[0]*9+[1,0]
             else:config.update(symbol_weights=[45,30,20,15,10,5,5,5,5,5,1],treasure_land_probability=.12,treasure_symbol_weights=[30,30,40])
             if name=='empty':config['treasure_land_probability']=0

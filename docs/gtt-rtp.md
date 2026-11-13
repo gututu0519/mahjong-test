@@ -62,7 +62,7 @@
 平台在「模型与标定 → 标定新目标」输入 80.00%～99.00% 的目标和原因，创建持久化任务。状态为 `queued → running → ready` 或 `failed`；成功先产生待发布模型，管理员阅读报告后发布，最后另行设置策略。失败任务不会生成可配置模型。进度与 worker 在线状态由数据库心跳提供，刷新页面读取。
 
 ```powershell
-python -m server.merchant.rtp_worker --config services/gtt-gateway/data/sandbox.json --workers 2
+python -m py.merchant.rtp_worker --config services/gtt-gateway/data/sandbox.json --workers 2
 ```
 
 生产 systemd 单元在 `deploy/gttgames/systemd/gtt-rtp-worker.service`，共用游戏数据库和生产配置，无新增公网端口；初期可与网关同机，设置 CPU 配额和较低优先级。标定使用子进程离线模拟，不调用钱包或在线投注。超过十分钟无心跳的任务可重排队，租约防止旧 worker 写回进度；进程管理应避免启动不受控的重复 worker。
@@ -70,7 +70,7 @@ python -m server.merchant.rtp_worker --config services/gtt-gateway/data/sandbox.
 独立生成报告命令：
 
 ```powershell
-python -m server.merchant.rtp_calibration --targets 9000 9600 --workers 4 --output diagnostics/new-rtp-models.json
+python -m py.merchant.rtp_calibration --targets 9000 9600 --workers 4 --output diagnostics/new-rtp-models.json
 ```
 
 目标值以基点表示，例如 `9600` 为 96%。不要覆盖已发布版本的配置；新版本需重新验证并导入。生产备份／升级需要同时停止 gateway、admin、rtp-worker，并成对备份商户库与游戏库。数据库首次升级会回填已结算历史操作，不改旧请求、候选结果、回执、余额、密钥或玩家状态。

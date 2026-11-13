@@ -10,10 +10,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from server.merchant.deployment import Deployment
+from py.merchant.deployment import Deployment
 
 
-def check(config_path, root=ROOT, template=False):
+def check(config_path, root=ROOT, template=False, site_root=Path('/var/www/gtt-site')):
     config = json.loads(Path(config_path).read_bytes())
     deployment = Deployment(config)
     if not deployment.production or 'merchants' in config or any(key.startswith('sandbox_') for key in config):
@@ -50,6 +50,8 @@ def check(config_path, root=ROOT, template=False):
             if hashlib.sha256(target.read_bytes()).hexdigest() != expected:
                 raise ValueError('Release checksum mismatch: ' + name)
     if not template:
+        if not (Path(site_root) / 'index.html').is_file():
+            raise ValueError('Install the finished corporate website first: ' + str(Path(site_root) / 'index.html'))
         for directory in (Path(config['merchant_database']).parent, Path(config['game_database']).parent,
                           Path(config['bootstrap_directory']), Path(config['log_directory'])):
             if not directory.is_dir() or not os.access(directory, os.R_OK | os.W_OK):
@@ -59,6 +61,7 @@ def check(config_path, root=ROOT, template=False):
                 raise ValueError('Missing server command: ' + name)
     return {'status': 'passed', 'mode': 'template' if template else 'server', 'origins': deployment.origins,
             'python': sys.version.split()[0], 'node': version, 'game_assets': 'present',
+            'website': 'requires finished website at ' + str(site_root) if template else 'present',
             'release_manifest': 'verified' if manifest_path.is_file() else 'source checkout'}
 
 
@@ -67,5 +70,6 @@ if __name__ == '__main__':
     parser.add_argument('--config', type=Path, default=Path(__file__).with_name('production.json'))
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--template', action='store_true')
+    parser.add_argument('--site-root', type=Path, default=Path('/var/www/gtt-site'))
     args = parser.parse_args()
-    print(json.dumps(check(args.config, args.root, args.template), ensure_ascii=False))
+    print(json.dumps(check(args.config, args.root, args.template, args.site_root), ensure_ascii=False))

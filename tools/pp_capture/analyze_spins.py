@@ -42,7 +42,7 @@ def snapshot(session):
 
 
 def audit(data):
-    from server.games.gates_of_olympus.engine import evaluate
+    from py.games.gates_of_olympus.engine import evaluate
     errors, wins, gravity, multipliers = [], 0, 0, 0
     previous = None
     for row in data['rows']:
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     parser.add_argument('session')
     args = parser.parse_args()
     data = snapshot(args.session)
-    out = ROOT / 'server/tests/fixtures/olympus-spins.json'
+    out = ROOT / 'py/tests/fixtures/olympus-spins.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, ensure_ascii=True, separators=(',', ':')) + '\n', encoding='utf-8', newline='\n')
     # Permit direct invocation without installing the repository as a package.

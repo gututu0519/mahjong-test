@@ -4,7 +4,8 @@
   // The captured bundles validate their original host before module execution.
   // Keep their source bytes intact (they also verify source offsets), and adapt
   // only the two version-specific host predicates on the loopback deployment.
-  if ((['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname) || /^g(?:[1-9]|1[0-9])\.localhost$/.test(location.hostname))) {
+  if (window.__GTT_MERCHANT__ || (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname) || /^g(?:[1-9]|1[0-9])\.localhost$/.test(location.hostname))) {
+    const polarity = argument => Boolean([...argument].reduce((bit, digit) => bit ^ (parseInt(digit, 16) & 1), 0));
     for (const [owner, property] of [['V8t4G', 'V97'], ['w3CK8', 'r3L3']]) {
       Object.defineProperty(Function.prototype, property, {
         configurable: true,
@@ -13,10 +14,26 @@
           if (this.name !== owner || typeof value?.l4lMvcD !== 'function') return;
           delete Function.prototype[property];
           // The caller encodes the predicate polarity as the XOR of hex bits.
-          value.l4lMvcD = argument => Boolean([...argument].reduce((bit, digit) => bit ^ (parseInt(digit, 16) & 1), 0));
+          value.l4lMvcD = polarity;
         }
       });
     }
+    // These two captured revisions also contain a date lock. The main revision
+    // expires at 2026-11-07T00:00:00Z (parseInt('bin6eea00', 25)); its failure
+    // branch deletes browser globals and schedules a billion timer callbacks.
+    // Adapt only the version-specific predicate, preserving the caller's bit
+    // polarity and the browser clock used by sessions, history and gameplay.
+    const dateOwners = new Set(['V8t4G', 'w3CK8']);
+    Object.defineProperty(Function.prototype, '109620', {
+      configurable: true,
+      set(value) {
+        Object.defineProperty(this, '109620', {value, writable: true, configurable: true, enumerable: true});
+        if (!dateOwners.has(this.name) || typeof value?.b_nL36q !== 'function') return;
+        value.b_nL36q = polarity;
+        dateOwners.delete(this.name);
+        if (!dateOwners.size) delete Function.prototype['109620'];
+      }
+    });
   }
   const params = new URLSearchParams(location.search);
   const token = params.get('ops');

@@ -6,10 +6,10 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 
-from server.adapters.pg.protocol import unpack
-from server.adapters.pg.wire import decode
-from server.adapters.pg.wild_bandito import SCHEMA
-from server.games.wild_bandito.engine import evaluate
+from py.adapters.pg.protocol import unpack
+from py.adapters.pg.wire import decode
+from py.adapters.pg.wild_bandito import SCHEMA
+from py.games.wild_bandito.engine import evaluate
 
 ROOT = Path(__file__).resolve().parents[2]
 CLIENT = ROOT / 'clients/wild-bandito'

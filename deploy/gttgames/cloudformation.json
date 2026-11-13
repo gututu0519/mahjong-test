@@ -1,0 +1,477 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "GTT full website launch: two CloudFront distributions and one private backup bucket. Existing Linux origin and DNS are provisioned separately.",
+  "Parameters": {
+    "CertificateArn": {
+      "Type": "String",
+      "Description": "Issued ACM certificate in us-east-1 covering gttgames.com, www.gttgames.com and play.gttgames.com.",
+      "AllowedPattern": "arn:aws:acm:us-east-1:[0-9]{12}:certificate/[a-f0-9-]+"
+    },
+    "OriginDomainName": {
+      "Type": "String",
+      "Default": "origin.gttgames.com",
+      "AllowedPattern": "[a-z0-9][a-z0-9.-]+[a-z0-9]",
+      "Description": "DNS A record pointing directly to the Linux server, never to CloudFront."
+    },
+    "PriceClass": {
+      "Type": "String",
+      "Default": "PriceClass_All",
+      "AllowedValues": [
+        "PriceClass_All",
+        "PriceClass_200",
+        "PriceClass_100"
+      ]
+    }
+  },
+  "Resources": {
+    "WebsiteCache": {
+      "Type": "AWS::CloudFront::CachePolicy",
+      "Properties": {
+        "CachePolicyConfig": {
+          "Name": {
+            "Fn::Sub": "${AWS::StackName}-WebsiteCache"
+          },
+          "MinTTL": 0,
+          "DefaultTTL": 300,
+          "MaxTTL": 604800,
+          "ParametersInCacheKeyAndForwardedToOrigin": {
+            "EnableAcceptEncodingGzip": true,
+            "EnableAcceptEncodingBrotli": true,
+            "CookiesConfig": {
+              "CookieBehavior": "none"
+            },
+            "HeadersConfig": {
+              "HeaderBehavior": "whitelist",
+              "Headers": [
+                "Host"
+              ]
+            },
+            "QueryStringsConfig": {
+              "QueryStringBehavior": "none"
+            }
+          }
+        }
+      }
+    },
+    "GameAssetCache": {
+      "Type": "AWS::CloudFront::CachePolicy",
+      "Properties": {
+        "CachePolicyConfig": {
+          "Name": {
+            "Fn::Sub": "${AWS::StackName}-GameAssetCache"
+          },
+          "MinTTL": 0,
+          "DefaultTTL": 86400,
+          "MaxTTL": 604800,
+          "ParametersInCacheKeyAndForwardedToOrigin": {
+            "EnableAcceptEncodingGzip": true,
+            "EnableAcceptEncodingBrotli": true,
+            "CookiesConfig": {
+              "CookieBehavior": "none"
+            },
+            "HeadersConfig": {
+              "HeaderBehavior": "whitelist",
+              "Headers": [
+                "Host"
+              ]
+            },
+            "QueryStringsConfig": {
+              "QueryStringBehavior": "all"
+            }
+          }
+        }
+      }
+    },
+    "WebsiteDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Comment": "GTT WebsiteDistribution",
+          "Enabled": true,
+          "IPV6Enabled": false,
+          "HttpVersion": "http2and3",
+          "PriceClass": {
+            "Ref": "PriceClass"
+          },
+          "Aliases": [
+            "gttgames.com",
+            "www.gttgames.com"
+          ],
+          "Origins": [
+            {
+              "Id": "gtt-nginx",
+              "DomainName": {
+                "Ref": "OriginDomainName"
+              },
+              "ConnectionAttempts": 1,
+              "ConnectionTimeout": 3,
+              "CustomOriginConfig": {
+                "HTTPSPort": 443,
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ],
+                "OriginReadTimeout": 30
+              }
+            }
+          ],
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "gtt-nginx",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "AllowedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachePolicyId": {
+              "Ref": "WebsiteCache"
+            },
+            "Compress": true
+          },
+          "CacheBehaviors": [
+            {
+              "TargetOriginId": "gtt-nginx",
+              "ViewerProtocolPolicy": "redirect-to-https",
+              "AllowedMethods": [
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PUT",
+                "PATCH",
+                "POST",
+                "DELETE"
+              ],
+              "CachedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+              "Compress": true,
+              "OriginRequestPolicyId": "216adef6-5c7f-47e4-b989-5492eafa07d3",
+              "PathPattern": "/.well-known/acme-challenge/*"
+            }
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode": 400,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 403,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 404,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 405,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 414,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 416,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 500,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 501,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 502,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 503,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 504,
+              "ErrorCachingMinTTL": 0
+            }
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": {
+              "Ref": "CertificateArn"
+            },
+            "SslSupportMethod": "sni-only",
+            "MinimumProtocolVersion": "TLSv1.2_2021"
+          }
+        }
+      }
+    },
+    "GameDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Comment": "GTT GameDistribution",
+          "Enabled": true,
+          "IPV6Enabled": false,
+          "HttpVersion": "http2and3",
+          "PriceClass": {
+            "Ref": "PriceClass"
+          },
+          "Aliases": [
+            "play.gttgames.com"
+          ],
+          "Origins": [
+            {
+              "Id": "gtt-nginx",
+              "DomainName": {
+                "Ref": "OriginDomainName"
+              },
+              "ConnectionAttempts": 1,
+              "ConnectionTimeout": 3,
+              "CustomOriginConfig": {
+                "HTTPSPort": 443,
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ],
+                "OriginReadTimeout": 30
+              }
+            }
+          ],
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "gtt-nginx",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "AllowedMethods": [
+              "GET",
+              "HEAD",
+              "OPTIONS",
+              "PUT",
+              "PATCH",
+              "POST",
+              "DELETE"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+            "Compress": true,
+            "OriginRequestPolicyId": "216adef6-5c7f-47e4-b989-5492eafa07d3"
+          },
+          "CacheBehaviors": [
+            {
+              "TargetOriginId": "gtt-nginx",
+              "ViewerProtocolPolicy": "redirect-to-https",
+              "AllowedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachePolicyId": {
+                "Ref": "GameAssetCache"
+              },
+              "Compress": true,
+              "PathPattern": "/assets/*"
+            },
+            {
+              "TargetOriginId": "gtt-nginx",
+              "ViewerProtocolPolicy": "redirect-to-https",
+              "AllowedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachePolicyId": {
+                "Ref": "GameAssetCache"
+              },
+              "Compress": true,
+              "PathPattern": "/shared/*"
+            }
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode": 400,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 403,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 404,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 405,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 414,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 416,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 500,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 501,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 502,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 503,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 504,
+              "ErrorCachingMinTTL": 0
+            }
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": {
+              "Ref": "CertificateArn"
+            },
+            "SslSupportMethod": "sni-only",
+            "MinimumProtocolVersion": "TLSv1.2_2021"
+          }
+        }
+      }
+    },
+    "BackupBucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "OwnershipControls": {
+          "Rules": [
+            {
+              "ObjectOwnership": "BucketOwnerEnforced"
+            }
+          ]
+        },
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        },
+        "LifecycleConfiguration": {
+          "Rules": [
+            {
+              "Id": "AbortIncompleteUploads",
+              "Status": "Enabled",
+              "AbortIncompleteMultipartUpload": {
+                "DaysAfterInitiation": 7
+              }
+            }
+          ]
+        }
+      }
+    },
+    "BackupBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "BackupBucket"
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "RequireTLS",
+              "Effect": "Deny",
+              "Principal": "*",
+              "Action": "s3:*",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "BackupBucket",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Sub": "${BackupBucket.Arn}/*"
+                }
+              ],
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "WebsiteDistributionDomain": {
+      "Value": {
+        "Fn::GetAtt": [
+          "WebsiteDistribution",
+          "DomainName"
+        ]
+      }
+    },
+    "GameDistributionDomain": {
+      "Value": {
+        "Fn::GetAtt": [
+          "GameDistribution",
+          "DomainName"
+        ]
+      }
+    },
+    "BackupBucketArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "BackupBucket",
+          "Arn"
+        ]
+      }
+    },
+    "WebsiteDistributionId": {
+      "Value": {
+        "Ref": "WebsiteDistribution"
+      }
+    },
+    "GameDistributionId": {
+      "Value": {
+        "Ref": "GameDistribution"
+      }
+    },
+    "BackupBucketName": {
+      "Value": {
+        "Ref": "BackupBucket"
+      }
+    }
+  }
+}

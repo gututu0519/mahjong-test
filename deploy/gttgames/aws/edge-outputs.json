@@ -1,0 +1,13 @@
+{
+  "StackName": "gtt-edge",
+  "StackStatus": "CREATE_COMPLETE",
+  "Region": "us-east-1",
+  "AccountId": "817557336527",
+  "Outputs": {
+    "BusinessDistributionDomain": "ds4bqnhfevccf.cloudfront.net",
+    "BusinessDistributionId": "E3RCHQALSXUQDV",
+    "WebsiteDistributionId": "E1N2M7RKXRR940",
+    "WebsiteDistributionDomain": "df79mrkarlfs7.cloudfront.net",
+    "BusinessWafArn": "arn:aws:wafv2:us-east-1:817557336527:global/webacl/BusinessWaf-LK6wQlKsFfcJ/dc8866a6-defa-4d26-9e29-9b4b91d3afb3"
+  }
+}

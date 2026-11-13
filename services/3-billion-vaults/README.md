@@ -11,7 +11,7 @@
 
 ## 已验证的证据
 
-独立公开试玩采集的脱敏样本在 `server/tests/fixtures/three-billion-vaults-spins.json`，不含登录凭据。合计 63 个画面的 ways 奖金与原版回包逐项匹配。
+独立公开试玩采集的脱敏样本在 `py/tests/fixtures/three-billion-vaults-spins.json`，不含登录凭据。合计 63 个画面的 ways 奖金与原版回包逐项匹配。
 
 - 普通符号 0–7 的 3/4/5 列赔率及 Wild 替代、上移、分档保存。
 - `GameInfoAck.gameMall.PriceOdd = [23,46.5,100]`。购买请求使用 `mall={Type:1,Index:0..2,Bet:价格}`，不是 `buy.BuyCustomType`。

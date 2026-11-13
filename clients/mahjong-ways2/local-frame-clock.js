@@ -1,7 +1,7 @@
 /* Keep the local demo responsive when an embedded browser throttles visible rAF. */
 (function () {
     'use strict';
-    if (new URL(location.href).searchParams.get('mock') !== '1') return;
+    if (!window.__GTT_MERCHANT__ && new URL(location.href).searchParams.get('mock') !== '1') return;
     const request = window.requestAnimationFrame.bind(window);
     const cancel = window.cancelAnimationFrame.bind(window);
     const pending = new Map();

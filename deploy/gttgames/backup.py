@@ -9,7 +9,7 @@ import sqlite3
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from server.merchant.deployment import Deployment
+from py.merchant.deployment import Deployment
 
 
 def backup(config_path, output):

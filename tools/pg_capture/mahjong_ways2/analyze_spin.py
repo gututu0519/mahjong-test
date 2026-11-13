@@ -11,7 +11,7 @@ from collections import Counter, defaultdict
 from decimal import Decimal
 from pathlib import Path
 
-from server.adapters.pg.protocol import decode_request, fields
+from py.adapters.pg.protocol import decode_request, fields
 
 # GameConstant.PayOutData in assets/main/index.03e77.js, not fitted to outcomes.
 PAYTABLE = {

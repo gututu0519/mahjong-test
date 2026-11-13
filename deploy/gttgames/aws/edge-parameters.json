@@ -1,0 +1,6 @@
+[
+  {"ParameterKey": "FoundationStackName", "ParameterValue": "gtt-foundation-v2"},
+  {"ParameterKey": "DomainName", "ParameterValue": "gttgames.com"},
+  {"ParameterKey": "PriceClass", "ParameterValue": "PriceClass_All"},
+  {"ParameterKey": "WafManagedRulesMode", "ParameterValue": "COUNT"}
+]

@@ -51,7 +51,7 @@ Bob 持久进度使用 `56 <数量> <面额 步数>... 18`，`113` 是会话过�
 
 ## 验证方式
 
-`python -m unittest server.tests.test_tower_run_treasure_steps -v` 验证原版样本赔付、共享 Wild、各模式账务、分面额进度、上限、宝藏室锁定与开箱、幂等、重启恢复和 HTTP 隔离。`python -m tools.playngo_capture.import_tower_run --audit` 校验公开资源原始字节。
+`python -m unittest py.tests.test_tower_run_treasure_steps -v` 验证原版样本赔付、共享 Wild、各模式账务、分面额进度、上限、宝藏室锁定与开箱、幂等、重启恢复和 HTTP 隔离。`python -m tools.playngo_capture.import_tower_run --audit` 校验公开资源原始字节。
 
 `python -m tools.playngo_capture.serve_tower_acceptance` 在临时端口 18102–18105 启动固定种子和测试权重的验收服务，独立数据库位于忽略的 diagnostics。用于观察宝藏室、Ultra、上限和连续空转结束动画，不改变 8099 正常配置。浏览器完成后加 `--verify` 核对结算流水。
 

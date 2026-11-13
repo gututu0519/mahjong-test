@@ -6,9 +6,13 @@
 
 ## Node 首批实现
 
-新增 `node/tools/package.mjs` 实现 Node 首批独立构建，输出 `gateway.tar.gz`、`buffalo-win.tar.gz`、`frontend.tar.gz`、`infra.tar.gz` 和 `release.json`，不覆盖下文旧 Python 包。网关包包含后台 API、RTP worker、后台页面及五个美洲野牛启动资料文件；不包含完整游戏素材、数据库、密钥、测试或 Python。每个归档有文件 SHA-256 清单，发布记录包含归档 SHA-256、源码提交与 dirty 状态。
+2026-11-13 游戏客户端版本追加：`server/tools/build-frontend.mjs` 自动编号并分别输出静态对象、私有启动资料与配套清单；独立安装、不可变 S3 发布及 CloudFront 路由生成工具已实现，平台后台支持按新会话切换。当前实际完成美洲野牛本地构建与自动化验证，未部署真实 CDN 版本路由；其余游戏需逐款验收。`frontend.tar.gz` 仍指后台页面，不能与游戏客户端版本包混淆。操作见 [游戏前端版本](game-frontend-versions.md)。以下关于线上统一素材前缀的限制仍适用于尚未部署新版本路由的环境。
 
-该构建器必须显式传入 S3 素材清单，并逐项验证本地最终素材字节与清单一致，然后记录素材版本及清单 SHA-256。干净解包验证由 `node/tools/smoke-release.mjs` 单独执行并生成 `verification.json`。启动、构建命令及当前验收边界见 [Node 首批迁移](../node/README.md)。旧 Python 构建工具的待调整项继续适用于旧发布流程。
+当前独立游戏服务构建：`server/tools/package.mjs` 除网关外，为 19 款分别生成 `game-<游戏代码>.tar.gz` 与多版本 systemd 模板；发布记录的 `topology` 标明默认独立拓扑及历史兼容产物。网关、单款游戏、素材和基础设施可分别发布，游戏服务先启动后通过平台后台登记和激活，不能用覆盖同一路径的方式替代整局版本绑定。见 [独立服务部署](game-service-architecture.md)。以下首批五包记录作为构建演进历史保留。
+
+新增 `server/tools/package.mjs` 实现 Node 首批独立构建，输出 `gateway.tar.gz`、`buffalo-win.tar.gz`、`frontend.tar.gz`、`infra.tar.gz` 和 `release.json`，不覆盖下文旧 Python 包。网关包包含后台 API、RTP worker、后台页面及五个美洲野牛启动资料文件；不包含完整游戏素材、数据库、密钥、测试或 Python。每个归档有文件 SHA-256 清单，发布记录包含归档 SHA-256、源码提交与 dirty 状态。
+
+该构建器必须显式传入 S3 素材清单，并逐项验证本地最终素材字节与清单一致，然后记录素材版本及清单 SHA-256。干净解包验证由 `server/tools/smoke-release.mjs` 单独执行并生成 `verification.json`。启动、构建命令及当前验收边界见 [Node 首批迁移](../server/README.md)。旧 Python 构建工具的待调整项继续适用于旧发布流程。
 
 ## 产物和部署位置
 
@@ -25,7 +29,7 @@
 
 ## 应用包范围
 
-- `server/` 是可复用后端源码，`services/` 是各运行实例的配置与启动资料。保持源码目录结构，不为每款游戏复制一套公共后端。
+- `server/` 是当前 Node 后端源码，`py/` 保留旧 Python 实现与回退工具，`services/` 是各运行实例的配置与启动资料。保持源码目录结构，不为每款游戏复制一套公共后端。
 - 发布目标显式列出需要的服务及配置；当前商户生产目标为 `gtt-gateway`、`gtt-admin` 和 RTP worker。本机 19 款独立游戏服务与 `game-api` 的入口继续保留；生产目标的选择不改变本地功能。
 - 平台与商户后台的 `admin.html`、`admin.js`、`admin.css` 随应用包发布，两者共用代码并由服务端区分入口和权限。
 - 应用包只携带游戏启动和后端运行必需的文件。当前美洲野牛至少需要 `index.html`、启动注入依赖、`fixtures/auth-metadata.json`、`fixtures/game-rule.json`；最终范围须按实际文件读取和加载依赖校验，不能直接删除整个 `clients/`。
@@ -64,7 +68,7 @@
 
 ## 现有工具和待调整项
 
-2026-11-05 Node 更新：日常 Node 应用使用 `node/tools/package.mjs`，生成 gateway、buffalo-win、all-services、frontend、infra 五包及 `release.json`；`node/tools/smoke-release.mjs` 在干净目录验证独立进程并生成 `verification.json`。全部服务包只含运行必需的启动/协议资料，游戏大素材继续独立管理。以下 Python 工具表描述的是历史部署链路，不是 Node 构建依赖。抓包解包和历史发布工具暂留 Python。
+2026-11-05 Node 更新：日常 Node 应用使用 `server/tools/package.mjs`，生成 gateway、buffalo-win、all-services、frontend、infra 五包及 `release.json`；`server/tools/smoke-release.mjs` 在干净目录验证独立进程并生成 `verification.json`。全部服务包只含运行必需的启动/协议资料，游戏大素材继续独立管理。以下 Python 工具表描述的是历史部署链路，不是 Node 构建依赖。抓包解包和历史发布工具暂留 Python。
 
 | 工具 | 当前行为 | 按本规则需要的调整 |
 | --- | --- | --- |

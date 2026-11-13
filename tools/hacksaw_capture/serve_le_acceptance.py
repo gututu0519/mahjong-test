@@ -7,7 +7,7 @@ import random
 import sqlite3
 import threading
 
-from server.services.le_vampire_demo import build_server
+from py.services.le_vampire_demo import build_server
 
 SCENARIOS={
     'coffin':dict(port=18096,seed=2,mode='fs',win=79880),

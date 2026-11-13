@@ -3,10 +3,10 @@
 在仓库根目录启动：
 
 ```powershell
-python -m server.services.buffalo_demo
+python -m py.services.buffalo_demo
 ```
 
-也可以双击本目录 `start.bat`，或者运行 `node node/tools/start.mjs buffalo-win`。
+也可以双击本目录 `start.bat`，或者运行 `node server/tools/start.mjs buffalo-win`。
 服务监听 127.0.0.1:8083；主大厅依旧由 8080 的麻将服务提供。启动两项服务后，访问 <http://localhost:8080/demo/?lang=zh#games>，选择「美洲野牛 → 试玩」。
 
 ## 已实现
@@ -66,12 +66,12 @@ python -m server.services.buffalo_demo
 
 前端资源来自本机捕获会话 ae59ed3f3b5044a0ac6ab404a23a724d，来源及 SHA-256 见 `clients/buffalo-win/fixtures/asset-sources.json`。大厅封面来自 `clients/buffalo-win/2d6aa03a40.9854e.jpg`。
 
-旧命令 `python -m server.services.buffalo_preview` 仅保留为无结算的前端排查工具，与正式服务使用同一端口，不能同时启动。
+旧命令 `python -m py.services.buffalo_preview` 仅保留为无结算的前端排查工具，与正式服务使用同一端口，不能同时启动。
 
 ## 验证
 
 ```powershell
-python -m unittest discover -s server/tests -v
+python -m unittest discover -s py/tests -v
 ```
 
 Buffalo 专项测试覆盖 789 条离线样本重算、204 派奖实例、完整免费流程、3/4/5 个免费符号奖励、最后一次免费重触发、倍率保留、堆叠数量范围、新增列堆叠、12 列延伸、持久化与并发重试、HTTP 登录与启动，以及跨服务隔离。测试中的固定结果注入只用于隔离测试，没有提供给正式服务的控制接口。

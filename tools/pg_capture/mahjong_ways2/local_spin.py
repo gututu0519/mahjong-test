@@ -12,11 +12,11 @@ import threading
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
-from server.adapters.pg.mahjong_metadata import SESSION_TOKEN
-from server.adapters.pg.protocol import (decode_request, double_field, field, fields, pack,
+from py.adapters.pg.mahjong_metadata import SESSION_TOKEN
+from py.adapters.pg.protocol import (decode_request, double_field, field, fields, pack,
                            patch, text_field, unpack)
 
-from server.paths import MAHJONG_CLIENT, MAHJONG_DIAGNOSTICS
+from py.paths import MAHJONG_CLIENT, MAHJONG_DIAGNOSTICS
 
 ROOT = MAHJONG_CLIENT
 MONEY_FIELDS = {'aw': 6, 'tb': 15, 'tbb': 16, 'tw': 17, 'np': 18,

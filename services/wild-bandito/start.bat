@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0..\.."
-node node\tools\start.mjs wild-bandito %*
+node server\tools\start.mjs wild-bandito %*
 pause

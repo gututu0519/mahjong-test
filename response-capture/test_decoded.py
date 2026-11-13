@@ -9,11 +9,11 @@ async def test(vaults=False, money=False):
     import sys
     sys.path.insert(0, str(app.ROOT.parent))
     if money:
-        from server.adapters.jili.money_pot_deluxe import pack
+        from py.adapters.jili.money_pot_deluxe import pack
     elif vaults:
-        from server.adapters.jili.three_billion_vaults import pack
+        from py.adapters.jili.three_billion_vaults import pack
     else:
-        from server.adapters.jili.jokers_fortune_winx import pack
+        from py.adapters.jili.jokers_fortune_winx import pack
     from playwright.async_api import async_playwright
     old = app.DATA
     with tempfile.TemporaryDirectory() as temp:

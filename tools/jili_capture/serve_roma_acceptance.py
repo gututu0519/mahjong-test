@@ -15,10 +15,10 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit, parse_qs, urlencode
 
-from server.services.roma_x_10000_demo import Handler, ROOT
-from server.adapters.jili.roma_x_10000 import Adapter, CLIENT
-from server.core.service import GameService
-from server.games.catalog import create_registry
+from py.services.roma_x_10000_demo import Handler, ROOT
+from py.adapters.jili.roma_x_10000 import Adapter, CLIENT
+from py.core.service import GameService
+from py.games.catalog import create_registry
 
 OUT = ROOT / 'clients/roma-x-10000/diagnostics/acceptance'
 CASES = {'free': '262', 'retrigger': '40720', 'battle': '4',

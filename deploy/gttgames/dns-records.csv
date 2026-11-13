@@ -1,7 +1,7 @@
 Type,Name,Value,TTL,Notes
-A,@,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Primary site
-CNAME,www,gttgames.com,300,Canonical redirect to primary site
-A,api,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Merchant signed API
-A,play,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Player game pages and game API
-A,merchant,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,Merchant console and integration documents
-A,admin,REPLACE_WITH_SERVER_PUBLIC_IPV4,300,GTT administration console
+CNAME,@,df79mrkarlfs7.cloudfront.net,300,Pending finished website; Cloudflare apex flattening; DNS-only
+CNAME,www,df79mrkarlfs7.cloudfront.net,300,Pending finished website; redirects to primary site; DNS-only
+CNAME,api,ds4bqnhfevccf.cloudfront.net,300,Merchant signed API; DNS-only
+CNAME,play,ds4bqnhfevccf.cloudfront.net,300,Game static assets from S3; dynamic requests from ALB; DNS-only
+CNAME,merchant,ds4bqnhfevccf.cloudfront.net,300,Merchant console and integration documents; DNS-only
+CNAME,admin,ds4bqnhfevccf.cloudfront.net,300,GTT administration console; DNS-only

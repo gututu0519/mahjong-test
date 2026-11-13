@@ -44,8 +44,8 @@
 
 ```powershell
 python -m tools.pg_capture.import_fortune_rabbit --session fc6521853b25479dbd9ceb207c3c3e2c
-python -m unittest server.tests.test_fortune_rabbit -v
-python -m server.run --service-dir services/fortune-rabbit
+python -m unittest py.tests.test_fortune_rabbit -v
+python -m py.run --service-dir services/fortune-rabbit
 ```
 
 可重复的独立功能界面验收：`python -m tools.pg_capture.serve_fortune_rabbit_acceptance --port 18112`。仅使用 `diagnostics/rabbit-acceptance-18112.sqlite3`，不更改 8101 的配置和钱包。

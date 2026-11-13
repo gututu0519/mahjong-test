@@ -1,0 +1,1362 @@
+# GTT 商户接入规范
+
+版本 1.14.0 · 更新 2026-11-07 · API origin：https://api.gttgames.com · 默认 Play origin：https://play.gttgames.com
+
+> 本文档不包含任何商户真实密钥；所有标识、金额和签名向量均为示例。
+
+## 01 · 接入概览与准备
+
+明确系统职责，完成第一条签名请求。
+
+商户名称是后台主账号的登录名称；商户号按 GTT000001、GTT000002 顺序分配，用于请求头 X-GTT-Merchant。后台密码、商户号和 merchant_secret 各有用途。GTT 提供游戏客户端、游戏结果与操作记录；商户维护玩家身份、账户余额及钱包账本。玩家浏览器只接收短期游戏会话，不持有 merchant_secret，也不直接操作钱包。
+
+| 事项 | 接入约定 |
+| --- | --- |
+| 接口版本 | v1；19 款游戏统一使用数字 ID 1–19；编号不重排。授权与 wallet_compatible 以 games/list 为准，商户接入金额统一为 10000 单位。 |
+| 结算币种 | 商户结算币种为 USD，全部接入金额固定使用四位小数整数单位：10000 = 1.0000 USD，20000000 = 2000.0000 USD。商户无需配置、传入或回传 minor_unit；GTT 钱包回调也不再发送该字段。若兼容旧实现显式回传，仅允许整数 10000。游戏内部金额由 GTT 换算，商户无需判断游戏精度。 |
+| 地址与环境 | 下方显示当前配置的 API origin 和游戏 play origin。服务后端监听本机地址；生产配置通过 HTTPS 反向代理按域名分流，域名访问、证书与回调可达性应在联合验收时确认。示例域名不是真实服务地址。 |
+| 商户准备 | 后台中的商户号（如 GTT000001）与 64 字符 merchant_secret；默认钱包 HTTPS origin 或六个完整钱包接口 URL；预先建立的玩家账户；已启用游戏授权。 |
+| 可选预派彩 | 只有启用时才提供决策 URL 与 external_username 映射，不另发 Token 或第二把密钥。 |
+
+1. 在接入中心复制商户号与完整 merchant_secret，保存到商户服务端配置。
+2. 实现钱包接口，先验证签名、nonce 去重及 balance 响应格式。
+3. 调用 games/list，确认实际授权。
+4. 用已有钱包账户调用 games/launch，将返回的完整 launch_url 交给该玩家；仅在本机返回相对地址时拼接本机 GTT origin。
+5. 完成普通投注、购买免费和免费／续列流程，核对钱包交易及 GTT 操作。
+6. 模拟超时、重复请求与重启，按原操作恢复，确认没有重复扣款或派奖。
+
+配置入口：商户后台“商户资料 → 编辑接入配置”填写默认钱包 origin、各钱包接口完整 URL、可选预派彩决策 URL。游戏授权和启用状态由平台管理员确认；商户钱包统一固定精度 10000。接入中心的 API origin 随当前环境变化，默认 Play origin 仅为旧美洲野牛入口参考，实际游戏地址以 launch_url 为准。localhost 地址仅供本机联调，远程商户不能直接访问。 配置预派彩地址后自动尝试决策，无需开关或模式确认；留空直接走 RTP。调用失败或响应校验失败时走 RTP。保存仅影响新整局，已开始的整局及冻结计划保持原规则。
+
+下载格式：完整 HTML 指南可直接用浏览器打开、离线阅读和打印为 PDF；Markdown 适用于文档系统；OpenAPI JSON 适用于接口工具，不能代替包含结算规则和验收要求的完整指南。商户下载会包含当前环境与本商户的配置快照，不包含 merchant_secret。
+
+## 02 · 统一签名与验签
+
+一把密钥，四个请求头，所有方向使用相同规则。
+
+| 项目 | 规则 |
+| --- | --- |
+| 请求方法 | 全部 POST，Content-Type: application/json；无 URL 查询参数，GTT 请求体最多 16 KiB。 |
+| JSON | 使用 UTF-8；禁止重复字段、NaN、Infinity。签名依据实际发送的原始字节，不要求 JSON 键排序。 |
+| 密钥编码 | merchant_secret 是 64 个十六进制字符的文本。HMAC key 使用该文本的 UTF-8 字节，不做 hex 解码。 |
+| 签名路径 | 只使用实际 URL 的 path，包含开头 /，不含 scheme、host、fragment 或 query。 |
+| 时间与去重 | 签名时间戳为 10 位 Unix 秒，容差 ±300 秒；nonce 为 16–64 位 [A-Za-z0-9_-]，每次请求重新生成并持久化去重。 |
+
+| 请求头 | 内容 |
+| --- | --- |
+| X-GTT-Merchant | GTT 分配的商户号，格式 GTT 加六位数字，例如 GTT000001 |
+| X-GTT-Timestamp | Unix 秒时间戳，例如 1700000000（测试向量） |
+| X-GTT-Nonce | 本次请求唯一随机串 |
+| X-GTT-Signature | HMAC-SHA256 小写十六进制，64 字符 |
+
+签名原文：五行使用 LF 连接，最后一行之后没有换行
+
+```text
+POST
+<实际请求路径>
+<秒级 timestamp>
+<nonce>
+<SHA256(body) 的小写十六进制>
+```
+
+对原文 UTF-8 字节以 merchant_secret 文本的 UTF-8 字节计算 HMAC-SHA256。接收端先验证商户、时间戳及格式，再恒定时间比较签名，并原子记录 nonce；验签后才执行余额更新。GTT 的 nonce 保留到签名不可能再次通过时间检查为止；双方都应将去重持久化，不能仅放在进程内存。
+
+Python 签名与调用参考
+
+```python
+import hashlib, hmac, json, secrets, time
+from urllib.request import Request, urlopen
+
+def sign_headers(merchant_id, merchant_secret, path, body, timestamp=None, nonce=None):
+    timestamp = str(int(time.time()) if timestamp is None else timestamp)
+    nonce = secrets.token_hex(16) if nonce is None else nonce
+    canonical = "\n".join(("POST", path, timestamp, nonce,
+                           hashlib.sha256(body).hexdigest()))
+    signature = hmac.new(merchant_secret.encode("utf-8"),
+                         canonical.encode("utf-8"), hashlib.sha256).hexdigest()
+    return {"Content-Type": "application/json", "X-GTT-Merchant": merchant_id,
+            "X-GTT-Timestamp": timestamp, "X-GTT-Nonce": nonce,
+            "X-GTT-Signature": signature}
+
+def post(origin, merchant_id, merchant_secret, path, payload):
+    # 签名之后，发送同一份 body 字节；不要再次序列化。
+    body = json.dumps(payload, ensure_ascii=False, separators=(",", ":"),
+                      allow_nan=False).encode("utf-8")
+    request = Request(origin.rstrip("/") + path, data=body,
+                      headers=sign_headers(merchant_id, merchant_secret, path, body),
+                      method="POST")
+    with urlopen(request, timeout=10) as response:
+        return json.load(response)
+
+# 从受保护的服务端配置读取真实商户号、密钥与 GTT origin 后调用：
+# result = post(origin, merchant_id, merchant_secret, "/gtt/v1/games/list", {})
+# HTTP 非 2xx 时还应解析 HTTPError 响应体，按文档错误码分类处理。
+
+```
+
+Node.js 签名与恒定时间比较
+
+```javascript
+import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
+
+export function signHeaders(merchantId, merchantSecret, path, body,
+                            timestamp = String(Math.floor(Date.now() / 1000)),
+                            nonce = randomBytes(16).toString('hex')) {
+  const canonical = ['POST', path, timestamp, nonce,
+    createHash('sha256').update(body).digest('hex')].join('\n');
+  return { 'Content-Type': 'application/json', 'X-GTT-Merchant': merchantId,
+    'X-GTT-Timestamp': timestamp, 'X-GTT-Nonce': nonce,
+    'X-GTT-Signature': createHmac('sha256', Buffer.from(merchantSecret, 'utf8'))
+      .update(canonical, 'utf8').digest('hex') };
+}
+
+export function signatureMatches(expected, supplied) {
+  if (!/^[0-9a-f]{64}$/.test(supplied)) return false;
+  return timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(supplied, 'hex'));
+}
+
+export async function post(origin, merchantId, merchantSecret, path, payload) {
+  const body = Buffer.from(JSON.stringify(payload), 'utf8');
+  const response = await fetch(origin.replace(/\/$/, '') + path, {
+    method: 'POST', redirect: 'error', signal: AbortSignal.timeout(10000),
+    headers: signHeaders(merchantId, merchantSecret, path, body), body
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    const error = new Error(result.error?.message || `HTTP ${response.status}`);
+    error.code = result.error?.code; error.status = response.status;
+    throw error;
+  }
+  return result;
+}
+
+// body 为已确定的 UTF-8 请求体。签名后把同一个 body 交给 HTTP 客户端：
+// const body = Buffer.from(JSON.stringify({player_id:'player-10001',
+//   game_id:1, language:'en'}), 'utf8');
+// const headers = signHeaders(merchantId, merchantSecret, '/gtt/v1/games/launch', body);
+// 处理非 2xx 响应，勿将 merchantSecret、签名头或会话链接写入日志。
+
+```
+
+验签示例中的比较函数只负责签名相等判断，商户还需实现时间窗口、商户绑定、内容大小检查和持久化 nonce 去重。签名重放防护与钱包 transaction_id 业务幂等是两层独立约束。
+
+固定签名测试向量（仅离线计算；过期时间戳不可用于在线请求）
+
+```json
+{
+  "merchant_id": "GTT000001",
+  "merchant_secret": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "method": "POST",
+  "path": "/gtt/v1/games/launch",
+  "timestamp": "1700000000",
+  "nonce": "0123456789abcdef0123456789abcdef",
+  "body": "{\"game_id\":1,\"language\":\"en\",\"player_id\":\"player-10001\"}",
+  "body_sha256": "b1d0c6863d8b85bcc5ffbbc4e70c7040d0653d7989f535de9023e7505770758e",
+  "signature": "e8a481cb0904f9a5b872c71a98ecf531aacac3992ae81bbbf1c42a0a1a91ccec"
+}
+```
+
+## 03 · 游戏目录与启动
+
+服务端创建会话，浏览器打开 GTT 返回的游戏地址。
+
+新商户默认授权全部游戏。平台运营可自主开放任何游戏，特殊玩法收集状态与缺失项仅供内部参考，不限制开放或接入。商户目录、games/list 及导出仅返回已授权、已开放且钱包兼容的游戏，不含内部审核资料。关闭游戏后停止新接入和新整局，已开始回合仍可恢复结算。
+
+### 获取已授权游戏
+
+**POST /gtt/v1/games/list** · 商户 → GTT
+
+返回本商户已授权且当前可接入的游戏，不包含未开放或钱包不兼容的游戏。
+
+请求体：空 JSON 对象 `{}`。
+
+请求示例：
+```json
+{}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "games": []
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | object | 必填 | — |
+| data.games | array | 必填 | — |
+| data.games[].id | integer | 必填 | 固定数字游戏 ID；最小：1；最大：19 |
+| data.games[].title | string | 可选 | 游戏展示名称，以实际目录为准 |
+| data.games[].engine_version | string | 可选 | 引擎版本 |
+| data.games[].ruleset_id | string | 可选 | 规则版本 |
+| data.games[].target_rtp | number / null | 可选 | 已生效模型的目标百分比；预派彩或模型尚未标定时为 null。实际短期 RTP 不保证等于该目标。 |
+| data.games[].rtp_status | string | 可选 | active：已标定模型生效；prebet：已配置预派彩地址，失败时回退 RTP；not_calibrated：目标已配置但该游戏模型未通过标定。 |
+| data.games[].code | string | 可选 | 游戏标识 slug |
+| data.games[].minor_unit | integer | 可选 | 只读金额单位，固定为 10000；商户无需传入或按游戏选择；允许值：10000 |
+| data.games[].wallet_compatible | boolean | 可选 | 当前商户钱包精度是否支持该游戏；false 时不能启动，需联系平台处理钱包配置 |
+| data.games[].configured_target_rtp | number | 可选 | 配置目标百分比；游戏单独配置优先，否则跟随商户，商户初始默认 96。不是标定通过或已生效的证明。 |
+| data.games[].rtp_source | string | 可选 | 目标来源：player / game / merchant / platform / default；default 为 96% |
+| data.games[].brand | string | 可选 | 品牌名称 |
+| data.games[].integration_available | boolean | 可选 | 商户目录仅返回此字段为 true 的游戏；仍需在启动时再次校验实时开放状态。 |
+| data.games[].special_features | array | 可选 | 已支持的特殊玩法名称，不包含内部缺口与审核文档。 |
+| error | null | 必填 | — |
+
+- 新商户默认授权全部游戏。平台运营可自主开放任何游戏，特殊玩法收集状态与缺失项仅供内部参考，不限制开放或接入。商户目录、games/list 及导出仅返回已授权、已开放且钱包兼容的游戏，不含内部审核资料。关闭游戏后停止新接入和新整局，已开始回合仍可恢复结算。
+
+### 创建玩家游戏会话
+
+**POST /gtt/v1/games/launch** · 商户 → GTT
+
+由商户服务端调用。GTT 先校验授权、平台开放状态和钱包兼容性，再查询商户钱包并返回绑定会话。新接入被拒绝时不会调用钱包。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 平台玩家唯一标识；不同商户可使用相同玩家号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| game_id | integer | 可选 | 已授权的 GTT 数字游戏 ID 1–19；Buffalo Win 为 1；默认：1；最小：1；最大：19 |
+| language | string | 可选 | 客户端语言；允许值：zh / en；默认：en |
+| external_username | string | 可选 | 预派彩平台账号；配置预派彩 URL 后首次启动时需要，与 player_id 分开绑定；最短：1；最长：128 |
+| prebet_type | string | 可选 | 普通付费回合类型；提供时也必须提供 external_username；允许值：NORMAL / SURE_WIN；默认：NORMAL |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "game_id": 1,
+  "language": "en"
+}
+```
+
+成功响应 HTTP 201：
+```json
+{
+  "data": {
+    "game_id": 1,
+    "launch_url": "https://play.gttgames.com/?ops=SESSION_TOKEN&l=en&lang=en&btt=1&ot=GTT000001",
+    "expires_at": 1793275200,
+    "balance_minor": 20000000,
+    "currency": "USD",
+    "minor_unit": 10000
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | Launch | 必填 | — |
+| data.game_id | integer | 必填 | GTT 数字游戏 ID；最小：1；最大：19 |
+| data.launch_url | string | 必填 | 绑定所选游戏的完整地址，包含会话凭据；生产使用各游戏 HTTPS origin，不能自行替换域名或拼接参数 |
+| data.expires_at | integer | 必填 | 会话到期时间，Unix 秒；最小：0；最大：9000000000000000 |
+| data.balance_minor | integer | 必填 | 启动时平台余额快照；最小：0；最大：9000000000000000 |
+| data.currency | string | 必填 | 商户币种 |
+| data.minor_unit | integer | 必填 | 固定为 10000，商户钱包统一使用四位小数；允许值：10000 |
+| error | null | 必填 | — |
+
+- 会话当前有效期为 24 小时。相同商户、玩家和游戏再次进入会恢复原有游戏状态。
+- 直接打开完整 launch_url；19 款游戏可使用不同 origin。本机统一入口使用 g1.localhost 至 g19.localhost，旧美洲野牛入口可能返回相对地址。不要替换域名，不要在日志或第三方统计中记录会话凭据。
+- 玩家账户必须已存在于商户钱包。配置预派彩 URL 后首次启动提供 external_username，后续沿用已保存映射。
+- HTTP 403 / GAME_CLOSED：平台未开放此游戏。已有未结算操作或已开始回合允许重建恢复会话，但不能开始新整局。
+- 商户入口使用已验证的商户会话和账号模式，不使用 mock / demo / trial / practice 启动配置。请原样打开返回链接，不自行追加或替换模式参数。
+
+先使用 games/list 获取 ID 和 wallet_compatible；不要根据列表顺序猜 ID。所有游戏都通过签名 launch 接入，商户无需调用各游戏独立端口。各游戏完整 launch_url 可直接跳转或新窗口打开，嵌入 iframe 的域名许可、Cookie 与跨站限制需单独联调。
+
+RTP 继承：保留已有玩家单独配置；游戏没有单独配置时跟随商户，商户未配置时默认 96%。已配置的目标与已生效模型分别查询 configured_target_rtp 和 target_rtp／rtp_status。未通过逐款标定的模型不标记 active；配置预派彩 URL 时优先尝试，失败后使用 RTP 配置；已有目标可随时修改作为回退配置。变更从新付费整局生效，进行中的免费、续列及恢复沿用原绑定。
+
+| 大厅展示资料 | 当前接口与交付边界 |
+| --- | --- |
+| 游戏身份 | games/list 提供稳定数字 id、title、授权范围、minor_unit、wallet_compatible 与 RTP 字段；其余字段以响应 schema 为准。 |
+| 封面图 | 当前 games/list 没有 cover_url，接入指南也未包含经过审核的封面素材包。不能把客户端内部图片路径或本机地址作为正式封面 URL。 |
+| 分类与横竖屏 | 当前 games/list 没有 category 或 orientation 字段，没有经逐款确认的对外元数据清单，不应猜测。大厅展示若依赖这些信息，需要平台提供与游戏 ID 对应的已确认素材清单后接入。 |
+| 远程访问 | 本机 g1.localhost 至 g19.localhost 是本地测试路由，不能提供给远程商户。生产必须配置各游戏真实 HTTPS origin，实际跳转始终使用 launch 返回的完整 launch_url。 |
+
+## 04 · 钱包回调接口
+
+由商户实现，GTT 使用统一密钥调用。
+
+商户可以分别配置余额、扣款、派彩、退款、单笔交易查询、交易列表六个完整 URL，允许不同域名和路径；预派彩继续单独配置完整 URL。单独 URL 优先，留空的接口使用默认钱包 origin + 下方标准路径；六项全部配置后默认 origin 可留空。以下路径为默认兼容示例，不是强制路径。回调仍为 POST JSON，要求 HTTPS，本机 loopback 联调可用 HTTP，不跟随重定向；URL 不含账号密码、查询参数或片段。当前钱包 HTTP 调用超时为 3 秒，响应最大 64 KiB。
+
+| 配置与签名 | 规则 |
+| --- | --- |
+| 配置入口 | 我的商户 → 编辑接入配置 → 钱包接口地址。平台管理员也可以在商户编辑中设置；只有本商户管理员或平台管理员可保存。 |
+| 独立地址优先 | 例如余额 URL=https://accounts.example.com/partner/funds，实际直接 POST 到此地址，不追加 /wallet/v1/balance。其他接口可位于不同域名。 |
+| 默认地址回退 | 单项 URL 留空时，按默认 origin + /wallet/v1/<操作> 调用；旧商户无需修改。默认 origin 仍仅含协议、主机和端口。清空单项覆盖即恢复此回退。 |
+| 独立配置全部接口 | 余额、扣款、派彩、退款、单笔查询、列表查询六项全部填写后，默认 origin 可以留空。否则保存时要求提供默认 origin，避免遗漏接口。 |
+| 签名路径 | 对实际请求 URL 的 pathname 签名。例如 /partner/funds，而不是默认 /wallet/v1/balance；merchant_secret、四个签名头、请求字段、金额精度、响应信封和幂等规则不变。 |
+| 下载配置 | 在线指南及 HTML / Markdown 列出本商户当前生效的六个完整 URL。OpenAPI 的 paths 为默认模板，x-gtt-wallet-endpoints 提供本商户实际回调地址映射。 |
+| 交易查询的触发 | 两项查询接口可以独立配置；当前没有自动对账或定时查询线程，配置地址不代表开始自动轮询。 |
+| 修改地址与待结算交易 | 修改后后续回调读取当前配置，已发出的请求不会迁移。切换服务时新旧地址须访问同一账本和幂等记录，并继续识别原 transaction_id，避免在空账本上重复入账。 |
+
+| 调用参数 | 当前行为 |
+| --- | --- |
+| 超时与次数 | 单次钱包 HTTP 请求超时 3000 ms；一次调用只发送一次，不在同一次 call 内自动循环重试。 |
+| 自动重试频率 | 当前没有后台定时重试频率或全局自动重试上限。后续由玩家读取状态、原请求重试或交易恢复接口再次触发；每次恢复至多重发当前未确认阶段的一次回调，扣款确认后再处理派彩。 |
+| 建议商户恢复调度（建议值，不是系统承诺） | 按 1、2、4、8、16 秒退避并添加随机抖动，连续 5 次仍不确定则告警并保留记录人工处理；保持原 operation_id、transaction_id 和业务参数，每次重新签名。 |
+| 不可直接判定失败 | 连接中断、3 秒超时、5xx、未知错误码、无效回执均可能已入账，GTT 返回 WALLET_UNCERTAIN；先查询或恢复原交易，不换号扣款。 |
+
+### 查询玩家余额
+
+**POST /wallet/v1/balance** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。在创建游戏会话、读取游戏状态等场景调用。平台钱包是玩家余额的真实来源。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| round_id | string | 可选 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| game_id | integer | 可选 | 固定游戏接入 ID；最小：1；最大：19 |
+| round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| resolution.requested_range | array | 必填 | — |
+| resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| resolution.actual_multiplier | object | 必填 | — |
+| resolution.actual_multiplier.numerator | integer | 必填 | — |
+| resolution.actual_multiplier.denominator | integer | 必填 | — |
+| resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| resolution.search_attempts | integer | 可选 | — |
+| resolution.selected_attempt | integer | 可选 | — |
+| resolution.search_limit | integer | 可选 | — |
+| resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "balance_minor": 20000000
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | Balance | 必填 | — |
+| data.player_id | string | 必填 | 商户平台玩家唯一标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 钱包余额，以商户 minor_unit 为单位的整数；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 请求可能附带 round_id 等上下文字段；余额仍以商户和 player_id 为账户维度。
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+### 扣除投注费用
+
+**POST /wallet/v1/debit** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。一次付费投注或购买免费对应一笔扣款。余额不足必须持久化拒绝结果。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| amount_minor | integer | 必填 | 非负整数，固定为 1/10000 USD，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
+| decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| game_id | integer | 可选 | 固定游戏接入 ID；最小：1；最大：19 |
+| round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| resolution.requested_range | array | 必填 | — |
+| resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| resolution.actual_multiplier | object | 必填 | — |
+| resolution.actual_multiplier.numerator | integer | 必填 | — |
+| resolution.actual_multiplier.denominator | integer | 必填 | — |
+| resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| resolution.search_attempts | integer | 可选 | — |
+| resolution.selected_attempt | integer | 可选 | — |
+| resolution.search_limit | integer | 可选 | — |
+| resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD",
+  "transaction_id": "round-001:debit",
+  "round_id": "round-001",
+  "amount_minor": 10000
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "transaction_id": "round-001:debit",
+    "status": "applied",
+    "amount_minor": 10000,
+    "applied_minor": 10000,
+    "balance_before_minor": 20000000,
+    "balance_minor": 19990000
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | Mutation | 必填 | — |
+| data.player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户币种 |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
+| data.transaction_id | string | 必填 | 原样返回请求交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.status | string | 必填 | 成功入账状态；允许值：applied |
+| data.amount_minor | integer | 必填 | 原请求金额；最小：0；最大：9000000000000000 |
+| data.applied_minor | integer | 必填 | 实际变动金额；退款允许为 0；最小：0；最大：9000000000000000 |
+| data.balance_before_minor | integer | 必填 | 处理前余额；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。
+- 响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。
+- 主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+### 发放游戏奖金
+
+**POST /wallet/v1/credit** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。确认原扣款身份及回合后发放奖金。免费和续列可分步派彩，但不重复扣除投注。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| amount_minor | integer | 必填 | 非负整数，固定为 1/10000 USD，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
+| reference_id | string | 必填 | 原付费回合实际 debit 回调的 transaction_id，必须原样保存并关联；不可用 round_id 拼接推导；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| game_id | integer | 可选 | 固定游戏接入 ID；最小：1；最大：19 |
+| round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| resolution.requested_range | array | 必填 | — |
+| resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| resolution.actual_multiplier | object | 必填 | — |
+| resolution.actual_multiplier.numerator | integer | 必填 | — |
+| resolution.actual_multiplier.denominator | integer | 必填 | — |
+| resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| resolution.search_attempts | integer | 可选 | — |
+| resolution.selected_attempt | integer | 可选 | — |
+| resolution.search_limit | integer | 可选 | — |
+| resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD",
+  "transaction_id": "step-002:credit",
+  "round_id": "round-001",
+  "amount_minor": 25000,
+  "reference_id": "round-001:debit"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "transaction_id": "step-002:credit",
+    "status": "applied",
+    "amount_minor": 25000,
+    "applied_minor": 25000,
+    "balance_before_minor": 19990000,
+    "balance_minor": 20015000
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | Mutation | 必填 | — |
+| data.player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户币种 |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
+| data.transaction_id | string | 必填 | 原样返回请求交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.status | string | 必填 | 成功入账状态；允许值：applied |
+| data.amount_minor | integer | 必填 | 原请求金额；最小：0；最大：9000000000000000 |
+| data.applied_minor | integer | 必填 | 实际变动金额；退款允许为 0；最小：0；最大：9000000000000000 |
+| data.balance_before_minor | integer | 必填 | 处理前余额；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。
+- 响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。
+- 主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 新整局的结算回调附带决策与整局关联字段，商户应接受附加字段；余额查询只有在整局结算需要时附带。响应无需回显这些字段。round_end 不代表钱包已经确认，整局终态以签名查询为准。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+### 退款或登记取消
+
+**POST /wallet/v1/refund** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。仅可退还尚未成功派奖的原扣款；原扣款未到达时先建立取消标记，阻止迟到扣款。当前 GTT 不因超时自动发起退款。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| transaction_id | string | 必填 | 商户范围全局唯一的钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| round_id | string | 必填 | 付费整局 ID；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| amount_minor | integer | 必填 | 非负整数，固定为 1/10000 USD，不接受浮点数或布尔值；最小：0；最大：9000000000000000 |
+| reference_id | string | 必填 | 原付费回合实际 debit 回调的 transaction_id，必须原样保存并关联；不可用 round_id 拼接推导；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD",
+  "transaction_id": "refund-001",
+  "round_id": "round-001",
+  "amount_minor": 10000,
+  "reference_id": "round-001:debit"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "transaction_id": "refund-001",
+    "status": "applied",
+    "amount_minor": 10000,
+    "applied_minor": 10000,
+    "balance_before_minor": 19990000,
+    "balance_minor": 20000000
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | Mutation | 必填 | — |
+| data.player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户币种 |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
+| data.transaction_id | string | 必填 | 原样返回请求交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.status | string | 必填 | 成功入账状态；允许值：applied |
+| data.amount_minor | integer | 必填 | 原请求金额；最小：0；最大：9000000000000000 |
+| data.applied_minor | integer | 必填 | 实际变动金额；退款允许为 0；最小：0；最大：9000000000000000 |
+| data.balance_before_minor | integer | 必填 | 处理前余额；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 相同 transaction_id 和业务参数重试必须返回原始回执，不能再次改变余额。
+- 响应金额必须满足余额等式。扣款／派彩的 applied_minor 等于请求 amount_minor；退款可为 0。
+- 主币种金额固定为 amount_minor / 10000；例如 amount_minor=100 表示 0.0100 USD，不能按 1 USD 入账，也无需从请求读取精度。
+- 不支持部分退款，必须按原 debit 全额取消；同退款号同参幂等，换退款号再次引用已退扣款返回 ALREADY_REFUNDED。原扣款缺失或已拒绝时 applied_minor=0，并拦截后到扣款；已成功派彩不可退款。GTT 当前没有自动触发退款的公开接入 API。
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+### 查询指定钱包交易
+
+**POST /wallet/v1/transactions/get** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。返回该玩家的钱包快照及交易回执。未知 transaction_id 返回空 transactions 数组，不伪造成功入账记录。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| transaction_id | string | 必填 | 需查询的钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| limit | integer | 可选 | 最多返回记录数，按 seq 降序；默认 20；默认：20；最小：1；最大：100 |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD",
+  "transaction_id": "round-001:debit"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "balance_minor": 20000000,
+    "transactions": []
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | WalletHistory | 必填 | — |
+| data.player_id | string | 必填 | 商户平台玩家唯一标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 钱包余额，以商户 minor_unit 为单位的整数；最小：0；最大：9000000000000000 |
+| data.transactions | array | 必填 | — |
+| data.transactions[].transaction_id | string | 必填 | 钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].kind | string | 必填 | 交易类型；允许值：debit / credit / refund |
+| data.transactions[].status | string | 必填 | 处理状态；允许值：applied / rejected |
+| data.transactions[].error_code | string / null | 必填 | — |
+| data.transactions[].data | object | 必填 | — |
+| data.transactions[].data.player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].data.currency | string | 必填 | 商户币种 |
+| data.transactions[].data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.transactions[].data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
+| data.transactions[].data.transaction_id | string | 必填 | 原样返回请求交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].data.status | string | 必填 | 成功入账状态；允许值：applied |
+| data.transactions[].data.amount_minor | integer | 必填 | 原请求金额；最小：0；最大：9000000000000000 |
+| data.transactions[].data.applied_minor | integer | 必填 | 实际变动金额；退款允许为 0；最小：0；最大：9000000000000000 |
+| data.transactions[].data.balance_before_minor | integer | 必填 | 处理前余额；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+### 查询玩家钱包流水
+
+**POST /wallet/v1/transactions/list** · GTT → 商户钱包
+
+下方为默认路径示例；实际使用商户配置的该项完整 URL，未配置则回退默认 origin 拼接。按玩家返回最近钱包交易，可用于逐笔核对；此接口没有游标分页参数。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_id | string | 必填 | 玩家标识，必须由商户预先建立账户；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| currency | string | 必填 | 必须与商户币种一致 |
+| limit | integer | 可选 | 最多返回记录数，按 seq 降序；默认 20；默认：20；最小：1；最大：100 |
+
+请求示例：
+```json
+{
+  "player_id": "player-10001",
+  "currency": "USD",
+  "limit": 20
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "player_id": "player-10001",
+    "currency": "USD",
+    "balance_minor": 20000000,
+    "transactions": []
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | WalletHistory | 必填 | — |
+| data.player_id | string | 必填 | 商户平台玩家唯一标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.currency | string | 必填 | 商户结算币种，目前新商户为 USD |
+| data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.balance_minor | integer | 必填 | 钱包余额，以商户 minor_unit 为单位的整数；最小：0；最大：9000000000000000 |
+| data.transactions | array | 必填 | — |
+| data.transactions[].transaction_id | string | 必填 | 钱包交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].kind | string | 必填 | 交易类型；允许值：debit / credit / refund |
+| data.transactions[].status | string | 必填 | 处理状态；允许值：applied / rejected |
+| data.transactions[].error_code | string / null | 必填 | — |
+| data.transactions[].data | object | 必填 | — |
+| data.transactions[].data.player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].data.currency | string | 必填 | 商户币种 |
+| data.transactions[].data.minor_unit | integer | 可选 | 兼容可选字段，推荐省略；若提供只能为整数 10000。金额始终按四位小数整数单位解释。；允许值：10000 |
+| data.transactions[].data.balance_minor | integer | 必填 | 处理后的余额；最小：0；最大：9000000000000000 |
+| data.transactions[].data.transaction_id | string | 必填 | 原样返回请求交易号；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.transactions[].data.status | string | 必填 | 成功入账状态；允许值：applied |
+| data.transactions[].data.amount_minor | integer | 必填 | 原请求金额；最小：0；最大：9000000000000000 |
+| data.transactions[].data.applied_minor | integer | 必填 | 实际变动金额；退款允许为 0；最小：0；最大：9000000000000000 |
+| data.transactions[].data.balance_before_minor | integer | 必填 | 处理前余额；最小：0；最大：9000000000000000 |
+| error | null | 必填 | — |
+
+- 自定义 URL 不改变请求/响应格式。验签使用实际 URL pathname，不能继续使用默认示例路径验签。
+- 全部金额固定使用 10000 单位。请求无需 minor_unit，商户响应无需回传；兼容响应若显式携带该字段，仅接受整数 10000。
+
+## 05 · 幂等与结算责任
+
+余额与交易去重必须在同一数据库事务中提交。
+
+| 约束 | 必须遵守的行为 |
+| --- | --- |
+| 交易号唯一 | transaction_id 在单商户范围全局唯一，不可跨玩家或交易类型复用；同号同参返回原结果，同号异参返回 TRANSACTION_CONFLICT。 |
+| 明确拒绝 | 余额不足等拒绝也持久化；同一交易号不能因后来充值而由拒绝变成成功。 |
+| 回执一致 | debit: after = before - applied；credit/refund: after = before + applied。debit/credit 的 applied 必须等于请求金额。 |
+| 操作与回合 | 一次 GTT 操作最多一次 debit 和一次 credit；续列／免费操作可以只有派彩。原付费整局的 round_id 与扣款引用沿用，不把每个免费步骤当成新投注。 |
+| 退款取消 | 核对原交易玩家、币种、回合与金额，已成功派奖不可用简单退款撤销。原扣款未到达时先登记取消，迟到扣款必须拒绝。 |
+| 不确定结果 | 超时、丢失响应、畸形回执并不证明未入账。保留原 ID 与请求参数，查询／重试原交易，不换号重扣，也不自动退款。 |
+
+对账按商户、玩家、round_id、transaction_id、金额和状态逐项核对。GTT 操作中的钱包前后余额是回调时快照；商户同时发生其他业务时，不能把不同操作的余额快照当成全局连续余额证明。当前没有自动对账差异报表，商户可将 GTT 操作记录与自己的钱包账本关联。
+
+多游戏对账：新整局预派彩请求、钱包结算回调与操作查询均携带 game_id、round_id、decision_id（无预派彩为 null）。transaction_id 与 operation_id 仍分别表示单笔钱包交易和游戏操作，reference_id 引用原扣款交易。单笔 settled 不代表整局已结束；使用 rounds/get 或 rounds/changes 的 terminal/status 判断，免费追加不改变整局标识。
+
+| 退款情形 | 钱包处理规则 |
+| --- | --- |
+| 部分退款 | 当前协议不支持部分退款。refund.amount_minor 必须等于原 debit.amount_minor；不一致返回 HTTP 409 / REFERENCE_INVALID。 |
+| 全额退款 | reference_id 指向原 debit transaction_id，玩家、币种、精度、round_id 必须与原扣款一致；原扣款成功且尚无成功 credit 时才返还全额。 |
+| 同一退款号重复 | 相同 transaction_id、类型及业务字段返回第一次保存的回执或拒绝，不重复加款；任一业务字段变化返回 HTTP 409 / TRANSACTION_CONFLICT。签名头不参与业务参数比较。 |
+| 换一个退款号再次退同一扣款 | 原 reference_id 已存在成功退款，返回 HTTP 409 / ALREADY_REFUNDED。 |
+| 退款先于扣款或原扣款已拒绝 | 保存取消记录，refund 回执 status=applied、amount_minor 仍为请求全额、applied_minor=0，余额不增加；之后到达的原扣款返回 HTTP 409 / TRANSACTION_CANCELED。 |
+| 原扣款已成功派彩 | 存在任一成功 credit（包括金额 0 的成功 credit）时，不允许用简单退款撤销，返回 HTTP 409 / REFERENCE_INVALID。 |
+| 自动退款 | GTT 当前结算恢复链路没有超时自动退款，也没有公开的商户退款触发 API。钱包 refund 是必须正确实现的取消协议，不能因为超时自行调用来代替对账。 |
+
+## 06 · 可选预下注决策
+
+决策约束整局派彩，实际入账仍走钱包回调。
+
+### 整局预下注决策（可选）
+
+**POST /api/v1/callbacks/gtt/preBetDecision** · GTT → 商户决策服务
+
+商户配置预派彩 URL 后自动调用，无需开关；请求失败或返回格式无效时回退 RTP。每个付费整局请求一次逻辑决策，商户返回允许的总派彩倍数区间；该接口本身不扣款或派奖。路径可按商户配置，必须按实际请求路径验签。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| player_name | string | 必填 | 启动时绑定的 external_username，不是 GTT 玩家号；最短：1；最长：128 |
+| timestamp | integer | 必填 | 业务去重时间戳，Unix 毫秒，重试时固定；最小：1；最大：9000000000000000 |
+| bet_amount | string | 必填 | 实际付费金额的主币种四位小数字符串；例如 20000 钱包单位对应 "2.0000" USD，不要用浮点数解析；格式：^\d+\.\d{4}$ |
+| type | string | 必填 | 付费整局类型；续列／免费不单独请求；允许值：NORMAL / SURE_WIN / BUY_FREE_SPIN |
+| decision_id | string | 必填 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+
+请求示例：
+```json
+{
+  "player_name": "platform-alice",
+  "timestamp": 1793188800000,
+  "bet_amount": "2.0000",
+  "type": "NORMAL",
+  "decision_id": "round-001",
+  "game_id": 1,
+  "round_id": "round-001"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "code": 0,
+  "data": {
+    "maxWinMulti": [
+      3,
+      5
+    ]
+  },
+  "msg": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| code | integer | 必填 | — |
+| data | object | 必填 | — |
+| data.maxWinMulti | array | 必填 | — |
+| msg | string / null | 必填 | — |
+
+- 成功必须 HTTP 200 且 code 为整数 0；此接口使用 code/data/msg 信封，不使用钱包的 data/error 信封。
+- 当前调用超时 3 秒、响应最多 16 KiB，不跟随重定向。maxWinMulti 必须有两个有限数值（或数字字符串），边界绝对值不超过 1000000；下限仅允许 -1 或非负值，上限非负；下限非负时要求上限不小于下限；[-1,0] 为整局零派彩。
+- 业务毫秒 timestamp 与签名头的秒级时间戳不同；业务去重参数固定，HTTP 签名头每次更新。
+- v1.11 新付费整局携带 decision_id、game_id、round_id；商户以 merchant_id + decision_id 精确去重和预占，不按玩家、金额、时间猜测关联。升级前已准备操作及原请求按原格式恢复，不能要求它们重抽决策。
+
+| maxWinMulti | 整局总派彩含义 |
+| --- | --- |
+| [0,0] | 整局总派彩为 0 |
+| [-1,10] | 不指定下限，不超过实际扣款 10 倍 |
+| [5,10] | 实际扣款的 5～10 倍，包含边界 |
+| [10,10] | 优先 10 倍，未命中时向下取档 |
+| [0.9,1.1] | 0.9～1.1 倍 |
+| [-1,0] | 必输：上限为 0 倍，整局总派彩必须为 0（包含免费与续列） |
+
+倍数基数为本局实际扣款，购买免费以购买费用为基数；总派彩包含全部续列、免费旋转及追加，是总派彩而非净盈利。投注 2.00 USD 返回 [3,5] 表示整局总派彩为 6.00～10.00 USD。
+
+同一逻辑决策按 merchant_id + decision_id 去重，game_id、round_id 和原四个业务字段保持固定。NORMAL/SURE_WIN 用于普通付费，BUY_FREE_SPIN 用于购买免费；免费、续列和收奖不重复申请预派彩。
+
+响应超时、非 200、非零业务 code、坏 JSON 或无效区间时，记录失败并回退本整局 RTP，不重试该回调。有效决策仍执行以下约束。GTT 优先匹配原区间；最多搜索 3000 个合法整局候选，未命中时选择不超过上限且派彩最高的完整候选，允许向下低于原下限，禁止向上取档或截断中奖。最近仅指已搜索候选；只有达到金额精度允许的上限时可证明金额上不存在更近档位。没有任何不超过上限的合法整局才返回 PREBET_RANGE_UNREACHABLE，不扣款。原请求和实际取档写入决策 resolution，重试复用冻结计划。
+
+| 关联或异常 | 明确约定 |
+| --- | --- |
+| 回调字段 | 新请求携带 decision_id、game_id、round_id 及 player_name、timestamp、bet_amount、type。所有 ID 视为不透明字符串，商户用 merchant_id + decision_id 关联策略预占。 |
+| 关联整局 | 相同 decision_id 贯穿钱包结算和操作查询；round_id 贯穿整局免费和续列。使用 rounds/get 精确查询，使用 rounds/changes 持久化游标追踪终态，不按玩家/金额/时间猜关联。 |
+| 按游戏决策的边界 | 新预派彩请求直接包含 game_id；商户可逐游戏决策。升级前已准备的原请求保持旧格式，按已有处理流程恢复。 |
+| 失败前的账务 | 预派彩在扣款前执行。请求失败或响应无效时，先持久化回退记录，再按当前 RTP 继承配置生成整局并走正常钱包扣款与派彩。有效决策但无法生成合法整局仍返回 PREBET_RANGE_UNREACHABLE，不扣款。 |
+| 不确定决策重试 | 请求失败后持久化 RTP 回退，不自动重试预派彩。同一游戏操作重试、进程恢复和免费续局复用原计划或 RTP 绑定，不重新抽取。已收到的有效决策及生成计划不因地址修改而改变。 |
+| 明确余额不足 code=3202 | 与其他非零业务 code 一样记录回退，后续走 RTP。是否允许扣款由钱包 debit 接口校验，余额不足仍由钱包返回 INSUFFICIENT_BALANCE。 |
+| 当前错误映射 | 回调失败与格式错误不再直接向游戏抛出预派彩拒绝，而记入内部决策记录（fallback）及审计，执行本整局 RTP。钱包、游戏状态、合法区间规划等错误保留原处理方式。 |
+
+## 07 · 操作查询与恢复
+
+使用原 operation_id 继续，不重建游戏结果。
+
+### 查询 GTT 游戏操作
+
+**POST /gtt/v1/transactions/list** · 商户 → GTT
+
+按 seq 升序查询本商户游戏操作，记录与钱包交易通过交易号关联。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| after_seq | integer | 可选 | 返回 seq 大于此值的记录，首批传 0；默认：0；最小：0；最大：9000000000000000 |
+| limit | integer | 可选 | 每批条数，默认 20；默认：20；最小：1；最大：100 |
+
+请求示例：
+```json
+{
+  "after_seq": 0,
+  "limit": 100
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "operations": [
+      {
+        "seq": 1,
+        "operation_id": "round-001",
+        "player_id": "player-10001",
+        "game_id": 1,
+        "status": "prepared",
+        "error_code": null,
+        "debit_transaction_id": "round-001:debit",
+        "credit_transaction_id": null,
+        "result": null
+      }
+    ]
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | object | 必填 | — |
+| data.operations | array | 必填 | — |
+| data.operations[].seq | integer | 必填 | 分页序号，按升序返回；最小：0；最大：9000000000000000 |
+| data.operations[].operation_id | string | 必填 | 游戏操作 ID；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.operations[].player_id | string | 必填 | 玩家标识；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.operations[].game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| data.operations[].status | string | 必填 | 操作终态或处理中状态；允许值：prepared / debited / settled / rejected |
+| data.operations[].error_code | string / null | 可选 | — |
+| data.operations[].debit_transaction_id | string / null | 可选 | 有扣款时为 operation_id:debit |
+| data.operations[].credit_transaction_id | string / null | 可选 | 有派彩时为 operation_id:credit |
+| data.operations[].result | object | 必填 | 已保存的游戏结果，尚未完成时可为 null |
+| data.operations[].result.game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| data.operations[].result.sid | string | 必填 | 游戏状态步骤 ID；与 operation_id、钱包 transaction_id 分别保存，不可互相推导；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.operations[].result.round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| data.operations[].result.engine_version | string | 可选 | 引擎版本 |
+| data.operations[].result.ruleset_id | string | 可选 | 规则版本 |
+| data.operations[].result.wallet | object | 必填 | 商户侧钱包金额，统一使用 10000 单位；存在 settlement 时采用其精确余额，不截去不足一分的余额。 |
+| data.operations[].result.wallet.before_minor | integer | 必填 | 本次操作的钱包前快照；最小：0；最大：9000000000000000 |
+| data.operations[].result.wallet.debit_minor | integer | 必填 | 本次扣款；最小：0；最大：9000000000000000 |
+| data.operations[].result.wallet.credit_minor | integer | 必填 | 本次派彩；最小：0；最大：9000000000000000 |
+| data.operations[].result.wallet.after_minor | integer | 必填 | 钱包后快照；最小：0；最大：9000000000000000 |
+| data.operations[].result.outcome | object | 必填 | 已提交的游戏事件；结构按游戏规则版本扩展 |
+| data.operations[].result.minor_unit | integer | 可选 | 只读金额单位，固定为 10000；wallet、settlement 与 outcome 中的金额均使用此单位；允许值：10000 |
+| data.operations[].result.settlement | object | 可选 | 精确商户结算金额，统一使用 10000 单位；历史记录可省略此对象，wallet 仍按统一单位返回。 |
+| data.operations[].result.settlement.minor_unit | integer | 必填 | 商户钱包精度；允许值：10000 |
+| data.operations[].result.settlement.debit_minor | integer | 必填 | 实际钱包扣款；最小：0；最大：9000000000000000 |
+| data.operations[].result.settlement.credit_minor | integer | 必填 | 实际钱包派彩；最小：0；最大：9000000000000000 |
+| data.operations[].result.settlement.balance_minor | integer | 必填 | 钱包回执的精确余额；最小：0；最大：9000000000000000 |
+| data.operations[].result.settlement.before_minor | integer | 可选 | 实际钱包扣款前余额，使用 10000 单位；新回执提供，历史回执可能省略；最小：0；最大：9000000000000000 |
+| data.operations[].result.decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| data.operations[].result.round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| data.operations[].result.decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| data.operations[].result.fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| data.operations[].result.requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| data.operations[].result.resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| data.operations[].result.resolution.requested_range | array | 必填 | — |
+| data.operations[].result.resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| data.operations[].result.resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| data.operations[].result.resolution.actual_multiplier | object | 必填 | — |
+| data.operations[].result.resolution.actual_multiplier.numerator | integer | 必填 | — |
+| data.operations[].result.resolution.actual_multiplier.denominator | integer | 必填 | — |
+| data.operations[].result.resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| data.operations[].result.resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| data.operations[].result.resolution.search_attempts | integer | 可选 | — |
+| data.operations[].result.resolution.selected_attempt | integer | 可选 | — |
+| data.operations[].result.resolution.search_limit | integer | 可选 | — |
+| data.operations[].result.resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+| data.operations[].decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| data.operations[].round_id | string | 可选 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| data.operations[].round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| data.operations[].decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| data.operations[].fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| data.operations[].requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| data.operations[].resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| data.operations[].resolution.requested_range | array | 必填 | — |
+| data.operations[].resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| data.operations[].resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| data.operations[].resolution.actual_multiplier | object | 必填 | — |
+| data.operations[].resolution.actual_multiplier.numerator | integer | 必填 | — |
+| data.operations[].resolution.actual_multiplier.denominator | integer | 必填 | — |
+| data.operations[].resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| data.operations[].resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| data.operations[].resolution.search_attempts | integer | 可选 | — |
+| data.operations[].resolution.selected_attempt | integer | 可选 | — |
+| data.operations[].resolution.search_limit | integer | 可选 | — |
+| data.operations[].resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+| error | null | 必填 | — |
+
+- 下一批 after_seq 使用上一批最后一条 seq，直到返回空数组。
+- 此序号适合枚举操作，不是状态变更事件游标。对已发现的 prepared／debited 操作，另行保留 operation_id 并持续恢复或复查，不要只靠递增游标发现终态。
+
+### 恢复同一游戏操作
+
+**POST /gtt/v1/transactions/retry** · 商户 → GTT
+
+继续已保存的候选结果与原钱包交易，不重抽牌面。已完成的操作返回原保存结果，明确拒绝的操作返回原拒绝错误。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| operation_id | string | 必填 | 待恢复的 GTT 操作 ID；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+
+请求示例：
+```json
+{
+  "operation_id": "round-001"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "game_id": 1,
+    "sid": "round-001",
+    "round_id": "round-001",
+    "engine_version": "EXAMPLE_VERSION",
+    "ruleset_id": "EXAMPLE_RULESET",
+    "wallet": {
+      "before_minor": 20000000,
+      "debit_minor": 10000,
+      "credit_minor": 0,
+      "after_minor": 19990000
+    },
+    "outcome": {
+      "next_phase": "ready"
+    },
+    "minor_unit": 10000,
+    "settlement": {
+      "minor_unit": 10000,
+      "debit_minor": 10000,
+      "credit_minor": 0,
+      "balance_minor": 19990000
+    }
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | GameResult | 必填 | — |
+| data.game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| data.sid | string | 必填 | 游戏状态步骤 ID；与 operation_id、钱包 transaction_id 分别保存，不可互相推导；最短：1；最长：128；格式：^[A-Za-z0-9_.:-]+$ |
+| data.round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| data.engine_version | string | 可选 | 引擎版本 |
+| data.ruleset_id | string | 可选 | 规则版本 |
+| data.wallet | object | 必填 | 商户侧钱包金额，统一使用 10000 单位；存在 settlement 时采用其精确余额，不截去不足一分的余额。 |
+| data.wallet.before_minor | integer | 必填 | 本次操作的钱包前快照；最小：0；最大：9000000000000000 |
+| data.wallet.debit_minor | integer | 必填 | 本次扣款；最小：0；最大：9000000000000000 |
+| data.wallet.credit_minor | integer | 必填 | 本次派彩；最小：0；最大：9000000000000000 |
+| data.wallet.after_minor | integer | 必填 | 钱包后快照；最小：0；最大：9000000000000000 |
+| data.outcome | object | 必填 | 已提交的游戏事件；结构按游戏规则版本扩展 |
+| data.minor_unit | integer | 可选 | 只读金额单位，固定为 10000；wallet、settlement 与 outcome 中的金额均使用此单位；允许值：10000 |
+| data.settlement | object | 可选 | 精确商户结算金额，统一使用 10000 单位；历史记录可省略此对象，wallet 仍按统一单位返回。 |
+| data.settlement.minor_unit | integer | 必填 | 商户钱包精度；允许值：10000 |
+| data.settlement.debit_minor | integer | 必填 | 实际钱包扣款；最小：0；最大：9000000000000000 |
+| data.settlement.credit_minor | integer | 必填 | 实际钱包派彩；最小：0；最大：9000000000000000 |
+| data.settlement.balance_minor | integer | 必填 | 钱包回执的精确余额；最小：0；最大：9000000000000000 |
+| data.settlement.before_minor | integer | 可选 | 实际钱包扣款前余额，使用 10000 单位；新回执提供，历史回执可能省略；最小：0；最大：9000000000000000 |
+| data.decision_id | string / null | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| data.round_end | boolean | 可选 | 当前候选是整局最后一步；钱包确认前不代表已结算。以 rounds/get 或 rounds/changes 的 terminal/status 为准。 |
+| data.decision_status | string | 可选 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| data.fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| data.requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| data.resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| data.resolution.requested_range | array | 必填 | — |
+| data.resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| data.resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| data.resolution.actual_multiplier | object | 必填 | — |
+| data.resolution.actual_multiplier.numerator | integer | 必填 | — |
+| data.resolution.actual_multiplier.denominator | integer | 必填 | — |
+| data.resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| data.resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| data.resolution.search_attempts | integer | 可选 | — |
+| data.resolution.selected_attempt | integer | 可选 | — |
+| data.resolution.search_limit | integer | 可选 | — |
+| data.resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+| error | null | 必填 | — |
+
+- 由服务端调度恢复，采用有限次数退避。所有重试重新生成签名头，operation_id 保持不变。
+- 商户停用后普通接入签名会被拒绝；如需恢复已受理记录，由 GTT 授权运营处理，并确保商户钱包仍接受其有效结算请求。
+
+| 状态 | 解释与下一步 |
+| --- | --- |
+| prepared | 候选结果已保存；可能尚未扣款或扣款响应未知，恢复同一 operation_id。 |
+| debited | 扣款已确认，等待结算确认；重试原操作，不重新扣费。 |
+| settled | 钱包结算与游戏状态已提交；再次恢复返回保存结果。 |
+| rejected | 已明确拒绝，游戏状态未推进；不得将该 ID 改为一笔新交易。 |
+
+当前恢复由玩家读取状态或商户／GTT 运营请求触发，没有后台定时重试线程。商户可对自己的待处理操作建立有限次数、指数退避的恢复队列；错误持续时告警并保留原业务标识。超时只说明结果未知，不是退款依据。
+
+预派彩尚未生成候选时，rounds/get 可查询 preparing 状态、有效决策及回退原因，rounds/changes 可跟踪变化；没有候选时尚不在 transactions/list。transactions/retry 仅恢复已有操作，计算重试仍由游戏原请求触发；查询不会重新抽取决策。
+
+有状态策略应在收到 decision_id 时建立预占；decision_status=fallback 时释放该次预派彩策略预占，并按实际 RTP 路径记录；terminal=true 时按已确认累计金额结束整局。有效区间向下取档时使用 resolution.actual_multiplier 更新策略，不能把请求下限当作实际派彩。金额统一按 10000 单位处理；resolution.basis_minor 与 actual_credit_minor 也使用相同单位，无需按游戏换算。
+
+### 查询整局与预派彩关联
+
+**POST /gtt/v1/rounds/get** · 商户 → GTT
+
+按 decision_id，或 game_id + round_id 查询本商户整局的当前状态及已确认账务。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| decision_id | string | 可选 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| game_id | integer | 可选 | 固定游戏接入 ID；最小：1；最大：19 |
+| round_id | string | 可选 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+
+请求示例：
+```json
+{
+  "decision_id": "round-001"
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "decision_id": "round-001",
+    "decision_status": "accepted",
+    "fallback_reason": null,
+    "requested_range": [
+      3,
+      5
+    ],
+    "resolution": {
+      "requested_range": [
+        3,
+        5
+      ],
+      "basis_minor": 20000,
+      "actual_credit_minor": 60000,
+      "actual_multiplier": {
+        "numerator": 600,
+        "denominator": 200
+      },
+      "selection": "within_range",
+      "nearest_scope": "requested_range",
+      "search_attempts": 1,
+      "selected_attempt": 1,
+      "search_limit": 3000
+    },
+    "resolution_minor_unit": 10000,
+    "game_id": 1,
+    "round_id": "round-001",
+    "revision": 8,
+    "player_id": "player-10001",
+    "status": "completed",
+    "terminal": true,
+    "cancel_reason": null,
+    "currency": "USD",
+    "minor_unit": 10000,
+    "total_debit_minor": "20000",
+    "total_credit_minor": "60000",
+    "execution_mode": "prebet",
+    "operations": [
+      {
+        "operation_id": "round-001",
+        "status": "settled",
+        "error_code": null,
+        "debit_transaction_id": "round-001:debit",
+        "credit_transaction_id": "round-001:credit"
+      }
+    ]
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | RoundSummary | 必填 | — |
+| data.decision_id | string / null | 必填 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| data.game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| data.round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| data.decision_status | string | 必填 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| data.fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| data.requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| data.resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| data.resolution.requested_range | array | 必填 | — |
+| data.resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| data.resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| data.resolution.actual_multiplier | object | 必填 | — |
+| data.resolution.actual_multiplier.numerator | integer | 必填 | — |
+| data.resolution.actual_multiplier.denominator | integer | 必填 | — |
+| data.resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| data.resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| data.resolution.search_attempts | integer | 可选 | — |
+| data.resolution.selected_attempt | integer | 可选 | — |
+| data.resolution.search_limit | integer | 可选 | — |
+| data.resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+| data.revision | integer | 必填 | 该整局最新变更序号；历史未产生变更记录时为 0。 |
+| data.player_id | string | 可选 | GTT 玩家标识 |
+| data.status | string | 必填 | 准备中、进行中、钱包结算中、已完成、扣款前明确拒绝取消。；允许值：preparing / active / settling / completed / cancelled |
+| data.terminal | boolean | 必填 | 仅 completed/cancelled 为 true |
+| data.cancel_reason | string / null | 可选 | 取消原因；仅在扣款前已明确拒绝且无确认入账时返回 |
+| data.currency | string | 必填 | 商户钱包币种 |
+| data.minor_unit | integer | 必填 | 累计账务金额的商户钱包精度；允许值：10000 |
+| data.total_debit_minor | string | 必填 | 已确认扣款累计整数金额；不含结果仍不确定的扣款。；格式：^\d+$ |
+| data.total_credit_minor | string | 必填 | 已确认入账派彩累计整数金额；格式：^\d+$ |
+| data.execution_mode | string / null | 可选 | 实际执行模式 prebet/rtp/legacy；尚未生成操作时为 null |
+| data.operations | array | 可选 | 仅 rounds/get 返回该整局的操作及交易关联；changes 省略此列表。 |
+| data.operations[].operation_id | string | 可选 | 操作 ID |
+| data.operations[].status | string | 可选 | 操作状态 |
+| data.operations[].error_code | string / null | 可选 | 操作错误 |
+| data.operations[].debit_transaction_id | string / null | 可选 | 扣款交易号 |
+| data.operations[].credit_transaction_id | string / null | 可选 | 派彩交易号 |
+| error | null | 必填 | — |
+
+- 与其他 GTT 接口相同的商户签名。跨商户、不存在或不匹配的标识返回 404 / NOT_FOUND。
+- 取消目前仅指明确的扣款前拒绝，没有新增付费后撤销或自动退款接口。外部手工退款不自动改变 GTT 整局状态。
+- resolution 是冻结计划的取档金额；最终实际到账以 total_credit_minor 为准，结算中不把尚未确认的金额当作已入账。
+
+### 增量查询整局状态变化
+
+**POST /gtt/v1/rounds/changes** · 商户 → GTT
+
+使用持久化 after_seq 游标拉取本商户整局变化，包含零派彩尾步、失败回退与最终结算。记录与源账务/决策在同一事务提交。
+
+| 请求字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| after_seq | integer | 可选 | 默认：0；最小：0 |
+| limit | integer | 可选 | 默认：20；最小：1；最大：100 |
+
+请求示例：
+```json
+{
+  "after_seq": 0,
+  "limit": 100
+}
+```
+
+成功响应 HTTP 200：
+```json
+{
+  "data": {
+    "changes": [
+      {
+        "seq": 8,
+        "changed_at": 1793923200,
+        "round": {
+          "decision_id": "round-001",
+          "decision_status": "accepted",
+          "fallback_reason": null,
+          "requested_range": [
+            3,
+            5
+          ],
+          "resolution": {
+            "requested_range": [
+              3,
+              5
+            ],
+            "basis_minor": 20000,
+            "actual_credit_minor": 60000,
+            "actual_multiplier": {
+              "numerator": 600,
+              "denominator": 200
+            },
+            "selection": "within_range",
+            "nearest_scope": "requested_range",
+            "search_attempts": 1,
+            "selected_attempt": 1,
+            "search_limit": 3000
+          },
+          "resolution_minor_unit": 10000,
+          "game_id": 1,
+          "round_id": "round-001",
+          "revision": 8,
+          "player_id": "player-10001",
+          "status": "completed",
+          "terminal": true,
+          "cancel_reason": null,
+          "currency": "USD",
+          "minor_unit": 10000,
+          "total_debit_minor": "20000",
+          "total_credit_minor": "60000",
+          "execution_mode": "prebet"
+        }
+      }
+    ],
+    "next_after_seq": 8
+  },
+  "error": null
+}
+```
+
+响应字段：
+| 字段 | 类型 | 要求 | 说明 |
+| --- | --- | --- | --- |
+| data | object | 必填 | — |
+| data.changes | array | 必填 | — |
+| data.changes[].seq | integer | 必填 | — |
+| data.changes[].changed_at | integer | 必填 | Unix 秒 |
+| data.changes[].round | RoundSummary | 必填 | — |
+| data.changes[].round.decision_id | string / null | 必填 | GTT 生成的稳定预派彩决策 ID；未调用预派彩时为 null。不要与钱包 transaction_id 混用。 |
+| data.changes[].round.game_id | integer | 必填 | 固定游戏接入 ID；最小：1；最大：19 |
+| data.changes[].round.round_id | string | 必填 | 稳定整局 ID；一次付费及其全部免费、续列、收奖共用，按不透明字符串保存。 |
+| data.changes[].round.decision_status | string | 必填 | 是否请求、等待决策、有效决策已接受或已回退 RTP。；允许值：not_requested / pending / accepted / fallback |
+| data.changes[].round.fallback_reason | string / null | 可选 | 预派彩调用或格式失败原因；未回退时为 null。 |
+| data.changes[].round.requested_range | array / null | 可选 | 有效决策的原始倍数区间；未得到有效决策时为 null。 |
+| data.changes[].round.resolution | object | 可选 | 已冻结的完整整局取档结果；不等于全部金额已入账。 |
+| data.changes[].round.resolution.requested_range | array | 必填 | — |
+| data.changes[].round.resolution.basis_minor | integer | 必填 | 整局派彩倍率基数，使用 resolution_minor_unit |
+| data.changes[].round.resolution.actual_credit_minor | integer | 必填 | 选中的完整合法整局计划派彩，使用 resolution_minor_unit |
+| data.changes[].round.resolution.actual_multiplier | object | 必填 | — |
+| data.changes[].round.resolution.actual_multiplier.numerator | integer | 必填 | — |
+| data.changes[].round.resolution.actual_multiplier.denominator | integer | 必填 | — |
+| data.changes[].round.resolution.selection | string | 必填 | 允许值：within_range / nearest_lower_candidate |
+| data.changes[].round.resolution.nearest_scope | string | 必填 | 允许值：requested_range / monetary_ceiling / searched_candidates |
+| data.changes[].round.resolution.search_attempts | integer | 可选 | — |
+| data.changes[].round.resolution.selected_attempt | integer | 可选 | — |
+| data.changes[].round.resolution.search_limit | integer | 可选 | — |
+| data.changes[].round.resolution_minor_unit | integer / null | 可选 | 只读金额单位；非空时固定为 10000，取档基数与派彩同样使用四位小数整数单位。；允许值：10000 /  |
+| data.changes[].round.revision | integer | 必填 | 该整局最新变更序号；历史未产生变更记录时为 0。 |
+| data.changes[].round.player_id | string | 可选 | GTT 玩家标识 |
+| data.changes[].round.status | string | 必填 | 准备中、进行中、钱包结算中、已完成、扣款前明确拒绝取消。；允许值：preparing / active / settling / completed / cancelled |
+| data.changes[].round.terminal | boolean | 必填 | 仅 completed/cancelled 为 true |
+| data.changes[].round.cancel_reason | string / null | 可选 | 取消原因；仅在扣款前已明确拒绝且无确认入账时返回 |
+| data.changes[].round.currency | string | 必填 | 商户钱包币种 |
+| data.changes[].round.minor_unit | integer | 必填 | 累计账务金额的商户钱包精度；允许值：10000 |
+| data.changes[].round.total_debit_minor | string | 必填 | 已确认扣款累计整数金额；不含结果仍不确定的扣款。；格式：^\d+$ |
+| data.changes[].round.total_credit_minor | string | 必填 | 已确认入账派彩累计整数金额；格式：^\d+$ |
+| data.changes[].round.execution_mode | string / null | 可选 | 实际执行模式 prebet/rtp/legacy；尚未生成操作时为 null |
+| data.changes[].round.operations | array | 可选 | 仅 rounds/get 返回该整局的操作及交易关联；changes 省略此列表。 |
+| data.changes[].round.operations[].operation_id | string | 可选 | 操作 ID |
+| data.changes[].round.operations[].status | string | 可选 | 操作状态 |
+| data.changes[].round.operations[].error_code | string / null | 可选 | 操作错误 |
+| data.changes[].round.operations[].debit_transaction_id | string / null | 可选 | 扣款交易号 |
+| data.changes[].round.operations[].credit_transaction_id | string / null | 可选 | 派彩交易号 |
+| data.next_after_seq | integer | 必填 | — |
+| error | null | 必填 | — |
+
+- 先幂等处理并持久化本批数据，再保存 next_after_seq；拉到空批次后稍后轮询。允许重复读取，不按数量推测连续序号。
+- seq 是变化游标，round 是查询时的一致状态快照，revision 是该整局最新序号。同一整局可多次出现；按 merchant_id + game_id + round_id 更新，旧 revision 不覆盖新状态。
+- changes 为避免重复大列表不返回 operations；需要逐笔交易时调用 rounds/get。
+- 升级后的变化会自动记录；历史没有变化的已结束整局不会全量补发，可按已有标识直接查询。记录当前不自动清理；没有新增必须配置的推送地址。
+
+## 08 · 错误码与处理策略
+
+区分参数错误、明确拒绝和不确定结果。
+
+GTT／钱包错误信封；预派彩使用独立 code/data/msg
+
+```json
+{"data":null,"error":{"code":"AUTH_INVALID","message":"Invalid signature."}}
+```
+
+| HTTP / code | 处理建议 |
+| --- | --- |
+| 400 / BAD_REQUEST、INVALID_ARGUMENT、GAME_ID_INVALID | 修正请求格式、标识和字段，不盲目重试同一非法请求。 |
+| 401 / AUTH_INVALID | 核对商户号、完整密钥、实际 body 字节、path、服务器时间及 key 文本编码。 |
+| 409 / AUTH_REPLAY | 生成新的秒级时间戳、nonce 和签名；业务交易号与参数保持不变。 |
+| 403 / GAME_FORBIDDEN | 联系 GTT 核对游戏授权；商户停用时为 401 / AUTH_INVALID。 |
+| 409 / INSUFFICIENT_BALANCE | 明确拒绝；不推进局面、不重扣同一交易号。 |
+| 409 / TRANSACTION_CONFLICT、IDEMPOTENCY_CONFLICT | 停止冲突请求并排查 ID 复用，不以新 ID 掩盖重复结算。 |
+| 409 / STALE_STATE、OPERATION_PENDING | 读取最新游戏状态，先恢复待处理操作。 |
+| 404 / ACCOUNT_NOT_FOUND；409 / CURRENCY_MISMATCH | 钱包中核对玩家账户与商户币种；GTT 包装钱包的明确拒绝时返回 409。 |
+| 400 / LANGUAGE_INVALID、PREBET_PLAYER_REQUIRED、PREBET_TYPE_INVALID | 修正语言或预派彩玩家映射与启动类型。 |
+| 503 / WALLET_UNCERTAIN | 保留原 operation_id／transaction_id，查询或恢复原操作。 |
+| 503 / PREBET_RANGE_UNREACHABLE | 没有找到不超过上限的完整合法回合，未扣款；重试原请求或核对游戏规则。 |
+| 413 / BODY_TOO_LARGE；400 / CONTENT_TYPE | 缩小 JSON 请求体或设置 application/json。 |
+| 400 / WALLET_PRECISION_REQUIRED | 历史配置精度异常，请联系平台修正；新商户固定使用 10000 单位，无需提交精度参数。 |
+| 400 / GAME_ORIGIN_REQUIRED | 生产环境缺少该游戏的 HTTPS origin，由 GTT 部署方配置并验收，商户不可自行改写 launch_url。 |
+| 400 / PREBET_PLAYER_CONFLICT | external_username 已绑定其他玩家，或当前玩家试图改绑；修正映射，不能通过重试覆盖。 |
+| 400 / AMOUNT_INVALID、LIMIT_INVALID、JSON_INVALID | 修正金额、分页上限或 UTF-8 编码。JSON 结构、重复键等问题可能为 BAD_REQUEST。 |
+| 409 / TRANSACTION_CANCELED | 原扣款已被取消，停止该笔扣款；不能换交易号掩盖取消。 |
+| 409 / ALREADY_REFUNDED、REFERENCE_INVALID | 核对原扣款引用及退款状态，按退款表处理。 |
+| 404 / NOT_FOUND | 接口不存在、操作不存在或操作不属于本商户；不要枚举其他商户标识。 |
+| 403 / HOST_REJECTED、ORIGIN_REJECTED、PROXY_REJECTED、HTTPS_REQUIRED | 检查访问域名、来源和反向代理配置，联系平台核对当前环境。 |
+| 503 / SERVICE_UNAVAILABLE | 服务异常，结果可能未知；保留业务 ID 并查询，不按新交易重发。 |
+| 其他钱包错误（如 BALANCE_LIMIT） | 当前 GTT 明确识别的拒绝只有 INSUFFICIENT_BALANCE、TRANSACTION_CANCELED、TRANSACTION_CONFLICT、ACCOUNT_NOT_FOUND、CURRENCY_MISMATCH、ALREADY_REFUNDED、REFERENCE_INVALID；其他钱包错误按 WALLET_UNCERTAIN 处理，需对账。 |
+| 403 / GAME_CLOSED | 平台已关闭或尚未开放此游戏；停止新接入和新整局，已有回合可恢复结算。 |
+
+同号异参有两层：商户钱包 transaction_id 冲突为 HTTP 409 / TRANSACTION_CONFLICT；游戏请求幂等键冲突为 IDEMPOTENCY_CONFLICT，已建立操作的冲突通常为 HTTP 409，计算预留阶段也可能为 HTTP 400。games/launch 没有 transaction_id 幂等参数，每次启动可创建新的会话，不会因此触发投注扣款。错误码应与 HTTP 状态、接口方向一起判断；本章不把游戏原协议的内部错误码混为商户钱包码。
+
+## 09 · 联调验收清单
+
+完成以下场景后再安排上线验收。
+
+| 场景 | 预期结果 |
+| --- | --- |
+| 固定签名向量 | Python、Node.js 或商户语言计算出相同 body hash 与签名。 |
+| 签名篡改／过期／重放 | 请求被拒绝；nonce 持久化，进程重启后也不能重放有效旧请求。 |
+| 已授权／未授权游戏 | 目录与启动遵守商户授权，未授权不能进入。 |
+| 未知玩家／余额不足 | 未知账户不能启动；不足余额不会推进游戏或产生成功扣款。 |
+| 普通、购买免费、续列、免费追加 | 一笔实际购买成本只扣一次，整局引用一致，逐步派彩与钱包账本相符。 |
+| 重复 debit／credit | 同号同参回原结果，余额只变动一次；异参返回冲突。 |
+| 已入账但响应丢失 | 重试原 ID 得到原回执，不重抽结果、不重复入账。 |
+| 双方重启与并发恢复 | 待处理操作可继续，结果和账本不重复。 |
+| 预派彩地址与失败回退 | 未配置地址不调用；配置后自动尝试，失败或校验不通过回退 RTP，重试与续局不重复回调；有效区间不可达仍不扣款。 |
+| 密钥重置 | 新密钥用于所有请求；旧密钥立即失效，双方服务端同步更新。 |
+| 逐笔对账 | 商户／玩家／回合／交易号／金额／终态可关联，明确未结束回合口径。 |
+
+排障资料提供商户号、operation_id／transaction_id、UTC 时间、接口路径、HTTP 状态和错误码。不要提交 merchant_secret、签名头、完整玩家会话链接或含这些内容的访问日志。当前未提供自动对账和自动后台重试，实际范围以本版本和联合验收为准。
