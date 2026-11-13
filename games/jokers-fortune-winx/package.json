@@ -1,0 +1,1 @@
+{"name":"gtt-jokers-fortune-winx-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game jokers-fortune-winx","demo":"node ../../other/tooling/start-source.mjs jokers-fortune-winx"}}

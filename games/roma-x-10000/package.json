@@ -1,0 +1,1 @@
+{"name":"gtt-roma-x-10000-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game roma-x-10000","demo":"node ../../other/tooling/start-source.mjs roma-x-10000"}}

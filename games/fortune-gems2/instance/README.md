@@ -1,0 +1,133 @@
+# TaDa Fortune Gems 2
+
+> 目录已重组。当前启动命令与路径见[四目录说明](../../../other/docs/project-layout.md)；本文中的旧命令保留为历史记录。
+
+## 当前状态（2026-10-16）
+
+核心试玩已打通，并接入 8080 大厅第七张卡片与 TaDa 厂商筛选。独立入口为 `http://127.0.0.1:8089/`。保留原版 Continue → PLAY、旋转、Extra Bet、轮盘、自动旋转设置和规则入口，未加实现状态浮层。下方 10 月 15 日记录是历史检查点，不代表当前启动状态。
+
+### 本次证据与修复
+
+- 用户补抓会话 `24652cc7afc340e38db4fdc47179f6f7` 已通过 8090 最新快照检查，确认为 `/fgp/`、gameId 223 的 Fortune Gems 2；未停止录制。
+- 登录依赖原版 life-service WebSocket。新增同端口 `/lifeservice/ws2`，验证 Origin、握手与 protobuf token，支持认证确认、心跳、ping/pong；不伪造平台邮件/活动成功。适配器只替换连接地址，保留原版就绪回调。
+- 真正阻断 GameView 初始化的是 7 个 Spine `.bin` 被 `text/bin` 响应转码。表现为 Cocos 内部 RangeError / boneData null、动画初始化中断。已从对应原始静态 URL 获取原始字节并记录 SHA-256；原版 JS 未修改。
+- 导入工具新增静态扩展名白名单，排除 `/fgp/req` 协议内容；`.bin` 通过原始 HTTP 字节导入，防止再次导入转码损坏的响应。
+- 新抓取规则脚本请求 454 和语言请求 450 确认 symbol 0..7 单线基础赔率为 `[0.4, 1, 1.6, 2, 2.4, 3, 4, 5]`。去标识化证据保存于 `clients/fortune-gems2/fixtures/rules-evidence.json`；规则页加入原图赔率表与五线图。
+- 原客户端 `ChangeShowWheelExtraNumber` / `ChangeidleWheelExtraNumber` 索引全部 12 个扇区，`CheckMultPos` 按倍率大于 1 的位置播放升级。生成器补齐 12 项 `MultShowArray`，中奖扇区与 `WheelMult`、结算金额保持一致。倍率权重是本地配置，不能当成原站概率证据。
+- `LightOnPos` 在本版本游戏脚本仅见于 protobuf 定义，未发现游戏逻辑读取，保留空数组；不能据此断言其他版本也不使用。
+- 大厅 ready 信号改为观察原版可交互 Continue 或已进入 idle 状态，不再仅凭 info 响应就宣布画面就绪。
+
+### 验证结果
+
+- 原客户端 1100×800：Continue → PLAY → 普通旋转完成，余额从 2000 扣至 1999.8，回到 idle（1005），无 pageerror。
+- 独立临时数据库/测试配置强制轮盘：普通轮盘 1×、Extra Bet 轮盘 1×3 均完整播放并回到 idle；Extra Bet 显示下注 0.3，基础下注为 0.2。测试配置未写入正式服务。
+- 游戏运行中切换至 390×844：原版竖版布局、轮盘、下注及按钮正常显示。
+- 自动旋转：从原版设置选择 10 次并开始，账本验证累计 8 轮；点击停止出现原版 Auto Spin Disabled，记录接口返回 200。
+- 同会话刷新余额保持一致；大厅 TaDa 筛选只显示本游戏，打开、ready 通知及返回大厅验证通过。
+- 原规则入口可打开 `/rules` 并返回游戏；本地账本 `/history` 提供独立认证后的记录。此抓取的 trial 登录 `switchOffs=[35,41,49,5,25,1]` 与已有 fixture 相同，设置菜单实际显示自动旋转、规则、声音；未为了本地实现而修改这些原版开关。
+- 全量 79 项测试通过（34.709 秒），其中 Fortune Gems 2 专项 4 项，包含 WebSocket 认证/心跳/非法 token 用例。专项覆盖 60 份真实样本逐线结算、protobuf 往返、1000 轮生成不变量、Extra Bet 扣款、重试幂等、round-end 不重复扣款、重启及非法下注。
+
+### 仍需区分的边界
+
+- 这是原客户端驱动的本地生成玩法。符号权重、stack、轮盘概率、每扇区倍率分布、RTP 尚未还原；最大总赢 15025 倍仍是草稿边界，原 `MaxOdd=15000` 的封顶语义待证据确认。
+- 最新 HTTP `/fgp/req` 仍是加密响应；本次没有把这些密文冒充已解码新回合样本。需继续取得解码后的 Extra Bet 轮盘响应，才能核对原站倍率分布与亮灯字段。
+- `/tada/custom`、平台邮件/活动/赠送免费旋转尚无本地业务实现。原版功能入口未人为移除；后续需补抓对应操作请求与响应后实现。
+- 本地规则/账本不是原站完整历史网页，逐回合动画回放未实现。刷新余额验证不等于断线中途轮盘动画恢复已验证。
+
+## 历史检查点：2026-10-15（以下内容保留作排障背景）
+
+
+更新：2026-10-15。按用户要求暂停实现，保存当前代码，明天继续。
+
+**当前是开发检查点，尚未打通可试玩流程。** 独立服务 8089 可启动，原客户端能显示介绍页并加载到 100%，但开始按钮没有出现。尚未接入大厅，横竖屏完整交互、旋转及轮盘动画均未通过浏览器验收。不要将服务启动成功或后端既有测试通过描述为本游戏已经完成。
+
+## 明天从这里继续
+
+1. 启动 8089，先解决介绍页停在 100% 的启动回调，再检查真实点击开始是否登录并请求 game info。不要强行隐藏介绍页或手动设置完成标记来绕过启动流程。
+2. 核对本地 `GameApp` 登录状态、公共 `m_readyCb` 调用路径、GameView 初始化和 life-service 握手依赖。最后一次观察的具体状态见下节。WebSocket 被 CSP 拦截是现存问题，尚不能认定就是卡点原因。
+3. 普通旋转打通后验证 Extra Bet、普通轮盘和额外倍率轮盘。优先查最新抓取中的规则和额外轮盘证据，补齐 `MultShowArray`、`LightOnPos`，核实 symbol 0 / wild 赔率。
+4. 添加专项后端测试：真实样本逐线结算、protobuf 编解码、钱包扣款/中奖、相同 key 重试、非法下注、round-end 不重复扣款。然后做原客户端端到端验收。
+5. 用 390×844、横屏和运行中旋转方向检查布局、开始按钮、下注、Extra Bet、自动旋转、中奖/轮盘动画、规则、记录、关闭返回、同会话刷新及余额一致性。用户已补抓竖版，必须查最新会话，不能按旧快照判断缺少素材。
+6. 验收后接入大厅 TaDa 厂商筛选、第七张卡片及封面，补 `py/services/local_demo.py` 的 catalog、launch 和封面白名单。目前大厅仍是原来的六款。
+
+## 当前卡点及排障证据
+
+最初公共脚本在 localhost 触发保护分支，进入十亿次循环。导航前开启 CDP Debugger、加载 3 秒后 pause，定位调用链为 `v$L → L3H → V4BhcNw → h2eSW.X61 → execute`。
+
+- `astarte2/3.6/web-mobile/src/chunks/bundle.fb6e5.js`：`h2eSW.m_4.V4BhcNw`；循环位置单行列约 775504。
+- `astarte2/3.6/web-mobile/assets/other/index.ad23f.js`：`R7xpx.C3jL.V4BhcNw`。
+- `local-adapter.js` 只在 loopback 域名下，通过一次性 Function.prototype 属性 setter 适配这两个谓词，保留调用方十六进制奇偶编码。原始混淆脚本没有修改。更新上游版本时必须重新定位名称和逻辑。
+- 加入该适配后不再卡死，介绍页可显示；补充 `/api-documents/` 静态路径白名单后，banner 的 plist/png 不再 404，加载由 98% 到达 100%。
+
+最后一次本地浏览器观察（1100×800）：
+
+- `IntroView.IsDataReady() === true`，`CheckTasks() === true`。
+- `m_nowProgress ≈ 100`，`m_maxProgress ≈ 100`，`m_isBottombarFinished === true`。
+- `m_sceneNode.active === true`，`Btn_Playing.worldScale` 的 x/y 仍为 0。
+- `m_barChangeAnim` 有 `Clip_Intro_LoadingToButton`，时长 0.8333 秒，state 存在但没有播放。
+- `APP.IsLoaded() === true`，但 `APP.m_loginSuccess === false`、`m_preLoaded === true`、`m_loginBody === null`。
+- `GameView` 在前一次检查中 `m_isLogin`、`m_isGetGameInfo`、`m_isBottombarFinished` 均为 false。
+- `IntroView.Init` 注册公共 ready callback；callback 才会播放 LoadingToButton 动画。需要查清谁应触发它。
+- 控制台没有 pageerror；有原版 Normal 字体 OTS 警告，以及连接 `wss://uat-wbslot-fd.tsohlacol.com/lifeservice/ws2` 被本地 CSP 拦截的错误。当前 launch 的 `domain_gs=localhost` 被原代码反转/拼成上述域名，不能继续使用原远端连接。
+- 早先原站诊断浏览器也曾停在 100%，手动触发 transition 出现 getState 返回 null；后续本地检查确认 LoadingToButton clip 存在，不要把早先结果直接当成本地缺失素材结论。
+
+本地适配器 `demo:ready` 目前依赖 ack 1 返回，触发时机偏早，尚未用于大厅；应改为真实画面就绪后通知。`/tada/custom` 尚未实现。平台邮件、活动及 life-service 也没有本地业务实现；原入口未隐藏。
+
+## 已保存的实现
+
+- `clients/fortune-gems2/`：164 个原版静态文件、素材来源索引、去标识化 login/info fixtures、本地适配脚本和简版规则页。
+- `tools/tada_capture/import_capture.py`：从抓取导入静态 allowlist；正在录制、没有 manifest 时读取 8090 snapshot。只导入静态文件，来源 URL 去 query。
+- `py/adapters/tada/fortune_gems2_schema.json`：从原客户端提取的公共及游戏 protobuf 定义。
+- `py/adapters/tada/fortune_gems2.py`：W 登录、ack 1 info、2 notice、0 spin、4/36 查询最后回合；复用现有 protobuf codec 和事务钱包。
+- `py/games/fortune_gems2/`：3×3 五线、wild、第四倍率列、Extra Bet 与轮盘的本地生成引擎草稿；不是原版数学模型。
+- `py/services/fortune_gems2_demo.py`、`services/fortune-gems2/`：8089 独立服务、独立配置和数据库；已登记 catalog 和启动入口。
+- `py/tests/fixtures/fortune-gems2-spins.json`：60 个去标识化真实公共 trial 样本，25 普通、35 Extra Bet，含一个普通轮盘样本，没有额外倍率轮盘样本。
+
+## 已核实协议与未核实规则
+
+游戏归属按实际启动链确认为 **TaDa**：`tadagaming.com/PlusTrial/223/en-us` → LoginTrial → `casino-wbgame.tadagaming.com/fgp/`，gameId 223、skin 1。引流页面标题中的 JILI 不作为本次客户端厂商归属依据。
+
+- WASM System 模块 `chunks:///WASM-6233a0e2.js`，W 登录、c 命令、b custom。HTTP `/fgp/req` 是加密协议，旧密文不能直接回放给新会话。
+- 公共 info 的下注档位为 0.2 / 0.4 / 0.6 / 1 / 2 / 4 / 8 / 10 / 20 / 40 / 80 / 100 / 120 / 160 / 200，初始币 2000，精度 10000。
+- Extra Bet 为基础下注的 1.5 倍。SpinReq `extraSpin: {}`（Index 默认 0）已实测成功；Index 1 原站返回 ret 324。
+- 五线顺序为中、上、下、左上至右下、左下至右上。符号 0..6 为普通，7 为 wild；8..13 表示 1/2/3/5/10/15 倍，14 普通轮盘，15 额外轮盘。
+- 实际样本确认 symbol 1..6 的基础赔率分别为 1 / 1.6 / 2 / 2.4 / 3 / 4 倍；`AwardDataVec.Win` 已包含第四列倍率，不能再乘一次。
+- 轮盘档位顺序来自 GameInfoData：`[1000,10,1,30,5,50,200,8,100,3,20,15]`。真实普通轮盘样本中基础下注 0.2、WheelOdd 8、WheelMult 1、WheelWin 1.6，另有 LineWin 0.2，总中奖 1.8。
+
+尚未核实或未完成：
+
+- 配置中的 symbol 0 = 0.4 倍、wild = 5 倍目前是推断，需查原规则或真实中奖样本。
+- `MultShowArray` / `LightOnPos` 当前为空；额外轮盘需要的倍率分布、亮灯位置和动画契约未确认。
+- `max_win_multiple=15025` 是当前草稿假设；GameInfo.MaxOdd=15000 的含义和总封顶边界仍需进一步核实，不能认为已还原。
+- 所有符号权重、stack/轮盘概率和 RTP 都是未还原项。官网与本次捕获版本存在规则差异，不要将官网新版本直接套用。
+- 公共 freeSpinList 的 `free` 字段在原 encoder 诊断时触发保护，schema 尚缺该字段；当前 empty freeSpin 不等于平台赠送免费旋转已实现。
+- 刷新/断线后动画恢复、round-end/未展示回合语义还未验证；4/36 目前仅返回最后结算，不重复扣款。
+- 简版 `/rules` 和本地账本 `/history` 不是原版完整规则/历史网页，逐步回放未实现。
+
+## 启动与资料位置
+
+在仓库根目录执行：
+
+```powershell
+node server/tools/start.mjs fortune-gems2
+```
+
+访问 `http://127.0.0.1:8089/`。大厅 8080、游戏 API 8082、其他独立游戏 8083/8085/8086/8087/8088、抓取工具 8090 沿用现有服务。明天先检查 `/health` 和监听端口，避免重复启动。不要覆盖 `services/*/data/`。
+
+原始抓取会话：`26eac198ccb74d698186778efab172a2`。保存位置 `response-capture/captures/<session>/`。截至本次暂停仍在 recording；最后一次重新导入仍为 164 个静态文件。**不要停止用户的录制会话**，继续前通过 `/api/sessions` 和 `/api/sessions/<id>` 读取最新状态。不要在日志、文档或提交中输出带 ops/ssoKey/token 的 URL。
+
+以下本地资料被 `.gitignore` 排除，不随 Git 推送，换电脑需私下复制：
+
+- `response-capture/captures/26eac198ccb74d698186778efab172a2/`：完整 HTTP / WebSocket 抓取。
+- `clients/fortune-gems2/diagnostics/`：截图、解码结果、CDP 探针及原始 trial 数据，可能含临时会话凭据。
+- `services/*/data/`、`services/*/logs/`：钱包/存档及日志。
+
+诊断目录里 `local_host.py` / `local_drive.py` / `local_scopes.py` 用本地 CDP 9232，`live_host.py` / `drive.py` / `scopes.py` 用原站 CDP 9231；运行需 `response-capture/.venv/Scripts/python.exe`，系统 Python 没有 playwright。调试主机不是正式服务。`local-console.json`、`local-feature-decoded.json`、`readiness.json`、`anim.json`、`reloaded.png` 保存最后卡点证据。
+
+`decode.cjs` / `main.decoded.js` / `fgp-proto.json` 可查游戏协议；`schema.js` 可追踪公共 protobuf。混淆 scope 里的同名变量在不同模块并不相同，读取一个 scope 会覆盖 `window.__scope` 同名项；不要用错误 decoder 的结果作证据。卡死后再 attach CDP 往往无法响应，`debug-new.py` 的“导航前启用 Debugger 再 pause”才是已验证办法。
+
+## 同批其他改动
+
+Super Ace 核心试玩与启动修复已完成，浏览器验证和剩余平台功能见 [Super Ace 文档](../../super-ace/instance/README.md)。按用户要求，大厅“星际宝石”“幸运七号”占位卡片及对应筛选/样式已移除。这些改动与本 TaDa 开发检查点一同保存。
+
+提交前运行 `python -m unittest discover -s py/tests -q`：**75 项全部通过**（40.089 秒）。另按来源索引核对 164 个静态文件与抓取响应逐字节一致。Fortune Gems 2 尚无专项测试，既有测试通过不能代替该游戏验收。

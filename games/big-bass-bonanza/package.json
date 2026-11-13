@@ -1,0 +1,1 @@
+{"name":"gtt-big-bass-bonanza-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game big-bass-bonanza","demo":"node ../../other/tooling/start-source.mjs big-bass-bonanza"}}

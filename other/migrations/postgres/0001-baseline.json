@@ -1,0 +1,3613 @@
+{
+  "version": "0001",
+  "description": "SQLite schema baseline; no business rows or credentials",
+  "kinds": {
+    "control": {
+      "admin_audit": {
+        "name": "admin_audit",
+        "sql": "CREATE TABLE admin_audit (\n                    seq INTEGER PRIMARY KEY AUTOINCREMENT, created_at INTEGER NOT NULL,\n                    actor TEXT NOT NULL, action TEXT NOT NULL, target TEXT NOT NULL,\n                    outcome TEXT NOT NULL, details_json TEXT NOT NULL, merchant_id TEXT)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "actor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "action",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "target",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "outcome",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "details_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "audit_merchant_seq",
+            "sql": "CREATE INDEX audit_merchant_seq ON admin_audit(merchant_id,seq)"
+          }
+        ]
+      },
+      "admin_login_limits": {
+        "name": "admin_login_limits",
+        "sql": "CREATE TABLE admin_login_limits (\n                    bucket TEXT PRIMARY KEY, failures INTEGER NOT NULL, until_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "bucket",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "failures",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "until_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "admin_sessions": {
+        "name": "admin_sessions",
+        "sql": "CREATE TABLE admin_sessions (\n                    token_hash TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES admin_users(id),\n                    auth_version INTEGER NOT NULL, csrf_token TEXT NOT NULL,\n                    expires_at INTEGER NOT NULL, last_seen INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "auth_version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "csrf_token",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "last_seen",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "admin_users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "admin_users": {
+        "name": "admin_users",
+        "sql": "CREATE TABLE admin_users (\n                    id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL,\n                    role TEXT NOT NULL, enabled INTEGER NOT NULL, auth_version INTEGER NOT NULL,\n                    created_at INTEGER NOT NULL, merchant_id TEXT REFERENCES merchants(id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "username",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "password_hash",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "role",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "enabled",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "auth_version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "merchants",
+            "from": "merchant_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "control_counters": {
+        "name": "control_counters",
+        "sql": "CREATE TABLE control_counters (name TEXT PRIMARY KEY,value INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "frontend_releases": {
+        "name": "frontend_releases",
+        "sql": "CREATE TABLE frontend_releases (\n      id TEXT PRIMARY KEY,code TEXT NOT NULL,bundle TEXT NOT NULL,origin TEXT NOT NULL UNIQUE,\n      manifest_json TEXT NOT NULL,manifest_sha256 TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "bundle",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "origin",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "manifest_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "manifest_sha256",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "frontend_routes": {
+        "name": "frontend_routes",
+        "sql": "CREATE TABLE frontend_routes(code TEXT PRIMARY KEY,release_id TEXT NOT NULL,revision INTEGER NOT NULL,updated_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "release_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "game_availability": {
+        "name": "game_availability",
+        "sql": "CREATE TABLE game_availability (\r\n                    game_id INTEGER PRIMARY KEY, enabled INTEGER NOT NULL,\r\n                    version INTEGER NOT NULL, updated_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "game_id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "enabled",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "game_service_releases": {
+        "name": "game_service_releases",
+        "sql": "CREATE TABLE game_service_releases (\n        id TEXT PRIMARY KEY,code TEXT NOT NULL,release TEXT NOT NULL,origin TEXT NOT NULL,\n        secret TEXT NOT NULL,descriptor_json TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL,\n        UNIQUE(code,release))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "release",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "origin",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "secret",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "descriptor_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "game_service_routes": {
+        "name": "game_service_routes",
+        "sql": "CREATE TABLE game_service_routes (\n        code TEXT PRIMARY KEY,release_id TEXT NOT NULL,revision INTEGER NOT NULL,updated_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "release_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "merchant_id_migrations": {
+        "name": "merchant_id_migrations",
+        "sql": "CREATE TABLE merchant_id_migrations(old_id TEXT PRIMARY KEY,new_id TEXT NOT NULL UNIQUE)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "old_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "new_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "merchant_prebet_deliveries": {
+        "name": "merchant_prebet_deliveries",
+        "sql": "CREATE TABLE merchant_prebet_deliveries (\n                    merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,\n                    fingerprint TEXT NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "fingerprint",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "merchants",
+            "from": "merchant_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "merchant_prebet_settings": {
+        "name": "merchant_prebet_settings",
+        "sql": "CREATE TABLE \"merchant_prebet_settings\" (\n                    merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,\n                    enabled INTEGER NOT NULL,url TEXT NOT NULL,operator_token TEXT NOT NULL,secret_key TEXT NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "enabled",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "url",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "operator_token",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "secret_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "merchants",
+            "from": "merchant_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "merchant_signing_credentials": {
+        "name": "merchant_signing_credentials",
+        "sql": "CREATE TABLE merchant_signing_credentials (\n                    merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,\n                    secret TEXT NOT NULL,mode TEXT NOT NULL,version INTEGER NOT NULL,ready INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "secret",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "ready",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "merchants",
+            "from": "merchant_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "merchant_wallet_endpoints": {
+        "name": "merchant_wallet_endpoints",
+        "sql": "CREATE TABLE merchant_wallet_endpoints (\r\n                    merchant_id TEXT PRIMARY KEY REFERENCES merchants(id) ON DELETE CASCADE,\r\n                    endpoints_json TEXT NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "endpoints_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "merchants",
+            "from": "merchant_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "merchants": {
+        "name": "merchants",
+        "sql": "CREATE TABLE merchants (\n                    id TEXT PRIMARY KEY, name TEXT NOT NULL, enabled INTEGER NOT NULL,\n                    wallet_url TEXT NOT NULL, currency TEXT NOT NULL, minor_unit INTEGER NOT NULL,\n                    games_json TEXT NOT NULL, api_secret TEXT NOT NULL, wallet_secret TEXT NOT NULL,\n                    version INTEGER NOT NULL, key_version INTEGER NOT NULL,\n                    created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL, login_user_id TEXT)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "enabled",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "wallet_url",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "currency",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "minor_unit",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "games_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "api_secret",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "wallet_secret",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "key_version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 13,
+            "name": "login_user_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "merchant_login_name",
+            "sql": "CREATE UNIQUE INDEX merchant_login_name ON merchants(lower(name))"
+          }
+        ]
+      },
+      "request_nonces": {
+        "name": "request_nonces",
+        "sql": "CREATE TABLE request_nonces (\n                merchant_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL,\n                PRIMARY KEY(merchant_id,nonce))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "nonce",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      }
+    },
+    "game": {
+      "frontend_sessions": {
+        "name": "frontend_sessions",
+        "sql": "CREATE TABLE frontend_sessions(token_hash TEXT PRIMARY KEY,release_id TEXT NOT NULL,expires_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "release_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "game_operations": {
+        "name": "game_operations",
+        "sql": "CREATE TABLE game_operations (\n                    seq INTEGER PRIMARY KEY AUTOINCREMENT, id TEXT NOT NULL UNIQUE,\n                    merchant_id TEXT NOT NULL, player_id TEXT NOT NULL, game_id TEXT NOT NULL,\n                    request_key TEXT NOT NULL, request_json TEXT NOT NULL,\n                    status TEXT NOT NULL, candidate_json TEXT NOT NULL, debit_json TEXT,\n                    response_json TEXT, error_code TEXT, created_at INTEGER NOT NULL, settled_at INTEGER,\n                    UNIQUE(merchant_id,player_id,game_id,request_key))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "request_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "candidate_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "debit_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "response_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "error_code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 13,
+            "name": "settled_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "one_pending_game_operation",
+            "sql": "CREATE UNIQUE INDEX one_pending_game_operation\n                    ON game_operations(merchant_id,player_id,game_id) WHERE status IN ('prepared','debited')"
+          },
+          {
+            "name": "game_operations_round",
+            "sql": "CREATE INDEX game_operations_round ON game_operations(merchant_id,game_id,json_extract(candidate_json,'$.event.round_id'))"
+          }
+        ]
+      },
+      "game_release_calculations": {
+        "name": "game_release_calculations",
+        "sql": "CREATE TABLE game_release_calculations (calculation_id TEXT PRIMARY KEY,release_id TEXT NOT NULL,round_key TEXT NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "calculation_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "release_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "round_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "game_release_rounds": {
+        "name": "game_release_rounds",
+        "sql": "CREATE TABLE game_release_rounds (\n        id TEXT PRIMARY KEY,merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id TEXT NOT NULL,\n        release_id TEXT NOT NULL,round_id TEXT,closed INTEGER NOT NULL DEFAULT 0,created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "release_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "closed",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "game_release_active_round",
+            "sql": "CREATE UNIQUE INDEX game_release_active_round ON game_release_rounds(merchant_id,player_id,game_id) WHERE closed=0"
+          }
+        ]
+      },
+      "merchant_game_counter": {
+        "name": "merchant_game_counter",
+        "sql": "CREATE TABLE merchant_game_counter(id INTEGER PRIMARY KEY CHECK(id=1),value INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "merchant_players": {
+        "name": "merchant_players",
+        "sql": "CREATE TABLE merchant_players (\n                    merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,external_username TEXT NOT NULL,\n                    prebet_type TEXT NOT NULL DEFAULT 'NORMAL',\n                    PRIMARY KEY(merchant_id,player_id),UNIQUE(merchant_id,external_username))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "external_username",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "prebet_type",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'NORMAL'",
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "merchant_round_events": {
+        "name": "merchant_round_events",
+        "sql": "CREATE TABLE merchant_round_events (\r\n seq INTEGER PRIMARY KEY AUTOINCREMENT, merchant_id TEXT NOT NULL,\r\n game_id TEXT NOT NULL, round_id TEXT NOT NULL, decision_id TEXT, created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "decision_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "merchant_round_events_scope",
+            "sql": "CREATE INDEX merchant_round_events_scope ON merchant_round_events(merchant_id,seq)"
+          },
+          {
+            "name": "merchant_round_events_round",
+            "sql": "CREATE INDEX merchant_round_events_round ON merchant_round_events(merchant_id,game_id,round_id,seq)"
+          }
+        ]
+      },
+      "merchant_sessions": {
+        "name": "merchant_sessions",
+        "sql": "CREATE TABLE merchant_sessions (\n                    token_hash TEXT PRIMARY KEY, merchant_id TEXT NOT NULL, player_id TEXT NOT NULL,\n                    game_id TEXT NOT NULL, expires_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "merchant_states": {
+        "name": "merchant_states",
+        "sql": "CREATE TABLE merchant_states (\n                    merchant_id TEXT NOT NULL, player_id TEXT NOT NULL, game_id TEXT NOT NULL,\n                    state_json TEXT NOT NULL, PRIMARY KEY(merchant_id,player_id,game_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "node_calculations": {
+        "name": "node_calculations",
+        "sql": "CREATE TABLE node_calculations(id TEXT PRIMARY KEY,merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id TEXT NOT NULL,request_key TEXT NOT NULL,request_json TEXT NOT NULL,state_json TEXT NOT NULL,bet_json TEXT NOT NULL,seed TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL, engine_sid TEXT, runtime_payload_json TEXT,UNIQUE(merchant_id,player_id,game_id,request_key))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "request_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "bet_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "seed",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "engine_sid",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "runtime_payload_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "node_pending_calculation",
+            "sql": "CREATE UNIQUE INDEX node_pending_calculation ON node_calculations(merchant_id,player_id,game_id) WHERE status='pending'"
+          }
+        ]
+      },
+      "prebet_rounds": {
+        "name": "prebet_rounds",
+        "sql": "CREATE TABLE prebet_rounds (\n                    id TEXT PRIMARY KEY,merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id TEXT NOT NULL,\n                    initial_sid TEXT NOT NULL,request_json TEXT NOT NULL,initial_state_json TEXT NOT NULL,\n                    bet_json TEXT NOT NULL,prebet_request_json TEXT NOT NULL,policy_json TEXT,plan_json TEXT,\n                    created_at INTEGER NOT NULL,error_code TEXT)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "initial_sid",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "initial_state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "bet_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "prebet_request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "policy_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "plan_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "error_code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "one_active_prebet_start",
+            "sql": "CREATE UNIQUE INDEX one_active_prebet_start\n                    ON prebet_rounds(merchant_id,player_id,game_id,initial_sid) WHERE error_code IS NULL"
+          }
+        ]
+      },
+      "request_nonces": {
+        "name": "request_nonces",
+        "sql": "CREATE TABLE request_nonces (\n                merchant_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL,\n                PRIMARY KEY(merchant_id,nonce))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "nonce",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "round_model_bindings": {
+        "name": "round_model_bindings",
+        "sql": "CREATE TABLE round_model_bindings(id TEXT PRIMARY KEY,merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id TEXT NOT NULL,initial_sid TEXT NOT NULL,round_id TEXT,context_json TEXT NOT NULL,plan_json TEXT,created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "initial_sid",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "context_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "plan_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "round_model_round",
+            "sql": "CREATE INDEX round_model_round ON round_model_bindings(merchant_id,player_id,game_id,round_id)"
+          }
+        ]
+      },
+      "rtp_accounted_ops": {
+        "name": "rtp_accounted_ops",
+        "sql": "CREATE TABLE rtp_accounted_ops (operation_id TEXT PRIMARY KEY)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "operation_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_bindings": {
+        "name": "rtp_bindings",
+        "sql": "CREATE TABLE rtp_bindings (\n                    merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id TEXT NOT NULL,initial_sid TEXT NOT NULL,\n                    round_id TEXT,model_id TEXT NOT NULL REFERENCES rtp_models(id),play_mode TEXT NOT NULL,mode TEXT NOT NULL,\n                    source TEXT NOT NULL,revision INTEGER NOT NULL,settings_json TEXT NOT NULL,created_at INTEGER NOT NULL,\n                    PRIMARY KEY(merchant_id,player_id,game_id,initial_sid))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "initial_sid",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 4
+          },
+          {
+            "cid": 4,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "model_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "play_mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "source",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "settings_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "rtp_models",
+            "from": "model_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "rtp_binding_round",
+            "sql": "CREATE INDEX rtp_binding_round ON rtp_bindings(merchant_id,player_id,game_id,round_id)"
+          }
+        ]
+      },
+      "rtp_events": {
+        "name": "rtp_events",
+        "sql": "CREATE TABLE rtp_events (\n                    seq INTEGER PRIMARY KEY AUTOINCREMENT,merchant_id TEXT NOT NULL,actor TEXT NOT NULL,action TEXT NOT NULL,\n                    details_json TEXT NOT NULL,created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "actor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "action",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "details_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_facts": {
+        "name": "rtp_facts",
+        "sql": "CREATE TABLE rtp_facts (\n                    merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id INTEGER NOT NULL,round_id TEXT NOT NULL,\n                    play_mode TEXT NOT NULL,mode TEXT NOT NULL,target_bp INTEGER,model_id TEXT,\n                    debit_minor TEXT NOT NULL,credit_minor TEXT NOT NULL,closed INTEGER NOT NULL,\n                    started_at INTEGER NOT NULL,closed_at INTEGER,voided INTEGER NOT NULL DEFAULT 0,\n                    PRIMARY KEY(merchant_id,player_id,game_id,round_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 4
+          },
+          {
+            "cid": 4,
+            "name": "play_mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "target_bp",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "model_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "debit_minor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "credit_minor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "closed",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "started_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "closed_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 13,
+            "name": "voided",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "rtp_facts_scope",
+            "sql": "CREATE INDEX rtp_facts_scope ON rtp_facts(merchant_id,player_id,game_id,closed_at)"
+          }
+        ]
+      },
+      "rtp_grants": {
+        "name": "rtp_grants",
+        "sql": "CREATE TABLE rtp_grants (\n                    merchant_id TEXT PRIMARY KEY,models_json TEXT NOT NULL,players INTEGER NOT NULL,revision INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "models_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "players",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_jobs": {
+        "name": "rtp_jobs",
+        "sql": "CREATE TABLE rtp_jobs (\n                    id TEXT PRIMARY KEY,target_bp INTEGER NOT NULL,status TEXT NOT NULL,actor TEXT NOT NULL,\n                    progress_json TEXT NOT NULL,result_id TEXT,error TEXT,lease TEXT,created_at INTEGER NOT NULL,updated_at INTEGER NOT NULL, game_id INTEGER NOT NULL DEFAULT 1)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "target_bp",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "actor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "progress_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "result_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "error",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "lease",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "game_id",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "1",
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_models": {
+        "name": "rtp_models",
+        "sql": "CREATE TABLE rtp_models (\n                    id TEXT PRIMARY KEY,target_bp INTEGER,model_hash TEXT NOT NULL,report_json TEXT NOT NULL,\n                    published INTEGER NOT NULL,created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "target_bp",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "model_hash",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "report_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "published",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_modes": {
+        "name": "rtp_modes",
+        "sql": "CREATE TABLE rtp_modes (\n                    merchant_id TEXT PRIMARY KEY,mode TEXT NOT NULL,revision INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rtp_policies": {
+        "name": "rtp_policies",
+        "sql": "CREATE TABLE rtp_policies (\n                    scope TEXT NOT NULL,merchant_id TEXT NOT NULL,player_id TEXT NOT NULL,game_id INTEGER NOT NULL,\n                    model_id TEXT REFERENCES rtp_models(id),revision INTEGER NOT NULL,actor TEXT NOT NULL,updated_at INTEGER NOT NULL,\n                    PRIMARY KEY(scope,merchant_id,player_id,game_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "scope",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "game_id",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 4
+          },
+          {
+            "cid": 4,
+            "name": "model_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "revision",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "actor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "rtp_models",
+            "from": "model_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "rtp_workers": {
+        "name": "rtp_workers",
+        "sql": "CREATE TABLE rtp_workers (id TEXT PRIMARY KEY,updated_at INTEGER NOT NULL,processes INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "processes",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      }
+    },
+    "mock": {
+      "accounts": {
+        "name": "accounts",
+        "sql": "CREATE TABLE accounts (\n                    merchant_id TEXT NOT NULL, player_id TEXT NOT NULL, currency TEXT NOT NULL,\n                    balance_minor INTEGER NOT NULL CHECK(balance_minor>=0), PRIMARY KEY(merchant_id,player_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "currency",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "balance_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "canceled_debits": {
+        "name": "canceled_debits",
+        "sql": "CREATE TABLE canceled_debits (\n                    merchant_id TEXT NOT NULL, transaction_id TEXT NOT NULL, request_json TEXT NOT NULL,\n                    PRIMARY KEY(merchant_id,transaction_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "transaction_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "prebet_decisions": {
+        "name": "prebet_decisions",
+        "sql": "CREATE TABLE \"prebet_decisions\" (\n                    merchant_id TEXT NOT NULL,player_name TEXT NOT NULL,timestamp INTEGER NOT NULL,\n                    bet_amount_minor INTEGER NOT NULL,type TEXT NOT NULL,response_json TEXT NOT NULL,\n                    PRIMARY KEY(merchant_id,player_name,timestamp,bet_amount_minor,type))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "timestamp",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "bet_amount_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 4
+          },
+          {
+            "cid": 4,
+            "name": "type",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 5
+          },
+          {
+            "cid": 5,
+            "name": "response_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "prebet_players": {
+        "name": "prebet_players",
+        "sql": "CREATE TABLE \"prebet_players\" (\n                    merchant_id TEXT NOT NULL,player_name TEXT NOT NULL,player_id TEXT NOT NULL,\n                    PRIMARY KEY(merchant_id,player_name))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "prebet_policies": {
+        "name": "prebet_policies",
+        "sql": "CREATE TABLE \"prebet_policies\" (merchant_id TEXT PRIMARY KEY,range_json TEXT NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "range_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "request_nonces": {
+        "name": "request_nonces",
+        "sql": "CREATE TABLE request_nonces (\n                merchant_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL,\n                PRIMARY KEY(merchant_id,nonce))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "nonce",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "transactions": {
+        "name": "transactions",
+        "sql": "CREATE TABLE transactions (\n                    seq INTEGER PRIMARY KEY AUTOINCREMENT, merchant_id TEXT NOT NULL,\n                    transaction_id TEXT NOT NULL, player_id TEXT NOT NULL, kind TEXT NOT NULL,\n                    reference_id TEXT, request_json TEXT NOT NULL, response_json TEXT,\n                    error_code TEXT, created_at INTEGER NOT NULL, UNIQUE(merchant_id,transaction_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "merchant_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "transaction_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "kind",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "reference_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "response_json",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "error_code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "name": "refund_once",
+            "sql": "CREATE UNIQUE INDEX refund_once ON transactions(merchant_id,reference_id)\n                    WHERE kind='refund' AND error_code IS NULL"
+          }
+        ]
+      }
+    },
+    "local": {
+      "game_states": {
+        "name": "game_states",
+        "sql": "CREATE TABLE game_states (\n                    player_id TEXT NOT NULL REFERENCES players(id), game_id TEXT NOT NULL,\n                    state_json TEXT NOT NULL, PRIMARY KEY(player_id,game_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "ledger": {
+        "name": "ledger",
+        "sql": "CREATE TABLE ledger (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT, player_id TEXT NOT NULL REFERENCES players(id),\n                    spin_id INTEGER UNIQUE REFERENCES spins(id), kind TEXT NOT NULL,\n                    debit_minor INTEGER NOT NULL CHECK(debit_minor >= 0),\n                    credit_minor INTEGER NOT NULL CHECK(credit_minor >= 0),\n                    balance_before INTEGER NOT NULL, balance_after INTEGER NOT NULL CHECK(balance_after >= 0),\n                    created_at INTEGER NOT NULL,\n                    CHECK(balance_after = balance_before - debit_minor + credit_minor))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "spin_id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "kind",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "debit_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "credit_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "balance_before",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "balance_after",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "spins",
+            "from": "spin_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 1,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "ledger_player",
+            "sql": "CREATE INDEX ledger_player ON ledger(player_id,id)"
+          }
+        ]
+      },
+      "players": {
+        "name": "players",
+        "sql": "CREATE TABLE players (\n                    id TEXT PRIMARY KEY, balance_minor INTEGER NOT NULL CHECK(balance_minor >= 0),\n                    created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "balance_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rulesets": {
+        "name": "rulesets",
+        "sql": "CREATE TABLE rulesets (\n                    game_id TEXT NOT NULL, ruleset_id TEXT NOT NULL, config_json TEXT NOT NULL,\n                    PRIMARY KEY(game_id,ruleset_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "ruleset_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "config_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "sessions": {
+        "name": "sessions",
+        "sql": "CREATE TABLE sessions (\n                    token_hash TEXT PRIMARY KEY, player_id TEXT NOT NULL REFERENCES players(id),\n                    expires_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "spins": {
+        "name": "spins",
+        "sql": "CREATE TABLE spins (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT, player_id TEXT NOT NULL REFERENCES players(id),\n                    game_id TEXT NOT NULL, round_id TEXT NOT NULL, request_key TEXT NOT NULL,\n                    request_json TEXT NOT NULL, response_json TEXT NOT NULL, state_json TEXT NOT NULL,\n                    ruleset_id TEXT NOT NULL, created_at INTEGER NOT NULL,\n                    UNIQUE(player_id,game_id,request_key))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "request_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "response_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "ruleset_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "spins_player",
+            "sql": "CREATE INDEX spins_player ON spins(player_id,id)"
+          }
+        ]
+      },
+      "wallet_settings": {
+        "name": "wallet_settings",
+        "sql": "CREATE TABLE wallet_settings (name TEXT PRIMARY KEY, value INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "pp_settings": {
+        "name": "pp_settings",
+        "sql": "CREATE TABLE pp_settings (player_id TEXT NOT NULL REFERENCES players(id), name TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(player_id,name))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "value",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      }
+    },
+    "protocol": {
+      "game_states": {
+        "name": "game_states",
+        "sql": "CREATE TABLE game_states (\n                    player_id TEXT NOT NULL REFERENCES players(id), game_id TEXT NOT NULL,\n                    state_json TEXT NOT NULL, PRIMARY KEY(player_id,game_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "ledger": {
+        "name": "ledger",
+        "sql": "CREATE TABLE ledger (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT, player_id TEXT NOT NULL REFERENCES players(id),\n                    spin_id INTEGER UNIQUE REFERENCES spins(id), kind TEXT NOT NULL,\n                    debit_minor INTEGER NOT NULL CHECK(debit_minor >= 0),\n                    credit_minor INTEGER NOT NULL CHECK(credit_minor >= 0),\n                    balance_before INTEGER NOT NULL, balance_after INTEGER NOT NULL CHECK(balance_after >= 0),\n                    created_at INTEGER NOT NULL,\n                    CHECK(balance_after = balance_before - debit_minor + credit_minor))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "spin_id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "kind",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "debit_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "credit_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "balance_before",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "balance_after",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "spins",
+            "from": "spin_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 1,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "ledger_player",
+            "sql": "CREATE INDEX ledger_player ON ledger(player_id,id)"
+          }
+        ]
+      },
+      "merchant_mirror": {
+        "name": "merchant_mirror",
+        "sql": "CREATE TABLE merchant_mirror(player_id TEXT PRIMARY KEY,seq INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "seq",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "players": {
+        "name": "players",
+        "sql": "CREATE TABLE players (\n                    id TEXT PRIMARY KEY, balance_minor INTEGER NOT NULL CHECK(balance_minor >= 0),\n                    created_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "balance_minor",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "rulesets": {
+        "name": "rulesets",
+        "sql": "CREATE TABLE rulesets (\n                    game_id TEXT NOT NULL, ruleset_id TEXT NOT NULL, config_json TEXT NOT NULL,\n                    PRIMARY KEY(game_id,ruleset_id))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "ruleset_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "config_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "sessions": {
+        "name": "sessions",
+        "sql": "CREATE TABLE sessions (\n                    token_hash TEXT PRIMARY KEY, player_id TEXT NOT NULL REFERENCES players(id),\n                    expires_at INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      },
+      "spins": {
+        "name": "spins",
+        "sql": "CREATE TABLE spins (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT, player_id TEXT NOT NULL REFERENCES players(id),\n                    game_id TEXT NOT NULL, round_id TEXT NOT NULL, request_key TEXT NOT NULL,\n                    request_json TEXT NOT NULL, response_json TEXT NOT NULL, state_json TEXT NOT NULL,\n                    ruleset_id TEXT NOT NULL, created_at INTEGER NOT NULL,\n                    UNIQUE(player_id,game_id,request_key))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "game_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "round_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "request_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "request_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "response_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "state_json",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "ruleset_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "spins_player",
+            "sql": "CREATE INDEX spins_player ON spins(player_id,id)"
+          }
+        ]
+      },
+      "wallet_settings": {
+        "name": "wallet_settings",
+        "sql": "CREATE TABLE wallet_settings (name TEXT PRIMARY KEY, value INTEGER NOT NULL)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      "pp_settings": {
+        "name": "pp_settings",
+        "sql": "CREATE TABLE pp_settings (player_id TEXT NOT NULL REFERENCES players(id), name TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(player_id,name))",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "player_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "value",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "players",
+            "from": "player_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": []
+      }
+    }
+  }
+}

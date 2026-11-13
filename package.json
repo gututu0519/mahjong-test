@@ -1,0 +1,29 @@
+{
+  "name": "gtt-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "npm ci --prefix other/tooling",
+    "build": "node other/tooling/build.mjs",
+    "test": "node other/tooling/run.mjs test",
+    "start": "node other/tooling/start-source.mjs",
+    "gateway": "node other/tooling/start-source.mjs gateway",
+    "admin": "node other/tooling/start-source.mjs admin",
+    "games": "node other/tooling/start-source.mjs games",
+    "package": "node other/tooling/run.mjs package",
+    "frontend:build": "node other/tooling/run.mjs build-frontend",
+    "frontend:stage": "node other/tooling/run.mjs stage-frontend",
+    "docs:check": "node other/tooling/run.mjs render-integration --check",
+    "layout:check": "node other/tooling/check-layout.mjs",
+    "db:status": "node other/tooling/database/cli.mjs status",
+    "db:migrate": "node other/tooling/database/cli.mjs up",
+    "db:snapshot": "node other/tooling/database/cli.mjs snapshot",
+    "db:import": "node other/tooling/database/cli.mjs import",
+    "db:verify": "node other/tooling/database/cli.mjs verify",
+    "test:postgres": "node other/tooling/database/cli.mjs test",
+    "game:env": "node other/tooling/run.mjs render-game-env",
+    "config:env": "node other/tooling/configure-local-env.mjs",
+    "config:check": "node other/tooling/check-environment.mjs"
+  },
+  "engines": { "node": ">=24.17.0" }
+}

@@ -1,0 +1,1 @@
+{"name":"gtt-fortune-gems2-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game fortune-gems2","demo":"node ../../other/tooling/start-source.mjs fortune-gems2"}}

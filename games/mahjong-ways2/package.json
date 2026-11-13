@@ -1,0 +1,1 @@
+{"name":"gtt-mahjong-ways2-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game mahjong-ways2","demo":"node ../../other/tooling/start-source.mjs mahjong-ways2"}}

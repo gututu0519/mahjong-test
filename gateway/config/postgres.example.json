@@ -1,0 +1,10 @@
+{
+  "driver": "postgres",
+  "env_file": "/etc/gtt-node/platform.env",
+  "protocolDirectory": "/var/lib/gtt-node/merchant-protocols",
+  "sources": [
+    { "path": "/var/lib/gtt-node/merchants.sqlite3", "schema": "control", "kind": "control" },
+    { "path": "/var/lib/gtt-node/gtt.sqlite3", "schema": "game", "kind": "game" },
+    { "path": "/var/lib/gtt-node/platform.sqlite3", "schema": "mock", "kind": "mock" }
+  ]
+}

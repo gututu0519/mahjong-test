@@ -1,0 +1,30 @@
+import pg from 'pg';
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {root} from './inventory.mjs';
+import {signedHeaders,encode} from '../../runtime/server/dist/shared/core.js';
+const active=JSON.parse(readFileSync(resolve(root,'gateway/instance/data/database-active.json'),'utf8'));
+const {readPostgresConfig}=await import('./settings.mjs');
+const config=readPostgresConfig(active.configFile);
+const client=new pg.Client(config.connection);await client.connect();
+try {
+  const identity=(await client.query('SELECT current_database() AS database,version() AS version')).rows[0];
+  assert.equal(identity.database,active.database);
+  const sessions=Number((await client.query("SELECT COUNT(*) AS n FROM pg_stat_activity WHERE datname=current_database() AND application_name='gtt-node'")).rows[0].n);
+  assert(sessions>=4,'Gateway and admin must have live PostgreSQL connections');
+  for(const [port,path] of [[8110,'/health'],[8112,'/'],[8112,'/merchant/']])assert.equal((await fetch('http://127.0.0.1:'+port+path)).status,200);
+  const merchant=(await client.query('SELECT m.id,s.secret FROM control.merchants m JOIN control.merchant_signing_credentials s ON s.merchant_id=m.id WHERE m.enabled=1 ORDER BY m.id LIMIT 1')).rows[0];
+  assert(merchant,'Expected a migrated enabled merchant');
+  const path='/gtt/v1/games/list', body=encode({}), headers=signedHeaders(merchant.id,merchant.secret,path,body);
+  const response=await fetch('http://127.0.0.1:8110'+path,{method:'POST',headers,body});
+  assert.equal(response.status,200,await response.text());
+  const nonce=headers['X-GTT-Nonce'];
+  assert.equal(Number((await client.query('SELECT COUNT(*) AS n FROM game.request_nonces WHERE merchant_id=$1 AND nonce=$2',[merchant.id,nonce])).rows[0].n),1,'Signed live request must persist its nonce in PostgreSQL');
+  const totals=(await client.query('SELECT COUNT(DISTINCT namespace) AS namespaces,COUNT(*) AS tables,COALESCE(SUM((t->>\'rows\')::bigint),0) AS rows FROM gtt_meta.imports CROSS JOIN LATERAL jsonb_array_elements(report) AS t')).rows[0];
+  const registry=(await client.query('SELECT COUNT(*) AS n FROM control.game_service_routes')).rows[0].n;
+  assert.equal(Number(registry),19);
+  const report={database:identity.database,postgres:identity.version.split(',')[0],verified_at:new Date().toISOString(),active_connections:sessions,migrated:totals,active_game_routes:Number(registry),checks:['gateway-health','platform-and-merchant-pages','preserved-merchant-signing-key','signed-catalog-request','nonce-written-to-postgresql']};
+  writeFileSync(resolve(root,'other/diagnostics/postgres/live-verification.json'),JSON.stringify(report,null,2));
+  console.log(JSON.stringify(report,null,2));
+} finally {await client.end();}

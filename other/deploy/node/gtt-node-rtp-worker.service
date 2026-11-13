@@ -1,0 +1,24 @@
+[Unit]
+Description=GTT Node RTP calibration worker
+After=network.target
+
+[Service]
+Type=simple
+User=gtt-node
+Group=gtt-node
+WorkingDirectory=/opt/gtt-node/gateway/current
+EnvironmentFile=/etc/gtt-node/platform.env
+CacheDirectory=gtt-node-npm
+Environment=NPM_CONFIG_CACHE=/var/cache/gtt-node-npm
+ExecStart=/usr/bin/npm start -- rtp-worker
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/gtt-node /opt/gtt-node/gateway/current
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

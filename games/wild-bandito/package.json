@@ -1,0 +1,1 @@
+{"name":"gtt-wild-bandito-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game wild-bandito","demo":"node ../../other/tooling/start-source.mjs wild-bandito"}}

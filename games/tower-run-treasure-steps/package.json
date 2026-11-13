@@ -1,0 +1,1 @@
+{"name":"gtt-tower-run-treasure-steps-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game tower-run-treasure-steps","demo":"node ../../other/tooling/start-source.mjs tower-run-treasure-steps"}}

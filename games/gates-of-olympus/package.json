@@ -1,0 +1,1 @@
+{"name":"gtt-gates-of-olympus-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game gates-of-olympus","demo":"node ../../other/tooling/start-source.mjs gates-of-olympus"}}

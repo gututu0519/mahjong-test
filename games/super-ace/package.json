@@ -1,0 +1,1 @@
+{"name":"gtt-super-ace-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game super-ace","demo":"node ../../other/tooling/start-source.mjs super-ace"}}

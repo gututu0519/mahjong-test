@@ -1,0 +1,1 @@
+{"name":"gtt-wicked-grin-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game wicked-grin","demo":"node ../../other/tooling/start-source.mjs wicked-grin"}}

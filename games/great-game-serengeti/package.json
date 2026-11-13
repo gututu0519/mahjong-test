@@ -1,0 +1,1 @@
+{"name":"gtt-great-game-serengeti-source","private":true,"type":"module","scripts":{"start":"node ../../other/tooling/start-source.mjs game great-game-serengeti","demo":"node ../../other/tooling/start-source.mjs great-game-serengeti"}}
