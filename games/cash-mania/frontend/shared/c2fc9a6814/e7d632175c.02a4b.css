@@ -1,0 +1,22 @@
+.slot_menu_locale {
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-image: url(slot_menu_locale.png);
+}
+
+.bet-options {
+    width: 192px;
+    height: 192px;
+    background-position: -1px -1px;
+}
+.win {
+    width: 54px;
+    height: 24px;
+    background-position: -63px -195px;
+}
+.win_shape {
+    width: 60px;
+    height: 24px;
+    background-position: -1px -195px;
+}

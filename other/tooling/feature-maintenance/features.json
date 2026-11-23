@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "workbook": "other/docs/project/品牌游戏与特殊玩法维护表.xlsx",
+  "features": [
+    {
+      "id": "mahjong-ways2:9730b4a19963",
+      "game_id": 19,
+      "game_code": "mahjong-ways2",
+      "name": "购买免费",
+      "sheet": "PG Soft",
+      "cell": "E6",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/mahjong-ways2--9730b4a19963.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/mahjong-ways2/backend",
+        "games/mahjong-ways2/frontend",
+        "games/mahjong-ways2/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "mahjong-ways2:fe06e9b2842c",
+      "game_id": 19,
+      "game_code": "mahjong-ways2",
+      "name": "免费第3列全金牌",
+      "sheet": "PG Soft",
+      "cell": "H6",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/mahjong-ways2--fe06e9b2842c.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/mahjong-ways2/backend",
+        "games/mahjong-ways2/frontend",
+        "games/mahjong-ways2/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "wild-bandito:683210c544f1",
+      "game_id": 4,
+      "game_code": "wild-bandito",
+      "name": "免费旋转",
+      "sheet": "PG Soft",
+      "cell": "C8",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/wild-bandito--683210c544f1.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/wild-bandito/backend",
+        "games/wild-bandito/frontend",
+        "games/wild-bandito/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "wild-bandito:5048bed2d2c5",
+      "game_id": 4,
+      "game_code": "wild-bandito",
+      "name": "免费追加",
+      "sheet": "PG Soft",
+      "cell": "D8",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/wild-bandito--5048bed2d2c5.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/wild-bandito/backend",
+        "games/wild-bandito/frontend",
+        "games/wild-bandito/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "sweet-bonanza-pop:976432fe1ec3",
+      "game_id": 17,
+      "game_code": "sweet-bonanza-pop",
+      "name": "POP奖励演出",
+      "sheet": "PP",
+      "cell": "I7",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/sweet-bonanza-pop--976432fe1ec3.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/sweet-bonanza-pop/backend",
+        "games/sweet-bonanza-pop/frontend",
+        "games/sweet-bonanza-pop/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "big-bass-bonanza:5ef7d284c797",
+      "game_id": 16,
+      "game_code": "big-bass-bonanza",
+      "name": "炸弹补鱼",
+      "sheet": "PP",
+      "cell": "L8",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/big-bass-bonanza--5ef7d284c797.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/big-bass-bonanza/backend",
+        "games/big-bass-bonanza/frontend",
+        "games/big-bass-bonanza/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    },
+    {
+      "id": "fortune-gems2:384194dd2742",
+      "game_id": 14,
+      "game_code": "fortune-gems2",
+      "name": "封顶规则",
+      "sheet": "TaDa",
+      "cell": "F6",
+      "before": "❌",
+      "after": "✅",
+      "verifier": "other/tooling/feature-maintenance/verifiers/integrated-feature.mjs",
+      "test_files": [
+        "other/tests/feature-maintenance/fortune-gems2--384194dd2742.test.mjs"
+      ],
+      "implementation_roots": [
+        "games/fortune-gems2/backend",
+        "games/fortune-gems2/frontend",
+        "games/fortune-gems2/instance/config",
+        "other/shared",
+        "gateway/src"
+      ]
+    }
+  ],
+  "capture_sources": [
+    {
+      "game_codes": [
+        "mahjong-ways2",
+        "wild-bandito"
+      ],
+      "launch_origins": [
+        "https://sdstest.ink"
+      ],
+      "api_origins": [
+        "https://api.mmga1.com"
+      ],
+      "note": "仅登记当前已核实的PG抓取来源；本机接口不得作为原始证据，PP和TaDa来源尚未确认，不自动放行。"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { check } from "../../other/shared/core.js";
 
-export const PG_GAMES = new Set(["buffalo-win", "captains-bounty", "fortune-rabbit", "wild-bandito", "mahjong-ways2"]);
+export const PG_GAMES = new Set(["buffalo-win", "captains-bounty", "fortune-rabbit", "wild-bandito", "mahjong-ways2", "cash-mania"]);
 const JILI_GAMES = new Set(["super-ace", "fortune-gems2", "jokers-fortune-winx", "3-billion-vaults", "money-pot-deluxe", "roma-x-10000"]);
 const HACKSAW_GAMES = new Set(["wicked-grin", "le-vampire", "dr-zappo", "great-game-serengeti"]);
 const PP_GAMES = new Set(["big-bass-bonanza", "sweet-bonanza-pop", "gates-of-olympus"]);
@@ -43,7 +43,7 @@ function merchantTransport() {
   window.fetch = function(input, init) {
     const source = input instanceof Request ? input.url : String(input);
     if (!local(source)) return nativeFetch.call(this, input, init);
-    const headers = new Headers(init?.headers ?? (input instanceof Request ? input.headers : undefined));
+    const headers = new Headers(init && init.headers ? init.headers : (input instanceof Request ? input.headers : undefined));
     headers.set("Authorization", "Bearer " + client.token);
     return nativeFetch.call(this, input, {...init, headers});
   };

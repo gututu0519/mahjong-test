@@ -1,6 +1,7 @@
 import { Worker } from "node:worker_threads";
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
 import { resolve, join } from "node:path";
+import { GAME_CODES } from "../dist/gateway/catalog.js";
 const args = process.argv.slice(2),
   option = (key, fallback) =>
     args.includes(key) ? args[args.indexOf(key) + 1] : fallback;
@@ -8,7 +9,7 @@ const target = Number(option("--target-bp", "9600")),
   concurrency = Number(option("--parallel", "3"));
 const ids = option(
   "--games",
-  Array.from({ length: 18 }, (_, i) => i + 2).join(","),
+  Array.from({ length: GAME_CODES.length - 1 }, (_, i) => i + 2).join(","),
 )
   .split(",")
   .map(Number);
@@ -19,7 +20,7 @@ if (
   !Number.isInteger(concurrency) ||
   concurrency < 1 ||
   concurrency > 8 ||
-  ids.some((id) => !Number.isInteger(id) || id < 2 || id > 19)
+  ids.some((id) => !Number.isInteger(id) || id < 2 || id > GAME_CODES.length)
 )
   throw Error("Invalid calibration arguments");
 const folder = resolve(

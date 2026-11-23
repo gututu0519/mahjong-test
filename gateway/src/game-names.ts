@@ -75,6 +75,7 @@ const names: Record<string, [string, string]> = {
     "奥林匹斯之门",
     "Gates of Olympus"
   ],
+  "cash-mania": ["Cash Mania", "Cash Mania"],
   "mahjong-ways2": [
     "麻将胡了 2",
     "Mahjong Ways 2"

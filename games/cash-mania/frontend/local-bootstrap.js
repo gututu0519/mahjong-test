@@ -1,0 +1,95 @@
+/* 本地 Cash Mania 入口：明确转换图片路径，保留原始客户端的业务协议。 */
+(function () {
+  'use strict';
+  if (window.__CASH_MANIA_LOCAL_BOOTSTRAP__) return;
+  window.__CASH_MANIA_LOCAL_BOOTSTRAP__ = true;
+  var imageMap = {"/1682240/e6e019229d.cc7ea.jpg":"/1682240/e6e019229d.cc7ea.png","/1682240/b49ee78723.65794.jpg":"/1682240/b49ee78723.65794.png","/1682240/assets/resources/native/1a/1a13a35b-050d-4815-89ac-d24828039bb1.15204.jpg":"/1682240/assets/resources/native/1a/1a13a35b-050d-4815-89ac-d24828039bb1.15204.png","/1682240/assets/resources/native/cc/cc5ee12a-03cf-4e3d-8d2d-acb028320dac.8a678.jpg":"/1682240/assets/resources/native/cc/cc5ee12a-03cf-4e3d-8d2d-acb028320dac.8a678.png","/1682240/assets/resources/native/8d/8dc27882-6ce7-4e50-857b-6aa1bb8e13f5.5c03a.jpg":"/1682240/assets/resources/native/8d/8dc27882-6ce7-4e50-857b-6aa1bb8e13f5.5c03a.png","/1682240/assets/resources/native/50/50bc8ead-6f16-488f-aef3-c2210e7b4694.494da.jpg":"/1682240/assets/resources/native/50/50bc8ead-6f16-488f-aef3-c2210e7b4694.494da.png","/1682240/assets/resources/native/ea/ea8a59d7-f87b-494b-8325-02c0fd1e47ed.3f624.jpg":"/1682240/assets/resources/native/ea/ea8a59d7-f87b-494b-8325-02c0fd1e47ed.3f624.png","/1682240/assets/resources/native/96/9669a822-e3bb-4fe3-9da0-f4ef1562885d.e2592.jpg":"/1682240/assets/resources/native/96/9669a822-e3bb-4fe3-9da0-f4ef1562885d.e2592.png","/1682240/assets/resources/native/2f/2feff069-bda0-4f75-af97-5cd53974fb01.8f67b.jpg":"/1682240/assets/resources/native/2f/2feff069-bda0-4f75-af97-5cd53974fb01.8f67b.png","/1682240/assets/resources/native/b8/b885071e-af8b-4ede-aedd-f1e419854788.e2625.jpg":"/1682240/assets/resources/native/b8/b885071e-af8b-4ede-aedd-f1e419854788.e2625.png","/1682240/assets/resources/native/2f/2f841d39-8c71-4290-a1a7-3664805deb31.7be52.jpg":"/1682240/assets/resources/native/2f/2f841d39-8c71-4290-a1a7-3664805deb31.7be52.png","/1682240/assets/resources/native/4e/4e1e905b-9c14-43ea-93b1-b4aea117e9a0.c440c.jpg":"/1682240/assets/resources/native/4e/4e1e905b-9c14-43ea-93b1-b4aea117e9a0.c440c.png","/1682240/assets/resources/native/06/06563ae3-f856-47ba-a070-4b87d29ef6fc.e33a6.jpg":"/1682240/assets/resources/native/06/06563ae3-f856-47ba-a070-4b87d29ef6fc.e33a6.png","/1682240/assets/resources/native/80/805883ba-91e7-4d25-aaf8-06dd9ddc370e.4b382.jpg":"/1682240/assets/resources/native/80/805883ba-91e7-4d25-aaf8-06dd9ddc370e.4b382.png","/1682240/assets/resources/native/c0/c09dba26-b23b-4b09-8f62-cc1cadacdc19.84e5c.jpg":"/1682240/assets/resources/native/c0/c09dba26-b23b-4b09-8f62-cc1cadacdc19.84e5c.png","/1682240/assets/resources/native/5d/5d1bc49a-56ae-4594-828f-1462fbef20d0.3b9ff.jpg":"/1682240/assets/resources/native/5d/5d1bc49a-56ae-4594-828f-1462fbef20d0.3b9ff.png","/1682240/assets/resources/native/e5/e5f73ccb-38d5-4cb3-a918-cb9f95587020.9fcb9.jpg":"/1682240/assets/resources/native/e5/e5f73ccb-38d5-4cb3-a918-cb9f95587020.9fcb9.png","/1682240/assets/resources/native/a6/a67d51e7-8177-446d-859b-ce371be662a2.d2e08.jpg":"/1682240/assets/resources/native/a6/a67d51e7-8177-446d-859b-ce371be662a2.d2e08.png","/1682240/assets/resources/native/94/946c605b-6223-49b6-a012-f8602501065e.d636e.jpg":"/1682240/assets/resources/native/94/946c605b-6223-49b6-a012-f8602501065e.d636e.png","/1682240/assets/resources/native/d1/d123288f-227c-4801-9a13-7ffc90f96ae7.e5cc6.jpg":"/1682240/assets/resources/native/d1/d123288f-227c-4801-9a13-7ffc90f96ae7.e5cc6.png","/1682240/assets/resources/native/f7/f79060aa-5b64-43a3-aba9-1ce7bd79bde1.e22b1.jpg":"/1682240/assets/resources/native/f7/f79060aa-5b64-43a3-aba9-1ce7bd79bde1.e22b1.png","/1682240/assets/resources/native/ec/ec42d4fe-602b-4ced-b6cc-0ced0878bab8.82541.jpg":"/1682240/assets/resources/native/ec/ec42d4fe-602b-4ced-b6cc-0ced0878bab8.82541.png","/1682240/assets/resources/native/f5/f513f340-b787-4814-ae25-d18fb8305c61.4f8c2.jpg":"/1682240/assets/resources/native/f5/f513f340-b787-4814-ae25-d18fb8305c61.4f8c2.png","/1682240/assets/resources/native/bc/bcea5022-0190-4009-8ee6-e003492f1137.84051.jpg":"/1682240/assets/resources/native/bc/bcea5022-0190-4009-8ee6-e003492f1137.84051.png","/1682240/assets/resources/native/e3/e3a7eee5-10b1-44b6-9b0c-82db91b547b0.be1cf.jpg":"/1682240/assets/resources/native/e3/e3a7eee5-10b1-44b6-9b0c-82db91b547b0.be1cf.png","/1682240/assets/resources/native/95/950358a5-8e87-45be-9a55-c1a06c94ff2b.ee5ee.jpg":"/1682240/assets/resources/native/95/950358a5-8e87-45be-9a55-c1a06c94ff2b.ee5ee.png","/1682240/assets/resources/native/69/69343b99-fa60-465b-aa65-e03e596ef8b7.2a424.jpg":"/1682240/assets/resources/native/69/69343b99-fa60-465b-aa65-e03e596ef8b7.2a424.png","/1682240/assets/resources/native/30/30f51a10-683c-48ad-8fbc-b7fb8476ef36.bb8e8.jpg":"/1682240/assets/resources/native/30/30f51a10-683c-48ad-8fbc-b7fb8476ef36.bb8e8.png","/1682240/assets/resources/native/23/234db83f-9eaa-4fee-8685-e8c24fa41c97.b197c.jpg":"/1682240/assets/resources/native/23/234db83f-9eaa-4fee-8685-e8c24fa41c97.b197c.png","/1682240/assets/resources/native/35/35dfd5e4-d012-4f09-afe9-95ea7871541d.c2184.jpg":"/1682240/assets/resources/native/35/35dfd5e4-d012-4f09-afe9-95ea7871541d.c2184.png","/1682240/assets/resources/native/83/83c1de63-0a7b-411d-a37b-1da3f1245754.c2115.jpg":"/1682240/assets/resources/native/83/83c1de63-0a7b-411d-a37b-1da3f1245754.c2115.png","/1682240/assets/resources/native/19/1933bb6b-6779-44c1-b901-2113db3bb3be.1844e.jpg":"/1682240/assets/resources/native/19/1933bb6b-6779-44c1-b901-2113db3bb3be.1844e.png","/1682240/assets/resources/native/2e/2ee15876-12cd-4f78-ade5-815d1fe318af.2e664.jpg":"/1682240/assets/resources/native/2e/2ee15876-12cd-4f78-ade5-815d1fe318af.2e664.png","/1682240/assets/resources/native/c2/c26a541e-d1af-4b88-a881-1b3e2ba709f9.137f0.jpg":"/1682240/assets/resources/native/c2/c26a541e-d1af-4b88-a881-1b3e2ba709f9.137f0.png","/1682240/assets/resources/native/e1/e1c7f2bb-fe5c-4c44-982d-76dc2c71499b.8ccac.jpg":"/1682240/assets/resources/native/e1/e1c7f2bb-fe5c-4c44-982d-76dc2c71499b.8ccac.png","/1682240/assets/resources/native/78/78ef45b7-6bb3-4edd-b07d-4020b94a5f14.113e2.jpg":"/1682240/assets/resources/native/78/78ef45b7-6bb3-4edd-b07d-4020b94a5f14.113e2.png","/1682240/assets/resources/native/a6/a6170f1b-a2f9-4e3e-84d6-38137d0b980a.06b37.jpg":"/1682240/assets/resources/native/a6/a6170f1b-a2f9-4e3e-84d6-38137d0b980a.06b37.png","/1682240/assets/resources/native/3a/3a74155c-3e4f-46e1-8b4e-358b6a1d4896.55bff.jpg":"/1682240/assets/resources/native/3a/3a74155c-3e4f-46e1-8b4e-358b6a1d4896.55bff.png","/1682240/assets/resources/native/64/64292c28-59bd-45d8-8997-933a8c3a776e.d809f.jpg":"/1682240/assets/resources/native/64/64292c28-59bd-45d8-8997-933a8c3a776e.d809f.png","/1682240/assets/resources/native/7a/7a6a2138-8d40-4bf5-9a09-a48fced0d3e1.1452b.jpg":"/1682240/assets/resources/native/7a/7a6a2138-8d40-4bf5-9a09-a48fced0d3e1.1452b.png","/1682240/assets/resources/native/f7/f798b13d-7f3c-4cea-a1e8-5766544b2428.f27c6.jpg":"/1682240/assets/resources/native/f7/f798b13d-7f3c-4cea-a1e8-5766544b2428.f27c6.png","/1682240/assets/resources/native/63/635615b6-3607-40b3-bde5-8a15ea60745a.e630a.jpg":"/1682240/assets/resources/native/63/635615b6-3607-40b3-bde5-8a15ea60745a.e630a.png","/1682240/assets/resources/native/2c/2cb45e59-2076-4d47-8493-6e61ce5c8739.fd38a.jpg":"/1682240/assets/resources/native/2c/2cb45e59-2076-4d47-8493-6e61ce5c8739.fd38a.png","/1682240/assets/resources/native/4b/4bcb9f0e-47c1-4d09-be80-6795194549f6.d6d52.jpg":"/1682240/assets/resources/native/4b/4bcb9f0e-47c1-4d09-be80-6795194549f6.d6d52.png","/1682240/assets/resources/native/37/37625c2f-8a95-4d1c-9220-e332cc9fccbd.3ced6.jpg":"/1682240/assets/resources/native/37/37625c2f-8a95-4d1c-9220-e332cc9fccbd.3ced6.png","/1682240/assets/resources/native/9d/9d14bfab-928b-447e-99d9-e145af95a7c8.96932.jpg":"/1682240/assets/resources/native/9d/9d14bfab-928b-447e-99d9-e145af95a7c8.96932.png","/1682240/assets/resources/native/fe/fed1cb58-07a8-44ca-b591-7de0da375cce.0264e.jpg":"/1682240/assets/resources/native/fe/fed1cb58-07a8-44ca-b591-7de0da375cce.0264e.png","/1682240/assets/resources/native/1b/1b4ef5e7-3311-4993-a42b-c8d7a55798b3.48b84.jpg":"/1682240/assets/resources/native/1b/1b4ef5e7-3311-4993-a42b-c8d7a55798b3.48b84.png","/1682240/assets/resources/native/f2/f26e2525-1e27-4463-994b-d73342b8d00f.070fa.jpg":"/1682240/assets/resources/native/f2/f26e2525-1e27-4463-994b-d73342b8d00f.070fa.png","/shared/c5869829a5/50d8580f6a.a84a6.webp":"/shared/c5869829a5/50d8580f6a.a84a6.png","/shared/c5869829a5/292fa0d47b.9b246.webp":"/shared/c5869829a5/292fa0d47b.9b246.png","/shared/c5869829a5/8e8f29b039.968f4.webp":"/shared/c5869829a5/8e8f29b039.968f4.png","/shared/c5869829a5/d22a88c904.3309d.webp":"/shared/c5869829a5/d22a88c904.3309d.png","/shared/c5869829a5/0c21d96060.3d5d6.webp":"/shared/c5869829a5/0c21d96060.3d5d6.png","/shared/c5869829a5/333931a26d.3caff.webp":"/shared/c5869829a5/333931a26d.3caff.png"};
+  var launch = new URL(location.href);
+  var merchant = window.__GTT_MERCHANT__;
+  var token = (merchant && merchant.token) || launch.searchParams.get('ops') || 'local-demo-session';
+  launch.searchParams.set('l', 'en');
+  launch.searchParams.set('btt', merchant ? '1' : '2');
+  launch.searchParams.set('ot', merchant ? merchant.operator : 'local-demo');
+  launch.searchParams.set('ops', token);
+  launch.searchParams.set('ao', '06gvo=l26dffi7i=ius');
+  if (merchant) launch.searchParams.delete('mock');
+  ['t', 'tk', '__hv', '__sv', 'or'].forEach(function (name) { launch.searchParams.delete(name); });
+  history.replaceState(history.state, '', launch.href);
+
+  function isAPI(path) { return /^\/(web-api|game-api)\//.test(path); }
+  function localURL(input) {
+    if (typeof input !== 'string' || /^(?:data|blob):/i.test(input)) return input;
+    var url;
+    try { url = new URL(input, location.href); } catch (_) { return input; }
+    var mapped = imageMap[url.pathname];
+    if (isAPI(url.pathname) || mapped || /^(?:s5|static5|api)\.mmga1\.com$/.test(url.hostname)) {
+      return location.origin + (mapped || url.pathname) + url.search + url.hash;
+    }
+    return input;
+  }
+  function patchProperty(prototype, name, rewrite) {
+    if (!prototype) return;
+    var descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    if (!descriptor || !descriptor.set || !descriptor.configurable) return;
+    Object.defineProperty(prototype, name, {
+      configurable: true, enumerable: descriptor.enumerable, get: descriptor.get,
+      set: function (value) { descriptor.set.call(this, rewrite(value)); }
+    });
+  }
+  // 地址先转换为真实 PNG 路径；不等待 load，不隐藏图片或增加遮挡层。
+  patchProperty(window.HTMLImageElement && HTMLImageElement.prototype, 'src', localURL);
+  patchProperty(window.HTMLScriptElement && HTMLScriptElement.prototype, 'src', localURL);
+  patchProperty(window.HTMLLinkElement && HTMLLinkElement.prototype, 'href', localURL);
+  patchProperty(window.HTMLSourceElement && HTMLSourceElement.prototype, 'src', localURL);
+  var setAttribute = Element.prototype.setAttribute;
+  Element.prototype.setAttribute = function (name, value) {
+    var key = String(name).toLowerCase();
+    if (key === 'src' || key === 'href') value = localURL(String(value));
+    return setAttribute.call(this, name, value);
+  };
+  function notify(type) {
+    if (parent === window) return;
+    [location.origin, 'http://localhost:8080', 'http://127.0.0.1:8080'].forEach(function (origin) {
+      parent.postMessage({ type: type }, origin);
+    });
+  }
+  var open = XMLHttpRequest.prototype.open;
+  var send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function (method, input) {
+    var url = new URL(String(input), location.href);
+    this.__cashManiaAPI = isAPI(url.pathname);
+    this.__cashManiaPath = url.pathname;
+    var args = Array.prototype.slice.call(arguments);
+    args[1] = localURL(String(input));
+    return open.apply(this, args);
+  };
+  XMLHttpRequest.prototype.send = function (body) {
+    if (this.__cashManiaAPI) {
+      this.setRequestHeader('X-Local-Game-Session', token);
+      if (/\/GameInfo\/Get$/.test(this.__cashManiaPath)) this.addEventListener('load', function () {
+        notify(this.status === 200 ? 'demo:ready' : 'demo:error');
+      }, { once: true });
+    }
+    return send.call(this, body);
+  };
+  // iOS 12 与 WebView 80 均支持此处 API；没有 fetch 时保留客户端 XHR 路径。
+  if (window.fetch) {
+    var originalFetch = window.fetch;
+    window.fetch = function (input, init) {
+      var source = input instanceof Request ? input.url : String(input);
+      var url = new URL(source, location.href);
+      var target = localURL(source);
+      var request = input instanceof Request ? new Request(target, input) : target;
+      if (!isAPI(url.pathname)) return originalFetch.call(this, request, init);
+      var options = Object.assign({}, init || {});
+      var headers = new Headers(options.headers || (input instanceof Request ? input.headers : undefined));
+      headers.set('X-Local-Game-Session', token);
+      options.headers = headers;
+      return originalFetch.call(this, request, options).then(function (response) {
+        if (/\/GameInfo\/Get$/.test(url.pathname)) notify(response.ok ? 'demo:ready' : 'demo:error');
+        return response;
+      });
+    };
+  }
+  window.__CASH_MANIA_IMAGE_MAP__ = imageMap;
+})();

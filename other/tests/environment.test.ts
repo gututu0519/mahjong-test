@@ -1,3 +1,4 @@
+import { GAME_CODES } from "../../gateway/src/catalog.js";
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtempSync,writeFileSync,readFileSync,readdirSync,rmSync,mkdirSync,symlinkSync} from 'node:fs';
@@ -45,11 +46,11 @@ test('compute children receive only game and OS variables, not platform/database
   writeFileSync(file,'PGPASSWORD=secret\n');assert.throws(()=>readGameEnvironment(file,{}),/game env key PGPASSWORD/);
   assert.equal(isolatedTestEnvironment({PGDATABASE:'business',GTT_PLATFORM_ENV_FILE:'x',ADMIN_PORT:'8112'}).PGDATABASE,undefined);
 });
-test('deployment generator creates 19 version-specific env files, preserves target paths and refuses overwrite',t=>{
+test('deployment generator creates version-specific env files for every game, preserves target paths and refuses overwrite',t=>{
   const dir=fixture(t);
   const command=['tools/render-game-env.mjs','--all','--release','env-test-v1','--output',dir,'--base-port','8311'];
   execFileSync(process.execPath,command,{stdio:'pipe'});
-  assert.equal(readdirSync(dir).length,19);
+  assert.equal(readdirSync(dir).length,GAME_CODES.length);
   const ports=new Set();
   for(const game of readdirSync(dir)) {
     const env=readGameEnvironment(join(dir,game,'env-test-v1.env'),{});
@@ -57,7 +58,7 @@ test('deployment generator creates 19 version-specific env files, preserves targ
     assert.equal(readFileSync(join(dir,game,'env-test-v1.env'),'utf8').includes('/opt/gtt-node/games/'),true);
     assert.equal(env.PGPASSWORD,undefined);ports.add(env.GAME_PORT);
   }
-  assert.equal(ports.size,19);assert.throws(()=>execFileSync(process.execPath,command,{stdio:'pipe'}));
+  assert.equal(ports.size,GAME_CODES.length);assert.throws(()=>execFileSync(process.execPath,command,{stdio:'pipe'}));
   assert.throws(()=>execFileSync(process.execPath,['tools/render-game-env.mjs','--game','buffalo-win','--release','bad-relative','--output',dir,'--secret-file','relative.key'],{stdio:'pipe'}));
   const production=JSON.parse(readFileSync('deploy/production.example.json','utf8')),routes=JSON.parse(readFileSync('config/postgres.example.json','utf8'));
   assert.equal(routes.sources.find((s:any)=>s.schema==='control').path,production.merchant_database);

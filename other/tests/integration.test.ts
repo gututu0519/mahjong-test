@@ -1,3 +1,4 @@
+import { GAME_CODES } from "../../gateway/src/catalog.js";
 import { DatabaseSync } from "node:sqlite";
 import { request as httpRequest } from "node:http";
 import { test } from "node:test";
@@ -32,7 +33,7 @@ const root = process.cwd(),
 test("merchant creation defaults to all game grants without overriding explicit restrictions", async (t) => {
   const c = await setup(t);
   const created = c.control.saveMerchant("admin", {name:"all-defaults",enabled:true,wallet_url:"http://127.0.0.1:8111"}, true).merchant;
-  assert.deepEqual(created.games, Array.from({length:19},(_,i)=>i+1));
+  assert.deepEqual(created.games, GAME_CODES.map((_,i)=>i+1));
   assert.equal(created.minor_unit,10000);
   const empty = c.control.saveMerchant("admin", {name:"explicit-empty",enabled:true,wallet_url:"http://127.0.0.1:8111",games:[]}, true).merchant;
   assert.deepEqual(empty.games,[]);
@@ -74,7 +75,7 @@ test("merchant catalog exports include available games only and omit internal co
   const bad = await c.request("/api/merchant/games/export",{format:"exe"},headers,c.adminPort);
   assert.equal(bad.status,400);
   c.provider.readiness = new GameReadiness();
-  for(let game_id=1;game_id<=19;game_id++) c.control.setGameAvailability("test",{game_id,enabled:false,version:c.control.gameAvailability(game_id).version});
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) c.control.setGameAvailability("test",{game_id,enabled:false,version:c.control.gameAvailability(game_id).version});
   for (const path of ["/api/merchant/games","/api/merchant/games/export"]) {
     const result = await c.request(path,{format:"json"},headers,c.adminPort);
     assert.equal(result.status,200);
@@ -105,7 +106,7 @@ test("platform availability controls persist, enforce permissions and versioning
   assert.equal((await c.request('/api/admin/games/availability',payload,operator,c.adminPort)).status,200);
   assert.equal((await c.request('/api/admin/games/availability',payload,admin,c.adminPort)).status,409);
   assert.equal(p.merchantCatalog(c.mid).length,0);
-  assert.equal(p.catalog().length,19);
+  assert.equal(p.catalog().length,GAME_CODES.length);
   const connection=new Control(join(c.dir,'merchants.sqlite3'),resolve('config/control.sql'));
   assert.equal(connection.gameAvailability(1).enabled,false);connection.close();
   const blocked=await c.signed('/gtt/v1/games/launch',{game_id:1,player_id:'other-player'});
@@ -126,7 +127,7 @@ test("platform availability controls persist, enforce permissions and versioning
     assert.equal(exported.status,200);
     assert.ok(!exported.data.data.content.includes('免费内重触发'));
     assert.ok(!exported.data.data.content.includes('readiness'));
-    if(format==='json'){const data=JSON.parse(exported.data.data.content);assert.equal(data.games.length,19);for(const game of data.games)assert.deepEqual(Object.keys(game),['brand','title_zh','title_en','id']);}
+    if(format==='json'){const data=JSON.parse(exported.data.data.content);assert.equal(data.games.length,GAME_CODES.length);for(const game of data.games)assert.deepEqual(Object.keys(game),['brand','title_zh','title_en','id']);}
   }
   assert.equal((await c.request('/api/admin/games/availability',{game_id:1,enabled:true,version:c.control.gameAvailability(1).version},admin,c.adminPort)).status,200);
   assert.equal(p.merchantCatalog(c.mid).length,1);
@@ -259,7 +260,7 @@ async function setup(t: any, legacy = false) {
   );
   await provider.initialize();
   provider.readiness = verifiedReadinessFixture();
-  for(let game_id=1;game_id<=19;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
   const created = control.saveMerchant(
       "admin",
       {
