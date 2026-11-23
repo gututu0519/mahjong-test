@@ -821,7 +821,7 @@ export class RTP {
   snapshot(p: any, scope?: string) {
     const gameId = p.game_id ?? 1;
     check(
-      Number.isInteger(gameId) && gameId >= 0 && gameId <= 19,
+      Number.isInteger(gameId) && gameId >= 0 && gameId <= GAME_CODES.length,
       "GAME_ID_INVALID",
     );
     const code = gameId ? gameCode(gameId) : "",

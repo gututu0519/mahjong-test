@@ -20,6 +20,7 @@ export const GAME_CODES = [
   "sweet-bonanza-pop",
   "gates-of-olympus",
   "mahjong-ways2",
+  "cash-mania",
 ];
 export const fineGames = new Set([
   "roma-x-10000",

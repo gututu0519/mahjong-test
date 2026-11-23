@@ -5,6 +5,7 @@
 <title>Response Capture · 请求响应抓取</title>
 <style>
 :root{color-scheme:dark;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#e9edf5;background:#101319;font-size:14px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a.button{border:1px solid #36414c;background:#242d39;border-radius:8px;color:#edf4ff;padding:11px 17px;cursor:pointer;text-decoration:none;white-space:nowrap}button:hover,a.button:hover{background:#354152}button:disabled{opacity:.4;cursor:default}.primary{background:#bcf47b;color:#14200e;border-color:#bcf47b;font-weight:700}.primary:hover{background:#d2ff9f}header{padding:25px 36px;border-bottom:1px solid #2b303b;display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:700;letter-spacing:-.5px}.brand span{color:#bcf47b;margin-right:12px}header small{color:#9ca9bc}.wrap{max-width:1500px;margin:auto;padding:35px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 12px}p{color:#9ca9bc;line-height:1.7}.intro{margin-bottom:24px}.panel{background:#191e27;border:1px solid #2c3542;border-radius:12px;padding:22px}.form{display:flex;gap:10px}input,select{min-width:0;border:1px solid #394252;border-radius:8px;background:#10151d;color:#edf4ff;padding:11px 14px}input{flex:1}input:focus,select:focus{outline:2px solid #bcf47b;outline-offset:1px}.hint{font-size:12px;margin:12px 0 0;color:#8d9aad}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat{padding:18px 22px;border:1px solid #2c3542;border-radius:10px;background:#191e27}.stat label{color:#9ca9bc;font-size:12px;display:block;margin-bottom:9px}.stat strong{font-size:25px;font-weight:600}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.toolbar h2{font-size:17px;margin:0}.controls{display:flex;gap:8px;min-width:0}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:18px}.tablebox{overflow:auto;max-height:520px;min-height:340px}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th{color:#9ca9bc;position:sticky;top:0;background:#191e27;z-index:1}td,th{padding:12px 10px;border-bottom:1px solid #2b3340}td.url{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.selected{background:#293644}.ok{color:#bcf47b}.bad{color:#ffa295}.muted{color:#8895a9}.empty{color:#8895a9;text-align:center;padding:80px 20px;line-height:1.8}.detail{min-width:0}.detail h3{font-size:15px;margin:0 0 14px}.tabs{display:flex;gap:6px;margin:16px 0}.tabs button{font-size:12px;padding:7px 12px}.tabs button.active{background:#bcf47b;color:#14200e}.detailurl{font:12px/1.6 Consolas,monospace;color:#a9b9cc;overflow-wrap:anywhere;max-height:76px;overflow:auto}pre{margin:0;white-space:pre-wrap;word-break:break-word;font:12px/1.65 Consolas,monospace;background:#0e141c;border:1px solid #293441;border-radius:8px;padding:15px;max-height:420px;overflow:auto;min-height:220px}#notice{display:none;color:#ffcb8a;background:#312a21;padding:12px 16px;border-radius:8px;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere}.footer{display:flex;align-items:center;gap:12px;margin-top:22px;color:#9ca9bc;font-size:12px}#history{max-width:420px;flex:1}a{color:#bcf47b}[hidden]{display:none!important}@media(max-width:1000px){.layout{grid-template-columns:1fr}.wrap{padding:22px}.toolbar{flex-wrap:wrap}.controls{width:100%}.stats{gap:8px}.stat{padding:15px}.form{flex-wrap:wrap}.form input{flex-basis:100%}}@media(max-width:600px){header{padding:20px}.stats{grid-template-columns:1fr 1fr}.controls{flex-wrap:wrap}.controls input{width:100%}h1{font-size:25px}}
+.quality-panel{margin-bottom:22px}.quality-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}.quality-heading h2{font-size:18px;margin:0 14px 10px 0}.quality-heading label{margin:0 8px 10px 0;color:#a9b9cc}.quality-heading select{max-width:320px;margin-bottom:10px}.quality-banner{border-left:4px solid #f0c774;padding:12px 15px;background:#27251e;border-radius:6px;margin:4px 0 12px}.quality-banner strong{display:block;font-size:16px;line-height:1.6}.quality-banner p{margin:4px 0 0}.quality-good{color:#c5ef9f;background:#202d20;border-color:#9fd774}.quality-warn{color:#f0d493;background:#30291e;border-color:#f0c774}.quality-bad{color:#ffb0a8;background:#322322;border-color:#ed978d}.quality-badge{display:inline-block;padding:3px 8px;border:1px solid;border-radius:5px;font-size:12px;line-height:1.5;margin-right:8px}.quality-game{border:1px solid #394252;border-radius:8px;padding:15px;margin-top:12px}.quality-game h3{font-size:15px;margin:0 0 9px;line-height:1.6}.quality-game p{margin:6px 0;font-size:13px}.quality-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.quality-metric{background:#111720;border-radius:6px;padding:10px}.quality-metric strong{display:block;margin:5px 0;font-size:18px}.quality-metric span,.quality-metric small{font-size:12px;color:#a8b4c6;line-height:1.6}.quality-game details{border-top:1px solid #303b49;margin-top:12px;padding-top:10px}.quality-game summary{cursor:pointer;color:#bdcadd;line-height:1.7}.quality-game ul{padding-left:20px;margin:8px 0;line-height:1.8;overflow-wrap:break-word;word-break:break-word}.quality-feature{border-top:1px solid #303b49;padding:10px 0}.quality-feature:first-child{border-top:0}.quality-feature strong{font-size:13px}.quality-next{color:#d2dded!important}.quality-small{font-size:12px!important;color:#9ca9bc!important}#quality-games{max-height:680px;overflow:auto}#quality-meta{margin:8px 0 0}@media(max-width:600px){.quality-metrics{grid-template-columns:1fr}.quality-heading select{width:100%;max-width:none}.quality-game{padding:12px}.quality-banner strong{font-size:14px}}
 </style>
 </head>
 <body>
@@ -13,6 +14,7 @@
 <div class="intro"><h1>一个网址，查看每一次响应。</h1><p>启动独立浏览器，在目标页面中登录、点击或滚动。请求与响应会持续保存在本机。</p></div>
 <section class="panel"><form id="form" class="form"><input id="url" aria-label="目标网址" type="url" required placeholder="https://example.com" autocomplete="url"><button class="primary" id="start">开始抓取 ↗</button><button type="button" id="stop" disabled>停止并保存</button><a class="button" id="download" hidden>下载 ZIP ↓</a></form><p class="hint">记录当前抓取浏览器中实际发生的请求，包括新标签页。停止后可下载 HAR、响应文件和 WebSocket 消息。</p><p id="decoded-status" class="hint" role="status"></p><div id="notice" role="status"></div></section>
 <section class="stats"><div class="stat"><label>抓取状态</label><strong id="state">等待开始</strong></div><div class="stat"><label>请求数量</label><strong id="count">0</strong></div><div class="stat"><label>已保存响应</label><strong id="saved">0</strong></div><div class="stat"><label>响应总大小</label><strong id="size">0 B</strong></div></section>
+<section class="panel quality-panel" aria-labelledby="quality-title"><div class="quality-heading"><h2 id="quality-title">游戏采集检查</h2><div><label for="quality-game-select">查看游戏</label><select id="quality-game-select"><option value="">全部游戏</option></select></div></div><div id="quality-banner" class="quality-banner quality-warn" role="status" aria-live="polite"><strong id="quality-headline">等待选择抓取记录</strong><p id="quality-scope" class="quality-small">这里只检查原站采集证据。已观察资源保存齐，不等于游戏全部资源与玩法已采集完整。</p></div><div id="quality-games"></div><p id="quality-meta" class="hint">每 5 秒检查一次；不会自动停止抓取。</p></section>
 <section class="panel"><div class="toolbar"><h2>请求记录 <span id="ws" class="muted"></span></h2><div class="controls"><button id="clear-records" type="button" disabled title="清空当前列表和计数，保留抓取文件">清空记录</button><button id="show-all" type="button" hidden>显示全部</button><input id="filter" aria-label="搜索请求" placeholder="搜索网址 / 状态码"><select id="type" aria-label="请求类型"><option value="">全部类型</option><option>document</option><option>xhr</option><option>fetch</option><option>script</option><option>stylesheet</option><option>image</option><option>font</option><option>media</option><option>other</option></select></div></div><p class="hint" id="clear-hint" role="status" style="margin:0 0 14px">清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。</p><div class="layout"><div class="tablebox"><table><thead><tr><th>状态</th><th>方法</th><th>网址</th><th>类型</th><th>大小</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">等待第一条请求<br>输入网址，然后点击「开始抓取」</div></div><aside class="detail"><h3>响应详情</h3><div id="detailurl" class="detailurl">选择一条请求，查看响应内容和请求头。</div><div class="tabs"><button data-tab="body" class="active">响应体</button><button data-tab="headers">响应头</button><button data-tab="request">请求信息</button></div><pre id="preview">尚未选择请求</pre></aside></div></section>
 <div class="footer"><label for="history">历史抓取</label><select id="history"><option value="">选择历史记录</option></select><span>数据保存于项目 captures 文件夹</span></div>
 <p class="hint">长连接、下载流、浏览器限制或停止时仍在传输的响应可能无法取得完整内容，列表会标注。响应文件是浏览器解码后的内容。ZIP 可能包含登录凭据或个人数据，请妥善保管。</p>
@@ -23,17 +25,17 @@ let sid=null, data=null, selected=null, tab='body', previewVersion=0, polling=fa
 const cleared=new Map();
 function cutoff(){if(!sid)return 0;if(!cleared.has(sid)){let value=0;try{value=Number(localStorage.getItem('capture-clear:'+sid))||0}catch{}cleared.set(sid,value)}return cleared.get(sid)}
 function setCutoff(value){cleared.set(sid,value);try{if(value)localStorage.setItem('capture-clear:'+sid,String(value));else localStorage.removeItem('capture-clear:'+sid)}catch{}}
-function visibleRows(){return data?.id===sid?data.rows.filter(r=>r.id>cutoff()):[]}
+function visibleRows(){return data&&data.id===sid?data.rows.filter(r=>r.id>cutoff()):[]}
 const labels={starting:'正在启动',recording:'正在抓取',stopping:'正在保存',completed:'已保存',error:'启动失败'};
 const size=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(1)+' MB';
 function notice(s){$('notice').textContent=s||'';$('notice').style.display=s?'block':'none'}
 async function api(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Capture-Token':token},body:JSON.stringify(body)});const result=await response.json();if(!response.ok)throw Error(result.error||'请求失败');return result}
-function resetDetail(){selected=null;previewVersion++;$('detailurl').textContent='选择一条请求，查看响应内容和请求头。';$('preview').textContent='尚未选择请求'}
-function render(){if(!data||data.id!==sid)return;const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=['starting','recording','stopping'].includes(data.state);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';$('start').disabled=active;$('stop').disabled=!active||data.state==='stopping';$('download').hidden=active;$('download').href='/api/sessions/'+sid+'/download';$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded?.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
-function renderRows(){if(!data||data.id!==sid)return;const needle=$('filter').value.toLowerCase(),kind=$('type').value;const rows=visibleRows().filter(r=>(!kind||r.type===kind)&&(r.url.toLowerCase().includes(needle)||String(r.status).includes(needle)));$('empty').hidden=rows.length>0;$('empty').textContent=visibleRows().length?'没有匹配的请求':'等待请求，请在抓取浏览器中操作页面';$('rows').replaceChildren();for(const r of rows){const tr=document.createElement('tr');tr.className=selected===r.id?'selected':'';const status=r.status===null?(r.state==='pending'?'…':'失败'):String(r.status);for(const [i,value] of [status+(r.state==='unavailable'?' *':''),r.method,r.url,r.type,size(r.size)].entries()){const td=document.createElement('td');td.textContent=value;if(i===0)td.className=r.state==='failed'||r.state==='unavailable'||r.status>=400?'bad':'ok';if(i===2){td.className='url';td.title=r.url}tr.append(td)}tr.addEventListener('click',()=>{selected=r.id;renderRows();detail()});$('rows').append(tr)}}
+function resetDetail(){if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,null);selected=null;previewVersion++;$('detailurl').textContent='选择一条请求，查看响应内容和请求头。';$('preview').textContent='尚未选择请求'}
+function render(){if(!data||data.id!==sid)return;if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,data.state);const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=['starting','recording','stopping'].includes(data.state);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';$('start').disabled=active;$('stop').disabled=!active||data.state==='stopping';$('download').hidden=active;$('download').href='/api/sessions/'+sid+'/download';$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded&&data.decoded.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
+function renderRows(){if(!data||data.id!==sid)return;const needle=$('filter').value.toLowerCase(),kind=$('type').value;const rows=visibleRows().filter(r=>(!kind||r.type===kind)&&(r.url.toLowerCase().includes(needle)||String(r.status).includes(needle)));$('empty').hidden=rows.length>0;$('empty').textContent=visibleRows().length?'没有匹配的请求':'等待请求，请在抓取浏览器中操作页面';while($('rows').firstChild)$('rows').removeChild($('rows').firstChild);for(const r of rows){const tr=document.createElement('tr');tr.className=selected===r.id?'selected':'';const status=r.status===null?(r.state==='pending'?'…':'失败'):String(r.status);for(const [i,value] of [status+(r.state==='unavailable'?' *':''),r.method,r.url,r.type,size(r.size)].entries()){const td=document.createElement('td');td.textContent=value;if(i===0)td.className=r.state==='failed'||r.state==='unavailable'||r.status>=400?'bad':'ok';if(i===2){td.className='url';td.title=r.url}tr.append(td)}tr.addEventListener('click',()=>{selected=r.id;renderRows();detail()});$('rows').append(tr)}}
 async function detail(){const version=++previewVersion;const row=visibleRows().find(r=>r.id===selected);if(!row)return;$('detailurl').textContent=row.method+' '+row.url;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));if(tab==='headers'){$('preview').textContent=JSON.stringify(row.response_headers,null,2);return}if(tab==='request'){$('preview').textContent=JSON.stringify(row,null,2);return}if(!row.body){$('preview').textContent=row.error||'响应仍在传输，请稍后重新选择该请求。';return}$('preview').textContent='正在读取响应…';try{const result=await api('/api/sessions/'+sid+'/body/'+row.id);if(version!==previewVersion)return;let text=result.text;if(result.encoding==='text'&&row.mime.includes('json')){try{text=JSON.stringify(JSON.parse(text),null,2)}catch{}}$('preview').textContent=(result.encoding==='base64'?'二进制响应 · Base64 预览\n\n':'')+text+(result.truncated?'\n\n[预览已截断；ZIP 中包含已保存的完整文件]':'')}catch(e){if(version===previewVersion)$('preview').textContent=e.message}}
 async function refresh(){if(!sid||polling)return;polling=true;const current=sid;try{const value=await api('/api/sessions/'+current);if(current===sid){data=value;render()}}catch(e){notice(e.message)}finally{polling=false}}
-async function history(){const sessions=await api('/api/sessions');$('history').replaceChildren(new Option('选择历史记录',''));for(const s of sessions)$('history').add(new Option(new Date(s.created).toLocaleString()+' · '+s.url,s.id));if(sid)$('history').value=sid;return sessions}
+async function history(){const sessions=await api('/api/sessions');while($('history').firstChild)$('history').removeChild($('history').firstChild);$('history').add(new Option('选择历史记录',''));for(const s of sessions)$('history').add(new Option(new Date(s.created).toLocaleString()+' · '+s.url,s.id));if(sid)$('history').value=sid;return sessions}
 $('form').addEventListener('submit',async e=>{e.preventDefault();$('start').disabled=true;notice('');try{const result=await api('/api/start',{url:$('url').value});sid=result.id;resetDetail();await refresh();await history()}catch(e){notice(e.message);$('start').disabled=false}});
 $('clear-records').addEventListener('click',()=>{if(!data||data.id!==sid)return;setCutoff(data.rows.reduce((n,r)=>Math.max(n,r.id),cutoff()));resetDetail();render()});
 $('show-all').addEventListener('click',()=>{setCutoff(0);resetDetail();render()});
@@ -41,5 +43,186 @@ $('stop').addEventListener('click',async()=>{try{$('stop').disabled=true;await a
 $('history').addEventListener('change',async()=>{if(!$('history').value)return;sid=$('history').value;resetDetail();await refresh()});
 $('filter').addEventListener('input',renderRows);$('type').addEventListener('change',renderRows);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;detail()}));
 history().then(async records=>{if(records.length){sid=(records.find(s=>['starting','recording','stopping'].includes(s.state))||records[0]).id;$('history').value=sid;await refresh()}}).catch(e=>notice(e.message));setInterval(refresh,1500);
+</script>
+<script>
+// 使用 XHR、ES5 语法和原生 DOM，兼容 iOS 12 / WebView 80。
+(function () {
+  var current = null, sessionState = null, report = null, request = null;
+  var generation = 0, lastReceived = 0, issue = '', source = '', chosen = '';
+  var freshnessMs = 15000, lastFresh = false;
+  function el(id) { return document.getElementById(id); }
+  function array(value) { return Array.isArray(value) ? value : []; }
+  function number(value) { return typeof value === 'number' && isFinite(value) && value >= 0 ? Math.floor(value) : 0; }
+  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+  function node(tag, text, className) {
+    var result = document.createElement(tag);
+    if (text !== undefined && text !== null) result.textContent = String(text);
+    if (className) result.className = className;
+    return result;
+  }
+  function isFresh() {
+    var stamp = report ? Date.parse(report.generated_at) : NaN, now = Date.now();
+    return !issue && !!lastReceived && isFinite(stamp) && now - lastReceived <= freshnessMs && now - stamp <= freshnessMs && stamp - now < 60000;
+  }
+  function complete(value) { return isFresh() && value && value.status === 'complete' && value.can_stop === true && (sessionState === 'recording' || sessionState === 'completed'); }
+  function color(value) { return complete(value) ? 'quality-good' : (!isFresh() || !value || value.status !== 'blocked' ? 'quality-warn' : 'quality-bad'); }
+  function stateText(value, individual) {
+    if (!isFresh()) return '无法确认完整 · 检查结果暂不可用';
+    if (complete(value)) return sessionState === 'completed' ? '采集完成' : (individual ? '已达到该游戏采集标准' : '已达到采集标准，可以停止并保存');
+    if (value && value.status === 'complete' && sessionState === 'stopping') return '正在保存 · 等待采集结束';
+    if (value && value.status === 'blocked') return '发现采集缺口 · 需要补抓';
+    if (value && value.status === 'collecting') return '采集中 · 继续加载或触发玩法';
+    return '无法确认完整';
+  }
+  function appendList(parent, values, max) {
+    var list = node('ul'), items = array(values), limit = Math.min(items.length, max || 10);
+    for (var i = 0; i < limit; i++) list.appendChild(node('li', items[i]));
+    if (items.length > limit) list.appendChild(node('li', '另有 ' + (items.length - limit) + ' 项；完成当前补抓后再次检查。', 'quality-small'));
+    if (items.length) parent.appendChild(list);
+  }
+  function missingText(item) {
+    if (typeof item === 'string') return item;
+    var label = item.severity === 'error' ? '请求失败' : item.severity === 'missing' ? '必需资源缺失' : item.severity === 'pending' ? '待加载' : '范围未确认';
+    return '【' + label + '】' + (item.path ? item.path + '：' : '') + (item.reason || '尚未核对该资源') + (item.action ? '；' + item.action : '');
+  }
+  function details(parent, title) { var box = node('details'); box.appendChild(node('summary', title)); parent.appendChild(box); return box; }
+  function metric(parent, label, value, note) { var box = node('div', null, 'quality-metric'); box.appendChild(node('span', label)); box.appendChild(node('strong', value)); box.appendChild(node('small', note)); parent.appendChild(box); }
+  function renderGame(game) {
+    var card = node('article', null, 'quality-game'), heading = node('h3');
+    heading.appendChild(node('span', stateText(game, true), 'quality-badge ' + color(game)));
+    heading.appendChild(document.createTextNode((game.name || game.game_code || '未命名游戏') + (game.game_code ? ' · ' + game.game_code : '')));
+    card.appendChild(heading);
+    var assets = game.assets || {}, observed = assets.observed || {}, required = assets.required || {}, dynamic = assets.dynamic_dependencies || {};
+    var metrics = node('div', null, 'quality-metrics');
+    var rangeSaved = required.defined && typeof required.saved === 'number' && typeof required.total === 'number' && required.saved === required.total && !array(required.missing).length;
+    var rangeNote = rangeSaved ? '该范围资源已保存齐' : (required.verified ? '核对标准已登记；该范围资源尚未保存齐' : '核对标准待确认；当前保存数不能证明范围完整');
+    metric(metrics, '已观察资源 · 已保存 / 已观察', number(observed.saved) + ' / ' + number(observed.total), '待加载 ' + number(observed.pending) + ' · 失败 ' + number(observed.failed) + ' · 缺响应体 ' + number(observed.missing_body));
+    metric(metrics, required.defined ? '已定义范围 · 已保存 / 应有' : '全部资源范围', required.defined ? number(required.saved) + ' / ' + number(required.total) : '未确认全集', required.defined ? rangeNote : '缺少可核对的完整资源范围，不能据此停抓。');
+    metric(metrics, '动态依赖 · 已保存 / 已发现', number(typeof dynamic.saved === 'number' ? dynamic.saved : dynamic.resolved) + ' / ' + number(dynamic.total), '检查清单 ' + number(dynamic.inspected_manifests) + ' 份 · 未确认项 ' + (typeof dynamic.unknown_count === 'number' ? number(dynamic.unknown_count) : array(dynamic.unknown).length));
+    card.appendChild(metrics);
+    if (assets.observed_complete) card.appendChild(node('p', '已观察资源保存齐。此项只覆盖已发生的请求，不代表游戏资源全集或全部玩法完整。', 'quality-small'));
+    card.appendChild(node('p', '检查范围：' + (game.scope || required.label || '尚未确认完整采集范围'), 'quality-small'));
+    var features = array(game.features), suggestions = [], seen = {};
+    function suggest(text) { if (typeof text === 'string' && text && !seen[text]) { seen[text] = true; suggestions.push(text); } }
+    var rawMissing = array(game.missing).concat(array(required.missing), array(dynamic.missing)), missing = [], missingKeys = {};
+    for (var r = 0; r < rawMissing.length; r++) {
+      var entry = rawMissing[r], key = entry.path ? 'path:' + entry.path : 'reason:' + String(entry.reason || entry);
+      if (!missingKeys[key]) { missingKeys[key] = true; missing.push(entry); }
+    }
+    for (var m = 0; m < missing.length; m++) if (missing[m].severity === 'error' || missing[m].severity === 'missing') suggest(missing[m].action || missing[m].reason);
+    for (var f = 0; f < features.length; f++) if (features[f].status !== 'evidence_complete') suggest(features[f].action || array(features[f].pending_reasons)[0]);
+    if (number(observed.pending)) suggest('等待当前资源加载完成，再检查保存结果。');
+    if (number(observed.failed) || number(observed.missing_body)) suggest('在抓取浏览器中重新进入相关页面或玩法，补抓失败或缺少响应体的请求。');
+    if (!required.defined) suggest('继续访问游戏入口、帮助或规则页及各玩法；完整资源范围尚待确认。');
+    if (array(game.unknown).length) suggest(array(game.unknown)[0]);
+    if (!suggestions.length && missing.length) suggest('有按需依赖或资源范围尚未核对。展开下方明细确认目标语言与玩法，不将未访问资源直接视为加载失败。');
+    if (!suggestions.length && !complete(game)) suggest('等待范围与玩法证据核验；当前不能确认可停止采集。');
+    if (suggestions.length) { card.appendChild(node('p', '下一步补抓与范围确认', 'quality-next')); appendList(card, suggestions, 3); }
+    var done = 0;
+    for (var i = 0; i < features.length; i++) if (features[i].status === 'evidence_complete') done++;
+    var featureBox = details(card, '玩法证据 · 已齐 ' + done + ' / ' + features.length + '（展开查看缺什么）');
+    if (!features.length) featureBox.appendChild(node('p', '尚无可核对的玩法清单，不能据此推断全部玩法已采齐。', 'quality-small'));
+    for (var j = 0; j < features.length; j++) {
+      var feature = features[j], row = node('div', null, 'quality-feature');
+      var label = feature.status === 'evidence_complete' ? '证据已齐' : feature.status === 'candidate' ? '已发现线索，待补全' : feature.status === 'pending' ? '待采集' : '无法确认';
+      if (!isFresh()) label += '（上次结果）';
+      row.appendChild(node('span', label, 'quality-badge ' + (feature.status === 'evidence_complete' && isFresh() ? 'quality-good' : 'quality-warn')));
+      row.appendChild(node('strong', feature.feature_name || feature.feature_id || '未命名玩法'));
+      appendList(row, array(feature.pending_reasons), 6);
+      if (feature.action && feature.status !== 'evidence_complete') row.appendChild(node('p', '建议：' + feature.action, 'quality-next'));
+      featureBox.appendChild(row);
+    }
+    var unknown = array(game.unknown).concat(array(dynamic.unknown)).filter(function (item, index, all) { return all.indexOf(item) === index; });
+    if (missing.length || unknown.length || number(game.missing_count) || number(game.unknown_count) || number(dynamic.missing_count) || number(dynamic.unknown_count)) {
+      var confirmed = 0, pending = 0, uncertain = unknown.length;
+      for (var k = 0; k < missing.length; k++) {
+        if (missing[k].severity === 'error' || missing[k].severity === 'missing') confirmed++;
+        else if (missing[k].severity === 'pending') pending++;
+        else uncertain++;
+      }
+      var more = details(card, '资源明细 · 确认缺失 ' + confirmed + ' · 未确认 ' + uncertain + (pending ? ' · 待加载 ' + pending : '') + '（展开查看）');
+      if (number(game.missing_count) > missing.length) more.appendChild(node('p', '资源缺项仅展示前 ' + missing.length + ' 条 / 共 ' + number(game.missing_count) + ' 条（接口返回范围）。', 'quality-small'));
+      if (number(dynamic.missing_count) > array(dynamic.missing).length) more.appendChild(node('p', '动态依赖缺项接口仅返回前 ' + array(dynamic.missing).length + ' 条 / 共 ' + number(dynamic.missing_count) + ' 条；已与其他返回明细合并去重。', 'quality-small'));
+      if (number(game.unknown_count) > array(game.unknown).length) more.appendChild(node('p', '游戏未确认项仅展示前 ' + array(game.unknown).length + ' 条 / 共 ' + number(game.unknown_count) + ' 条。', 'quality-small'));
+      if (number(dynamic.unknown_count) > array(dynamic.unknown).length) more.appendChild(node('p', '动态未确认项仅展示前 ' + array(dynamic.unknown).length + ' 条 / 共 ' + number(dynamic.unknown_count) + ' 条。', 'quality-small'));
+      var resourceList = node('div'), entries = missing.map(missingText).concat(unknown);
+      resourceList.style.maxHeight = '360px'; resourceList.style.overflow = 'auto';
+      appendList(resourceList, entries, entries.length); more.appendChild(resourceList);
+    }
+    return card;
+  }
+  function render() {
+    var fresh = isFresh(), summary = report && report.summary;
+    lastFresh = fresh;
+    el('quality-banner').className = 'quality-banner ' + color(summary);
+    el('quality-headline').textContent = !current ? '等待选择抓取记录' : issue || (!report ? '正在检查当前采集记录…' : stateText(summary, false));
+    if (report && !fresh && !issue) el('quality-headline').textContent = '无法确认完整 · 检查结果已过期';
+    var scope = summary && summary.scope ? summary.scope : '已观察资源保存齐，不等于游戏全部资源与玩法已采集完整。';
+    el('quality-scope').textContent = scope + (summary && array(summary.notes).length ? ' · ' + array(summary.notes).join('；') : '');
+    var select = el('quality-game-select'), games = report ? array(report.games) : [];
+    var selectionExists = !chosen;
+    clear(select); select.appendChild(new Option('全部游戏', ''));
+    for (var i = 0; i < games.length; i++) {
+      select.appendChild(new Option(games[i].name || games[i].game_code, games[i].game_code));
+      if (games[i].game_code === chosen) selectionExists = true;
+    }
+    if (!selectionExists) chosen = '';
+    select.value = chosen; select.disabled = !games.length;
+    // 保留展开状态，避免五秒刷新反复折叠用户正在查看的细节。
+    var container = el('quality-games'), expanded = {}, oldCards = container.children;
+    for (var c = 0; c < oldCards.length; c++) {
+      var oldBoxes = oldCards[c].getElementsByTagName('details');
+      for (var b = 0; b < oldBoxes.length; b++) if (oldBoxes[b].open) expanded[oldCards[c].getAttribute('data-game') + ':' + b] = true;
+    }
+    clear(container);
+    for (var g = 0; g < games.length; g++) if (!chosen || games[g].game_code === chosen) {
+      var card = renderGame(games[g]); card.setAttribute('data-game', games[g].game_code);
+      var boxes = card.getElementsByTagName('details');
+      for (var d = 0; d < boxes.length; d++) boxes[d].open = !!expanded[games[g].game_code + ':' + d];
+      container.appendChild(card);
+    }
+    if (current && report && !games.length) container.appendChild(node('p', '尚未识别到可检查的游戏。请在当前抓取浏览器中进入游戏并继续操作。', 'quality-small'));
+    var unknownCount = report && report.unknown_requests ? number(report.unknown_requests.count) : 0;
+    el('quality-meta').textContent = (report ? '最近检查：' + new Date(report.generated_at).toLocaleTimeString() + ' · ' : '') + (source === 'sidecar' ? '只读检查服务 · ' : '') + (unknownCount ? '尚未归属游戏的请求 ' + unknownCount + ' 条 · ' : '') + '每 5 秒检查一次；不会自动停止抓取。' + (!fresh && report ? ' 下方保留上次结果供排查，不能据此停抓。' : '');
+  }
+  function fail(message) {
+    // 先撤销旧回调，再中止请求，防止离线后恢复的响应覆盖下一次检查。
+    generation++; if (request) request.abort(); request = null;
+    issue = '无法确认完整 · ' + message; render();
+  }
+  function fetchQuality(fallback, ticket, session) {
+    var xhr = new XMLHttpRequest(); request = xhr;
+    xhr.open('GET', (fallback ? 'http://127.0.0.1:8091' : '') + '/api/sessions/' + encodeURIComponent(session) + '/quality', true);
+    xhr.timeout = 6500;
+    xhr.onload = function () {
+      if (ticket !== generation || session !== current) return;
+      if (xhr.status === 404 && !fallback) { fetchQuality(true, ticket, session); return; }
+      request = null;
+      if (xhr.status !== 200) { fail('检查服务暂不可用，抓取仍继续'); return; }
+      try {
+        var value = JSON.parse(xhr.responseText);
+        if (value.version !== 1 || value.session_id !== session || !value.summary || !Array.isArray(value.games) || !isFinite(Date.parse(value.generated_at))) throw new Error('invalid');
+        report = value; lastReceived = Date.now(); issue = ''; source = fallback ? 'sidecar' : 'main'; render();
+      } catch (_) { fail('检查响应无效，等待下次检查'); }
+    };
+    xhr.onerror = xhr.ontimeout = function () { if (ticket === generation && session === current) fail('检查连接中断，等待恢复'); };
+    try { xhr.send(); } catch (_) { fail('无法连接检查服务，等待恢复'); }
+  }
+  function refresh() { if (current && !request) fetchQuality(false, ++generation, current); }
+  window.captureQualitySessionChanged = function (session, state) {
+    if (session !== current) {
+      generation++; if (request) request.abort(); request = null;
+      current = session; sessionState = state; report = null; lastReceived = 0; issue = ''; chosen = ''; source = '';
+      render(); refresh();
+    } else if (state !== sessionState) { sessionState = state; render(); }
+  };
+  el('quality-game-select').addEventListener('change', function () { chosen = this.value; render(); });
+  setInterval(refresh, 5000);
+  // 定时检查过期，连接挂起或后台恢复时也撤销绿色完成信号。
+  setInterval(function () { if (lastFresh !== isFresh()) render(); }, 1000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) { render(); refresh(); } });
+  window.addEventListener('offline', function () { fail('网络离线，等待恢复'); });
+  render();
+})();
 </script>
 </body></html>

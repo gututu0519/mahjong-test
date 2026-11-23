@@ -19,7 +19,8 @@
     "sweet-bonanza-pop",
     "tower-run-treasure-steps",
     "wicked-grin",
-    "wild-bandito"
+    "wild-bandito",
+    "cash-mania"
   ],
   "modules": {
     "tests/client-root.test.ts": "other/tests/client-root.test.ts",
@@ -172,7 +173,12 @@
     "tests/readiness-fixture.ts": "other/tests/readiness-fixture.ts",
     "tests/readiness.test.ts": "other/tests/readiness.test.ts",
     "tests/startup.test.ts": "other/tests/startup.test.ts",
-    "tests/wallet-endpoints.test.ts": "other/tests/wallet-endpoints.test.ts"
+    "tests/wallet-endpoints.test.ts": "other/tests/wallet-endpoints.test.ts",
+    "migrated/py/games/cash_mania/engine.ts": "games/cash-mania/backend/engine/engine.ts",
+    "migrated/py/services/cash_mania_demo.ts": "games/cash-mania/backend/services/cash_mania_demo.ts",
+    "migrated/py/adapters/pg/cash_mania.ts": "games/cash-mania/backend/adapters/cash_mania.ts",
+    "migrated/py/games/cash_mania/normal_spins.ts": "games/cash-mania/backend/fixtures/normal_spins.ts",
+    "tests/cash-mania.test.ts": "other/tests/cash-mania.test.ts"
   },
   "files": {
     "tools/install-dependencies.mjs": "other/tooling/scripts/install-dependencies.mjs",

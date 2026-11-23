@@ -1,3 +1,4 @@
+import { GAME_CODES } from "../dist/gateway/catalog.js";
 import { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { tmpdir } from "node:os";
@@ -150,7 +151,7 @@ try {
     const value=await response.json();assert.equal(response.status,200,JSON.stringify(value));return value.data;
   };
   const keyfile=join(dir,"runtime/game-service.key");writeFileSync(keyfile,config.internal_secret);
-  assert.equal((await adminPost("frontends/list",{})).games.length,19);
+  assert.equal((await adminPost("frontends/list",{})).games.length,GAME_CODES.length);
   assert.deepEqual((await adminPost("frontends/candidates",{})).builds,[]);
   const independentGames=[];
   for(const name of record.topology?.games??[]) {
@@ -263,11 +264,11 @@ try {
           "admin-and-merchant-entries",
           "admin-login",
           "rtp-worker-once",
-          ...(independentGames.length?["19-game-archives-independent-processes","admin-game-service-registration-and-switch","remote-deterministic-step"]:[]),
+          ...(independentGames.length?["game-archives-independent-processes","admin-game-service-registration-and-switch","remote-deterministic-step"]:[]),
           ...(allChecks.length
             ? [
                 "20-isolated-service-processes",
-                "19-original-game-launch-pages",
+                "original-game-launch-pages",
                 "native-mock-platform",
               ]
             : []),

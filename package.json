@@ -23,7 +23,10 @@
     "test:postgres": "node other/tooling/database/cli.mjs test",
     "game:env": "node other/tooling/run.mjs render-game-env",
     "config:env": "node other/tooling/configure-local-env.mjs",
-    "config:check": "node other/tooling/check-environment.mjs"
+    "config:check": "node other/tooling/check-environment.mjs",
+    "features:watch": "node other/tooling/feature-maintenance/watch.mjs",
+    "features:verify": "node other/tooling/feature-maintenance/verify.mjs",
+    "features:test": "node --test other/tooling/feature-maintenance/tests/*.test.mjs"
   },
   "engines": { "node": ">=24.17.0" }
 }

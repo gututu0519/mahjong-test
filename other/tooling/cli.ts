@@ -5,6 +5,7 @@ import { check, hex, encode, signedHeaders, object } from "../shared/core.js";
 import { listen, fetchBounded } from "../shared/http.js";
 import { accessLog } from "../shared/logging.js";
 import { platformEnvironment, readPlatformConfig, readGameEnvironment, gameProcessEnvironment, integer } from '../shared/config/environment.js';
+import { GAME_CODES } from '../../gateway/src/catalog.js';
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export async function components(c: any) {
   if(c.postgres_config)process.env.GTT_PG_CONFIG=resolve(c.postgres_config);
@@ -317,7 +318,7 @@ export async function main(args = process.argv.slice(2)) {
           name: "Node Demo Merchant",
           enabled: true,
           wallet_url: `http://127.0.0.1:${port}`,
-          games: Array.from({ length: 19 }, (_, i) => i + 1),
+          games: Array.from({ length: GAME_CODES.length }, (_, i) => i + 1),
           minor_unit: 10000,
           pre_payout: {
             enabled: true,

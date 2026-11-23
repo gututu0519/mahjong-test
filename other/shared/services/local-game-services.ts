@@ -144,10 +144,10 @@ export async function runLocalGames(config: any) {
         });
     }
     console.log(
-      "19 independent game services ready; ports " +
+      GAME_CODES.length + " independent game services ready; ports " +
         (config.game_service_base_port ?? 8211) +
         "–" +
-        ((config.game_service_base_port ?? 8211) + 18),
+        ((config.game_service_base_port ?? 8211) + GAME_CODES.length - 1),
     );
     await new Promise<void>((ok) => {
       process.once("SIGINT", ok);

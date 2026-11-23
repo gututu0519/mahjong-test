@@ -18,6 +18,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from playwright.async_api import async_playwright
+from feature_maintenance import start_supervisor, stop_supervisor
+from quality_service import get_session_quality
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / 'captures'
@@ -285,6 +287,12 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/':
             html = (ROOT / 'index.html').read_text(encoding='utf-8').replace('__TOKEN__', TOKEN)
             return self.send(200, html.encode(), 'text/html; charset=utf-8')
+        if path == '/api/feature-maintenance':
+            status = ROOT.parents[2] / 'other/diagnostics/feature-maintenance/status.json'
+            try:
+                return self.send(200, json.loads(status.read_text(encoding='utf-8')))
+            except (OSError, ValueError):
+                return self.send(200, {'status': 'pending', 'reason': '维护表监督器尚未生成状态'})
         if path == '/api/sessions':
             ids = set(SESSIONS)
             if DATA.exists():
@@ -305,6 +313,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(404, {'error': '不存在的抓取记录'})
             if len(parts) == 3:
                 return self.send(200, item)
+            if len(parts) == 4 and parts[3] == 'quality':
+                try:
+                    return self.send(200, get_session_quality(item, DATA / sid))
+                except (OSError, ValueError, TypeError, KeyError):
+                    return self.send(503, {'error': '采集检查暂不可用，请保留当前抓取记录', 'status': 'unknown'})
             if len(parts) == 4 and parts[3] == 'download':
                 if item['state'] not in ('completed', 'error'):
                     return self.send(409, {'error': '请先停止抓取，等待文件保存完成'})
@@ -374,4 +387,8 @@ if __name__ == '__main__':
     print('Response Capture: http://127.0.0.1:8090', flush=True)
     if '--open' in sys.argv:
         webbrowser.open('http://127.0.0.1:8090')
-    server.serve_forever()
+    supervisor = start_supervisor()
+    try:
+        server.serve_forever()
+    finally:
+        stop_supervisor(supervisor)

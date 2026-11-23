@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "note": "这是经过逐项核对的采集目标声明，不是已导入文件清单，也不是原厂全部资源清单。verified 只验证声明范围；只有 exhaustive=true 才允许据此判断该范围可停抓。",
+  "games": {
+    "cash-mania": {
+      "name": "Cash Mania",
+      "static_prefixes": ["/1682240/"],
+      "identity_source": "games/cash-mania/docs/protocol-and-rules.md",
+      "scope": "已核对 main.8cd01/resources.b994a 版本的启动核心文件与普通旋转样本；不覆盖所有语言和特殊玩法",
+      "requirements": {
+        "verified": true,
+        "exhaustive": false,
+        "label": "当前已核对版本的启动核心文件",
+        "source": "games/cash-mania/docs/protocol-rule-evidence.json",
+        "assets": [
+          {"path": "/1682240/index.html", "action": "从原站重新进入 Cash Mania 并等待加载完成"},
+          {"path": "/1682240/assets/main/config.baf4f.json", "sha256": "be21643cb77eed8fc755a333e92d47f4c72a99af50523866c57bfa26c90bd575", "action": "重新进入原站游戏，保留主场景加载请求"},
+          {"path": "/1682240/assets/main/index.8cd01.js", "sha256": "61a54097cbd97245723c2445c7b40b14100b82ca76a9791f7d91e32c16e7c0c1", "action": "重新进入原站游戏，等待主脚本保存完成"},
+          {"path": "/1682240/assets/resources/config.d8d53.json", "sha256": "5264de33fd3f23cde51bb3c38376dd9001746d0ee1a6786f3332affa946ecadd", "action": "重新进入原站游戏，保留资源包配置请求"},
+          {"path": "/1682240/assets/resources/index.b994a.js", "sha256": "ea28257f32a98c5fe2961b5ff7b357cb9e9cb21cddc80a2deef1d357e458b7bc", "action": "重新进入原站游戏，等待资源包脚本保存完成"}
+        ],
+        "manifests": ["/1682240/assets/main/config.baf4f.json", "/1682240/assets/resources/config.d8d53.json"],
+        "features": ["normal_spin"],
+        "unknown": ["尚未核验所有语言和全部按需界面的资源全集", "免费、购买和重旋的完整协议清单尚未定义；普通旋转通过不能代替这些玩法"]
+      },
+      "feature_targets": [
+        {"feature_id": "normal_spin", "feature_name": "普通旋转（中奖和未中奖）", "action": "在原站完成至少一次中奖和一次未中奖的普通旋转，等待响应保存"},
+        {"feature_id": "nudge", "feature_name": "转轴微移（nudge）", "action": "在原站触发转轴微移，保留原始盘面、最终盘面和动画资源；当前只识别候选"},
+        {"feature_id": "free_spins", "feature_name": "免费玩法（是否适用待确认）", "action": "先核对当前原站版本的规则或帮助，确认是否存在免费玩法；存在时再补触发到结束的完整样本。"},
+        {"feature_id": "feature_buy", "feature_name": "购买功能（是否开放待确认）", "action": "先核对当前原站版本是否开放购买；仅在实际开放时保留报价、购买请求和完整结束过程，未开放时不要求反复尝试，也不猜价格。"},
+        {"feature_id": "respin", "feature_name": "重旋", "action": "在原站触发对应玩法并完成退出；字段存在不等于已经抓到完整流程"}
+      ]
+    },
+    "wild-bandito": {"name": "Wild Bandito", "static_prefixes": ["/104/"], "identity_source": "games/wild-bandito/docs/wild-bandito-rules.md"},
+    "mahjong-ways2": {"name": "麻将胡了2", "static_prefixes": ["/74/"], "identity_source": "games/mahjong-ways2/docs/mahjong-ways2-spin-interface.txt"},
+    "captains-bounty": {"name": "Captain's Bounty", "static_prefixes": ["/54/"], "identity_source": "games/captains-bounty/frontend/54"},
+    "fortune-rabbit": {"name": "Fortune Rabbit", "static_prefixes": ["/1543462/"], "identity_source": "games/fortune-rabbit/frontend/1543462"},
+    "buffalo-win": {"name": "Buffalo Win", "static_prefixes": [], "identity_source": "gateway/src/merchant-client.ts"},
+    "dr-zappo": {"name": "Dr Zappo", "static_prefixes": ["/2253/"], "identity_source": "games/dr-zappo/frontend/2253"},
+    "great-game-serengeti": {"name": "Great Game Serengeti", "static_prefixes": ["/2620/"], "identity_source": "games/great-game-serengeti/frontend/2620"},
+    "le-vampire": {"name": "Le Vampire", "static_prefixes": ["/2582/"], "identity_source": "games/le-vampire/frontend/2582"},
+    "wicked-grin": {"name": "Wicked Grin", "static_prefixes": ["/2347/"], "identity_source": "games/wicked-grin/frontend/2347"}
+  }
+}

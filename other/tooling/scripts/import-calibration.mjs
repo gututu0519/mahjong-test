@@ -5,6 +5,7 @@ import { resolve, join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { components } from "../dist/cli.js";
 import { hex, now, encode } from "../dist/shared/core.js";
+import { GAME_CODES } from "../dist/gateway/catalog.js";
 const args = process.argv.slice(2),
   opt = (key) => args[args.indexOf(key) + 1];
 for (const key of ["--config", "--directory", "--games"])
@@ -23,7 +24,7 @@ const folder = resolve(opt("--directory")),
   resume = args.includes("--resume-offline");
 if (!Number.isInteger(target) || target < 8000 || target > 9900)
   throw Error("Invalid target RTP");
-if (ids.some((id) => !Number.isInteger(id) || id < 2 || id > 19))
+if (ids.some((id) => !Number.isInteger(id) || id < 2 || id > GAME_CODES.length))
   throw Error("Invalid game IDs");
 const { provider: p, control } = await components(config),
   lease = "offline-" + hex(),

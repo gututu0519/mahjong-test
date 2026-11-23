@@ -30,6 +30,7 @@ export const ENTRIES: Record<string, string> = {
   wild_bandito_client: "wild_bandito_demo",
   fortune_rabbit_client: "fortune_rabbit_demo",
   captains_bounty_client: "captains_bounty_demo",
+  cash_mania_client: "cash_mania_demo",
 };
 export function method(object: any, name: string, ...args: any[]) {
   return p.call(p.attr(object, name), args);

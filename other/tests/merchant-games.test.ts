@@ -13,7 +13,7 @@ import { gameServer } from "../../games/buffalo-win/backend/native/service.js";
 import { platformServer } from "../shared/services/platform.js";
 import { listen, server, body, send } from "../shared/http.js";
 import { encode, sha, signedHeaders } from "../shared/core.js";
-import { GAME_CODES, gameUnit } from "../../gateway/src/catalog.js";
+import { GAME_CODES, gameNumber, gameUnit } from "../../gateway/src/catalog.js";
 import { transactions } from "../../admin/backend/admin.js";
 import { verifiedReadinessFixture } from "./readiness-fixture.js";
 import { GameReadiness } from "../../gateway/src/readiness.js";
@@ -26,6 +26,16 @@ import {
   modePayloads,
   ROUND_MODEL_VERSION,
 } from "../shared/games/round-model.js";
+
+// 历史回放资料的明确范围；新游戏由其生成引擎和协议专项测试覆盖。
+const LEGACY_FIXTURE_GAMES = [
+  "buffalo-win", "captains-bounty", "fortune-rabbit", "wild-bandito",
+  "tower-run-treasure-steps", "great-game-serengeti", "dr-zappo", "le-vampire",
+  "wicked-grin", "roma-x-10000", "money-pot-deluxe", "3-billion-vaults",
+  "jokers-fortune-winx", "fortune-gems2", "super-ace", "big-bass-bonanza",
+  "sweet-bonanza-pop", "gates-of-olympus", "mahjong-ways2",
+];
+const LEGACY_FIXTURE_GAME_IDS = LEGACY_FIXTURE_GAMES.map(gameNumber);
 
 async function setup(t: any) {
   const dir = mkdtempSync(join(tmpdir(), "merchant-games-")),
@@ -75,7 +85,7 @@ async function setup(t: any) {
     );
   await p.initialize();
   p.readiness = verifiedReadinessFixture();
-  for(let game_id=1;game_id<=19;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
   const gateway = gatewayServer(p, config, resolve("../clients/buffalo-win")),
     port = await listen(gateway);
   p.playOrigin = config.gateway_origin = "http://127.0.0.1:" + port;
@@ -155,11 +165,11 @@ async function setup(t: any) {
   return { dir, p, control, config, mid, mock, wp, signed, host, gateway };
 }
 
-test("all 19 games can be opened and launched despite incomplete collection", async(t)=>{
+test("当前目录全部游戏均可在采集不完整时开放并启动", async(t)=>{
   const {p,mid}=await setup(t);
   p.readiness=new GameReadiness();
-  assert.equal(p.merchantCatalog(mid).length,19);
-  for(let game_id=1;game_id<=19;game_id++){
+  assert.equal(p.merchantCatalog(mid).length,GAME_CODES.length);
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++){
     assert.equal(p.readiness.get(GAME_CODES[game_id-1]).collection_complete,false);
     const launched=await p.launch(mid,{game_id,player_id:"p1"});
     assert.ok(launched.launch_url);
@@ -169,12 +179,12 @@ test("all 19 games can be opened and launched despite incomplete collection", as
 test("closed games reject all new launches before wallet callbacks", async (t) => {
   const {p,mid,control} = await setup(t);
   p.readiness = new GameReadiness();
-  for(let game_id=1;game_id<=19;game_id++) control.setGameAvailability("test",{game_id,enabled:false,version:control.gameAvailability(game_id).version});
-  assert.equal(control.merchant(mid).games.length,19);
-  assert.equal(p.catalog(mid).length,19);
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) control.setGameAvailability("test",{game_id,enabled:false,version:control.gameAvailability(game_id).version});
+  assert.equal(control.merchant(mid).games.length,GAME_CODES.length);
+  assert.equal(p.catalog(mid).length,GAME_CODES.length);
   assert.ok(p.catalog(mid).every((g:any)=>!g.integration_available && g.readiness.blockers.length>0));
   p.walletClient.call = async()=>{throw Error("blocked launch must not call wallet");};
-  for(let game_id=1;game_id<=19;game_id++) {
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) {
     await assert.rejects(p.launch(mid,{game_id,player_id:"p1"}),{code:"GAME_CLOSED"});
     await assert.rejects(p.multi!.launch(mid,{game_id,player_id:"p1"}),{code:"GAME_CLOSED"});
   }
@@ -198,7 +208,7 @@ test("four-place game sessions cannot bypass closure and can finish their existi
 
 test("all games inherit merchant RTP with a 96 percent fallback and scoped game overrides", async (t) => {
   const { p, mid } = await setup(t);
-  for (let id = 1; id <= 19; id++) {
+  for (let id = 1; id <= GAME_CODES.length; id++) {
     const policy = p.rtp.resolve(mid, "", id);
     assert.equal(policy.target_bp, 9600);
     assert.equal(policy.scope, "default");
@@ -221,7 +231,7 @@ test("all games inherit merchant RTP with a 96 percent fallback and scoped game 
     },
     true,
   );
-  for (let id = 1; id <= 19; id++)
+  for (let id = 1; id <= GAME_CODES.length; id++)
     assert.equal(p.rtp.resolve(mid, "", id).target_bp, 9000);
   p.rtp.policy(
     "test",
@@ -357,10 +367,10 @@ test("fixed round model freezes a purchased feature and replays its complete pay
   );
 });
 
-test("all 18 fixed round models replay every supported paid mode through merchant settlement", async (t) => {
+test("历史固定回合模型通过商户结算回放各自支持的付费模式", async (t) => {
   const { p, mid } = await setup(t),
     g = p.multi!;
-  for (let id = 2; id <= 19; id++) {
+  for (const id of LEGACY_FIXTURE_GAME_IDS.filter((id) => id !== 1)) {
     const code = GAME_CODES[id - 1],
       game = g.game(code),
       payloads = modePayloads(code);
@@ -602,21 +612,20 @@ test("cross-site iframe loads assets without cookies and authenticates APIs with
   assert.equal((await host(1, "/api/v1/wallet", token)).status, 401);
 });
 
-test("19 games: signed catalog, original client entry, wallet, settlement, idempotency and scoped admin records", async (t) => {
+test("当前完整目录与历史游戏入口、钱包结算、幂等和管理记录回归", async (t) => {
   const f = await setup(t),
     { p, mid, signed, host } = f;
-  assert.equal((await signed("/gtt/v1/games/list", {})).games.length, 19);
+  assert.equal((await signed("/gtt/v1/games/list", {})).games.length, GAME_CODES.length);
   assert.ok((await signed("/gtt/v1/games/list", {})).games.every((g: any) => g.minor_unit === 10000));
   assert.equal(
     (await (await fetch(`http://127.0.0.1:${f.wp}/sandbox/games`)).json()).data
       .games.length,
-    19,
+    GAME_CODES.length,
   );
   let expectedBalance = 100000000;
-  for (let i = 0; i < GAME_CODES.length; i++)
-    await t.test(GAME_CODES[i], async () => {
-      const code = GAME_CODES[i],
-        id = i + 1,
+  for (const code of LEGACY_FIXTURE_GAMES)
+    await t.test(code, async () => {
+      const id = gameNumber(code),
         launch = await signed("/gtt/v1/games/launch", {
           game_id: id,
           player_id: "p1",
@@ -725,7 +734,7 @@ test("19 games: signed catalog, original client entry, wallet, settlement, idemp
       );
       assert.equal((await host(id, "/api/v1/sessions", token, {})).status, 401);
       assert.equal(
-        (await host(id === 19 ? 1 : id + 1, "/api/v1/wallet", token)).status,
+        (await host(id === GAME_CODES.length ? 1 : id + 1, "/api/v1/wallet", token)).status,
         403,
       );
     });
@@ -752,12 +761,11 @@ test("19 games: signed catalog, original client entry, wallet, settlement, idemp
     );
 });
 
-test("original wire adapters settle through the merchant wallet for all 19 games", async (t) => {
+test("历史原始协议回放通过商户钱包结算", async (t) => {
   const { p, mid, signed, host } = await setup(t);
-  for (let i = 0; i < 19; i++)
-    await t.test(GAME_CODES[i], async () => {
-      const code = GAME_CODES[i],
-        id = i + 1,
+  for (const code of LEGACY_FIXTURE_GAMES)
+    await t.test(code, async () => {
+      const id = gameNumber(code),
         launch = await signed("/gtt/v1/games/launch", {
           game_id: id,
           player_id: "p1",
@@ -875,7 +883,7 @@ test("complete prebet rounds, exact wallet precision, revocation and uncertain s
   });
   // Wide finite cap keeps this existing purchase/continuation test independent of the zero-payout default.
   method(mock, "prebet_policy", mid, py.from([-1, 1000000]));
-  for (let id = 1; id <= 19; id++)
+  for (const id of LEGACY_FIXTURE_GAME_IDS)
     await t.test(GAME_CODES[id - 1], async () => {
       const code = GAME_CODES[id - 1],
         launch = await signed("/gtt/v1/games/launch", {
@@ -1055,7 +1063,7 @@ for (const bounds of [
   [-1, 0],
   ["0.000000001", "0.000000001"],
 ])
-  test(`all 19 merchant games: zero cap or downward monetary ceiling ${JSON.stringify(bounds)}`, async (t) => {
+  test(`历史游戏回放：零派彩上限或向下金额边界 ${JSON.stringify(bounds)}`, async (t) => {
     const f = await setup(t),
       { p, mid, control } = f;
     control.saveMerchant("test", {
@@ -1066,7 +1074,7 @@ for (const bounds of [
       },
     });
     method(f.mock, "prebet_policy", mid, py.from(bounds));
-    for (let id = 1; id <= 19; id++)
+    for (const id of LEGACY_FIXTURE_GAME_IDS)
       await t.test(GAME_CODES[id - 1], async () => {
         const code = GAME_CODES[id - 1],
           launch = await p.launch(mid, {
@@ -1171,13 +1179,13 @@ test("real game 0.56x search freezes the selected lower seed and reuses its wall
 });
 
 
-test("all 19 games fall back from invalid prebet to their RTP path and freeze the round",async(t)=>{
+test("历史游戏在无效预派彩时回退到各自 RTP 路径并冻结回合",async(t)=>{
   const {p,mid,control,signed}=await setup(t);
   let calls=0;
   const callback=server(async(req,res)=>{await body(req);calls++;send(res,200,{code:0,data:{maxWinMulti:[false,0]}});});
   const port=await listen(callback);t.after(()=>{callback.closeAllConnections();callback.close();});
   control.prebet(mid,{enabled:false,url:'http://127.0.0.1:'+port+'/decision'});
-  for(let id=1;id<=19;id++){
+  for(const id of LEGACY_FIXTURE_GAME_IDS){
     const code=GAME_CODES[id-1], game=p.multi!;
     const launch=await signed('/gtt/v1/games/launch',{game_id:id,player_id:'p1',external_username:'external-p1'});
     const token=new URL(launch.launch_url).searchParams.get('ops')!;

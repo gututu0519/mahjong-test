@@ -14380,5 +14380,116 @@
       "coin_minor": 1,
       "level": 5
     }
+  },
+  "cash-mania": {
+    "game_id": "cash-mania",
+    "title": "Cash Mania",
+    "version": "0.1.0",
+    "ruleset_id": "d03be466c341e592",
+    "config": {
+      "game_id": "cash-mania",
+      "version": "0.1.0",
+      "probability_model": "local-independent-reels-v1",
+      "original_probability_verified": false,
+      "supported_features": [
+        "normal-spin"
+      ],
+      "unsupported_features": [
+        "free-spins",
+        "respin",
+        "nudge",
+        "feature-buy",
+        "ante"
+      ],
+      "coin_sizes_minor": [
+        2,
+        20,
+        200
+      ],
+      "bet_levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "bet_factor": 10,
+      "side_values": [
+        0,
+        1,
+        5,
+        10,
+        50,
+        100
+      ],
+      "middle_values": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        10,
+        15,
+        20,
+        30,
+        40,
+        50,
+        100
+      ],
+      "side_weights": [
+        10,
+        10,
+        30,
+        30,
+        15,
+        5
+      ],
+      "middle_weights": [
+        0,
+        42,
+        26,
+        15,
+        8,
+        4,
+        2,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "payline": [
+        1,
+        4,
+        7
+      ],
+      "initial_board": [
+        3,
+        3,
+        3,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5
+      ],
+      "win_thresholds": {
+        "mw": 5,
+        "bw": 15,
+        "mgw": 25,
+        "smgw": 50
+      },
+      "max_win_multiplier": 2000
+    },
+    "sample_bet": {
+      "coin_minor": 2,
+      "level": 1
+    }
   }
 }

@@ -1,0 +1,50 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
+import {updateWorkbook} from '../update-workbook.mjs';
+
+const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..');
+const original=await fs.readFile(path.join(repo,'other/docs/project/品牌游戏与特殊玩法维护表.xlsx'));
+const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+const write=async(file,value)=>{await fs.mkdir(path.dirname(file),{recursive:true});await fs.writeFile(file,typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value,null,2));};
+const modules=process.env.ARTIFACT_NODE_MODULES||path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules');
+const require=createRequire(path.join(modules,'__tests__.cjs')),JSZip=require('jszip');
+async function fixture(){
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'mahjong-workbook-test-'));
+  execFileSync('git',['init','--quiet',root]);await write(path.join(root,'.gitignore'),'state/\n');
+  const book='other/docs/project/maintenance.xlsx',verifier='other/tooling/feature-maintenance/verifiers/fixture.mjs';
+  await write(path.join(root,book),original);await write(path.join(root,verifier),'export default function () { return true; }\n');
+  const entry={id:'test-purchase',game_id:19,game_code:'mahjong-ways2',name:'购买免费',sheet:'PG Soft',cell:'E6',before:'❌',after:'✅',verifier};
+  await write(path.join(root,'other/tooling/feature-maintenance/features.json'),{version:1,workbook:book,features:[entry]});
+  await write(path.join(root,'gateway/config/game-readiness.json'),{version:1,workbook_sha256:hash(original),games:[{id:19,code:'mahjong-ways2',special_features:[{name:'购买免费',implementation:'included'}]}]});
+  for(const name of ['evidence','implementation','validation'])await write(path.join(root,name+'.json'),JSON.stringify({fixture:name}));
+  const proof=async p=>({path:p,sha256:hash(await fs.readFile(path.join(root,p)))});
+  const report={version:1,status:'verified',feature:{id:entry.id,game_id:entry.game_id,game_code:entry.game_code,name:entry.name},target:{sheet:entry.sheet,cell:entry.cell,before:entry.before,after:entry.after},workbook_sha256:hash(original),evidence:[await proof('evidence.json')],implementation:[await proof('implementation.json')],validation:{passed:true,checks:[{name:'实际验收记录及专项测试',passed:true}],files:[await proof('validation.json'),await proof(verifier)],verifier:await proof(verifier)},created_at:new Date().toISOString()};
+  const reportPath=path.join(root,'report.json');await write(reportPath,report);
+  return {root,book:path.join(root,book),report,reportPath,entry,run:extra=>updateWorkbook({root,reportPath,stateDir:'state',artifactNodeModules:modules,...extra}),save:()=>write(reportPath,report)};
+}
+test('仅改批准单元格，原生部件完整保留、备份、摘要更新和重复执行均正确',async()=>{
+  const f=await fixture(),result=await f.run();assert.equal(result.status,'updated',JSON.stringify(result));assert.equal(result.changed,true);
+  const actual=await fs.readFile(f.book),config=JSON.parse(await fs.readFile(path.join(f.root,'gateway/config/game-readiness.json'),'utf8'));assert.equal(config.workbook_sha256,hash(actual));
+  const a=await JSZip.loadAsync(original),b=await JSZip.loadAsync(actual);
+  assert.deepEqual(Object.keys(a.files).sort(),Object.keys(b.files).sort());
+  const changed=[];for(const name of Object.keys(a.files))if(!a.files[name].dir&&hash(await a.file(name).async('nodebuffer'))!==hash(await b.file(name).async('nodebuffer')))changed.push(name);
+  assert.deepEqual(changed,['xl/worksheets/sheet1.xml']);
+  assert.equal(hash(await fs.readFile(path.join(f.root,'state/backups',hash(original)+'.xlsx'))),hash(original));
+  const again=await f.run();assert.equal(again.status,'updated');assert.equal(again.changed,false);
+});
+test('Excel 锁文件存在时保留原表，不加载作者流程',async()=>{const f=await fixture();await write(path.join(path.dirname(f.book),'~$'+path.basename(f.book)),'lock');const result=await f.run();assert.equal(result.status,'pending');assert.match(result.reason,/Excel/);assert.equal(hash(await fs.readFile(f.book)),hash(original));});
+test('任何验收检查失败都拒绝',async()=>{const f=await fixture();f.report.validation.checks[0].passed=false;await f.save();assert.equal((await f.run()).status,'rejected');});
+test('当前证据字节与报告不符时拒绝',async()=>{const f=await fixture();await write(path.join(f.root,'evidence.json'),'changed');assert.equal((await f.run()).status,'rejected');});
+test('目标不匹配登记时拒绝',async()=>{const f=await fixture();f.report.target.cell='C8';await f.save();assert.equal((await f.run()).status,'rejected');});
+test('仓库外路径和验证器目录穿越均拒绝',async()=>{const f=await fixture();f.report.evidence[0].path='../outside.json';await f.save();assert.equal((await f.run()).status,'rejected');const g=await fixture();g.entry.verifier='other/tooling/feature-maintenance/verifiers/../fixture.mjs';await write(path.join(g.root,'other/tooling/feature-maintenance/features.json'),{version:1,workbook:'other/docs/project/maintenance.xlsx',features:[g.entry]});assert.equal((await g.run()).status,'rejected');});
+test('验证器缺少登记、included未满足均保持pending',async()=>{const f=await fixture();f.entry.verifier=null;await write(path.join(f.root,'other/tooling/feature-maintenance/features.json'),{version:1,workbook:'other/docs/project/maintenance.xlsx',features:[f.entry]});assert.equal((await f.run()).status,'pending');const g=await fixture();const file=path.join(g.root,'gateway/config/game-readiness.json');const cfg=JSON.parse(await fs.readFile(file));cfg.games[0].special_features[0].implementation='missing';await write(file,cfg);assert.equal((await g.run()).status,'pending');});
+test('写入前CAS发现外部保存后取消覆盖',async()=>{const f=await fixture();const result=await f.run({beforeCommit:async({readinessPath})=>{await fs.appendFile(readinessPath,'\n');}});assert.equal(result.status,'pending',JSON.stringify(result));assert.match(result.reason,/基线已变化/);assert.equal(hash(await fs.readFile(f.book)),hash(original));});
+test('未被Git忽略的状态目录拒绝写入',async()=>{const f=await fixture();assert.equal((await f.run({stateDir:'tracked-state'})).status,'rejected');});
+test('生成期间实现代码改变时不得沿用旧报告写表',async()=>{const f=await fixture();const result=await f.run({beforeCommit:async()=>write(path.join(f.root,'implementation.json'),'new implementation')});assert.equal(result.status,'rejected',JSON.stringify(result));assert.equal(hash(await fs.readFile(f.book)),hash(original));});

@@ -1,3 +1,4 @@
+import { GAME_CODES } from "../../gateway/src/catalog.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, rmSync, readFileSync } from "node:fs";
@@ -68,7 +69,7 @@ test("native simulator: original page, signed wallet, refund tombstone, prebet a
   );
   await provider.initialize();
   provider.readiness = verifiedReadinessFixture();
-  for(let game_id=1;game_id<=19;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
+  for(let game_id=1;game_id<=GAME_CODES.length;game_id++) control.setGameAvailability("fixture",{game_id,enabled:true,version:0});
   const gateway = gatewayServer(
       provider,
       config,

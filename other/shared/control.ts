@@ -459,7 +459,7 @@ export class Control extends DB {
     check(
       typeof p.enabled === "boolean" &&
         Array.isArray(p.games) &&
-        p.games.every((v) => Number.isInteger(v) && v >= 1 && v <= 19) &&
+        p.games.every((v) => Number.isInteger(v) && v >= 1 && v <= GAME_CODES.length) &&
         new Set(p.games).size === p.games.length,
       "MERCHANT_INVALID",
     );
@@ -607,7 +607,7 @@ export class Control extends DB {
       check(
         typeof p.enabled === "boolean" &&
           Array.isArray(p.games) &&
-          p.games.every((v) => Number.isInteger(v) && v >= 1 && v <= 19) &&
+          p.games.every((v) => Number.isInteger(v) && v >= 1 && v <= GAME_CODES.length) &&
           new Set(p.games).size === p.games.length,
         "MERCHANT_INVALID",
       );

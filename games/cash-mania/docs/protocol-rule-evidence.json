@@ -1,0 +1,112 @@
+{
+  "game": {
+    "code": "cash-mania",
+    "provider_id": 1682240,
+    "catalog_id": 20,
+    "transport_salt": 23
+  },
+  "scope": "已捕获普通局与客户端字段的脱敏证据；不代表完整玩法、概率分布或原厂 RTP。",
+  "source_evidence": [
+    {
+      "request": 665,
+      "body_sha256": "61a54097cbd97245723c2445c7b40b14100b82ca76a9791f7d91e32c16e7c0c1"
+    },
+    {
+      "request": 696,
+      "body_sha256": "18f54fbf544dde551f7862160d1b2e480c1de23256fefdaedcf737c55d9795bd"
+    }
+  ],
+  "spin_count": 130,
+  "decode_errors": [],
+  "states": {
+    "1->1": 130
+  },
+  "checks_passed": {
+    "base_wager": 130,
+    "middle_line_payout": 130,
+    "ordinary_symbol_values": 130,
+    "transaction_encode_decode": 130,
+    "wallet_relations": 130,
+    "transport_byte_roundtrip": 130
+  },
+  "winning_samples": 28,
+  "nudge_samples": [
+    1027,
+    1159,
+    1307
+  ],
+  "special_symbol_values_observed": {
+    "12": [
+      1.0
+    ],
+    "13": [
+      1.0
+    ],
+    "14": []
+  },
+  "game_info": {
+    "cs": [
+      0.02,
+      0.2,
+      2.0
+    ],
+    "ml": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "mxl": 10,
+    "wt": {
+      "mw": 5.0,
+      "bw": 15.0,
+      "mgw": 25.0,
+      "smgw": 50.0
+    },
+    "maxwm": 2000
+  },
+  "rules": {
+    "columns": 3,
+    "rows": 3,
+    "index_order": "column-major",
+    "payline": [
+      1,
+      4,
+      7
+    ],
+    "side_values_per_cs_ml": [
+      1,
+      5,
+      10,
+      50,
+      100
+    ],
+    "middle_multipliers": [
+      1,
+      2,
+      3,
+      5,
+      10,
+      15,
+      20,
+      30,
+      40,
+      50,
+      100
+    ],
+    "bet_factor": 10
+  },
+  "not_observed": [
+    "免费局响应",
+    "购买功能响应",
+    "重旋响应",
+    "原厂概率分布",
+    "完整 GameRule 文本"
+  ]
+}

@@ -20,6 +20,15 @@ import * as py from "../shared/compat/runtime.js";
 import { PG } from "../../gateway/src/pg.js";
 import { components } from "../tooling/cli.js";
 
+// 历史回放资料的明确范围；新游戏由其生成引擎和协议专项测试覆盖。
+const LEGACY_FIXTURE_GAMES = [
+  "buffalo-win", "captains-bounty", "fortune-rabbit", "wild-bandito",
+  "tower-run-treasure-steps", "great-game-serengeti", "dr-zappo", "le-vampire",
+  "wicked-grin", "roma-x-10000", "money-pot-deluxe", "3-billion-vaults",
+  "jokers-fortune-winx", "fortune-gems2", "super-ace", "big-bass-bonanza",
+  "sweet-bonanza-pop", "gates-of-olympus", "mahjong-ways2",
+];
+
 async function fixture(t: any) {
   const dir = mkdtempSync(join(tmpdir(), "game-services-"));
   const control = new Control(
@@ -55,7 +64,7 @@ async function fixture(t: any) {
     ...control.merchant(mid),
     wallet_url: "http://127.0.0.1:" + wp,
   });
-  for (let id = 1; id <= 19; id++)
+  for (let id = 1; id <= GAME_CODES.length; id++)
     control.setGameAvailability("test", {
       game_id: id,
       enabled: true,
@@ -130,7 +139,7 @@ async function fixture(t: any) {
   return f;
 }
 
-test("all 19 merchant games calculate through registered HTTP services, with no embedded engine instances", async (t) => {
+test("历史游戏通过注册 HTTP 服务计算且不创建内嵌引擎实例", async (t) => {
   const f = await fixture(t),
     registry = f.p.multi!.remote!;
   for (const origin of [
@@ -147,7 +156,7 @@ test("all 19 merchant games calculate through registered HTTP services, with no 
       registry.select("legacy", "player", "fortune-rabbit", { phase: "free" }),
     { code: "GAME_VERSION_REQUIRED" },
   );
-  for (const code of GAME_CODES) {
+  for (const code of LEGACY_FIXTURE_GAMES) {
     const r = await f.register(code, "r1");
     await registry.activate("test", { id: r.id, revision: 0 });
     const token = await f.launch(code);

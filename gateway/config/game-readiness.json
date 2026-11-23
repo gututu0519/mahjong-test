@@ -1120,6 +1120,39 @@
         "py/games/mahjong_ways2/README.md"
       ],
       "reviewed_at": "2026-11-06"
+    },
+    {
+      "id": 20,
+      "code": "cash-mania",
+      "brand": "PG Soft",
+      "display_name": "Cash Mania",
+      "collection_complete": false,
+      "blockers": [
+        "现有抓取未包含免费/重旋的完整状态链，暂未接入这些特殊玩法",
+        "本地生成权重不代表原厂概率或原厂RTP；中列推移尚未完整还原"
+      ],
+      "special_features": [
+        {
+          "name": "普通单线金额与倍数结算",
+          "implementation": "included"
+        },
+        {
+          "name": "中列推移",
+          "implementation": "incomplete"
+        },
+        {
+          "name": "特殊重旋状态链",
+          "implementation": "incomplete"
+        }
+      ],
+      "evidence": [
+        "2026-11-23本地抓取确认原厂游戏ID1682240及Cash Mania名称",
+        "49条普通Spin经客户端schema解码，二进制往返和钱包关系均通过"
+      ],
+      "sources": [
+        "services/cash-mania/README.md"
+      ],
+      "reviewed_at": "2026-11-23"
     }
   ]
 }
