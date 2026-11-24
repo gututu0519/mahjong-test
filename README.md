@@ -2,6 +2,10 @@
 
 项目按四个业务目录组织：**games、gateway、admin、other**。当前 Node 运行数据已通过保留数据的迁移切换到 **PostgreSQL 17**；原 SQLite 文件作为切换前备份保留。
 
+## 抓取游戏的原版复刻
+
+后续抓取游戏统一以原版客户端和抓取素材还原玩家界面，并用本地真实回合、钱包流水和原版历史验收。在本项目发送「按原版抓取流程复刻《游戏名》，执行到本地可玩并给我验收证据。」即可启动。[简版提示词](抓取原始文件后转换成游戏的提示词.txt) · [可独立转发的完整提示词](other/docs/project/captured-game-prompt.txt) · [完整步骤与 Cash Mania 实例](other/docs/project/captured-game-workflow.md)
+
 ## 目录
 
 ```text
