@@ -1,0 +1,52 @@
+{
+  "great-bear": {
+    "entry": "igt/v0/IGT_vso_17326/index.html",
+    "index": "instance/config/assets.json",
+    "rows": "resources",
+    "source": {
+      "field": "source",
+      "sha256": "source_sha256",
+      "host": "static.funapptoday.com"
+    },
+    "output": {
+      "field": "output",
+      "sha256": "output_sha256",
+      "derived_rows": [
+        "converted_icons"
+      ]
+    },
+    "bridges": {},
+    "client_root_env": "GTT_GREAT_BEAR_CLIENT_ROOT",
+    "blocking": [],
+    "known_gaps": [
+      "免费旋转、额外升级及五连 Wild 倍率缺少完整实测样本。"
+    ]
+  },
+  "cash-mania": {
+    "entry": "1682240/index.html",
+    "index": "frontend/fixtures/resource-index.json",
+    "rows": "resources",
+    "source": {
+      "field": "source",
+      "sha256": "source_sha256",
+      "host": null
+    },
+    "output": {
+      "field": "path",
+      "sha256": "sha256",
+      "derived_rows": []
+    },
+    "bridges": {
+      "local-bootstrap.js": "5962954f25f451bc473344bbe3477f00c7dcf917527f6f79684d152066218e3f",
+      "local-frame-clock.js": "db287b9b93b353c36e17fe6d26ef82a887d0ca76e76c0a01a28a5c86b57bd51c"
+    },
+    "client_root_env": null,
+    "blocking": [
+      "原启动器的离线 DOM 核验观察到 4 个 SVG 节点，原记录见采集工作区 other/diagnostics/cash-mania/acceptance-01a20841/original-client-verification.json 的 runtime_svg_nodes_observed_offline 字段。须识别实际图形、从原图转换成 Adam7 PNG 并在页面验证替换。",
+      "此项目版本的本地启动桥仍删除共享模块所需的资源根参数 or，且服务尚未接入导出客户端目录。"
+    ],
+    "known_gaps": [
+      "当前适配索引尚缺规则、赔付表和历史等菜单对应的 25 项按需资源。"
+    ]
+  }
+}

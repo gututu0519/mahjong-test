@@ -11,6 +11,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 
+from capture_layout import plain_directory, session_folder
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / 'captures'
@@ -109,7 +110,14 @@ class QualityHandler(BaseHTTPRequestHandler):
         sid = match.group(1)
         try:
             detail = self.server.detail_source(sid)
-            result = self.server.quality_cache.get(detail, self.server.capture_root / sid)
+            root = self.server.capture_root
+            folder = session_folder(root, sid)
+            if folder is None:
+                # 旧录制进程可以先上报会话，再建立批次目录。
+                folder = root / sid
+                if not plain_directory(root) or folder.exists() or folder.is_symlink():
+                    raise ValueError('抓取批次路径无效')
+            result = self.server.quality_cache.get(detail, folder)
             result['transport'] = 'capture-compatibility'
             return self.send_json(200, result)
         except HTTPError as error:

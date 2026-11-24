@@ -1,48 +1,276 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-target-capture="__GAME_CAPTURE_VERSION__" data-parallel-capture="__PARALLEL_CAPTURE_VERSION__">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Response Capture · 请求响应抓取</title>
 <style>
 :root{color-scheme:dark;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#e9edf5;background:#101319;font-size:14px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a.button{border:1px solid #36414c;background:#242d39;border-radius:8px;color:#edf4ff;padding:11px 17px;cursor:pointer;text-decoration:none;white-space:nowrap}button:hover,a.button:hover{background:#354152}button:disabled{opacity:.4;cursor:default}.primary{background:#bcf47b;color:#14200e;border-color:#bcf47b;font-weight:700}.primary:hover{background:#d2ff9f}header{padding:25px 36px;border-bottom:1px solid #2b303b;display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:700;letter-spacing:-.5px}.brand span{color:#bcf47b;margin-right:12px}header small{color:#9ca9bc}.wrap{max-width:1500px;margin:auto;padding:35px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 12px}p{color:#9ca9bc;line-height:1.7}.intro{margin-bottom:24px}.panel{background:#191e27;border:1px solid #2c3542;border-radius:12px;padding:22px}.form{display:flex;gap:10px}input,select{min-width:0;border:1px solid #394252;border-radius:8px;background:#10151d;color:#edf4ff;padding:11px 14px}input{flex:1}input:focus,select:focus{outline:2px solid #bcf47b;outline-offset:1px}.hint{font-size:12px;margin:12px 0 0;color:#8d9aad}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat{padding:18px 22px;border:1px solid #2c3542;border-radius:10px;background:#191e27}.stat label{color:#9ca9bc;font-size:12px;display:block;margin-bottom:9px}.stat strong{font-size:25px;font-weight:600}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.toolbar h2{font-size:17px;margin:0}.controls{display:flex;gap:8px;min-width:0}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:18px}.tablebox{overflow:auto;max-height:520px;min-height:340px}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th{color:#9ca9bc;position:sticky;top:0;background:#191e27;z-index:1}td,th{padding:12px 10px;border-bottom:1px solid #2b3340}td.url{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.selected{background:#293644}.ok{color:#bcf47b}.bad{color:#ffa295}.muted{color:#8895a9}.empty{color:#8895a9;text-align:center;padding:80px 20px;line-height:1.8}.detail{min-width:0}.detail h3{font-size:15px;margin:0 0 14px}.tabs{display:flex;gap:6px;margin:16px 0}.tabs button{font-size:12px;padding:7px 12px}.tabs button.active{background:#bcf47b;color:#14200e}.detailurl{font:12px/1.6 Consolas,monospace;color:#a9b9cc;overflow-wrap:anywhere;max-height:76px;overflow:auto}pre{margin:0;white-space:pre-wrap;word-break:break-word;font:12px/1.65 Consolas,monospace;background:#0e141c;border:1px solid #293441;border-radius:8px;padding:15px;max-height:420px;overflow:auto;min-height:220px}#notice{display:none;color:#ffcb8a;background:#312a21;padding:12px 16px;border-radius:8px;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere}.footer{display:flex;align-items:center;gap:12px;margin-top:22px;color:#9ca9bc;font-size:12px}#history{max-width:420px;flex:1}a{color:#bcf47b}[hidden]{display:none!important}@media(max-width:1000px){.layout{grid-template-columns:1fr}.wrap{padding:22px}.toolbar{flex-wrap:wrap}.controls{width:100%}.stats{gap:8px}.stat{padding:15px}.form{flex-wrap:wrap}.form input{flex-basis:100%}}@media(max-width:600px){header{padding:20px}.stats{grid-template-columns:1fr 1fr}.controls{flex-wrap:wrap}.controls input{width:100%}h1{font-size:25px}}
 .quality-panel{margin-bottom:22px}.quality-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}.quality-heading h2{font-size:18px;margin:0 14px 10px 0}.quality-heading label{margin:0 8px 10px 0;color:#a9b9cc}.quality-heading select{max-width:320px;margin-bottom:10px}.quality-banner{border-left:4px solid #f0c774;padding:12px 15px;background:#27251e;border-radius:6px;margin:4px 0 12px}.quality-banner strong{display:block;font-size:16px;line-height:1.6}.quality-banner p{margin:4px 0 0}.quality-good{color:#c5ef9f;background:#202d20;border-color:#9fd774}.quality-warn{color:#f0d493;background:#30291e;border-color:#f0c774}.quality-bad{color:#ffb0a8;background:#322322;border-color:#ed978d}.quality-badge{display:inline-block;padding:3px 8px;border:1px solid;border-radius:5px;font-size:12px;line-height:1.5;margin-right:8px}.quality-game{border:1px solid #394252;border-radius:8px;padding:15px;margin-top:12px}.quality-game h3{font-size:15px;margin:0 0 9px;line-height:1.6}.quality-game p{margin:6px 0;font-size:13px}.quality-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.quality-metric{background:#111720;border-radius:6px;padding:10px}.quality-metric strong{display:block;margin:5px 0;font-size:18px}.quality-metric span,.quality-metric small{font-size:12px;color:#a8b4c6;line-height:1.6}.quality-game details{border-top:1px solid #303b49;margin-top:12px;padding-top:10px}.quality-game summary{cursor:pointer;color:#bdcadd;line-height:1.7}.quality-game ul{padding-left:20px;margin:8px 0;line-height:1.8;overflow-wrap:break-word;word-break:break-word}.quality-feature{border-top:1px solid #303b49;padding:10px 0}.quality-feature:first-child{border-top:0}.quality-feature strong{font-size:13px}.quality-next{color:#d2dded!important}.quality-small{font-size:12px!important;color:#9ca9bc!important}#quality-games{max-height:680px;overflow:auto}#quality-meta{margin:8px 0 0}@media(max-width:600px){.quality-metrics{grid-template-columns:1fr}.quality-heading select{width:100%;max-width:none}.quality-game{padding:12px}.quality-banner strong{font-size:14px}}
+.library-head,.library-tools,.library-pager{display:flex;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.library-head h2{margin:0 auto 0 0}.library-tools label,.library-tools input,.library-tools select,.library-pager button{margin:4px 8px 4px 0}
+.library-tools input{min-width:200px;max-width:100%}.library-list{width:100%;overflow:auto}.library-list table{width:100%;min-width:560px;border-collapse:collapse;table-layout:auto}
+.library-list th,.library-list td{text-align:left;white-space:normal;max-width:340px;padding:8px;overflow-wrap:break-word}
+.library-list tbody tr{cursor:default}.library-list summary{cursor:pointer}.library-list small{display:block;color:#afbdce}.library-pager{margin:8px 0 0}.library-hint{margin:6px 0 12px}.library-status{font-weight:600}
+.login-preset{margin:16px 0 0;padding:0;border:0}.login-preset legend{padding:0 0 6px;font-weight:600}.login-fields{display:flex;flex-wrap:wrap}.login-fields label{display:flex;align-items:center;margin:4px 12px 4px 0}.login-fields input{margin-left:8px;width:180px}.library-grab{padding:5px 12px}.library-feedback{margin:0 0 10px;color:#d3dfec}.library-feedback:empty{display:none}
 </style>
+<style>.footer{flex-wrap:wrap}.footer select{min-width:12em}.library-view{padding:5px 10px;margin-left:6px}</style>
 </head>
 <body>
 <header><div class="brand"><span>◉</span>Response Capture</div><small>本地浏览器抓取工具</small></header>
 <main class="wrap">
 <div class="intro"><h1>一个网址，查看每一次响应。</h1><p>启动独立浏览器，在目标页面中登录、点击或滚动。请求与响应会持续保存在本机。</p></div>
-<section class="panel"><form id="form" class="form"><input id="url" aria-label="目标网址" type="url" required placeholder="https://example.com" autocomplete="url"><button class="primary" id="start">开始抓取 ↗</button><button type="button" id="stop" disabled>停止并保存</button><a class="button" id="download" hidden>下载 ZIP ↓</a></form><p class="hint">记录当前抓取浏览器中实际发生的请求，包括新标签页。停止后可下载 HAR、响应文件和 WebSocket 消息。</p><p id="decoded-status" class="hint" role="status"></p><div id="notice" role="status"></div></section>
+<section class="panel"><form id="form" class="form"><input id="url" aria-label="目标网址" type="url" required placeholder="https://example.com" autocomplete="url"><button class="primary" id="start">开始抓取 ↗</button></form>
+<div class="footer"><label for="history">历史抓取</label><select id="history"><option value="">选择抓取批次</option></select><button type="button" id="stop" disabled>停止并保存</button><a class="button" id="download" hidden>下载 ZIP ↓</a><a id="source-capture" target="_blank" rel="noopener noreferrer" hidden></a></div>
+<p class="hint">可同时打开多个游戏。选择抓取批次后可查看请求、停止并保存或下载该批次。数据保存在项目 captures 文件夹。</p>
+<fieldset class="login-preset"><legend>游戏清单预设登录 · sdstest.ink</legend><div class="login-fields">
+<label for="preset-account">账号<input id="preset-account" type="text" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+<label for="preset-password">密码<input id="preset-password" type="password" autocomplete="off"></label>
+</div><p id="preset-help" class="hint">在未抓游戏行点击“抓取”即可使用这组账号密码登录大厅。预设仅在当前页面有效。</p></fieldset>
+<p id="decoded-status" class="hint" role="status"></p><div id="notice" role="status"></div></section>
+<section class="panel" aria-labelledby="library-title">
+<div class="library-head"><h2 id="library-title">跨批次游戏清单</h2><button type="button" id="library-recheck">重新核对历史</button></div>
+<div class="library-tools">
+<label for="library-filter">采集状态</label><select id="library-filter"><option value="unseen">未抓</option><option value="partial">待补抓</option><option value="unknown">待识别</option><option value="all">全部</option></select>
+<label for="library-search">查找游戏</label><input id="library-search" type="search" placeholder="中文名、英文名或游戏 ID">
+</div>
+<p id="library-summary" role="status" class="library-hint">正在读取历史抓取…</p>
+<p id="library-feedback" role="status" class="library-feedback"></p>
+<button type="button" id="library-find-all" hidden>在全部状态中查找</button>
+<div class="library-list"><table aria-label="跨批次游戏清单"><thead><tr><th>游戏</th><th>品牌 / 对外 ID</th><th>采集状态</th><th>已保存的证据</th><th>操作</th></tr></thead><tbody id="library-rows"></tbody></table></div>
+<div class="library-pager"><button type="button" id="library-prev" disabled>上一页</button><button type="button" id="library-next" disabled>下一页</button><span id="library-page"></span></div>
+<p class="hint">未抓表示在已核对批次里还没找到能归属该游戏的专属数据。大厅目录、封面、仅取得启动链接均不算。玩法和资源缺口可在对应批次的「游戏采集检查」中查看。</p>
+</section>
 <section class="stats"><div class="stat"><label>抓取状态</label><strong id="state">等待开始</strong></div><div class="stat"><label>请求数量</label><strong id="count">0</strong></div><div class="stat"><label>已保存响应</label><strong id="saved">0</strong></div><div class="stat"><label>响应总大小</label><strong id="size">0 B</strong></div></section>
 <section class="panel quality-panel" aria-labelledby="quality-title"><div class="quality-heading"><h2 id="quality-title">游戏采集检查</h2><div><label for="quality-game-select">查看游戏</label><select id="quality-game-select"><option value="">全部游戏</option></select></div></div><div id="quality-banner" class="quality-banner quality-warn" role="status" aria-live="polite"><strong id="quality-headline">等待选择抓取记录</strong><p id="quality-scope" class="quality-small">这里只检查原站采集证据。已观察资源保存齐，不等于游戏全部资源与玩法已采集完整。</p></div><div id="quality-games"></div><p id="quality-meta" class="hint">每 5 秒检查一次；不会自动停止抓取。</p></section>
 <section class="panel"><div class="toolbar"><h2>请求记录 <span id="ws" class="muted"></span></h2><div class="controls"><button id="clear-records" type="button" disabled title="清空当前列表和计数，保留抓取文件">清空记录</button><button id="show-all" type="button" hidden>显示全部</button><input id="filter" aria-label="搜索请求" placeholder="搜索网址 / 状态码"><select id="type" aria-label="请求类型"><option value="">全部类型</option><option>document</option><option>xhr</option><option>fetch</option><option>script</option><option>stylesheet</option><option>image</option><option>font</option><option>media</option><option>other</option></select></div></div><p class="hint" id="clear-hint" role="status" style="margin:0 0 14px">清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。</p><div class="layout"><div class="tablebox"><table><thead><tr><th>状态</th><th>方法</th><th>网址</th><th>类型</th><th>大小</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">等待第一条请求<br>输入网址，然后点击「开始抓取」</div></div><aside class="detail"><h3>响应详情</h3><div id="detailurl" class="detailurl">选择一条请求，查看响应内容和请求头。</div><div class="tabs"><button data-tab="body" class="active">响应体</button><button data-tab="headers">响应头</button><button data-tab="request">请求信息</button></div><pre id="preview">尚未选择请求</pre></aside></div></section>
-<div class="footer"><label for="history">历史抓取</label><select id="history"><option value="">选择历史记录</option></select><span>数据保存于项目 captures 文件夹</span></div>
 <p class="hint">长连接、下载流、浏览器限制或停止时仍在传输的响应可能无法取得完整内容，列表会标注。响应文件是浏览器解码后的内容。ZIP 可能包含登录凭据或个人数据，请妥善保管。</p>
 </main>
 <script>
 const $=id=>document.getElementById(id), token='__TOKEN__';
-let sid=null, data=null, selected=null, tab='body', previewVersion=0, polling=false;
+const legacyCapture=['8090','8092'].includes(location.port) && ['127.0.0.1','localhost'].includes(location.hostname) &&
+  token!==('__'+'TOKEN__') && document.documentElement.dataset.parallelCapture!=='1';
+const upgradedCaptureUrl='http://127.0.0.1:8093/';
+if(legacyCapture){
+  $('preset-account').disabled=true;$('preset-password').disabled=true;
+  $('preset-help').textContent='此端口正在运行旧版本。点击游戏行的“抓取”将在新版采集器中选中该游戏，再填写预设账号密码。';
+  const upgrade=document.createElement('a');
+  upgrade.href=upgradedCaptureUrl;upgrade.target='_blank';upgrade.rel='noopener noreferrer';upgrade.textContent='打开新版采集器';
+  $('preset-help').appendChild(document.createTextNode(' '));$('preset-help').appendChild(upgrade);
+}
+let sid=null, data=null, selected=null, tab='body', previewVersion=0;
+let selectionVersion=0, historyVersion=0, listing=null, lastFeedback='';
+const sessionsById=new Map(), pendingStarts=new Set(), pendingStops=new Set(), refreshing=new Set();
 const cleared=new Map();
 function cutoff(){if(!sid)return 0;if(!cleared.has(sid)){let value=0;try{value=Number(localStorage.getItem('capture-clear:'+sid))||0}catch{}cleared.set(sid,value)}return cleared.get(sid)}
 function setCutoff(value){cleared.set(sid,value);try{if(value)localStorage.setItem('capture-clear:'+sid,String(value));else localStorage.removeItem('capture-clear:'+sid)}catch{}}
 function visibleRows(){return data&&data.id===sid?data.rows.filter(r=>r.id>cutoff()):[]}
-const labels={starting:'正在启动',recording:'正在抓取',stopping:'正在保存',completed:'已保存',error:'启动失败'};
+const labels={starting:'正在启动',recording:'正在抓取',stopping:'正在保存',completed:'已保存',complete:'已保存',error:'抓取失败'};
 const size=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(1)+' MB';
 function notice(s){$('notice').textContent=s||'';$('notice').style.display=s?'block':'none'}
-async function api(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Capture-Token':token},body:JSON.stringify(body)});const result=await response.json();if(!response.ok)throw Error(result.error||'请求失败');return result}
-function resetDetail(){if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,null);selected=null;previewVersion++;$('detailurl').textContent='选择一条请求，查看响应内容和请求头。';$('preview').textContent='尚未选择请求'}
-function render(){if(!data||data.id!==sid)return;if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,data.state);const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=['starting','recording','stopping'].includes(data.state);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';$('start').disabled=active;$('stop').disabled=!active||data.state==='stopping';$('download').hidden=active;$('download').href='/api/sessions/'+sid+'/download';$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded&&data.decoded.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
+async function api(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Capture-Token':token},body:JSON.stringify(body)});if(!response.ok){let message='请求失败';try{message=(await response.json()).error||message}catch(_){}const error=Error(message);error.status=response.status;throw error}return response.json()}
+function isLive(session){return session && ['starting','recording','stopping'].includes(session.state);}
+const stateOrder={starting:0,recording:1,stopping:2,completed:3,error:3};
+function laterState(previous,state){return previous && stateOrder[previous.state]>stateOrder[state]?previous.state:state;}
+function stageLabel(session){
+  if((session.state==='starting' || session.state==='recording') && session.game_stage)return session.game_stage;
+  return labels[session.state]||session.state;
+}
+function captureKey(site,url){return site?'game/'+site:'url/'+String(url||'').trim();}
+function liveFor(site,url){
+  const key=captureKey(site,url);
+  return Array.from(sessionsById.values()).find(s=>isLive(s) && captureKey(s.target_game && s.target_game.site,s.url)===key);
+}
+function captureName(session){
+  const g=session.target_game || {};
+  const identity=[String(g.brand||g.provider||'').toUpperCase(),g.externalId||g.ext,g.zh||g.name].filter(Boolean).join('-');
+  return session.display_name || identity || '待识别批次 '+session.id.slice(0,8);
+}
+function historyLabel(session){
+  const date=new Date(session.created);
+  return [captureName(session),isNaN(date.getTime())?'':date.toLocaleString(),labels[session.state]||session.state].filter(Boolean).join(' · ');
+}
+function updateHistory(){
+  const picker=$('history');
+  const records=Array.from(sessionsById.values()).sort((a,b)=>(b.created||'').localeCompare(a.created||''));
+  records.forEach((s,index)=>{
+    let option=picker.options[index+1];
+    if(!option){option=new Option();picker.add(option);}
+    if(option.value!==s.id)option.value=s.id;
+    const title=historyLabel(s);
+    if(option.text!==title)option.text=title;
+  });
+  while(picker.options.length>records.length+1)picker.remove(picker.options.length-1);
+  picker.value=sid||'';
+  for(const id of pendingStops)if(!isLive(sessionsById.get(id)))pendingStops.delete(id);
+  updateStopControl();
+  updateStartControls();
+}
+function updateStopControl(){
+  const session=sessionsById.get(sid);
+  $('stop').disabled=!data || data.id!==sid || !isLive(session) || session.external_session || session.state==='stopping' || pendingStops.has(sid);
+}
+function updateStartControls(){
+  const url=$('url').value;
+  $('start').disabled=pendingStarts.has(captureKey(null,url)) || Boolean(liveFor(null,url));
+  document.querySelectorAll('.library-grab').forEach(button=>{
+    const site=button.dataset.site, identified=button.dataset.identified==='yes';
+    const session=site && liveFor(site), pending=pendingStarts.has(captureKey(site));
+    button.disabled=!identified || pending || Boolean(session);
+    button.title=!identified?'站内游戏 ID 无法唯一确认，请重新核对历史。':pending?'正在打开该游戏':session?'该游戏已在抓取':'登录大厅并进入该游戏';
+    const view=button.nextElementSibling, status=view.nextElementSibling;
+    view.hidden=!session;
+    status.textContent=pending?'正在启动':session?stageLabel(session):'';
+  });
+}
+function trackSnapshot(session){
+  const previous=sessionsById.get(session.id)||{};
+  const updated=Object.assign({},previous);
+  for(const key of ['id','state','created','target_game','display_name','url','game_stage'])if(session[key]!=null)updated[key]=session[key];
+  sessionsById.set(session.id,updated);
+  updateHistory();
+  if(updated.target_game){
+    const feedback=captureName(updated)+' · '+(session.error||stageLabel(updated));
+    if(feedback!==lastFeedback)$('library-feedback').textContent=feedback;
+    lastFeedback=feedback;
+  }
+}
+async function startCapture(game){
+  const site=game && game.site, url=game?null:$('url').value.trim(), key=captureKey(site,url);
+  if(pendingStarts.has(key) || liveFor(site,url))return;
+  const feedback=$('library-feedback');
+  if(game && legacyCapture){
+    const url=upgradedCaptureUrl+'#capture-game='+encodeURIComponent(game.site);
+    window.open(url,'_blank','noopener,noreferrer');
+    feedback.textContent='请在新版采集器中填写账号密码并抓取该游戏。';
+    const open=document.createElement('a');
+    open.href=url;open.target='_blank';open.rel='noopener noreferrer';open.textContent='打开所选游戏的抓取页';
+    feedback.appendChild(document.createTextNode(' '));feedback.appendChild(open);
+    return;
+  }
+  let payload;
+  if(game){
+    const account=$('preset-account'), password=$('preset-password');
+    const missing=!account.value.trim()?account:!password.value?password:null;
+    if(missing){
+      feedback.textContent='请先填写 sdstest.ink 的预设登录'+(missing===account?'账号':'密码')+'。';
+      missing.focus();
+      return;
+    }
+    payload={game_id:game.site,account:account.value.trim(),password:password.value};
+    feedback.textContent='正在为“'+(game.zh||game.name)+'”打开抓取浏览器…';
+  }else{
+    payload={url:url};
+    feedback.textContent='';
+  }
+  const choice=++selectionVersion;
+  pendingStarts.add(key);updateStartControls();notice('');
+  let started=false;
+  try{
+    const result=await api(game?'/api/start-game':'/api/start',payload);
+    started=true;
+    historyVersion++;
+    sessionsById.set(result.id,Object.assign({state:'starting',created:new Date().toISOString(),url:url,target_game:game?{site:site,brand:game.brand.toUpperCase(),ext:game.ext,name:game.name,zh:game.zh}:null},sessionsById.get(result.id),result));
+    updateHistory();
+    if(choice===selectionVersion)chooseSession(result.id);
+    await history();
+  }catch(error){
+    const legacy=game && !started && error.status===404 && ['8090','8092'].includes(location.port);
+    const message=legacy?'此采集器尚未加载按游戏抓取功能。请打开新版采集器并在新页面填写预设账号密码。':error.message;
+    notice(message);
+    if(game){
+      feedback.textContent=message;
+      if(legacy){
+        const link=document.createElement('a');
+        link.href=upgradedCaptureUrl+'#capture-game='+encodeURIComponent(game.site);link.target='_blank';link.rel='noopener noreferrer';link.textContent='打开新版采集器';
+        feedback.appendChild(document.createTextNode(' '));feedback.appendChild(link);
+      }
+    }
+    if(error.status===409)pollHistory();
+  }finally{pendingStarts.delete(key);updateStartControls();}
+}
+function resetDetail(qualitySession=sid){if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(qualitySession,null);selected=null;previewVersion++;$('detailurl').textContent='选择一条请求，查看响应内容和请求头。';$('preview').textContent='尚未选择请求'}
+function render(){if(!data||data.id!==sid)return;if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,data.state);const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=isLive(data);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';trackSnapshot(data);updateStopControl();$('download').hidden=active;$('download').href='/api/sessions/'+sid+'/download';$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded&&data.decoded.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
 function renderRows(){if(!data||data.id!==sid)return;const needle=$('filter').value.toLowerCase(),kind=$('type').value;const rows=visibleRows().filter(r=>(!kind||r.type===kind)&&(r.url.toLowerCase().includes(needle)||String(r.status).includes(needle)));$('empty').hidden=rows.length>0;$('empty').textContent=visibleRows().length?'没有匹配的请求':'等待请求，请在抓取浏览器中操作页面';while($('rows').firstChild)$('rows').removeChild($('rows').firstChild);for(const r of rows){const tr=document.createElement('tr');tr.className=selected===r.id?'selected':'';const status=r.status===null?(r.state==='pending'?'…':'失败'):String(r.status);for(const [i,value] of [status+(r.state==='unavailable'?' *':''),r.method,r.url,r.type,size(r.size)].entries()){const td=document.createElement('td');td.textContent=value;if(i===0)td.className=r.state==='failed'||r.state==='unavailable'||r.status>=400?'bad':'ok';if(i===2){td.className='url';td.title=r.url}tr.append(td)}tr.addEventListener('click',()=>{selected=r.id;renderRows();detail()});$('rows').append(tr)}}
 async function detail(){const version=++previewVersion;const row=visibleRows().find(r=>r.id===selected);if(!row)return;$('detailurl').textContent=row.method+' '+row.url;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));if(tab==='headers'){$('preview').textContent=JSON.stringify(row.response_headers,null,2);return}if(tab==='request'){$('preview').textContent=JSON.stringify(row,null,2);return}if(!row.body){$('preview').textContent=row.error||'响应仍在传输，请稍后重新选择该请求。';return}$('preview').textContent='正在读取响应…';try{const result=await api('/api/sessions/'+sid+'/body/'+row.id);if(version!==previewVersion)return;let text=result.text;if(result.encoding==='text'&&row.mime.includes('json')){try{text=JSON.stringify(JSON.parse(text),null,2)}catch{}}$('preview').textContent=(result.encoding==='base64'?'二进制响应 · Base64 预览\n\n':'')+text+(result.truncated?'\n\n[预览已截断；ZIP 中包含已保存的完整文件]':'')}catch(e){if(version===previewVersion)$('preview').textContent=e.message}}
-async function refresh(){if(!sid||polling)return;polling=true;const current=sid;try{const value=await api('/api/sessions/'+current);if(current===sid){data=value;render()}}catch(e){notice(e.message)}finally{polling=false}}
-async function history(){const sessions=await api('/api/sessions');while($('history').firstChild)$('history').removeChild($('history').firstChild);$('history').add(new Option('选择历史记录',''));for(const s of sessions)$('history').add(new Option(new Date(s.created).toLocaleString()+' · '+s.url,s.id));if(sid)$('history').value=sid;return sessions}
-$('form').addEventListener('submit',async e=>{e.preventDefault();$('start').disabled=true;notice('');try{const result=await api('/api/start',{url:$('url').value});sid=result.id;resetDetail();await refresh();await history()}catch(e){notice(e.message);$('start').disabled=false}});
+function chooseSession(id){
+  const session=sessionsById.get(id);
+  if(!session)return;
+  selectionVersion++;
+  sid=id;data=null;resetDetail(session.external_session?null:id);
+  $('history').value=id;$('stop').disabled=true;$('download').hidden=true;
+  $('rows').textContent='';$('empty').hidden=false;$('empty').textContent='正在读取该批次的请求…';
+  $('state').textContent=labels[session.state]||session.state;$('state').className='';
+  $('count').textContent='0';$('saved').textContent='0';$('size').textContent='0 B';$('ws').textContent='';
+  $('clear-records').disabled=true;$('show-all').hidden=true;$('decoded-status').textContent='';
+  lastFeedback='';$('library-feedback').textContent='';notice('');
+  const source=$('source-capture');source.hidden=true;
+  if(session.external_session){
+    const port=Number(session.source_port);
+    if(Number.isInteger(port) && port>0 && port<65536){
+      source.href='http://127.0.0.1:'+port+'/#capture-session='+encodeURIComponent(id);
+      source.textContent='在 '+port+' 查看并保存';source.hidden=false;
+    }
+    $('empty').textContent='该批次正在原采集器中运行。';
+  }else refresh();
+}
+async function refresh(){
+  const current=sid, session=sessionsById.get(current);
+  if(!current || !session || session.external_session || refreshing.has(current))return;
+  if(data && data.id===current && !isLive(data) && data.state===session.state)return;
+  refreshing.add(current);
+  try{
+    const value=await api('/api/sessions/'+encodeURIComponent(current));
+    if(current===sid){value.state=laterState(sessionsById.get(current),value.state);data=value;render();}
+  }catch(e){if(current===sid)notice(e.message);}
+  finally{refreshing.delete(current);}
+}
+function history(){
+  if(listing && listing.version===historyVersion)return listing.promise;
+  const version=++historyVersion;
+  const promise=api('/api/sessions').then(records=>{
+    if(version===historyVersion){
+      const selectedBefore=sessionsById.get(sid), previous=new Map(sessionsById);
+      sessionsById.clear();
+      for(const s of records){
+        const last=previous.get(s.id);
+        sessionsById.set(s.id,Object.assign({},last,s,{state:laterState(last,s.state),external_session:Boolean(s.external_session)}));
+      }
+      updateHistory();
+      const current=sessionsById.get(sid);
+      if(current && selectedBefore && current.external_session!==Boolean(selectedBefore.external_session))chooseSession(sid);
+      if(!sid && !selectionVersion && records.length && !restoreSession() && !location.hash.startsWith('#capture-game='))
+        chooseSession((records.find(s=>isLive(s) && !s.external_session)||records[0]).id);
+    }
+    return Array.from(sessionsById.values());
+  }).finally(()=>{if(listing && listing.version===version)listing=null;});
+  listing={version:version,promise:promise};
+  return promise;
+}
+$('form').addEventListener('submit',e=>{e.preventDefault();startCapture(null)});
+$('url').addEventListener('input',updateStartControls);
 $('clear-records').addEventListener('click',()=>{if(!data||data.id!==sid)return;setCutoff(data.rows.reduce((n,r)=>Math.max(n,r.id),cutoff()));resetDetail();render()});
 $('show-all').addEventListener('click',()=>{setCutoff(0);resetDetail();render()});
-$('stop').addEventListener('click',async()=>{try{$('stop').disabled=true;await api('/api/stop',{id:sid});await refresh()}catch(e){notice(e.message)}});
-$('history').addEventListener('change',async()=>{if(!$('history').value)return;sid=$('history').value;resetDetail();await refresh()});
+$('stop').addEventListener('click',async()=>{
+  const id=sid,session=sessionsById.get(id);
+  if(!isLive(session) || session.external_session || pendingStops.has(id))return;
+  pendingStops.add(id);$('stop').disabled=true;
+  try{await api('/api/stop',{id:id});}
+  catch(e){pendingStops.delete(id);if(id===sid)notice(e.message);updateStopControl();return;}
+  if(sid===id)await refresh();
+  pollHistory();
+});
+$('history').addEventListener('change',()=>{if($('history').value)chooseSession($('history').value);else $('history').value=sid||'';});
 $('filter').addEventListener('input',renderRows);$('type').addEventListener('change',renderRows);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;detail()}));
-history().then(async records=>{if(records.length){sid=(records.find(s=>['starting','recording','stopping'].includes(s.state))||records[0]).id;$('history').value=sid;await refresh()}}).catch(e=>notice(e.message));setInterval(refresh,1500);
+function restoreSession(){
+  const match=/^#capture-session=([a-zA-Z0-9_-]{1,120})$/.exec(location.hash);
+  if(match && sessionsById.has(match[1])){chooseSession(match[1]);return true;}
+  return false;
+}
+window.addEventListener('hashchange',restoreSession);
+function pollHistory(){history().catch(e=>notice(e.message));}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)pollHistory();});
+setInterval(pollHistory,5000);
+setInterval(refresh,1500);
 </script>
 <script>
 // 使用 XHR、ES5 语法和原生 DOM，兼容 iOS 12 / WebView 80。
@@ -223,6 +451,332 @@ history().then(async records=>{if(records.length){sid=(records.find(s=>['startin
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { render(); refresh(); } });
   window.addEventListener('offline', function () { fail('网络离线，等待恢复'); });
   render();
+})();
+</script>
+<script>
+// 仅运行在 8090 工具页。缓存里只放目录身份和批次/请求编号。
+(function () {
+  'use strict';
+  const prefix = 'capture-game-library:v3:';
+  const batches = new Map(), bodyCache = new Map();
+  const pgIds = {'cash-mania':'1682240','mahjong-ways2':'74','wild-bandito':'104',
+    'captains-bounty':'54','fortune-rabbit':'1543462','buffalo-win':'108'};
+  const labels = {unseen:'未抓',partial:'待补抓',unknown:'待识别'};
+  const evidenceLabels = {launch:'大厅启动响应',entry:'游戏启动页',asset:'游戏专属资源',info:'游戏信息响应',spin:'旋转接口响应'};
+  const pageSize = 15;
+  let games = [], page = 0, busy = false, rerun = false, forceNext = false, compact = true;
+  let handoffSite = '';
+  let message = '正在核对历史', sessions = [], pendingIssues = [];
+
+  function field(value) { return (typeof value === 'string' || typeof value === 'number') ? String(value).trim().slice(0,160) : ''; }
+  function normalized(value) { return field(value).toLowerCase().replace(/[^a-z0-9]/g,''); }
+  function active(state) { return ['starting','recording','stopping'].indexOf(state) !== -1; }
+  function knownGame(item) {
+    const meta = item.metadata || {}, provider = field((item.provider || {}).code);
+    const site = field(item.id), ext = field(item.externalId), brand = field(meta.brand).toLowerCase();
+    if (!site && !(provider && ext)) return null;
+    return {key:JSON.stringify(provider && ext ? [provider,brand,ext] : ['site',site]), site:site, ext:ext,
+      provider:provider, brand:brand, legacy:field(meta.legacyGameId), name:field(item.name), zh:field(item.nameZh)};
+  }
+  function classify(r) {
+    let u;
+    try { u = new URL(r.url); } catch (_) { return null; }
+    if (u.protocol !== 'https:' || u.port || u.username || u.password) return null;
+    const host = u.hostname, p = u.pathname, mime = field(r.mime).toLowerCase().split(';')[0];
+    let m;
+    if (host === 'sdstest.ink') {
+      if (r.method === 'GET' && r.status === 200 && p === '/api/v1/games/catalog') return {kind:'catalog'};
+      m = /^\/api\/v1\/games\/([a-zA-Z0-9_-]{1,80})\/launch$/.exec(p);
+      if (r.method === 'POST' && m && /json/.test(mime)) return {key:'site/'+m[1],kind:'launch'};
+    }
+    if (r.status !== 200) return null;
+    if ((host === 's5.mmga1.com' || host === 'static5.mmga1.com') && r.method === 'GET') {
+      m = /^\/(\d+)\/(index\.html|assets\/.+|history\/index\.json|[a-f0-9]{8,64}\.[a-f0-9]{5,64}\.(?:js|json|png))$/.exec(p);
+      if (m && m[2] === 'index.html' && mime === 'text/html') return {key:'pg/'+m[1],kind:'entry'};
+      if (m && m[2] !== 'index.html' && assetMime(mime)) return {key:'pg/'+m[1],kind:'asset'};
+    }
+    if (host === 'api.mmga1.com' && r.method === 'POST' && /^(application\/(octet-stream|json|x-protobuf))$/.test(mime)) {
+      m = /^\/game-api\/([a-z0-9-]{1,60})\/v\d+\/(Spin|GameInfo\/Get)$/.exec(p);
+      if (m && m[1] !== 'lobby') return {key:pgIds[m[1]] ? 'pg/'+pgIds[m[1]] : 'pg-api/'+m[1],kind:m[2] === 'Spin' ? 'spin' : 'info'};
+    }
+    if (host === 'static.funapptoday.com' && r.method === 'GET') {
+      m = /^\/([a-z0-9-]+)\/v\d+\/([a-zA-Z0-9_-]{1,80})\/(.+)$/.exec(p);
+      if (!m) return null;
+      const pack = 'bundle/'+m[1]+'/'+m[2];
+      if (m[3] === 'index.html' && mime === 'text/html') return {key:pack,kind:'entry'};
+      const studio = /\/studios\/[^/]+\/games\/([A-Za-z0-9_-]{1,80})\//.exec('/'+m[3]);
+      if (m[1] === 'igt' && studio && (assetMime(mime) || mime === 'text/html')) return {key:pack+'/'+studio[1],kind:'asset'};
+    }
+    return null;
+  }
+  function assetMime(mime) { return /^(image\/|audio\/|video\/|font\/|application\/(json|javascript|octet-stream|wasm|x-javascript)$|text\/(css|javascript)$)/.test(mime); }
+  async function request(path) {
+    const response = await fetch(path,{cache:'no-store'});
+    if (!response.ok) { const err = new Error('抓取记录读取失败'); err.status = response.status; throw err; }
+    return response.json();
+  }
+  async function input(s, raw) {
+    if (raw) return raw;
+    const path = '/api/sessions/'+s.id;
+    if (compact) {
+      try { return await request(path+'/library-input'); }
+      catch (e) { if (e.status !== 404) throw e; compact = false; }
+    }
+    return request(path);
+  }
+  async function body(sid, r, catalog) {
+    const key = sid+'/'+r.id+'/'+r.size;
+    if (bodyCache.has(key)) return bodyCache.get(key);
+    const result = await request('/api/sessions/'+sid+'/body/'+r.id);
+    if (!result.text || (catalog && (result.truncated || result.encoding !== 'text'))) throw Error('响应正文暂不可读');
+    const value = catalog ? JSON.parse(result.text).items : true;
+    if (catalog && !Array.isArray(value)) throw Error('目录格式待识别');
+    // 目录可能含有其他业务资料，仅缓存清单需要的字段。
+    const safe = catalog ? value.filter(Boolean).map(knownGame).filter(Boolean) : true;
+    bodyCache.set(key,safe);
+    return safe;
+  }
+  async function summarize(s, source) {
+    const catalog = new Map(), buckets = new Map();
+    let unreadable = !!source.unreadable;
+    for (const r of source.rows) {
+      if ((!source.verified_files && (r.state !== 'complete' || !r.body)) || !r.size || (r.status !== 200 && r.status !== 201)) continue;
+      const signal = classify(r);
+      if (!signal) continue;
+      if (signal.kind === 'catalog') {
+        try {
+          const items = source.verified_files ? source.catalogs[r.id].map(knownGame).filter(Boolean) : await body(s.id,r,true);
+          for (const g of items) catalog.set(JSON.stringify([g.key,g.site,g.name,g.zh]),g);
+        } catch (_) { unreadable=true; }
+      } else {
+        const key = signal.key+'|'+signal.kind;
+        if (!buckets.has(key)) buckets.set(key,{key:signal.key,kind:signal.kind,rows:[]});
+        buckets.get(key).rows.push(r);
+      }
+    }
+    const signals = [];
+    for (const group of buckets.values()) {
+      const rows = group.rows;
+      // 未升级的录制进程通过原有正文接口复核；不只相信 HTTP 状态码。
+      for (let i=rows.length-1;i>=0;i--) {
+        const last=rows[i];
+        try {
+          if (!source.verified_files) await body(s.id,last,false);
+          signals.push({key:group.key,kind:group.kind,id:last.id,at:field(last.started || s.created)});
+          break;
+        } catch (_) { unreadable=true; }
+      }
+    }
+    return {catalog:Array.from(catalog.values()),signals:signals,unreadable:unreadable};
+  }
+  function addLookup(map, key, game) {
+    if (!key) return;
+    if (!map.has(key)) map.set(key,new Set());
+    map.get(key).add(game);
+  }
+  function one(set) { return set && set.size === 1 ? set.values().next().value : null; }
+  function build() {
+    const entries = new Map(), sites = new Map(), pg = new Map(), pgNames = new Map(), igt = new Map();
+    for (const batch of batches.values()) for (const item of batch.summary.catalog) {
+      let g = entries.get(item.key);
+      if (!g) {
+        g = Object.assign({},item,{aliases:new Set(),siteIds:new Set(),proof:{},state:item.provider && item.ext ? 'unseen' : 'unknown'});
+        entries.set(item.key,g);
+      }
+      for (const alias of [item.name,item.zh,item.site,item.ext,item.legacy]) if (alias) g.aliases.add(alias.toLowerCase());
+      if (!g.zh || g.zh === g.name) g.zh = item.zh || g.zh;
+      if (!g.name) g.name = item.name;
+      if (item.site){g.siteIds.add(item.site);if(!g.site)g.site=item.site;}
+      addLookup(sites,item.site,g);
+      if (item.brand === 'pg') { addLookup(pg,item.ext,g); addLookup(pgNames,normalized(item.name),g); }
+      if (item.brand === 'igt') addLookup(igt,normalized(item.name),g);
+    }
+    for (const batch of batches.values()) {
+      const signals = batch.summary.signals, launches = new Set(), numericGames = new Set(), packs = new Map();
+      for (const e of signals) if (e.kind === 'launch') launches.add(one(sites.get(e.key.slice(5))));
+      for (const e of signals) if (e.key.indexOf('pg/')===0) numericGames.add(one(pg.get(e.key.slice(3))));
+      for (const e of signals) {
+        const bits = e.key.split('/');
+        if (bits[0] !== 'bundle' || bits.length !== 4) continue;
+        const candidate = one(igt.get(normalized(bits[3])));
+        addLookup(packs,bits.slice(0,3).join('/'),candidate && launches.has(candidate) ? candidate : null);
+      }
+      for (const e of signals) {
+        const bits = e.key.split('/');
+        let g;
+        let matches;
+        if (bits[0] === 'site') matches = sites.get(bits[1]);
+        if (bits[0] === 'pg') matches = pg.get(bits[1]);
+        if (bits[0] === 'pg-api') {
+          const named=one(pgNames.get(normalized(bits[1])));
+          if (named && (launches.has(named) || numericGames.has(named))) matches=new Set([named]);
+        }
+        if (bits[0] === 'bundle') matches = packs.get(bits.slice(0,3).join('/'));
+        g = one(matches);
+        if (!g && matches) for (const candidate of matches) if (candidate) candidate.ambiguous=true;
+        if (!g) {
+          const brand = bits[0]==='bundle' ? bits[1] : (bits[0].indexOf('pg')===0 ? 'pg' : '');
+          for (const launched of launches) if (launched && launched.brand===brand) launched.ambiguous=true;
+          const key = bits[0] === 'bundle' ? bits.slice(0,3).join('/') : e.key;
+          g = entries.get(key);
+          if (!g) {
+            const name = bits[0] === 'bundle' ? bits[2] : bits[1];
+            g = {key:key,name:name,zh:'',brand:bits[0] === 'bundle' ? bits[1] : (bits[0].indexOf('pg') === 0 ? 'pg' : ''),
+              ext:'',provider:'',aliases:new Set([name.toLowerCase()]),proof:{},state:'unknown'};
+            entries.set(key,g);
+          }
+        }
+        if (e.kind !== 'launch' && g.state === 'unseen') g.state = 'partial';
+        if (!g.proof[e.kind] || g.proof[e.kind].at < e.at || (g.proof[e.kind].at === e.at && g.proof[e.kind].id < e.id))
+          g.proof[e.kind] = Object.assign({sid:batch.id},e);
+      }
+    }
+    for (const g of entries.values()) {
+      if (g.state === 'unseen' && (g.ambiguous || (g.proof.launch && g.brand !== 'pg' && g.brand !== 'igt'))) g.state='unknown';
+      g.canTarget=Boolean(g.site && g.siteIds && g.siteIds.size===1 && one(sites.get(g.site))===g);
+    }
+    return Array.from(entries.values()).sort((a,b)=>(a.name || a.zh).localeCompare(b.name || b.zh));
+  }
+  function el(tag, value) { const node=document.createElement(tag); node.textContent=value; return node; }
+  function renderLibrary() {
+    const counts = {unseen:0,partial:0,unknown:0};
+    games.forEach(g=>counts[g.state]++);
+    $('library-summary').textContent = message+' · 未抓 '+counts.unseen+' · 待补抓 '+counts.partial+' · 待识别 '+counts.unknown;
+    const term = $('library-search').value.trim().toLowerCase(), filter = $('library-filter').value;
+    const matches = handoffSite ? games.filter(g=>g.site===handoffSite) :
+      term ? games.filter(g=>Array.from(g.aliases).some(a=>a.indexOf(term)!==-1)) : games;
+    const results = filter === 'all' ? matches : matches.filter(g=>filter === g.state);
+    $('library-find-all').hidden = !term || matches.length === results.length;
+    const pages = Math.max(1,Math.ceil(results.length/pageSize));
+    page = Math.min(page,pages-1);
+    const table = $('library-rows'), opened = new Set(Array.from(table.querySelectorAll('details[open]')).map(box=>box.dataset.gameKey));
+    table.textContent = '';
+    for (const g of results.slice(page*pageSize,(page+1)*pageSize)) {
+      const tr=el('tr',''), name=el('td',g.zh || g.name || '名称待识别');
+      if (g.name && g.name !== g.zh && g.zh) name.appendChild(el('small',g.name));
+      tr.appendChild(name); tr.appendChild(el('td',[g.brand.toUpperCase() || g.provider,g.ext].filter(Boolean).join(' / ') || '—'));
+      const state=el('td',labels[g.state]);state.className='library-status';
+      if (g.state === 'partial') state.appendChild(el('small','完整度待确认'));
+      if (g.state === 'unknown') state.appendChild(el('small','专属数据归属待核对'));
+      tr.appendChild(state);
+      const proof=el('td',''), events=Object.values(g.proof).sort((a,b)=>b.at.localeCompare(a.at));
+      if (!events.length) proof.textContent='仅见大厅目录';
+      else {
+        const box=el('details',''), caption=events.map(e=>evidenceLabels[e.kind]).join('、');
+        box.dataset.gameKey=g.key; box.open=opened.has(g.key);
+        box.appendChild(el('summary',caption));
+        for (const e of events) {
+          const date=new Date(e.at), stamp=isNaN(date.getTime())?'':date.toLocaleString();
+          box.appendChild(el('small',evidenceLabels[e.kind]+' · '+stamp+' · '+e.sid.slice(0,8)+' / #'+e.id));
+        }
+        const best = g.proof.spin || g.proof.info || events[0], button=el('button','查看该批采集检查');
+        if (g.state === 'partial' && !g.proof.spin && !g.proof.info)
+          box.appendChild(el('small','目前只核对到前端数据，仍需确认该游戏的玩法请求和对应响应。'));
+        button.type='button'; button.onclick=async function(){
+          const picker=$('history');
+          try {
+            if (!Array.from(picker.options).some(option=>option.value===best.sid)) await history();
+            picker.value=best.sid;
+            if (picker.value!==best.sid) throw Error('批次已不可用');
+            picker.dispatchEvent(new Event('change')); $('quality-title').scrollIntoView();
+          } catch (_) { notice('这条证据的批次暂不可用，请重新核对历史。'); }
+        };
+        box.appendChild(button); proof.appendChild(box);
+      }
+      tr.appendChild(proof);
+      const action=el('td','');
+      if(g.state==='unseen' || g.canTarget){
+        const grab=el('button','抓取');
+        grab.hidden=g.state!=='unseen';
+        grab.type='button';grab.className='library-grab';grab.dataset.identified=g.canTarget?'yes':'no';grab.dataset.site=g.site||'';
+        grab.onclick=function(){if(g.canTarget)startCapture(g);};
+        action.appendChild(grab);
+        const view=el('button','查看批次');
+        view.type='button';view.className='library-view';view.hidden=true;
+        view.onclick=function(){const session=liveFor(g.site);if(session){chooseSession(session.id);$('history').focus();}};
+        action.appendChild(view);action.appendChild(el('small',''));
+      }
+      tr.appendChild(action); table.appendChild(tr);
+    }
+    $('library-page').textContent = results.length ? '第 '+(page+1)+' / '+pages+' 页，共 '+results.length+' 项' : '当前条件下没有记录';
+    $('library-prev').disabled = page===0; $('library-next').disabled=page+1>=pages;
+    updateStartControls();
+  }
+  function fromCache(s) {
+    try {
+      const obj=JSON.parse(localStorage.getItem(prefix+s.id));
+      if (obj && obj.created===s.created && Array.isArray(obj.summary.catalog) && Array.isArray(obj.summary.signals)) return obj.summary;
+    } catch (_) {}
+    return null;
+  }
+  function remember(s,summary) {
+    try {localStorage.setItem(prefix+s.id,JSON.stringify({created:s.created,summary:summary}));} catch (_) {}
+  }
+  async function sync() {
+    if (busy) { rerun=true; return; }
+    busy=true; const force=forceNext; forceNext=false;
+    try {
+      let changed=force;
+      sessions=(await history()).filter(s=>!s.external_session);
+      const present=new Set(sessions.map(s=>s.id));
+      for (const id of batches.keys()) if (!present.has(id)) { batches.delete(id); changed=true; }
+      if (force) {
+        bodyCache.clear();
+        try { for (const s of sessions) localStorage.removeItem(prefix+s.id); } catch (_) {}
+      }
+      pendingIssues=[]; let processed=0;
+      for (const s of sessions) {
+        const old=batches.get(s.id), live=active(s.state);
+        try {
+          if (!force && !live && old && old.closed) { processed++; continue; }
+          let summary=(!force && !live && !old) ? fromCache(s) : null;
+          if (!summary) {
+            if (!old || force) {
+              message='正在核对第 '+(processed+1)+' / '+sessions.length+' 个批次，统计尚未完成';
+              $('library-summary').textContent=message;
+            }
+            // 当前批次使用已有抓取页快照，切换历史时仍能独立检查录制中的批次。
+            const raw=live && data && data.id===s.id ? data : null;
+            const src=await input(s,raw);
+            summary=await summarize(s,src);
+            if (!live && !summary.unreadable) remember(s,summary);
+          }
+          if (!old || JSON.stringify(old.summary)!==JSON.stringify(summary)) changed=true;
+          batches.set(s.id,{id:s.id,closed:!live && !summary.unreadable,summary:summary}); processed++;
+          if (summary.unreadable) pendingIssues.push(s.id.slice(0,8));
+          if (!live && !summary.unreadable) {
+            for (const key of bodyCache.keys()) if (key.indexOf(s.id+'/')===0) bodyCache.delete(key);
+          }
+        } catch (_) {
+          if (old) old.closed=false;
+          pendingIssues.push(s.id.slice(0,8));
+        }
+      }
+      message=pendingIssues.length ? '有 '+pendingIssues.length+' 个批次未核对成功（'+pendingIssues.join('、')+'），清单为部分结果' : '已核对 '+processed+' 个批次';
+      if (changed) games=build();
+      if (changed || $('library-summary').textContent.indexOf(message+' ·') !== 0) renderLibrary();
+    } catch (_) {message='暂时无法读取批次，当前显示上次核对结果';renderLibrary();}
+    finally {busy=false;if(rerun){rerun=false;setTimeout(sync,0);}}
+  }
+  $('library-filter').onchange=function(){page=0;renderLibrary();};
+  $('library-search').oninput=function(){handoffSite='';page=0;renderLibrary();};
+  $('library-find-all').onclick=function(){$('library-filter').value='all';page=0;renderLibrary();};
+  $('library-prev').onclick=function(){page--;renderLibrary();};
+  $('library-next').onclick=function(){page++;renderLibrary();};
+  $('library-recheck').onclick=function(){forceNext=true;message='正在重新读取原始批次';renderLibrary();sync();};
+  function restoreTarget(){
+    const match=/^#capture-game=([a-zA-Z0-9_-]{1,80})$/.exec(location.hash);
+    if(!match || legacyCapture)return;
+    handoffSite=match[1];$('library-filter').value='unseen';$('library-search').value=handoffSite;page=0;renderLibrary();
+    $('library-feedback').textContent='已按所选游戏的站内 ID 筛选，请填写预设账号密码，再点击该行的“抓取”。';
+    $('preset-account').focus();
+  }
+  restoreTarget();
+  window.addEventListener('hashchange',restoreTarget);
+  sync();
+  setInterval(function(){
+    if (!busy) sync();
+  },5000);
 })();
 </script>
 </body></html>

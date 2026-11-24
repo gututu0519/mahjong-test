@@ -18,6 +18,7 @@ class QualityServiceTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.seen = []
+        self.folders = []
         self.fail = False
 
         def source(sid):
@@ -27,6 +28,7 @@ class QualityServiceTests(unittest.TestCase):
             return {'id': sid, 'state': 'recording', 'rows': []}
 
         def analyzer(detail, folder):
+            self.folders.append(folder)
             return {'version': 1, 'summary': {'status': 'unknown', 'can_stop': False}, 'games': []}
 
         self.server = quality_service.create_server(
@@ -78,6 +80,12 @@ class QualityServiceTests(unittest.TestCase):
             self.assertEqual(self.call(path, headers)[0], expected)
         self.assertEqual(self.seen, [])
 
+    def test_quality_reads_the_recording_in_its_game_folder(self):
+        folder = Path(self.temp.name) / 'PG-123-游戏甲' / SID
+        folder.mkdir(parents=True)
+        self.assertEqual(self.call()[0], 200)
+        self.assertEqual(self.folders, [folder])
+
     def test_failed_live_source_never_returns_cached_green_or_private_errors(self):
         self.assertEqual(self.call()[0], 200)
         self.fail = True
@@ -116,11 +124,14 @@ class QualityServiceTests(unittest.TestCase):
         worker.start()
         try:
             detail = {'id': SID, 'state': 'recording', 'rows': []}
-            with patch.object(app, 'snapshot', return_value=detail), patch.object(app, 'get_session_quality', return_value={'summary': {'can_stop': False}}) as check:
-                req = Request('http://127.0.0.1:' + str(server.server_port) + '/api/sessions/' + SID + '/quality', headers={'Host': '127.0.0.1:8090'})
+            root = Path(self.temp.name)
+            folder = root / 'PG-456-游戏乙' / SID
+            folder.mkdir(parents=True)
+            with patch.object(app, 'DATA', root), patch.object(app, 'snapshot', return_value=detail), patch.object(app, 'get_session_quality', return_value={'summary': {'can_stop': False}}) as check:
+                req = Request('http://127.0.0.1:' + str(server.server_port) + '/api/sessions/' + SID + '/quality')
                 with urlopen(req, timeout=3) as result:
                     self.assertFalse(json.load(result)['summary']['can_stop'])
-                check.assert_called_once_with(detail, app.DATA / SID)
+                check.assert_called_once_with(detail, folder)
         finally:
             server.shutdown()
             server.server_close()
