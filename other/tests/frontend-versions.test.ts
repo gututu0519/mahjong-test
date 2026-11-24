@@ -17,6 +17,8 @@ import { Provider } from "../../gateway/src/provider.js";
 import { GameClient } from "../../gateway/src/game-client.js";
 import { gatewayServer } from "../../gateway/src/http.js";
 import { adminServer } from "../../admin/backend/admin.js";
+import {GameAvailabilityChecks} from '../../admin/backend/game-availability.js';
+import {GAME_CODES} from '../../gateway/src/catalog.js';
 import { computeServer } from "../shared/services/compute.js";
 import { platformServer } from "../shared/services/platform.js";
 import { listen } from "../shared/http.js";
@@ -137,6 +139,8 @@ async function fixture(t: any) {
     mid,
     created,
     servers,
+    compute: game,
+    stop,
     get p() {
       return p!;
     },
@@ -243,6 +247,127 @@ test("frontend builds generate a new immutable version every time, without publi
   await assert.rejects(f.versions.probe("test", first.release), {
     code: "FRONTEND_FILE_CHANGED",
   });
+});
+
+async function preparedOpening(t:any) {
+  const f=await fixture(t),build=f.build();
+  f.versions.register('test',{bundle:build.bundle});
+  await f.versions.probe('test',build.release);
+  f.versions.activate('test',{id:build.release,revision:0});
+  const availability=f.control.setGameAvailability('test',{game_id:1,enabled:false,version:f.control.gameAvailability(1).version});
+  const checks=new GameAvailabilityChecks(f.p,f.p.multi.remote,f.versions,f.config);
+  t.after(()=>checks.close());
+  const request={game_id:1,enabled:true,version:availability.version};
+  const wait=async(id:string,owner='test')=>{
+    for(let i=0;i<500;i++){const result=checks.status(owner,id);if(result.status!=='checking')return result;await new Promise(ok=>setTimeout(ok,20));}
+    throw Error('Availability check timeout');
+  };
+  return {...f,build,checks,request,wait};
+}
+
+test('opening check requires active compute and frontend, rejects forged tickets and preserves closure',async t=>{
+  const f=await preparedOpening(t);
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:'forged'}),{code:'GAME_CHECK_EXPIRED'});
+  const route=f.control.get('SELECT * FROM game_service_routes WHERE code=?','buffalo-win');
+  f.control.run('DELETE FROM game_service_routes WHERE code=?','buffalo-win');
+  let job=f.checks.begin('test',f.request);
+  assert.equal((await f.wait(job.id)).error?.code,'GAME_SERVICE_REQUIRED');
+  f.control.run('INSERT INTO game_service_routes VALUES(?,?,?,?)',route.code,route.release_id,route.revision,route.updated_at);
+  const front=f.control.get('SELECT * FROM frontend_routes WHERE code=?','buffalo-win');
+  f.control.run('DELETE FROM frontend_routes WHERE code=?','buffalo-win');
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'FRONTEND_VERSION_REQUIRED');
+  f.control.run('INSERT INTO frontend_routes VALUES(?,?,?,?)',front.code,front.release_id,front.revision,front.updated_at);
+  f.control.run("UPDATE game_service_releases SET status='retired' WHERE id=?",route.release_id);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'GAME_SERVICE_NOT_READY');
+  f.control.run("UPDATE game_service_releases SET status='ready' WHERE id=?",route.release_id);
+  f.control.run("UPDATE frontend_releases SET status='staged' WHERE id=?",front.release_id);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'FRONTEND_NOT_VERIFIED');
+  f.control.run("UPDATE frontend_releases SET status='verified' WHERE id=?",front.release_id);
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+  job=f.checks.begin('test',f.request);
+  assert.equal((await f.wait(job.id)).status,'ready');
+  assert.equal(f.control.gameAvailability(1).enabled,false,'Checking must not open a game without confirmation');
+  assert.throws(()=>f.checks.enable('other-admin',{...f.request,check_id:job.id}),{code:'GAME_CHECK_EXPIRED'});
+  assert.equal(f.checks.enable('test',{...f.request,check_id:job.id}).enabled,true);
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:job.id}),{code:'GAME_CHECK_REQUIRED'});
+});
+
+test('opening check refuses unavailable, changed and unauthenticated compute services',async t=>{
+  const f=await preparedOpening(t),service=f.p.multi.remote.active('buffalo-win');
+  f.control.run('UPDATE game_service_releases SET secret=? WHERE id=?','wrong-key',service.id);
+  let job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).status,'failed');
+  f.control.run('UPDATE game_service_releases SET secret=? WHERE id=?',service.secret,service.id);
+  const changed={...service.descriptor,title:'different-description'};
+  f.control.run('UPDATE game_service_releases SET descriptor_json=? WHERE id=?',JSON.stringify(changed),service.id);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'GAME_RELEASE_CHANGED');
+  f.control.run('UPDATE game_service_releases SET descriptor_json=? WHERE id=?',JSON.stringify(service.descriptor),service.id);
+  await f.stop(f.compute);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'GAME_UNAVAILABLE');
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+  assert.equal(f.control.setGameAvailability('test',{...f.request,enabled:false}).enabled,false,'Closing does not require services');
+});
+
+test('opening check refuses changed private files, contracts, routes and availability revisions',async t=>{
+  const f=await preparedOpening(t),path=join(f.installed,f.build.release,'bootstrap/resources/clients/buffalo-win/index.html'),original=readFileSync(path);
+  writeFileSync(path,'changed');
+  let job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'FRONTEND_FILE_CHANGED');
+  writeFileSync(path,original);
+  rmSync(path);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'FRONTEND_BOOTSTRAP_UNAVAILABLE');
+  writeFileSync(path,original);
+  const release=f.versions.release(f.build.release),bad={...release.manifest,client_contract:'different-contract'};
+  f.control.run('UPDATE frontend_releases SET manifest_json=? WHERE id=?',JSON.stringify(bad),release.id);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).error?.code,'FRONTEND_CONTRACT_MISMATCH');
+  f.control.run('UPDATE frontend_releases SET manifest_json=? WHERE id=?',JSON.stringify(release.manifest),release.id);
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).status,'ready');
+  f.control.run('UPDATE frontend_routes SET revision=revision+1 WHERE code=?','buffalo-win');
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:job.id}),{code:'VERSION_CONFLICT'});
+  job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).status,'ready');
+  f.control.setGameAvailability('test',{...f.request,enabled:false});
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:job.id}),{code:'VERSION_CONFLICT'});
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+});
+
+test('opening check expires and closing during a check prevents confirmation',async t=>{
+  const f=await preparedOpening(t);
+  let job=f.checks.begin('test',f.request);assert.equal((await f.wait(job.id)).status,'ready');
+  const future=Date.now()+61000,clock=t.mock.method(Date,'now',()=>future);
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:job.id}),{code:'GAME_CHECK_REQUIRED'});
+  clock.mock.restore();
+  job=f.checks.begin('test',f.request);
+  f.control.setGameAvailability('test',{...f.request,enabled:false});f.checks.cancel(1);
+  assert.equal((await f.wait(job.id)).status,'failed');
+  assert.throws(()=>f.checks.enable('test',{...f.request,check_id:job.id}),{code:'GAME_CHECK_REQUIRED'});
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+});
+
+test('production opening checks CDN bytes without local objects and detects missing, mismatched and switched releases',async t=>{
+  const f=await preparedOpening(t),bundle=join(f.installed,f.build.release),manifest=readFrontendManifest(bundle);
+  const origin='https://'+manifest.release+'.example.test';
+  const bytes=new Map(manifest.files.map(file=>[origin+'/'+file.path.split('/').map(encodeURIComponent).join('/'),readFileSync(join(bundle,'objects',file.path))]));
+  f.control.run('UPDATE frontend_releases SET origin=? WHERE id=?',origin,manifest.release);
+  rmSync(join(bundle,'objects'),{recursive:true});
+  let mode='ok',calls=0;
+  const actualFetch=globalThis.fetch;
+  t.mock.method(globalThis,'fetch',async(input:any,init:any)=>{
+    const url=String(input);
+    if(!url.startsWith(origin+'/'))return actualFetch(input,init);
+    assert.equal(init.redirect,'manual');assert.equal(init.credentials,'omit');assert.equal(init.headers,undefined);
+    calls++;
+    if(mode==='missing')return new Response('missing',{status:404});
+    if(mode==='changed')return new Response('changed',{status:200});
+    if(mode==='timeout')throw new DOMException('test timeout','TimeoutError');
+    if(mode==='switch'){mode='ok';f.control.run('UPDATE game_service_routes SET revision=revision+1 WHERE code=?','buffalo-win');}
+    return new Response(new Uint8Array(bytes.get(url)!));
+  });
+  const checks=new GameAvailabilityChecks(f.p,f.p.multi.remote,f.versions,{...f.config,environment:'production'});t.after(()=>checks.close());
+  const wait=async(id:string)=>{for(let i=0;i<500;i++){const result=checks.status('test',id);if(result.status!=='checking')return result;await new Promise(ok=>setTimeout(ok,20));}throw Error('timeout');};
+  for(const [scenario,expected]of [['missing','FRONTEND_CDN_UNAVAILABLE'],['changed','FRONTEND_CDN_CHANGED'],['timeout','GAME_DEPLOYMENT_CHECK_FAILED'],['switch','VERSION_CONFLICT']]){
+    mode=scenario;const job=checks.begin('test',f.request);assert.equal((await wait(job.id)).error?.code,expected);assert.equal(f.control.gameAvailability(1).enabled,false);
+  }
+  mode='ok';calls=0;const job=checks.begin('test',f.request);assert.equal((await wait(job.id)).status,'ready');
+  assert.equal(calls,manifest.files.length);
+  assert.equal(checks.enable('test',{...f.request,check_id:job.id}).enabled,true);
 });
 
 test("a frontend switch changes new sessions while old pages and assets stay pinned across gateway restart", async (t) => {
@@ -372,6 +497,28 @@ test("frontend management is platform-only and registration reads generated vers
   assert.throws(() => f.versions.register("test", { bundle: "../outside" }), {
     code: "FRONTEND_BUNDLE_INVALID",
   });
+  const overview:any=await (await post('/api/admin/overview',{},a)).json();
+  assert.equal(overview.data.games,GAME_CODES.length);
+  assert.equal(overview.data.registered_games,1);
+  assert.equal(overview.data.active_games,1);
+  for(const action of ['games/availability','games/availability-check'])assert.equal((await post('/api/merchant/'+action,{},m)).status,403);
+  const closed=await post('/api/admin/games/availability',{game_id:1,enabled:false,version:f.control.gameAvailability(1).version},a);
+  assert.equal(closed.status,200);
+  const q={game_id:1,enabled:true,version:f.control.gameAvailability(1).version};
+  assert.equal((await post('/api/admin/games/availability',{...q,check_id:'fake'},a)).status,409);
+  assert.equal((await post('/api/admin/games/availability',q,{...a,csrf:'bad'})).status,403);
+  await f.versions.probe('test',build.release);
+  f.versions.activate('test',{id:build.release,revision:0});
+  let state:any=(await (await post('/api/admin/games/availability',q,a)).json() as any).data.check;
+  for(let i=0;state.status==='checking'&&i<500;i++){
+    await new Promise(ok=>setTimeout(ok,20));
+    state=(await (await post('/api/admin/games/availability-check',{check_id:state.id},a)).json() as any).data.check;
+  }
+  assert.equal(state.status,'ready',JSON.stringify(state));
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+  const opened=await post('/api/admin/games/availability',{...q,check_id:state.id},a);
+  assert.equal(opened.status,200,await opened.clone().text());
+  assert.equal(f.control.gameAvailability(1).enabled,true);
 });
 
 test("frontend publication uploads public files only, checks private bucket protections, and never overwrites differing objects", async (t) => {
@@ -438,10 +585,10 @@ test("frontend publication uploads public files only, checks private bucket prot
     run,
   };
   blocked = true;
-  assert.throws(() => publishFrontend(options), /protections/);
+  await assert.rejects(() => publishFrontend(options), /protections/);
   assert.equal(puts, 0);
   blocked = false;
-  const receipt = publishFrontend(options);
+  const receipt = await publishFrontend(options);
   assert.equal(receipt.status, "passed");
   assert.equal(receipt.bootstrap_uploaded, false);
   assert.ok(
@@ -460,10 +607,10 @@ test("frontend publication uploads public files only, checks private bucket prot
     ),
   );
   const count = puts;
-  publishFrontend(options);
+  await publishFrontend(options);
   assert.equal(puts, count);
   objects.values().next().value.ChecksumSHA256 = "tampered";
-  assert.throws(() => publishFrontend(options), /refusing overwrite/);
+  await assert.rejects(() => publishFrontend(options), /refusing overwrite/);
   assert.equal(puts, count);
 });
 

@@ -91,7 +91,7 @@ export async function build() {
       const visitor=node=>{
         if(ts.isStringLiteral(node) && node.text.startsWith('.') &&
           ((ts.isImportDeclaration(node.parent)||ts.isExportDeclaration(node.parent)) && node.parent.moduleSpecifier===node ||
-           ts.isCallExpression(node.parent)&&node.parent.expression.kind===ts.SyntaxKind.ImportKeyword)) {
+            ts.isCallExpression(node.parent)&&(node.parent.expression.kind===ts.SyntaxKind.ImportKeyword||node.parent.expression.getText(source)==='import.meta.resolve'))) {
           const target=bySource.get(key(resolve(dirname(source.fileName),node.text.replace(/\.js$/,'.ts'))));
           if(target) {
             let spec=posix.relative(posix.dirname(old),target).replace(/\.ts$/,'.js');

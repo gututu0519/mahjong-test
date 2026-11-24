@@ -23,6 +23,7 @@ import { RTP } from "./rtp.js";
 import { MerchantGames } from "./merchant-games.js";
 import { gameNumber, gameCode } from "./catalog.js";
 import { GameReadiness } from "./readiness.js";
+import {runtimeData} from '../../other/shared/config/runtime-data.js';
 export class Provider extends DB {
   readiness = new GameReadiness();
   assertGameAvailable(code: string) {
@@ -70,7 +71,7 @@ export class Provider extends DB {
   }
   async initialize() {
     this.description = this.multi?.remote
-      ? JSON.parse(readFileSync(new URL("../../config/game-descriptors.json",import.meta.url),"utf8"))["buffalo-win"]
+      ? JSON.parse(readFileSync(runtimeData('game-descriptors.json'),"utf8"))["buffalo-win"]
       : await this.game.call("describe");
     this.rtp.initialize(this.description);
     return this;

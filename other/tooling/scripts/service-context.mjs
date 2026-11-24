@@ -11,7 +11,7 @@ export function serviceContext(root, service, supplied=[], environment=process.e
   if(service.role==='game') {
     const game=service.game??JSON.parse(readFileSync(resolve(root,'GAME.json'),'utf8'));
     envFile=envFile??environment.GAME_ENV_FILE;
-    if(!envFile)envFile=[...(game.envFile?[game.envFile]:[]),resolve(root,'game.env'),`/etc/gtt-node/games/${game.code}/${game.release}.env`].find(p=>existsSync(p));
+    if(!envFile)envFile=[...(game.envFile?[game.envFile]:[]),resolve(root,'game.env'),resolve(root,'../../../config/games',game.code,game.release+'.env'),resolve(root,'../config/games',game.code,game.release+'.env'),`/etc/gtt-node/games/${game.code}/${game.release}.env`].find(p=>existsSync(p));
     const overrides={};
     for(const [flag,key]of Object.entries({'--game-id':'GAME_ID','--release':'GAME_RELEASE','--game-config':'GAME_CONFIG','--secret-file':'GAME_SECRET_FILE','--host':'GAME_BIND','--port':'GAME_PORT','--client-contract':'GAME_CLIENT_CONTRACT','--state-contract':'GAME_STATE_CONTRACT'})) {
       const value=option(flag,undefined);if(value!==undefined)overrides[key]=value;
@@ -25,7 +25,7 @@ export function serviceContext(root, service, supplied=[], environment=process.e
     JSON.parse(readFileSync(env.GAME_CONFIG,'utf8'));
     return {role:service.role,action,args:[action,...args,...(envFile&&!args.includes('--env-file')?['--env-file',resolve(envFile)]:[])],environment:gameProcessEnvironment(env)};
   }
-  if(!envFile&&!args.includes('--config'))envFile=environment.GTT_PLATFORM_ENV_FILE??[resolve(root,'platform.env'),'/etc/gtt-node/platform.env'].find(p=>existsSync(p));
+  if(!envFile&&!args.includes('--config'))envFile=environment.GTT_PLATFORM_ENV_FILE??[resolve(root,'platform.env'),resolve(root,'../config/platform.env'),'/etc/gtt-node/platform.env'].find(p=>existsSync(p));
   const env=platformEnvironment(envFile,environment);
   const configFile=resolve(option('--config',env.GTT_CONFIG_FILE??resolve(root,'config/production.json')));
   if(!existsSync(configFile))throw Error('缺少平台配置，请配置 GTT_CONFIG_FILE 或传入 --env-file / --config');

@@ -1,8 +1,9 @@
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
-import { resolve, join } from "node:path";
+import { readFileSync, writeFileSync, mkdtempSync, rmSync, existsSync, mkdirSync } from "node:fs";
+import { resolve, join, dirname } from "node:path";
 import { tmpdir } from "node:os";
 import { pathToFileURL } from "node:url";
-import { execFileSync } from "node:child_process";
+import { execFileSync, execFile } from "node:child_process";
+import {promisify} from 'node:util';
 import { sha } from "../dist/shared/core.js";
 import {
   verifyFrontendBundle,
@@ -28,7 +29,12 @@ const race = (e) =>
   /PreconditionFailed|\(412\)|ConditionalRequestConflict|\(409\)/.test(
     String(e.stderr ?? e.message),
   );
-export function publishFrontend({ bundle, bucket, owner, run = aws }) {
+async function awsAsync(operation,args) {
+  const result=await promisify(execFile)('aws',['s3api',operation,...args,'--output','json','--no-cli-pager'],{encoding:'utf8',windowsHide:true,timeout:120000,maxBuffer:1024*1024,env:{...process.env,AWS_CLI_AUTO_PROMPT:'off'}});
+  return JSON.parse(result.stdout||'{}');
+}
+export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, concurrency = 6, onProgress = () => {} }) {
+  if(!Number.isInteger(concurrency)||concurrency<1||concurrency>8)throw Error('Concurrency must be between 1 and 8');
   if (
     !/^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/.test(bucket ?? "") ||
     !/^\d{12}$/.test(owner ?? "")
@@ -36,10 +42,10 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
     throw Error("Supply the private bucket and expected AWS account owner");
   const m = verifyFrontendBundle(bundle),
     scope = ["--bucket", bucket, "--expected-bucket-owner", owner];
-  const block = run(
+  const block = (await run(
     "get-public-access-block",
     scope,
-  ).PublicAccessBlockConfiguration;
+  )).PublicAccessBlockConfiguration;
   if (
     ![
       "BlockPublicAcls",
@@ -49,20 +55,20 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
     ].every((k) => block?.[k] === true)
   )
     throw Error("Private bucket protections are required");
-  const ownership = run(
+  const ownership = (await run(
     "get-bucket-ownership-controls",
     scope,
-  ).OwnershipControls;
+  )).OwnershipControls;
   if (
     !ownership?.Rules?.some((r) => r.ObjectOwnership === "BucketOwnerEnforced")
   )
     throw Error("Bucket owner enforced ownership is required");
-  if (run("get-bucket-versioning", scope).Status !== "Enabled")
+  if ((await run("get-bucket-versioning", scope)).Status !== "Enabled")
     throw Error("Bucket versioning is required");
-  const encryption = run(
+  const encryption = (await run(
     "get-bucket-encryption",
     scope,
-  ).ServerSideEncryptionConfiguration;
+  )).ServerSideEncryptionConfiguration;
   if (
     !encryption?.Rules?.some((r) =>
       ["AES256", "aws:kms"].includes(
@@ -72,7 +78,7 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
   )
     throw Error("Encrypted private bucket is required");
   const cache = "public, max-age=31536000, immutable";
-  const put = (key, path, bytes, type) => {
+  const put = async (key, path, bytes, type) => {
     const checksum = Buffer.from(sha(bytes), "hex").toString("base64");
     const verify = (head) => {
       if (
@@ -94,13 +100,13 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
         "ENABLED",
       ]);
     try {
-      verify(head());
+      verify(await head());
       return;
     } catch (error) {
       if (!missing(error)) throw error;
     }
     try {
-      run("put-object", [
+      await run("put-object", [
         ...scope,
         "--key",
         key,
@@ -122,17 +128,25 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
     } catch (error) {
       if (!race(error)) throw error;
     }
-    verify(head());
+    verify(await head());
   };
-  for (const file of m.files) {
+  let index=0,completed=0,failure;
+  await Promise.all(Array.from({length:Math.min(concurrency,m.files.length)},async()=>{
+  while(index<m.files.length&&!failure) {
+    const file=m.files[index++];
+    try {
     const bytes = frontendFile(bundle, "objects", file);
-    put(
+    await put(
       m.prefix + "/" + file.path,
       resolve(bundle, "objects", file.path),
       bytes,
       file.type,
     );
+    onProgress(++completed,m.files.length);
+    } catch(error) {failure??=error;}
   }
+  }));
+  if(failure)throw failure;
   const manifest_sha256 = sha(readFileSync(resolve(bundle, "manifest.json")));
   const publicManifest = Buffer.from(
     JSON.stringify(
@@ -153,7 +167,7 @@ export function publishFrontend({ bundle, bucket, owner, run = aws }) {
   try {
     const path = join(temp, "public-manifest.json");
     writeFileSync(path, publicManifest);
-    put(
+    await put(
       m.prefix + "/_gtt-manifest.json",
       path,
       publicManifest,
@@ -184,12 +198,15 @@ if (
     throw Error(
       "Usage: publish-frontend.mjs <bundle> --bucket <private-bucket> --owner <account-id>",
     );
-  const report = publishFrontend({
+  const receipt=args.includes('--receipt')?resolve(option('--receipt')):resolve(process.env.GTT_WORKSPACE_ROOT??process.cwd(),'other/diagnostics/releases','frontend-publication-'+Date.now(),'publication.json');
+  if(existsSync(receipt))throw Error('Publication receipt already exists: '+receipt);
+  const report = await publishFrontend({
     bundle: resolve(args[0]),
     bucket: option("--bucket"),
     owner: option("--owner"),
+    onProgress:(completed,total)=>{if(completed%25===0||completed===total)console.error(`Verified S3 objects: ${completed}/${total}`);},
   });
-  const receipt = resolve(args[0], "publication-" + Date.now() + ".json");
+  mkdirSync(dirname(receipt),{recursive:true});
   writeFileSync(receipt, JSON.stringify(report, null, 2) + "\n", {
     flag: "wx",
   });

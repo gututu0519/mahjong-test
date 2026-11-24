@@ -18,7 +18,7 @@ RTP 配置支持游戏覆盖、商户继承和默认 96%，保留已有玩家覆
 
 商户钱包六项回调支持 `wallet_endpoints` 独立完整 URL（`balance`、`debit`、`credit`、`refund`、`transactions/get`、`transactions/list`），未填写项沿用 `wallet_url` 加标准路径。全部独立配置后默认地址可留空，签名使用实际 pathname。已有数据库启动时增加独立配置表，不改原余额、密钥和入口；指南下载包含实际回调地址。
 
-运营可以开放任何游戏，`config/game-readiness.json` 的收集状态和缺失项仅供查看，不限制开放、新启动或新整局。新商户默认授权全部游戏；目录可导出 HTML/CSV/JSON。当前证据清单仍有 19 款待补，详见 [开放规则与维护流程](../project/game-integration-readiness.md)。
+运营开放游戏前须通过当前计算服务和前端资源的[部署检查](../project/game-opening-checks.md)。`config/game-readiness.json` 的玩法收集状态和缺失项仅供查看，不作为开放、新启动或新整局的限制。新商户默认授权全部游戏；目录可导出 HTML/CSV/JSON。当前证据清单仍有 19 款待补，详见 [开放规则与维护流程](../project/game-integration-readiness.md)。
 
 运营控制台显示完整目录和待补项，平台管理员/运营可管理开放开关（默认关闭、持久化、版本校验及审计）；收集状态不影响开放。商户工作台、签名目录、公共网关目录及商户导出只返回可接入游戏，不包含内部审核资料。关闭返回 `GAME_CLOSED` 并禁止新整局，已开始回合继续恢复结算。
 

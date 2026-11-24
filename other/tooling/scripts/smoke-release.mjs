@@ -1,13 +1,19 @@
-import { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync, readdirSync, mkdirSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { tmpdir } from "node:os";
 import { execFileSync, spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import assert from "node:assert/strict";
+import {parseEnv} from 'node:util';
+import {createRequire} from 'node:module';
 import {artifactPath,extractArchive} from './archive.mjs';
+import {installDependencies} from './install-dependencies.mjs';
 
 const release = resolve(process.argv[2] ?? "");
-const record = JSON.parse(readFileSync(join(release, "release.json"), "utf8"));
+const record = JSON.parse(readFileSync(join(release, existsSync(join(release,'release.json'))?'release.json':'RELEASE.json'), "utf8"));
+if(['game-deployment-bundle','game-component-delivery'].includes(record.kind))throw Error('游戏前后端组件交付请使用 npm run game:verify -- <发布记录目录> 校验');
+const archivesOnly=process.argv.includes('--archives-only');
+if(record.selection&&record.selection!=='all'&&!archivesOnly)throw Error('单产物交付先用 --archives-only 校验归档，再运行该服务的专项验证；此命令完整服务冒烟需要全量交付。');
 const reportOption=process.argv.indexOf('--verification-name');
 const reportName=reportOption>=0?process.argv[reportOption+1]:'verification.json';
 if(!/^[A-Za-z0-9][A-Za-z0-9._-]*\.json$/.test(reportName??''))throw Error('Invalid verification report filename');
@@ -16,6 +22,8 @@ const archiveOption=process.argv.indexOf('--archives');
 const archiveOverride=archiveOption>=0?resolve(process.argv[archiveOption+1]):undefined;
 const dir = mkdtempSync(join(tmpdir(), "gtt-node-release-"));
 const children = [];
+const installAfterVerification=[];
+let slimAdminModules;
 const sha = (b) => createHash("sha256").update(b).digest("hex");
 const configPath = join(dir, "runtime/config.json");
 function start(name, action, extra = []) {
@@ -64,16 +72,72 @@ async function request(port, path, init = {}) {
 try {
   for (const artifact of record.artifacts) {
     if(record.format>=2) {
-      const expected=artifact.name==='gateway'?'zip':'tar.gz';
+      const expected=record.archive_format??(artifact.name==='gateway'?'zip':'tar.gz');
       assert.equal(artifact.format,expected);
-      assert.equal(artifact.file,`${artifact.name}-${record.build_id}.${expected}`);
+      assert.equal(artifact.file,`${artifact.archive_name??artifact.name}-${record.build_id}.${expected}`);
     }
     const archive = artifactPath(release,record,artifact,archiveOverride);
     assert.equal(sha(readFileSync(archive)), artifact.sha256);
     extractArchive(archive,dir);
+    const serviceFile=join(dir,artifact.name,'SERVICE.json');
+    if(existsSync(serviceFile)) {
+      const service=JSON.parse(readFileSync(serviceFile,'utf8'));
+      if(service.dependencies_bundled!==undefined)assert.equal(existsSync(join(dir,artifact.name,'node_modules')),service.dependencies_bundled,'Dependency delivery mismatch: '+artifact.name);
+      if(service.dependencies_bundled===false)installAfterVerification.push(join(dir,artifact.name));
+      if(service.layout==='admin-slim-v1') {
+        const base=join(dir,artifact.name);
+        assert.deepEqual(readdirSync(base,{withFileTypes:true}).filter(entry=>entry.isDirectory()).map(entry=>entry.name).sort(),['dist','frontend','migrations',...(service.dependencies_bundled===false?[]:['node_modules']),'tools']);
+        assert.equal(service.data_directory,'dist/data');
+        assert.equal(existsSync(join(base,'dist/migrated/py/games/catalog.js')),false);
+        assert.equal(existsSync(join(base,'dist/services/compute.js')),false);
+        for(const name of ['integration.json','guide.html','guide.md','openapi.json'])assert.ok(existsSync(join(base,'dist/data',name)));
+      }
+      if(service.entry_point) {
+        const name=service.role==='game'?JSON.parse(readFileSync(join(dir,artifact.name,'GAME.json'),'utf8')).code:service.role;
+        assert.equal(service.entry_point,`tools/${name}.mjs`);
+        const pkg=JSON.parse(readFileSync(join(dir,artifact.name,'package.json'),'utf8'));
+        assert.equal(pkg.scripts.start,service.process_manager==='pm2'?'node tools/start-pm2.mjs':`node ${service.entry_point}`);
+        if(service.process_manager==='pm2') {
+          assert.equal(pkg.scripts['start:foreground'],`node ${service.entry_point}`);
+          assert.ok(pkg.dependencies.pm2);
+        }
+        assert.match(readFileSync(join(dir,artifact.name,service.entry_point),'utf8'),/import '\.\/start-service\.mjs';/);
+        assert.ok(existsSync(join(dir,artifact.name,'tools/start-service.mjs')));
+        if(service.configuration_examples) {
+          const base=join(dir,artifact.name);
+          const pm2=createRequire(import.meta.url)(join(base,'ecosystem.config.example.cjs')).apps[0];
+          assert.equal(pm2.cwd,base);
+          assert.equal(pm2.script,'./'+service.entry_point);
+          assert.equal(pm2.args[0],'--env-file');
+          assert.equal(pm2.instances,1);
+          assert.equal(pm2.watch,false);
+          const env=parseEnv(readFileSync(join(base,service.role==='game'?'game.env.example':'platform.env.example'),'utf8'));
+          if(service.role==='game') {
+            assert.equal(env.GAME_ID,name);
+            assert.equal(env.GAME_RELEASE,record.build_id);
+            assert.ok(Object.keys(env).every(key=>key.startsWith('GAME_')));
+            assert.equal(env.GAME_CONFIG,`/www/wwwroot/gtt-node/games/${name}/${record.build_id}/config/game.json`);
+            assert.equal(pm2.args[1],`/www/wwwroot/gtt-node/config/games/${name}/${record.build_id}.env`);
+          } else {
+            const production=JSON.parse(readFileSync(join(base,'production.example.json'),'utf8'));
+            const postgres=JSON.parse(readFileSync(join(base,'postgres.example.json'),'utf8'));
+            assert.equal(production.env_file,pm2.args[1]);
+            assert.equal(postgres.env_file,pm2.args[1]);
+            assert.equal(env.GTT_CONFIG_FILE,'/www/wwwroot/gtt-node/config/production.json');
+            assert.equal(production.postgres_config,env.GTT_PG_CONFIG);
+            assert.equal(production.protocol_directory,postgres.protocolDirectory);
+            for(const [field,kind]of [['merchant_database','control'],['game_database','game']])assert.ok(postgres.sources.some(source=>source.path===production[field]&&source.kind===kind));
+          }
+        }
+      }
+    }
     const manifest = JSON.parse(
       readFileSync(join(dir, artifact.name, "release-manifest.json"), "utf8"),
     );
+    if(artifact.name==='admin'&&existsSync(join(dir,'admin/dist/admin-cli.js'))) {
+      slimAdminModules=manifest.files.filter(file=>file.path.startsWith('dist/')&&file.path.endsWith('.js')).length;
+      console.log('Slim admin JavaScript modules: '+slimAdminModules);
+    }
     for (const file of manifest.files) {
       const bytes = readFileSync(join(dir, artifact.name, file.path));
       assert.equal(bytes.length, file.size);
@@ -90,6 +154,14 @@ try {
       }
     }
   }
+  if(archivesOnly) {
+    writeFileSync(join(release,reportName),JSON.stringify({build_id:record.build_id,verified_at:new Date().toISOString(),checks:['archive-sha256','unpacked-file-sha256','service-entry-and-templates','delivery-directory-layout'],scope:'Archive checks only; no installation or service startup performed.'},null,2)+'\n',{flag:'wx'});
+    rmSync(dir,{recursive:true,force:true});
+    console.log('Single-product archive verification passed.');
+    process.exit(0);
+  }
+  // Validate delivered bytes first; installations belong only to this disposable unpack tree.
+  for(const root of installAfterVerification)await installDependencies(root);
   execFileSync(
     process.execPath,
     ["dist/cli.js", "init", "--config", configPath],
@@ -104,6 +176,18 @@ try {
     config.client_root=join(dir,'gateway','clients/buffalo-win');
   }
   writeFileSync(configPath, JSON.stringify(config));
+  if(slimAdminModules) {
+    const bootstrap=join(dir,'admin-bootstrap-check');mkdirSync(bootstrap);
+    const isolatedConfig=join(bootstrap,'config.json');
+    writeFileSync(isolatedConfig,JSON.stringify({...config,merchant_database:join(bootstrap,'merchants.sqlite3')}));
+    const args=['dist/cli.js','admin-init','--config',isolatedConfig,'--username','slim-admin'];
+    execFileSync(process.execPath,args,{cwd:join(dir,'admin'),windowsHide:true,stdio:'pipe'});
+    const bootstrapFile=join(bootstrap,'admin-bootstrap.json');
+    const credentials=readFileSync(bootstrapFile,'utf8');
+    assert.equal(JSON.parse(credentials).username,'slim-admin');
+    assert.throws(()=>execFileSync(process.execPath,args,{cwd:join(dir,'admin'),windowsHide:true,stdio:'pipe'}));
+    assert.equal(readFileSync(bootstrapFile,'utf8'),credentials);
+  }
   const game = await start("buffalo-win", "buffalo");
   config.game_origin = `http://127.0.0.1:${game.port}`;
   writeFileSync(configPath, JSON.stringify(config));
@@ -149,8 +233,27 @@ try {
     const response=await request(admin.port,"/api/admin/"+action,{method:"POST",headers:adminHeaders,body:JSON.stringify(q)});
     const value=await response.json();assert.equal(response.status,200,JSON.stringify(value));return value.data;
   };
+  for(const action of ['overview','merchants/list','users/list','audit','transactions/list','prebet/list','rtp/read','games','integration/docs'])await adminPost(action,{});
+  await adminPost('games/export',{format:'html'});
+  const adminCatalog=(await adminPost('games',{})).games;
+  assert.ok(adminCatalog.length>0);
+  const adminServiceFile=join(dir,record.topology?.admin??'gateway','SERVICE.json');
+  if(existsSync(adminServiceFile)&&JSON.parse(readFileSync(adminServiceFile,'utf8')).opening_checks) {
+    const overview=await adminPost('overview',{});
+    assert.equal(overview.games,adminCatalog.length);
+    assert.equal(overview.registered_games,0);
+    assert.equal(overview.active_games,0);
+    const selected=(await adminPost('games',{})).games[0];
+    const check=await adminPost('games/availability',{game_id:selected.id,enabled:true,version:selected.availability.version});
+    assert.equal(check.availability,undefined);
+    const result=await adminPost('games/availability-check',{check_id:check.check.id});
+    assert.equal(result.check.status,'failed');
+    assert.equal(result.check.error.code,'GAME_SERVICE_REQUIRED');
+    const after=(await adminPost('games',{})).games.find(game=>game.id===selected.id);
+    assert.deepEqual(after.availability,selected.availability);
+  }
   const keyfile=join(dir,"runtime/game-service.key");writeFileSync(keyfile,config.internal_secret);
-  assert.equal((await adminPost("frontends/list",{})).games.length,19);
+  assert.equal((await adminPost("frontends/list",{})).games.length,adminCatalog.length);
   assert.deepEqual((await adminPost("frontends/candidates",{})).builds,[]);
   const independentGames=[];
   for(const name of record.topology?.games??[]) {
@@ -251,6 +354,8 @@ try {
         node: process.version,
         migrated_services: allChecks,
         independent_game_services:independentGames,
+        ...(slimAdminModules?{admin_layout:installAfterVerification.includes(join(dir,'admin'))?'four-delivered-directories':'five-delivered-directories',admin_javascript_modules:slimAdminModules}:{}),
+        dependencies_installed_for_verification:installAfterVerification.length,
         checks: [
           "archive-sha256",
           "unpacked-file-sha256",
@@ -262,12 +367,13 @@ try {
           "fixtures-private",
           "admin-and-merchant-entries",
           "admin-login",
+          ...(slimAdminModules?['slim-admin-directory-layout','no-packaged-game-engines-or-resource-tree','standalone-admin-init-and-no-overwrite','admin-management-api-reads-and-integration-export']:[]),
           "rtp-worker-once",
-          ...(independentGames.length?["19-game-archives-independent-processes","admin-game-service-registration-and-switch","remote-deterministic-step"]:[]),
+          ...(independentGames.length?[`${independentGames.length}-game-archives-independent-processes`,"admin-game-service-registration-and-switch","remote-deterministic-step"]:[]),
           ...(allChecks.length
             ? [
-                "20-isolated-service-processes",
-                "19-original-game-launch-pages",
+                `${allChecks.length}-isolated-service-processes`,
+                `${adminCatalog.length}-original-game-launch-pages`,
                 "native-mock-platform",
               ]
             : []),

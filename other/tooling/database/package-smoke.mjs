@@ -32,7 +32,9 @@ const logs=[];
 async function start(action,file,packageName) {
   packageName??=action==='admin'?(releaseRecord.topology?.admin??'gateway'):'gateway';
   const cliArgs=['--env-file',file,...(action==='game'?['--port','0']:[])];
-  const command=pipeline?[npm,'start','--',...cliArgs]:['dist/cli.js',action,...cliArgs];
+  const serviceFile=join(directory,packageName,'SERVICE.json');
+  const managed=existsSync(serviceFile)&&JSON.parse(readFileSync(serviceFile,'utf8')).process_manager==='pm2';
+  const command=pipeline?[npm,...(managed?['run','start:foreground']:['start']),'--',...cliArgs]:['dist/cli.js',action,...cliArgs];
   const child=spawn(process.execPath,command,{cwd:join(directory,packageName),env:action==='game'?gameProcessEnvironment(process.env):isolatedTestEnvironment(process.env),detached:process.platform!=='win32',stdio:['ignore','pipe','pipe']});
   children.push(child);
   return new Promise((ok,fail)=>{
@@ -59,8 +61,8 @@ try {
     c=JSON.parse(readFileSync(config,'utf8'));c.internal_secret='invalid-JSON-fallback';writeFileSync(config,JSON.stringify(c));
   }
   const gateway=await start('gateway',platformFile);
-  if(pipeline)execFileSync(process.execPath,['dist/cli.js','admin-init','--env-file',platformFile],{cwd:join(directory,adminPackage),env:isolatedTestEnvironment(process.env),stdio:'pipe'});
   const consolePort=await start('admin',platformFile);
+  if(pipeline)execFileSync(process.execPath,['dist/cli.js','admin-init','--env-file',platformFile],{cwd:join(directory,adminPackage),env:isolatedTestEnvironment(process.env),stdio:'pipe'});
   assert.equal((await fetch('http://127.0.0.1:'+gateway+'/health')).status,200);
   assert.equal((await fetch('http://127.0.0.1:'+gateway+'/')).status,200,'Legacy Buffalo entry must use unified resources');
   assert.equal((await fetch('http://127.0.0.1:'+gateway+'/admin.js')).status,404);

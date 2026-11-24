@@ -117,6 +117,13 @@ test("platform availability controls persist, enforce permissions and versioning
   p.readiness=new GameReadiness();
   const rejected=await c.request('/api/admin/games/availability',{game_id:1,enabled:true,version:c.control.gameAvailability(1).version},admin,c.adminPort);
   assert.equal(rejected.status,200);
+  assert.ok(rejected.data.data.check);
+  assert.equal(rejected.data.data.availability,undefined);
+  assert.equal(p.merchantCatalog(c.mid).length,0,'Undeployed games cannot be opened through the management API');
+  // This legacy fixture has no independently registered compute/frontend pair.
+  // Seed availability only to continue testing catalog/readiness and recovery;
+  // deployment-gated API success is covered in frontend-versions.test.ts.
+  c.control.setGameAvailability('test-fixture',{game_id:1,enabled:true,version:c.control.gameAvailability(1).version});
   assert.equal(p.catalog(c.mid)[0].readiness.collection_complete,false);
   assert.equal(p.merchantCatalog(c.mid).length,1);
   const opened = await c.launch({player_id:'unreviewed-player'});

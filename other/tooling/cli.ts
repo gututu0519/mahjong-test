@@ -384,6 +384,7 @@ export async function main(args = process.argv.slice(2)) {
   const { control, provider } = await components(c);
   if (action === "rtp-worker") {
     const { runWorker } = await import("../../games/buffalo-win/backend/native/worker.js");
+    (globalThis as any).__gttServiceReady?.();
     await runWorker(provider, args.includes("--once"));
     provider.close();
     control.close();

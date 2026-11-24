@@ -10,7 +10,7 @@ WorkingDirectory=/opt/gtt-node/gateway/current
 EnvironmentFile=/etc/gtt-node/platform.env
 CacheDirectory=gtt-node-npm
 Environment=NPM_CONFIG_CACHE=/var/cache/gtt-node-npm
-ExecStart=/usr/bin/npm start -- rtp-worker
+ExecStart=/usr/bin/npm run start:foreground -- rtp-worker
 Restart=on-failure
 RestartSec=3
 NoNewPrivileges=true

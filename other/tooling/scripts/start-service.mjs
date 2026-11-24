@@ -1,4 +1,4 @@
-import {readFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,renameSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {installDependencies,npmExecutable,installationEnvironment} from './install-dependencies.mjs';
@@ -6,6 +6,16 @@ import {gameProcessEnvironment} from '../dist/shared/config/environment.js';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const npm=npmExecutable();
 const service=JSON.parse(readFileSync(resolve(root,'SERVICE.json'),'utf8'));
+const readyFile=process.env.__GTT_PM2_READY_FILE,readyToken=process.env.__GTT_PM2_READY_TOKEN;
+function report(status,error) {
+  if(readyFile&&readyToken) {
+    const temporary=readyFile+'.'+process.pid+'.tmp';
+    writeFileSync(temporary,JSON.stringify({status,token:readyToken,pid:process.pid,...(error?{error}:{})}),{mode:0o600});
+    renameSync(temporary,readyFile);
+  }
+  if(status==='ready'&&process.send)process.send('ready');
+}
+globalThis.__gttServiceReady=()=>report('ready');
 try {
   const [major,minor]=process.versions.node.split('.').map(Number);
   if(major<24||(major===24&&minor<17))throw Error('需要 Node.js 24.17.0 或更新版本');
@@ -20,4 +30,5 @@ try {
   Object.assign(process.env,context.environment);
   console.log('[3/3] 启动 '+context.action);
   const {main}=await import('../dist/cli.js');await main(context.args);
-} catch(error) {console.error('启动流水线失败：'+error.message);process.exitCode=1;}
+  report('ready');
+} catch(error) {report('error',error.message);console.error('启动流水线失败：'+error.message);process.exitCode=1;}

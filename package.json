@@ -11,6 +11,8 @@
     "admin": "node other/tooling/start-source.mjs admin",
     "games": "node other/tooling/start-source.mjs games",
     "package": "node other/tooling/run.mjs package",
+    "game:package": "node other/tooling/run.mjs package-game",
+    "game:verify": "node other/tooling/run.mjs smoke-game-bundle",
     "frontend:build": "node other/tooling/run.mjs build-frontend",
     "frontend:stage": "node other/tooling/run.mjs stage-frontend",
     "docs:check": "node other/tooling/run.mjs render-integration --check",

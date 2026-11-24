@@ -346,12 +346,15 @@ export class Control extends DB {
     const row = this.get("SELECT * FROM game_availability WHERE game_id=?", id);
     return row ? {...row, enabled: !!row.enabled} : {game_id:id, enabled:false, version:0, updated_at:0};
   }
-  setGameAvailability(actor: string, q: any) {
+  // The admin deployment gate supplies a synchronous precommit check so route
+  // revisions and availability are checked under the same transaction lock.
+  setGameAvailability(actor: string, q: any, validateDeployment?: () => void) {
     gameCode(q.game_id);
     check(typeof q.enabled === "boolean" && Number.isInteger(q.version), "INVALID_ARGUMENT");
     return this.tx(() => {
       const old = this.gameAvailability(q.game_id);
       check(old.version === q.version, "VERSION_CONFLICT", "游戏开放状态已变化，请刷新后重试", 409);
+      validateDeployment?.();
       const next = {...old, enabled:q.enabled, version:old.version+1, updated_at:now()};
       this.run("INSERT INTO game_availability VALUES(?,?,?,?) ON CONFLICT(game_id) DO UPDATE SET enabled=excluded.enabled,version=excluded.version,updated_at=excluded.updated_at", q.game_id, q.enabled, next.version, next.updated_at);
       this.audit(actor,"game.availability.update",String(q.game_id),"success",{before:old,after:next});

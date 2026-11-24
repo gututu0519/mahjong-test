@@ -11,7 +11,7 @@ import {
 import { readFileSync } from "node:fs";
 import { setImmediate as nextTurn } from "node:timers/promises";
 import * as py from "../../other/shared/compat/runtime.js";
-import { definitions } from "../../other/shared/migrated/py/games/catalog.js";
+import { embeddedDefinitions } from "../../other/shared/games/embedded-catalog.js";
 import { method } from "../../other/shared/services/local.js";
 import {
   GAME_CODES,
@@ -64,7 +64,7 @@ export class MerchantGames {
       const cfg = py.jsonLoads(
         readFileSync(py.sourcePath(`services/${code}/config/${code}.json`)),
       );
-      this.engines.set(code, py.call(definitions[code].factory, [cfg]));
+      this.engines.set(code, py.call(embeddedDefinitions()[code].factory, [cfg]));
     }
   }
   game(code: string) {
@@ -373,7 +373,7 @@ export class MerchantGames {
       key = binding.model_id + ":" + binding.play_mode;
     let engine = this.models.get(key);
     if (!engine) {
-      engine = py.call(definitions["buffalo-win"].factory, [
+      engine = py.call(embeddedDefinitions()["buffalo-win"].factory, [
         py.from(this.p.rtp.configuration(binding)),
       ]);
       this.models.set(key, engine);
