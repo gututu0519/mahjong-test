@@ -5,6 +5,7 @@ import copy
 import json
 import mimetypes
 import os
+import re
 import secrets
 import sys
 import threading
@@ -14,18 +15,29 @@ import webbrowser
 import zipfile
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.client import HTTPConnection, HTTPException
 from pathlib import Path
 from urllib.parse import urlsplit
 
 from playwright.async_api import async_playwright
 from feature_maintenance import start_supervisor, stop_supervisor
 from quality_service import get_session_quality
+from library_input import project_session, catalog_target
+from archive_identity import archive_index, enrich_target, game_label, sync_legacy_groups, link_legacy_session
+from capture_layout import session_folder, plain_directory, SESSION_ID
+from lobby_flow import enter_lobby, open_game, LobbyFlowError
 
 ROOT = Path(__file__).resolve().parent
+LEGACY_ROOT = ROOT.parents[1] / 'legacy'
 DATA = ROOT / 'captures'
 TOKEN = secrets.token_urlsafe(32)
 SESSIONS = {}
 MANAGER_LOCK = threading.Lock()
+ZIP_LOCKS = [threading.Lock() for _ in range(32)]
+ACTIVE_STATES = ('starting', 'recording', 'stopping')
+LOBBY_URL = 'https://sdstest.ink/'
+# 定向抓取保留游戏入口和游戏资源；大厅的登录、用户资料等接口不进入该批次。
+GAME_TRAFFIC = re.compile(r'^https?://(?!sdstest\.ink(?::443)?/api/(?!v1/games/))', re.I)
 
 
 async def launch_browser(pw, headless=False):
@@ -42,12 +54,21 @@ def now():
 
 
 class Capture:
-    def __init__(self, url, headless=False):
+    def __init__(self, url, headless=False, *, target=None):
         self.id = uuid.uuid4().hex
         self.url = url
         self.headless = headless
-        self.folder = DATA / self.id
-        (self.folder / 'bodies').mkdir(parents=True)
+        self.target = target
+        self.display_name = game_label(target) if target else ''
+        self.game_stage = '等待打开登录窗口' if target else ''
+        base = DATA / self.display_name if self.display_name else DATA
+        base.mkdir(parents=True, exist_ok=True)
+        if not plain_directory(base):
+            raise ValueError('目标游戏的保存位置不是实际文件夹。')
+        self.folder = base / self.id
+        self.folder.mkdir()
+        (self.folder / 'bodies').mkdir()
+        self.archived = False
         self.lock = threading.RLock()
         self.stop = threading.Event()
         self.rows = []
@@ -60,16 +81,27 @@ class Capture:
         self.accepting = True
         self.decoded = dict(ready=False, spins=0, scatter_wins=0, errors=0)
 
-    def snapshot(self):
+    def snapshot(self, include_rows=True):
         with self.lock:
-            return copy.deepcopy(dict(id=self.id, url=self.url, created=self.created,
-                state=self.state, error=self.error, rows=self.rows, ws_count=self.ws_count, decoded=self.decoded))
+            if include_rows and self.archived:
+                return json.loads((self.folder / 'manifest.json').read_bytes())
+            item = dict(id=self.id, url=self.url, created=self.created, state=self.state,
+                        error=self.error, ws_count=self.ws_count, decoded=self.decoded)
+            if include_rows:
+                item['rows'] = self.rows
+            if self.display_name:
+                item['display_name'] = self.display_name
+            if self.target:
+                item.update(game_stage=self.game_stage, target_game=self.target)
+            return copy.deepcopy(item)
 
     def update(self, row, **values):
         with self.lock:
             row.update(values)
 
     def request(self, req):
+        if self.target and not GAME_TRAFFIC.match(req.url):
+            return None
         if req in self.requests:
             return self.requests[req]
         if not self.accepting:
@@ -103,7 +135,8 @@ class Capture:
         task.add_done_callback(self.tasks.discard)
 
     async def response(self, res):
-        row = self.request(res.request)
+        # 新模式中，开始监听前发出的请求可能在登录之后才返回。
+        row = self.requests.get(res.request) if self.target else self.request(res.request)
         if row is None:
             return
         try:
@@ -120,7 +153,7 @@ class Capture:
             self.update(row, state='unavailable', error=str(exc))
 
     def failed(self, req):
-        row = self.request(req)
+        row = self.requests.get(req) if self.target else self.request(req)
         if row:
             self.update(row, state='failed', error=req.failure or 'Request failed')
 
@@ -154,7 +187,8 @@ class Capture:
                                         else '3 Billion Vaults' if path.startswith('/sss-tbv/') else 'Joker')
             elif kind == 'spin':
                 try:
-                    sys.path.insert(0, str(ROOT.parent)) if str(ROOT.parent) not in sys.path else None
+                    if str(LEGACY_ROOT) not in sys.path:
+                        sys.path.insert(0, str(LEGACY_ROOT))
                     if path.startswith('/rx10000/'):
                         from py.adapters.jili.roma_x_10000 import unpack
                     elif path.startswith('/mpt2/'):
@@ -189,29 +223,66 @@ class Capture:
             with (self.folder / 'decoded-rounds.jsonl').open('a', encoding='utf-8') as stream:
                 stream.write(json.dumps(record, ensure_ascii=False) + '\n')
 
-    async def run(self):
+    async def wait_for_action(self, action, page):
+        """登录或导航过程中，同样允许通过工具的停止按钮取消。"""
+        task = asyncio.create_task(action)
+        try:
+            while not task.done():
+                if self.stop.is_set():
+                    return False
+                if page.is_closed():
+                    raise LobbyFlowError('抓取窗口已关闭，请重新点击该游戏的“抓取”。')
+                await asyncio.wait((task,), timeout=0.2)
+            await task
+            return not self.stop.is_set()
+        finally:
+            if not task.done():
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+
+    async def run(self, credentials=None):
         browser = None
         context = None
         try:
             async with async_playwright() as pw:
                 try:
                     browser = await launch_browser(pw, self.headless)
-                    context = await browser.new_context(record_har_path=str(self.folder / 'network.har'),
-                        record_har_content='embed', record_har_mode='full')
+                    har = str(self.folder / 'network.har')
+                    if self.target:
+                        context = await browser.new_context(service_workers='block')
+                        page = await context.new_page()
+                        self.game_stage = '正在登录大厅'
+                        try:
+                            if not await self.wait_for_action(enter_lobby(page, *credentials), page):
+                                return
+                        finally:
+                            credentials = None
+                        self.game_stage = '登录成功，正在打开所选游戏'
+                        # 在同一浏览器窗口中，登录完成后才开始 HAR 记录。
+                        await context.route_from_har(har, url=GAME_TRAFFIC, update=True, update_content='embed', update_mode='full')
+                    else:
+                        context = await browser.new_context(record_har_path=har, record_har_content='embed', record_har_mode='full')
                     await context.expose_binding('__captureDecoded', self.decoded_event)
                     await context.add_init_script(path=str(ROOT / 'decoded-hook.js'))
                     context.on('request', self.request)
                     context.on('response', lambda response: self.schedule(self.response(response)))
                     context.on('requestfailed', self.failed)
                     context.on('page', lambda page: page.on('websocket', self.websocket))
-                    page = await context.new_page()
-                    with self.lock:
+                    if self.target:
+                        page.on('websocket', self.websocket)
+                        if not await self.wait_for_action(open_game(page, self.target), page):
+                            return
+                        self.game_stage = '已进入所选游戏，正在抓取'
                         self.state = 'recording'
-                    try:
-                        await page.goto(self.url, wait_until='domcontentloaded', timeout=45000)
-                    except Exception as exc:
+                    else:
+                        page = await context.new_page()
                         with self.lock:
-                            self.error = '页面导航提示：' + str(exc)
+                            self.state = 'recording'
+                        try:
+                            await page.goto(self.url, wait_until='domcontentloaded', timeout=45000)
+                        except Exception as exc:
+                            with self.lock:
+                                self.error = '页面导航提示：' + str(exc)
                     while not self.stop.is_set() and browser.is_connected() and context.pages:
                         await asyncio.sleep(0.2)
                 finally:
@@ -235,7 +306,11 @@ class Capture:
                         await browser.close()
         except Exception as exc:
             with self.lock:
-                self.error = str(exc)
+                if self.target:
+                    self.error = str(exc) if isinstance(exc, LobbyFlowError) else self.game_stage + '未完成，请检查网络或重新开始。'
+                    self.game_stage = '定向抓取未完成'
+                else:
+                    self.error = str(exc)
                 self.state = 'error'
         finally:
             with self.lock:
@@ -244,20 +319,112 @@ class Capture:
                         row.update(state='unavailable', error='停止时请求未完成，未能取得完整响应。')
                 if self.state != 'error':
                     self.state = 'completed'
-                (self.folder / 'manifest.json').write_text(
-                    json.dumps(self.snapshot(), ensure_ascii=False, indent=2), encoding='utf-8')
+                    if self.target:
+                        self.game_stage = '抓取已结束'
+                pending = self.folder / 'manifest.pending'
+                pending.write_text(json.dumps(self.snapshot(), ensure_ascii=False, indent=2), encoding='utf-8')
+                pending.replace(self.folder / 'manifest.json')
+                self.archived = True
+                self.requests.clear()
+                self.rows.clear()
 
-    def start(self):
-        threading.Thread(target=lambda: asyncio.run(self.run()), daemon=True).start()
+    def start(self, credentials=None):
+        threading.Thread(target=asyncio.run, args=(self.run(credentials),), daemon=True).start()
 
 
 def snapshot(sid):
     if sid in SESSIONS:
         return SESSIONS[sid].snapshot()
-    path = DATA / sid / 'manifest.json'
-    if path.is_file():
-        return json.loads(path.read_text(encoding='utf-8'))
+    folder = session_folder(DATA, sid)
+    if folder and (path := folder / 'manifest.json').is_file():
+        item = json.loads(path.read_bytes())
+        if item.get('state') == 'complete':
+            item['state'] = 'completed'
+        return item
     return None
+
+
+def resolve_target(game_id):
+    if not isinstance(game_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', game_id):
+        raise ValueError('无效的站内游戏 ID，请重新选择游戏。')
+    historic = enrich_target(DATA, {'site': game_id})
+    if historic and (historic.get('name') or historic.get('zh')) and historic.get('externalId'):
+        return historic
+    with MANAGER_LOCK:
+        sessions = list(SESSIONS.values())
+    for capture in reversed(sessions):
+        if capture.archived:
+            continue
+        with capture.lock:
+            rows = list(capture.rows)
+        match = catalog_target(rows, capture.folder, game_id)
+        if match:
+            return match
+    if historic and (historic.get('name') or historic.get('zh')):
+        return historic
+    raise ValueError('已保存的大厅目录中找不到这个站内 ID，请重新核对历史。')
+
+
+class PreviousRecorder:
+    """升级期间只读取旧实例的活动摘要，已完成的批次从共用目录读取。"""
+    def __init__(self, port):
+        self.port = port
+        self.lock = threading.Lock()
+        self.checked = None
+        self.confirmed = None
+        self.cache = {}
+
+    def unfinished(self):
+        return {sid: entry for sid, entry in self.cache.items()
+                if (folder := session_folder(DATA, sid)) and not (folder / 'manifest.json').is_file()}
+
+    def active(self):
+        with self.lock:
+            if self.checked is not None and time.monotonic() - self.checked < 20:
+                return self.unfinished()
+            connection = HTTPConnection('127.0.0.1', self.port, timeout=4)
+            try:
+                connection.request('GET', '/api/sessions')
+                response = connection.getresponse()
+                if response.status != 200:
+                    raise ValueError('读取旧实例失败')
+                data = json.loads(response.read(4 * 1024 * 1024))
+                if not isinstance(data, list):
+                    raise ValueError('旧实例不是抓取工具')
+            except (ValueError, OSError, HTTPException):
+                # 旧进程短暂繁忙时，保留已经确认属于该窗口的记录。
+                self.checked = time.monotonic()
+                if self.confirmed is None or self.checked - self.confirmed >= 60:
+                    self.cache.clear()
+                return self.unfinished()
+            finally:
+                connection.close()
+            found = {}
+            for raw in data:
+                if not isinstance(raw, dict) or raw.get('state') not in ACTIVE_STATES:
+                    continue
+                sid = raw.get('id')
+                if not isinstance(sid, str) or not SESSION_ID.fullmatch(sid) or not session_folder(DATA, sid):
+                    continue
+                target = raw.get('target_game')
+                target = enrich_target(DATA, target) if isinstance(target, dict) else {}
+                label = game_label(target) if target else ''
+                found[sid] = {**{k: raw.get(k) for k in ('id','created','state','game_stage')},
+                              'target_game': target, 'url': LOBBY_URL if target else '',
+                              'display_name': label or '待识别游戏', 'source_port': self.port, 'external_session': True}
+                if label:
+                    link_legacy_session(DATA, sid, [label])
+            self.checked = time.monotonic()
+            self.confirmed = self.checked
+            self.cache = found
+            return self.unfinished()
+
+
+def same_recording(record, target, url):
+    other = record.get('target_game')
+    if target:
+        return bool(other and other.get('site') == target['site'])
+    return not other and record.get('url') == url
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -278,7 +445,8 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def allowed(self):
-        return self.headers.get('Host', '') in ('127.0.0.1:8090', 'localhost:8090')
+        port = self.server.server_address[1]
+        return self.headers.get('Host', '') in (f'127.0.0.1:{port}', f'localhost:{port}')
 
     def do_GET(self):
         if not self.allowed():
@@ -286,6 +454,8 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if path == '/':
             html = (ROOT / 'index.html').read_text(encoding='utf-8').replace('__TOKEN__', TOKEN)
+            html = html.replace('__GAME_CAPTURE_VERSION__', '1')
+            html = html.replace('__PARALLEL_CAPTURE_VERSION__', '1')
             return self.send(200, html.encode(), 'text/html; charset=utf-8')
         if path == '/api/feature-maintenance':
             status = ROOT.parents[2] / 'other/diagnostics/feature-maintenance/status.json'
@@ -294,41 +464,59 @@ class Handler(BaseHTTPRequestHandler):
             except (OSError, ValueError):
                 return self.send(200, {'status': 'pending', 'reason': '维护表监督器尚未生成状态'})
         if path == '/api/sessions':
-            ids = set(SESSIONS)
-            if DATA.exists():
-                ids.update(p.name for p in DATA.iterdir() if (p / 'manifest.json').is_file())
-            records = []
-            for sid in ids:
-                item = snapshot(sid)
-                if item:
-                    records.append({k: v for k, v in item.items() if k != 'rows'})
-            return self.send(200, sorted(records, key=lambda x: x['created'], reverse=True))
+            with MANAGER_LOCK:
+                local = list(SESSIONS.values())
+            records = {c.id: c.snapshot(include_rows=False) for c in local}
+            previous = getattr(self.server, 'previous_recorder', None)
+            if previous:
+                records.update(previous.active())
+            saved = archive_index(DATA)
+            sync_legacy_groups(DATA, saved)
+            records.update({sid: entry['summary'] for sid, entry in saved.items()})
+            return self.send(200, sorted(records.values(), key=lambda x: x.get('created') or '', reverse=True))
         parts = path.strip('/').split('/')
         if len(parts) >= 3 and parts[:2] == ['api', 'sessions']:
             sid = parts[2]
             if len(sid) != 32 or any(c not in '0123456789abcdef' for c in sid):
                 return self.send(404, {'error': '不存在的抓取记录'})
+            folder = session_folder(DATA, sid)
+            if not folder:
+                return self.send(404, {'error': '该批次的抓取目录不存在或有冲突'})
             item = snapshot(sid)
             if not item:
                 return self.send(404, {'error': '不存在的抓取记录'})
             if len(parts) == 3:
+                if not item.get('display_name') and folder and (folder / 'manifest.json').is_file():
+                    summary = archive_index(DATA).get(sid, {}).get('summary', {})
+                    for key in ('display_name','target_game','identity_games'):
+                        if key in summary:
+                            item[key] = summary[key]
                 return self.send(200, item)
+            if len(parts) == 4 and parts[3] == 'library-input':
+                try:
+                    return self.send(200, project_session(item, folder))
+                except (OSError, ValueError, TypeError, KeyError):
+                    return self.send(503, {'error': '批次目录尚未核对成功，请稍后重试'})
             if len(parts) == 4 and parts[3] == 'quality':
                 try:
-                    return self.send(200, get_session_quality(item, DATA / sid))
+                    return self.send(200, get_session_quality(item, folder))
                 except (OSError, ValueError, TypeError, KeyError):
                     return self.send(503, {'error': '采集检查暂不可用，请保留当前抓取记录', 'status': 'unknown'})
             if len(parts) == 4 and parts[3] == 'download':
                 if item['state'] not in ('completed', 'error'):
                     return self.send(409, {'error': '请先停止抓取，等待文件保存完成'})
-                folder = DATA / sid
                 archive = folder / 'capture.zip'
-                with MANAGER_LOCK:
+                with ZIP_LOCKS[int(sid[:2], 16) % len(ZIP_LOCKS)]:
                     if not archive.exists():
-                        with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
-                            for file in folder.rglob('*'):
-                                if file.is_file() and file != archive:
-                                    z.write(file, file.relative_to(folder))
+                        temporary = folder / ('archive-' + uuid.uuid4().hex + '.part')
+                        try:
+                            with zipfile.ZipFile(temporary, 'w', zipfile.ZIP_DEFLATED) as z:
+                                for file in folder.rglob('*'):
+                                    if file.is_file() and file != archive and file.suffix != '.part':
+                                        z.write(file, file.relative_to(folder))
+                            temporary.replace(archive)
+                        finally:
+                            temporary.unlink(missing_ok=True)
                 # Stream the archive so large sessions do not require a second RAM copy.
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/zip')
@@ -343,7 +531,7 @@ class Handler(BaseHTTPRequestHandler):
                 row = next((r for r in item['rows'] if r['id'] == int(parts[4])), None)
                 if not row or not row['body']:
                     return self.send(404, {'error': '该响应没有可用的响应体'})
-                with (DATA / sid / row['body']).open('rb') as f:
+                with (folder / row['body']).open('rb') as f:
                     raw = f.read(256 * 1024 + 1)
                 is_text = any(t in row['mime'] for t in ('text/', 'json', 'javascript', 'xml', 'svg', 'form-urlencoded'))
                 return self.send(200, dict(text=raw[:256*1024].decode('utf-8', errors='replace') if is_text else base64.b64encode(raw[:4096]).decode(),
@@ -359,17 +547,36 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError('请求长度无效')
             data = json.loads(self.rfile.read(size))
             path = urlsplit(self.path).path
-            if path == '/api/start':
-                url = data.get('url', '').strip()
-                parsed = urlsplit(url)
-                if parsed.scheme not in ('http', 'https') or not parsed.hostname:
-                    raise ValueError('请输入完整的 http:// 或 https:// 网址')
+            if path in ('/api/start', '/api/start-game'):
+                target = credentials = None
+                if path == '/api/start-game':
+                    if not isinstance(data, dict) or set(data) != {'game_id', 'account', 'password'}:
+                        raise ValueError('定向抓取需要站内游戏 ID、预设账号和密码。')
+                    account, password = data.get('account'), data.get('password')
+                    if (not isinstance(account, str) or not 0 < len(account.strip()) <= 256 or
+                            not isinstance(password, str) or not 0 < len(password) <= 1024):
+                        raise ValueError('请输入有效的预设账号和密码。')
+                    target = resolve_target(data['game_id'])
+                    credentials = (account.strip(), password)
+                    url = LOBBY_URL
+                else:
+                    url = data.get('url', '').strip()
+                    parsed = urlsplit(url)
+                    if parsed.scheme not in ('http', 'https') or not parsed.hostname:
+                        raise ValueError('请输入完整的 http:// 或 https:// 网址')
+                previous = getattr(self.server, 'previous_recorder', None)
+                if previous and any(same_recording(r, target, url) for r in previous.active().values()):
+                    return self.send(409, {'error': '该目标已在原窗口抓取，可继续选择其他游戏。'})
                 with MANAGER_LOCK:
-                    if any(c.state in ('starting', 'recording', 'stopping') for c in SESSIONS.values()):
-                        return self.send(409, {'error': '请先停止当前抓取'})
-                    capture = Capture(url)
+                    if any(c.state in ACTIVE_STATES and same_recording({'target_game': c.target, 'url': c.url}, target, url)
+                           for c in SESSIONS.values()):
+                        return self.send(409, {'error': '该游戏或网址已有抓取窗口，可继续选择其他游戏。'})
+                    capture = Capture(url, target=target) if target else Capture(url)
                     SESSIONS[capture.id] = capture
-                    capture.start()
+                    if target:
+                        capture.start(credentials=credentials)
+                    else:
+                        capture.start()
                 return self.send(201, {'id': capture.id})
             if path == '/api/stop':
                 capture = SESSIONS.get(data.get('id'))
@@ -383,11 +590,21 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    server = ThreadingHTTPServer(('127.0.0.1', 8090), Handler)
-    print('Response Capture: http://127.0.0.1:8090', flush=True)
-    if '--open' in sys.argv:
-        webbrowser.open('http://127.0.0.1:8090')
-    supervisor = start_supervisor()
+    import argparse
+    parser = argparse.ArgumentParser(description='本地响应抓取工具')
+    parser.add_argument('--port', type=int, default=8090)
+    parser.add_argument('--previous-port', type=int, help='仅查看指定本机旧实例中正在录制的批次')
+    parser.add_argument('--open', action='store_true')
+    options = parser.parse_args()
+    if options.previous_port is not None and (not 1 <= options.previous_port <= 65535 or options.port == options.previous_port):
+        parser.error('旧实例端口必须有效且与本实例不同')
+    server = ThreadingHTTPServer(('127.0.0.1', options.port), Handler)
+    server.previous_recorder = PreviousRecorder(options.previous_port) if options.previous_port else None
+    address = f'http://127.0.0.1:{server.server_address[1]}'
+    print('Response Capture: ' + address, flush=True)
+    if options.open:
+        webbrowser.open(address)
+    supervisor = start_supervisor() if options.port == 8090 else None
     try:
         server.serve_forever()
     finally:

@@ -15,16 +15,16 @@ function png(){
   const header=Buffer.alloc(13);header.writeUInt32BE(320,0);header.writeUInt32BE(240,4);header[8]=8;header[9]=2;
   return Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',header),chunk('IDAT',deflateSync(Buffer.alloc((320*3+1)*240))),chunk('IEND',Buffer.alloc(0))]);
 }
-async function fixture(t,{included=true,testBody}={}){
+async function fixture(t,{included=true,testBody,group}={}){
   const root=await fs.mkdtemp(path.join(tmpdir(),'synthetic-feature-pipeline-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
   const put=async(name,bytes)=>{const file=path.join(root,name);await fs.mkdir(path.dirname(file),{recursive:true});await fs.writeFile(file,bytes);};
-  for(const name of ['other/tooling/feature-maintenance/verify.mjs',VERIFIER])await put(name,await fs.readFile(path.join(DEFAULT_ROOT,name)));
+  for(const name of ['other/tooling/feature-maintenance/verify.mjs','other/capture/response-capture/capture-layout.mjs',VERIFIER])await put(name,await fs.readFile(path.join(DEFAULT_ROOT,name)));
   const feature={id:'synthetic-game:complete',game_id:901,game_code:'synthetic-game',name:'合成测试功能',sheet:'Synthetic',cell:'C2',before:'❌',after:'✅',verifier:VERIFIER,test_files:['other/tests/feature-maintenance/synthetic-feature.test.mjs'],implementation_roots:['games/synthetic-game/backend','games/synthetic-game/frontend','games/synthetic-game/instance/config']};
   const workbook='other/docs/project/synthetic.xlsx';await put(workbook,'仅用于hash门禁的隔离合成占位，不是实际工作簿');
   await writeJson(root,REGISTRY,{version:1,synthetic_fixture:true,workbook,features:[feature],capture_sources:[{game_codes:[feature.game_code],launch_origins:['https://capture.synthetic.test'],api_origins:['https://api.synthetic.test']}]});
   await writeJson(root,READINESS,{version:1,workbook_sha256:(await fact(root,workbook)).sha256,games:[{id:901,code:'synthetic-game',special_features:[{name:feature.name,implementation:included?'included':'incomplete'}]}]});
   await put('games/synthetic-game/backend/engine.mjs','export const synthetic=true;\n');await put('games/synthetic-game/frontend/index.html','<p>synthetic</p>');await put('games/synthetic-game/instance/config/game.json','{"synthetic":true}');
-  const session='a'.repeat(32),captureRoot=`other/capture/response-capture/captures/${session}`,bodyPath=captureRoot+'/bodies/000001.bin';await put(bodyPath,'synthetic-protocol-evidence');
+  const session='a'.repeat(32),captureRoot=['other/capture/response-capture/captures',group,session].filter(Boolean).join('/'),bodyPath=captureRoot+'/bodies/000001.bin';await put(bodyPath,'synthetic-protocol-evidence');
   const detected={game_code:feature.game_code,feature_id:'synthetic',feature_name:feature.name,status:'evidence_complete',evidence:[{path:'bodies/000001.bin',sha256:(await fact(root,bodyPath)).sha256}],checks:[{name:'synthetic_full_chain',passed:true}],pending_reasons:[]};
   const output={version:1,session_id:session,features:[detected]};
   await put(DETECTOR,`# 仅供隔离框架测试的合成检测器\nimport json\nprint(json.dumps(json.loads(${JSON.stringify(JSON.stringify(output))})))\n`);
@@ -60,6 +60,22 @@ test('watch一次轮询无证据时只记录pending且不写表',async t=>{
   const f=await fixture(t),before=await fact(f.root,f.workbook),server=createServer((req,res)=>{res.setHeader('Content-Type','application/json');res.end('[]');});
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>new Promise(resolve=>server.close(resolve)));
   const state=await watchOnce({root:f.root,captureUrl:'http://127.0.0.1:'+server.address().port});assert.equal(state.features[f.feature.id].status,'pending');assert.deepEqual(await fact(f.root,f.workbook),before);
+});
+test('按游戏分组的批次可由监督器发现并通过原始证据复核',async t=>{
+  const f=await fixture(t,{group:'PG-901-测试游戏'});
+  const candidate=await readJson(f.root,f.candidatePath);
+  const detail=await readJson(f.root,candidate.source.detail.path);
+  const server=createServer((req,res)=>{
+    res.setHeader('Content-Type','application/json');
+    res.end(JSON.stringify(req.url==='/api/sessions'?[{id:detail.id,state:'completed'}]:detail));
+  });
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  t.after(()=>new Promise(resolve=>server.close(resolve)));
+  const state=await watchOnce({root:f.root,captureUrl:'http://127.0.0.1:'+server.address().port});
+  assert.deepEqual(state.errors,[]);
+  const produced=await readJson(f.root,state.features[f.feature.id].candidatePath);
+  assert.equal(produced.source.capture_root,candidate.source.capture_root);
+  assert.equal((await f.verify()).status,'verified');
 });
 test('监控互斥锁拒绝第二实例且退出后可重新获取',async t=>{const f=await fixture(t),release=await acquireLock(f.root);await assert.rejects(acquireLock(f.root),/已有监控/);await release();await (await acquireLock(f.root))();});
 test('抓取快照仅保留相关API字段并移除查询参数和请求头',()=>{

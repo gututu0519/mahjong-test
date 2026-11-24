@@ -4,6 +4,7 @@ import {randomUUID} from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {DEFAULT_ROOT,REGISTRY,DETECTOR,PRIVATE,hash,canonical,requireFact,repoPath,fact,readJson,writeJson,runDetector,verifyFeature,featureKey} from './verify.mjs';
 import {updateWorkbook} from './update-workbook.mjs';
+import {captureArchive, captureFolders} from '../../capture/response-capture/capture-layout.mjs';
 
 const STATUS=PRIVATE+'/status.json';
 const LOCK=PRIVATE+'/.watch.lock';
@@ -43,13 +44,15 @@ export async function watchOnce(options={}){
   try{
     const listing=await jsonFetch(origin+'/api/sessions',options.signal),sessions=Array.isArray(listing)?listing:listing.sessions;
     requireFact(Array.isArray(sessions),'抓取会话列表格式无效');
+    const folders=captureFolders(path.join(root,captureArchive));
     for(const session of sessions){
       if(options.signal?.aborted)throw new Error('监控已停止');
       if(!/^[a-zA-Z0-9_-]{1,80}$/.test(session.id??'')){state.errors.push('忽略无效会话标识');continue;}
       try{
         const detail=sanitizeDetail(await jsonFetch(origin+'/api/sessions/'+encodeURIComponent(session.id),options.signal),registry.features,registry.capture_sources),detailHash=hash(canonical(detail));
         if(state.sessions[session.id]?.detail_sha256===detailHash&&state.sessions[session.id]?.detector_sha256===detectorFact.sha256&&!state.sessions[session.id]?.stats?.invalid_saved_spins)continue;
-        const captureRoot=`other/capture/response-capture/captures/${session.id}`;
+        requireFact(folders.has(session.id),'未找到该会话的抓取批次目录');
+        const captureRoot=captureArchive+'/'+folders.get(session.id);
         const result=await runDetector(root,detail,captureRoot,{signal:options.signal});
         requireFact(result.session_id===session.id,'检测结果会话不匹配');
         const matchesRegistered=result.features.some(d=>['candidate','evidence_complete'].includes(d.status)&&registry.features.some(f=>f.game_code===d.game_code&&f.name===d.feature_name));

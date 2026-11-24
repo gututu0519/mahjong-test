@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {randomUUID} from 'node:crypto';
+import {captureArchive, captureFolders} from '../../../capture/response-capture/capture-layout.mjs';
 import {DEFAULT_ROOT,REGISTRY,READINESS,VERIFIER,DETECTOR,PRIVATE,canonical,hash,requireFact,repoPath,fact,checkFile,readJson,writeJson,snapshot,runFile,runDetector,featureKey} from '../verify.mjs';
 
 const identity=f=>({id:f.id,game_id:f.game_id,game_code:f.game_code,name:f.name});
@@ -31,7 +32,8 @@ export async function verifyIntegratedFeature(options){
   if(selected.length!==1||selected[0].status!=='evidence_complete')return pending(selected[0]?.pending_reasons?.join('；')||'抓取候选尚未具备完整协议证据');
   requireFact(candidate.source.detector.path===DETECTOR,'候选检测器未绑定固定路径');
   await checkFile(root,candidate.source.detail);await checkFile(root,candidate.source.detector);
-  requireFact(candidate.source.capture_root===`other/capture/response-capture/captures/${candidate.session_id}`,'抓取目录与会话不匹配');
+  const folder=captureFolders(path.join(root,captureArchive)).get(candidate.session_id);
+  requireFact(folder && candidate.source.capture_root===captureArchive+'/'+folder,'抓取目录与会话不匹配');
   const detail=await readJson(root,candidate.source.detail.path);
   requireFact((detail.id??detail.session_id)===candidate.session_id,'抓取快照会话不匹配');
   const rerun=await runDetector(root,detail,candidate.source.capture_root,{signal});

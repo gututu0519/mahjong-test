@@ -78,7 +78,8 @@ new WebSocket('ws://'+location.host+'/ws');
 
 async def test():
     fixture = ThreadingHTTPServer(('127.0.0.1', 0), Fixture)
-    ui = ThreadingHTTPServer(('127.0.0.1', 8090), app.Handler)
+    ui = ThreadingHTTPServer(('127.0.0.1', 0), app.Handler)
+    origin = f'http://127.0.0.1:{ui.server_port}'
     for server in [fixture, ui]:
         threading.Thread(target=server.serve_forever, daemon=True).start()
     target = f'http://127.0.0.1:{fixture.server_port}'
@@ -90,8 +91,8 @@ async def test():
                 page = await browser.new_page(viewport={'width': 1440, 'height': 1000})
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
-                await page.goto('http://127.0.0.1:8090')
-                bad = await page.request.post('http://127.0.0.1:8090/api/start', data={'url':target})
+                await page.goto(origin)
+                bad = await page.request.post(origin + '/api/start', data={'url':target})
                 assert bad.status == 403, 'Missing CSRF token must be rejected'
                 await page.get_by_label('目标网址', exact=True).fill(target)
                 await page.get_by_role('button', name='开始抓取').click()
@@ -125,7 +126,7 @@ async def test():
                 await page.locator('#preview').filter(has_text='你好').wait_for()
                 await page.get_by_label('搜索请求').fill('')
                 await page.screenshot(path=str(app.ROOT / 'preview.png'), full_page=True)
-                archive = await page.request.get(f'http://127.0.0.1:8090/api/sessions/{capture.id}/download')
+                archive = await page.request.get(f'{origin}/api/sessions/{capture.id}/download')
                 assert archive.status == 200
                 with zipfile.ZipFile(io.BytesIO(await archive.body())) as z:
                     assert 'manifest.json' in z.namelist()
@@ -135,7 +136,7 @@ async def test():
                     assert len(har['log']['entries']) >= 8
                     assert z.read(get_row('/image')['body']) == PNG
                 app.SESSIONS.clear()
-                restored = await page.request.get(f'http://127.0.0.1:8090/api/sessions/{capture.id}')
+                restored = await page.request.get(f'{origin}/api/sessions/{capture.id}')
                 assert (await restored.json())['state'] == 'completed'
                 await page.set_viewport_size({'width':390, 'height':844})
                 assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Mobile overflow'

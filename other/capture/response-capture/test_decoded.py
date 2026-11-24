@@ -7,7 +7,7 @@ import app
 
 async def test(vaults=False, money=False):
     import sys
-    sys.path.insert(0, str(app.ROOT.parent))
+    sys.path.insert(0, str(app.LEGACY_ROOT))
     if money:
         from py.adapters.jili.money_pot_deluxe import pack
     elif vaults:
