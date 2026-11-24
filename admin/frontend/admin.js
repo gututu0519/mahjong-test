@@ -177,7 +177,11 @@ async function overview() {
       button(tenant() ? '管理我的商户 ↗' : '管理合作商户 ↗', () => navigate('merchants'), 'welcome-action')));
   const stats = el('div', {class: 'stats'}, [
     [tenant() ? '已结算玩家' : '合作商户', tenant() ? data.players : data.merchants, tenant() ? '按商户与玩家身份去重' : data.active_merchants + ' 个商户已启用', '▦'],
-    ['已接入游戏', data.games, tenant() ? '本商户已获授权' : '商户钱包链路已接通', '◇'],
+    [tenant() ? '可接入游戏' : '游戏目录', data.games, tenant() ? '已开放且本商户已获授权' : (data.open_games ?? 0) + ' 款已开放', '◇'],
+    ...(!tenant() ? [
+      ['已登记游戏服务', data.registered_games ?? 0, '已登记的非退役计算服务，按游戏去重', '◇'],
+      ['已激活游戏', data.active_games ?? 0, '已选择计算版本，不代表实时健康', '◇'],
+    ] : []),
     ['已完成交易', data.settled, '已确认钱包处理结果', '↗'],
     ['待处理交易', data.pending, data.rejected + ' 笔交易已拒绝', '⇄'],
   ].map(([label, number, foot, icon]) => el('div', {class: 'stat'}, el('div', {class: 'stat-icon'}, icon), el('div', {class: 'stat-label'}, label), el('div', {class: 'stat-number'}, amount(number)), el('div', {class: 'stat-foot'}, foot))));
@@ -401,11 +405,29 @@ function exportGameCatalog() {
 }
 function gameAvailabilityEditor(game) {
   const enabled=!game.availability.enabled;
+  const progress=el('p',{class:'hint',role:'status','aria-live':'polite'},'');
   formModal(enabled?'开放游戏':'关闭游戏',[
     el('p',{class:'cell-title'},game.title),
-    el('p',{},enabled?'开放后，已授权且钱包兼容的商户可查看并接入此游戏。':'关闭后，游戏从商户目录移除，并停止新接入和新整局；已开始回合仍可恢复结算。')
-  ],enabled?'确认开放':'确认关闭',async()=>{
-    await api('games/availability',{game_id:game.id,enabled,version:game.availability.version});
+    el('p',{},enabled?'开放前将检查已激活的游戏计算服务、启动资料及前端资源，并校验版本兼容性。资源较多时需要等待；关闭窗口不会自动开放。':'关闭后，游戏从商户目录移除，并停止新接入和新整局；已开始回合仍可恢复结算。'),progress
+  ],enabled?'检查并开放':'确认关闭',async()=>{
+    const request={game_id:game.id,enabled,version:game.availability.version};
+    if(enabled) {
+      progress.textContent='正在创建部署检查任务…';
+      let result=await api('games/availability',request);
+      const id=result.check.id;
+      const stages={service:'检查计算服务',private:'检查启动资料',assets:'校验前端资源',recheck:'复核当前版本',ready:'检查通过'};
+      while(result.check.status==='checking') {
+        if(!progress.isConnected||!$('#modal').open)return;
+        progress.textContent=(stages[result.check.stage]||'部署检查中')+(result.check.total?'：'+result.check.completed+' / '+result.check.total:'')+'…';
+        await new Promise(resolve=>setTimeout(resolve,1000));
+        if(!progress.isConnected||!$('#modal').open)return;
+        result=await api('games/availability-check',{check_id:id});
+      }
+      if(!progress.isConnected||!$('#modal').open)return;
+      if(result.check.status!=='ready')throw Error(result.check.error?.message||'部署检查未通过，请重新检查。');
+      progress.textContent='部署检查通过，正在确认版本并开放…';
+      await api('games/availability',{...request,check_id:id});
+    } else await api('games/availability',request);
     closeModal();await loadView();notice(enabled?'游戏已开放。':'游戏已关闭，已有回合仍可结算。');
   });
 }
@@ -427,7 +449,7 @@ async function gamePage() {
         el('span',{class:'mono game-rule-version'},game.ruleset_id || '—'),merchants.filter(m=>m.games.includes(game.id)).length,rtp(game),
         el('div',{class:'catalog-row-actions'},toggle,can('rtp.write')?button('设置 RTP',()=>run(()=>gameRtpEditor(game)),'quiet'):null)];
     }));
-  return el('div',{class:'game-catalog'},panel(title,subtitle,content,exported),merchant?null:el('p',{class:'hint'},'运营可自主开放任何游戏。收集情况和缺失项仅供参考，不限制开放；关闭不影响已有回合结算。'));
+  return el('div',{class:'game-catalog'},panel(title,subtitle,content,exported),merchant?null:el('p',{class:'hint'},'开放前必须通过计算服务、启动资料及前端资源检查。玩法收集情况仅供参考，不作为开放限制；关闭不影响已有回合结算。'));
 }
 
 function pager(rows, filters, reload) {

@@ -19,6 +19,7 @@ import type { Provider } from "../../gateway/src/provider.js";
 import { merchantGameResult, merchantRoundMoney } from "../../gateway/src/merchant-money.js";
 import { GameServices } from "../../gateway/src/game-services.js";
 import {FrontendVersions} from "../../gateway/src/frontend-versions.js";
+import {GameAvailabilityChecks} from './game-availability.js';
 export function transactions(p: Provider, q: any, detail = false) {
   const clauses: string[] = [],
     args: any[] = [];
@@ -123,10 +124,16 @@ function overview(p: Provider, mid?: string) {
     );
     if (day) day.settled++;
   }
+  const catalog=mid?p.merchantCatalog(mid):p.catalog();
   return {
     merchants: merchants.length,
     active_merchants: merchants.filter((m) => m.enabled).length,
-    games: (mid ? p.merchantCatalog(mid) : p.catalog()).length,
+    games: catalog.length,
+    ...(!mid?{
+      registered_games:Number(p.control.get("SELECT COUNT(DISTINCT code) AS count FROM game_service_releases WHERE status<>'retired'")?.count??0),
+      active_games:Number(p.control.get("SELECT COUNT(*) AS count FROM game_service_routes a JOIN game_service_releases r ON r.id=a.release_id WHERE r.status='ready'")?.count??0),
+      open_games:catalog.filter(game=>game.availability.enabled).length,
+    }:{}),
     settled: counts.settled ?? 0,
     pending: (counts.prepared ?? 0) + (counts.debited ?? 0),
     rejected: counts.rejected ?? 0,
@@ -192,6 +199,7 @@ const permissions: any = {
   games: "games.read",
   "games/export": "games.read",
   "games/availability": "games.manage",
+  "games/availability-check": "games.manage",
   "transactions/list": "transactions.read",
   "transactions/detail": "transactions.read",
   "transactions/retry": "transactions.retry",
@@ -215,6 +223,7 @@ export function adminServer(
 ) {
   const services=p.multi?.remote??new GameServices(p,config);
   const frontends=p.multi?.frontends??new FrontendVersions(p,config);
+  const availabilityChecks=new GameAvailabilityChecks(p,services,frontends,config);
   const deployment = new Deployment(config),
     control = p.control,
     headers = {
@@ -265,7 +274,7 @@ export function adminServer(
     }
     return body;
   };
-  return server(async (req, res) => {
+  const http=server(async (req, res) => {
     for (const [k, v] of Object.entries(headers)) res.setHeader(k, v);
     deployment.guard(req, "admin");
     const path = req.url!;
@@ -461,8 +470,18 @@ export function adminServer(
         result = catalogExport(scope ? p.merchantCatalog(scope) : p.catalog(), q.format ?? "html", scope);
         break;
       case "games/availability":
-        check(!scope, "FORBIDDEN", "Only platform operators may change availability", 403);
-        result = {availability:control.setGameAvailability(actor,q)};
+        check(!merchantAPI&&!scope, "FORBIDDEN", "Only platform operators may change availability", 403);
+        check(typeof q.enabled==='boolean','INVALID_ARGUMENT');
+        if(q.enabled) {
+          result=q.check_id?{availability:availabilityChecks.enable(actor,q)}:{check:availabilityChecks.begin(actor,q)};
+        } else {
+          result={availability:control.setGameAvailability(actor,q)};
+          availabilityChecks.cancel(q.game_id);
+        }
+        break;
+      case "games/availability-check":
+        check(!merchantAPI&&!scope,'FORBIDDEN','Only platform operators may check availability',403);
+        result={check:availabilityChecks.status(actor,q.check_id)};
         break;
       case "transactions/list":
         result = { transactions: transactions(p, q) };
@@ -549,4 +568,6 @@ export function adminServer(
     }
     return success(res, result, action.endsWith("/create") ? 201 : 200);
   });
+  http.on('close',()=>availabilityChecks.close());
+  return http;
 }

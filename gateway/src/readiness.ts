@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import {runtimeData} from '../../other/shared/config/runtime-data.js';
 import { GAME_CODES, gameNumber } from "./catalog.js";
 import { check } from "../../other/shared/core.js";
 
@@ -19,7 +20,7 @@ export interface ReadinessEntry {
 export class GameReadiness {
   private entries: Map<string, ReadinessEntry>;
   constructor(rows: ReadinessEntry[] = JSON.parse(readFileSync(
-    new URL("../../config/game-readiness.json", import.meta.url), "utf8",
+    runtimeData('game-readiness.json'), "utf8",
   )).games) {
     check(Array.isArray(rows) && rows.length === GAME_CODES.length, "READINESS_CONFIG_INVALID");
     this.entries = new Map();

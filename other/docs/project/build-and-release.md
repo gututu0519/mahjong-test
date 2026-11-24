@@ -2,19 +2,36 @@
 
 ## 当前压缩包交付规则
 
-当前网关、后台与模拟平台已分包：网关 ZIP 不含后台页面/API，也不含重复的顶层 `clients/`；后台为独立 `admin-<build-id>.tar.gz`。正式网关、后台和独立游戏包均提供 `npm start`，按依赖安装、适用迁移、服务启动的顺序执行。安装及迁移失败则停止启动。操作见[独立服务包与启动](service-packaging-and-startup.md)。
+- **默认只构建一个指定产物**：通用命令必须用 `--artifact <名称>`，无目标时拒绝默认全量构建；只有明确批量要求才用 `--all`。游戏组件交付每次指定一个 `--game`。
+- **游戏前端不压缩**：当前游戏交付采用真实的 `update/game-<代码>/<代码>-client-<前端版本>/` 与 `update/game-<代码>/<代码>-serve-<服务版本>/` 两个版本目录；client 内为原始构建文件，serve 内仅放服务端 ZIP。此规则替代下文旧的完整游戏合并 ZIP、update 只放压缩包及不增加第三层目录的约定。需要压缩的产物仍必须为 ZIP；其他产物的归档分类不变。配套清单、部署说明和日志留在 diagnostics，历史归档保留。
 
-- 根目录 `update/` 专门存放打包完成的压缩包，不放源码、解压目录、日志、配置或清单文件。
+- 游戏交付的实际目录、命令和历史格式兼容见[游戏组件交付](game-deployment-bundles.md)。`npm run game:package` 交付前端目录与服务端 ZIP；`npm run package -- --artifact game-<代码> ...` 只构建该游戏计算服务，ZIP 同样进入 serve 版本目录。
+
+- 独立服务包 `npm start` 已运行时自动重启同目录同入口实例（包括 stopped/errored），重新读取实际 env、JSON 和本次参数；允许显式切换 env 文件路径。预检查配置失败保留健康旧实例，不合并旧 PM2 环境；同名异目录/异入口拒绝覆盖。此项替代历史“已运行即返回”的启动规则，源码开发入口保持原行为。
+
+- **所有新构建的交付压缩包统一使用 ZIP**，包括网关、后台、模拟平台、游戏、素材归档、基础设施和重新构建的兼容包；命名为 `<产物名称>-<build-id>.zip`，存入 `update/<产物名称>/`。禁止将其他压缩格式仅改名为 ZIP。已有旧格式归档及其校验记录保留，读取工具继续兼容历史格式。
+
+- 独立网关、后台、模拟平台及游戏包默认不包含 `node_modules/`，由 npm start 按生产锁自动安装；可向构建命令追加 `--with-dependencies` 生成带依赖包，需另用新 build-id，不覆盖历史版本。`SERVICE.json.dependencies_bundled` 记录具体包的依赖交付方式。默认精简后台为四个顶层目录，安装后才产生第五个 node_modules；历史完整兼容包维持原依赖范围。带依赖包启动仍执行 npm 检查，完全断网部署需另行准备并验证完整安装缓存，不能仅凭打包了依赖就宣称离线验收通过。
+
+- 独立包 `npm start` 默认调用 PM2 管理器并等待就绪；`npm run start:foreground` 指向自身命名入口。下述旧的 start 直接映射命名入口规则由此更新。PM2 及适用依赖以锁定版本随包提供；宝塔和 systemd 直接管理前台入口。配置模板和自动发现规则见[独立服务包与启动](service-packaging-and-startup.md)。
+
+- 独立服务启动文件按服务／游戏代码命名：`tools/gateway.mjs`、`tools/admin.mjs`、`tools/mock-platform.mjs`、`tools/<游戏代码>.mjs`。构建器同步设置 `package.json` 的 `scripts.start` 和 `SERVICE.json` 的 `entry_point`，并在包内 `START.md` 说明 PM2 用法。各命名入口复用 `start-service.mjs` 的三阶段启动流程，保留原入口及参数兼容性。
+
+当前网关、后台与模拟平台已分包：网关 ZIP 不含后台页面/API，也不含重复的顶层 `clients/`；后台为独立 `admin-<build-id>.zip`。正式网关、后台和独立游戏包均提供 `npm start`，按依赖安装、适用迁移、服务启动的顺序执行。安装及迁移失败则停止启动。操作见[独立服务包与启动](service-packaging-and-startup.md)。
+
+- 根目录 `update/` 按产物名称建立二级文件夹，专门存放打包完成的压缩包，不放源码、解压目录、日志、配置或清单文件。分类包括 `gateway/`、`admin/`、`mock-platform/`、`frontend/`、`infra/`、每款游戏的 `game-<游戏代码>/`，以及历史兼容包 `all-services/`、`buffalo-win/`；各分类内直接存放不同版本的包，不再增加第三层目录。
 - 每次构建的 `build-id` 就是本次发布版本标识；默认自动生成，亦可通过 `--build-id` 指定。新包文件名必须包含该版本号，不能覆盖已有同名包。
-- 网关交付格式为 **ZIP**：`update/gateway-<build-id>.zip`；禁止再生成新的无版本 `gateway.tar.gz` 网关交付包。
-- 其他当前 Node 包保持 TAR.GZ 格式，但同样带版本：例如 `update/game-fortune-rabbit-<build-id>.tar.gz`、`update/infra-<build-id>.tar.gz`。
-- 构建工作目录、发布清单及验证结果仍在 `other/diagnostics/releases/<build-id>/`。`release.json` 格式 2 使用 `artifact_directory` 记录压缩包目录，`artifacts[].file` 记录版本化文件名和 SHA-256。
-- ZIP 内部仍以 `gateway/` 为顶层目录，部署内容和启动入口保持原有布局；没有把源目录直接压成 ZIP。
-- 校验使用 `node other/tooling/run.mjs smoke-release <发布记录目录>`，自动读取压缩包位置。若将压缩包移动到其他交付位置，可追加 `--archives <压缩包目录>`。
+- 网关交付格式为 **ZIP**：`update/gateway/gateway-<build-id>.zip`；禁止再生成新的无版本 `gateway.tar.gz` 网关交付包。
+- 其他当前 Node 包同样使用 ZIP：例如 `update/admin/admin-<build-id>.zip`、独立计算包 `update/game-fortune-rabbit/game-fortune-rabbit-serve-<build-id>.zip`、`update/infra/infra-<build-id>.zip`；完整游戏包采用不带 serve 的 `game-<代码>-<build-id>.zip`。
+- 构建工作目录、发布清单及验证结果仍在 `other/diagnostics/releases/<build-id>/`。`release.json` 格式 2 使用 `artifact_directory` 记录压缩包根目录，`artifacts[].directory` 记录二级分类，`artifacts[].file` 记录版本化文件名，`artifacts[].sha256` 记录校验和。旧清单不修改：没有 `directory` 时优先查找原平铺路径，再按 `name` 查找分类路径。
+- ZIP 内部以对应产物目录为顶层目录（例如 `gateway/`、`admin/`），部署内容和启动入口保持原有布局；没有把源目录直接压成 ZIP。新发布清单通过 `archive_format: "zip"` 声明统一格式，校验器兼容没有此字段的旧清单。
+- 校验使用 `node other/tooling/run.mjs smoke-release <发布记录目录>`，自动读取压缩包位置。若将压缩包移动到其他交付位置，可追加 `--archives <压缩包根目录>`（分类布局传 `update/`，不传单个分类）。
 - 复验已有版本可追加 `--verification-name verification-compat.json` 等新文件名；验证记录继续写入该版本的诊断目录，不覆盖原有记录。
 - 旧归档保持原状，校验器继续兼容旧发布记录中的 TAR.GZ；下面历史记录中的旧文件名不作为新的交付规则。
 
-构建器先在诊断目录完成压缩，再以禁止覆盖的方式将压缩包交付到 `update/`，最后写入成功的 `release.json`。根目录 `AGENTS.md` 同步记录本机约定并由 Git 忽略。
+构建器先在诊断目录完成压缩，再以禁止覆盖的方式将压缩包交付到 `update/<产物名称>/`，最后写入成功的 `release.json`。根目录 `AGENTS.md` 同步记录本机约定并由 Git 忽略。
+
+整理已有平铺版本包使用 `node other/tooling/run.mjs organize-update`；先检查命名及目标冲突，再逐包禁止覆盖复制、核对源与目标 SHA-256 后移除平铺文件。迁移计划和最终校验记录写入 `other/diagnostics/releases/organize-update-<时间>/`，旧发布清单及压缩包内容保持不变。
 
 > 目录已重组。当前启动命令与路径见[四目录说明](../project-layout.md)；本文中的旧命令保留为历史记录。
 
