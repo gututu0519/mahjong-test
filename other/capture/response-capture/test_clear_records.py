@@ -1,4 +1,4 @@
-"""Browser-only regression: clearing never sends a mutation to the capture server."""
+"""行内记录回归：清空仅影响浏览器列表，不修改抓取文件或其他游戏。"""
 import asyncio
 import json
 from pathlib import Path
@@ -31,6 +31,10 @@ async def main():
                     body = [{k: v for k, v in session.items() if k != 'rows'}]
                 elif url.endswith('/api/sessions/' + session_id):
                     body = session
+                elif url.endswith('/library-input'):
+                    return await request.fulfill(status=404, content_type='application/json', body='{}')
+                elif url.endswith('/quality'):
+                    body = dict(version=1, session_id=session_id, generated_at=session['created'], summary={}, games=[])
                 elif '/body/' in url:
                     await asyncio.sleep(0.3)  # A stale preview must not reappear after clear.
                     body = dict(text='old response', encoding='text', truncated=False)
@@ -41,7 +45,15 @@ async def main():
                 await request.fulfill(content_type='application/json', body=json.dumps(body))
 
             await page.route('**/*', route)
+            async def show_batch():
+                if await page.locator('#capture-detail').is_visible():
+                    return
+                row = page.locator('#library-rows > tr[data-game-key]').filter(has=page.locator('.game-records-toggle')).first
+                await row.locator('.game-records-toggle').click()
+                await row.locator('.capture-batch[data-session-id="' + session_id + '"] .batch-view').click()
+
             await page.goto('http://127.0.0.1:8090/')
+            await show_batch()
             await page.wait_for_function("document.querySelector('#count').textContent === '2'")
             await page.locator('#rows tr').first.click()
             await page.locator('#filter').fill('does-not-match')
@@ -56,6 +68,7 @@ async def main():
             await page.wait_for_function("document.querySelector('#count').textContent === '1'")
             assert await page.locator('#rows tr').count() == 1
             await page.reload()
+            await show_batch()
             await page.wait_for_function("document.querySelector('#count').textContent === '1'")
             await page.locator('#show-all').click()
             assert await page.locator('#count').inner_text() == '3'

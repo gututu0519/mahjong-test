@@ -1,4 +1,5 @@
 """抓取完整度的只读接口；兼容正在录制、尚未加载新接口的抓取进程。"""
+import argparse
 import copy
 import json
 import re
@@ -58,11 +59,13 @@ def get_session_quality(detail, folder):
     return CACHE.get(detail, folder)
 
 
-def fetch_live_detail(sid):
+def fetch_live_detail(sid, capture_port=8090):
     if not SID.fullmatch(sid):
         raise ValueError('会话标识无效')
+    if type(capture_port) is not int or not 1 <= capture_port <= 65535:
+        raise ValueError('抓取服务端口无效')
     # 目标固定为本机抓取工具；请求参数不能指定远端网址或读取任意文件。
-    with urlopen('http://127.0.0.1:8090/api/sessions/' + sid, timeout=15) as response:
+    with urlopen(f'http://127.0.0.1:{capture_port}/api/sessions/' + sid, timeout=15) as response:
         raw = response.read(MAX_DETAIL_BYTES + 1)
     if len(raw) > MAX_DETAIL_BYTES:
         raise ValueError('会话数据超过检查上限')
@@ -80,7 +83,7 @@ class QualityHandler(BaseHTTPRequestHandler):
         port = self.server.server_port
         host = self.headers.get('Host', '')
         origin = self.headers.get('Origin')
-        return host in (f'127.0.0.1:{port}', f'localhost:{port}') and (origin is None or origin in ALLOWED_ORIGINS)
+        return host in (f'127.0.0.1:{port}', f'localhost:{port}') and (origin is None or origin in self.server.allowed_origins)
 
     def send_json(self, status, value):
         raw = json.dumps(value, ensure_ascii=False).encode('utf-8')
@@ -90,7 +93,7 @@ class QualityHandler(BaseHTTPRequestHandler):
         self.send_header('Cache-Control', 'no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
         origin = self.headers.get('Origin')
-        if origin in ALLOWED_ORIGINS:
+        if origin in self.server.allowed_origins:
             self.send_header('Access-Control-Allow-Origin', origin)
             self.send_header('Vary', 'Origin')
         self.end_headers()
@@ -127,17 +130,28 @@ class QualityHandler(BaseHTTPRequestHandler):
             return self.send_json(503, {'error': '采集检查暂不可用，请保留当前抓取记录', 'status': 'unknown'})
 
 
-def create_server(address=('127.0.0.1', 8091), *, detail_source=None, capture_root=None, quality_cache=None):
+def create_server(address=('127.0.0.1', 8091), *, detail_source=None, capture_root=None, quality_cache=None, capture_port=8090):
+    if address[0] != '127.0.0.1' or type(capture_port) is not int or not 1 <= capture_port <= 65535:
+        raise ValueError('检查服务只能监听本机回环地址，并需有效的抓取服务端口。')
     server = ThreadingHTTPServer(address, QualityHandler)
-    server.detail_source = detail_source or fetch_live_detail
+    server.capture_port = capture_port
+    server.allowed_origins = {f'http://{host}:{port}' for host in ('127.0.0.1', 'localhost')
+                              for port in (capture_port, server.server_port)}
+    server.detail_source = detail_source or (lambda sid: fetch_live_detail(sid, capture_port))
     server.capture_root = Path(capture_root or DATA)
     server.quality_cache = quality_cache or CACHE
     return server
 
 
 if __name__ == '__main__':
-    server = create_server()
-    print('Capture Quality: http://127.0.0.1:8091 （只读检查现有录制）', flush=True)
+    parser = argparse.ArgumentParser(description='抓取完整度只读兼容服务')
+    parser.add_argument('--port', type=int, default=8091)
+    parser.add_argument('--capture-port', type=int, default=8090)
+    args = parser.parse_args()
+    if not 1 <= args.port <= 65535 or not 1 <= args.capture_port <= 65535 or args.port == args.capture_port:
+        parser.error('检查服务与抓取服务端口必须有效且不同。')
+    server = create_server(('127.0.0.1', args.port), capture_port=args.capture_port)
+    print(f'Capture Quality: http://127.0.0.1:{args.port} （只读检查现有录制）', flush=True)
     try:
         server.serve_forever()
     finally:

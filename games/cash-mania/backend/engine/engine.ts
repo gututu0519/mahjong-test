@@ -10,6 +10,8 @@ export interface CashManiaConfig {
   original_probability_verified: boolean;
   supported_features: string[];
   unsupported_features: string[];
+  presentation_model?: string;
+  presentation_weights?: { normal: number; nudge: number; respin: number };
   coin_sizes_minor: number[];
   bet_levels: number[];
   bet_factor: number;
@@ -27,7 +29,17 @@ export interface CashManiaBet { coin_minor: number; level: number }
 // 金额和中奖公式来自原客户端及普通旋转证据；权重仅为可复现的本地模型。
 export function validateConfig(c: CashManiaConfig) {
   check(c.game_id === "cash-mania" && c.probability_model === "local-independent-reels-v1", "CONFIG_INVALID");
-  check(c.original_probability_verified === false && encode(c.supported_features) === '["normal-spin"]', "CONFIG_INVALID");
+  check(c.original_probability_verified === false, "CONFIG_INVALID");
+  if (c.presentation_model != null || c.presentation_weights != null) {
+    check(c.presentation_model === "local-outcome-preserving-v1", "CONFIG_INVALID");
+    const weights = c.presentation_weights;
+    check(weights != null && typeof weights === "object" && !Array.isArray(weights) &&
+      Object.keys(weights).sort().join(",") === "normal,nudge,respin", "CONFIG_INVALID");
+    const choices = [weights!.normal, weights!.nudge, weights!.respin];
+    check(choices.every(v => Number.isSafeInteger(v) && v >= 0) &&
+      choices.reduce((a, b) => a + b, 0) > 0 && choices.reduce((a, b) => a + b, 0) <= 0x100000000, "CONFIG_INVALID");
+    check(encode(c.supported_features) === '["normal-spin","nudge","respin"]', "CONFIG_INVALID");
+  } else check(encode(c.supported_features) === '["normal-spin"]', "CONFIG_INVALID");
   check(c.bet_factor === 10 && encode(c.payline) === "[1,4,7]", "CONFIG_INVALID");
   check(encode(c.side_values) === "[0,1,5,10,50,100]", "CONFIG_INVALID");
   check(encode(c.middle_values) === "[0,1,2,3,5,10,15,20,30,40,50,100]", "CONFIG_INVALID");
@@ -72,6 +84,19 @@ function pick(weights: number[], draw: (n: number) => number) {
   for (let i = 0; i < weights.length; i++) { target -= weights[i]; if (target < 0) return i; }
   throw new Error("权重抽取失败");
 }
+
+// 原版用中行的 0 表示停在两张钞票之间，上下两格必须有可显示的符号。
+export function visibleBoard(symbols: number[]): number[] {
+  if (!symbols.some((symbol, i) => symbol === 0 && i % 3 !== 1)) return symbols;
+  return symbols.map((symbol, i) => {
+    if (symbol !== 0 || i % 3 === 1) return symbol;
+    const middle = i - i % 3 + 1;
+    const opposite = i < middle ? middle + 1 : middle - 1;
+    // 只补同轴的展示格。整轴为空时用面额或倍率 1，支付线保留原始抽取。
+    return symbols[opposite] || symbols[middle] || 1;
+  });
+}
+
 export function evaluateBoard(c: CashManiaConfig, board: number[], bet: CashManiaBet) {
   check(board.length === 9 && board.every((v, i) => Number.isInteger(v) && v >= 0 && v < (i === 3 || i === 5 ? 14 : i === 4 ? c.middle_values.length : c.side_values.length)), "STATE_INVALID");
   // 原始普通局上下格可带 12/13 图标，已观察的值均为 1；本地不生成它们。
@@ -87,6 +112,31 @@ export function normalRtp(c: CashManiaConfig) {
   return side * middle / c.bet_factor;
 }
 
+// 仅生成同局中间表现，不改变最终抽取、扣款或派彩。选择权重是本地配置，
+// 原站样本只约束盘面关系，不提供触发概率、完整轮轴带或挪轴移位规则。
+function presentation(c: CashManiaConfig, board: number[], bet: CashManiaBet, seed: string, win: number): Record<string, any> {
+  if (!c.presentation_model || !win) return {};
+  const weights = c.presentation_weights!;
+  const draw = random(seed + ":presentation");
+  const choice = pick([weights.normal, weights.nudge, weights.respin], draw);
+  if (choice === 1) {
+    const original = [...board];
+    original[3] = 1 + draw(c.middle_values.length - 1);
+    original[4] = 0;
+    original[5] = 1 + draw(c.middle_values.length - 1);
+    return { original_board: original, original_values: evaluateBoard(c, original, bet).values,
+      nudge_from_position: { "1": 5 } };
+  }
+  if (choice === 2) {
+    const interim = [...board], index = draw(2) === 0 ? 1 : 7;
+    const alternatives = c.side_values.map((_, symbol) => symbol).filter(symbol => symbol !== 0 && symbol !== board[index]);
+    interim[index] = alternatives[draw(alternatives.length)];
+    return { original_board: [...board], respin_board: interim,
+      respin_values: evaluateBoard(c, interim, bet).values };
+  }
+  return {};
+}
+
 export const CashMania = p.native(([configuration = p.sourcePath("services/cash-mania/config/cash-mania.json")]) => {
   configuration ??= p.sourcePath("services/cash-mania/config/cash-mania.json");
   const supplied = typeof configuration === "string" ? JSON.parse(readFileSync(configuration, "utf8")) : p.plain(configuration);
@@ -100,14 +150,15 @@ export const CashMania = p.native(([configuration = p.sourcePath("services/cash-
   engine.normalize_bet = p.native(([bet]) => p.from(normalizeBet(config(), bet)));
   engine.initial_state = p.native(([_seed]) => {
     const c = config();
-    return p.from({ phase: "ready", sid: "0", round_id: "0", ruleset_id: engine.ruleset_id, step: 0, board: [...c.initial_board], bet: normalizeBet(c, {}), last_event: null });
+    return p.from({ phase: "ready", sid: "0", round_id: "0", ruleset_id: engine.ruleset_id, step: 0, board: visibleBoard(c.initial_board), bet: normalizeBet(c, {}), last_event: null });
   });
   engine.public_state = p.native(([state]) => p.clone(state));
   engine.step = p.native(([rawState, rawBet, seed, sid]) => {
     const c = config(), state = p.plain(rawState), bet = normalizeBet(c, rawBet);
-    check(state.phase === "ready", "FEATURE_UNSUPPORTED", "当前本地版本不支持免费旋转、重转或挪动轮轴状态。");
+    check(state.phase === "ready", "FEATURE_UNSUPPORTED", "当前本地版本不支持跨请求的免费旋转或奖励状态。");
     check(typeof seed === "string" && typeof sid === "string" && sid.length > 0, "STATE_INVALID");
-    const draw = random(seed), board = Array.from({ length: 9 }, (_, i) => pick(i >= 3 && i <= 5 ? c.middle_weights : c.side_weights, draw));
+    const draw = random(seed);
+    const board = visibleBoard(Array.from({ length: 9 }, (_, i) => pick(i >= 3 && i <= 5 ? c.middle_weights : c.side_weights, draw)));
     const evaluated = evaluateBoard(c, board, bet), debit = bet.coin_minor * bet.level * c.bet_factor;
     const event = {
       sid, round_id: sid, phase: "ready", next_phase: "ready", step: 0, bet, board,
@@ -116,6 +167,7 @@ export const CashMania = p.native(([configuration = p.sourcePath("services/cash-
       line_awards_minor: evaluated.win_minor ? { "1": evaluated.win_minor } : {},
       debit_minor: debit, base_bet_minor: debit, win_minor: evaluated.win_minor,
       round_award_minor: evaluated.win_minor, max_win: false, free: null, ruleset_id: engine.ruleset_id,
+      ...presentation(c, board, bet, seed, evaluated.win_minor),
     };
     const next = { ...state, sid, round_id: sid, ruleset_id: engine.ruleset_id, step: 0, board, bet, last_event: event };
     return { state: p.from(next), event: p.from(event), debit_minor: debit, credit_minor: evaluated.win_minor };

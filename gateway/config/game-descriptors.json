@@ -14384,23 +14384,29 @@
   "cash-mania": {
     "game_id": "cash-mania",
     "title": "Cash Mania",
-    "version": "0.1.0",
-    "ruleset_id": "d03be466c341e592",
+    "version": "0.2.0",
+    "ruleset_id": "06ef4a4eaafc8f92",
     "config": {
       "game_id": "cash-mania",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "probability_model": "local-independent-reels-v1",
       "original_probability_verified": false,
       "supported_features": [
-        "normal-spin"
+        "normal-spin",
+        "nudge",
+        "respin"
       ],
       "unsupported_features": [
         "free-spins",
-        "respin",
-        "nudge",
         "feature-buy",
         "ante"
       ],
+      "presentation_model": "local-outcome-preserving-v1",
+      "presentation_weights": {
+        "normal": 2,
+        "nudge": 1,
+        "respin": 1
+      },
       "coin_sizes_minor": [
         2,
         20,

@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Response Capture · 请求响应抓取</title>
 <style>
-:root{color-scheme:dark;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#e9edf5;background:#101319;font-size:14px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a.button{border:1px solid #36414c;background:#242d39;border-radius:8px;color:#edf4ff;padding:11px 17px;cursor:pointer;text-decoration:none;white-space:nowrap}button:hover,a.button:hover{background:#354152}button:disabled{opacity:.4;cursor:default}.primary{background:#bcf47b;color:#14200e;border-color:#bcf47b;font-weight:700}.primary:hover{background:#d2ff9f}header{padding:25px 36px;border-bottom:1px solid #2b303b;display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:700;letter-spacing:-.5px}.brand span{color:#bcf47b;margin-right:12px}header small{color:#9ca9bc}.wrap{max-width:1500px;margin:auto;padding:35px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 12px}p{color:#9ca9bc;line-height:1.7}.intro{margin-bottom:24px}.panel{background:#191e27;border:1px solid #2c3542;border-radius:12px;padding:22px}.form{display:flex;gap:10px}input,select{min-width:0;border:1px solid #394252;border-radius:8px;background:#10151d;color:#edf4ff;padding:11px 14px}input{flex:1}input:focus,select:focus{outline:2px solid #bcf47b;outline-offset:1px}.hint{font-size:12px;margin:12px 0 0;color:#8d9aad}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat{padding:18px 22px;border:1px solid #2c3542;border-radius:10px;background:#191e27}.stat label{color:#9ca9bc;font-size:12px;display:block;margin-bottom:9px}.stat strong{font-size:25px;font-weight:600}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.toolbar h2{font-size:17px;margin:0}.controls{display:flex;gap:8px;min-width:0}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:18px}.tablebox{overflow:auto;max-height:520px;min-height:340px}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th{color:#9ca9bc;position:sticky;top:0;background:#191e27;z-index:1}td,th{padding:12px 10px;border-bottom:1px solid #2b3340}td.url{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.selected{background:#293644}.ok{color:#bcf47b}.bad{color:#ffa295}.muted{color:#8895a9}.empty{color:#8895a9;text-align:center;padding:80px 20px;line-height:1.8}.detail{min-width:0}.detail h3{font-size:15px;margin:0 0 14px}.tabs{display:flex;gap:6px;margin:16px 0}.tabs button{font-size:12px;padding:7px 12px}.tabs button.active{background:#bcf47b;color:#14200e}.detailurl{font:12px/1.6 Consolas,monospace;color:#a9b9cc;overflow-wrap:anywhere;max-height:76px;overflow:auto}pre{margin:0;white-space:pre-wrap;word-break:break-word;font:12px/1.65 Consolas,monospace;background:#0e141c;border:1px solid #293441;border-radius:8px;padding:15px;max-height:420px;overflow:auto;min-height:220px}#notice{display:none;color:#ffcb8a;background:#312a21;padding:12px 16px;border-radius:8px;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere}.footer{display:flex;align-items:center;gap:12px;margin-top:22px;color:#9ca9bc;font-size:12px}#history{max-width:420px;flex:1}a{color:#bcf47b}[hidden]{display:none!important}@media(max-width:1000px){.layout{grid-template-columns:1fr}.wrap{padding:22px}.toolbar{flex-wrap:wrap}.controls{width:100%}.stats{gap:8px}.stat{padding:15px}.form{flex-wrap:wrap}.form input{flex-basis:100%}}@media(max-width:600px){header{padding:20px}.stats{grid-template-columns:1fr 1fr}.controls{flex-wrap:wrap}.controls input{width:100%}h1{font-size:25px}}
+:root{color-scheme:dark;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#e9edf5;background:#101319;font-size:14px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a.button{border:1px solid #36414c;background:#242d39;border-radius:8px;color:#edf4ff;padding:11px 17px;cursor:pointer;text-decoration:none;white-space:nowrap}button:hover,a.button:hover{background:#354152}button:disabled{opacity:.4;cursor:default}.primary{background:#bcf47b;color:#14200e;border-color:#bcf47b;font-weight:700}.primary:hover{background:#d2ff9f}header{padding:8px 36px;border-bottom:1px solid #2b303b;display:flex;align-items:center;justify-content:space-between}.brand{font-size:19px;font-weight:700;letter-spacing:-.5px}.brand span{color:#bcf47b;margin-right:12px}header small{color:#9ca9bc}.wrap{max-width:1500px;margin:auto;padding:35px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 12px}p{color:#9ca9bc;line-height:1.7}.intro{margin-bottom:24px}.panel{background:#191e27;border:1px solid #2c3542;border-radius:12px;padding:22px}.form{display:flex;gap:10px}input,select{min-width:0;border:1px solid #394252;border-radius:8px;background:#10151d;color:#edf4ff;padding:11px 14px}input{flex:1}input:focus,select:focus{outline:2px solid #bcf47b;outline-offset:1px}.hint{font-size:12px;margin:12px 0 0;color:#8d9aad}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat{padding:18px 22px;border:1px solid #2c3542;border-radius:10px;background:#191e27}.stat label{color:#9ca9bc;font-size:12px;display:block;margin-bottom:9px}.stat strong{font-size:25px;font-weight:600}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.toolbar h2{font-size:17px;margin:0}.controls{display:flex;gap:8px;min-width:0}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:18px}.tablebox{overflow:auto;max-height:520px;min-height:340px}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th{color:#9ca9bc;position:sticky;top:0;background:#191e27;z-index:1}td,th{padding:12px 10px;border-bottom:1px solid #2b3340}td.url{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.selected{background:#293644}.ok{color:#bcf47b}.bad{color:#ffa295}.muted{color:#8895a9}.empty{color:#8895a9;text-align:center;padding:80px 20px;line-height:1.8}.detail{min-width:0}.detail h3{font-size:15px;margin:0 0 14px}.tabs{display:flex;gap:6px;margin:16px 0}.tabs button{font-size:12px;padding:7px 12px}.tabs button.active{background:#bcf47b;color:#14200e}.detailurl{font:12px/1.6 Consolas,monospace;color:#a9b9cc;overflow-wrap:anywhere;max-height:76px;overflow:auto}pre{margin:0;white-space:pre-wrap;word-break:break-word;font:12px/1.65 Consolas,monospace;background:#0e141c;border:1px solid #293441;border-radius:8px;padding:15px;max-height:420px;overflow:auto;min-height:220px}#notice{display:none;color:#ffcb8a;background:#312a21;padding:12px 16px;border-radius:8px;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere}.footer{display:flex;align-items:center;gap:12px;margin-top:22px;color:#9ca9bc;font-size:12px}#history{max-width:420px;flex:1}a{color:#bcf47b}[hidden]{display:none!important}@media(max-width:1000px){.layout{grid-template-columns:1fr}.wrap{padding:22px}.toolbar{flex-wrap:wrap}.controls{width:100%}.stats{gap:8px}.stat{padding:15px}.form{flex-wrap:wrap}.form input{flex-basis:100%}}@media(max-width:600px){.stats{grid-template-columns:1fr 1fr}.controls{flex-wrap:wrap}.controls input{width:100%}h1{font-size:25px}}
 .quality-panel{margin-bottom:22px}.quality-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}.quality-heading h2{font-size:18px;margin:0 14px 10px 0}.quality-heading label{margin:0 8px 10px 0;color:#a9b9cc}.quality-heading select{max-width:320px;margin-bottom:10px}.quality-banner{border-left:4px solid #f0c774;padding:12px 15px;background:#27251e;border-radius:6px;margin:4px 0 12px}.quality-banner strong{display:block;font-size:16px;line-height:1.6}.quality-banner p{margin:4px 0 0}.quality-good{color:#c5ef9f;background:#202d20;border-color:#9fd774}.quality-warn{color:#f0d493;background:#30291e;border-color:#f0c774}.quality-bad{color:#ffb0a8;background:#322322;border-color:#ed978d}.quality-badge{display:inline-block;padding:3px 8px;border:1px solid;border-radius:5px;font-size:12px;line-height:1.5;margin-right:8px}.quality-game{border:1px solid #394252;border-radius:8px;padding:15px;margin-top:12px}.quality-game h3{font-size:15px;margin:0 0 9px;line-height:1.6}.quality-game p{margin:6px 0;font-size:13px}.quality-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.quality-metric{background:#111720;border-radius:6px;padding:10px}.quality-metric strong{display:block;margin:5px 0;font-size:18px}.quality-metric span,.quality-metric small{font-size:12px;color:#a8b4c6;line-height:1.6}.quality-game details{border-top:1px solid #303b49;margin-top:12px;padding-top:10px}.quality-game summary{cursor:pointer;color:#bdcadd;line-height:1.7}.quality-game ul{padding-left:20px;margin:8px 0;line-height:1.8;overflow-wrap:break-word;word-break:break-word}.quality-feature{border-top:1px solid #303b49;padding:10px 0}.quality-feature:first-child{border-top:0}.quality-feature strong{font-size:13px}.quality-next{color:#d2dded!important}.quality-small{font-size:12px!important;color:#9ca9bc!important}#quality-games{max-height:680px;overflow:auto}#quality-meta{margin:8px 0 0}@media(max-width:600px){.quality-metrics{grid-template-columns:1fr}.quality-heading select{width:100%;max-width:none}.quality-game{padding:12px}.quality-banner strong{font-size:14px}}
 .library-head,.library-tools,.library-pager{display:flex;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 .library-head h2{margin:0 auto 0 0}.library-tools label,.library-tools input,.library-tools select,.library-pager button{margin:4px 8px 4px 0}
@@ -12,53 +12,154 @@
 .library-list th,.library-list td{text-align:left;white-space:normal;max-width:340px;padding:8px;overflow-wrap:break-word}
 .library-list tbody tr{cursor:default}.library-list summary{cursor:pointer}.library-list small{display:block;color:#afbdce}.library-pager{margin:8px 0 0}.library-hint{margin:6px 0 12px}.library-status{font-weight:600}
 .login-preset{margin:16px 0 0;padding:0;border:0}.login-preset legend{padding:0 0 6px;font-weight:600}.login-fields{display:flex;flex-wrap:wrap}.login-fields label{display:flex;align-items:center;margin:4px 12px 4px 0}.login-fields input{margin-left:8px;width:180px}.library-grab{padding:5px 12px}.library-feedback{margin:0 0 10px;color:#d3dfec}.library-feedback:empty{display:none}
+.covered-game-name{display:inline-flex;align-items:center;vertical-align:middle;max-width:100%;min-width:0;text-align:left}
+.covered-game-name>.game-name-text{min-width:0;overflow-wrap:break-word}
+.game-cover-thumb{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:46px;height:58px;margin-right:10px;background:#121821;border-radius:5px;cursor:zoom-in}
+.game-cover-thumb:focus{outline:2px solid #bcf47b;outline-offset:2px}
+.game-cover-thumb img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
+.game-cover-missing{font-size:10px;line-height:1.4;color:#abb7c4;text-align:center;cursor:default}
+.game-cover-preview{position:fixed;pointer-events:none;z-index:2147483646;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);object-fit:contain;border-radius:6px;background:#121821;box-shadow:0 5px 24px #0009}
 </style>
-<style>.footer{flex-wrap:wrap}.footer select{min-width:12em}.library-view{padding:5px 10px;margin-left:6px}</style>
+<style>
+.wrap{max-width:1700px;padding:24px}.library-head{margin-bottom:18px}.library-head h2{font-size:22px}
+#lobby-login-open,#lobby-login-help{color:#ff8080;font-weight:700}
+#lobby-login-status:empty{display:none}
+#login-settings{border:1px solid #354151;border-radius:8px;padding:12px 15px;margin-bottom:18px}summary{cursor:pointer}#login-settings>summary{color:#b8c8dc}.login-preset{margin-top:12px}.library-tools{margin-top:14px}
+.library-list>table{min-width:980px;table-layout:fixed}.library-list>table>thead th:nth-child(1){width:15%}.library-list>table>thead th:nth-child(2){width:12%}.library-list>table>thead th:nth-child(3){width:10%}.library-list>table>thead th:nth-child(4){width:16%}.library-list>table>thead th:nth-child(5){width:29%}.library-list>table>thead th:nth-child(6){width:18%}
+.library-list>table>tbody>tr>td{vertical-align:top;padding:14px 10px}.library-list button,.library-list a.button{font-size:12px;padding:7px 10px;display:inline-block;margin:3px 5px 3px 0}.library-list small{margin:5px 0;line-height:1.6}.game-actions{line-height:1.8}.game-actions .library-grab{background:#bcf47b;color:#14200e;border-color:#bcf47b}.game-stop{border-color:#a58054}.folder-path{font:11px/1.6 Consolas,"Microsoft YaHei",monospace;word-break:break-all;color:#95a6ba}.game-records-toggle{color:#c9ef9f}.game-history{margin-top:9px;max-height:420px;overflow:auto}.capture-batch{border-top:1px solid #36414c;padding:10px 0}.batch-label{font-weight:600}.batch-id{font:11px/1.6 Consolas,monospace}.game-feedback{color:#ffcb8a}.game-feedback:empty{display:none}
+.library-list .library-detail-row:hover{background:transparent}.library-list .library-detail-row>td{padding:18px!important;background:#111720;max-width:none}.library-list .library-detail-row table{min-width:0;table-layout:auto}.library-detail-row td.url{max-width:300px}.library-detail-row th{background:#191e27}.library-detail-row .quality-panel{margin-top:18px}.library-detail-row .stats{margin:16px 0}.library-detail-row .panel{padding:16px}.library-detail-row .tablebox{max-height:480px}.library-detail-row .tablebox td{padding:10px}.library-detail-row .detailurl{word-break:break-all}.library-list .quality-game small{display:inline}.library-list .library-detail-row button{font-size:12px}button:focus,a:focus,summary:focus{outline:2px solid #bcf47b;outline-offset:2px}
+@media(max-width:700px){.wrap{padding:12px}header{padding-left:18px;padding-right:18px}.panel{padding:14px}.library-head h2{font-size:19px}.library-list>table,.library-list>table>tbody{display:block;min-width:0}.library-list>table>thead{display:none}.library-list>table>tbody>tr{display:block;border:1px solid #354151;border-radius:8px;margin-bottom:12px;padding:8px}.library-list>table>tbody>tr>td{display:block;width:100%;max-width:none;border:0;padding:6px 8px}.library-list>table>tbody>tr>td:before{content:attr(data-label);display:block;color:#8fa2b9;font-size:11px;margin-bottom:4px}.library-list .library-detail-row>td{padding:5px!important}.library-list .library-detail-row td:before{content:none}.library-detail-row .stats{grid-template-columns:1fr 1fr}.library-detail-row .tablebox table{min-width:480px}.library-detail-row .tablebox{min-height:200px}.library-detail-row .toolbar{align-items:flex-start}.library-detail-row .toolbar .controls{display:flex;flex-wrap:wrap}.library-detail-row .panel{padding:10px}.library-detail-row .quality-metrics{grid-template-columns:1fr}.library-detail-row .layout{display:block}.library-detail-row .detail{margin-top:16px}.game-history{max-height:360px}.login-fields input{width:150px}}
+.original-products{margin-top:12px;padding-top:10px;border-top:1px solid #3b4755}.original-products>strong{font-size:12px;color:#d4e4f8}.original-product{padding:4px 0 10px}.original-preview{border-color:#66804d!important;color:#d8f3b5!important}.original-history{margin-top:6px}.original-history summary{font-size:12px;color:#adbdce;line-height:1.8}.original-status{color:#c0cddc!important}.original-products .folder-path{max-height:56px;overflow:auto}
+</style>
+<!-- SERVICE_CONSOLE_ASSETS --><link rel="stylesheet" href="http://127.0.0.1:18096/service-console.css"><script defer src="http://127.0.0.1:18096/service-console.js"></script><!-- /SERVICE_CONSOLE_ASSETS -->
 </head>
 <body>
+<script>
+// 抓取表、服务列表与各个弹窗共用同一种封面展示。
+(function(){
+  'use strict';
+  var origin='__LOCAL_GAME_COVERS__'==='1'?'':'http://127.0.0.1:18096';
+  var preview=null, active=null;
+  function hide(){
+    if(preview){preview.remove();preview=null;}
+    active=null;
+  }
+  function show(thumb,img){
+    if(active===thumb)return;
+    hide();active=thumb;
+    var rect=thumb.getBoundingClientRect(),w=Math.min(208,window.innerWidth-16),h=Math.min(254,window.innerHeight-16);
+    preview=document.createElement('img');preview.className='game-cover-preview';preview.alt='';preview.setAttribute('aria-hidden','true');
+    preview.style.width=w+'px';preview.style.height=h+'px';
+    preview.style.left=Math.max(8,Math.min(window.innerWidth-w-8,rect.right+w+16<=window.innerWidth?rect.right+8:rect.left-w-8))+'px';
+    preview.style.top=Math.max(8,Math.min(window.innerHeight-h-8,rect.top+(rect.height-h)/2))+'px';
+    preview.src=img.src;document.body.appendChild(preview);
+  }
+  window.captureCoverKey=function(game){
+    if(game && game.site)return 'site/'+game.site;
+    if(game && game.brand && game.ext)return 'brand/'+game.brand+'/'+game.ext;
+    return '';
+  };
+  window.captureCoverName=function(label,key,title,lobbyUrl){
+    if(!key)return label;
+    var box=document.createElement('span'), thumb=document.createElement('span'),img=document.createElement('img');
+    box.className='covered-game-name';label.classList.add('game-name-text');
+    thumb.className='game-cover-thumb';thumb.tabIndex=0;thumb.setAttribute('role','img');thumb.setAttribute('aria-label',title+'封面，聚焦可放大');
+    img.alt='';img.loading='lazy';
+    img.onerror=function(){
+      var prefix='https://cdn.777sslot.com/common/game_icon_shu/';
+      if(lobbyUrl && lobbyUrl.indexOf(prefix)===0){
+        var path=lobbyUrl.slice(prefix.length);lobbyUrl=null;
+        img.src=origin+'/game-covers/lobby/'+path;return;
+      }
+      if(active===thumb)hide();
+      thumb.textContent='暂无封面';thumb.classList.add('game-cover-missing');thumb.removeAttribute('tabindex');thumb.setAttribute('aria-label','暂无封面');
+    };
+    img.src=origin+'/game-covers/'+key.split('/').map(encodeURIComponent).join('/')+'.png';
+    function enter(){if(thumb.contains(img))show(thumb,img);}
+    thumb.addEventListener('mouseenter',enter);thumb.addEventListener('focus',enter);
+    thumb.addEventListener('mouseleave',function(){if(active===thumb)hide();});
+    thumb.addEventListener('blur',function(){if(active===thumb)hide();});
+    thumb.appendChild(img);box.appendChild(thumb);box.appendChild(label);return box;
+  };
+  document.addEventListener('keydown',function(e){if(active && (e.key==='Escape'||e.key==='Esc')){hide();e.stopPropagation();}},true);
+  document.addEventListener('scroll',hide,true);window.addEventListener('blur',hide);window.addEventListener('resize',hide);
+  new MutationObserver(function(){if(active&&!active.getBoundingClientRect().width)hide();}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});
+})();
+</script>
 <header><div class="brand"><span>◉</span>Response Capture</div><small>本地浏览器抓取工具</small></header>
 <main class="wrap">
-<div class="intro"><h1>一个网址，查看每一次响应。</h1><p>启动独立浏览器，在目标页面中登录、点击或滚动。请求与响应会持续保存在本机。</p></div>
-<section class="panel"><form id="form" class="form"><input id="url" aria-label="目标网址" type="url" required placeholder="https://example.com" autocomplete="url"><button class="primary" id="start">开始抓取 ↗</button></form>
-<div class="footer"><label for="history">历史抓取</label><select id="history"><option value="">选择抓取批次</option></select><button type="button" id="stop" disabled>停止并保存</button><a class="button" id="download" hidden>下载 ZIP ↓</a><a id="source-capture" target="_blank" rel="noopener noreferrer" hidden></a></div>
-<p class="hint">可同时打开多个游戏。选择抓取批次后可查看请求、停止并保存或下载该批次。数据保存在项目 captures 文件夹。</p>
+<section id="service-console" class="panel" aria-label="服务控制台" style="margin-bottom:18px"><details open><summary style="font-size:19px;font-weight:600">服务控制台</summary><p class="hint">正在连接本机服务管理进程。若长时间未显示，请运行抓取工具目录中的 start.bat 后刷新本页。</p></details></section>
+<section class="panel" aria-labelledby="library-title">
+<div class="library-head"><h2 id="library-title">游戏抓取列表</h2><button type="button" id="library-recheck">重新核对历史</button></div>
+<details id="login-settings" open><summary>抓取登录配置 · sdstest.ink</summary>
 <fieldset class="login-preset"><legend>游戏清单预设登录 · sdstest.ink</legend><div class="login-fields">
 <label for="preset-account">账号<input id="preset-account" type="text" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
 <label for="preset-password">密码<input id="preset-password" type="password" autocomplete="off"></label>
-</div><p id="preset-help" class="hint">在未抓游戏行点击“抓取”即可使用这组账号密码登录大厅。预设仅在当前页面有效。</p></fieldset>
-<p id="decoded-status" class="hint" role="status"></p><div id="notice" role="status"></div></section>
-<section class="panel" aria-labelledby="library-title">
-<div class="library-head"><h2 id="library-title">跨批次游戏清单</h2><button type="button" id="library-recheck">重新核对历史</button></div>
+</div><p id="preset-help" class="hint">点击游戏行的“抓取”，首次会在后台使用预设账号密码登录大厅，随后显示所选游戏。同一账号有空闲且登录有效的浏览器资料时会直接复用。预设输入仅在当前页面有效。</p></fieldset>
+<div id="lobby-login-controls" hidden>
+<button type="button" id="lobby-login-open" aria-describedby="lobby-login-help">点击登录获取session</button>
+<button type="button" id="lobby-login-close" hidden>取消登录</button>
+<p id="lobby-login-help" class="hint">在弹出的原站窗口登录一次。登录有效期间，点击下方游戏列表的“抓取”即可直接进入所选游戏，无需再次登录。</p>
+<p id="lobby-login-status" role="status" class="hint"></p>
+</div>
+</details>
+<div id="notice" role="status"></div>
 <div class="library-tools">
-<label for="library-filter">采集状态</label><select id="library-filter"><option value="unseen">未抓</option><option value="partial">待补抓</option><option value="unknown">待识别</option><option value="all">全部</option></select>
+<label for="library-filter">采集状态</label><select id="library-filter"><option value="all">全部</option><option value="recording">抓取中</option><option value="has-records">有抓取记录</option><option value="unseen">未抓</option><option value="partial">待补抓</option><option value="unknown">待识别</option></select>
 <label for="library-search">查找游戏</label><input id="library-search" type="search" placeholder="中文名、英文名或游戏 ID">
 </div>
 <p id="library-summary" role="status" class="library-hint">正在读取历史抓取…</p>
 <p id="library-feedback" role="status" class="library-feedback"></p>
 <button type="button" id="library-find-all" hidden>在全部状态中查找</button>
-<div class="library-list"><table aria-label="跨批次游戏清单"><thead><tr><th>游戏</th><th>品牌 / 对外 ID</th><th>采集状态</th><th>已保存的证据</th><th>操作</th></tr></thead><tbody id="library-rows"></tbody></table></div>
+<div class="library-list"><table aria-label="游戏抓取列表"><thead><tr><th>游戏</th><th>品牌 / 对外 ID</th><th>采集状态</th><th>已保存的证据</th><th>抓取记录 / 历史文件夹</th><th>操作</th></tr></thead><tbody id="library-rows"></tbody></table></div>
 <div class="library-pager"><button type="button" id="library-prev" disabled>上一页</button><button type="button" id="library-next" disabled>下一页</button><span id="library-page"></span></div>
 <p class="hint">未抓表示在已核对批次里还没找到能归属该游戏的专属数据。大厅目录、封面、仅取得启动链接均不算。玩法和资源缺口可在对应批次的「游戏采集检查」中查看。</p>
 </section>
+<div id="detail-parking" hidden><section id="capture-detail" aria-label="抓取批次详情">
+<div class="toolbar"><h2 id="capture-detail-title">抓取记录</h2><button id="close-detail" type="button">收起记录</button></div>
+<p id="capture-detail-meta" class="hint"></p><a id="source-capture" target="_blank" rel="noopener noreferrer" hidden></a>
 <section class="stats"><div class="stat"><label>抓取状态</label><strong id="state">等待开始</strong></div><div class="stat"><label>请求数量</label><strong id="count">0</strong></div><div class="stat"><label>已保存响应</label><strong id="saved">0</strong></div><div class="stat"><label>响应总大小</label><strong id="size">0 B</strong></div></section>
+<p id="decoded-status" class="hint" role="status"></p>
 <section class="panel quality-panel" aria-labelledby="quality-title"><div class="quality-heading"><h2 id="quality-title">游戏采集检查</h2><div><label for="quality-game-select">查看游戏</label><select id="quality-game-select"><option value="">全部游戏</option></select></div></div><div id="quality-banner" class="quality-banner quality-warn" role="status" aria-live="polite"><strong id="quality-headline">等待选择抓取记录</strong><p id="quality-scope" class="quality-small">这里只检查原站采集证据。已观察资源保存齐，不等于游戏全部资源与玩法已采集完整。</p></div><div id="quality-games"></div><p id="quality-meta" class="hint">每 5 秒检查一次；不会自动停止抓取。</p></section>
-<section class="panel"><div class="toolbar"><h2>请求记录 <span id="ws" class="muted"></span></h2><div class="controls"><button id="clear-records" type="button" disabled title="清空当前列表和计数，保留抓取文件">清空记录</button><button id="show-all" type="button" hidden>显示全部</button><input id="filter" aria-label="搜索请求" placeholder="搜索网址 / 状态码"><select id="type" aria-label="请求类型"><option value="">全部类型</option><option>document</option><option>xhr</option><option>fetch</option><option>script</option><option>stylesheet</option><option>image</option><option>font</option><option>media</option><option>other</option></select></div></div><p class="hint" id="clear-hint" role="status" style="margin:0 0 14px">清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。</p><div class="layout"><div class="tablebox"><table><thead><tr><th>状态</th><th>方法</th><th>网址</th><th>类型</th><th>大小</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">等待第一条请求<br>输入网址，然后点击「开始抓取」</div></div><aside class="detail"><h3>响应详情</h3><div id="detailurl" class="detailurl">选择一条请求，查看响应内容和请求头。</div><div class="tabs"><button data-tab="body" class="active">响应体</button><button data-tab="headers">响应头</button><button data-tab="request">请求信息</button></div><pre id="preview">尚未选择请求</pre></aside></div></section>
+<section class="panel"><div class="toolbar"><h2>请求记录 <span id="ws" class="muted"></span></h2><div class="controls"><button id="clear-records" type="button" disabled title="清空当前列表和计数，保留抓取文件">清空记录</button><button id="show-all" type="button" hidden>显示全部</button><input id="filter" aria-label="搜索请求" placeholder="搜索网址 / 状态码"><select id="type" aria-label="请求类型"><option value="">全部类型</option><option>document</option><option>xhr</option><option>fetch</option><option>script</option><option>stylesheet</option><option>image</option><option>font</option><option>media</option><option>other</option></select></div></div><p class="hint" id="clear-hint" role="status" style="margin:0 0 14px">清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。</p><div class="layout"><div class="tablebox"><table><thead><tr><th>状态</th><th>方法</th><th>网址</th><th>类型</th><th>大小</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">选择该游戏的抓取批次查看请求</div></div><aside class="detail"><h3>响应详情</h3><div id="detailurl" class="detailurl">选择一条请求，查看响应内容和请求头。</div><div class="tabs"><button data-tab="body" class="active">响应体</button><button data-tab="headers">响应头</button><button data-tab="request">请求信息</button></div><pre id="preview">尚未选择请求</pre></aside></div></section>
 <p class="hint">长连接、下载流、浏览器限制或停止时仍在传输的响应可能无法取得完整内容，列表会标注。响应文件是浏览器解码后的内容。ZIP 可能包含登录凭据或个人数据，请妥善保管。</p>
-</main>
+</section></div></main>
 <script>
 const $=id=>document.getElementById(id), token='__TOKEN__';
 const legacyCapture=['8090','8092'].includes(location.port) && ['127.0.0.1','localhost'].includes(location.hostname) &&
   token!==('__'+'TOKEN__') && document.documentElement.dataset.parallelCapture!=='1';
-const upgradedCaptureUrl='http://127.0.0.1:8093/';
+const upgradedCaptureUrl='http://127.0.0.1:8095/';
 if(legacyCapture){
   $('preset-account').disabled=true;$('preset-password').disabled=true;
   $('preset-help').textContent='此端口正在运行旧版本。点击游戏行的“抓取”将在新版采集器中选中该游戏，再填写预设账号密码。';
   const upgrade=document.createElement('a');
   upgrade.href=upgradedCaptureUrl;upgrade.target='_blank';upgrade.rel='noopener noreferrer';upgrade.textContent='打开新版采集器';
   $('preset-help').appendChild(document.createTextNode(' '));$('preset-help').appendChild(upgrade);
+}else if(document.documentElement.dataset.parallelCapture==='1' || location.port==='8093'){
+  // 旧进程也会读取最新 HTML，根据实际后端能力显示入口。
+  fetch('/api/status').then(function(r){return r.ok?r.json():null;}).then(function(status){
+    const features=status && status.service==='response-capture' && status.capabilities;
+    if(features && features.manual_lobby_login===true){
+      $('lobby-login-help').textContent=features.close_login_window_after_sign_in
+        ? '显示“大厅已登录”后，即可关闭弹出的原站窗口。保留此抓取列表页，登录有效期间点击下方游戏的“抓取”即可直接进入，无需再次登录。'
+        : '在弹出的原站窗口登录一次，并保持该窗口打开。登录有效期间，点击下方游戏列表的“抓取”即可直接进入所选游戏，无需再次登录。';
+      $('lobby-login-controls').hidden=false;
+    }
+    if(location.port!=='8093' || !['127.0.0.1','localhost'].includes(location.hostname) ||
+        (status && status.capabilities && status.capabilities.direct_game_window))return;
+    const help=$('preset-help');
+    help.textContent='这个端口仍使用旧登录流程。如需点击“抓取”后直接显示游戏，请打开';
+    const link=document.createElement('a');
+    link.href=upgradedCaptureUrl;link.textContent='新版抓取页';help.appendChild(link);
+    help.appendChild(document.createTextNode('，并在那里填写预设账号密码。'));
+  }).catch(function(){});
 }
 let sid=null, data=null, selected=null, tab='body', previewVersion=0;
-let selectionVersion=0, historyVersion=0, listing=null, lastFeedback='';
+let selectionVersion=0, historyVersion=0, listing=null, lastFeedback='', detailGameKey=null;
+const rowFeedback=new Map(), openedGames=new Set(), rowSelections=new Map();
+let originalGames=[];
+const originalPending=new Set(),originalMessages=new Map(),originalExpanded=new Set();
+const originalPreviewUrls=new Map();
 const sessionsById=new Map(), pendingStarts=new Set(), pendingStops=new Set(), refreshing=new Set();
 const cleared=new Map();
 function cutoff(){if(!sid)return 0;if(!cleared.has(sid)){let value=0;try{value=Number(localStorage.getItem('capture-clear:'+sid))||0}catch{}cleared.set(sid,value)}return cleared.get(sid)}
@@ -68,6 +169,68 @@ const labels={starting:'正在启动',recording:'正在抓取',stopping:'正在�
 const size=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(1)+' MB';
 function notice(s){$('notice').textContent=s||'';$('notice').style.display=s?'block':'none'}
 async function api(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Capture-Token':token},body:JSON.stringify(body)});if(!response.ok){let message='请求失败';try{message=(await response.json()).error||message}catch(_){}const error=Error(message);error.status=response.status;throw error}return response.json()}
+let lobbyLogin=null, lobbyTimer;
+const lobbyLoginPath='/api/lobby-login';
+function showLobbyLogin(state,message){
+  const open=$('lobby-login-open'), close=$('lobby-login-close');
+  open.hidden=!!lobbyLogin;open.disabled=state==='opening';
+  close.hidden=!lobbyLogin;close.disabled=state==='closing';
+  close.textContent=state==='pending'?'取消登录':'断开原站登录';
+  const usingLobby=!!lobbyLogin || state==='opening';
+  $('preset-account').disabled=usingLobby;$('preset-password').disabled=usingLobby;
+  $('lobby-login-status').textContent=message;
+}
+function acceptLobbyState(login,result){
+  if(result.id!==login.id || !['pending','ready','closed','error'].includes(result.state))throw Error('原站登录状态返回异常。');
+  const messages={pending:'请在弹出的原站窗口完成登录。',ready:'原站已登录，可以点击游戏行的“抓取”。',
+    closed:'原站登录已断开。',error:'本次原站登录失败，请重新打开。'};
+  login.state=result.state;
+  if(login.state==='closed'||login.state==='error')lobbyLogin=null;
+  showLobbyLogin(login.state,result.message||messages[login.state]);
+}
+async function checkLobbyLogin(login){
+  if(lobbyLogin!==login || login.closing)return;
+  try{
+    const result=await api(lobbyLoginPath+'/'+encodeURIComponent(login.id));
+    if(lobbyLogin!==login || login.closing)return;
+    acceptLobbyState(login,result);
+  }catch(error){
+    if(lobbyLogin!==login || login.closing)return;
+    if(error.status===404 || error.status===410){
+      lobbyLogin=null;showLobbyLogin('closed','原站登录已结束，请重新打开。');return;
+    }
+    login.state='checking';showLobbyLogin(login.state,'暂时无法确认原站登录状态，将重试。'+error.message);
+  }
+  if(lobbyLogin===login)lobbyTimer=setTimeout(()=>checkLobbyLogin(login),login.state==='pending'?1000:3000);
+}
+$('lobby-login-open').onclick=async function(){
+  if(lobbyLogin || this.disabled)return;
+  showLobbyLogin('opening','正在打开原站登录窗口…');
+  try{
+    const result=await api(lobbyLoginPath,{});
+    if(typeof result.id!=='string'||!/^[0-9a-f]{32,64}$/.test(result.id))throw Error('原站登录窗口返回了无效编号。');
+    const login={id:result.id,state:result.state,closing:false};
+    lobbyLogin=login;acceptLobbyState(login,result);
+    if(lobbyLogin===login)checkLobbyLogin(login);
+  }catch(error){
+    lobbyLogin=null;showLobbyLogin('error','无法打开原站登录。'+error.message);
+  }
+};
+$('lobby-login-close').onclick=async function(){
+  const login=lobbyLogin;
+  if(!login || login.closing)return;
+  login.closing=true;clearTimeout(lobbyTimer);showLobbyLogin('closing','正在关闭原站登录连接…');
+  try{
+    await api(lobbyLoginPath+'/'+encodeURIComponent(login.id)+'/close',{});
+  }catch(error){
+    if(error.status!==404 && error.status!==410){
+      login.closing=false;login.state='checking';
+      showLobbyLogin(login.state,'暂时无法断开原站登录。'+error.message);
+      lobbyTimer=setTimeout(()=>checkLobbyLogin(login),1000);return;
+    }
+  }
+  lobbyLogin=null;showLobbyLogin('closed','原站登录已断开。');
+};
 function isLive(session){return session && ['starting','recording','stopping'].includes(session.state);}
 const stateOrder={starting:0,recording:1,stopping:2,completed:3,error:3};
 function laterState(previous,state){return previous && stateOrder[previous.state]>stateOrder[state]?previous.state:state;}
@@ -90,42 +253,16 @@ function historyLabel(session){
   return [captureName(session),isNaN(date.getTime())?'':date.toLocaleString(),labels[session.state]||session.state].filter(Boolean).join(' · ');
 }
 function updateHistory(){
-  const picker=$('history');
-  const records=Array.from(sessionsById.values()).sort((a,b)=>(b.created||'').localeCompare(a.created||''));
-  records.forEach((s,index)=>{
-    let option=picker.options[index+1];
-    if(!option){option=new Option();picker.add(option);}
-    if(option.value!==s.id)option.value=s.id;
-    const title=historyLabel(s);
-    if(option.text!==title)option.text=title;
-  });
-  while(picker.options.length>records.length+1)picker.remove(picker.options.length-1);
-  picker.value=sid||'';
   for(const id of pendingStops)if(!isLive(sessionsById.get(id)))pendingStops.delete(id);
-  updateStopControl();
   updateStartControls();
 }
-function updateStopControl(){
-  const session=sessionsById.get(sid);
-  $('stop').disabled=!data || data.id!==sid || !isLive(session) || session.external_session || session.state==='stopping' || pendingStops.has(sid);
-}
 function updateStartControls(){
-  const url=$('url').value;
-  $('start').disabled=pendingStarts.has(captureKey(null,url)) || Boolean(liveFor(null,url));
-  document.querySelectorAll('.library-grab').forEach(button=>{
-    const site=button.dataset.site, identified=button.dataset.identified==='yes';
-    const session=site && liveFor(site), pending=pendingStarts.has(captureKey(site));
-    button.disabled=!identified || pending || Boolean(session);
-    button.title=!identified?'站内游戏 ID 无法唯一确认，请重新核对历史。':pending?'正在打开该游戏':session?'该游戏已在抓取':'登录大厅并进入该游戏';
-    const view=button.nextElementSibling, status=view.nextElementSibling;
-    view.hidden=!session;
-    status.textContent=pending?'正在启动':session?stageLabel(session):'';
-  });
+  if(window.captureLibrarySessionsChanged)window.captureLibrarySessionsChanged();
 }
 function trackSnapshot(session){
   const previous=sessionsById.get(session.id)||{};
   const updated=Object.assign({},previous);
-  for(const key of ['id','state','created','target_game','display_name','url','game_stage'])if(session[key]!=null)updated[key]=session[key];
+  for(const key of ['id','state','created','target_game','identity_games','display_name','url','game_stage','directory','game_directories'])if(session[key]!=null)updated[key]=session[key];
   sessionsById.set(session.id,updated);
   updateHistory();
   if(updated.target_game){
@@ -135,8 +272,9 @@ function trackSnapshot(session){
   }
 }
 async function startCapture(game){
-  const site=game && game.site, url=game?null:$('url').value.trim(), key=captureKey(site,url);
-  if(pendingStarts.has(key) || liveFor(site,url))return;
+  if(!game)return;
+  const site=game.site, url=null, key=captureKey(site);
+  if(pendingStarts.has(key) || liveFor(site))return;
   const feedback=$('library-feedback');
   if(game && legacyCapture){
     const url=upgradedCaptureUrl+'#capture-game='+encodeURIComponent(game.site);
@@ -148,11 +286,18 @@ async function startCapture(game){
     return;
   }
   let payload;
-  if(game){
+  if(lobbyLogin && lobbyLogin.state==='ready' && !lobbyLogin.closing){
+    payload={game_id:game.site,lobby_session:lobbyLogin.id};
+    feedback.textContent='正在通过已登录的原站窗口打开“'+(game.zh||game.name)+'”…';
+  }else if(lobbyLogin || $('lobby-login-open').disabled){
+    feedback.textContent='请等原站登录就绪后再点击“抓取”。';
+    return;
+  }else if(game){
     const account=$('preset-account'), password=$('preset-password');
     const missing=!account.value.trim()?account:!password.value?password:null;
     if(missing){
-      feedback.textContent='请先填写 sdstest.ink 的预设登录'+(missing===account?'账号':'密码')+'。';
+      $('login-settings').open=true;
+      feedback.textContent=lobbyLogin?'原站登录尚未就绪，请在原站窗口完成登录，或填写预设账号密码。':'请先填写 sdstest.ink 的预设登录'+(missing===account?'账号':'密码')+'。';
       missing.focus();
       return;
     }
@@ -162,7 +307,7 @@ async function startCapture(game){
     payload={url:url};
     feedback.textContent='';
   }
-  const choice=++selectionVersion;
+  selectionVersion++;
   pendingStarts.add(key);updateStartControls();notice('');
   let started=false;
   try{
@@ -171,7 +316,7 @@ async function startCapture(game){
     historyVersion++;
     sessionsById.set(result.id,Object.assign({state:'starting',created:new Date().toISOString(),url:url,target_game:game?{site:site,brand:game.brand.toUpperCase(),ext:game.ext,name:game.name,zh:game.zh}:null},sessionsById.get(result.id),result));
     updateHistory();
-    if(choice===selectionVersion)chooseSession(result.id);
+    rowSelections.set(game.key,result.id);
     await history();
   }catch(error){
     const legacy=game && !started && error.status===404 && ['8090','8092'].includes(location.port);
@@ -189,15 +334,19 @@ async function startCapture(game){
   }finally{pendingStarts.delete(key);updateStartControls();}
 }
 function resetDetail(qualitySession=sid){if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(qualitySession,null);selected=null;previewVersion++;$('detailurl').textContent='选择一条请求，查看响应内容和请求头。';$('preview').textContent='尚未选择请求'}
-function render(){if(!data||data.id!==sid)return;if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,data.state);const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=isLive(data);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';trackSnapshot(data);updateStopControl();$('download').hidden=active;$('download').href='/api/sessions/'+sid+'/download';$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded&&data.decoded.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
+function render(){if(!data||data.id!==sid)return;if(window.captureQualitySessionChanged)window.captureQualitySessionChanged(sid,data.state);const visible=visibleRows();$('clear-records').disabled=!visible.length;$('show-all').hidden=!cutoff();$('clear-hint').textContent=cutoff()?'已清空先前列表，后续请求会继续显示。原始文件和 ZIP 内容保留，可点击“显示全部”恢复。':'清空只重置列表和计数，已保存的文件及 ZIP 内容会保留。';const active=isLive(data);$('state').textContent=labels[data.state]||data.state;$('state').className=data.state==='recording'?'ok':'';trackSnapshot(data);$('count').textContent=visible.length;$('saved').textContent=visible.filter(r=>r.body).length;$('size').textContent=size(visible.reduce((a,r)=>a+r.size,0));$('ws').textContent=data.ws_count?'· WS 总数 '+data.ws_count:'';$('decoded-status').textContent=data.decoded&&data.decoded.ready ? `${data.decoded.game || "Joker"} 解码已接入 · 已保存 ${data.decoded.spins} 回合 · ${data.decoded.game === "Money Pot DELUXE" ? "Golden Lock 触发 " + (data.decoded.feature_spins || 0) : data.decoded.game === "3 Billion Vaults" ? "免费回合触发 " + (data.decoded.feature_spins || 0) + " 次 · Jackpot 中奖 " + (data.decoded.jackpot_wins || 0) : "Scatter 中奖 " + data.decoded.scatter_wins} 次 · 错误 ${data.decoded.errors} 次` : '尚未接入支持游戏的回合解码；网络请求数量不能用于判断是否中奖。';notice(data.error);renderRows()}
 function renderRows(){if(!data||data.id!==sid)return;const needle=$('filter').value.toLowerCase(),kind=$('type').value;const rows=visibleRows().filter(r=>(!kind||r.type===kind)&&(r.url.toLowerCase().includes(needle)||String(r.status).includes(needle)));$('empty').hidden=rows.length>0;$('empty').textContent=visibleRows().length?'没有匹配的请求':'等待请求，请在抓取浏览器中操作页面';while($('rows').firstChild)$('rows').removeChild($('rows').firstChild);for(const r of rows){const tr=document.createElement('tr');tr.className=selected===r.id?'selected':'';const status=r.status===null?(r.state==='pending'?'…':'失败'):String(r.status);for(const [i,value] of [status+(r.state==='unavailable'?' *':''),r.method,r.url,r.type,size(r.size)].entries()){const td=document.createElement('td');td.textContent=value;if(i===0)td.className=r.state==='failed'||r.state==='unavailable'||r.status>=400?'bad':'ok';if(i===2){td.className='url';td.title=r.url}tr.append(td)}tr.addEventListener('click',()=>{selected=r.id;renderRows();detail()});$('rows').append(tr)}}
 async function detail(){const version=++previewVersion;const row=visibleRows().find(r=>r.id===selected);if(!row)return;$('detailurl').textContent=row.method+' '+row.url;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));if(tab==='headers'){$('preview').textContent=JSON.stringify(row.response_headers,null,2);return}if(tab==='request'){$('preview').textContent=JSON.stringify(row,null,2);return}if(!row.body){$('preview').textContent=row.error||'响应仍在传输，请稍后重新选择该请求。';return}$('preview').textContent='正在读取响应…';try{const result=await api('/api/sessions/'+sid+'/body/'+row.id);if(version!==previewVersion)return;let text=result.text;if(result.encoding==='text'&&row.mime.includes('json')){try{text=JSON.stringify(JSON.parse(text),null,2)}catch{}}$('preview').textContent=(result.encoding==='base64'?'二进制响应 · Base64 预览\n\n':'')+text+(result.truncated?'\n\n[预览已截断；ZIP 中包含已保存的完整文件]':'')}catch(e){if(version===previewVersion)$('preview').textContent=e.message}}
-function chooseSession(id){
+function chooseSession(id,gameKey){
   const session=sessionsById.get(id);
   if(!session)return;
+  if(gameKey)detailGameKey=gameKey;
+  if(window.captureLibraryOpenSession && !window.captureLibraryOpenSession(id,detailGameKey))return;
   selectionVersion++;
   sid=id;data=null;resetDetail(session.external_session?null:id);
-  $('history').value=id;$('stop').disabled=true;$('download').hidden=true;
+  if(detailGameKey)rowSelections.set(detailGameKey,id);
+  $('capture-detail-title').textContent=captureName(session)+' · 抓取记录';
+  $('capture-detail-meta').textContent=historyLabel(session)+' · 批次 '+id;
   $('rows').textContent='';$('empty').hidden=false;$('empty').textContent='正在读取该批次的请求…';
   $('state').textContent=labels[session.state]||session.state;$('state').className='';
   $('count').textContent='0';$('saved').textContent='0';$('size').textContent='0 B';$('ws').textContent='';
@@ -238,28 +387,31 @@ function history(){
       updateHistory();
       const current=sessionsById.get(sid);
       if(current && selectedBefore && current.external_session!==Boolean(selectedBefore.external_session))chooseSession(sid);
-      if(!sid && !selectionVersion && records.length && !restoreSession() && !location.hash.startsWith('#capture-game='))
-        chooseSession((records.find(s=>isLive(s) && !s.external_session)||records[0]).id);
+      if(!sid && !selectionVersion)restoreSession();
     }
     return Array.from(sessionsById.values());
   }).finally(()=>{if(listing && listing.version===version)listing=null;});
   listing={version:version,promise:promise};
   return promise;
 }
-$('form').addEventListener('submit',e=>{e.preventDefault();startCapture(null)});
-$('url').addEventListener('input',updateStartControls);
 $('clear-records').addEventListener('click',()=>{if(!data||data.id!==sid)return;setCutoff(data.rows.reduce((n,r)=>Math.max(n,r.id),cutoff()));resetDetail();render()});
 $('show-all').addEventListener('click',()=>{setCutoff(0);resetDetail();render()});
-$('stop').addEventListener('click',async()=>{
-  const id=sid,session=sessionsById.get(id);
+async function stopCapture(id,gameKey){
+  const session=sessionsById.get(id);
   if(!isLive(session) || session.external_session || pendingStops.has(id))return;
-  pendingStops.add(id);$('stop').disabled=true;
+  pendingStops.add(id);updateStartControls();
   try{await api('/api/stop',{id:id});}
-  catch(e){pendingStops.delete(id);if(id===sid)notice(e.message);updateStopControl();return;}
+  catch(e){pendingStops.delete(id);rowFeedback.set(gameKey,e.message);updateStartControls();return;}
   if(sid===id)await refresh();
   pollHistory();
-});
-$('history').addEventListener('change',()=>{if($('history').value)chooseSession($('history').value);else $('history').value=sid||'';});
+}
+$('close-detail').onclick=function(){
+  const key=detailGameKey;detailGameKey=null;sid=null;data=null;selectionVersion++;resetDetail(null);
+  $('detail-parking').appendChild($('capture-detail'));
+  document.querySelectorAll('.library-detail-row').forEach(row=>row.remove());
+  const row=Array.from($('library-rows').children).find(item=>item.dataset.gameKey===key);
+  if(row){const button=row.querySelector('.game-records-toggle');if(button)button.focus();}
+};
 $('filter').addEventListener('input',renderRows);$('type').addEventListener('change',renderRows);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;detail()}));
 function restoreSession(){
   const match=/^#capture-session=([a-zA-Z0-9_-]{1,120})$/.exec(location.hash);
@@ -318,7 +470,8 @@ setInterval(refresh,1500);
   function renderGame(game) {
     var card = node('article', null, 'quality-game'), heading = node('h3');
     heading.appendChild(node('span', stateText(game, true), 'quality-badge ' + color(game)));
-    heading.appendChild(document.createTextNode((game.name || game.game_code || '未命名游戏') + (game.game_code ? ' · ' + game.game_code : '')));
+    var gameTitle=game.name || game.game_code || '未命名游戏';
+    heading.appendChild(window.captureCoverName(node('span',gameTitle+(game.game_code?' · '+game.game_code:'')),game.game_code?'code/'+game.game_code:'',gameTitle));
     card.appendChild(heading);
     var assets = game.assets || {}, observed = assets.observed || {}, required = assets.required || {}, dynamic = assets.dynamic_dependencies || {};
     var metrics = node('div', null, 'quality-metrics');
@@ -424,7 +577,7 @@ setInterval(refresh,1500);
     xhr.timeout = 6500;
     xhr.onload = function () {
       if (ticket !== generation || session !== current) return;
-      if (xhr.status === 404 && !fallback) { fetchQuality(true, ticket, session); return; }
+      if (xhr.status === 404 && !fallback && document.documentElement.getAttribute('data-integrated-capture') !== '1') { fetchQuality(true, ticket, session); return; }
       request = null;
       if (xhr.status !== 200) { fail('检查服务暂不可用，抓取仍继续'); return; }
       try {
@@ -457,7 +610,7 @@ setInterval(refresh,1500);
 // 仅运行在 8090 工具页。缓存里只放目录身份和批次/请求编号。
 (function () {
   'use strict';
-  const prefix = 'capture-game-library:v3:';
+  const prefix = 'capture-game-library:v4:';
   const batches = new Map(), bodyCache = new Map();
   const pgIds = {'cash-mania':'1682240','mahjong-ways2':'74','wild-bandito':'104',
     'captains-bounty':'54','fortune-rabbit':'1543462','buffalo-win':'108'};
@@ -476,7 +629,8 @@ setInterval(refresh,1500);
     const site = field(item.id), ext = field(item.externalId), brand = field(meta.brand).toLowerCase();
     if (!site && !(provider && ext)) return null;
     return {key:JSON.stringify(provider && ext ? [provider,brand,ext] : ['site',site]), site:site, ext:ext,
-      provider:provider, brand:brand, legacy:field(meta.legacyGameId), name:field(item.name), zh:field(item.nameZh)};
+      provider:provider, brand:brand, legacy:field(meta.legacyGameId), name:field(item.name), zh:field(item.nameZh),
+      cover:typeof meta.imageUrl==='string' && /^https:\/\/cdn\.777sslot\.com\/common\/game_icon_shu\/[^?#]+\.png$/i.test(meta.imageUrl)?meta.imageUrl:''};
   }
   function classify(r) {
     let u;
@@ -580,16 +734,36 @@ setInterval(refresh,1500);
     for (const batch of batches.values()) for (const item of batch.summary.catalog) {
       let g = entries.get(item.key);
       if (!g) {
-        g = Object.assign({},item,{aliases:new Set(),siteIds:new Set(),proof:{},state:item.provider && item.ext ? 'unseen' : 'unknown'});
+        g = Object.assign({},item,{aliases:new Set(),siteIds:new Set(),sessionIds:new Set(),proof:{},state:item.provider && item.ext ? 'unseen' : 'unknown'});
         entries.set(item.key,g);
       }
       for (const alias of [item.name,item.zh,item.site,item.ext,item.legacy]) if (alias) g.aliases.add(alias.toLowerCase());
       if (!g.zh || g.zh === g.name) g.zh = item.zh || g.zh;
       if (!g.name) g.name = item.name;
+      if (!g.cover) g.cover = item.cover;
       if (item.site){g.siteIds.add(item.site);if(!g.site)g.site=item.site;}
       addLookup(sites,item.site,g);
       if (item.brand === 'pg') { addLookup(pg,item.ext,g); addLookup(pgNames,normalized(item.name),g); }
       if (item.brand === 'igt') addLookup(igt,normalized(item.name),g);
+    }
+    // 定向任务即使尚未收到游戏请求，也必须出现在该游戏的数据行。
+    for(const session of sessionsById.values()){
+      const identities=(session.identity_games||[]).concat(session.target_game?[session.target_game]:[]);
+      for(const target of identities){
+        if(!target.site)continue;
+        let g=one(sites.get(target.site));
+        if(g && ((target.brand && g.brand && field(target.brand).toLowerCase()!==g.brand) ||
+          ((target.externalId||target.ext) && g.ext && field(target.externalId||target.ext)!==g.ext)))continue;
+        if(!g && !sites.has(target.site)){
+          const brand=field(target.brand).toLowerCase(),ext=field(target.externalId||target.ext);
+          g={key:'identity/'+target.site,site:target.site,ext:ext,brand:brand,provider:brand,name:field(target.name),zh:field(target.zh),
+            aliases:new Set(),siteIds:new Set([target.site]),sessionIds:new Set(),proof:{},state:'unseen'};
+          entries.set(g.key,g);addLookup(sites,target.site,g);
+          if(brand==='pg'){addLookup(pg,ext,g);addLookup(pgNames,normalized(g.name),g);}
+          if(brand==='igt')addLookup(igt,normalized(g.name),g);
+        }
+        if(g){g.sessionIds.add(session.id);for(const alias of [target.site,g.name,g.zh,g.ext])if(alias)g.aliases.add(alias.toLowerCase());}
+      }
     }
     for (const batch of batches.values()) {
       const signals = batch.summary.signals, launches = new Set(), numericGames = new Set(), packs = new Map();
@@ -622,10 +796,11 @@ setInterval(refresh,1500);
           if (!g) {
             const name = bits[0] === 'bundle' ? bits[2] : bits[1];
             g = {key:key,name:name,zh:'',brand:bits[0] === 'bundle' ? bits[1] : (bits[0].indexOf('pg') === 0 ? 'pg' : ''),
-              ext:'',provider:'',aliases:new Set([name.toLowerCase()]),proof:{},state:'unknown'};
+              ext:'',provider:'',aliases:new Set([name.toLowerCase()]),sessionIds:new Set(),proof:{},state:'unknown'};
             entries.set(key,g);
           }
         }
+        g.sessionIds.add(batch.id);
         if (e.kind !== 'launch' && g.state === 'unseen') g.state = 'partial';
         if (!g.proof[e.kind] || g.proof[e.kind].at < e.at || (g.proof[e.kind].at === e.at && g.proof[e.kind].id < e.id))
           g.proof[e.kind] = Object.assign({sid:batch.id},e);
@@ -635,9 +810,239 @@ setInterval(refresh,1500);
       if (g.state === 'unseen' && (g.ambiguous || (g.proof.launch && g.brand !== 'pg' && g.brand !== 'igt'))) g.state='unknown';
       g.canTarget=Boolean(g.site && g.siteIds && g.siteIds.size===1 && one(sites.get(g.site))===g);
     }
-    return Array.from(entries.values()).sort((a,b)=>(a.name || a.zh).localeCompare(b.name || b.zh));
+    const assigned=new Set();for(const g of entries.values())for(const id of g.sessionIds)assigned.add(id);
+    const unmatched=Array.from(sessionsById.values()).filter(s=>!assigned.has(s.id));
+    if(unmatched.length)entries.set('unassigned',{key:'unassigned',name:'未识别游戏的历史批次',zh:'未识别游戏的历史批次',brand:'',provider:'',ext:'',
+      aliases:new Set(['未识别','历史','未识别游戏的历史批次'].concat(unmatched.map(s=>s.id))),sessionIds:new Set(unmatched.map(s=>s.id)),proof:{},state:'unknown',unassigned:true,canTarget:false});
+    return Array.from(entries.values()).sort((a,b)=>Number(Boolean(a.unassigned))-Number(Boolean(b.unassigned)) || (a.name || a.zh).localeCompare(b.name || b.zh));
   }
   function el(tag, value) { const node=document.createElement(tag); node.textContent=value; return node; }
+
+  function recordsFor(g) {
+    return Array.from(sessionsById.values()).filter(s=>g.sessionIds && g.sessionIds.has(s.id))
+      .sort((a,b)=>(b.created||'').localeCompare(a.created||''));
+  }
+  function adoptGames(next){
+    // 冷启动先显示任务身份，目录核对后按同一站内 ID 延续行状态。
+    for(const previous of games){
+      const matches=next.filter(g=>g.key===previous.key || (previous.site && g.site===previous.site));
+      if(matches.length!==1)continue;
+      const current=matches[0];
+      if(current.key===previous.key)continue;
+      if(openedGames.has(previous.key)){openedGames.delete(previous.key);openedGames.add(current.key);}
+      if(originalExpanded.has(previous.key)){originalExpanded.delete(previous.key);originalExpanded.add(current.key);}
+      if(rowSelections.has(previous.key)){rowSelections.set(current.key,rowSelections.get(previous.key));rowSelections.delete(previous.key);}
+      if(rowFeedback.has(previous.key)){rowFeedback.set(current.key,rowFeedback.get(previous.key));rowFeedback.delete(previous.key);}
+      if(detailGameKey===previous.key)detailGameKey=current.key;
+    }
+    games=next;
+    if(sid && !games.some(g=>g.key===detailGameKey && g.sessionIds.has(sid))){
+      const owner=games.find(g=>g.sessionIds.has(sid));
+      if(owner){detailGameKey=owner.key;rowSelections.set(owner.key,sid);}
+    }
+  }
+  function button(text, className, action) {
+    const node=el('button',text);node.type='button';node.className=className;node.onclick=action;return node;
+  }
+  function originalsFor(g){
+    return originalGames.filter(item=>(g.site && (item.game_ids||[]).includes(g.site)) ||
+      (!(item.game_ids||[]).length && g.brand && g.ext && field(item.brand).toLowerCase()===g.brand && field(item.external_id)===g.ext));
+  }
+  function originalStatus(item){
+    if(item.status==='captured_candidate')return '原版客户端已导出 · 玩法待验收';
+    if(item.status==='static_candidate')return '静态原版客户端已导出 · 交互待验收';
+    if(item.status==='adapter_ready')return '原版客户端已适配';
+    return item.reason||'已有转换记录 · 尚待补全';
+  }
+  async function originalAction(item,g,action){
+    const key=item.id+'/'+action;
+    if(originalPending.has(key))return;
+    const usesTab=action==='preview' && ['adapter','static'].includes(item.preview_mode);
+    const previewTab=usesTab?window.open('about:blank','_blank'):null;
+    function waitingPage(message){
+      if(!previewTab||previewTab.closed)return;
+      try{previewTab.opener=null;previewTab.document.title='原版游戏试玩';previewTab.document.body.textContent=message;}
+      catch(_){/* 用户可能已关闭或切换等待页，保留本游戏行的状态提示。 */}
+    }
+    waitingPage('正在启动原版游戏，请稍候…');
+    if(action==='preview')originalPreviewUrls.delete(item.id);
+    originalPending.add(key);originalMessages.set(item.id,action==='preview'?'正在打开试玩页面…':'正在打开原版游戏文件夹…');updateVisibleRows();
+    try{
+      let result=await api('/api/original-games/'+action,{id:item.id});
+      if(action==='preview' && result.state==='starting' && result.run_id){
+        const run=result.run_id;
+        // 启动状态由后端核验；等待期间仍可操作其他游戏。
+        for(let attempt=0;attempt<180 && result.state==='starting';attempt++){
+          await new Promise(resolve=>setTimeout(resolve,1000));
+          result=await api('/api/original-games/previews/'+encodeURIComponent(run));
+        }
+      }
+      if(result.state==='error'||result.error)throw Error(result.message||result.error||'试玩页面启动失败');
+      if(usesTab && result.state==='ready'){
+        const address=new URL(result.url||'');
+        if(address.protocol!=='http:'||address.hostname!=='127.0.0.1'||address.username||address.password||!address.port)throw Error('试玩服务没有返回有效的本机地址。');
+        originalPreviewUrls.set(item.id,address.href);
+        if(previewTab&&!previewTab.closed){previewTab.location.replace(address.href);originalMessages.set(item.id,'已打开原版试玩页面。');}
+        else originalMessages.set(item.id,'试玩已就绪，请点击下方链接打开。');
+      }else originalMessages.set(item.id,result.state==='starting'?'试玩仍在启动，请稍后再查看。':result.message||(action==='preview'?'已打开独立试玩页面':'已请求打开原版游戏文件夹'));
+    }catch(error){const message=error.message||'操作失败，请重试。';originalMessages.set(item.id,message);waitingPage('试玩启动失败：'+message+' 请返回抓取列表重试。');}
+    finally{originalPending.delete(key);updateVisibleRows();}
+  }
+  function renderOriginal(parent,item,g){
+    const box=el('div','');box.className='original-product';box.dataset.originalId=item.id;
+    const status=el('small',originalStatus(item));status.className='original-status';box.appendChild(status);
+    const play=button('打开试玩页面','original-preview',()=>originalAction(item,g,'preview'));play.dataset.originalId=item.id;
+    play.disabled=!item.can_preview||originalPending.has(item.id+'/preview');play.title=item.can_preview?'打开此产物的独立本地试玩':item.reason||'此产物尚未生成可启动的试玩入口';box.appendChild(play);
+    const folder=button('打开原版游戏文件夹','original-folder',()=>originalAction(item,g,'open-directory'));folder.dataset.originalId=item.id;
+    folder.disabled=originalPending.has(item.id+'/open-directory');box.appendChild(folder);
+    const path=el('div',item.directory);path.className='folder-path';box.appendChild(path);
+    if(originalMessages.get(item.id)){const feedback=el('small',originalMessages.get(item.id));feedback.className='game-feedback';box.appendChild(feedback);}
+    if(originalPreviewUrls.has(item.id)){
+      const link=el('a','进入已启动的试玩页面');link.href=originalPreviewUrls.get(item.id);link.target='_blank';link.rel='noopener noreferrer';link.className='original-open-link';box.appendChild(link);
+    }
+    if(!item.can_preview && item.reason)box.appendChild(el('small',item.reason));parent.appendChild(box);
+  }
+  function renderOriginals(cell,g,items){
+    if(!items.length)return;
+    const section=el('div','');section.className='original-products';section.appendChild(window.captureCoverName(el('strong','原版游戏'),window.captureCoverKey(g),g.zh || g.name));
+    renderOriginal(section,items[0],g);
+    if(items.length>1){
+      const history=el('details','');history.className='original-history';history.open=originalExpanded.has(g.key);
+      history.appendChild(el('summary','其他生成记录（'+(items.length-1)+'）'));
+      history.ontoggle=function(){if(history.open)originalExpanded.add(g.key);else originalExpanded.delete(g.key);};
+      for(const item of items.slice(1))renderOriginal(history,item,g);section.appendChild(history);
+    }
+    cell.appendChild(section);
+  }
+  let loadingOriginals=false;
+  async function syncOriginals(){
+    if(loadingOriginals)return;loadingOriginals=true;
+    try{
+      const result=await api('/api/original-games');
+      originalGames=Array.isArray(result.games)?result.games:[];updateVisibleRows();
+    }catch(_){/* 旧采集进程没有此接口，抓取与历史查询仍可使用。 */}
+    finally{loadingOriginals=false;}
+  }
+  async function openDirectory(payload,key) {
+    rowFeedback.set(key,'正在打开资源管理器…');updateVisibleRows();
+    try {const result=await api('/api/open-directory',payload);rowFeedback.set(key,'已请求打开：'+result.directory);}
+    catch(error){rowFeedback.set(key,error.status===404?'当前采集器尚未加载目录接口，请使用新版采集器地址。':error.message);}
+    updateVisibleRows();
+  }
+  function addSessionActions(parent,s,g,primary) {
+    if(s.external_session){
+      const port=Number(s.source_port);
+      if(Number.isInteger(port) && port>0 && port<65536){
+        const link=el('a','在原窗口查看并保存');link.className='button';link.target='_blank';link.rel='noopener noreferrer';
+        link.href='http://127.0.0.1:'+port+'/#capture-session='+encodeURIComponent(s.id);parent.appendChild(link);
+      }
+    }else if(isLive(s)){
+      const stop=button(s.state==='stopping'||pendingStops.has(s.id)?'正在保存…':'停止并保存',primary?'game-stop':'batch-stop',()=>stopCapture(s.id,g.key));
+      stop.dataset.sessionId=s.id;stop.disabled=s.state==='stopping'||pendingStops.has(s.id);parent.appendChild(stop);
+    }else if(['completed','complete','error'].includes(s.state)){
+      const link=el('a','下载 ZIP ↓');link.className='button '+(primary?'game-download':'batch-download');
+      link.href='/api/sessions/'+encodeURIComponent(s.id)+'/download';link.dataset.sessionId=s.id;parent.appendChild(link);
+    }
+  }
+  function paintRow(tr,g) {
+    const records=recordsFor(g), live=records.filter(isLive), pending=pendingStarts.has(captureKey(g.site)),originals=originalsFor(g);
+    const signature=JSON.stringify([records.map(s=>[s.id,s.state,s.game_stage,s.directory,s.game_directories,s.external_session,s.source_port,pendingStops.has(s.id)]),pending,rowFeedback.get(g.key),rowSelections.get(g.key),originals.map(item=>[item,originalMessages.get(item.id),originalPreviewUrls.get(item.id),originalPending.has(item.id+'/preview'),originalPending.has(item.id+'/open-directory')])]);
+    if(tr._recordSignature===signature)return;
+    tr._recordSignature=signature;
+    const focus=tr.contains(document.activeElement)?document.activeElement:null;
+    const focusBatch=focus && focus.closest('.capture-batch');
+    const focusClass=focus && focus.className, focusOriginal=focus && focus.dataset.originalId,focusSid=focus && (focus.dataset.sessionId || (focusBatch && focusBatch.dataset.sessionId));
+    const cell=tr.querySelector('.game-records'), actions=tr.querySelector('.game-actions');cell.textContent='';actions.textContent='';
+    if(!records.length)cell.appendChild(el('small','暂无抓取记录'));
+    else {
+      const toggle=button('抓取记录（'+records.length+'）'+(openedGames.has(g.key)?' ▴':' ▾'),'game-records-toggle',()=>{
+        if(openedGames.has(g.key))openedGames.delete(g.key);else openedGames.add(g.key);
+        const expanded=openedGames.has(g.key);toggle.setAttribute('aria-expanded',String(expanded));
+        toggle.textContent='抓取记录（'+records.length+'）'+(expanded?' ▴':' ▾');list.hidden=!expanded;
+      });
+      toggle.setAttribute('aria-expanded',String(openedGames.has(g.key)));cell.appendChild(toggle);
+      const newest=records[0],stamp=new Date(newest.created);
+      cell.appendChild(el('small','最近：'+(isNaN(stamp.getTime())?'时间未记录':stamp.toLocaleString())+' · '+stageLabel(newest)));
+      const folders=new Map();
+      for(const s of records)for(const folder of s.game_directories||[])if(folder.game_id===g.site && !folders.has(folder.path))folders.set(folder.path,Object.assign({session_id:s.id},folder));
+      for(const folder of folders.values()){
+        const target=folders.size>1?{game_id:folder.game_id,session_id:folder.session_id}:{game_id:folder.game_id};
+        cell.appendChild(button('打开历史文件夹','game-folder',()=>openDirectory(target,g.key)));
+        cell.appendChild(el('div',folder.path));
+        cell.lastChild.className='folder-path';
+      }
+      const list=el('div','');list.className='game-history';list.hidden=!openedGames.has(g.key);
+      for(const s of records){
+        const batch=el('div','');batch.className='capture-batch';batch.dataset.sessionId=s.id;
+        const date=new Date(s.created),title=el('div',(isNaN(date.getTime())?'时间未记录':date.toLocaleString())+' · '+stageLabel(s));title.className='batch-label';batch.appendChild(title);
+        const identity=el('small','批次 '+s.id);identity.className='batch-id';batch.appendChild(identity);
+        if((s.identity_games||[]).length>1)batch.appendChild(el('small','此批次包含多款游戏，原始记录共同保留'));
+        batch.appendChild(button('查看记录','batch-view',()=>chooseSession(s.id,g.key)));
+        addSessionActions(batch,s,g,false);
+        const folderButton=button('打开批次文件夹','batch-folder',()=>openDirectory({session_id:s.id},g.key));
+        folderButton.disabled=!s.directory;folderButton.title=s.directory||'该批次目录尚未就绪';batch.appendChild(folderButton);
+        if(s.directory){const path=el('div',s.directory);path.className='folder-path';batch.appendChild(path);}
+        list.appendChild(batch);
+      }
+      cell.appendChild(list);
+    }
+    if(g.canTarget || g.state==='unseen'){
+      const grab=button(records.length?'再次抓取':'抓取','library-grab',()=>startCapture(g));grab.dataset.site=g.site||'';grab.dataset.identified=g.canTarget?'yes':'no';
+      grab.disabled=!g.canTarget||pending||Boolean(g.site && liveFor(g.site));
+      grab.title=!g.canTarget?'站内游戏 ID 无法唯一确认，请重新核对历史。':'登录大厅并进入该游戏';actions.appendChild(grab);
+    }
+    if(live.length){for(const s of live)addSessionActions(actions,s,g,true);}
+    else {
+      const chosen=records.find(s=>s.id===rowSelections.get(g.key))||records[0];
+      if(chosen)addSessionActions(actions,chosen,g,true);
+      if(chosen && records.length>1)actions.appendChild(el('small',(rowSelections.get(g.key)?'当前批次 ':'最新批次 ')+chosen.id.slice(0,8)));
+    }
+    if(pending||live.length){const state=el('small',pending?'正在启动…':live.map(stageLabel).join('；'));state.className='ok';actions.appendChild(state);}
+    const feedback=el('small',rowFeedback.get(g.key)||'');feedback.className='game-feedback';cell.appendChild(feedback);
+    renderOriginals(cell,g,originals);
+    if(focusClass){
+      const candidates=Array.from(tr.querySelectorAll('button,a'));
+      const replacement=candidates.find(node=>node.className===focusClass && (!focusOriginal||node.dataset.originalId===focusOriginal) && (!focusSid || node.dataset.sessionId===focusSid || (node.closest('.capture-batch') && node.closest('.capture-batch').dataset.sessionId===focusSid)));
+      if(replacement && !replacement.disabled)replacement.focus();
+    }
+  }
+  function mountDetail() {
+    const row=Array.from($('library-rows').children).find(node=>node.dataset.gameKey===detailGameKey);
+    if(!row)return false;
+    let detailRow=row.nextElementSibling;
+    if(!detailRow || !detailRow.classList.contains('library-detail-row')){
+      $('detail-parking').appendChild($('capture-detail'));
+      document.querySelectorAll('.library-detail-row').forEach(node=>node.remove());
+      detailRow=el('tr','');detailRow.className='library-detail-row';
+      const cell=el('td','');cell.colSpan=6;detailRow.appendChild(cell);row.parentNode.insertBefore(detailRow,row.nextSibling);
+    }
+    detailRow.firstChild.appendChild($('capture-detail'));return true;
+  }
+  window.captureLibraryOpenSession=function(id,key){
+    let g=games.find(game=>game.key===key && game.sessionIds && game.sessionIds.has(id));
+    if(!g)g=games.find(game=>game.sessionIds && game.sessionIds.has(id));
+    if(!g)return false;
+    detailGameKey=g.key;rowSelections.set(g.key,id);
+    if(!Array.from($('library-rows').children).some(row=>row.dataset.gameKey===g.key)){
+      handoffSite='';$('library-search').value='';$('library-filter').value='all';page=Math.floor(games.indexOf(g)/pageSize);renderLibrary();
+    }
+    mountDetail();updateVisibleRows();
+    $('capture-detail-title').setAttribute('tabindex','-1');$('capture-detail-title').focus();return true;
+  };
+  function updateVisibleRows(){
+    for(const row of $('library-rows').children){const g=games.find(item=>item.key===row.dataset.gameKey);if(g)paintRow(row,g);}
+  }
+  let sessionIdentity='';
+  window.captureLibrarySessionsChanged=function(){
+    const identity=JSON.stringify(Array.from(sessionsById.values()).map(s=>[s.id,s.target_game,s.identity_games]));
+    if(identity!==sessionIdentity){sessionIdentity=identity;adoptGames(build());renderLibrary();}
+    else if(['recording','has-records'].includes($('library-filter').value)){
+      const filter=$('library-filter').value;
+      const membership=games.filter(g=>filter==='recording'?recordsFor(g).some(isLive):recordsFor(g).length>0).map(g=>g.key).join('|');
+      if(window.captureLibraryMembership!==membership){window.captureLibraryMembership=membership;renderLibrary();}else updateVisibleRows();
+    }
+    else updateVisibleRows();
+  };
   function renderLibrary() {
     const counts = {unseen:0,partial:0,unknown:0};
     games.forEach(g=>counts[g.state]++);
@@ -645,62 +1050,36 @@ setInterval(refresh,1500);
     const term = $('library-search').value.trim().toLowerCase(), filter = $('library-filter').value;
     const matches = handoffSite ? games.filter(g=>g.site===handoffSite) :
       term ? games.filter(g=>Array.from(g.aliases).some(a=>a.indexOf(term)!==-1)) : games;
-    const results = filter === 'all' ? matches : matches.filter(g=>filter === g.state);
+    const results = filter === 'all' ? matches : matches.filter(g=>filter==='recording'?recordsFor(g).some(isLive):filter==='has-records'?recordsFor(g).length>0:filter === g.state);
     $('library-find-all').hidden = !term || matches.length === results.length;
-    const pages = Math.max(1,Math.ceil(results.length/pageSize));
-    page = Math.min(page,pages-1);
+    const pages = Math.max(1,Math.ceil(results.length/pageSize));page = Math.min(page,pages-1);
     const table = $('library-rows'), opened = new Set(Array.from(table.querySelectorAll('details[open]')).map(box=>box.dataset.gameKey));
-    table.textContent = '';
+    $('detail-parking').appendChild($('capture-detail'));table.textContent = '';
     for (const g of results.slice(page*pageSize,(page+1)*pageSize)) {
-      const tr=el('tr',''), name=el('td',g.zh || g.name || '名称待识别');
-      if (g.name && g.name !== g.zh && g.zh) name.appendChild(el('small',g.name));
-      tr.appendChild(name); tr.appendChild(el('td',[g.brand.toUpperCase() || g.provider,g.ext].filter(Boolean).join(' / ') || '—'));
+      const tr=el('tr',''), name=el('td',''), text=el('span',g.zh || g.name || '名称待识别');tr.dataset.gameKey=g.key;
+      if (g.name && g.name !== g.zh && g.zh) text.appendChild(el('small',g.name));
+      name.appendChild(window.captureCoverName(text,window.captureCoverKey(g),g.zh || g.name,g.cover));
+      tr.appendChild(name);tr.appendChild(el('td',[g.brand.toUpperCase() || g.provider,g.ext].filter(Boolean).join(' / ') || '—'));
       const state=el('td',labels[g.state]);state.className='library-status';
       if (g.state === 'partial') state.appendChild(el('small','完整度待确认'));
-      if (g.state === 'unknown') state.appendChild(el('small','专属数据归属待核对'));
-      tr.appendChild(state);
+      if (g.state === 'unknown') state.appendChild(el('small','专属数据归属待核对'));tr.appendChild(state);
       const proof=el('td',''), events=Object.values(g.proof).sort((a,b)=>b.at.localeCompare(a.at));
-      if (!events.length) proof.textContent='仅见大厅目录';
+      if (!events.length) proof.textContent=g.unassigned?'游戏归属尚未确认':'仅见大厅目录';
       else {
-        const box=el('details',''), caption=events.map(e=>evidenceLabels[e.kind]).join('、');
-        box.dataset.gameKey=g.key; box.open=opened.has(g.key);
-        box.appendChild(el('summary',caption));
-        for (const e of events) {
-          const date=new Date(e.at), stamp=isNaN(date.getTime())?'':date.toLocaleString();
-          box.appendChild(el('small',evidenceLabels[e.kind]+' · '+stamp+' · '+e.sid.slice(0,8)+' / #'+e.id));
-        }
-        const best = g.proof.spin || g.proof.info || events[0], button=el('button','查看该批采集检查');
-        if (g.state === 'partial' && !g.proof.spin && !g.proof.info)
-          box.appendChild(el('small','目前只核对到前端数据，仍需确认该游戏的玩法请求和对应响应。'));
-        button.type='button'; button.onclick=async function(){
-          const picker=$('history');
-          try {
-            if (!Array.from(picker.options).some(option=>option.value===best.sid)) await history();
-            picker.value=best.sid;
-            if (picker.value!==best.sid) throw Error('批次已不可用');
-            picker.dispatchEvent(new Event('change')); $('quality-title').scrollIntoView();
-          } catch (_) { notice('这条证据的批次暂不可用，请重新核对历史。'); }
-        };
-        box.appendChild(button); proof.appendChild(box);
+        const box=el('details',''), caption=events.map(e=>evidenceLabels[e.kind]).join('、');box.dataset.gameKey=g.key;box.open=opened.has(g.key);box.appendChild(el('summary',caption));
+        for (const e of events) {const date=new Date(e.at),stamp=isNaN(date.getTime())?'':date.toLocaleString();box.appendChild(el('small',evidenceLabels[e.kind]+' · '+stamp+' · '+e.sid.slice(0,8)+' / #'+e.id));}
+        const best=g.proof.spin||g.proof.info||events[0];
+        if(g.state==='partial'&&!g.proof.spin&&!g.proof.info)box.appendChild(el('small','目前只核对到前端数据，仍需确认该游戏的玩法请求和对应响应。'));
+        box.appendChild(button('查看该批采集检查','library-quality',()=>{chooseSession(best.sid,g.key);$('quality-title').scrollIntoView();}));proof.appendChild(box);
       }
-      tr.appendChild(proof);
-      const action=el('td','');
-      if(g.state==='unseen' || g.canTarget){
-        const grab=el('button','抓取');
-        grab.hidden=g.state!=='unseen';
-        grab.type='button';grab.className='library-grab';grab.dataset.identified=g.canTarget?'yes':'no';grab.dataset.site=g.site||'';
-        grab.onclick=function(){if(g.canTarget)startCapture(g);};
-        action.appendChild(grab);
-        const view=el('button','查看批次');
-        view.type='button';view.className='library-view';view.hidden=true;
-        view.onclick=function(){const session=liveFor(g.site);if(session){chooseSession(session.id);$('history').focus();}};
-        action.appendChild(view);action.appendChild(el('small',''));
-      }
-      tr.appendChild(action); table.appendChild(tr);
+      tr.appendChild(proof);const records=el('td',''),actions=el('td','');records.className='game-records';actions.className='game-actions';tr.appendChild(records);tr.appendChild(actions);
+      ['游戏','品牌 / 对外 ID','采集状态','已保存的证据','抓取记录 / 历史文件夹','操作'].forEach((label,i)=>tr.children[i].dataset.label=label);
+      table.appendChild(tr);paintRow(tr,g);
     }
+    if(!results.length){const row=el('tr',''),cell=el('td','当前条件下没有游戏，请调整筛选或搜索条件。');cell.colSpan=6;row.appendChild(cell);table.appendChild(row);}
+    mountDetail();
     $('library-page').textContent = results.length ? '第 '+(page+1)+' / '+pages+' 页，共 '+results.length+' 项' : '当前条件下没有记录';
-    $('library-prev').disabled = page===0; $('library-next').disabled=page+1>=pages;
-    updateStartControls();
+    $('library-prev').disabled = page===0;$('library-next').disabled=page+1>=pages;
   }
   function fromCache(s) {
     try {
@@ -753,8 +1132,9 @@ setInterval(refresh,1500);
         }
       }
       message=pendingIssues.length ? '有 '+pendingIssues.length+' 个批次未核对成功（'+pendingIssues.join('、')+'），清单为部分结果' : '已核对 '+processed+' 个批次';
-      if (changed) games=build();
+      if (changed) adoptGames(build());
       if (changed || $('library-summary').textContent.indexOf(message+' ·') !== 0) renderLibrary();
+      if(!sid && !selectionVersion)restoreSession();
     } catch (_) {message='暂时无法读取批次，当前显示上次核对结果';renderLibrary();}
     finally {busy=false;if(rerun){rerun=false;setTimeout(sync,0);}}
   }
@@ -767,12 +1147,13 @@ setInterval(refresh,1500);
   function restoreTarget(){
     const match=/^#capture-game=([a-zA-Z0-9_-]{1,80})$/.exec(location.hash);
     if(!match || legacyCapture)return;
-    handoffSite=match[1];$('library-filter').value='unseen';$('library-search').value=handoffSite;page=0;renderLibrary();
+    handoffSite=match[1];$('library-filter').value='all';$('library-search').value=handoffSite;page=0;renderLibrary();
     $('library-feedback').textContent='已按所选游戏的站内 ID 筛选，请填写预设账号密码，再点击该行的“抓取”。';
-    $('preset-account').focus();
+    $('login-settings').open=true;$('preset-account').focus();
   }
   restoreTarget();
   window.addEventListener('hashchange',restoreTarget);
+  syncOriginals();setInterval(syncOriginals,15000);
   sync();
   setInterval(function(){
     if (!busy) sync();

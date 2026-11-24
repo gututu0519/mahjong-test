@@ -12,8 +12,10 @@
   launch.searchParams.set('ot', merchant ? merchant.operator : 'local-demo');
   launch.searchParams.set('ops', token);
   launch.searchParams.set('ao', '06gvo=l26dffi7i=ius');
+  // 原启动器用 or 构造共享模块与游戏目录。00 表示主机名不移位，点号写为等号。
+  launch.searchParams.set('or', '00' + launch.host.replace(/\./g, '='));
   if (merchant) launch.searchParams.delete('mock');
-  ['t', 'tk', '__hv', '__sv', 'or'].forEach(function (name) { launch.searchParams.delete(name); });
+  ['t', 'tk', '__hv', '__sv'].forEach(function (name) { launch.searchParams.delete(name); });
   history.replaceState(history.state, '', launch.href);
 
   function isAPI(path) { return /^\/(web-api|game-api)\//.test(path); }

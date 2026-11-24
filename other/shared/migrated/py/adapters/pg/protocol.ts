@@ -13,7 +13,8 @@ x=__rt.bin("BitXor",x,__rt.bin("RShift",x,17));
 x=__rt.bin("BitXor",x,y);
 x=__rt.bin("BitXor",x,__rt.bin("RShift",y,26));
 b=x;
-(yield __rt.tuple([i,__rt.bin("Mod",__rt.bin("Add",x,y),__rt.bin("Add",i,1))]));}return null;});
+// 两个各自可精确表示的整数相加仍可能超过 2^53；先做整数加法再取模。
+(yield __rt.tuple([i,Number((BigInt(x) + BigInt(y)) % BigInt(i + 1))]));}return null;});
 unpack=__rt.fn("unpack",{names:["data", "seed", "salt"],kwonly:[],defaults:{"seed":null,"salt":GAME_SALT},vararg:null,kwarg:null},function(data,seed,salt){let i,j,pos,raw;if(__rt.truth(__rt.unary("Not",__rt.compare(["LtE", "LtE"],[()=>2,()=>__rt.call(__rt.b["len"],[data],__rt.kw([])),()=>16384])))){throw __rt.call(__rt.b["ValueError"],["Invalid binary message length"],__rt.kw([]));}
 pos=__rt.bin("Mod",salt,__rt.bin("Sub",__rt.call(__rt.b["len"],[data],__rt.kw([])),1));
 if(__rt.truth(__rt.compare(["Is"],[()=>seed,()=>null]))){seed=__rt.item(data,pos);}

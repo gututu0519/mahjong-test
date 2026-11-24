@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from capture_quality import _body_path
+from game_covers import cdn_url
 
 
 CATALOG_PATH = '/api/v1/games/catalog'
@@ -52,6 +53,9 @@ def project_game(item):
     result = {key: item.get(key) for key in ('id', 'externalId', 'name', 'nameZh')}
     meta = item.get('metadata') if isinstance(item.get('metadata'), dict) else {}
     result['metadata'] = {key: meta.get(key) for key in ('brand', 'legacyGameId')}
+    cover = cdn_url(meta.get('imageUrl'))
+    if cover:
+        result['metadata']['imageUrl'] = cover
     provider = item.get('provider') if isinstance(item.get('provider'), dict) else {}
     result['provider'] = {'code': provider.get('code')}
     return result

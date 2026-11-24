@@ -1,16 +1,15 @@
-// Source-workspace npm start: install tooling, compile, migrate, then use the
-// existing service entry. Deployment packages use tools/start-service.mjs.
 import {existsSync,readFileSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {installDependencies,npmExecutable} from './scripts/install-dependencies.mjs';
+import {installDependencies} from './scripts/install-dependencies.mjs';
+
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
-const args=process.argv.slice(2),requested=args[0]&&!args[0].startsWith('-')?args.shift():'gateway';
-for(let i=1;i<args.length;i++)if(['--config','--env-file','--database','--service-dir','--game-config','--secret-file'].includes(args[i-1]))args[i]=resolve(args[i]);
-try {
-  console.log('[1/3] 安装开发依赖并编译源码');
-  await installDependencies(resolve(root,'other/tooling'),{development:true,npm:npmExecutable()});
-  const {build,runtime}=await import('./build.mjs');await build();
+const runtime=resolve(root,'other/runtime/server');
+
+// npm start 完成构建后使用此入口；单款独立计算服务也沿用其版本、密钥和环境校验。
+export async function startSourceService(supplied) {
+  const args=[...supplied],requested=args[0]&&!args[0].startsWith('-')?args.shift():'gateway';
+  for(let i=1;i<args.length;i++)if(['--config','--env-file','--database','--service-dir','--game-config','--secret-file'].includes(args[i-1]))args[i]=resolve(args[i]);
   const {serviceContext}=await import('../runtime/server/tools/service-context.mjs');
   const {migrateService}=await import('../runtime/server/tools/migrate-service.mjs');
   let context;
@@ -28,13 +27,23 @@ try {
     if(!args.includes('--env-file')&&!args.includes('--config')&&!env.GTT_PLATFORM_ENV_FILE&&existsSync(file))env.GTT_PLATFORM_ENV_FILE=file;
     context=serviceContext(runtime,{role:'workspace',action},args,env);
   }
-  console.log('[2/3] 执行版本化迁移');await migrateService(context);
+  console.log('执行版本化迁移');await migrateService(context);
   if(requested==='game')for(const key of Object.keys(process.env))delete process.env[key];
   Object.assign(process.env,context.environment);
-  console.log('[3/3] 启动 '+requested);
+  console.log('启动 '+requested);
   if(requested==='game') {const {main}=await import('../runtime/server/dist/cli.js');await main(context.args);}
   else {
     process.argv=[process.execPath,resolve(runtime,'tools/start.mjs'),requested,...context.args.slice(1)];
     await import(pathToFileURL(resolve(runtime,'tools/start.mjs')).href);
   }
-} catch(error){console.error('启动流水线失败：'+error.message);process.exitCode=1;}
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try {
+    console.log('安装开发依赖并编译源码');
+    await installDependencies(resolve(root,'other/tooling'),{development:true});
+    const {build}=await import('./build.mjs');
+    await build();
+    await startSourceService(process.argv.slice(2));
+  } catch(error){console.error('启动流水线失败：'+error.message);process.exitCode=1;}
+}

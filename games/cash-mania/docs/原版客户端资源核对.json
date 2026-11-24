@@ -1,0 +1,1633 @@
+{
+  "game": "cash-mania",
+  "scope": "本地文件与原抓取的静态溯源核验；不是浏览器完整加载或全部玩法验收。",
+  "indexed_resources": 278,
+  "missing_indexed_files": [],
+  "local_checksum_mismatches": [],
+  "source_checksum_mismatches": [],
+  "byte_identical_to_source": 154,
+  "changed_from_source": [
+    "1682240/index.html",
+    "shared/984721902a/16c66b844b.663ff.png",
+    "1682240/e6e019229d.cc7ea.png",
+    "1682240/b49ee78723.65794.png",
+    "shared/984721902a/3c32f1ac06.48adb.png",
+    "shared/984721902a/d9b258ff19.806e2.png",
+    "shared/c03a2652ad/builtins/internal/native/02/0275e94c-56a7-410f-bd1a-fc7483f7d14a.eda5a.png",
+    "shared/c03a2652ad/builtins/internal/native/60/600301aa-3357-4a10-b086-84f011fa32ba.4caf9.png",
+    "shared/4528468aab/b967c4b4df.e8a77.png",
+    "shared/4528468aab/93111cc830.11720.png",
+    "shared/4528468aab/9d112f7e32.69cdf.png",
+    "shared/4528468aab/28f911ed51.9a259.png",
+    "1682240/assets/resources/native/75/75e507a6-3bc5-4aa1-89ff-8fc31c86ef0c.31b09.png",
+    "1682240/assets/resources/native/09/093eaadf-b7e5-4abc-a092-10034c78abaf.ad76d.png",
+    "1682240/assets/resources/native/7d/7d383d05-8a22-4e2e-b45a-581db4aab033.0cf71.png",
+    "1682240/assets/resources/native/3f/3f203cf6-d68c-4413-9e0b-1cc78c3cbb47.ad755.png",
+    "1682240/assets/resources/native/bd/bd0815f3-c51a-4534-a7e0-134d27c8f907.d3343.png",
+    "1682240/assets/resources/native/e5/e564d724-5a76-44af-80d8-7e7a51408e9a.88a2c.png",
+    "1682240/assets/resources/native/e4/e4fc6104-512b-4bdb-9065-055e112f10e1.d4e36.png",
+    "1682240/assets/resources/native/1a/1a13a35b-050d-4815-89ac-d24828039bb1.15204.png",
+    "1682240/assets/resources/native/d3/d3b61b18-2669-46a5-99a1-93e9904f9bcd.27a2c.png",
+    "1682240/assets/resources/native/cc/cc5ee12a-03cf-4e3d-8d2d-acb028320dac.8a678.png",
+    "1682240/assets/resources/native/8d/8dc27882-6ce7-4e50-857b-6aa1bb8e13f5.5c03a.png",
+    "1682240/assets/resources/native/50/50bc8ead-6f16-488f-aef3-c2210e7b4694.494da.png",
+    "1682240/assets/resources/native/ea/ea8a59d7-f87b-494b-8325-02c0fd1e47ed.3f624.png",
+    "1682240/assets/resources/native/a4/a4ae5d7b-3a1c-4e2a-9961-f44752f65585.ad19c.png",
+    "1682240/assets/resources/native/0d/0d286fa5-9467-4a23-8641-664aa76cb3c7.f8b3e.png",
+    "1682240/assets/resources/native/96/9669a822-e3bb-4fe3-9da0-f4ef1562885d.e2592.png",
+    "1682240/assets/resources/native/68/68bea138-ecc5-486c-90cc-de1249abcb2a.ccbb7.png",
+    "1682240/assets/resources/native/0c/0cfac5f9-8498-4436-9306-64bf8487ad92.13bfa.png",
+    "1682240/assets/resources/native/24/24606e6f-5845-49a1-aa03-012a97844b9b.7c7f8.png",
+    "1682240/assets/resources/native/2f/2feff069-bda0-4f75-af97-5cd53974fb01.8f67b.png",
+    "1682240/assets/resources/native/2f/2f176487-2683-43f6-b645-fcb4bebfe0f4.acbbf.png",
+    "1682240/assets/resources/native/b8/b885071e-af8b-4ede-aedd-f1e419854788.e2625.png",
+    "1682240/assets/resources/native/2f/2f841d39-8c71-4290-a1a7-3664805deb31.7be52.png",
+    "1682240/assets/resources/native/52/527adbae-ee8a-4a39-a8d8-6453d06fce1b.7aa1e.png",
+    "1682240/assets/resources/native/4e/4e1e905b-9c14-43ea-93b1-b4aea117e9a0.c440c.png",
+    "1682240/assets/resources/native/06/06563ae3-f856-47ba-a070-4b87d29ef6fc.e33a6.png",
+    "1682240/assets/resources/native/80/805883ba-91e7-4d25-aaf8-06dd9ddc370e.4b382.png",
+    "1682240/assets/resources/native/c0/c09dba26-b23b-4b09-8f62-cc1cadacdc19.84e5c.png",
+    "1682240/assets/resources/native/5d/5d1bc49a-56ae-4594-828f-1462fbef20d0.3b9ff.png",
+    "1682240/assets/resources/native/8e/8e2694ff-bc8c-473a-8e8d-f3e2bd8821c2.0d5b4.png",
+    "1682240/assets/resources/native/e5/e5f73ccb-38d5-4cb3-a918-cb9f95587020.9fcb9.png",
+    "1682240/assets/resources/native/a6/a67d51e7-8177-446d-859b-ce371be662a2.d2e08.png",
+    "1682240/assets/resources/native/94/946c605b-6223-49b6-a012-f8602501065e.d636e.png",
+    "1682240/assets/resources/native/d1/d123288f-227c-4801-9a13-7ffc90f96ae7.e5cc6.png",
+    "1682240/assets/resources/native/f7/f79060aa-5b64-43a3-aba9-1ce7bd79bde1.e22b1.png",
+    "1682240/assets/resources/native/ec/ec42d4fe-602b-4ced-b6cc-0ced0878bab8.82541.png",
+    "1682240/assets/resources/native/f5/f513f340-b787-4814-ae25-d18fb8305c61.4f8c2.png",
+    "1682240/assets/resources/native/bc/bcea5022-0190-4009-8ee6-e003492f1137.84051.png",
+    "1682240/assets/resources/native/e3/e3a7eee5-10b1-44b6-9b0c-82db91b547b0.be1cf.png",
+    "1682240/assets/resources/native/95/950358a5-8e87-45be-9a55-c1a06c94ff2b.ee5ee.png",
+    "1682240/assets/resources/native/69/69343b99-fa60-465b-aa65-e03e596ef8b7.2a424.png",
+    "1682240/assets/resources/native/60/6058df40-25c7-441d-83a6-fcb2cb85bea1.52e67.png",
+    "1682240/assets/resources/native/9c/9c3ffebb-6a39-4734-9b26-706e3c7c3cc8.ac7c0.png",
+    "1682240/assets/resources/native/46/4660ede6-b713-4225-b0c6-237e3bf9a883.d51f2.png",
+    "1682240/assets/resources/native/41/417a591a-9747-4e6b-8579-1faef91ee9c3.d1f9e.png",
+    "1682240/assets/resources/native/99/99719d57-b925-4535-a3ed-c787bc013896.2789a.png",
+    "1682240/assets/resources/native/30/30f51a10-683c-48ad-8fbc-b7fb8476ef36.bb8e8.png",
+    "1682240/assets/resources/native/23/234db83f-9eaa-4fee-8685-e8c24fa41c97.b197c.png",
+    "1682240/assets/resources/native/35/35dfd5e4-d012-4f09-afe9-95ea7871541d.c2184.png",
+    "1682240/assets/resources/native/83/83c1de63-0a7b-411d-a37b-1da3f1245754.c2115.png",
+    "1682240/assets/resources/native/19/1933bb6b-6779-44c1-b901-2113db3bb3be.1844e.png",
+    "1682240/assets/resources/native/3d/3d70dc4c-437e-4147-ab3b-00edb811858e.9dc7a.png",
+    "1682240/assets/resources/native/2e/2ee15876-12cd-4f78-ade5-815d1fe318af.2e664.png",
+    "1682240/assets/resources/native/c2/c26a541e-d1af-4b88-a881-1b3e2ba709f9.137f0.png",
+    "1682240/assets/resources/native/e1/e1c7f2bb-fe5c-4c44-982d-76dc2c71499b.8ccac.png",
+    "1682240/assets/resources/native/78/78ef45b7-6bb3-4edd-b07d-4020b94a5f14.113e2.png",
+    "1682240/assets/resources/native/a6/a6170f1b-a2f9-4e3e-84d6-38137d0b980a.06b37.png",
+    "1682240/assets/resources/native/3a/3a74155c-3e4f-46e1-8b4e-358b6a1d4896.55bff.png",
+    "1682240/assets/resources/native/64/64292c28-59bd-45d8-8997-933a8c3a776e.d809f.png",
+    "1682240/assets/resources/native/7a/7a6a2138-8d40-4bf5-9a09-a48fced0d3e1.1452b.png",
+    "1682240/assets/resources/native/96/96c10a1f-ece3-47f7-ab1b-d0dd247c4133.c2f62.png",
+    "1682240/assets/resources/native/94/94485979-8f41-4407-bbef-d7de65159862.bff60.png",
+    "1682240/assets/resources/native/f7/f798b13d-7f3c-4cea-a1e8-5766544b2428.f27c6.png",
+    "1682240/assets/resources/native/63/635615b6-3607-40b3-bde5-8a15ea60745a.e630a.png",
+    "1682240/assets/resources/native/2c/2cb45e59-2076-4d47-8493-6e61ce5c8739.fd38a.png",
+    "1682240/assets/resources/native/4b/4bcb9f0e-47c1-4d09-be80-6795194549f6.d6d52.png",
+    "1682240/assets/resources/native/37/37625c2f-8a95-4d1c-9220-e332cc9fccbd.3ced6.png",
+    "1682240/assets/resources/native/71/71561142-4c83-4933-afca-cb7a17f67053.157b5.png",
+    "1682240/assets/resources/native/b4/b43ff3c2-02bb-4874-81f7-f2dea6970f18.927ae.png",
+    "1682240/assets/resources/native/e8/e851e89b-faa2-4484-bea6-5c01dd9f06e2.b617d.png",
+    "1682240/assets/resources/native/9d/9d14bfab-928b-447e-99d9-e145af95a7c8.96932.png",
+    "1682240/assets/resources/native/21/210b6212-8217-484e-a4d9-f72e692d9b02.58acf.png",
+    "1682240/assets/resources/native/d9/d90798ff-d01d-411f-ba27-1a066cf4d633.0e6b3.png",
+    "1682240/assets/resources/native/32/32941092-527e-4635-9b1f-441cf34d9590.49919.png",
+    "1682240/assets/resources/native/9f/9f736fc6-fe27-47e8-b066-d01fb326b564.25630.png",
+    "1682240/assets/resources/native/42/428b08d9-b3c6-4b45-b47f-659edec5202b.21009.png",
+    "1682240/assets/resources/native/02/021cc95a-e4c4-492f-a0dc-16747a033866.5ba27.png",
+    "1682240/assets/resources/native/3c/3ca07325-9c64-466c-9f07-62fa5309ad80.ce3b5.png",
+    "1682240/assets/resources/native/fe/fed1cb58-07a8-44ca-b591-7de0da375cce.0264e.png",
+    "1682240/assets/resources/native/1b/1b4ef5e7-3311-4993-a42b-c8d7a55798b3.48b84.png",
+    "1682240/assets/resources/native/f2/f26e2525-1e27-4463-994b-d73342b8d00f.070fa.png",
+    "1682240/assets/resources/native/3e/3e6460e3-be12-46bd-b314-0d87b5e514ff.c8c85.png",
+    "1682240/assets/resources/native/a0/a07a61f2-3da5-40eb-bb33-a484c712c63b.987d7.png",
+    "1682240/assets/resources/native/31/31b43671-96b0-4032-926f-482e51999927.1129a.png",
+    "shared/f0c1cbad4e/633373aae0.1e66b.png",
+    "shared/f0c1cbad4e/81c4b4ace9.186d3.png",
+    "shared/f0c1cbad4e/1fec4fcfea.7550b.png",
+    "shared/0b68fe0fe5/89ba3c19f3.76192.png",
+    "shared/0b68fe0fe5/b354d9458e.0ff4e.png",
+    "shared/72c6a58ab7/b0fb3f0865.56a79.png",
+    "shared/72c6a58ab7/bb82e773e0.39461.png",
+    "shared/c5869829a5/50d8580f6a.a84a6.png",
+    "shared/c5869829a5/292fa0d47b.9b246.png",
+    "shared/c5869829a5/8e8f29b039.968f4.png",
+    "shared/c5869829a5/d22a88c904.3309d.png",
+    "shared/c5869829a5/0c21d96060.3d5d6.png",
+    "shared/f0c1cbad4e/be4c34e56c.b129e.png",
+    "shared/f0c1cbad4e/5219f5d189.89a1e.png",
+    "shared/c5869829a5/333931a26d.3caff.png",
+    "shared/c2fc9a6814/e1a185f88d.a3c4c.png",
+    "shared/c2fc9a6814/e7d632175c.02a4b.css",
+    "shared/c2fc9a6814/806ccd9a32.a3cf1.png",
+    "shared/4528468aab/bd94233190.9c045.png",
+    "shared/75d1870451/b5f9703d5f.45abd.png",
+    "shared/75d1870451/bf25dfd942.258a1.png",
+    "1682240/a97442bc64.084ff.png",
+    "1682240/b66b2f5498.0b6a5.png",
+    "1682240/bb59491a11.bb4f3.png",
+    "1682240/f2e7d71fc6.e2d23.png",
+    "1682240/8dfb2c52ba.bfd59.png",
+    "1682240/766be34028.7c9b4.png",
+    "1682240/ad342b85a5.7b6ca.png"
+  ],
+  "image_checks": {
+    "count": 122,
+    "adam7": 122,
+    "dimensions_and_rgba_equal": 122,
+    "palette_preserved_when_applicable": 122
+  },
+  "extra_files": [
+    "fixtures/image-conversion-report.json",
+    "fixtures/image-map.json",
+    "fixtures/resource-index.json",
+    "local-bootstrap.js",
+    "local-frame-clock.js"
+  ],
+  "bundle_checks": [
+    {
+      "config": "1682240/assets/main/config.baf4f.json",
+      "dependencies": [
+        "resources",
+        "internal"
+      ],
+      "import_declared": 1,
+      "import_present": 1,
+      "native_declared": 0,
+      "native_present": 0,
+      "missing_imports": [],
+      "missing_native_prefixes": []
+    },
+    {
+      "config": "1682240/assets/resources/config.d8d53.json",
+      "dependencies": [
+        "internal"
+      ],
+      "import_declared": 154,
+      "import_present": 75,
+      "native_declared": 143,
+      "native_present": 92,
+      "missing_imports": [
+        {
+          "path": "1682240/assets/resources/import/01/01185596d.a3ba4.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ar/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/01/013fcfaf8.78799.json",
+          "logical_assets": [
+            {
+              "path": "atlas/hu/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/01/014270171.87c3b.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ko/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/01/014d1a5f9.252d4.json",
+          "logical_assets": [
+            {
+              "path": "atlas/de/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/01/01c439cdd.98333.json",
+          "logical_assets": [
+            {
+              "path": "atlas/fa/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/02/02340c9a2.a076c.json",
+          "logical_assets": [
+            {
+              "path": "atlas/zh/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/02/0234e6df0.c78da.json",
+          "logical_assets": [
+            {
+              "path": "atlas/az/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/02/029d4b1c-ff4b-4885-87a1-ee12db9578eb.519e1.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/anim/shield_pg_white",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/03/03404422-1ea8-4f2e-b404-d075d10da136.f5e74.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/prefab/general/setting_slider_single_num",
+              "type": "cc.Prefab",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/03/038179c33.9d39e.json",
+          "logical_assets": [
+            {
+              "path": "atlas/si/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/03/03c75ae09.35103.json",
+          "logical_assets": [
+            {
+              "path": "atlas/my/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/03/03dcaf820.e8af9.json",
+          "logical_assets": [
+            {
+              "path": "atlas/bn/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/04/0492c2e7f.8a1f2.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/setting_menu",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/04/04ab0df86.0a50f.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ja/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/04/04f9f2ef4.e14e9.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ro/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/05/05b080ebf.a41d7.json",
+          "logical_assets": [
+            {
+              "path": "atlas/lo/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/05/05c4f2611.263e3.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ru/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/06/064c84fa6.c9b1d.json",
+          "logical_assets": [
+            {
+              "path": "atlas/th/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/06/064f91e0d.bc20c.json",
+          "logical_assets": [
+            {
+              "path": "atlas/pt_br/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/06/06d7b22f1.deb4c.json",
+          "logical_assets": [
+            {
+              "path": "atlas/id/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/07/07068811a.dbdac.json",
+          "logical_assets": [
+            {
+              "path": "atlas/hi/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/07/074ab4a2b.e81a9.json",
+          "logical_assets": [
+            {
+              "path": "atlas/pt/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/07/075d603b8.f7916.json",
+          "logical_assets": [
+            {
+              "path": "atlas/pl/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/07/07a9b958d.8beab.json",
+          "logical_assets": [
+            {
+              "path": "atlas/vi/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/07/07b3c9bd5.59751.json",
+          "logical_assets": [
+            {
+              "path": "atlas/es/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/08/088d24180.2728f.json",
+          "logical_assets": [
+            {
+              "path": "atlas/sh/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/08/088fe7d5d.ccdd8.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/en_stkus/setting_menu_locale",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/08/089057090.617d5.json",
+          "logical_assets": [
+            {
+              "path": "atlas/lt/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/08/08d4cd527.5708a.json",
+          "logical_assets": [
+            {
+              "path": "atlas/mn/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0a/0a83c57e0.24304.json",
+          "logical_assets": [
+            {
+              "path": "atlas/no/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0a/0a988a49e.659a6.json",
+          "logical_assets": [
+            {
+              "path": "atlas/sk/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0a/0a9e99045.9e9ba.json",
+          "logical_assets": [
+            {
+              "path": "atlas/fi/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0b/0b40af135.7085e.json",
+          "logical_assets": [
+            {
+              "path": "atlas/uz/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0b/0bb9c874c.722bd.json",
+          "logical_assets": [
+            {
+              "path": "atlas/fr/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0c242b3e9.98cd2.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/anim/turbo_vfx",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0c374deb1.e51e3.json",
+          "logical_assets": [
+            {
+              "path": "atlas/hy/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0ce6c3873.0c2d0.json",
+          "logical_assets": [
+            {
+              "path": "atlas/nl/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0ce852379.b0285.json",
+          "logical_assets": [
+            {
+              "path": "atlas/da/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0ce8fda11.3251d.json",
+          "logical_assets": [
+            {
+              "path": "atlas/sq/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0c/0cf6223fb.9bba3.json",
+          "logical_assets": [
+            {
+              "path": "atlas/sv/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0d/0d48ed975.1c957.json",
+          "logical_assets": [
+            {
+              "path": "atlas/cs/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0e/0e8b5eab8.01bf5.json",
+          "logical_assets": [
+            {
+              "path": "atlas/et/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0e/0ef8b6a2a.6212e.json",
+          "logical_assets": [
+            {
+              "path": "atlas/uk/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f180a68d.caa76.json",
+          "logical_assets": [
+            {
+              "path": "atlas/it/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f1f20d2e.0280b.json",
+          "logical_assets": [
+            {
+              "path": "atlas/tr/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f3cdadd2.445f9.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/en_social/setting_menu_locale",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f44e6f55.5180f.json",
+          "logical_assets": [
+            {
+              "path": "atlas/bg/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f455efbd.eba20.json",
+          "logical_assets": [
+            {
+              "path": "atlas/el/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f57d2738.c6122.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/zh/setting_menu_locale",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/0f/0f5f1198e.04a94.json",
+          "logical_assets": [
+            {
+              "path": "atlas/ur/lang_packed",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/28/281a4b68-b7b9-43cd-b71b-8ddb5ab96201.4c563.json",
+          "logical_assets": [],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/2d/2d98f867-382d-4554-8b85-a22451e00d7d.1c53c.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels",
+              "type": "cc.Asset",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/34/3412b65d-02c9-419f-956f-2d0013cc15bd.6c301.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reel_MF_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/3d/3d0e6253-cd14-4758-a826-4abef68a80e6.5b1b9.json",
+          "logical_assets": [
+            {
+              "path": "spine/reels3",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/42/422292a4-bcd3-46e6-b568-b8eafe6fe4a0.dcf51.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reel_M_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/44/4494fa5f-11d0-4ad5-9681-617ab3166f18.a39fc.json",
+          "logical_assets": [],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/46/46449134-ff0a-40ed-b2b9-eba0df926c58.5631c.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/s_freespin_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/48/48e0a347-4da3-437e-b33e-95fde427206b.a9889.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/prefab/general/back_button",
+              "type": "cc.Prefab",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/5d/5d732452-cbfe-46e9-a50c-52b3f6a463c5.74ee8.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reel_R_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/61/615f759c-e239-4bb7-b15c-a1e2aa51d12f.789ec.json",
+          "logical_assets": [
+            {
+              "path": "spine/reels",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/68/681cfdaf-7a07-4438-b076-c1b6777b7fd4.f0002.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/s_5freespins_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/7d/7d804191-9e69-4c6c-b0c3-5e3af7b5aa08.fd560.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/s_portrait_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/9c/9ca5e258-f0db-4696-8d88-cfbfa13c09a4.1a3a8.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/prefab/general/setting_slider_num",
+              "type": "cc.Prefab",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/a2/a2e19010-6992-4d3c-8f3f-3b691571acef.c9a79.json",
+          "logical_assets": [],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/a4/a4a771c9-c07e-4526-b26a-0c08656189c3.d2312.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/cashbillF_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/a7/a7e83a45-24a4-41b7-b3b1-02eeba145cff.65343.json",
+          "logical_assets": [],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/ac/ac9048ac-4768-4fe5-8881-3e2b7fb10e75.8aa73.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/af/af57d668-32ab-4d66-a6dd-5ab1aeae5386.bac49.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/s_10freespins_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/b4/b47ac583-72cd-47c9-8d58-49d3f2b9d685.ba659.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/s_20freespins_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/b7/b787183c-a2b5-40e3-a239-0d4f4152eda5.42d45.json",
+          "logical_assets": [
+            {
+              "path": "spine/reels2",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/c3/c3a7aeae-8422-403d-8296-5cd7dc2e7653.877c8.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reel_L_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/c4/c49a7119-3665-43da-af22-6c42d9e6a19d.47678.json",
+          "logical_assets": [
+            {
+              "path": "lib/click_effect/texture/click_atlas",
+              "type": "cc.SpriteAtlas",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/c7/c7a46ff5-9231-495c-bde0-f86a1ee28091.b270a.json",
+          "logical_assets": [
+            {
+              "path": "prefab/bonus_background_controller",
+              "type": "cc.Prefab",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/c7/c7ba9c10-29a6-4d5c-a10e-e3056239288f.54236.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels3",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/cb/cb41bb82-4ea8-415b-b5f1-5a1c2761388d.7c610.json",
+          "logical_assets": [],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/da/dafd3a08-2229-4c29-b088-bfa48e0e0040.ea274.json",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/audio/setting_menu_sfx",
+              "type": "cc.AudioClip",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/f9/f990aa62-5f4f-4324-8e78-d0236fdca965.1c53c.json",
+          "logical_assets": [
+            {
+              "path": "spine/reels",
+              "type": "cc.Asset",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/fb/fb17c01b-d52c-4ebe-9ff6-f8be488c5aea.18dd4.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels2",
+              "type": "cc.SpriteFrame",
+              "subasset": true
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/import/fd/fd2f7554-40ec-432a-9f1d-dbb1d9774f3a.3d32b.json",
+          "logical_assets": [
+            {
+              "path": "spine/zh/cashbill_atlas_reels",
+              "type": "sp.SkeletonData",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        }
+      ],
+      "missing_native_prefixes": [
+        {
+          "path": "1682240/assets/resources/native/02/02c9bce8-433c-4c6d-aad8-651d68e714b8.58696",
+          "logical_assets": [
+            {
+              "path": "atlas/hu/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/0a/0a5fe290-0eb1-4ab4-ac6d-ec1e60f075ff.c065f",
+          "logical_assets": [
+            {
+              "path": "atlas/pt_br/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/11/117cc6cc-5a93-4fe5-bb60-70808127096c.4e70e",
+          "logical_assets": [
+            {
+              "path": "atlas/ru/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/19/1932d33a-0f07-49ad-a81f-1af746aa83e4.f418d",
+          "logical_assets": [
+            {
+              "path": "atlas/zh/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/25/25b0d29f-89c1-4b5b-a751-5e6d19b50032.c7709",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels2",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/2d/2d98f867-382d-4554-8b85-a22451e00d7d.e4d32",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels",
+              "type": "cc.Asset",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/2e/2e1548f3-6787-4ec3-92b5-11b747bc644d.6f05c",
+          "logical_assets": [
+            {
+              "path": "atlas/hi/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/30/30adeeb4-2fc0-48a1-944e-7a5cfd210a50.137d4",
+          "logical_assets": [
+            {
+              "path": "atlas/az/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/37/37594076-802d-451c-adc1-fc4becdb2063.3ea48",
+          "logical_assets": [
+            {
+              "path": "atlas/bn/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/3c/3c574065-77c9-42ca-a474-a66e16cebf22.3d785",
+          "logical_assets": [
+            {
+              "path": "atlas/ur/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/3d/3d9727a2-7dc2-400e-af96-ec2e7d75b02f.644e0",
+          "logical_assets": [
+            {
+              "path": "atlas/tr/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/40/40150386-2c82-48b0-bd50-44664dab05a3.35c72",
+          "logical_assets": [
+            {
+              "path": "atlas/id/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/44/448e2c65-cdda-47f9-957a-9eaa46a4b680.9ec33",
+          "logical_assets": [
+            {
+              "path": "atlas/ja/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/46/46fcf562-fc34-4e81-8d54-61ec3aac1a23.458da",
+          "logical_assets": [
+            {
+              "path": "atlas/ro/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/47/47ae94d8-c1e0-4b65-a0ce-64e327079ed1.c51bc",
+          "logical_assets": [
+            {
+              "path": "atlas/vi/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/4a/4a50433e-dc0f-43ea-be35-55a541690231.d6e5d",
+          "logical_assets": [
+            {
+              "path": "atlas/da/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/4f/4f0dd443-96bd-43f0-9f91-fbd76f0d8c61.e47ce",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels3",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/58/588ffb4e-fd74-4fb9-9573-89c39c2b90e7.5eb8c",
+          "logical_assets": [
+            {
+              "path": "atlas/cs/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/59/599555b4-7f59-4b6a-8214-fd737d4d41d8.3ba43",
+          "logical_assets": [
+            {
+              "path": "atlas/fi/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/59/59b98a8e-808e-4229-93bc-dddad7e6f8fa.cfcfd",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/en_stkus/setting_menu_locale",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/5b/5b0b0974-e085-4aa4-9b7a-8a0f178ce3d2.38e2d",
+          "logical_assets": [
+            {
+              "path": "atlas/el/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/5c/5c506232-d5cd-474c-9975-41a4424d0e28.7daf8",
+          "logical_assets": [
+            {
+              "path": "atlas/it/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/5c/5cfa0d8f-3cbb-414f-9285-6ab54dc90325.5d1b1",
+          "logical_assets": [
+            {
+              "path": "atlas/ar/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/61/6151deef-1fff-41c7-a6c1-a821728ce36b.1a9e4",
+          "logical_assets": [
+            {
+              "path": "spine/zh/reels",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/66/667449a9-cc65-4d57-a5af-90974ca2dfd8.4042b",
+          "logical_assets": [
+            {
+              "path": "atlas/lt/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/6e/6edac3dc-2c8d-4c1e-b6d7-dd39ad792468.44e95",
+          "logical_assets": [
+            {
+              "path": "atlas/et/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/71/71ffa07d-8727-46af-bc11-433ca172adef.d6cfc",
+          "logical_assets": [
+            {
+              "path": "atlas/th/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/74/7449af10-7e73-44ea-b8c9-9adb3f39f1c3.cfcfd",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/texture/hd/en_social/setting_menu_locale",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/7c/7c71c01e-9b8f-46e5-83e0-4008a672c74b.274ea",
+          "logical_assets": [
+            {
+              "path": "atlas/pt/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/7f/7f4f8810-4164-44a8-8c1a-0912154d4d66.7c346",
+          "logical_assets": [
+            {
+              "path": "atlas/mn/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/82/82fc1219-eb2b-4b7b-81d0-d824bf00a05c.f9140",
+          "logical_assets": [
+            {
+              "path": "atlas/uz/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/84/84db1fb5-d5bd-43fc-b1cb-92335c3be91f.f65f1",
+          "logical_assets": [
+            {
+              "path": "atlas/pl/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/9d/9df9c040-51d1-4375-bcf1-535cf348ea3a.7eb85",
+          "logical_assets": [
+            {
+              "path": "atlas/sq/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/a4/a4b6bc32-a7a9-46a9-be27-aedef650f2c9.9f8f1",
+          "logical_assets": [
+            {
+              "path": "atlas/si/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/a9/a96d053f-6220-414b-a4bf-9d1dac41afaf.4f372",
+          "logical_assets": [
+            {
+              "path": "atlas/de/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/b4/b4cfadbe-ff12-4ce0-9dc8-9ceee08aadd6.79aed",
+          "logical_assets": [
+            {
+              "path": "atlas/fr/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/b8/b871e051-e493-4bf8-8c08-9974de2edabf.0bd37",
+          "logical_assets": [
+            {
+              "path": "atlas/nl/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/bf/bf026b3d-2ceb-4a71-8fbf-b7be15f480c6.d62de",
+          "logical_assets": [
+            {
+              "path": "atlas/sk/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/ce/ce9331ee-115d-4066-9847-7b919b139798.4a0fd",
+          "logical_assets": [
+            {
+              "path": "atlas/es/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/cf/cfa968e0-25a9-4b14-b735-1da43a73abdb.edee8",
+          "logical_assets": [
+            {
+              "path": "atlas/lo/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/cf/cffa2dc5-828a-446e-9f0f-a1c75202d2cd.7886d",
+          "logical_assets": [
+            {
+              "path": "atlas/uk/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/d8/d895bb9b-1097-4361-bc03-035dc98f1245.e59a6",
+          "logical_assets": [
+            {
+              "path": "atlas/my/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/d8/d8ad2da0-1ea7-44ff-a74e-33650373a294.50aa3",
+          "logical_assets": [
+            {
+              "path": "atlas/no/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/da/dad9966b-2f20-4783-94ed-5e8e14cdbb72.0452b",
+          "logical_assets": [
+            {
+              "path": "atlas/hy/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/da/dafd3a08-2229-4c29-b088-bfa48e0e0040.5b85a",
+          "logical_assets": [
+            {
+              "path": "lib/setting_menu/audio/setting_menu_sfx",
+              "type": "cc.AudioClip",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/db/db73820d-de4f-4887-ae03-b37bd592a8a6.a02fd",
+          "logical_assets": [
+            {
+              "path": "atlas/bg/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/e4/e4a9a054-7d84-4e5c-b560-bd41b6e5c486.4aedc",
+          "logical_assets": [
+            {
+              "path": "atlas/sh/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/e6/e6fe15dc-b39e-47de-b030-b6a24d726c20.32dcd",
+          "logical_assets": [
+            {
+              "path": "atlas/sv/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/ec/ec7659a0-f20a-4988-8e76-e60fbda2bf9a.44f38",
+          "logical_assets": [
+            {
+              "path": "atlas/fa/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/f9/f990aa62-5f4f-4324-8e78-d0236fdca965.80a82",
+          "logical_assets": [
+            {
+              "path": "spine/reels",
+              "type": "cc.Asset",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        },
+        {
+          "path": "1682240/assets/resources/native/fc/fc42d8e2-7d75-4d2d-adfe-614f2ea17b62.fc819",
+          "logical_assets": [
+            {
+              "path": "atlas/ko/lang_packed",
+              "type": "cc.Texture2D",
+              "subasset": false
+            }
+          ],
+          "saved_capture_candidates": []
+        }
+      ]
+    },
+    {
+      "config": "shared/c03a2652ad/builtins/internal/config.11dec.json",
+      "dependencies": [],
+      "import_declared": 1,
+      "import_present": 1,
+      "native_declared": 2,
+      "native_present": 2,
+      "missing_imports": [],
+      "missing_native_prefixes": []
+    }
+  ],
+  "original_launch": {
+    "source_request": 577,
+    "matches_exact_documented_transformation": true,
+    "transformations": [
+      "替换已转换图片路径",
+      "注入 local-bootstrap.js 与 local-frame-clock.js",
+      "移除 7 项 favicon/apple-touch-icon link"
+    ],
+    "game_startup_body_preserved": true,
+    "source_sha256": "af9d21f313b8d61fca18e693f47f41582dc644a219d0247a2808a091fb060ed1",
+    "local_sha256": "5fd298dc1c7ff18a3a0a8b079dc51add63244db6f482d188ddccfb9bf7339b96"
+  },
+  "non_image_changes": [
+    {
+      "path": "shared/c2fc9a6814/e7d632175c.02a4b.css",
+      "only_image_path_replacements": true
+    }
+  ],
+  "limitations": [
+    "278 项索引均可追溯到原始响应。完整多语言及所有玩法依赖仍需对照资源配置和实际页面。",
+    "resources bundle 缺失声明项包含其他语言、部分菜单素材和 bonus 相关 prefab；必须按真实页面运行时需求逐项检查，不应把每个未下载声明项直接认定为启动阻断。",
+    "main 与 internal 的声明版本文件齐全。英文原版已在本地浏览器从入口进入盘面并完成普通旋转。",
+    "历史 play.html/js/css、capture-stage.html/js、play-banknote.png 已移出前端并归档。当前前端非原抓取文件仅有两份适配脚本与三份 fixtures 清单；归档详情见 archived_custom_ui。",
+    "本地适配脚本负责资源/API 路径和帧调度，不绘制游戏 UI。local-bootstrap 当前固定 l=en，未证明其他语言素材齐全。"
+  ],
+  "archived_custom_ui": {
+    "directory": "other/diagnostics/cash-mania/retired-custom-ui-01a20841",
+    "files": [
+      "capture-stage.html",
+      "capture-stage.js",
+      "cash-mania-stage.test.mjs",
+      "play-banknote.png",
+      "play.css",
+      "play.html",
+      "play.js"
+    ],
+    "excluded_from_current_frontend": true,
+    "note": "历史自写展示层及其测试已移到诊断归档；这些文件不属于当前前端资源清单。"
+  },
+  "history_detail_capture": {
+    "capture": "66609e98170c5151adb70557663b7a48",
+    "count": 7,
+    "origin": "https://s5.mmga1.com",
+    "entry": "1682240/history/index.json",
+    "verified_in_local_history": true
+  }
+}
