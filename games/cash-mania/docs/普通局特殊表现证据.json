@@ -1,0 +1,417 @@
+{
+  "game": "cash-mania",
+  "provider_id": 1682240,
+  "scope": "原始普通 Spin 请求响应的脱敏聚合；计数不代表原厂概率或 RTP。",
+  "sources": [
+    {
+      "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+      "complete_spins": 298,
+      "incomplete_requests": [
+        1348
+      ],
+      "invalid_requests": []
+    },
+    {
+      "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+      "complete_spins": 115,
+      "incomplete_requests": [],
+      "invalid_requests": []
+    }
+  ],
+  "complete_spins": 413,
+  "ordinary_spins": 413,
+  "duplicate_spins": 0,
+  "unclassified_spins": 0,
+  "both_features": 0,
+  "free_spins": 0,
+  "purchase_spins": 0,
+  "nudge": {
+    "count": 22,
+    "positive_payout": 22,
+    "zero_payout": 0,
+    "single_base_wager": 22,
+    "wallet_equation": 22,
+    "final_payout_equation": 22,
+    "all_board_values": 22,
+    "state_pairs": {
+      "[1,1]": 22
+    },
+    "constraints": {
+      "original_and_final_side_columns_identical": 22,
+      "original_center_empty": 22,
+      "final_center_nonzero": 22,
+      "side_middle_symbols_equal_and_nonzero": 22,
+      "original_payout_zero": 22,
+      "no_respin_fields": 22,
+      "source_position_equals_final_center": 2
+    },
+    "changed_positions": {
+      "[3,4,5]": 17,
+      "[3,4]": 4,
+      "[4,5]": 1
+    },
+    "original_middle_symbols": {
+      "[2,0,1]": 7,
+      "[1,0,3]": 2,
+      "[4,0,1]": 1,
+      "[3,0,3]": 2,
+      "[3,0,1]": 1,
+      "[3,0,9]": 1,
+      "[12,0,3]": 1,
+      "[2,0,3]": 1,
+      "[1,0,1]": 3,
+      "[1,0,4]": 2,
+      "[2,0,6]": 1
+    },
+    "final_middle_symbols": {
+      "[1,4,3]": 2,
+      "[3,2,1]": 1,
+      "[1,4,4]": 1,
+      "[3,3,3]": 1,
+      "[2,3,1]": 1,
+      "[1,3,4]": 1,
+      "[1,3,1]": 1,
+      "[1,1,12]": 1,
+      "[1,2,2]": 2,
+      "[1,2,4]": 1,
+      "[1,5,1]": 1,
+      "[6,1,1]": 1,
+      "[1,5,4]": 1,
+      "[8,2,4]": 1,
+      "[1,1,1]": 1,
+      "[1,2,1]": 1,
+      "[3,5,1]": 1,
+      "[4,5,1]": 1,
+      "[2,1,2]": 1,
+      "[2,1,1]": 1
+    },
+    "references": [
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 1027
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 1159
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 1307
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 5552
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 5565
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 5648
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 10912
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 10940
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 14224
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 14331
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 14348
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2655
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2736
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2965
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3035
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3118
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3132
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3138
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3152
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3213
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3414
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3429
+      }
+    ]
+  },
+  "respin": {
+    "count": 28,
+    "positive_payout": 28,
+    "zero_payout": 0,
+    "single_base_wager": 28,
+    "wallet_equation": 28,
+    "final_payout_equation": 28,
+    "all_board_values": 28,
+    "state_pairs": {
+      "[1,1]": 28
+    },
+    "constraints": {
+      "original_board_equals_final": 28,
+      "middle_column_identical": 28,
+      "intermediate_side_middle_symbols_distinct": 28,
+      "intermediate_side_middle_symbols_nonzero": 28,
+      "final_side_middle_symbols_equal_and_nonzero": 28,
+      "exactly_one_side_middle_symbol_changed": 28,
+      "intermediate_payout_zero": 28,
+      "no_nudge_fields": 28
+    },
+    "changed_positions": {
+      "[7]": 3,
+      "[0,7,8]": 3,
+      "[0,1,8]": 2,
+      "[0,1]": 1,
+      "[2,7]": 2,
+      "[1,2]": 2,
+      "[0,1,6]": 3,
+      "[0,1,2,6,8]": 1,
+      "[0,2,6,7]": 2,
+      "[1,2,8]": 2,
+      "[6,7]": 1,
+      "[0,1,2,8]": 1,
+      "[2,6,7]": 1,
+      "[0,6,7]": 2,
+      "[0,1,6,8]": 1,
+      "[0,1,2,6]": 1
+    },
+    "original_middle_symbols": {
+      "[3,7,3]": 1,
+      "[3,4,1]": 1,
+      "[6,3,1]": 1,
+      "[2,3,1]": 1,
+      "[12,3,5]": 1,
+      "[4,2,2]": 1,
+      "[1,3,1]": 1,
+      "[1,8,2]": 1,
+      "[1,1,2]": 3,
+      "[1,2,1]": 2,
+      "[5,1,1]": 1,
+      "[1,2,3]": 2,
+      "[3,5,1]": 1,
+      "[2,2,2]": 1,
+      "[1,5,1]": 2,
+      "[1,5,2]": 1,
+      "[2,5,1]": 1,
+      "[12,1,4]": 1,
+      "[3,5,2]": 1,
+      "[2,1,1]": 1,
+      "[6,5,3]": 1,
+      "[1,2,2]": 1,
+      "[8,1,4]": 1
+    },
+    "final_middle_symbols": {
+      "[3,7,3]": 1,
+      "[3,4,1]": 1,
+      "[6,3,1]": 1,
+      "[2,3,1]": 1,
+      "[12,3,5]": 1,
+      "[4,2,2]": 1,
+      "[1,3,1]": 1,
+      "[1,8,2]": 1,
+      "[1,1,2]": 3,
+      "[1,2,1]": 2,
+      "[5,1,1]": 1,
+      "[1,2,3]": 2,
+      "[3,5,1]": 1,
+      "[2,2,2]": 1,
+      "[1,5,1]": 2,
+      "[1,5,2]": 1,
+      "[2,5,1]": 1,
+      "[12,1,4]": 1,
+      "[3,5,2]": 1,
+      "[2,1,1]": 1,
+      "[6,5,3]": 1,
+      "[1,2,2]": 1,
+      "[8,1,4]": 1
+    },
+    "references": [
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 2617
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 2901
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 4620
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 4714
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 5589
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 9392
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 12396
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 14191
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 15574
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 17651
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 21154
+      },
+      {
+        "capture": "6cac619dd9ed4048bf86e1585274b2e1",
+        "request": 21677
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2663
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2683
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2702
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2779
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2814
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2865
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2873
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2909
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2919
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 2990
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3104
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3255
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3276
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3295
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3380
+      },
+      {
+        "capture": "879816cdd4a6471cbd35f2e8d1001b5e",
+        "request": 3420
+      }
+    ]
+  },
+  "nfp_values": {
+    "{\"1\":5}": 22
+  },
+  "client_source": {
+    "raw_relative_path": "other/capture/response-capture/captures/6cac619dd9ed4048bf86e1585274b2e1/bodies/000665.js",
+    "decoded_relative_path": "other/diagnostics/cash-mania/client-main-decoded.js",
+    "findings": [
+      {
+        "lines": "4057,4068-4089",
+        "statement": "GameTransactionModel 将 orl/orv、rsrl/rsrv、nfp 分别映射为原始盘面、重转盘面和挪轴位置；缺少原始盘面时回退到最终盘面。"
+      },
+      {
+        "lines": "13050-13066",
+        "statement": "UISpinState.setSlotResult 复制原始盘面后，把中轴三格换成最终盘面；若存在重转盘面，则初停左右两列改用 rsrl/rsrv；nfp 作为动画参数传入。"
+      },
+      {
+        "lines": "6852-6854,6909-6916",
+        "statement": "nfp 首项值 5 选择 land_os_down，再接 feat_down_shake；最终中格非空时以 feat_down_snap 收尾。其他方向及失败分支仅有客户端静态代码，未获本批交易证据。"
+      },
+      {
+        "lines": "13071-13095,11433-11444",
+        "statement": "初停和可选挪轴结束后才执行两侧重转；playRespin 保持中轴，先启动左轴、0.3 秒后启动右轴、1 秒后调用左右停轴到最终盘面。"
+      }
+    ],
+    "sha256": "61a54097cbd97245723c2445c7b40b14100b82ca76a9791f7d91e32c16e7c0c1"
+  },
+  "implementation_boundary": [
+    "可以在普通最终中奖盘面确定后，用独立的本地表现模型选择已观察到的挪轴或两侧重转，并生成符合相应约束的中间盘面。",
+    "中间盘面不得增加投注、独立派彩或更改最终盘面；最终结果与结算不受表现选择影响。",
+    "本地触发权重和中间盘面分布是实现选择，不能用样本频率冒充原厂概率。",
+    "样本中两种表现互斥、全为中奖且挪轴位置全为 5；没有证据证明原厂所有情况下都满足这些限制。",
+    "不得把 nfp=5 解释为中轴数组直接平移一格；已观察原始中轴与最终中轴不满足该映射。",
+    "免费旋转、购买、最大赢额终止、另一挪轴方向、失败表现、两类共存和原厂概率仍需额外证据。"
+  ]
+}

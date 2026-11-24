@@ -101,12 +101,35 @@ class ArchiveTest(unittest.TestCase):
         known = self.batch('a', [self.catalog(), self.launch('one')])
         self.batch('b', [self.launch('two')])
         archive.archive_index(self.root)
-        (known / 'manifest.json').write_text('{"id":')
-        index = archive.archive_index(self.root)
-        self.assertEqual(index['a'*32]['summary']['display_name'], 'PG-12-甲')
-        self.assertEqual(index['b'*32]['summary']['display_name'], 'IGT-18-Second')
+        manifest = known / 'manifest.json'
+        original = manifest.stat()
+        manifest.write_text('{"id":')
+        with patch.object(archive, '_read_batch', wraps=archive._read_batch) as reads:
+            for _ in range(2):
+                index = archive.archive_index(self.root)
+                self.assertEqual(index['a'*32]['summary']['display_name'], 'PG-12-甲')
+                self.assertEqual(index['b'*32]['summary']['display_name'], 'IGT-18-Second')
+            self.assertEqual(reads.call_count, 2)
         self.batch('a', [self.catalog(), self.launch('two')])
+        self.assertEqual(manifest.stat().st_size, original.st_size)
+        # 明确复现旧指纹：修复文件与原成功版本同长度、同修改时间。
+        os.utime(manifest, ns=(original.st_atime_ns, original.st_mtime_ns))
         self.assertEqual(archive.archive_index(self.root)['a'*32]['summary']['display_name'], 'IGT-18-Second')
+
+    def test_read_failure_also_invalidates_prior_fingerprint(self):
+        known = self.batch('a', [self.catalog(), self.launch('one')])
+        archive.archive_index(self.root)
+        manifest = known / 'manifest.json'
+        original = manifest.stat()
+        self.batch('a', [self.catalog(), self.launch('two')])
+        os.utime(manifest, ns=(original.st_atime_ns, original.st_mtime_ns + 1_000_000_000))
+        with patch.object(archive, '_read_batch', side_effect=OSError('测试文件暂时不可读')):
+            self.assertEqual(archive.archive_index(self.root)['a'*32]['summary']['display_name'], 'PG-12-甲')
+        os.utime(manifest, ns=(original.st_atime_ns, original.st_mtime_ns))
+        with patch.object(archive, '_read_batch', wraps=archive._read_batch) as reads:
+            for _ in range(2):
+                self.assertEqual(archive.archive_index(self.root)['a'*32]['summary']['display_name'], 'IGT-18-Second')
+            self.assertEqual(reads.call_count, 1)
 
     def test_imported_complete_uses_the_standard_history_state(self):
         imported = self.batch('a', [], state='complete')

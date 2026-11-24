@@ -2,7 +2,7 @@ import * as p from "../../../../other/shared/compat/runtime.js";
 import * as protocol from "../../../../other/shared/migrated/py/adapters/pg/protocol.js";
 import * as wire from "../../../../other/shared/migrated/py/adapters/pg/wire.js";
 import { check, encode, sha, ServiceError } from "../../../../other/shared/core.js";
-import { evaluateBoard, type CashManiaConfig } from "../engine/engine.js";
+import { evaluateBoard, visibleBoard, type CashManiaConfig } from "../engine/engine.js";
 
 export const SALT = 23;
 const method = (object: any, name: string, ...args: any[]) => p.call(p.attr(object, name), args);
@@ -19,11 +19,66 @@ export const schema = {
     tb: spec(15, "double"), tbb: spec(16, "double"), tw: spec(17, "double"), np: spec(18, "double"), ge: spec(21, "int32", { rule: "repeated" }),
     ml: spec(51, "int32"), cs: spec(52, "double"), rl: spec(53, "int32", { rule: "repeated" }), ctw: spec(54, "double"), cwc: spec(55, "int32"),
     pcwc: spec(57, "int32"), rwsp: spec(58, "string"), gwt: spec(71, "int32"), wp: spec(101, "Int32List", { keyType: "int32" }), lw: spec(102, "double", { keyType: "int32" }),
+    fs: spec(104, "FreeSpin"), fb: spec(60, "int32"),
     twbm: spec(103, "double"), imw: spec(105, "bool"), rv: spec(106, "double", { rule: "repeated" }), orl: spec(107, "int32", { rule: "repeated" }),
+    orv: spec(108, "double", { rule: "repeated" }), rsrl: spec(109, "int32", { rule: "repeated" }),
+    rsrv: spec(110, "double", { rule: "repeated" }), nfp: spec(111, "int32", { keyType: "int32" }),
   } },
+  FreeSpin: { fields: { s: spec(1, "int32"), ts: spec(2, "int32"), as: spec(3, "int32"), aw: spec(4, "double"), gt: spec(5, "int32") } },
   Int32List: { fields: { __value: spec(1, "int32", { rule: "repeated" }) } },
 };
-export function encodeTransaction(tx: any): Buffer { return p.call(wire.encode, [p.from(tx), p.from(schema)]); }
+const packedInts = { ge: 21, rl: 53, orl: 107, rsrl: 109 } as const;
+const packedAmounts = { rv: 106, orv: 108, rsrv: 110 } as const;
+const amountIds = new Set<number>(Object.values(packedAmounts));
+const wireSchema = p.from(schema);
+
+export function encodeTransaction(tx: any): Buffer {
+  const singles = { ...tx };
+  // 原站数组按 packed protobuf 编码。缺省标志不占用一个额外的 wire 字段。
+  for (const key of ["wid", "imw", "cwc", "pcwc"]) if (!singles[key]) delete singles[key];
+  const chunks: Buffer[] = [];
+  for (const [name, id] of Object.entries(packedInts)) {
+    delete singles[name];
+    const values: number[] | undefined = tx[name];
+    if (values?.length) chunks.push(field(id, 2, Buffer.concat(values.map(v => p.call(protocol.varint, [v])))));
+  }
+  for (const [name, id] of Object.entries(packedAmounts)) {
+    delete singles[name];
+    const values: number[] | undefined = tx[name];
+    if (!values?.length) continue;
+    const data = Buffer.alloc(values.length * 8);
+    values.forEach((v, i) => data.writeDoubleLE(v, i * 8));
+    chunks.push(field(id, 2, data));
+  }
+  return Buffer.concat([p.call(wire.encode, [p.from(singles), wireSchema]), ...chunks]);
+}
+
+// 同时读取原厂的 packed double 和早期本地服务 single fixed64 格式。
+export function decodeTransaction(raw: Buffer): any {
+  const normalized: Buffer[] = [];
+  for (const [id, kind, value] of p.iter(p.call(protocol.fields, [raw]))) {
+    if (kind === 2 && amountIds.has(id)) {
+      check(value.length % 8 === 0, "SPIN_INVALID", "盘面数值字段长度错误。");
+      for (let offset = 0; offset < value.length; offset += 8) normalized.push(field(id, 1, value.subarray(offset, offset + 8)));
+    } else normalized.push(field(id, kind, value));
+  }
+  return p.plain(p.call(wire.decode, [Buffer.concat(normalized), wireSchema]));
+}
+
+// 采集核对和本地协议适配使用同一组原始字段。没有中间盘面时不补造一个阶段。
+export function roundPresentation(tx: any) {
+  const nine = (values: unknown, integers: boolean) => Array.isArray(values) && values.length === 9 &&
+    values.every(v => Number.isFinite(v) && (!integers || Number.isInteger(v)));
+  check(nine(tx.rl, true) && nine(tx.rv, false), "SPIN_INVALID", "最终盘面数据不完整。");
+  if (tx.orl != null || tx.orv != null) check(nine(tx.orl, true) && (tx.orv == null || nine(tx.orv, false)), "SPIN_INVALID", "原始盘面数据不完整。");
+  if (tx.rsrl != null || tx.rsrv != null) check(nine(tx.rsrl, true) && nine(tx.rsrv, false), "SPIN_INVALID", "重转盘面数据不完整。");
+  if (tx.nfp != null) check(tx.orl && tx.orv && typeof tx.nfp === "object" && !Array.isArray(tx.nfp) &&
+    Object.entries(tx.nfp).every(([k, v]) => /^\d+$/.test(k) && Number.isInteger(v)), "SPIN_INVALID", "挪轴起始位置缺少对应盘面。");
+  if (tx.gwt != null) check(Number.isInteger(tx.gwt), "SPIN_INVALID", "中奖分类无效。");
+  return { board: tx.rl, reel_values: tx.rv, ...(tx.orl != null && { original_board: tx.orl }),
+    ...(tx.orv != null && { original_values: tx.orv }), ...(tx.rsrl != null && { respin_board: tx.rsrl, respin_values: tx.rsrv }),
+    ...(tx.nfp != null && { nudge_from_position: tx.nfp }), ...(tx.gwt != null && { game_win_type: tx.gwt }) };
+}
 export function pack(raw: Buffer, seed: number): Buffer { return p.call(protocol.pack, [raw, seed, SALT]); }
 export function request(body: Buffer): { value: any; seed: number } {
   try {
@@ -31,17 +86,28 @@ export function request(body: Buffer): { value: any; seed: number } {
     return { value: p.plain(p.call(protocol.decode_request, [raw])), seed };
   } catch { throw new ServiceError("SPIN_INVALID", "无效的二进制请求。"); }
 }
-export function transaction(event: any, wallet: any) {
+export function transaction(event: any, wallet: any, config: CashManiaConfig) {
   const win = event.win_minor / 100, debit = event.debit_minor / 100;
+  // 旧回合恢复、重试和历史详情也要能显示，保留持久化的原始记录及结算金额。
+  const clientReels = (symbols: number[], values: number[]) => {
+    const board = visibleBoard(symbols);
+    return { board, values: board === symbols ? values : evaluateBoard(config, board, event.bet).values };
+  };
+  const final = clientReels(event.board, event.reel_values);
+  const original = event.original_board ? clientReels(event.original_board, event.original_values ?? event.reel_values) : final;
+  const respin = event.respin_board && clientReels(event.respin_board, event.respin_values);
   return {
     sid: event.sid, psid: event.round_id, st: 1, nst: 1, pf: 1, ml: event.bet.level, cs: event.bet.coin_minor / 100,
-    rl: event.board, orl: event.board, rv: event.reel_values,
+    rl: final.board, orl: original.board, rv: final.values,
+    ...(event.original_values != null && { orv: original.values }),
+    ...(respin && { rsrl: respin.board, rsrv: respin.values }),
+    ...(event.nudge_from_position != null && { nfp: event.nudge_from_position }),
     wp: win ? event.winning_positions : null, lw: win ? { "1": win } : null,
     twbm: event.base_win_minor / 100, imw: false,
     aw: win, tw: win, ctw: win, tb: debit, tbb: event.base_bet_minor / 100, np: (event.win_minor - event.debit_minor) / 100,
     cwc: win ? 1 : 0, pcwc: win ? 1 : 0, rwsp: win ? JSON.stringify({ "1": win }) : null,
-    // 未确认原厂大赢分类边界；本地普通版使用基础中奖动画。
-    gwt: -1, ge: [1, 11], wid: 0, wt: "C", wk: "0_C",
+    // 已有分类逐局保留。新生成的普通局沿用基础表现，样本不足以推出完整分界。
+    gwt: event.game_win_type ?? -1, ge: [1, 11], wid: 0, wt: "C", wk: "0_C",
     blb: wallet.before_minor / 100, blab: (wallet.before_minor - wallet.debit_minor) / 100, bl: wallet.after_minor / 100,
   };
 }
@@ -62,7 +128,7 @@ export function createAdapter(service: any) {
       check(!req.fb && !req.ab, "FEATURE_UNSUPPORTED", "当前本地版本仅支持普通旋转，未开放购买或加注玩法。");
       const { atk: _token, ...identity } = req;
       const result = invoke("spin", token, "cash-mania", "pg:" + sha(encode(identity)), req.id, p.from({ cs: req.cs, ml: req.ml }));
-      return pack(encodeTransaction(transaction(result.outcome, result.wallet)), seed);
+      return pack(encodeTransaction(transaction(result.outcome, result.wallet, config())), seed);
     },
     game_info(body: Buffer, token: string) {
       const { value: req, seed } = request(body);
@@ -77,17 +143,18 @@ export function createAdapter(service: any) {
         double(1, balance / 100), text(4, currency()), field(11, 2, coins), field(12, 2, Buffer.from(c.bet_levels)), field(13, 0, c.bet_factor),
         field(22, 2, Buffer.concat(["mw", "bw", "mgw", "smgw"].map((k, i) => double(i + 1, c.win_thresholds[k])))), field(23, 2, field(1, 0, c.max_win_multiplier)),
       ]);
-      return pack(Buffer.concat([encodeTransaction(transaction(event, wallet)), field(900, 2, info)]), seed);
+      return pack(Buffer.concat([encodeTransaction(transaction(event, wallet, c)), field(900, 2, info)]), seed);
     },
     history(token: string, form: URLSearchParams, summary = false) {
       // 查询真实结算记录，正常轮次一笔对应一组历史。
+      const c = config();
       const context = p.context(method(service, "connection"));
       let records: any[];
       try {
         const player = method(service.sessions, "_player", context.value, token);
         const query = method(context.value, "execute", "SELECT response_json,created_at FROM spins WHERE player_id=? AND game_id=? ORDER BY id DESC", p.tuple([p.item(player, "id"), "cash-mania"]));
         records = Array.from(p.iter(method(query, "fetchall"))).map((row: any) => {
-          const result = JSON.parse(p.item(row, "response_json")), event = result.outcome, tx = transaction(event, result.wallet), timestamp = p.item(row, "created_at") * 1000;
+          const result = JSON.parse(p.item(row, "response_json")), event = result.outcome, tx = transaction(event, result.wallet, c), timestamp = p.item(row, "created_at") * 1000;
           return { bt: timestamp, tid: event.round_id, gid: 1682240, gtba: tx.tb, gtwa: tx.tw, gtwla: tx.np, cc: currency(), ge: [1, 11], fscc: 0, mgcc: 0, bd: [{ bl: tx.bl, bt: timestamp, gd: { ...tx, tst: timestamp }, ib: false, tba: tx.tb, tid: event.sid, twla: tx.np }] };
         });
       } finally { context.exit(null); }

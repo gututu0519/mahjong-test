@@ -225,9 +225,11 @@ class _Archive:
                         current[sid] = (sig, _read_batch(folder, manifest))
                         changed = True
                 except (OSError, ValueError, TypeError, KeyError, AttributeError):
-                    # 原采集器可能还在写入清单，下次轮询继续核对这一份。
+                    # 保留可展示内容，但失效旧指纹，避免等长修复且时间戳相同时跳过重读。
                     if prior and prior[0][0] == folder:
-                        current[sid] = prior
+                        invalid = (folder, None, None)
+                        current[sid] = (invalid, prior[1])
+                        changed = changed or prior[0] != invalid
                     continue
             if changed or current.keys() != self.batches.keys():
                 catalog = _Catalog(batch['catalog'] for _, batch in current.values())
@@ -378,3 +380,4 @@ def sync_legacy_groups(root, index):
             labels.append(UNKNOWN)
         groups[sid] = [label for label in labels if label] or [UNKNOWN]
     return _link_groups(root, groups)
+

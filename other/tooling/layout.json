@@ -182,7 +182,8 @@
     "migrated/py/services/cash_mania_demo.ts": "games/cash-mania/backend/services/cash_mania_demo.ts",
     "migrated/py/adapters/pg/cash_mania.ts": "games/cash-mania/backend/adapters/cash_mania.ts",
     "migrated/py/games/cash_mania/normal_spins.ts": "games/cash-mania/backend/fixtures/normal_spins.ts",
-    "tests/cash-mania.test.ts": "other/tests/cash-mania.test.ts"
+    "tests/cash-mania.test.ts": "other/tests/cash-mania.test.ts",
+    "tests/cash-mania-features.test.ts": "other/tests/cash-mania-features.test.ts"
   },
   "files": {
     "tools/install-dependencies.mjs": "other/tooling/scripts/install-dependencies.mjs",

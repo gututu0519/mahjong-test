@@ -17,8 +17,8 @@ const fn = (name: string, names: string[], impl: (...args: any[]) => any) => p.f
 // 只保留启动所需的静态选项。令牌、用户与余额均由本地会话生成。
 export const authMetadata = {
   oj: { jid: 0 }, st: 1, cc: "PGC", cs: "", gm: [{ gid: 1682240, msdt: 0, medt: 0, st: 1, amsg: "" }],
-  uiogc: { bb: 1, gec: 1, cbu: 0, cl: 0, mr: 0, phtr: 0, vc: 0, il: 0, rp: 0, gc: 0, ign: 0, tsn: 0, we: 0, gsc: 1, bu: 0, pwr: 0, hd: 0, igv: 0, grt: 0, ivs: 0, ir: 0, gvs: 0, hn: 1, fbrc: 1, grtp: 0, bf: 0, et: 0, np: 0, as: 1000, asc: 1, std: 0, hnp: 0, ts: 1, smpo: 0, swf: 0, sp: 0, rcf: 0, sbb: 0, hwl: 0 },
-  ec: [], gcv: "2.0.0.3", sdn: "", jc: { grtp: 0, bf: 0, et: 0, np: 0, as: 1000, asc: 1, std: 0, hnp: 0, ts: 1, smpo: 0, swf: 0, sp: 0, rcf: 0, sbb: 0, hwl: 0 },
+  uiogc: { bb: 1, gec: 1, cbu: 0, cl: 0, mr: 0, phtr: 0, vc: 0, il: 0, rp: 0, gc: 0, ign: 0, tsn: 0, we: 0, gsc: 1, bu: 0, pwr: 0, hd: 0, igv: 0, grt: 0, ivs: 0, ir: 0, gvs: 0, hn: 1, fbrc: 1, grtp: 0, bf: 1, et: 0, np: 0, as: 1000, asc: 1, std: 0, hnp: 0, ts: 1, smpo: 0, swf: 0, sp: 0, rcf: 0, sbb: 0, hwl: 0 },
+  ec: [], gcv: "2.0.0.3", sdn: "", jc: { grtp: 0, bf: 1, et: 0, np: 0, as: 1000, asc: 1, std: 0, hnp: 0, ts: 1, smpo: 0, swf: 0, sp: 0, rcf: 0, sbb: 0, hwl: 0 },
   geu: "game-api/cash-mania/", bau: "web-api/game-proxy/", lau: "game-api/lobby/", nkn: "本地玩家", ioph: "local",
   occ: { tcm: "", tlb: "", trb: "", tsc: 0, ttp: 0, rurl: "" },
 };
@@ -29,7 +29,8 @@ const Handler = p.cls("CashManiaHandler", [PlatformRoutes, Base], {
     check(["zh", "en"].includes(language), "LANGUAGE_INVALID");
     const session = p.plain(method(self.server.service, "create_session"));
     const query = new URLSearchParams({ mock: "1", l: "en", ops: session.token, btt: "2" });
-    return p.from({ game_id: gameId, language, client_language: "en", launch_url: "/?" + query, mode: "generated", supported_features: ["normal-spin"], expires_at: session.expires_at, balance_minor: session.balance_minor, currency: "DEMO", minor_unit: 100 });
+    const config = p.plain(method(self.server.service.registry, "get", gameId).config);
+    return p.from({ game_id: gameId, language, client_language: "en", launch_url: "/?" + query, mode: "generated", supported_features: config.supported_features, expires_at: session.expires_at, balance_minor: session.balance_minor, currency: "DEMO", minor_unit: 100 });
   }),
   compatibility_post: fn("compatibility_post", ["self", "path", "body"], (self, path: string, body: Buffer) => {
     const app = self.server, form = path.startsWith("/web-api/") ? new URLSearchParams(body.toString("utf8")) : new URLSearchParams();
@@ -77,10 +78,11 @@ export const build_server = p.native(([port = 8103, database = null, configurati
   const registry = p.call(create_registry, [["cash-mania"], p.from({ "cash-mania": configuration ?? p.sourcePath("services/cash-mania/config/cash-mania.json") })]);
   const service = p.call(GameService, [database ?? p.sourcePath("services/cash-mania/data/games.sqlite3"), registry]);
   method(service, "ensure_local_demo");
-  const game = method(registry, "get", "cash-mania"), rtp = Number((normalRtp(p.plain(game.config)) * 100).toFixed(6));
+  const game = method(registry, "get", "cash-mania"), config = p.plain(game.config), rtp = Number((normalRtp(config) * 100).toFixed(6));
   return {
-    server_address: p.tuple(["127.0.0.1", port]), server_port: port, service_id: "cash-mania", engine_mode: "generated-normal-only",
+    server_address: p.tuple(["127.0.0.1", port]), server_port: port, service_id: "cash-mania", engine_mode: config.presentation_model ? "generated-normal-features" : "generated-normal-only",
     handler: p.native(([context]) => p.call(Handler, [context, CLIENT])), service, pg: createAdapter(service), auth: p.from(authMetadata),
-    game_rule: p.from({ dt: { rtp: { Default: { min: rtp, max: rtp } }, grtpi: [], ows: { itare: false, tart: 0, igare: false, gart: 0 }, jws: null, model: "local-independent-reels-v1", supported_features: ["normal-spin"] }, err: null }),
+    game_rule: p.from({ dt: { rtp: { Default: { min: rtp, max: rtp } }, grtpi: [], ows: { itare: false, tart: 0, igare: false, gart: 0 }, jws: null, model: config.probability_model, supported_features: config.supported_features,
+      ...(config.presentation_model ? { presentation_model: config.presentation_model, presentation_weights: config.presentation_weights } : {}) }, err: null }),
   };
 });

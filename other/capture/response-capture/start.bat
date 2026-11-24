@@ -14,5 +14,5 @@ if errorlevel 1 (
   exit /b
 )
 :ready
-.venv\Scripts\python.exe app.py --open
+.venv\Scripts\python.exe control_server.py --open
 pause

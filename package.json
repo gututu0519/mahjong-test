@@ -6,6 +6,7 @@
     "setup": "npm ci --prefix other/tooling",
     "build": "node other/tooling/build.mjs",
     "test": "node other/tooling/run.mjs test",
+    "test:cash-mania-client": "node --test other/tests/cash-mania-original-client.test.mjs",
     "start": "node other/tooling/start-source.mjs",
     "gateway": "node other/tooling/start-source.mjs gateway",
     "admin": "node other/tooling/start-source.mjs admin",

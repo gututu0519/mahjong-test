@@ -3,3 +3,4 @@ captures/
 __pycache__/
 *.log
 preview.png
+.cover-cache/

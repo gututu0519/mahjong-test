@@ -1,4 +1,4 @@
-"""End-to-end test against local fixtures; no third-party website needed."""
+"""本机夹具端到端验证：底层网址抓取兼容接口与行内请求、保存、归档。"""
 import asyncio
 import base64
 import hashlib
@@ -10,8 +10,11 @@ import threading
 import zipfile
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import app
+import control_server
 from playwright.async_api import async_playwright
 
 PNG = base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aN1sAAAAASUVORK5CYII=')
@@ -76,15 +79,28 @@ new WebSocket('ws://'+location.host+'/ws');
         self.wfile.write(body)
 
 
+def integrated_tool():
+    manager = SimpleNamespace(snapshot=lambda: {'services': []}, original_games=app.ORIGINAL_GAMES)
+    return control_server.create_server(('127.0.0.1', 0), manager=manager)
+
+
 async def test():
+    launch = app.launch_browser
+
+    async def headless_browser(pw, headless=False):
+        return await launch(pw, headless=True)
+
     fixture = ThreadingHTTPServer(('127.0.0.1', 0), Fixture)
-    ui = ThreadingHTTPServer(('127.0.0.1', 0), app.Handler)
+    ui = integrated_tool()
+    assert ui.integrated and ui.proxy is None
     origin = f'http://127.0.0.1:{ui.server_port}'
     for server in [fixture, ui]:
         threading.Thread(target=server.serve_forever, daemon=True).start()
     target = f'http://127.0.0.1:{fixture.server_port}'
-    with tempfile.TemporaryDirectory(prefix='capture-test-') as temp:
-        app.DATA = Path(temp)
+    with tempfile.TemporaryDirectory(prefix='capture-test-') as temp, \
+         patch.object(app, 'DATA', Path(temp)), patch.object(app, 'SESSIONS', {}), \
+         patch.object(app, 'launch_browser', headless_browser), \
+         patch.object(app.ORIGINAL_GAMES, 'catalog', return_value={'games':[], 'errors':[]}):
         try:
             async with async_playwright() as pw:
                 browser = await app.launch_browser(pw, headless=True)
@@ -92,10 +108,17 @@ async def test():
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 await page.goto(origin)
+                headers = {'X-Capture-Token': ui.token}
+                status = await (await page.request.get(origin + '/api/status')).json()
+                owner = await (await page.request.get(origin + '/api/services/control-status')).json()
+                assert status['integrated'] and status['pid'] == owner['pid'] and status['port'] == owner['port']
+                assert (await page.request.post(origin+'/api/shutdown', headers=headers, data={})).status == 409
                 bad = await page.request.post(origin + '/api/start', data={'url':target})
                 assert bad.status == 403, 'Missing CSRF token must be rejected'
-                await page.get_by_label('目标网址', exact=True).fill(target)
-                await page.get_by_role('button', name='开始抓取').click()
+                started = await page.request.post(origin + '/api/start',
+                    headers=headers, data={'url':target})
+                assert started.status == 201
+                assert (await page.request.post(origin+'/api/services/stop', headers=headers, data={'id':'fixed.capture'})).status == 409
                 for _ in range(120):
                     await asyncio.sleep(.25)
                     captures = list(app.SESSIONS.values())
@@ -108,7 +131,13 @@ async def test():
                 else:
                     raise AssertionError('Capture did not finish fixture requests: ' + str(snap))
                 capture = captures[0]
-                await page.get_by_role('button', name='停止并保存').click()
+                row = page.locator('#library-rows > tr[data-game-key]').filter(has=page.locator('.game-records-toggle')).first
+                await row.locator('.game-records-toggle').click()
+                batch = row.locator('.capture-batch[data-session-id="' + capture.id + '"]')
+                await batch.locator('.batch-view').click()
+                async with page.expect_response(lambda r:r.url == origin+'/api/stop') as stopped:
+                    await batch.locator('.batch-stop').click()
+                assert (await stopped.value).request.post_data_json['id'] == capture.id
                 await page.locator('#state').filter(has_text='已保存').wait_for(timeout=20000)
                 snap = capture.snapshot()
                 rows = snap['rows']
@@ -125,7 +154,12 @@ async def test():
                 await page.locator('#rows tr').first.click()
                 await page.locator('#preview').filter(has_text='你好').wait_for()
                 await page.get_by_label('搜索请求').fill('')
-                await page.screenshot(path=str(app.ROOT / 'preview.png'), full_page=True)
+                tool = page.locator('.sc-card[data-service-id="fixed.capture"]')
+                await tool.get_by_role('button', name='暂停新抓取：抓取工具').click()
+                await tool.get_by_role('button', name='恢复新抓取：抓取工具').wait_for()
+                assert (await page.request.post(origin+'/api/start', headers=headers, data={'url':target})).status == 409
+                assert (await page.request.get(f'{origin}/api/sessions/{capture.id}/quality')).status == 200
+                assert capture.id in (await (await page.request.get(origin+'/api/services/logs?id=fixed.capture')).json())['text']
                 archive = await page.request.get(f'{origin}/api/sessions/{capture.id}/download')
                 assert archive.status == 200
                 with zipfile.ZipFile(io.BytesIO(await archive.body())) as z:
@@ -138,11 +172,15 @@ async def test():
                 app.SESSIONS.clear()
                 restored = await page.request.get(f'{origin}/api/sessions/{capture.id}')
                 assert (await restored.json())['state'] == 'completed'
+                assert capture.id in [entry['id'] for entry in await (await page.request.get(origin+'/api/sessions')).json()]
+                await tool.get_by_role('button', name='恢复新抓取：抓取工具').click()
+                await tool.get_by_role('button', name='暂停新抓取：抓取工具').wait_for()
+                assert (await (await page.request.get(origin+'/api/status')).json())['accepting_new']
                 await page.set_viewport_size({'width':390, 'height':844})
                 assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Mobile overflow'
                 assert not errors, errors
                 await browser.close()
-                print('PASS: UI start/stop, JSON, binary, POST, iframe, redirect, 404, failure, WebSocket, preview, ZIP/HAR, history, CSRF, mobile layout')
+                print('PASS: 兼容 API 启动、行内停止与查看、JSON、二进制、POST、iframe、跳转、404、失败、WebSocket、ZIP/HAR、历史、CSRF、移动布局')
         finally:
             for capture in app.SESSIONS.values():
                 capture.stop.set()

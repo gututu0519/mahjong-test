@@ -1,5 +1,6 @@
 """只读完整度接口回归；使用隔离 HTTP 夹具，不操作真实录制。"""
 import json
+from io import BytesIO
 import tempfile
 import threading
 import unittest
@@ -116,6 +117,21 @@ class QualityServiceTests(unittest.TestCase):
         cache.ttl = 0
         with self.assertRaises(OSError):
             cache.get(detail, Path(self.temp.name))
+
+    def test_configured_capture_port_is_fixed_loopback_and_origins_are_scoped(self):
+        server = quality_service.create_server(('127.0.0.1', 0), capture_port=18097)
+        try:
+            self.assertIn('http://127.0.0.1:18097', server.allowed_origins)
+            self.assertIn(f'http://localhost:{server.server_port}', server.allowed_origins)
+            self.assertNotIn('http://127.0.0.1:8090', server.allowed_origins)
+            with patch.object(quality_service, 'urlopen', return_value=BytesIO(json.dumps({'id': SID}).encode())) as fetch:
+                self.assertEqual(server.detail_source(SID)['id'], SID)
+                fetch.assert_called_once_with(f'http://127.0.0.1:18097/api/sessions/{SID}', timeout=15)
+        finally:
+            server.server_close()
+        for port in (0, 65536, '18097', True):
+            with self.assertRaises(ValueError):
+                quality_service.create_server(('127.0.0.1', 0), capture_port=port)
 
     def test_new_capture_handler_uses_same_analysis_interface(self):
         import app
