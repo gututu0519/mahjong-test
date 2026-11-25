@@ -28,6 +28,8 @@ function handler(event) {
   var request=event.request,host=(request.headers.host||{}).value||'';
   if(host.slice(-config.host_suffix.length)!==config.host_suffix)return request;
   var label=host.slice(0,-config.host_suffix.length),match=/^(fe-\\d{17}-[a-f0-9]{8}-[a-f0-9]{6})-g([1-9]|1[0-9])$/.exec(label);
+  var version=/^fe-v([1-9]\\d{0,7})-(0|[1-9]\\d{0,7})-g([1-9]|1[0-9])-g\\3$/.exec(label);
+  if(version)match=[label,'v'+version[1]+'.'+version[2],version[3]];
   if(!match)return {statusCode:404,headers:{'cache-control':{value:'no-store'}}};
   var uri=request.uri,decoded;
   try{decoded=decodeURIComponent(uri);}catch(e){return {statusCode:404,headers:{'cache-control':{value:'no-store'}}};}
@@ -35,10 +37,11 @@ function handler(event) {
   if(/[\\\\\\x00-\\x1f]/.test(decoded)||parts.some(function(p){return p==='.'||p==='..';}))return {statusCode:404,headers:{'cache-control':{value:'no-store'}}};
   var reserved=parts.some(function(p){return ['fixtures','diagnostics','data','logs','config','api-documents','api','web-api','game-api','gtt'].indexOf(p)>=0;});
   var asset=(request.method==='GET'||request.method==='HEAD')&&!reserved&&/\\.(js|css|json|png|jpe?g|webp|avif|gif|svg|ico|mp3|ogg|wav|m4a|mp4|webm|woff2?|ttf|otf|wasm|bin|atlas|skel)$/i.test(uri);
-  if(asset) {
+  var template=version&&games[Number(match[2])-1]==='buffalo-win'&&uri==='/_gtt-entry.html'&&(request.method==='GET'||request.method==='HEAD');
+  if(asset||template) {
     cf.selectRequestOriginById(config.assets_origin_id);
     cf.updateRequestOrigin({customHeaders:{}});
-    request.uri='/releases/'+games[Number(match[2])-1]+'/'+match[1]+uri;
+    request.uri='/releases/'+games[Number(match[2])-1]+'/'+match[1]+(template?'/index.html':uri);
     request.headers.host={value:config.assets_domain};request.querystring={};request.cookies={};
     Object.keys(request.headers).forEach(function(key){if(['host','accept','accept-encoding','accept-language','origin','range','if-range','if-modified-since','if-none-match','cache-control'].indexOf(key)<0)delete request.headers[key];});
   } else {

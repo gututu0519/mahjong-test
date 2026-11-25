@@ -8,6 +8,7 @@ import { body } from "../../other/shared/http.js";
 import { check, ServiceError } from "../../other/shared/core.js";
 import { GAME_CODES } from "./catalog.js";
 import type { MerchantGames } from "./merchant-games.js";
+import {Trials} from './trials.js';
 import { merchantClientHTML, merchantClientJSON, merchantClientText, merchantClientURL, type MerchantClient } from "./merchant-client.js";
 
 // Script/image requests in a cross-site iframe may have no third-party cookie.
@@ -51,10 +52,11 @@ function clientAsset(req: IncomingMessage, url: URL) {
 export class ProtocolPool {
   workers = new Map<string, any>();
   sequence = 0;
+  trials:Trials;
   constructor(
     public games: MerchantGames,
     public config: any,
-  ) {}
+  ) {this.trials=new Trials(games);}
   async snapshot(token: string, after = 0) {
     const s = this.games.session(token),
       state = await this.games.state(token),
@@ -78,8 +80,8 @@ export class ProtocolPool {
       },
     };
   }
-  async worker(code: string, frontend?:any) {
-    const key=code+(frontend?":"+frontend.id:"");
+  async worker(code: string, frontend?:any,trial=false) {
+    const key=code+(frontend?":"+frontend.id:"")+(trial?":trial":"");
     let entry = this.workers.get(key);
     if (entry) return entry.ready;
     const instance = new Worker(
@@ -93,7 +95,7 @@ export class ProtocolPool {
                   dirname(this.config.game_database),
                   "merchant-protocols",
                 ),
-              code + (frontend?"-"+frontend.id:"") + ".sqlite3",
+               code + (frontend?"-"+frontend.id:"") + (trial?"-trial":"") + ".sqlite3",
             ),
           },
           ...(frontend?{env:{...process.env,GTT_RESOURCE_ROOT:this.games.frontends.resources(frontend)}}:{}),
@@ -108,20 +110,20 @@ export class ProtocolPool {
           let reply: any;
           try {
             const [token, ...args] = value.args;
-            this.games.session(token, code);
+            if(trial)this.trials.session(token,code,frontend.id);else this.games.session(token, code);
             if (value.command === "sync")
-              reply = { data: await this.snapshot(token, args[0]) };
+              reply = { data: trial?await this.trials.snapshot(token,args[0]):await this.snapshot(token, args[0]) };
             else if (value.command === "history")
-              reply = { data: this.games.history(token, args[0]) };
+              reply = { data: trial?this.trials.history(token,args[0]):this.games.history(token, args[0]) };
             else if (value.command === "spin") {
-              const result = await this.games.spin(
+              const result = await (trial?this.trials:this.games).spin(
                 token,
                 args[0],
                 args[1],
                 args[2],
               );
               reply = {
-                data: { result, ...(await this.snapshot(token, args[3])) },
+                data: { result, ...(trial?await this.trials.snapshot(token,args[3]):await this.snapshot(token, args[3])) },
               };
             } else throw new ServiceError("NOT_FOUND");
           } catch (e) {
@@ -211,7 +213,8 @@ export class ProtocolPool {
         (req.headers.authorization
           ? String(req.headers.authorization).replace(/^Bearer /, "")
           : String(req.headers["x-local-game-session"] || cookie || ""));
-    this.games.session(token, code);
+    if(token.startsWith('trial.')){const frontend=this.games.frontends.host(String(req.headers.host??''));check(frontend,'TRIAL_SESSION_INVALID','试玩须使用原版本入口',403);this.trials.session(token,code,frontend.id);}
+    else this.games.session(token, code);
     return token;
   }
   guard(req: IncomingMessage, code: string) {
@@ -250,11 +253,15 @@ export class ProtocolPool {
       token = isAsset ? "" : this.token(req, code);
     if(frontend) {
       check(!isAsset,"NOT_FOUND","版本清单中不存在该素材",404);
-      this.games.frontends.session(token,frontend);
-      if(["GET","HEAD"].includes(req.method??""))this.games.frontends.verifyPrivate(frontend);
+      if(!token.startsWith('trial.'))this.games.frontends.session(token,frontend);
+       if(frontend.id.startsWith('fe-v'))await this.games.frontends.cacheVersion(frontend.code,frontend.manifest.component_version,frontend.manifest_sha256);
+       if(["GET","HEAD"].includes(req.method??"")){
+         this.games.frontends.verifyPrivate(frontend);
+         if(url.pathname==='/'||url.pathname==='/index.html')await this.games.frontends.ensureEntry(frontend);
+       }
     }
-    const session = isAsset ? null : this.games.session(token, code);
-    const client: MerchantClient | undefined = session ? {
+    const trial=token.startsWith('trial.'),session = isAsset||trial ? null : this.games.session(token, code);
+    const client: MerchantClient | undefined = trial?{code,token,operator:'GTT-TRIAL',player_id:this.trials.session(token).player_id,currency:'USD'}:session ? {
       code, token, operator:session.merchant_id, player_id:session.player_id,
       currency:this.games.p.control.merchant(session.merchant_id).currency,
     } : undefined;
@@ -272,7 +279,7 @@ export class ProtocolPool {
       "Method not allowed",
       405,
     );
-    const worker = await this.worker(code,frontend),
+    const worker = await this.worker(code,frontend,trial),
       id = ++this.sequence,
       bytes = await body(req, 131072),
       reply: any = await new Promise((resolve, reject) => {
@@ -337,7 +344,7 @@ export class ProtocolPool {
     const token = this.token(req, code),
       path = new URL(req.url!, "http://local").pathname;
     const frontend=this.games.frontends.host(String(req.headers.host??""));
-    if(frontend)this.games.frontends.session(token,frontend);
+    if(frontend&&!token.startsWith('trial.'))this.games.frontends.session(token,frontend);
     check(
       (path === "/lifeservice/ws2" &&
         this.games.descriptor(code).minor_unit === 10000) ||
@@ -345,7 +352,8 @@ export class ProtocolPool {
           code === "tower-run-treasure-steps"),
       "NOT_FOUND",
     );
-    await this.games.wallet(token, code);
+    const wallet=()=>token.startsWith('trial.')?this.trials.wallet(token):this.games.wallet(token,code);
+    await wallet();
     const handler = { token: py.native(() => token) };
     websocket(
       path.includes("player-events") ? "player_events" : "life_service",
@@ -355,7 +363,7 @@ export class ProtocolPool {
       head,
       async (supplied) => {
         check(supplied === token, "SESSION_INVALID");
-        return this.games.wallet(token, code);
+        return wallet();
       },
       frontend?.origin??this.games.origin(code),
     );

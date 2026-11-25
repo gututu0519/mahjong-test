@@ -1,103 +1,73 @@
-import {readFileSync,writeFileSync,mkdirSync,copyFileSync,existsSync,constants,unlinkSync,rmSync} from 'node:fs';
-import {resolve,dirname,relative,sep} from 'node:path';
+import {readFileSync,writeFileSync,existsSync,mkdirSync,cpSync,copyFileSync,constants,rmSync,readdirSync} from 'node:fs';
+import {resolve,dirname,relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {randomBytes} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {createZip,extractArchive,artifactPath} from './archive.mjs';
-import {digest,inventory,verifyInventory,verifyPair} from './game-bundle.mjs';
+import {artifactPath,extractArchive} from './archive.mjs';
+import {digest,verifyInventory,verifyPair,inventory} from './game-bundle.mjs';
 import {GAME_CODES} from '../dist/gateway/catalog.js';
 import {verifyFrontendBundle} from '../dist/shared/frontend-manifest.js';
 
-const tools=dirname(fileURLToPath(import.meta.url)),args=process.argv.slice(2);
-const option=(key,fallback)=>{const at=args.indexOf(key);if(at<0)return fallback;if(!args[at+1]||args[at+1].startsWith('--'))throw Error('Missing '+key);return args[at+1];};
-const game=option('--game');if(!GAME_CODES.includes(game))throw Error('Supply a supported --game code');
-const sourceRelease=option('--service-release');if(!sourceRelease)throw Error('Supply --service-release with a verified compute release directory');
-const sourceDir=resolve(sourceRelease),source=JSON.parse(readFileSync(resolve(sourceDir,existsSync(resolve(sourceDir,'release.json'))?'release.json':'RELEASE.json'),'utf8'));
-const artifact=source.artifacts.find(item=>item.name==='game-'+game);
-if(!artifact||source.kind==='game-deployment-bundle')throw Error('Selected release has no independent compute package for '+game);
-const workspace=resolve(process.env.GTT_WORKSPACE_ROOT??resolve(tools,'../../..'));
-const buildId=option('--build-id',`gtt-node-game-bundle-${new Date().toISOString().replace(/[-:.]/g,'')}-${randomBytes(3).toString('hex')}`);
-if(buildId.length>96||!/^gtt-node-[A-Za-z0-9_-]+$/.test(buildId))throw Error('Invalid build id');
-const output=resolve(workspace,'other/diagnostics/releases',buildId);
-const delivery=resolve(workspace,'update','game-'+game);
-if(existsSync(output))throw Error('Build directory already exists; choose a new build id');
-mkdirSync(output,{recursive:true});
-const archive=artifactPath(sourceDir,source,artifact),archiveBytes=readFileSync(archive);
-if(digest(archiveBytes)!==artifact.sha256||archiveBytes.length!==artifact.size)throw Error('Source compute archive checksum mismatch');
-const unpack=resolve(output,'source-service');mkdirSync(unpack);
-extractArchive(archive,unpack);
-const serveSource=resolve(unpack,artifact.name),serviceManifest=JSON.parse(readFileSync(resolve(serveSource,'release-manifest.json'),'utf8'));
-verifyInventory(serveSource,serviceManifest.files,['release-manifest.json']);
-if(serviceManifest.build_id!==source.build_id)throw Error('Compute manifest release mismatch');
-let client=option('--client-bundle');
-if(!client) {
-  const command=[resolve(tools,'build-frontend.mjs'),'--game',game,'--output',resolve(output,'frontend-build')];
-  if(option('--source'))command.push('--source',resolve(option('--source')));
-  client=JSON.parse(execFileSync(process.execPath,command,{cwd:resolve(tools,'..'),env:process.env,encoding:'utf8',windowsHide:true,maxBuffer:1024*1024})).bundle;
-}
-client=resolve(client);
-const pair=verifyPair(serveSource,client,game);
-if(pair.identity.release!==source.build_id)throw Error('Compute identity differs from source release record');
-const clientName=`${game}-client-${pair.manifest.release}`,serveName=`${game}-serve-${pair.identity.release}`;
-const tree=resolve(output,'bundle');mkdirSync(tree);
-function copyFile(from,to) {mkdirSync(dirname(to),{recursive:true});copyFileSync(from,to,constants.COPYFILE_EXCL);}
-for(const file of inventory(serveSource))copyFile(resolve(serveSource,file.path),resolve(tree,serveName,file.path));
-copyFile(resolve(client,'manifest.json'),resolve(tree,clientName,'manifest.json'));
-for(const [group,files]of [['objects',pair.manifest.files],['bootstrap',pair.manifest.bootstrap]])for(const file of files)copyFile(resolve(client,group,file.path),resolve(tree,clientName,group,file.path));
-verifyFrontendBundle(resolve(tree,clientName));
-verifyInventory(resolve(tree,serveName),serviceManifest.files,['release-manifest.json']);
-const startup=[
-  '# 单游戏分目录交付', '', `游戏：${game}；交付编号：${buildId}。`, '',
-  `- 客户端目录：${clientName}`,`- 计算服务目录：${serveName}`,
-  '- 两个目录保留各自真实版本；外层交付编号不是游戏服务或前端版本。RELEASE.json 记录配套关系。',
-  '', '## 计算服务',
-  `serve 目录内仅放 ${serveName}.zip。上传并解压这个 ZIP，进入包含 package.json 的服务根目录执行 npm start。ZIP 内顶层目录为 ${artifact.name}/，不要把交付目录当成已解压程序。首次安装依赖，后续执行会按同目录同入口规则重启并读取新配置。`,
-  '建议在 serve 目录创建 game.env，仅放实例设置。游戏代码、版本和默认 config/game.json 由本包读取，不必将旧版本的 GAME_RELEASE/GAME_CONFIG 复制进新实例。',
-  '```dotenv','GAME_BIND=127.0.0.1','GAME_PORT=8211',`GAME_SECRET_FILE=/www/wwwroot/gtt-node/config/secrets/${game}.key`,'```',
-  '端口是示例；同机新旧版本并行时必须分配不同端口。密钥文件单独生成，不能包含平台数据库凭据。也可通过 npm start -- --env-file <实际路径> 指定配置。',
-  '计算服务启动后在后台登记并激活；升级时保留旧计算版本直到已绑定回合结束。',
-  '', '## 客户端',
-  `仅 ${clientName}/objects/ 上传到私有 S3 的 ${pair.manifest.prefix}/ 前缀，并配置该前端版本的 CloudFront 路由。`,
-  'bootstrap/、manifest.json 是私有启动资料，不能把整个 client 目录作为公开静态资源发布。',
-  '使用网关或后台包 tools/install-frontend.mjs 安装 client 目录；安装器按 manifest 中的前端版本放置目录，不能随意改版本号。',
-  '前端目录生成不代表已经上传 S3 或开通 CDN。完成发布、登记与激活后，再在后台点击“检查并开放”。',
-  '', '## 单独升级与验收边界',
-  '仍可独立构建/发布客户端或计算服务；复用已有组件需通过构建时配套校验。完整包不自动部署数据库、商户钱包、域名、CDN 或开放游戏。',
-  'serve ZIP 复用指定发布记录中已校验的计算包；本次目录调整不宣称已完成新的服务端依赖精简。',
-  '本地清单、规则配置和协议匹配不能代替实际完整回合、钱包与生产 CDN 验收。',
-].join('\n')+'\n';
-writeFileSync(resolve(output,'START.md'),startup,{flag:'wx'});
-const clientFiles=inventory(resolve(tree,clientName));
-const serveFilename=serveName+'.zip';
-let serveBytes=archiveBytes;
-if(!archive.endsWith('.zip')) {
-  const converted=resolve(output,serveFilename);createZip(serveSource,artifact.name,converted);
-  serveBytes=readFileSync(converted);unlinkSync(converted);
-}
-const serveArchive={path:serveFilename,size:serveBytes.length,sha256:digest(serveBytes)};
-const clientTarget=resolve(delivery,clientName),serveTarget=resolve(delivery,serveName);
-// Reuse an immutable component only when its entire inventory is unchanged.
-// Never replace an existing version or remove user files from update/.
-const reuseClient=existsSync(clientTarget),reuseServe=existsSync(serveTarget);
-if(reuseClient)verifyInventory(clientTarget,clientFiles);
-if(reuseServe)verifyInventory(serveTarget,[serveArchive]);
+const args=process.argv.slice(2),tools=dirname(fileURLToPath(import.meta.url));
+if(args.includes('--legacy')){await import('./package-game-legacy.mjs');process.exit(0);}
+/** 读取命令行选项，拒绝缺值。 */
+function option(key){const i=args.indexOf(key);if(i<0)return;if(!args[i+1]||args[i+1].startsWith('--'))throw Error('Missing '+key);return args[i+1];}
+const game=option('--game'),front=option('--client-version'),back=option('--service-version');
+const pattern=/^v([1-9]\d{0,7})\.(0|[1-9]\d{0,7})$/;
+if(!GAME_CODES.includes(game)||!pattern.test(front)||!pattern.test(back)||front.split('.')[0]!==back.split('.')[0])throw Error('请指定游戏与同主版本组件，例如 --game buffalo-win --client-version v1.0 --service-version v1.0');
+const workspace=resolve(process.env.GTT_WORKSPACE_ROOT),releases=resolve(workspace,'other/diagnostics/releases'),delivery=resolve(workspace,'update','game-'+game);
+const id=option('--build-id')??`gtt-node-${game}-${Date.now()}-${randomBytes(3).toString('hex')}`;
+if(!/^gtt-node-[A-Za-z0-9_-]{1,78}$/.test(id))throw Error('Invalid build id');
+const out=resolve(releases,id),clientName=`${game}-client-${front}`,serveName=`${game}-serve-${back}`,zip=serveName+'.zip';
+const clientTarget=resolve(delivery,clientName),serveTarget=resolve(delivery,zip);
+mkdirSync(releases,{recursive:true});mkdirSync(out);
+const previous=readdirSync(releases).flatMap(name=>{
+  const path=resolve(releases,name,'RELEASE.json');if(!existsSync(path))return [];
+  const r=JSON.parse(readFileSync(path));return r.format===4&&r.game===game&&existsSync(resolve(dirname(path),'verification.json'))?[{r,path:dirname(path)}]:[];
+});
+const oldFront=previous.find(({r})=>r.client.release===front),oldBack=previous.find(({r})=>r.serve.release===back);
+if((existsSync(clientTarget)&&!oldFront)||(existsSync(serveTarget)&&!oldBack))throw Error('目标版本没有已验证的来源记录，拒绝覆盖');
+const client=resolve(out,'publication-bundle');
+const supplied=option('--client-bundle');
+const original=supplied??JSON.parse(execFileSync(process.execPath,[resolve(tools,'build-frontend.mjs'),'--game',game,'--remote-version',front,'--output',resolve(out,'frontend-build'),...(args.includes('--cdn-entry')?['--cdn-entry']:[]),...(option('--source')?['--source',option('--source')]:[])],{encoding:'utf8'})).bundle;
+const built=verifyFrontendBundle(original);
+if(built.game!==game||built.component_version!==front||!built.release.startsWith('fe-v'))throw Error('前端不是指定的固定路径版本');
+if(oldFront){
+  const prior=resolve(oldFront.path,'publication-bundle');
+  if(digest(readFileSync(resolve(prior,'manifest.json')))!==oldFront.r.client.manifest_sha256||verifyFrontendBundle(prior).content_hash!==built.content_hash)throw Error('同版本前端文件已变化，请增加次版本');
+  cpSync(prior,client,{recursive:true});
+}else cpSync(original,client,{recursive:true});
+let sourceDir=option('--service-release')??oldBack?.r.service_source;
+if(!sourceDir){
+  const assets=option('--assets-manifest');if(!assets)throw Error('首次构建计算版本需提供 --assets-manifest');
+  execFileSync(process.execPath,[resolve(tools,'package.mjs'),'--artifact','game-'+game,'--service-version',back,'--build-id',id+'-compute','--assets-manifest',assets,...(args.includes('--with-dependencies')?['--with-dependencies']:[])],{stdio:'inherit'});
+  sourceDir=resolve(releases,id+'-compute');
+}else sourceDir=resolve(releases,sourceDir);
+const source=JSON.parse(readFileSync(resolve(sourceDir,'release.json'))),artifact=source.artifacts.find(a=>a.name==='game-'+game);
+const archive=artifactPath(sourceDir,source,artifact),bytes=readFileSync(archive);
+if(artifact.format!=='zip'||bytes.length!==artifact.size||digest(bytes)!==artifact.sha256||(oldBack&&oldBack.r.serve.sha256!==artifact.sha256))throw Error('计算包来源校验失败');
+const unpack=resolve(out,'unpacked');mkdirSync(unpack);extractArchive(archive,unpack);
+const flat=existsSync(resolve(unpack,'package.json'));
+const service=flat?unpack:resolve(unpack,artifact.name),pair=verifyPair(service,client,game),sm=readFileSync(resolve(service,'release-manifest.json'));
+if(pair.identity.release!==back||JSON.parse(sm).build_id!==source.build_id)throw Error('计算包身份或来源版本不符');
+verifyInventory(service,JSON.parse(sm).files,['release-manifest.json']);
+const objects=resolve(client,'objects'),files=inventory(objects);
+verifyInventory(objects,pair.manifest.files);
+const c={directory:clientName,release:front,format:'directory',files,manifest_sha256:digest(readFileSync(resolve(client,'manifest.json'))),s3_prefix:pair.manifest.prefix};
+const s={directory:serveName,release:back,format:'zip',file:zip,archive_root:flat?'':artifact.name,size:artifact.size,sha256:artifact.sha256,source_manifest_sha256:digest(sm)};
+const record={format:4,kind:'game-component-delivery',game,build_id:id,client:c,serve:s,components:{client:c,serve:s},service_source:relative(releases,sourceDir),artifact_directory:relative(out,delivery),artifacts:[{file:zip,size:s.size,sha256:s.sha256}],private_prefix:`private/frontend/${game}/${front}`};
+if(existsSync(clientTarget))verifyInventory(clientTarget,files);
+if(existsSync(serveTarget)&&digest(readFileSync(serveTarget))!==s.sha256)throw Error('同版本计算 ZIP 不一致');
 mkdirSync(delivery,{recursive:true});
-if(!reuseClient) {
-  mkdirSync(clientTarget);
-  for(const file of clientFiles)copyFile(resolve(tree,clientName,file.path),resolve(clientTarget,file.path));
+let addedClient=false,addedServe=false;
+try{
+  if(!existsSync(clientTarget)){mkdirSync(clientTarget);addedClient=true;cpSync(objects,clientTarget,{recursive:true,errorOnExist:true,force:false});}
+  if(!existsSync(serveTarget)){copyFileSync(archive,serveTarget,constants.COPYFILE_EXCL);addedServe=true;}
+  writeFileSync(resolve(out,'RELEASE.json'),JSON.stringify(record,null,2)+'\n',{flag:'wx'});
+  execFileSync(process.execPath,[resolve(tools,'smoke-game-bundle.mjs'),out],{stdio:'inherit'});
+}catch(error){
+  if(addedClient)rmSync(clientTarget,{recursive:true});if(addedServe)rmSync(serveTarget);throw error;
 }
-if(!reuseServe) {
-  mkdirSync(serveTarget);
-  writeFileSync(resolve(serveTarget,serveFilename),serveBytes,{flag:'wx'});
-}
-verifyInventory(clientTarget,clientFiles);verifyInventory(serveTarget,[serveArchive]);
-const manifest={format:2,kind:'game-component-delivery',build_id:buildId,game,
-  sources:{serve:source.source??null,client:pair.manifest.source??null},
-  client:{directory:clientName,release:pair.manifest.release,format:'directory',files:clientFiles,manifest_sha256:digest(readFileSync(resolve(tree,clientName,'manifest.json'))),client_contract:pair.contract,s3_prefix:pair.manifest.prefix},
-  serve:{directory:serveName,release:pair.identity.release,format:'zip',file:serveFilename,archive_root:artifact.name,sha256:serveArchive.sha256,size:serveArchive.size,entry_point:pair.service.entry_point,source_archive:artifact.file,source_sha256:artifact.sha256,source_manifest_sha256:digest(readFileSync(resolve(serveSource,'release-manifest.json')))},
-  compatibility:{client_contract:pair.contract,rule_configuration:'matched',runtime_probe:'run smoke-game-bundle; see verification.json',production_cdn_verified:false},
-  reused:{client:reuseClient,serve:reuseServe}};
-// One canonical record: RELEASE.json and release.json cannot coexist on Windows.
-writeFileSync(resolve(output,'RELEASE.json'),JSON.stringify({...manifest,built_at:new Date().toISOString(),artifact_directory:relative(output,delivery).split(sep).join('/'),artifacts:[{name:'game-'+game+'-serve',directory:serveName,file:serveFilename,format:'zip',size:serveBytes.length,sha256:digest(serveBytes)}],components:{client:manifest.client,serve:manifest.serve},validation:{manifest_and_rules:'verified',runtime:'pending',production_cdn:'not-deployed-by-builder'}},null,2)+'\n',{flag:'wx'});
 rmSync(unpack,{recursive:true});
-console.log(JSON.stringify({release_directory:output,client_directory:clientTarget,serve_directory:serveTarget,serve_archive:resolve(serveTarget,serveFilename),reused:manifest.reused}));
+writeFileSync(resolve(out,'START.md'),`# ${game} 前端 ${front} / 计算 ${back}\n\n在源码仓库根目录发布（不会由打包自动执行）：\n\n\`\`\`sh\nnode other/tooling/run.mjs publish-frontend other/diagnostics/releases/${id}/publication-bundle --bucket <私有桶> --owner <账号ID>\n\`\`\`\n\n服务器只上传 ${zip}。${flat?`解压到 games/${game}/${back}/，共享配置放在 games/${game}/game.env。在版本目录直接执行 npm start。`:`解压后进入 ${artifact.name}/ 配置 game.env 并执行 npm start。`} 后台按 ${front} 读取 S3，配对 ${back} 计算版本，再检查并开放。\n`);
+console.log(JSON.stringify({client:clientTarget,serve:serveTarget,record:out}));

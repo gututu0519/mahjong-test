@@ -1,9 +1,13 @@
 # 构建与发布规则
 
+游戏组件版本以[游戏前后端版本规则](game-deployment-bundles.md#游戏前后端版本规则)为准；下文涉及 build-id 的历史命名不能作为新的游戏前后端版本规范。
+
 ## 当前压缩包交付规则
 
+- 游戏 `game:package` 默认使用[格式 4 两项交付](game-deployment-bundles.md)：一个纯素材前端目录和一个同级计算 ZIP。私有资料由发布工具从诊断目录读取并写入私有 S3，不再交付网关安装目录。下列旧 `serve` 子目录结构仅用于历史模式。
+
 - **默认只构建一个指定产物**：通用命令必须用 `--artifact <名称>`，无目标时拒绝默认全量构建；只有明确批量要求才用 `--all`。游戏组件交付每次指定一个 `--game`。
-- **游戏前端不压缩**：当前游戏交付采用真实的 `update/game-<代码>/<代码>-client-<前端版本>/` 与 `update/game-<代码>/<代码>-serve-<服务版本>/` 两个版本目录；client 内为原始构建文件，serve 内仅放服务端 ZIP。此规则替代下文旧的完整游戏合并 ZIP、update 只放压缩包及不增加第三层目录的约定。需要压缩的产物仍必须为 ZIP；其他产物的归档分类不变。配套清单、部署说明和日志留在 diagnostics，历史归档保留。
+- **游戏按部署去向分目录**：`update/game-<代码>/<代码>-client-<前端版本>/` 只含 S3 对象，直接上传目录内容，不附加 `objects/` 层。相邻的 `<代码>-serve-<服务版本>/` 放计算 ZIP 和 `gateway-<前端版本>/`（网关私有启动资料、清单、安装脚本及说明）。完整构建输入与网关内部存储格式不变。配套记录留在 diagnostics，历史交付保留。详见[单游戏交付](game-deployment-bundles.md)。
 
 - 游戏交付的实际目录、命令和历史格式兼容见[游戏组件交付](game-deployment-bundles.md)。`npm run game:package` 交付前端目录与服务端 ZIP；`npm run package -- --artifact game-<代码> ...` 只构建该游戏计算服务，ZIP 同样进入 serve 版本目录。
 

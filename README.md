@@ -6,6 +6,12 @@
 
 后续抓取游戏统一以原版客户端和抓取素材还原玩家界面，并用本地真实回合、钱包流水和原版历史验收。在本项目发送「按原版抓取流程复刻《游戏名》，执行到本地可玩并给我验收证据。」即可启动。[简版提示词](抓取原始文件后转换成游戏的提示词.txt) · [可独立转发的完整提示词](other/docs/project/captured-game-prompt.txt) · [完整步骤与 Cash Mania 实例](other/docs/project/captured-game-workflow.md)
 
+## 游戏版本约定
+
+部署交接从这里开始：[美洲野牛上线手册（服务器、CloudFront、发布、试玩与排障）](other/docs/project/buffalo-win-deployment-handoff.md)。
+
+开发者和 AI 协作者修改游戏、打包工具或后台版本选择时，遵循[游戏前后端版本规则](other/docs/project/game-deployment-bundles.md#游戏前后端版本规则)：使用 `v主版本.次版本`；同一游戏、同一主版本的前后端必须可自由配对。需要两端同步升级的不兼容变更，必须升主版本。
+
 ## 目录
 
 ```text

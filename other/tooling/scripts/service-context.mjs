@@ -1,5 +1,5 @@
 import {readFileSync,existsSync} from 'node:fs';
-import {resolve,dirname} from 'node:path';
+import {resolve,dirname,basename} from 'node:path';
 import {platformEnvironment,readPlatformConfig,readGameEnvironment,gameProcessEnvironment,integer} from '../dist/shared/config/environment.js';
 
 export function serviceContext(root, service, supplied=[], environment=process.env) {
@@ -11,7 +11,13 @@ export function serviceContext(root, service, supplied=[], environment=process.e
   if(service.role==='game') {
     const game=service.game??JSON.parse(readFileSync(resolve(root,'GAME.json'),'utf8'));
     envFile=envFile??environment.GAME_ENV_FILE;
-    if(!envFile)envFile=[...(game.envFile?[game.envFile]:[]),resolve(root,'game.env'),resolve(root,'../../../config/games',game.code,game.release+'.env'),resolve(root,'../config/games',game.code,game.release+'.env'),`/etc/gtt-node/games/${game.code}/${game.release}.env`].find(p=>existsSync(p));
+    // 仅从同一游戏的父目录读取共享配置，版本目录内的配置优先。
+    const parent=dirname(root),shared=resolve(parent,'game.env');
+    if(!envFile)envFile=[...(game.envFile?[game.envFile]:[]),resolve(root,'game.env'),...(basename(parent)===game.code?[shared]:[]),resolve(root,'../../../config/games',game.code,game.release+'.env'),resolve(root,'../config/games',game.code,game.release+'.env'),`/etc/gtt-node/games/${game.code}/${game.release}.env`].find(p=>existsSync(p));
+    if(envFile&&resolve(envFile)===shared){
+      const common=readGameEnvironment(shared,{});
+      if(common.GAME_RELEASE||common.GAME_CONFIG)throw Error('游戏共享 game.env 不应指定 GAME_RELEASE 或 GAME_CONFIG；版本和规则由各自交付包提供');
+    }
     const overrides={};
     for(const [flag,key]of Object.entries({'--game-id':'GAME_ID','--release':'GAME_RELEASE','--game-config':'GAME_CONFIG','--secret-file':'GAME_SECRET_FILE','--host':'GAME_BIND','--port':'GAME_PORT','--client-contract':'GAME_CLIENT_CONTRACT','--state-contract':'GAME_STATE_CONTRACT'})) {
       const value=option(flag,undefined);if(value!==undefined)overrides[key]=value;

@@ -21,6 +21,7 @@ const pages = {
 const initialView = location.hash.slice(1);
 let session = null, view = Object.keys(pages).includes(initialView) ? initialView : 'overview', generation = 0;
 let transactionFilters = {}, auditFilters = {}, merchants = [], games = [];
+let catalogBrand='',catalogQuery='',merchantQuery='',catalogReadAt=0;
 let rtpTab = 'merchants', rtpFilters = {};
 const can = permission => session?.permissions.includes(permission);
 const el = (tag, attrs = {}, ...children) => {
@@ -88,7 +89,7 @@ window.addEventListener('resize',positionSelectMenus);document.addEventListener(
 function notice(message, error = false) { $('#notice').textContent = message; $('#notice').className = error ? 'error' : ''; $('#notice').hidden = false; }
 function showLogin() {
   session = null; generation++; closeModal(); $('#content').replaceChildren(); $('#app').hidden = true; $('#login').hidden = false;
-  transactionFilters = {}; auditFilters = {}; merchants = []; games = [];
+  transactionFilters = {}; auditFilters = {}; merchants = []; games = [];catalogBrand='';catalogQuery='';merchantQuery='';catalogReadAt=0;
   rtpFilters = {}; rtpTab = 'merchants';
   $('#login-form').elements.password.value = '';
 }
@@ -96,18 +97,18 @@ function showApp(result) {
   session = result; $('#login').hidden = true; $('#app').hidden = false;
   if (!tenant() && can('services.read') && !document.querySelector('[data-view="services"]')) {
     const item=el('button',{'data-view':'services','data-permission':'services.read'},el('span',{class:'nav-icon'},'⇌'),el('span',{},'游戏服务与版本'));
-    item.addEventListener('click',()=>navigate('services'));
     $('#navigation').insertBefore(item,document.querySelector('[data-view="rtp"]'));
   }
   if (!tenant() && can('services.read') && !document.querySelector('[data-view="frontends"]')) {
     const item=el('button',{'data-view':'frontends','data-permission':'services.read'},el('span',{class:'nav-icon'},'▣'),el('span',{},'游戏前端版本'));
-    item.addEventListener('click',()=>navigate('frontends'));$('#navigation').insertBefore(item,document.querySelector('[data-view="rtp"]'));
+    $('#navigation').insertBefore(item,document.querySelector('[data-view="rtp"]'));
   }
   $('#identity').textContent = result.user.login_name + ' · ' + roles[result.user.role];
   $('#profile-avatar').textContent = result.user.login_name.slice(0, 1).toUpperCase();
   $('#merchant-nav-label').textContent = tenant() ? '我的商户' : '商户管理';
   $('#workspace-kind').textContent = tenant() ? '商户专属空间' : '运营管理空间';
   document.querySelectorAll('[data-permission]').forEach(node => { node.hidden = !can(node.dataset.permission); });
+  if(tenant())document.querySelectorAll('[data-view="services"],[data-view="frontends"]').forEach(node=>node.hidden=true);
   document.querySelectorAll('[data-tenant]').forEach(node => { node.hidden = !tenant(); });
   if (view === 'integration' && !tenant()) view = 'overview';
   if (view === 'users' && !can('users.manage')) view = 'overview';
@@ -124,7 +125,7 @@ async function api(path, payload = {}) {
   return result.data;
 }
 function table(headers, rows) {
-  return el('div', {class: 'table-scroll'}, el('table', {}, el('thead', {}, el('tr', {}, headers.map(text => el('th', {}, text)))),
+  return el('div', {class: 'table-scroll',tabindex:0,'aria-label':'数据表：'+headers.join('、')}, el('table', {}, el('thead', {}, el('tr', {}, headers.map(text => el('th', {scope:'col'}, text)))),
     el('tbody', {}, rows.length ? rows.map(cells => el('tr', {}, cells.map(cell => el('td', {}, cell)))) : el('tr', {}, el('td', {colspan: headers.length, class: 'empty'}, '暂无匹配记录')))));
 }
 function panel(title, subtitle, content, action = null) {
@@ -142,9 +143,9 @@ function formModal(title, nodes, submitLabel, action) {
   const submit = el('button', {type: 'submit', class: 'primary'}, submitLabel);
   const form = el('form', {}, nodes, error, el('div', {class: 'modal-actions'}, button('取消', closeModal, 'secondary'), submit));
   form.addEventListener('submit', async event => {
-    event.preventDefault(); submit.disabled = true; error.textContent = '';
+    event.preventDefault(); if(submit.disabled)return;submit.disabled = true;submit.textContent='处理中…';form.setAttribute('aria-busy','true'); error.textContent = '';
     try { await action(new FormData(form)); } catch (failure) { if (form.isConnected) error.textContent = failure.message; else notice(failure.message, true); }
-    finally { submit.disabled = false; }
+    finally { submit.disabled = false;submit.textContent=submitLabel;form.removeAttribute('aria-busy'); }
   });
   modal(title, form);
 }
@@ -171,10 +172,10 @@ async function overview() {
   const data = await api('overview');
   const own = merchants[0];
   const welcome = el('section', {class: 'welcome-strip'}, el('div', {}, el('p', {class: 'eyebrow'}, tenant() ? 'YOUR PARTNERSHIP, AT A GLANCE' : 'A CLEAR VIEW OF YOUR OPERATIONS'),
-    el('h2', {}, tenant() ? (own?.name || '商户') + '，欢迎回来。' : '每一份合作，都有新的可能。'),
-    el('p', {}, tenant() ? '从接入配置到每一笔交易，你的业务尽在这里。' : '在一个工作空间，连接合作伙伴、游戏与交易。')),
+    el('h2', {}, data.pending?'有 '+amount(data.pending)+' 笔交易等待确认':'当前没有待确认交易'),
+    el('p', {}, data.pending?'前往交易中心核对扣款和派彩结果。':tenant()?(own?.name||'商户')+' · 查看接入配置与结算记录。':'查看游戏开放状态、配套版本与商户授权。')),
     el('div', {class: 'welcome-actions'}, tenant() ? button('接入中心 ↗', () => navigate('integration'), 'welcome-action') : null,
-      button(tenant() ? '管理我的商户 ↗' : '管理合作商户 ↗', () => navigate('merchants'), 'welcome-action')));
+      button(data.pending?'查看交易 →':tenant()?'管理我的商户 →':'管理游戏 →', () => navigate(data.pending?'transactions':tenant()?'merchants':'games'), 'welcome-action')));
   const stats = el('div', {class: 'stats'}, [
     [tenant() ? '已结算玩家' : '合作商户', tenant() ? data.players : data.merchants, tenant() ? '按商户与玩家身份去重' : data.active_merchants + ' 个商户已启用', '▦'],
     [tenant() ? '可接入游戏' : '游戏目录', data.games, tenant() ? '已开放且本商户已获授权' : (data.open_games ?? 0) + ' 款已开放', '◇'],
@@ -275,7 +276,7 @@ function merchantSecret(merchant) {
   run(async () => { const result = await api('merchants/signing/view', {id: merchant.id}); showMerchantSecret(merchant.id, result.keys.merchant_secret); });
 }
 function rotate(merchant) {
-  formModal('重置商户密钥', [el('p', {class: 'hint'}, 'GTT 将生成一把新密钥，原密钥立即失效。重置后请同步更新商户服务端配置。'),
+  formModal('重置商户密钥', [el('p',{class:'release-summary'},merchant.name+' · '+merchant.id+' · 当前密钥 v'+merchant.merchant_key_version),el('p', {class: 'hint'}, 'GTT 将生成一把新密钥，原密钥立即失效。重置后请同步更新商户服务端配置。'),
     field('操作原因', input('reason', '', {required: true, minlength: 4, maxlength: 300}))], '重置密钥', async form => {
     const result = await api('merchants/signing/rotate', {id: merchant.id, version: merchant.version, reason: form.get('reason')});
     closeModal(); await loadView(); showMerchantSecret(merchant.id, result.keys.merchant_secret);
@@ -283,12 +284,15 @@ function rotate(merchant) {
 }
 async function merchantPage() {
   if (tenant()) return merchantProfile();
-  return panel('全部商户', merchants.length + ' 个合作平台', table(['商户', '状态', '钱包 / 币种', '授权游戏', '密钥版本', '操作'], merchants.map(m => [
+  const search=input('merchant_search',merchantQuery,{type:'search',placeholder:'商户名称或商户号','aria-label':'搜索商户'}),results=el('div',{});
+  const render=()=>results.replaceChildren(table(['商户', '状态', '钱包 / 币种', '授权游戏', '密钥版本', '操作'], merchants.filter(m=>(m.name+' '+m.id).toLowerCase().includes(merchantQuery.trim().toLowerCase())).map(m => [
     el('div', {}, el('div', {class: 'cell-title'}, m.name), el('div', {class: 'subtext mono'}, m.id)), badge(m.enabled ? '已启用' : '已停用', m.enabled ? 'good' : ''),
     el('div', {}, el('div', {class: 'cell-title'}, m.currency + ' · 精度 ' + m.minor_unit), el('div', {class: 'subtext'}, m.wallet_url || '全部接口独立配置')),
     m.games.length ? m.games.join(', ') : '未授权', el('div', {}, 'v' + m.merchant_key_version, el('div', {class: 'subtext mono'}, '指纹：' + m.merchant_key_fingerprint)),
     el('div', {}, button(can('merchants.write') ? '编辑' : '查看', () => merchantEditor(m)), can('users.manage') ? button('添加成员', () => userEditor(null, m)) : null, can('keys.rotate') ? [button('查看密钥', () => merchantSecret(m)), button('重置密钥', () => rotate(m))] : null),
-  ])), can('merchants.write') ? button('+ 创建商户', () => merchantEditor(), 'primary') : null);
+  ])));
+  render();search.addEventListener('input',()=>{merchantQuery=search.value;render();});
+  return panel('全部商户', merchants.length+' 个合作平台',el('div',{},el('div',{class:'filters'},field('搜索商户',search)),results),can('merchants.write')?button('+ 创建商户',()=>merchantEditor(),'primary'):null);
 }
 async function secretPanel(merchant) {
   const result = can('keys.rotate') ? await api('merchants/signing/view', {id: merchant.id}) : null;
@@ -415,7 +419,7 @@ function gameAvailabilityEditor(game) {
       progress.textContent='正在创建部署检查任务…';
       let result=await api('games/availability',request);
       const id=result.check.id;
-      const stages={service:'检查计算服务',private:'检查启动资料',assets:'校验前端资源',recheck:'复核当前版本',ready:'检查通过'};
+      const stages={service:'检查计算服务',private:'检查启动资料',manifest:'校验 CDN 版本清单',assets:'校验本地素材',recheck:'复核当前版本',ready:'检查通过'};
       while(result.check.status==='checking') {
         if(!progress.isConnected||!$('#modal').open)return;
         progress.textContent=(stages[result.check.stage]||'部署检查中')+(result.check.total?'：'+result.check.completed+' / '+result.check.total:'')+'…';
@@ -431,25 +435,86 @@ function gameAvailabilityEditor(game) {
     closeModal();await loadView();notice(enabled?'游戏已开放。':'游戏已关闭，已有回合仍可结算。');
   });
 }
+/** 平台试玩面板：创建独立邀请、复制、立即进入及停用，关闭后忽略迟到响应。 */
+async function trialPanel(g){
+  const box=el('div',{class:'trial-panel'});modal('试玩 · '+g.title,box);
+  const lang=select('language',[['zh','中文'],['en','English']],'zh'),hours=select('hours',[['1','1 小时'],['24','24 小时'],['168','7 天']],'24');
+  const credits=select('credits',[['100','100'],['1000','1,000'],['10000','10,000']],'1000'),note=input('note','',{maxlength:120,placeholder:'选填，例如验收批次'});
+  const msg=el('p',{class:'hint',role:'status'}),list=el('div',{}),result=el('div',{});
+  const copy=async url=>{try{await navigator.clipboard.writeText(url);msg.textContent='邀请链接已复制。';}catch{const value=input('invite',url,{readonly:true});result.replaceChildren(field('请复制邀请链接',value));value.select();}};
+  const refresh=async()=>{
+    const data=await api('trials/list',{game_id:g.id});if(!box.isConnected)return;
+    list.replaceChildren(table(['备注 / 版本','状态 / 到期','创建人','启动次数','操作'],data.links.map(r=>[
+      el('div',{},r.note||'试玩邀请',el('div',{class:'subtext'},r.frontend_version+' / '+r.service_version)),
+      el('div',{},({active:'有效',expired:'已过期',disabled:'已停用',closed:'游戏已关闭',changed:'版本已切换'})[r.status],el('div',{class:'subtext'},time(r.expires_at))),r.actor,r.starts,
+      !['disabled','expired'].includes(r.status)?el('div',{class:'catalog-actions'},r.status==='active'?button('复制',()=>copy(r.url)):null,button('停用',()=>run(async()=>{await api('trials/disable',{id:r.id});await refresh();msg.textContent='邀请已停用，已有会话不受影响。';}))):'—'])));
+  };
+  const create=async immediate=>{
+    if(open.disabled)return;let tab;
+    if(immediate){tab=window.open('about:blank','_blank');if(tab)tab.opener=null;}
+    open.disabled=share.disabled=true;
+    try{
+      const r=await api('trials/create',{game_id:g.id,language:lang.value,hours:Number(hours.value),credits:Number(credits.value),note:note.value});
+      if(!box.isConnected){tab?.close();return;}
+      if(tab)tab.location.replace(r.url);
+      result.replaceChildren(field('分享邀请（每位访客独立余额）',input('invite',r.url,{readonly:true})),el('div',{class:'catalog-actions'},button('复制链接',()=>copy(r.url)),el('a',{href:r.url,target:'_blank',rel:'noopener noreferrer'},'打开试玩 ↗')));
+      msg.textContent='已生成：'+r.frontend_version+' / '+r.service_version;await refresh();
+    }catch(e){if(tab&&!result.hasChildNodes())tab.close();msg.textContent=e.message;}
+    finally{open.disabled=share.disabled=!g.availability.enabled;}
+  };
+  const open=button('立即试玩',()=>create(true),'primary'),share=button('生成分享链接',()=>create(false),'secondary');
+  open.disabled=share.disabled=!g.availability.enabled;
+  box.append(el('p',{class:'hint'},g.availability.enabled?'试玩使用独立积分，不产生正式商户流水。':'游戏未开放，不能生成试玩邀请。'),
+    el('div',{class:'catalog-actions'},open,share),el('details',{},el('summary',{},'更多设置'),field('语言',lang),field('初始试玩积分',credits),field('邀请有效期',hours),field('备注',note)),
+    msg,result,el('h3',{},'最近邀请'),list);
+  enhanceSelects(box);try{await refresh();}catch(e){msg.textContent=e.message;}
+}
+/** 游戏详情仅展示当前身份可见的数据，管理操作保持原权限。 */
+function catalogDetails(g){
+  const merchant=tenant(),info=(name,value)=>el('div',{},el('dt',{},name),el('dd',{},value??'—'));
+  modal('游戏详情 · '+g.title,[el('dl',{class:'catalog-facts'},
+    info('游戏代码',g.code),info('品牌 / ID',(g.brand||'未分类')+' / '+g.id),
+    info('开放状态',merchant?'可接入':g.availability.enabled?'已开放':'未开放'),info('金额精度',g.minor_unit),
+    info('目标 RTP',rtpPercent(g.configured_target_rtp)),info('RTP 来源',rtpSource(g.rtp_source)+' · '+({active:'已生效',prebet:'当前预派彩',not_calibrated:'待标定'}[g.rtp_status]||'—')),
+    merchant?null:info('规则版本',g.ruleset_id),merchant?null:info('已授权商户',merchants.filter(m=>m.games.includes(g.id)).length)),
+    merchant?null:el('section',{class:'catalog-evidence'},el('h3',{},'玩法收集情况'),badge(g.readiness.collection_complete?'已完整收集':'待补齐'),
+      el('ul',{},g.readiness.blockers.map(reason=>el('li',{},reason))),el('details',{},el('summary',{},'查看依据'),el('p',{},g.readiness.sources.join(' · ')||'暂无依据'))),
+    el('div',{class:'release-actions'},!merchant&&can('games.manage')?button('试玩与邀请记录',()=>trialPanel(g)):null,!merchant&&can('rtp.write')?button('设置 RTP',()=>run(()=>gameRtpEditor(g))):null,
+      !merchant&&can('games.manage')?button(g.availability.enabled?'关闭游戏':'开放游戏',()=>gameAvailabilityEditor(g),'secondary'):null,
+      merchant?button('接入中心',()=>{closeModal();navigate('integration');}):null)]);
+}
+/** 先展示发布窗口，再异步取数；关闭窗口后忽略迟到的响应。 */
+async function catalogPublish(g){
+  const body=el('div',{class:'catalog-publish'},el('p',{role:'status'},'正在读取版本…'));
+  modal('发布管理 · '+g.title,body);
+  try{const content=await deploymentPage(g);if(body.isConnected){body.replaceChildren(content);enhanceSelects(body);}}
+  catch(error){if(body.isConnected)body.replaceChildren(el('p',{class:'error'},error.message),button('重试',()=>catalogPublish(g)));}
+}
+/** 目录的品牌和文本筛选在本地完成，详情与发布不替换背景表格。 */
 async function gamePage() {
-  const merchant=tenant(), exported=button('导出目录 ↓',exportGameCatalog,'catalog-export-button');
-  const title=merchant?'可接入游戏':'全部游戏';
-  const subtitle=merchant?'共 '+games.length+' 款 · 已开放且已授权':'共 '+games.length+' 款 · 已开放 '+games.filter(g=>g.integration_available).length+' 款 · 待补齐 '+games.filter(g=>!g.readiness.collection_complete).length+' 款';
-  const identity=game=>el('div',{},el('div',{class:'subtext'},game.brand),el('div',{class:'cell-title'},game.title));
-  const rtp=game=>el('div',{},rtpPercent(game.configured_target_rtp),el('div',{class:'subtext'},rtpSource(game.rtp_source)+' · '+({active:'已生效',prebet:'当前预派彩',not_calibrated:'待标定'})[game.rtp_status]));
-  const content=!games.length?el('div',{class:'catalog-empty'},el('span',{class:'catalog-empty-icon','aria-hidden':'true'},'◇'),el('h3',{},'暂无可接入游戏'),el('p',{},'游戏开放后会自动显示在这里。')):
-    merchant?table(['游戏 ID','品牌 / 游戏名称','状态','金额精度','目标 RTP','操作'],games.map(game=>[
-      el('span',{class:'mono'},String(game.id).padStart(2,'0')),identity(game),badge('可接入','good'),game.minor_unit,rtp(game),button('接入中心 ↗',()=>navigate('integration'),'quiet')
-    ])):
-    table(['游戏 ID','品牌 / 游戏名称','当前状态','收集情况 / 缺失项','规则版本','已授权商户','目标 RTP','操作'],games.map(game=>{
-      const ready=game.readiness.collection_complete;
-      const toggle=can('games.manage')?button(game.availability.enabled?'关闭游戏':'开放游戏',()=>gameAvailabilityEditor(game),'secondary'):null;
-      return [el('span',{class:'mono'},String(game.id).padStart(2,'0')),identity(game),badge(game.availability.enabled?'已开放':'未开放',game.availability.enabled?'good':'neutral'),
-        el('div',{class:'catalog-readiness'},el('div',{class:'subtext'},ready?'特殊玩法已完整收集':'特殊玩法未完整收集'),el('ul',{},game.readiness.blockers.map(reason=>el('li',{},reason))),el('details',{},el('summary',{},'查看依据'),el('p',{class:'subtext'},game.readiness.sources.join(' · ')))),
-        el('span',{class:'mono game-rule-version'},game.ruleset_id || '—'),merchants.filter(m=>m.games.includes(game.id)).length,rtp(game),
-        el('div',{class:'catalog-row-actions'},toggle,can('rtp.write')?button('设置 RTP',()=>run(()=>gameRtpEditor(game)),'quiet'):null)];
-    }));
-  return el('div',{class:'game-catalog'},panel(title,subtitle,content,exported),merchant?null:el('p',{class:'hint'},'开放前必须通过计算服务、启动资料及前端资源检查。玩法收集情况仅供参考，不作为开放限制；关闭不影响已有回合结算。'));
+  const merchant=tenant(),brandOf=g=>g.brand||'未分类',counts=new Map();
+  for(const g of games)counts.set(brandOf(g),(counts.get(brandOf(g))||0)+1);
+  if(!counts.has(catalogBrand))catalogBrand='';
+  const tabs=el('div',{class:'catalog-brands',role:'group','aria-label':'按品牌筛选'}),result=el('div',{}),count=el('span',{class:'subtext','aria-live':'polite'});
+  const search=input('catalog_search',catalogQuery,{type:'search',placeholder:'名称、代码或 ID','aria-label':'搜索游戏'});
+  const draw=()=>{
+    const q=catalogQuery.trim().toLowerCase();
+    const rows=games.filter(g=>(!catalogBrand||brandOf(g)===catalogBrand)&&[g.title,g.code,'#'+String(g.id).padStart(2,'0')].some(v=>String(v).toLowerCase().includes(q)));
+    for(const tab of tabs.children)tab.setAttribute('aria-pressed',String(tab.dataset.brand===catalogBrand));
+    count.textContent=rows.length+' 款游戏';
+    result.replaceChildren(table(['游戏','品牌','状态','目标 RTP','操作'],rows.map(g=>[
+      el('div',{class:'catalog-identity'},el('span',{class:'subtext mono'},'#'+String(g.id).padStart(2,'0')),el('strong',{},g.title)),
+      brandOf(g),el('span',{'data-game-status':g.code},badge(merchant?'可接入':g.availability.enabled?'已开放':'未开放',merchant||g.availability.enabled?'good':'neutral')),rtpPercent(g.configured_target_rtp),
+      el('div',{class:'catalog-actions'},button('详情',()=>catalogDetails(g)),!merchant&&can('services.read')?button('发布管理',()=>catalogPublish(g),'secondary'):null,
+        !merchant&&can('games.manage')?button('试玩',()=>trialPanel(g)):null,
+        merchant?button('接入中心',()=>navigate('integration')):null)])));
+  };
+  for(const [brand,n] of [['',games.length],...counts]){
+    const tab=button((brand||'全部品牌')+' '+n,()=>{catalogBrand=brand;draw();},'catalog-brand');tab.dataset.brand=brand;tabs.append(tab);
+  }
+  search.addEventListener('input',()=>{catalogQuery=search.value;draw();});draw();
+  return el('div',{class:'game-catalog'},panel(merchant?'可接入游戏':'游戏列表',merchant?'仅显示已开放且已授权的游戏':'查看游戏状态，按需打开详情或发布管理',
+    el('div',{},el('div',{class:'catalog-tools'},tabs,el('div',{class:'catalog-search'},count,search)),result),button('导出目录 ↓',exportGameCatalog,'catalog-export-button')));
 }
 
 function pager(rows, filters, reload) {
@@ -458,7 +523,8 @@ function pager(rows, filters, reload) {
     rows.length === 25 ? button('下一页 →', () => { filters.before_seq = rows.at(-1).seq; reload(); }, 'secondary') : null));
 }
 function filterForm(fields, filters) {
-  const form = el('form', {class: 'filters'}, fields, el('button', {type: 'submit', class: 'primary'}, '查询'), button('清空', () => { for (const key of Object.keys(filters)) delete filters[key]; loadView(); }));
+  const active=Object.entries(filters).filter(([key,value])=>key!=='before_seq'&&value);
+  const form = el('form', {class: 'filters'}, fields, el('button', {type: 'submit', class: 'primary'}, '查询'), button('清空筛选', () => { for (const key of Object.keys(filters)) delete filters[key]; loadView(); }),active.length?badge('已应用 '+active.length+' 项筛选'):null);
   form.addEventListener('submit', event => { event.preventDefault(); for (const key of Object.keys(filters)) delete filters[key]; for (const [key, value] of new FormData(form)) if (value.trim()) filters[key] = value.trim(); loadView(); });
   return form;
 }
@@ -550,6 +616,7 @@ function rtpPolicyEditor(data, scope, mid = '', pid = '') {
   const available=rtpAvailableModels(data), target=data.models.find(m=>m.id===row?.model_id)?.target_bp;
   const options = [['', scope === 'platform' ? '恢复默认 96%'  : scope === 'player' ? '使用商户默认' : '使用平台默认'], ...available.map(m => [m.id, (m.target_bp / 100).toFixed(2) + '%'])];
   formModal('设置' + ({platform:'平台',merchant:'商户',player:'玩家'})[scope] + '目标 RTP', [
+    el('p',{class:'release-summary'},'适用游戏：'+(games.find(g=>g.id===gameId)?.title||gameId)+' · 当前配置：'+(target==null?'继承默认值':(target/100).toFixed(2)+'%')),
     el('p', {class:'hint'}, '商户与平台配置决定默认目标；游戏及玩家覆盖按各自范围生效。发布后从新付费整局生效；免费、续列与交易恢复沿用原模型。'),
     scope !== 'platform' ? field('商户', mid?input('merchant_id', mid, {readonly:true}):select('merchant_id',merchants.map(m=>[m.id,m.name+' · '+m.id]))):null,
     scope === 'player' ? field('玩家 ID', input('player_id', pid, {required:true,maxlength:128})) : null,
@@ -641,18 +708,117 @@ async function rtpPage() {
 
 }
 async function run(action) { try { await action(); } catch (error) { if (session) notice(error.message, true); else $('#login-error').textContent = error.message; } }
-function navigate(next) { if (!Object.keys(pages).includes(next)) return; if(next==='rtp')rtpTab='merchants'; view = next; history.replaceState(null, '', '#' + next); $('#notice').hidden = true; loadView(); }
-async function servicePage() {
-  if (tenant() || !can('services.read')) throw new Error('仅平台账户可查看游戏服务。');
-  const data=await api('services/list');
-  const register=()=>formModal('注册游戏服务版本',[
-    field('游戏',select('code',data.games.map(g=>[g.code,(games.find(x=>x.code===g.code)?.title||g.code)+' · '+g.game_id]))),
+function navigate(next) { if (!Object.keys(pages).includes(next)) return; if(next==='rtp')rtpTab='merchants'; view = next; history.replaceState(null, '', '#' + next); $('#notice').hidden = true; loadView(true); }
+/** 为指定游戏选择两个独立版本，确认时一次提交两条路由修订。 */
+function pairEditor(game,front) {
+  const major=v=>/^v([1-9]\d*)\.(0|[1-9]\d*)$/.exec(v)?.[1];
+  const candidates=front.releases.filter(r=>r.status==='verified'&&major(r.component_version));
+  const client=select('frontend_id',[['','请选择前端版本'],...candidates.map(r=>[r.id,r.component_version])],front.active_id);
+  const service=select('service_id',[]);
+  const sync=()=>{
+    const generation=major(candidates.find(r=>r.id===client.value)?.component_version);
+    const choices=game.releases.filter(r=>r.status==='ready'&&generation&&major(r.release)===generation);
+    const previous=service.value||game.active_id;
+    service.replaceChildren(el('option',{value:''},choices.length?'请选择计算版本':'暂无同主版本计算服务'),...choices.map(r=>el('option',{value:r.id,selected:r.id===previous},r.release)));
+    service.dispatchEvent(new Event('change'));
+  };
+  client.addEventListener('change',sync);sync();
+  formModal('选择版本 · '+game.code,[el('p',{class:'release-summary'},'当前生效：前端 '+(front.releases.find(r=>r.id===front.active_id)?.component_version||front.active_id||'未选择')+' / 计算 '+(game.releases.find(r=>r.id===game.active_id)?.release||'未选择')),field('准备切换到的前端',client),field('准备切换到的计算服务',service),el('p',{class:'hint'},'仅列出已验证前端和同主版本计算服务。检查通过后一起生效，不会自动开放游戏。')],'检查并切换',async form=>{
+    if(!form.get('frontend_id')||!form.get('service_id'))throw Error('请选择完整的版本组合');
+    await api('services/activate-pair',{game_id:game.game_id,frontend_id:form.get('frontend_id'),service_id:form.get('service_id'),frontend_revision:front.revision,service_revision:game.revision});
+    closeModal();await loadView();notice('前后端版本组合已生效。');
+  });
+}
+/** 从游戏工作区登记时锁定所选游戏。 */
+function registerService(items){
+  return formModal('注册游戏服务版本',[
+    field('游戏',select('code',items.map(g=>[g.code,(games.find(x=>x.code===g.code)?.title||g.code)+' · '+g.game_id]))),
     el('p',{class:'hint'},'发布版本自动读取服务构建信息，无需填写。'),
     field('内部服务地址',input('origin','',{required:true,type:'url',placeholder:'http://127.0.0.1:8211'})),
-    field('内部认证密钥',input('secret','',{required:true,type:'password',minlength:32,maxlength:512,autocomplete:'new-password'})),
+    el('p',{class:'hint'},'同机服务自动使用服务器上的共享密钥。'),
+    el('details',{},el('summary',{},'高级：使用独立密钥'),field('内部认证密钥',input('secret','',{type:'password',minlength:32,maxlength:512,autocomplete:'new-password'}))),
   ],'验证并注册',async form=>{
-    await api('services/register',Object.fromEntries(form));closeModal();await loadView();notice('版本已注册，尚未切换新回合流量。');
+    const q=Object.fromEntries(form);if(!q.secret)delete q.secret;
+    await api('services/register',q);closeModal();await loadView();notice('版本已注册，尚未切换新回合流量。');
   });
+}
+/** 按游戏和版本登记已部署的启动资料。 */
+function registerRemote(items){
+  return formModal('按版本登记前端',[field('游戏',select('code',items.map(g=>[g.code,games.find(x=>x.code===g.code)?.title||g.code]))),field('前端版本',input('component_version','',{required:true,placeholder:'v1.0',pattern:'v[1-9][0-9]*\\.(0|[1-9][0-9]*)'}))],'读取并登记',async form=>{
+    await api('frontends/register',Object.fromEntries(form));closeModal();await loadView();notice('前端已登记，下一步检查素材。');
+  });
+}
+/** 只提交运营选定的版本，展示服务器异步检查与原子开放结果。 */
+function autoOpenForm(game,s,f){
+  const current=f.releases.find(r=>r.id===f.active_id)?.component_version||(game.code==='buffalo-win'?'v1.0':'');
+  const front=input('component_version',current,{required:true,placeholder:'如 v1.0',list:'auto-front-versions',autocomplete:'off',pattern:'v[1-9][0-9]*\\.(0|[1-9][0-9]*)'});
+  const back=select('service_id',[]),progress=el('p',{role:'status','aria-live':'polite',class:'hint'});
+  const address=input('origin',s.releases.find(r=>r.id===s.active_id)?.origin||(game.code==='buffalo-win'?'http://127.0.0.1:8211':''),{type:'url',placeholder:'http://127.0.0.1:端口'});
+  const connect=field('本机计算服务地址',address),versions=field('计算服务版本',back);
+  const sync=()=>{
+    const major=/^v([1-9]\d*)\.(0|[1-9]\d*)$/.exec(front.value)?.[1],prev=back.value||s.active_id;
+    const choices=s.releases.filter(r=>r.status==='ready'&&major&&/^v([1-9]\d*)\.(0|[1-9]\d*)$/.exec(r.release)?.[1]===major);
+    back.replaceChildren(el('option',{value:''},'请选择计算版本'),...choices.map(r=>el('option',{value:r.id,selected:r.id===prev||choices.length===1},r.release)));
+    versions.hidden=!choices.length;back.disabled=!choices.length;back.required=!!choices.length;
+    connect.hidden=!!choices.length;address.disabled=!!choices.length;address.required=!choices.length;
+    back.dispatchEvent(new Event('change'));
+  };
+  front.addEventListener('input',sync);sync();
+  const go=el('button',{type:'submit',class:'primary'},'检查并发布');
+  const form=el('form',{class:'release-actions'},field('前端版本',front),el('datalist',{id:'auto-front-versions'},f.releases.filter(r=>r.component_version&&r.status!=='retired').map(r=>el('option',{value:r.component_version}))),versions,connect,go,progress);
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();if(go.disabled)return;go.disabled=true;progress.className='hint';
+    const owner=session,component=front.value,origin=address.value,needsConnect=back.disabled,selected=back.value;
+    const editable=form.querySelectorAll('input:not(:disabled),select:not(:disabled),button.select-trigger:not(:disabled)');editable.forEach(node=>node.disabled=true);
+    const stages={registration:'读取前端发布资料',service:'认证计算服务',private:'核对启动资料',manifest:'校验 CDN 版本清单',assets:'校验本地素材',recheck:'复核并应用'};
+    try{
+      let id=selected,label=back.selectedOptions[0]?.textContent;
+      if(needsConnect){
+        progress.textContent='正在连接计算服务并读取版本…';
+        const registered=await api('services/register',{code:game.code,origin});
+        id=registered.id;label=registered.release;
+        if(!form.isConnected)return;
+        if(component.split('.')[0]!==label.split('.')[0])throw Error('服务自报 '+label+'，不能与前端 '+component+' 配对。请修改前端版本或服务地址。');
+      }
+      const target=component+' / '+label;progress.textContent=target+' · 准备发布…';
+      let {check}=await api('games/auto-open',{game_id:game.id,version:game.availability.version,enabled:true,service_id:id,component_version:component,frontend_revision:f.revision,service_revision:s.revision});
+      while(check.status==='checking'){
+        if(owner!==session)return;
+        progress.textContent=target+' · '+(stages[check.stage]||'正在检查')+(check.total?' '+check.completed+'/'+check.total:'');
+        await new Promise(ok=>setTimeout(ok,1000));if(owner!==session)return;
+        ({check}=await api('games/availability-check',{check_id:check.id}));
+      }
+      if(check.status!=='applied')throw Error(check.error?.message||'未能开放，请刷新后重试');
+      if(owner===session){
+        const latest=(await api('games')).games.find(g=>g.code===game.code);
+        if(latest&&owner===session){Object.assign(game,latest);const current=games.find(g=>g.code===game.code);if(current)Object.assign(current,latest);const status=document.querySelector('[data-game-status="'+CSS.escape(game.code)+'"]');if(status)status.replaceChildren(badge(latest.availability.enabled?'已开放':'未开放',latest.availability.enabled?'good':'neutral'));if(form.isConnected)closeModal();notice(game.title+' 已开放：'+target);}
+      }
+    }catch(error){progress.textContent=error.message;progress.className='error';if(!form.isConnected&&owner===session)notice(error.message,true);}
+    finally{go.disabled=false;editable.forEach(node=>node.disabled=false);}
+  });
+  return form;
+}
+/** 汇总单游戏当前路由、候选版本和开放操作，复用原服务端校验。 */
+async function deploymentPage(game){
+  const [services,frontends]=await Promise.all([api('services/list'),api('frontends/list')]);
+  const s=services.games.find(g=>g.code===game.code),f=frontends.games.find(g=>g.code===game.code);
+  if(!s||!f)throw Error('找不到此游戏的版本记录，请刷新目录。');
+  const manage=can('services.manage'),activeFront=f.releases.find(r=>r.id===f.active_id),activeService=s.releases.find(r=>r.id===s.active_id);
+  const usable=f.releases.filter(r=>r.status==='verified'&&/^v[1-9]\d*\.(0|[1-9]\d*)$/.test(r.component_version));
+  const paired=usable.some(r=>s.releases.some(v=>v.status==='ready'&&/^v[1-9]\d*\.(0|[1-9]\d*)$/.test(v.release)&&v.release.split('.')[0]===r.component_version.split('.')[0]));
+  const next=game.availability.enabled?'游戏已开放；准备其他版本不会立即切换。':!f.releases.length?'先读取已发布的前端版本。':!usable.length?'需要已通过素材检查、带正式版本号的前端。':!paired?'登记同一主版本的计算服务，再选择配套版本。':!activeFront||!activeService?'有可配对版本，请选择并切换后再开放。':'已选择前后端，请执行开放检查确认实际可用性。';
+  const summary=(label,value)=>el('div',{},el('span',{class:'subtext'},label),el('strong',{},value));
+  return el('div',{class:'release-workspace'},
+    panel(game.title,game.code+' · 当前生效',el('div',{class:'release-summary'},summary('前端版本',activeFront?.component_version||f.active_id||'未选择'),summary('计算版本',activeService?.release||'未选择'),summary('开放状态',game.availability.enabled?'已开放':'未开放'))),
+    manage&&can('games.manage')?panel('发布游戏','确认版本，首次连接时核对本机地址。计算服务、本地启动资料和 CDN 版本清单通过检查后开放。',autoOpenForm(game,s,f),game.availability.enabled?button('关闭游戏',()=>gameAvailabilityEditor(game),'secondary'):null):null,
+    el('details',{class:'release-advanced',open:!manage||!can('games.manage')},el('summary',{},'高级操作 · 版本记录与手动检查'),panel('前端版本','登记后检查素材。已登记不代表已激活。',table(['版本','素材状态','操作'],f.releases.map(r=>[r.component_version||r.id,({verified:'已检查',staged:'待检查',retired:'已停用'})[r.status]||r.status,manage&&r.status!=='retired'?button('检查素材',event=>{const node=event.currentTarget;node.disabled=true;run(async()=>{try{await api('frontends/probe',{id:r.id});if(node.isConnected){node.closest('tr').cells[1].textContent='已检查';node.textContent='检查通过';}}catch(error){if(node.isConnected)node.textContent=error.message;}finally{node.disabled=false;}});}): '—'])),manage?button('按版本登记',()=>registerRemote([f]),'secondary'):null),
+    panel('2 · 准备计算服务','登记运行地址并核对服务身份。',table(['版本','内部地址','状态','操作'],s.releases.map(r=>[r.release,r.origin,r.status==='ready'?'可配对':'已停用',button('检查连接',()=>run(async()=>{await api('services/probe',{id:r.id});notice(r.release+' 连接正常。');}))])),manage?button('登记计算服务',()=>registerService([s]),'secondary'):null),
+    panel('手动配对与开放',next,el('div',{class:'release-actions'},manage?button('选择配套版本',()=>pairEditor(s,f),'secondary'):null,can('games.manage')?button(game.availability.enabled?'关闭游戏':'检查并开放',()=>gameAvailabilityEditor(game),game.availability.enabled?'secondary':'primary'):null))));
+}
+async function servicePage() {
+  if (tenant() || !can('services.read')) throw new Error('仅平台账户可查看游戏服务。');
+  const [data,frontends]=await Promise.all([api('services/list'),api('frontends/list')]);
+  const register=()=>registerService(data.games);
   const sections=data.games.map(game=>{
     const title=games.find(x=>x.code===game.code)?.title||game.code;
     const rows=game.releases.map(release=>[
@@ -661,10 +827,10 @@ async function servicePage() {
       release.id===game.active_id?badge('新回合使用'):badge(release.status==='retired'?'已停用':'待切换'),
       String(release.open_rounds),String(release.pending_calculations),
       el('div',{},button('检查连接',()=>run(async()=>{await api('services/probe',{id:release.id});notice(title+' · '+release.release+' 连接正常。');})),
-        can('services.manage')&&release.status==='ready'&&release.id!==game.active_id?button('切换新回合',()=>run(async()=>{await api('services/activate',{id:release.id,revision:game.revision});await loadView();notice('新回合已切换，进行中的回合继续使用原版本。');})):null,
         can('services.manage')&&release.status==='ready'&&release.id!==game.active_id?button('标记停用',()=>run(async()=>{await api('services/retire',{id:release.id});await loadView();notice('版本已停止接受新切换；已有回合仍需保留原服务。');})):null)
     ]);
-    return panel(title,game.code+' · 路由修订 '+game.revision,table(['发布版本','内部地址','状态','未结束整局','待计算操作','操作'],rows));
+    const front=frontends.games.find(f=>f.code===game.code);
+    return panel(title,game.code+' · 路由修订 '+game.revision,el('div',{},el('p',{class:'release-summary'},'当前前端：'+(front.releases.find(r=>r.id===front.active_id)?.component_version||front.active_id||'未选择')+' · 当前计算：'+(game.releases.find(r=>r.id===game.active_id)?.release||'未选择')),table(['发布版本','内部地址','状态','未结束整局','待计算操作','操作'],rows)),can('services.manage')?button('选择前后端版本',()=>pairEditor(game,front),'primary'):null);
   });
   return el('div',{},panel('独立游戏服务','新回合使用当前版本；进行中的普通、免费及购买回合继续使用已绑定版本。',
     el('p',{class:'hint'},data.mode==='remote'?'切换保持玩家地址、会话和客户端协议稳定。旧版本的未结束整局及待计算操作清零前，请保留原服务。':'当前网关仍使用旧内嵌模式，注册后需要先启用独立服务配置。'),can('services.manage')?button('注册服务版本',register,'primary'):null),sections);
@@ -673,25 +839,27 @@ async function frontendPage() {
   if(tenant()||!can('services.read'))throw new Error('仅平台账户可查看前端版本。');
   const [data,candidates]=await Promise.all([api('frontends/list'),api('frontends/candidates')]);
   const available=candidates.builds.filter(b=>!b.registered);
+  const fetchVersion=()=>registerRemote(data.games);
   const register=()=>{
     if(!available.length){notice('暂无未登记的构建。请先完成游戏前端构建并安装到服务器。',true);return;}
     formModal('登记游戏前端构建',[el('p',{class:'hint'},'版本号、文件清单及协议契约来自构建产物，自动读取，无需手填。'),field('已安装构建',select('bundle',available.map(b=>[b.bundle,b.code+' · '+b.release])))],'校验并登记',async form=>{
       await api('frontends/register',{bundle:form.get('bundle')});closeModal();await loadView();notice('前端构建已登记，请检查素材后再切换。');
     });
   };
-  return el('div',{},panel('游戏客户端版本','新会话使用选定版本，已打开的游戏继续使用原启动页、脚本、图片和音效。',el('p',{class:'hint'},'每次构建自动生成唯一版本号；文件地址不可覆盖，旧版本保留以支持会话和回退。'),can('services.manage')?button('登记已安装构建',register,'primary'):null),
+  return el('div',{},panel('游戏客户端版本','新会话使用选定版本，已打开的游戏继续使用原启动页、脚本、图片和音效。',el('p',{class:'hint'},'输入游戏和版本即可读取启动资料；历史本地构建仍可单独登记。'),can('services.manage')?el('div',{class:'release-actions'},button('按版本登记',fetchVersion,'primary'),button('登记已安装构建',register)):null),
     data.games.map(game=>panel(games.find(g=>g.code===game.code)?.title||game.code,game.code+' · 发布修订 '+game.revision,
       table(['自动构建版本','版本地址','状态','有效会话','操作'],game.releases.map(release=>[
         el('div',{},el('strong',{class:'mono'},release.id),el('div',{class:'subtext'},time(release.created_at))),
         el('span',{class:'mono'},release.origin),release.id===game.active_id?badge('新会话使用'):badge({staged:'待检查',verified:'已检查',retired:'已停用'}[release.status]||release.status),String(release.sessions),
         el('div',{},can('services.manage')&&release.status!=='retired'?button('检查素材',()=>run(async()=>{const result=await api('frontends/probe',{id:release.id});await loadView();notice(result.mode==='cdn'?'版本 CDN 文件校验通过。':'本地构建校验通过；生产 CDN 需在部署环境另行检查。');})):null,
-          can('services.manage')&&release.status==='verified'&&release.id!==game.active_id?button('切换新会话',()=>run(async()=>{await api('frontends/activate',{id:release.id,revision:game.revision});await loadView();notice('新会话已切换，已打开的游戏保留原前端版本。');})):null,
+           can('services.manage')&&release.status==='verified'?button('选择配套版本',()=>run(async()=>{const services=await api('services/list');pairEditor(services.games.find(g=>g.code===game.code),game);})):null,
           can('services.manage')&&release.id!==game.active_id&&release.status!=='retired'?button('标记停用',()=>run(async()=>{await api('frontends/retire',{id:release.id});await loadView();notice('已停用；旧会话仍保留原版本。');})):null)
       ])))));
 }
-async function loadView() {
+async function loadView(navigation=false) {
   if (!session) return;
   const current = ++generation;
+  if(navigation===true)$('#content').replaceChildren(el('p',{class:'hint',role:'status'},'正在加载'+pages[view][0]+'…'));
   $('#page-title').textContent = $('#breadcrumb').textContent = pages[view][0]; $('#page-description').textContent = pages[view][1];
   if (tenant() && view === 'merchants') { $('#page-title').textContent = $('#breadcrumb').textContent = '我的商户'; $('#page-description').textContent = '管理商户资料、平台连接与接入凭据。'; }
   $('#page-eyebrow').textContent = (tenant() ? 'PARTNER' : 'PLATFORM') + ' / ' + view.toUpperCase();
@@ -699,9 +867,11 @@ async function loadView() {
   document.querySelectorAll('[data-view]').forEach(node => { const active = node.dataset.view === view; node.classList.toggle('active', active); node.setAttribute('aria-label', tenant() && node.dataset.view === 'merchants' ? '我的商户' : pages[node.dataset.view][0]); if (active) node.setAttribute('aria-current', 'page'); else node.removeAttribute('aria-current'); });
   $('#refresh-button').disabled = true;
   try {
-    const results = await Promise.all([api('merchants/list'), api('games')]);
-    if (!session || generation !== current) return;
-    merchants = results[0].merchants; games = results[1].games;
+    if(navigation!==true||Date.now()-catalogReadAt>15000){
+      const results = await Promise.all([api('merchants/list'), api('games')]);
+      if (!session || generation !== current) return;
+      merchants = results[0].merchants; games = results[1].games;catalogReadAt=Date.now();
+    }
     $('#workspace-name').textContent = tenant() ? merchants[0]?.name || '我的商户' : 'GTT 平台';
     if (tenant() && session.user.primary && merchants[0]) {
       session.user.login_name = merchants[0].name;
@@ -710,7 +880,7 @@ async function loadView() {
     $('#workspace-avatar').textContent = tenant() ? (merchants[0]?.name || 'M').slice(0,1) : 'G';
     const result = await ({overview, merchants: merchantPage, integration: integrationPage, games: gamePage, services: servicePage, frontends:frontendPage, rtp: rtpPage, transactions: transactionPage, audit: auditPage, users: userPage})[view]();
     if (generation === current && session) { $('#content').replaceChildren(result); enhanceSelects($('#content')); }
-  } catch (error) { if (session && generation === current) notice(error.message, true); }
+  } catch (error) { if (session && generation === current) $('#content').replaceChildren(panel('未能加载'+pages[view][0],error.message,el('div',{class:'release-actions'},button('重新加载',loadView,'secondary')))); }
   finally { if (generation === current || !session) $('#refresh-button').disabled = false; }
 }
 $('#navigation').addEventListener('click', event => { const target = event.target.closest('[data-view]'); if (target) navigate(target.dataset.view); });

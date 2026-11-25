@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   mkdtempSync,
   mkdirSync,
+  existsSync,
   copyFileSync,
   writeFileSync,
   readFileSync,
@@ -18,11 +19,13 @@ import { GameClient } from "../../gateway/src/game-client.js";
 import { gatewayServer } from "../../gateway/src/http.js";
 import { adminServer } from "../../admin/backend/admin.js";
 import {GameAvailabilityChecks} from '../../admin/backend/game-availability.js';
+import {Trials} from '../../gateway/src/trials.js';
 import {GAME_CODES} from '../../gateway/src/catalog.js';
 import { computeServer } from "../shared/services/compute.js";
 import { platformServer } from "../shared/services/platform.js";
 import { listen } from "../shared/http.js";
-import { readFrontendManifest } from "../shared/frontend-manifest.js";
+import { readFrontendManifest,frontendMarker } from "../shared/frontend-manifest.js";
+import {sha} from "../shared/core.js";
 import { pathToFileURL } from "node:url";
 import { runInNewContext } from "node:vm";
 
@@ -95,7 +98,7 @@ async function fixture(t: any) {
       "buffalo-win",
       resolve("../services/buffalo-win/config/buffalo-win.json"),
       secret,
-      { release: "backend-auto-build-v1" },
+      { release: "v1.0" },
     );
   servers.add(game);
   const gp = await listen(game);
@@ -123,13 +126,14 @@ async function fixture(t: any) {
     origin: "http://127.0.0.1:" + gp,
     secret,
   });
-  assert.equal(backend.release, "backend-auto-build-v1");
+  assert.equal(backend.release, "v1.0");
   await p!.multi!.remote!.activate("test", { id: backend.id, revision: 0 });
   const stop = async (server: any) => {
     server.closeAllConnections();
     await new Promise<void>((ok) => server.close(() => ok()));
     servers.delete(server);
   };
+  let buildSequence=0;
   const f: any = {
     dir,
     source,
@@ -150,7 +154,7 @@ async function fixture(t: any) {
     get port() {
       return port;
     },
-    build: () => {
+    build: (version=`v1.${buildSequence++}`,remote=false,cdnEntry=false) => {
       const result = JSON.parse(
         execFileSync(
           process.execPath,
@@ -158,6 +162,8 @@ async function fixture(t: any) {
             resolve("tools/build-frontend.mjs"),
             "--game",
             "buffalo-win",
+            remote?"--remote-version":"--component-version",version,
+            ...(cdnEntry?['--cdn-entry']:[]),
             "--source",
             source,
             "--output",
@@ -185,10 +191,10 @@ async function fixture(t: any) {
       p!.close();
       await start();
     },
-    http: (host: string, path: string) =>
+    http: (host: string, path: string, form?:URLSearchParams, sessionToken?:string) =>
       new Promise<any>((ok, fail) => {
         const req = request(
-          { host: "127.0.0.1", port, path, headers: { host }, agent: false },
+          { host: "127.0.0.1", port, path, method:form?'POST':'GET',headers: { host,...(form?{'content-type':'application/x-www-form-urlencoded',authorization:'Bearer '+sessionToken,'x-local-game-session':sessionToken}:{} ) }, agent: false },
           (res) => {
             const chunks: Buffer[] = [];
             res.on("data", (b) => chunks.push(b));
@@ -202,7 +208,7 @@ async function fixture(t: any) {
           },
         );
         req.on("error", fail);
-        req.end();
+        req.end(form?.toString());
       }),
   };
   t.after(async () => {
@@ -249,6 +255,67 @@ test("frontend builds generate a new immutable version every time, without publi
   });
 });
 
+test('试玩邀请独立会话、隔离钱包、幂等结算、停用过期和版本绑定',async t=>{
+  const f=await fixture(t),build=f.build();f.versions.register('test',{bundle:build.bundle});await f.versions.probe('test',build.release);f.versions.activate('test',{id:build.release,revision:0});
+  const trials=new Trials(f.p.multi),invite=trials.create('test',{game_id:1,credits:100,language:'en'}),open=()=>fetch(invite.url,{redirect:'manual'});
+  const a=await open(),b=await open();assert.equal(a.status,303);assert.equal(a.headers.get('cache-control'),'private, no-store');
+  const first=new URL(a.headers.get('location')!),ta=first.searchParams.get('ops')!,tb=new URL(b.headers.get('location')!).searchParams.get('ops')!;
+  assert.notEqual(ta,tb);assert.equal(trials.list(1)[0].starts,2);
+  const initial=trials.wallet(ta);assert.notEqual(initial.player_id,trials.wallet(tb).player_id);assert.equal(initial.balance_minor,100*initial.minor_unit);
+  const page=await f.http(first.host,first.pathname+first.search);assert.equal(page.status,200,page.body.slice(0,200));assert.ok(page.body.includes(ta));
+  const pg=async(path:string,fields:Record<string,string>={})=>{
+    const response=await f.http(first.host,path,new URLSearchParams({atk:tb,btt:'1',...fields}),tb);
+    assert.equal(response.status,200,path+': '+response.body);const reply=JSON.parse(response.body);
+    assert.equal(reply.err,null,path+': '+response.body);return reply.dt;
+  };
+  assert.equal((await pg('/web-api/auth/session/v2/verifyOperatorPlayerSession')).tk,tb);
+  const info=await pg('/game-api/buffalo-win/v2/GameInfo/Get');
+  assert.equal(info.bl,100);
+  const spinFields={wk:'0_C',pf:'1',cs:'0.1',ml:'1',id:info.ls.si.sid};
+  const played=await pg('/game-api/buffalo-win/v2/Spin',spinFields);assert.ok(played.si.sid);
+  const nextInfo=await pg('/game-api/buffalo-win/v2/GameInfo/Get');assert.equal(nextInfo.ls.si.sid,played.si.sid);
+  const independentBalance=trials.wallet(tb).balance_minor;
+  const {snapshot}=await trials.snapshot(ta);
+  const spin=await trials.spin(ta,'test-spin',snapshot.raw_state.sid,{cs:0.1,ml:1});
+  const legacy=JSON.parse(f.control.get('SELECT candidate_json FROM trial_operations WHERE player_id=?',initial.player_id).candidate_json);
+  delete legacy.ruleset_id;
+  f.control.run('UPDATE trial_operations SET candidate_json=? WHERE player_id=?',JSON.stringify(legacy),initial.player_id);
+  const recovered=await f.http(first.host,'/game-api/buffalo-win/v2/GameInfo/Get',new URLSearchParams({atk:ta,btt:'1'}),ta);
+  assert.equal(recovered.status,200,recovered.body);
+  assert.equal(JSON.parse(recovered.body).dt.ls.si.sid,spin.sid);
+  assert.deepEqual(await trials.spin(ta,'test-spin',snapshot.raw_state.sid,{cs:0.1,ml:1}),spin);
+  assert.equal(trials.wallet(ta).balance_minor,initial.balance_minor-spin.wallet.debit_minor+spin.wallet.credit_minor);
+  assert.equal(trials.wallet(tb).balance_minor,independentBalance);
+  assert.equal(f.p.get('SELECT COUNT(*) AS n FROM game_operations').n,0);assert.equal(f.p.get('SELECT COUNT(*) AS n FROM merchant_sessions').n,0);
+  assert.throws(()=>f.p.session(ta));trials.disable('test',invite.id);assert.equal((await open()).status,410);assert.equal(trials.history(ta).length,1);
+  const other=trials.create('test',{game_id:1});f.control.run('UPDATE trial_links SET expires_at=0 WHERE id=?',other.id);
+  await assert.rejects(trials.redeem(other.id),{code:'TRIAL_EXPIRED'});
+  const changed=trials.create('test',{game_id:1}),next=f.build();
+  f.versions.register('test',{bundle:next.bundle});await f.versions.probe('test',next.release);f.versions.activate('test',{id:next.release,revision:1});
+  await assert.rejects(trials.redeem(changed.id),{code:'TRIAL_VERSION_CHANGED'});
+  f.control.setGameAvailability('test',{game_id:1,enabled:false,version:f.control.gameAvailability(1).version});assert.throws(()=>trials.create('test',{game_id:1}),{code:'GAME_CLOSED'});
+});
+
+test('paired activation rejects cross-generation and stale revisions without changing either route',async t=>{
+  const f=await fixture(t),checks=new GameAvailabilityChecks(f.p,f.p.multi.remote,f.versions,f.config);
+  t.after(()=>checks.close());
+  const service=f.control.get('SELECT * FROM game_service_routes WHERE code=?','buffalo-win');
+  const base={game_id:1,service_id:service.release_id,service_revision:service.revision,frontend_revision:0};
+  for(const version of ['v2.0','v1.4']){
+    const build=f.build(version);f.versions.register('test',{bundle:build.bundle});await f.versions.probe('test',build.release);
+    const q={...base,frontend_id:build.release};
+    if(version==='v2.0'){
+      await assert.rejects(checks.activatePair('test',q),{code:'GAME_MAJOR_MISMATCH'});
+      assert.ok(!f.control.get('SELECT * FROM frontend_routes WHERE code=?','buffalo-win'));
+    }else{
+      await checks.activatePair('test',q);
+      await assert.rejects(checks.activatePair('test',q),{code:'VERSION_CONFLICT'});
+      assert.equal(f.control.get('SELECT * FROM frontend_routes WHERE code=?','buffalo-win').release_id,build.release);
+    }
+    assert.deepEqual(f.control.get('SELECT * FROM game_service_routes WHERE code=?','buffalo-win'),service);
+  }
+});
+
 async function preparedOpening(t:any) {
   const f=await fixture(t),build=f.build();
   f.versions.register('test',{bundle:build.bundle});
@@ -262,8 +329,26 @@ async function preparedOpening(t:any) {
     for(let i=0;i<500;i++){const result=checks.status(owner,id);if(result.status!=='checking')return result;await new Promise(ok=>setTimeout(ok,20));}
     throw Error('Availability check timeout');
   };
-  return {...f,build,checks,request,wait};
+  return {...f,buildCandidate:f.build,build,checks,request,wait};
 }
+
+test('一键开放对候选版本执行检查并原子提交，修订冲突不激活候选前端',async t=>{
+  const f=await preparedOpening(t),s=f.control.get('SELECT * FROM game_service_routes WHERE code=?','buffalo-win'),route=f.control.get('SELECT * FROM frontend_routes WHERE code=?','buffalo-win');
+  const candidate=f.buildCandidate('v1.8');
+  f.versions.register('test',{bundle:candidate.bundle});
+  const pick={service_id:s.release_id,component_version:'v1.8',frontend_revision:route.revision,service_revision:s.revision};
+  const stale=f.checks.begin('test',f.request,{...pick});
+  f.control.run('UPDATE frontend_routes SET revision=revision+1 WHERE code=?','buffalo-win');
+  assert.equal((await f.wait(stale.id)).error?.code,'VERSION_CONFLICT');
+  assert.equal(f.control.gameAvailability(1).enabled,false);
+  assert.equal(f.control.get('SELECT release_id FROM frontend_routes WHERE code=?','buffalo-win').release_id,route.release_id);
+  assert.equal(f.versions.release(candidate.release).status,'staged');
+  const ready=f.checks.begin('test',f.request,{...pick,frontend_revision:route.revision+1});
+  assert.equal((await f.wait(ready.id)).status,'applied');
+  assert.equal(f.control.gameAvailability(1).enabled,true);
+  assert.equal(f.control.get('SELECT release_id FROM frontend_routes WHERE code=?','buffalo-win').release_id,candidate.release);
+  assert.equal(f.versions.release(candidate.release).status,'verified');
+});
 
 test('opening check requires active compute and frontend, rejects forged tickets and preserves closure',async t=>{
   const f=await preparedOpening(t);
@@ -341,10 +426,10 @@ test('opening check expires and closing during a check prevents confirmation',as
   assert.equal(f.control.gameAvailability(1).enabled,false);
 });
 
-test('production opening checks CDN bytes without local objects and detects missing, mismatched and switched releases',async t=>{
+test('生产开放只请求一次 CDN 版本清单，拒绝缺失、错版或检查期间的版本切换',async t=>{
   const f=await preparedOpening(t),bundle=join(f.installed,f.build.release),manifest=readFrontendManifest(bundle);
   const origin='https://'+manifest.release+'.example.test';
-  const bytes=new Map(manifest.files.map(file=>[origin+'/'+file.path.split('/').map(encodeURIComponent).join('/'),readFileSync(join(bundle,'objects',file.path))]));
+  const marker={format:3,kind:manifest.kind,game:manifest.game,release:manifest.release,prefix:manifest.prefix,manifest_sha256:f.versions.release(manifest.release).manifest_sha256,files:manifest.files};
   f.control.run('UPDATE frontend_releases SET origin=? WHERE id=?',origin,manifest.release);
   rmSync(join(bundle,'objects'),{recursive:true});
   let mode='ok',calls=0;
@@ -352,13 +437,14 @@ test('production opening checks CDN bytes without local objects and detects miss
   t.mock.method(globalThis,'fetch',async(input:any,init:any)=>{
     const url=String(input);
     if(!url.startsWith(origin+'/'))return actualFetch(input,init);
+    assert.equal(url,origin+'/_gtt-manifest.json');
     assert.equal(init.redirect,'manual');assert.equal(init.credentials,'omit');assert.equal(init.headers,undefined);
     calls++;
     if(mode==='missing')return new Response('missing',{status:404});
-    if(mode==='changed')return new Response('changed',{status:200});
+    if(mode==='changed')return new Response(JSON.stringify({...marker,game:'other-game'},null,2)+'\n');
     if(mode==='timeout')throw new DOMException('test timeout','TimeoutError');
     if(mode==='switch'){mode='ok';f.control.run('UPDATE game_service_routes SET revision=revision+1 WHERE code=?','buffalo-win');}
-    return new Response(new Uint8Array(bytes.get(url)!));
+    return new Response(JSON.stringify(marker,null,2)+'\n');
   });
   const checks=new GameAvailabilityChecks(f.p,f.p.multi.remote,f.versions,{...f.config,environment:'production'});t.after(()=>checks.close());
   const wait=async(id:string)=>{for(let i=0;i<500;i++){const result=checks.status('test',id);if(result.status!=='checking')return result;await new Promise(ok=>setTimeout(ok,20));}throw Error('timeout');};
@@ -366,7 +452,7 @@ test('production opening checks CDN bytes without local objects and detects miss
     mode=scenario;const job=checks.begin('test',f.request);assert.equal((await wait(job.id)).error?.code,expected);assert.equal(f.control.gameAvailability(1).enabled,false);
   }
   mode='ok';calls=0;const job=checks.begin('test',f.request);assert.equal((await wait(job.id)).status,'ready');
-  assert.equal(calls,manifest.files.length);
+  assert.equal(calls,1);
   assert.equal(checks.enable('test',{...f.request,check_id:job.id}).enabled,true);
 });
 
@@ -421,6 +507,35 @@ test("a frontend switch changes new sessions while old pages and assets stay pin
   });
 });
 
+test('CDN 模板新版本无需本机预装，绑定会话后校验原始 HTML 并逐玩家注入',async t=>{
+  const f=await fixture(t);
+  f.build('v1.0',true);
+  const built=f.build('v1.1',true,true),dir=join(f.installed,built.release),m=readFrontendManifest(dir);
+  const marker=frontendMarker(m,sha(readFileSync(join(dir,'manifest.json')))),html=readFileSync(join(dir,'objects/index.html'),'utf8');
+  assert.ok(!m.bootstrap.some(v=>v.path.endsWith('/index.html')));rmSync(dir,{recursive:true});
+  const remote='https://assets.example.test',url=remote+'/'+m.prefix;
+  const urls:string[]=[];let tamper=true;
+  const actual=globalThis.fetch;
+  t.mock.method(globalThis,'fetch',async(input:any,init:any)=>{
+    if(!String(input).startsWith(remote+'/'))return actual(input,init);
+    assert.equal(init.credentials,'omit');assert.equal(init.headers,undefined);urls.push(String(input));
+    if(input===url+'/_gtt-manifest.json')return new Response(JSON.stringify(marker,null,2)+'\n');
+    assert.equal(input,url+'/index.html');return new Response(tamper?'corrupt':html);
+  });
+  f.versions.config={...f.config,environment:'production',frontend_cdn_origin:remote,frontend_origin_template:'https://{release}-g{game_id}.play.example.test'};
+  const checks=new GameAvailabilityChecks(f.p,f.p.multi.remote,f.versions,f.versions.config);t.after(()=>checks.close());
+  const route=f.control.get('SELECT * FROM game_service_routes WHERE code=?','buffalo-win');
+  const job=checks.begin('test',{game_id:1,enabled:true,version:f.control.gameAvailability(1).version},{service_id:route.release_id,component_version:'v1.1',service_revision:route.revision,frontend_revision:0});
+  let state=checks.status('test',job.id);while(state.status==='checking'){await new Promise(ok=>setTimeout(ok,20));state=checks.status('test',job.id);}
+  assert.equal(state.status,'applied',JSON.stringify(state));
+  const a=new URL((await f.launch()).launch_url),b=new URL((await f.launch()).launch_url);
+  assert.notEqual((await f.http(a.host,'/index.html')).status,200);assert.ok(!urls.includes(url+'/index.html'));
+  assert.notEqual((await f.http(a.host,'/'+a.search)).status,200);tamper=false;
+  const page=await f.http(a.host,'/'+a.search);assert.equal(page.status,200,page.body.slice(0,500));assert.ok(page.body.includes(a.searchParams.get('ops')!));assert.match(page.body,/local-auth-bootstrap/);
+  const second=await f.http(b.host,'/'+b.search);assert.ok(second.body.includes(b.searchParams.get('ops')!));assert.ok(!second.body.includes(a.searchParams.get('ops')!));
+  assert.equal(urls.filter(v=>v===url+'/index.html').length,2);
+});
+
 test("frontend management is platform-only and registration reads generated versions instead of accepting handwritten numbers", async (t) => {
   const f = await fixture(t),
     build = f.build();
@@ -472,6 +587,8 @@ test("frontend management is platform-only and registration reads generated vers
   );
   assert.equal(response.status, 200, await response.clone().text());
   assert.equal(((await response.json()) as any).data.id, build.release);
+  for(const action of ['create','list','disable'])assert.equal((await post('/api/merchant/trials/'+action,{game_id:1},m)).status,403);
+  assert.equal((await post('/api/admin/trials/create',{game_id:1},{...a,csrf:'bad'})).status,403);
   for (const action of [
     "list",
     "candidates",
@@ -548,6 +665,7 @@ test("frontend publication uploads public files only, checks private bucket prot
         },
       };
     if (operation === "get-bucket-versioning") return { Status: "Enabled" };
+    if (operation === "get-bucket-policy")return {Policy:JSON.stringify({Statement:[{Effect:'Allow',Resource:'arn:aws:s3:::test-private-frontend/releases/*'}]})};
     if (operation === "get-bucket-encryption")
       return {
         ServerSideEncryptionConfiguration: {
@@ -612,6 +730,30 @@ test("frontend publication uploads public files only, checks private bucket prot
   objects.values().next().value.ChecksumSHA256 = "tampered";
   await assert.rejects(() => publishFrontend(options), /refusing overwrite/);
   assert.equal(puts, count);
+  const remote=f.build('v2.1',true),result=await publishFrontend({...options,bundle:join(f.installed,remote.release)});
+  assert.equal(result.private_prefix,'private/frontend/buffalo-win/v2.1');
+  const cache=f.versions;
+  cache.root=join(f.dir,'cold-cache');
+  let reads=0;
+  cache.downloadObject=async()=>{reads++;throw Error('默认模式不应请求 S3');};
+  await assert.rejects(cache.cacheVersion('buffalo-win','v2.1'),{code:'FRONTEND_LOCAL_REQUIRED'});
+  assert.equal(reads,0);
+  cache.config.frontend_private_source='s3';
+  cache.downloadObject=async(key:string,path:string)=>writeFileSync(path,objects.get(key).bytes);
+  const privateKey=result.private_prefix+'/bootstrap/resources/clients/buffalo-win/index.html',saved=objects.get(privateKey).bytes;
+  objects.get(privateKey).bytes=Buffer.from('changed');
+  await assert.rejects(cache.cacheVersion('buffalo-win','v2.1'),{code:'FRONTEND_FILE_CHANGED'});
+  objects.get(privateKey).bytes=saved;
+  assert.equal(await cache.cacheVersion('buffalo-win','v2.1'),remote.release);
+  assert.equal(existsSync(join(cache.root,remote.release,'objects')),false);
+  delete cache.config.frontend_private_source;
+  cache.bundledRoot=cache.root;cache.root=join(f.dir,'empty-install');
+  cache.downloadObject=async()=>{reads++;throw Error('随包版本不应请求 S3');};
+  assert.equal(await cache.cacheVersion('buffalo-win','v2.1'),remote.release);
+  assert.equal(cache.candidates().some((v:any)=>v.release===remote.release),true);
+  assert.equal(reads,0);
+  cache.config.environment='production';cache.config.frontend_origin_template='https://{release}-g{game_id}.play.example.com';
+  assert.equal(cache.register('test',{bundle:remote.release}).id,remote.release);
 });
 
 test("version CDN routing keeps assets in immutable S3 prefixes and preserves authentication on dynamic requests", async () => {
@@ -657,6 +799,8 @@ test("version CDN routing keeps assets in immutable S3 prefixes and preserves au
   assert.equal(Object.keys(asset.querystring).length, 0);
   assert.equal(Object.keys(asset.cookies).length, 0);
   assert.equal(calls[0][0], "version-assets-root");
+  const remote=request('/assets/picture.png');remote.headers.host.value='fe-v2-1-g1-g1.play.example.com';
+  assert.equal(box.handler({request:remote}).uri,'/releases/buffalo-win/v2.1/assets/picture.png');
   calls.length = 0;
   const dynamic = box.handler({
     request: request("/game-api/buffalo-win/v2/Spin", "POST"),

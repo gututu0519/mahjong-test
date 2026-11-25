@@ -1,4 +1,5 @@
 import { isIP } from "node:net";
+import {readFileSync} from 'node:fs';
 import { check, encode, hex, now, ServiceError } from "../../other/shared/core.js";
 import { fetchBounded } from "../../other/shared/http.js";
 import { GAME_CODES, gameNumber, gameUnit } from "./catalog.js";
@@ -146,7 +147,22 @@ export class GameServices {
       );
     }
   }
-  async register(actor: string, q: any) {
+  /** 后台读取共用密钥，只向本机计算服务发起认证；重试可复用完全一致的登记。 */
+  async connectLocal(actor:string,code:string,address:string){
+    const origin=this.validateOrigin(address);
+    check(['127.0.0.1','[::1]'].includes(new URL(origin).hostname),'GAME_SERVICE_URL_INVALID','自动连接请填写本机回环地址，例如 http://127.0.0.1:8211',409);
+    let secret:string;
+    try {secret=readFileSync(this.config.game_service_secret_file??'/www/wwwroot/gtt-node/config/secrets/games.key','utf8').trim();}
+    catch {throw new ServiceError('GAME_SHARED_KEY_UNAVAILABLE','后台无法读取共享密钥。请检查 games.key 的路径和后台运行用户的读取权限。',409);}
+    check(secret.length>=32&&secret.length<=512,'GAME_SHARED_KEY_INVALID','共享密钥文件应包含 32 至 512 个字符',409);
+    try{return await this.register(actor,{code,origin,secret},true);}
+    catch(error){
+      if(error instanceof ServiceError&&(error.status===401||error.status===403))throw new ServiceError('GAME_SHARED_AUTH_FAILED','计算服务拒绝认证：请确认游戏的 GAME_SECRET_FILE 与后台共享密钥内容一致。',409);
+      if(error instanceof ServiceError&&error.code==='GAME_UNAVAILABLE')throw new ServiceError('GAME_CONNECT_FAILED','无法连接计算服务，请核对本机地址、监听端口和 PM2 状态。',409);
+      throw error;
+    }
+  }
+  async register(actor: string, q: any,reuse=false) {
     check(
       GAME_CODES.includes(q.code) &&
         (q.release == null || (typeof q.release === "string" &&
@@ -193,6 +209,10 @@ export class GameServices {
     );
     q={...q,release:descriptor.release};
     return this.p.control.tx(() => {
+      if(reuse){
+        const row=this.p.control.get('SELECT * FROM game_service_releases WHERE code=? AND release=?',q.code,q.release);
+        if(row&&row.status==='ready'&&row.origin===origin&&row.secret===q.secret&&row.descriptor_json===encode(descriptor))return {id:row.id,code:q.code,release:q.release};
+      }
       check(
         !this.p.control.get(
           "SELECT 1 FROM game_service_releases WHERE code=? AND release=?",

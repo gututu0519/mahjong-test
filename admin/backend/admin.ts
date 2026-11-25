@@ -20,6 +20,7 @@ import { merchantGameResult, merchantRoundMoney } from "../../gateway/src/mercha
 import { GameServices } from "../../gateway/src/game-services.js";
 import {FrontendVersions} from "../../gateway/src/frontend-versions.js";
 import {GameAvailabilityChecks} from './game-availability.js';
+import {Trials} from '../../gateway/src/trials.js';
 export function transactions(p: Provider, q: any, detail = false) {
   const clauses: string[] = [],
     args: any[] = [];
@@ -179,6 +180,7 @@ const permissions: any = {
   "frontends/register":"services.manage",
   "frontends/probe":"services.manage",
   "frontends/activate":"services.manage",
+  "services/activate-pair":"services.manage",
   "frontends/retire":"services.manage",
   "services/list":"services.read",
   "services/register":"services.manage",
@@ -200,6 +202,8 @@ const permissions: any = {
   "games/export": "games.read",
   "games/availability": "games.manage",
   "games/availability-check": "games.manage",
+  "games/auto-open": "games.manage",
+  "trials/create":"games.manage","trials/list":"games.manage","trials/disable":"games.manage",
   "transactions/list": "transactions.read",
   "transactions/detail": "transactions.read",
   "transactions/retry": "transactions.retry",
@@ -224,6 +228,7 @@ export function adminServer(
   const services=p.multi?.remote??new GameServices(p,config);
   const frontends=p.multi?.frontends??new FrontendVersions(p,config);
   const availabilityChecks=new GameAvailabilityChecks(p,services,frontends,config);
+  const trials=new Trials({p,config,remote:services,frontends});
   const deployment = new Deployment(config),
     control = p.control,
     headers = {
@@ -397,21 +402,37 @@ export function adminServer(
     }
     let result: any;
     switch (action) {
+      case 'trials/create':case 'trials/list':case 'trials/disable':
+        check(!merchantAPI&&!scope,'FORBIDDEN','仅平台运营可管理试玩链接',403);
+        result=action==='trials/create'?trials.create(actor,q):action==='trials/list'?{links:trials.list(q.game_id)}:trials.disable(actor,q.id);
+        break;
       case "frontends/list":result={games:frontends.list()};break;
       case "frontends/candidates":result={builds:frontends.candidates()};break;
-      case "frontends/register":result=frontends.register(actor,q);break;
+      case "frontends/register":
+        if(q.component_version!==undefined){
+          const bundle=await frontends.cacheVersion(q.code,q.component_version);
+          result=frontends.register(actor,{bundle});
+        }else result=frontends.register(actor,q);
+        break;
       case "frontends/probe":result=await frontends.probe(actor,q.id);break;
-      case "frontends/activate":result=frontends.activate(actor,q);break;
+      case "frontends/activate":
+      case "services/activate":
+      case "services/activate-pair": {
+        check(p.multi?.remote,"GAME_REMOTE_MODE_REQUIRED","请先启用独立计算服务",409);
+        if(action!=='services/activate-pair'){
+          const isFront=action==='frontends/activate',selected=isFront?frontends.release(q.id):services.release(q.id);
+          const counterpart=control.get(isFront?'SELECT * FROM game_service_routes WHERE code=?':'SELECT * FROM frontend_routes WHERE code=?',selected.code);
+          check(counterpart,'GAME_PAIR_REQUIRED','首次激活或换代请同时选择前端和计算服务',409);
+          result=await availabilityChecks.activatePair(actor,{game_id:gameNumber(selected.code),frontend_id:isFront?q.id:counterpart.release_id,service_id:isFront?counterpart.release_id:q.id,frontend_revision:isFront?q.revision:counterpart.revision,service_revision:isFront?counterpart.revision:q.revision});
+        }else result=await availabilityChecks.activatePair(actor,q);
+        break;
+      }
       case "frontends/retire":result=frontends.retire(actor,q.id);break;
       case "services/list":
         result={mode:p.multi?.remote?"remote":"embedded",games:services.list()};
         break;
       case "services/register":
-        result=await services.register(actor,q);
-        break;
-      case "services/activate":
-        check(p.multi?.remote,"GAME_REMOTE_MODE_REQUIRED","当前网关仍使用旧内嵌模式，请先切换独立游戏服务配置",409);
-        result=await services.activate(actor,q);
+        result=q.secret===undefined?await services.connectLocal(actor,q.code,q.origin):await services.register(actor,q);
         break;
       case "services/retire":
         result=services.retire(actor,q);
@@ -468,6 +489,11 @@ export function adminServer(
         break;
       case "games/export":
         result = catalogExport(scope ? p.merchantCatalog(scope) : p.catalog(), q.format ?? "html", scope);
+        break;
+      case "games/auto-open":
+        check(!merchantAPI&&!scope&&s.permissions.includes('services.manage'),'FORBIDDEN','需要平台游戏开放和版本管理权限',403);
+        check(p.multi?.remote,'GAME_REMOTE_MODE_REQUIRED','请先启用独立计算服务',409);
+        result={check:availabilityChecks.begin(actor,q,{service_id:q.service_id,component_version:q.component_version,frontend_revision:q.frontend_revision,service_revision:q.service_revision})};
         break;
       case "games/availability":
         check(!merchantAPI&&!scope, "FORBIDDEN", "Only platform operators may change availability", 403);

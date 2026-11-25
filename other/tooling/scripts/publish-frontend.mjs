@@ -7,6 +7,7 @@ import {promisify} from 'node:util';
 import { sha } from "../dist/shared/core.js";
 import {
   verifyFrontendBundle,
+  frontendMarker,
   frontendFile,
 } from "../dist/shared/frontend-manifest.js";
 
@@ -78,14 +79,14 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
   )
     throw Error("Encrypted private bucket is required");
   const cache = "public, max-age=31536000, immutable";
-  const put = async (key, path, bytes, type) => {
+  const put = async (key, path, bytes, type,cacheControl=cache) => {
     const checksum = Buffer.from(sha(bytes), "hex").toString("base64");
     const verify = (head) => {
       if (
         head.ContentLength !== bytes.length ||
         head.ChecksumSHA256 !== checksum ||
         head.ContentType !== type ||
-        head.CacheControl !== cache ||
+        head.CacheControl !== cacheControl ||
         head.Metadata?.["gtt-release"] !== m.release ||
         head.Metadata?.["gtt-sha256"] !== sha(bytes)
       )
@@ -115,7 +116,7 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
         "--content-type",
         type,
         "--cache-control",
-        cache,
+        cacheControl,
         "--checksum-algorithm",
         "SHA256",
         "--checksum-sha256",
@@ -130,6 +131,19 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
     }
     verify(await head());
   };
+  const privatePrefix=m.release.startsWith('fe-v')&&m.entry_mode!=='cdn-html'?`private/frontend/${m.game}/${m.component_version}`:null;
+  const manifest_sha256 = sha(readFileSync(resolve(bundle, "manifest.json")));
+  if(privatePrefix){
+    // 只接受所有 Allow 均限定在公开素材前缀的桶策略，IAM 通过角色策略读私有资料。
+    const policy=JSON.parse((await run('get-bucket-policy',scope)).Policy);
+    for(const rule of policy.Statement.filter(r=>r.Effect==='Allow')){
+      if(!rule.Resource||![rule.Resource].flat().every(r=>typeof r==='string'&&r.startsWith(`arn:aws:s3:::${bucket}/releases/`)))throw Error('Bucket policy must restrict reader grants to releases/ before private publication');
+    }
+    try{
+      const existing=await run('head-object',[...scope,'--key',privatePrefix+'/manifest.json','--checksum-mode','ENABLED']);
+      if(existing.ChecksumSHA256!==Buffer.from(manifest_sha256,'hex').toString('base64'))throw Error('Existing private release differs; refusing overwrite');
+    }catch(error){if(!missing(error))throw error;}
+  }
   let index=0,completed=0,failure;
   await Promise.all(Array.from({length:Math.min(concurrency,m.files.length)},async()=>{
   while(index<m.files.length&&!failure) {
@@ -147,18 +161,9 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
   }
   }));
   if(failure)throw failure;
-  const manifest_sha256 = sha(readFileSync(resolve(bundle, "manifest.json")));
   const publicManifest = Buffer.from(
     JSON.stringify(
-      {
-        format: 3,
-        kind: m.kind,
-        game: m.game,
-        release: m.release,
-        prefix: m.prefix,
-        manifest_sha256,
-        files: m.files,
-      },
+      frontendMarker(m,manifest_sha256),
       null,
       2,
     ) + "\n",
@@ -176,6 +181,11 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
   } finally {
     rmSync(temp, { recursive: true, force: true });
   }
+  if(privatePrefix){
+    for(const file of m.bootstrap)await put(`${privatePrefix}/bootstrap/${file.path}`,resolve(bundle,'bootstrap',file.path),frontendFile(bundle,'bootstrap',file),file.type,'private, no-store');
+    const path=resolve(bundle,'manifest.json');
+    await put(`${privatePrefix}/manifest.json`,path,readFileSync(path),'application/json; charset=utf-8','private, no-store');
+  }
   return {
     status: "passed",
     game: m.game,
@@ -185,7 +195,8 @@ export async function publishFrontend({ bundle, bucket, owner, run = awsAsync, c
     verified_objects: m.files.length,
     manifest_sha256,
     cloudfront_modified: false,
-    bootstrap_uploaded: false,
+    bootstrap_uploaded: !!privatePrefix,
+    private_prefix: privatePrefix,
   };
 }
 if (

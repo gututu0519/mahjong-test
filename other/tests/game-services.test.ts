@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync,writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
@@ -138,6 +138,18 @@ async function fixture(t: any) {
   });
   return f;
 }
+
+test('本机自动连接从后台文件读取密钥，重复登记复用已认证的同版本',async t=>{
+  const f=await fixture(t),services=f.p.multi.remote,code='buffalo-win',key=join(f.dir,'shared.key');
+  services.config.game_service_secret_file=key;
+  await assert.rejects(services.connectLocal('test',code,'http://10.0.0.1:8211'),{code:'GAME_SERVICE_URL_INVALID'});
+  await assert.rejects(services.connectLocal('test',code,'http://127.0.0.1:8211'),{code:'GAME_SHARED_KEY_UNAVAILABLE'});
+  const secret='test-only-'.repeat(5),server=computeServer(code,resolve(`../services/${code}/config/${code}.json`),secret,{release:'v1.2'});f.servers.push(server);
+  writeFileSync(key,secret);const origin='http://127.0.0.1:'+await listen(server);
+  const first=await services.connectLocal('test',code,origin);
+  assert.equal(first.release,'v1.2');assert.deepEqual(await services.connectLocal('test',code,origin),first);
+  assert.ok(!JSON.stringify(first).includes(secret));
+});
 
 test("历史游戏通过注册 HTTP 服务计算且不创建内嵌引擎实例", async (t) => {
   const f = await fixture(t),
@@ -374,7 +386,7 @@ test("service registry API enforces platform permissions and never returns crede
   assert.equal(
     (await post("/api/admin/services/activate", { id: v.id, revision: 0 }, a))
       .status,
-    200,
+    409,
   );
   const noCsrf = { ...a, csrf: "bad" };
   assert.equal(

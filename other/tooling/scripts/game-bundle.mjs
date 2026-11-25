@@ -47,7 +47,7 @@ export function verifyPair(serve,client,game) {
   // smoke test also requests the actual running service descriptor.
   const contract=identity.descriptor.client_contract??game+':original-v1';
   if(manifest.client_contract!==contract)throw Error('Client/service protocol contract mismatch');
-  if(!manifest.bootstrap.some(file=>file.path===`resources/clients/${game}/index.html`))throw Error('Missing private game startup HTML');
+  if(manifest.entry_mode!=='cdn-html'&&!manifest.bootstrap.some(file=>file.path===`resources/clients/${game}/index.html`))throw Error('Missing private game startup HTML');
   const privateRule=`resources/services/${game}/config/${game}.json`;
   if(!manifest.bootstrap.some(file=>file.path===privateRule))throw Error('Missing frontend bootstrap rule configuration');
   const rules=JSON.parse(readFileSync(resolve(serve,'config/game.json'),'utf8'));

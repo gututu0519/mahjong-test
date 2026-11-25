@@ -25,6 +25,12 @@ export function gatewayServer(p: Provider, config: any, clientRoot: string) {
     const url = new URL(req.url!, "http://local"),
       path = url.pathname;
     try {
+      if(/^\/trial\/[0-9a-f]{48}$/.test(path)){
+        deployment.guard(req,'gateway');
+        check(req.method==='GET'&&!url.search,'NOT_FOUND','Not found',404);
+        const location=await pool.trials.redeem(path.slice(7));
+        res.writeHead(303,{Location:location,'Cache-Control':'private, no-store','Referrer-Policy':'no-referrer'});return res.end();
+      }
       const game = pool.host(req);
       if (game) return await pool.handle(game, req, res);
       deployment.guard(req, "gateway");

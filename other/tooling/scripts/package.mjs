@@ -17,6 +17,7 @@ import { repairModule } from "../dist/gateway/assets.js";
 import {createZip} from './archive.mjs';
 import {packageAdmin} from './package-admin.mjs';
 import {GAME_CODES} from '../dist/gateway/catalog.js';
+import {verifyFrontendBundle,frontendFile} from '../dist/shared/frontend-manifest.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repo = resolve(root, "..");
@@ -49,6 +50,9 @@ const buildId = option(
 );
 if (buildId.length>96 || !/^gtt-node-[A-Za-z0-9_-]+$/.test(buildId))
   throw new Error("Invalid build id");
+const serviceVersion=option('--service-version');
+if(serviceVersion&&(!/^v[1-9]\d{0,7}\.(0|[1-9]\d{0,7})$/.test(serviceVersion)||!GAME_CODES.some(c=>selectedArtifact==='game-'+c)))throw Error('正式服务版本仅用于单款游戏');
+const runtimeRelease=serviceVersion??buildId;
 const manifestPath = option("--assets-manifest");
 if (!manifestPath)
   throw new Error(
@@ -56,11 +60,16 @@ if (!manifestPath)
   );
 const raw = readFileSync(resolve(manifestPath));
 const assets = JSON.parse(raw);
+const remoteAssets=typeof assets.component_version==='string'&&/^v[1-9]\d{0,7}\.(0|[1-9]\d{0,7})$/.test(assets.component_version)&&
+  assets.release===`fe-${assets.component_version.replace('.','-')}-g${GAME_CODES.indexOf('buffalo-win')+1}`;
+const frontendRelease = assets.format === 3 && assets.kind === "game-client" &&
+  (remoteAssets||/^fe-\d{17}-[a-f0-9]{8}-[a-f0-9]{6}$/.test(assets.release)) &&
+  /^[a-f0-9]{64}$/.test(assets.manifest_sha256);
 if (
   assets.game !== "buffalo-win" ||
-  !/^[a-f0-9]{20}$/.test(assets.release) ||
+  (!frontendRelease && !/^[a-f0-9]{20}$/.test(assets.release)) ||
   !assets.files?.length ||
-  assets.prefix !== `releases/buffalo-win/${assets.release}`
+  assets.prefix !== `releases/buffalo-win/${remoteAssets?assets.component_version:assets.release}`
 )
   throw new Error("Invalid S3 manifest");
 const client = resolve(repo, "clients/buffalo-win");
@@ -84,7 +93,7 @@ for (const file of assets.files) {
 }
 const workspace=resolve(process.env.GTT_WORKSPACE_ROOT??resolve(repo,'../..'));
 const output=resolve(workspace,'other/diagnostics/releases',buildId);
-const archiveDirectory=resolve(workspace,'update');
+const archiveDirectory=serviceVersion?resolve(output,'archives'):resolve(workspace,'update');
 if (existsSync(output))
   throw new Error("Build directory exists; choose a new build id");
 mkdirSync(output, { recursive: true });
@@ -125,10 +134,10 @@ function postgresRuntime(dest,bundle=true) {
 }
 function startupExamples(dest,role,name,entryPoint) {
   const base='/www/wwwroot/gtt-node';
-  const envFile=role==='game'?`${base}/config/games/${name}/${buildId}.env`:`${base}/config/platform.env`;
+  const envFile=role==='game'?`${base}/config/games/${name}/${runtimeRelease}.env`:`${base}/config/platform.env`;
   if(role==='game') {
     const template=readFileSync(resolve(root,'deploy/game.env.example'),'utf8')
-      .replaceAll('buffalo-win',name).replaceAll('REPLACE_WITH_BUILD_ID',buildId)
+      .replaceAll('buffalo-win',name).replaceAll('REPLACE_WITH_BUILD_ID',runtimeRelease)
       .replaceAll('/opt/gtt-node',base).replaceAll('/etc/gtt-node/secrets',`${base}/config/secrets`)
       .replace('# 生产安装到 /etc/gtt-node/games/<游戏代码>/<发布版本>.env。',`# 复制到 ${envFile}，填写实际端口及密钥文件路径。`);
     write(resolve(dest,'game.env.example'),template);
@@ -141,7 +150,7 @@ function startupExamples(dest,role,name,entryPoint) {
     write(resolve(dest,'production.example.json'),production);
     write(resolve(dest,'postgres.example.json'),remap(readFileSync(resolve(root,'config/postgres.example.json'),'utf8')));
   }
-  write(resolve(dest,'ecosystem.config.example.cjs'),`// Copy to ecosystem.config.cjs in the package root; edit env path and Node interpreter if needed.\nmodule.exports = { apps: [{\n  name: ${JSON.stringify(role==='game'?name+'-'+buildId:name)},\n  cwd: __dirname,\n  script: ${JSON.stringify('./'+entryPoint)},\n  interpreter: 'node',\n  args: ['--env-file', ${JSON.stringify(envFile)}],\n  exec_mode: 'fork',\n  instances: 1,\n  watch: false,\n  autorestart: true,\n  restart_delay: 5000,\n  max_memory_restart: '1G'\n}] };\n`);
+  write(resolve(dest,'ecosystem.config.example.cjs'),`// Copy to ecosystem.config.cjs in the package root; edit env path and Node interpreter if needed.\nmodule.exports = { apps: [{\n  name: ${JSON.stringify(role==='game'?name+'-'+runtimeRelease:name)},\n  cwd: __dirname,\n  script: ${JSON.stringify('./'+entryPoint)},\n  interpreter: 'node',\n  args: ['--env-file', ${JSON.stringify(envFile)}],\n  exec_mode: 'fork',\n  instances: 1,\n  watch: false,\n  autorestart: true,\n  restart_delay: 5000,\n  max_memory_restart: '1G'\n}] };\n`);
   return envFile;
 }
 function startupPackage(dest,role,action,commands,startActions=[action]) {
@@ -161,7 +170,7 @@ function startupPackage(dest,role,action,commands,startActions=[action]) {
     lock.packages['node_modules/'+name]={...entry};delete lock.packages['node_modules/'+name].dev;
   }
   write(resolve(dest,'package-lock.json'),lock);
-  write(resolve(dest,'SERVICE.json'),{role,action,commands,start_actions:startActions,release:buildId,entry_point:entryPoint,configuration_examples:true,process_manager:'pm2',dependencies_bundled:withDependencies,...(role==='admin'?{data_directory:'dist/data',layout:'admin-slim-v1',opening_checks:true}:{}),startup:['dependencies','migrations','serve']});
+  write(resolve(dest,'SERVICE.json'),{role,action,commands,start_actions:startActions,release:runtimeRelease,entry_point:entryPoint,configuration_examples:true,process_manager:'pm2',dependencies_bundled:withDependencies,...(role==='admin'?{data_directory:'dist/data',layout:'admin-slim-v1',opening_checks:true}:{}),startup:['dependencies','migrations','serve']});
   write(resolve(dest,'START.md'),[
     '# 服务启动', '', `服务类型：${role}；构建版本：${buildId}。`, '',
     role==='admin'?`精简后台采用独立 admin CLI，保留平台和商户网页及所有管理 API。交付顶层目录为 frontend、dist、migrations、tools${withDependencies?'、node_modules':''}。dist/data 保留管理目录、协议文档、SQL 与 RTP 模型管理所需元数据；不携带原游戏资源目录和各款游戏引擎。独立包按当前 remote 游戏服务拓扑部署；历史 embedded 部署使用原完整兼容包。`:'',
@@ -171,7 +180,7 @@ function startupPackage(dest,role,action,commands,startActions=[action]) {
     '前台调试使用 `npm run start:foreground`；宝塔直接管理命名脚本，systemd 使用 start:foreground，不能再嵌套执行后台 npm start。',
     'PM2 使用 package-lock 锁定的项目本地依赖并连接当前用户的 PM2_HOME（默认 ~/.pm2）；缺失时先安装。始终使用同一用户管理，不自动切换 root/www。依赖安装后可运行 npx --no-install pm2 list 或 npx --no-install pm2 logs <名称>。后台启动不会自动配置开机自启或保存 PM2 列表。',
     '首次部署先运行 npm start 或 npm run start:foreground 完成安装；直接执行 admin-init、npm run migrate 等维护命令前也需要已安装依赖。',
-    '平台配置自动查找顺序：显式 --env-file、GTT_PLATFORM_ENV_FILE、包根 platform.env、同级 config/platform.env、/etc/gtt-node/platform.env。游戏支持 GAME_ENV_FILE、包根 game.env、按部署目录定位的 config/games/<代码>/<版本>.env。示例文件不自动作为实际配置。',
+    '平台配置自动查找顺序：显式 --env-file、GTT_PLATFORM_ENV_FILE、包根 platform.env、同级 config/platform.env、/etc/gtt-node/platform.env。游戏包支持显式配置、包根 game.env、同名游戏父目录的共享 game.env，再查找 config/games/<代码>/<版本>.env。共享配置只填监听地址、端口及密钥文件路径，版本和规则由包提供；在版本目录直接运行 npm start。示例文件不自动作为实际配置。',
     `PM2 启动文件选择 \`${entryPoint}\`，运行目录为本包根目录；显式传入下述 env 参数。命名入口与 npm start 共用启动流程，旧 tools/start-service.mjs 继续有效。`,
     '依赖由 package-lock.json 锁定；安装使用 npm install --omit=dev --ignore-scripts --no-audit --no-fund。缺少缓存或依赖时需要可用的 npm registry。',
     '安装或迁移失败会停止后续步骤。运行账号须能写入本目录和 npm 缓存目录。', '',
@@ -393,7 +402,7 @@ for(const code of Object.keys(descriptors)) {
     copy(resolve(root,"dist",directory),resolve(dest,"dist",directory),p=>p.endsWith(".js")&&!adminModules.has(p.split(sep).at(-1))&&!(directory==='services'&&p.endsWith(sep+'platform.js'))&&!p.endsWith(sep+'merchant'+sep+'mock_wallet.js'));
   copy(resolve(repo,`services/${code}/config/${code}.json`),resolve(dest,"config/game.json"));
   copy(resolve(resources,"py"),resolve(dest,"resources/py"),p=>!p.endsWith(sep+'sandbox.html'));
-  write(resolve(dest,"GAME.json"),{code,release:buildId,descriptor:descriptors[code],command:["node","dist/cli.js","game","--game-id",code,"--game-config","config/game.json","--secret-file","<private-key-file>","--release",buildId,"--port","<private-port>"]});
+  write(resolve(dest,"GAME.json"),{code,release:runtimeRelease,descriptor:descriptors[code],command:["node","dist/cli.js","game","--game-id",code,"--game-config","config/game.json","--secret-file","<private-key-file>","--release",runtimeRelease,"--port","<private-port>"]});
   startupPackage(dest,'game','game',['game']);
   if(allArtifacts||selectedArtifact==='infra')
   write(resolve(output,"infra",`gtt-game-${code}@.service`),`[Unit]\nDescription=GTT ${code} game release %i\nAfter=network.target\n\n[Service]\nType=simple\nUser=gtt-node\nGroup=gtt-node\nWorkingDirectory=/opt/gtt-node/games/${code}/%i\nEnvironmentFile=/etc/gtt-node/games/${code}/%i.env\nCacheDirectory=gtt-node-npm\nEnvironment=NPM_CONFIG_CACHE=/var/cache/gtt-node-npm\nExecStart=/usr/bin/npm start -- --game-id ${code} --release %i\nRestart=on-failure\nRestartSec=3\nNoNewPrivileges=true\nPrivateTmp=true\nProtectSystem=strict\nProtectHome=true\nReadWritePaths=/opt/gtt-node/games/${code}/%i\nUMask=0077\n\n[Install]\nWantedBy=multi-user.target\n`);
@@ -441,6 +450,18 @@ for (const name of [
   ...gameArtifacts,
 ].filter(name=>allArtifacts||name===selectedArtifact)) {
   const dir = resolve(output, name);
+  const frontendInput=option('--frontend-bundle');
+  if(frontendInput){
+    if(!['admin','gateway'].includes(selectedArtifact))throw Error('--frontend-bundle 仅适用于独立后台或网关');
+    const src=resolve(workspace,frontendInput),m=verifyFrontendBundle(src);
+    if(!m.release.startsWith('fe-v'))throw Error('随包资料须使用固定游戏版本');
+    const target=resolve(dir,'dist/data/frontend-releases',m.release);
+    for(const f of m.bootstrap){
+      const to=resolve(target,'bootstrap',f.path);
+      mkdirSync(dirname(to),{recursive:true});writeFileSync(to,frontendFile(src,'bootstrap',f),{flag:'wx'});
+    }
+    copy(resolve(src,'manifest.json'),resolve(target,'manifest.json'));
+  }
   write(resolve(dir, "release-manifest.json"), {
     build_id: buildId,
     files: inventory(dir),
@@ -450,7 +471,7 @@ for (const name of [
   const category=gameArtifacts.includes(name)?`${name}/${archiveName}-${buildId}`:name;
   const filename = `${archiveName}-${buildId}.${format}`;
   if(existsSync(resolve(archiveDirectory,filename))||existsSync(resolve(archiveDirectory,category,filename)))throw Error('Release archive already exists: '+filename);
-  createZip(dir,name,resolve(output,filename));
+  createZip(dir,serviceVersion?'':name,resolve(output,filename));
   const bytes = readFileSync(resolve(output, filename));
   artifacts.push({
     name,

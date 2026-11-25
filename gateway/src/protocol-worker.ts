@@ -84,7 +84,8 @@ function apply(value: any) {
         o.request_json,
         encode(r),
         encode(c.state),
-        c.ruleset_id,
+        // 旧试玩候选记录缺少规则标识；使用该笔已结算响应绑定的规则，不读取当前激活版本。
+        c.ruleset_id ?? (active.startsWith('trial.') ? r.ruleset_id : undefined),
         o.created_at,
       );
       seq = Math.max(seq, o.seq);
@@ -202,6 +203,13 @@ parentPort!.on("message", (message) => {
       body: Buffer.concat(handler.__chunks),
     });
   } catch (e) {
+    if (!(e instanceof ServiceError)) {
+      // 仅输出协议阶段及代码栈帧，不记录会话、表单、查询参数或底层异常原文。
+      const path=String(request.url).split('?')[0];
+      const operation=path.endsWith('/GameInfo/Get')?'GameInfo/Get':path.endsWith('/Spin')?'Spin':'protocol';
+      const frames=e instanceof Error?e.stack?.split('\n').filter(line=>/^\s+at .*(?:dist[\\/]|node:)/.test(line)).slice(0,4):[];
+      console.error('[protocol-worker]',code,operation,typeof (e as any)?.code==='string'&&/^[A-Z0-9_]{2,40}$/.test((e as any).code)?(e as any).code:'UNEXPECTED',frames?.join('\n')??'');
+    }
     const error =
       e instanceof ServiceError
         ? e

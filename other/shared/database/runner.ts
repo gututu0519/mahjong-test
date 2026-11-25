@@ -3,7 +3,8 @@
 // version/checksum in gtt_meta.schema_migrations only after all DDL succeeds.
 import {ensureSchema as baseline, checksum as baselineChecksum, metadata} from './migrations.js';
 export {metadata};
-export const migrations=[{version:'0001',checksum:baselineChecksum,up:baseline}];
+import {trialMigration} from './trial-migration.js';
+export const migrations=[{version:'0001',checksum:baselineChecksum,up:baseline},trialMigration];
 export const checksum=baselineChecksum;
 export async function ensureSchema(client: any,schema: string,kind: string) {
   for(const migration of migrations)await migration.up(client,schema,kind);

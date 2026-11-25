@@ -18,6 +18,12 @@ const repo = resolve(dirname(fileURLToPath(import.meta.url)), "../.."),
 const option = (key, fallback) =>
   args.includes(key) ? args[args.indexOf(key) + 1] : fallback;
 const game = option("--game");
+const remoteVersion=option('--remote-version');
+const cdnEntry=args.includes('--cdn-entry');
+if(cdnEntry&&(!remoteVersion||game!=='buffalo-win'))throw Error('CDN 入口目前仅支持已核对模板的 buffalo-win 固定版本');
+if(args.includes('--remote-version')&&(!/^v[1-9]\d{0,7}\.(0|[1-9]\d{0,7})$/.test(remoteVersion)||args.includes('--component-version')))throw Error('请单独指定 --remote-version v1.0');
+const componentVersion=remoteVersion??option('--component-version');
+if(args.includes('--component-version')&&!/^v[1-9]\d*\.(0|[1-9]\d*)$/.test(componentVersion))throw Error('组件版本应为 v1.0 等格式');
 if (!GAME_CODES.includes(game))
   throw Error("Supply --game with a supported game code");
 if (args.includes("--version") || args.includes("--release"))
@@ -141,6 +147,11 @@ walk(source, (path) => {
   if (!allowed && !fixture && !(parts.length === 1 && ext === ".html")) return;
   let bytes = readFileSync(path);
   const source_sha256 = sha(bytes);
+  if(cdnEntry&&rel==='index.html'){
+    const html=bytes.toString('utf8');
+    if(html.split("xt=i,kt=''").length!==2||!html.includes('<script id="main-script"')||html.includes('__GTT_MERCHANT__'))throw Error('原始入口不是预期的未注入模板');
+    publicFiles.push({row:entry(rel,bytes,'text/html; charset=utf-8'),bytes});return;
+  }
   if (
     allowed &&
     mime[ext] &&
@@ -162,7 +173,7 @@ walk(source, (path) => {
   if (
     fixture ||
     ext === ".html" ||
-    (parts.length === 1 && [".js", ".css"].includes(ext))
+    (!cdnEntry&&parts.length === 1 && [".js", ".css"].includes(ext))
   ) {
     const name = `resources/clients/${game}/${rel}`;
     privateFiles.push({
@@ -203,7 +214,7 @@ publicFiles.sort((a, b) => a.row.path.localeCompare(b.row.path));
 privateFiles.sort((a, b) => a.row.path.localeCompare(b.row.path));
 if (
   !publicFiles.length ||
-  !privateFiles.some((f) => f.row.path.endsWith(".html"))
+  !(cdnEntry?publicFiles.some(f=>f.row.path==='index.html'):privateFiles.some((f) => f.row.path.endsWith(".html")))
 )
   throw Error("Client bootstrap/static files are missing");
 const profile = JSON.parse(
@@ -218,7 +229,7 @@ const content_hash = sha(
     bootstrap: privateFiles.map((f) => f.row),
   }),
 );
-const release = `fe-${new Date().toISOString().replace(/\D/g, "")}-${content_hash.slice(0, 8)}-${randomBytes(3).toString("hex")}`;
+const release = remoteVersion?`fe-${remoteVersion.replace('.','-')}-g${GAME_CODES.indexOf(game)+1}`:`fe-${new Date().toISOString().replace(/\D/g, "")}-${content_hash.slice(0, 8)}-${randomBytes(3).toString("hex")}`;
 mkdirSync(output, { recursive: true });
 const bundle = resolve(output, `frontend-${game}-${release}`);
 mkdirSync(bundle, { recursive: false });
@@ -236,9 +247,11 @@ const manifest = {
   kind: "game-client",
   game,
   release,
+  ...(componentVersion?{component_version:componentVersion}:{}),
+  ...(cdnEntry?{entry_mode:'cdn-html'}:{}),
   created_at: new Date().toISOString(),
   client_contract,
-  prefix: `releases/${game}/${release}`,
+  prefix: `releases/${game}/${remoteVersion??release}`,
   content_hash,
   source: {
     commit: execFileSync("git", ["rev-parse", "HEAD"], {
@@ -257,14 +270,14 @@ const manifest = {
 };
 writeFileSync(
   resolve(bundle, "manifest.json"),
-  JSON.stringify(manifest, null, 2) + "\n",
+  (cdnEntry?encode(manifest):JSON.stringify(manifest, null, 2)) + "\n",
   { flag: "wx" },
 );
 writeFileSync(
   resolve(bundle, "DEPLOY.txt"),
   "objects/ -> private S3 at " +
     manifest.prefix +
-    "/\nbootstrap/ and manifest.json stay on backend. Install this bundle before registering it in the platform frontend-version page.\n",
+    (remoteVersion?`/\nPublish this complete bundle with publish-frontend. Private files go to private/frontend/${game}/${remoteVersion}/; register by game and version in admin.\n`:"/\nbootstrap/ and manifest.json stay on backend. Install this bundle before registering it in the platform frontend-version page.\n"),
 );
 console.log(
   JSON.stringify({
